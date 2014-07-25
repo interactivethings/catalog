@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var VERSION = require("../package.json").version;
+process.stdout.write(VERSION);

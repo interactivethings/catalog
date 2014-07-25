@@ -1,0 +1,28 @@
+@import "catalyst/src/globals";
+@import "catalyst/src/utils/layout";
+@import "catalyst/src/grid";
+@import "catalyst/src/spaces";
+@import "catalyst/src/visibility";
+@import "catalyst/src/utilities";
+
+
+// Colors
+
+$catalog-brand-color: #E54B3F;
+$catalog-brand-color-light: #F5B7B2;
+$catalog-brand-color-line: #D1312E;
+$catalog-brand-color-dark: #AA191F;
+$catalog-text-color:  #333;
+
+
+// Fonts
+
+$catalog-font-family: "ff-netto-web-1", "ff-netto-web-2", NettoOT, Helvetica, Arial, sans-serif;
+$catalog-font-mono: Menlo, Consolas, monospace;
+
+$catalog-font-xs:  12px;
+$catalog-font-s:   14px;
+$catalog-font-m:   16px;
+$catalog-font-l:   20px;
+$catalog-font-xl:  24px;
+$catalog-font-xxl: 36px;

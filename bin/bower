@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var fs = require("fs");
+
+console.log(JSON.stringify({
+  "name": "catalog",
+  "version": require("../package.json").version,
+  "main": "catalog.js",
+  "ignore": [
+    ".DS_Store",
+    ".git",
+    ".gitignore",
+    "package.json",
+    "Makefile",
+    "bin",
+    "test"
+  ]
+}, null, 2));

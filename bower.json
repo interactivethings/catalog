@@ -1,0 +1,14 @@
+{
+  "name": "catalog",
+  "version": "1.0.2-alpha",
+  "main": "catalog.js",
+  "ignore": [
+    ".DS_Store",
+    ".git",
+    ".gitignore",
+    "package.json",
+    "Makefile",
+    "bin",
+    "test"
+  ]
+}

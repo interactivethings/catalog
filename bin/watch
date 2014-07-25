@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+
+var _ = require('lodash');
+var clc = require('cli-color');
+var path = require('path');
+var mach = require('mach');
+var findPort = require('find-port');
+var webpack = require("webpack");
+
+
+findPort(4000, 4050, function(ports) {
+  var port = ports[0];
+
+  // Start static webserver
+  var server = mach.stack();
+  server.use(mach.file, {index: ['index.html'], root: '.'});
+  mach.serve(server, port);
+
+  // Build and watch Webpack
+  var config = require('../src/webpack.config.js');
+  var compiler = webpack(config);
+
+  compiler.watch(100, function(err, stats) {
+    if (err) return logger(clc.red.bold("Fatal error"), err);
+
+    var jsonStats = stats.toJson();
+    if (jsonStats.errors.length) return logger(clc.red.bold("Error"), jsonStats.errors);
+    if (jsonStats.warnings.length) logger(clc.yellow("Warning"), jsonStats.warnings);
+
+    afterCompile(jsonStats);
+  });
+});
+
+
+//
+// Helpers
+//
+function afterCompile(jsonStats) {
+  console.log(clc.green("Webpacked"), jsonStats.assets.map(_.property('name')).join(', '));
+}
+
+function logger(banner, messages) {
+  messages = [].concat(messages);
+  console.log(banner);
+  messages.forEach(function(messages) {
+    console.log(messages);
+  });
+}
+
+
+//
+// Exit gracefully
+//
+process.on('SIGINT', function() {
+  process.exit();
+});

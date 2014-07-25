@@ -1,0 +1,29 @@
+.cg-Menu {
+  font-family: $catalog-font-family;
+}
+
+.cg-Menu-list {
+  border-top: 1px solid $catalog-brand-color-line;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cg-Menu-link {
+  border-bottom: 1px solid $catalog-brand-color-line;
+  color: $catalog-brand-color-light;
+  display: block;
+  font-family: $catalog-font-family;
+  font-size: $catalog-font-m;
+  line-height: 1.4;
+  padding: 15px 40px;
+  text-decoration: none;
+
+  &.active {
+    color: #fff;
+  }
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+  }
+}

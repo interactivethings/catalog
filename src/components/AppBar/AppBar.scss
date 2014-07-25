@@ -1,0 +1,14 @@
+.cg-AppBar {
+  background: $catalog-brand-color;
+  padding: 20px 40px;
+  width: 170px;
+}
+
+.cg-AppBar-title {
+  color: $catalog-brand-color-dark;
+  font-family: $catalog-font-family;
+  font-size: $catalog-font-xl;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: uppercase;
+}
