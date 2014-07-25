@@ -8,20 +8,20 @@ Catalog's structure allows you to document colors, typography, elements, and HTM
 
 To get started, look at the provided <a href="#/example">example</a>. If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
-<ul><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha-2/catalog.js">1.0.0-alpha-2</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha-2/catalog.min.js">minified</a>)</li><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha/catalog.js">1.0.0-alpha</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha/catalog.min.js">minified</a>)</li></ul>
+<ul><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha-3/catalog.js">1.0.0-alpha-3</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha-3/catalog.min.js">minified</a>)</li><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha-2/catalog.js">1.0.0-alpha-2</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha-2/catalog.min.js">minified</a>)</li><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha/catalog.js">1.0.0-alpha</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha/catalog.min.js">minified</a>)</li></ul>
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/) or [Bower](http://bower.io/).
 
 ### Install with npm
 
 ```code
-npm install --save interactivethings/catalog.git#1.0.0-alpha-2
+npm install --save interactivethings/catalog.git#1.0.0-alpha-3
 ```
 
 ### Install with Bower
 
 ```code
-bower install --save https://github.com/interactivethings/catalog.git#1.0.0-alpha-2
+bower install --save https://github.com/interactivethings/catalog.git#1.0.0-alpha-3
 ```
 
 ### Using it on your local machine
