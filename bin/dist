@@ -47,8 +47,8 @@ function isVersionDir(filepath) {
 
 function copyAndExpandFileSync(srcPath, destPath) {
   var src = fs.readFileSync(srcPath);
-  src = src.toString().replace(/%VERSION%/, VERSION);
-  src = src.toString().replace(/%VERSION_LIST%/, versionList(DEPLOYMENT_BASE_URL));
+  src = src.toString().replace(/%VERSION%/g, VERSION);
+  src = src.toString().replace(/%VERSION_LIST%/g, versionList(DEPLOYMENT_BASE_URL));
   fs.writeFileSync(destPath, src);
 }
 

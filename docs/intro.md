@@ -15,13 +15,13 @@ For real projects, we recommend to install Catalog using [npm](https://www.npmjs
 ### Install with npm
 
 ```code
-npm install --save interactivethings/catalyst.git#%VERSION%
+npm install --save interactivethings/catalog.git#%VERSION%
 ```
 
 ### Install with Bower
 
 ```code
-bower install --save https://github.com/interactivethings/catalyst.git#%VERSION%
+bower install --save https://github.com/interactivethings/catalog.git#%VERSION%
 ```
 
 ### Using it on your local machine
@@ -34,5 +34,5 @@ python -m SimpleHTTPServer
 
 ## More tools
 
-Catalog is a companion product to <a href="http://interactivethings.github.io/catalyst/#/">Catalyst</a>, our very own CSS framework.
+Catalog is a companion product to <a href="http://interactivethings.github.io/catalyst/">Catalyst</a>, our very own CSS framework.
 
