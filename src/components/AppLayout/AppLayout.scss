@@ -2,18 +2,18 @@ $cg-AppLayout-sideNav-width: 250px;
 
 .cg-AppLayout {}
 
-.cg-AppLayout-topNav {}
+.cg-AppLayout-topNav {
+  position: fixed; left: 0; top: 0;
+  cursor: pointer;
+  z-index: 10;
+}
 
 .cg-AppLayout-sideNav {
   background: $catalog-brand-color;
   color: #fff;
-  float: left;
-  margin-right: -$cg-AppLayout-sideNav-width;
-  width: $cg-AppLayout-sideNav-width;
+  position: fixed; left: 0; top: 0;
 }
 
 .cg-AppLayout-content {
-  float: left;
-  margin-left: $cg-AppLayout-sideNav-width;
-  width: calc(100% - #{$cg-AppLayout-sideNav-width});
+  position: absolute;
 }
