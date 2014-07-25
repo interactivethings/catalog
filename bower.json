@@ -1,6 +1,6 @@
 {
   "name": "catalog",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha-2",
   "main": "catalog.js",
   "ignore": [
     ".DS_Store",
