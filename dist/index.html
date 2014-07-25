@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalog Documentation (1.0.0-alpha)</title>
+
+  <style type="text/css">
+  /* Example Styles */
+  .button, .important-button {
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 4px 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .button {
+    background: #2666a4;
+    color: #ffffff;
+  }
+  .button.button--disabled {
+    background: #a1afbc;
+    color: #727c86;
+  }
+  .button.button--inverted {
+    background: #ffffff;
+    color: #2666a4;
+  }
+  .important-button {
+    background: #a80050;
+    color: #fff;
+  }
+  </style>
+
+  <script type="text/javascript" src="http://use.typekit.com/nkw6rrg.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+
+  <script src="catalog.js"></script>
+  <script>
+    Catalog({
+      title: "Catalog Documentation",
+      pages: [
+        {name: 'intro', path: '/', title: "Introduction", src: "docs/intro.md"},
+        {name: 'example', title: "Example", src: "docs/example.md"}
+      ]
+    });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-53158985-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>
