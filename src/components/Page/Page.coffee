@@ -1,8 +1,8 @@
 reqwest = require('reqwest')
-marked = require('marked')
+marked = require('react-marked')
 React = require('react')
 {Link} = require('react-nested-router')
-{div} = React.DOM
+{div, section} = React.DOM
 
 module.exports = React.createClass
 
@@ -17,7 +17,7 @@ module.exports = React.createClass
     if @state.error?
       div {}, "Error: #{@state.error}"
     else if @state.html?
-      div className: 'cg-Page', dangerouslySetInnerHTML: {__html: @state.html}
+      div {className: 'cg-Page'}, @state.html
     else
       div {className: 'cg-Page-loader'}
 
@@ -52,19 +52,19 @@ MarkdownRenderer = (markdown) ->
 CodeRenderer = (code, modifiers = '') ->
   className = "cg-CodeBlock"
   className += " cg-CodeBlock--#{modifiers}" if modifiers.length > 0
-  "<section class='#{className}'>#{code}</section>"
+  section className: className, dangerouslySetInnerHTML: {__html: code}
 
 HeadingRenderer = (text, level) ->
-  "<h#{level}>#{text}</h#{level}>"
+  React.DOM["h#{level}"] null, text
 
 createSections = (html) ->
-  firstpass = true
-  html = html.replace /<h2/g, (match) ->
-    if firstpass
-      firstpass = false
-      "<section class='cg-Card'>#{match}"
-    else
-      "</section><section class='cg-Card'>#{match}"
+  # firstpass = true
+  # html = html.replace /<h2/g, (match) ->
+  #   if firstpass
+  #     firstpass = false
+  #     "<section class='cg-Card'>#{match}"
+  #   else
+  #     "</section><section class='cg-Card'>#{match}"
 
-  html += "</section>" unless firstpass
+  # html += "</section>" unless firstpass
   html
