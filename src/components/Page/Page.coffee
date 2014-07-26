@@ -8,7 +8,7 @@ module.exports = React.createClass
 
   getInitialState: ->
     error: null
-    html: null
+    children: null
 
   componentDidMount: ->
     @fetchPageData(@props.src)
@@ -16,38 +16,37 @@ module.exports = React.createClass
   render: ->
     if @state.error?
       div {}, "Error: #{@state.error}"
-    else if @state.html?
-      div {className: 'cg-Page'}, @state.html
+    else if @state.children?
+      div {className: 'cg-Page'}, @state.children
     else
       div {className: 'cg-Page-loader'}
 
   fetchPageData: (src) ->
     reqwest(url: src, type: 'text')
-      .then((res) => @setState html: MarkdownRenderer(res.responseText))
+      .then((res) => @setState children: MarkdownRenderer(res.responseText))
       .fail (res) =>
         @setState
           error: res.statusText
-          html: null
+          children: null
 
 
 #
 # Markdown Renderer
 #
 MarkdownRenderer = (markdown) ->
-    renderer = new marked.Renderer()
-    renderer.heading = HeadingRenderer
-    renderer.code = CodeRenderer
+  renderer = new marked.Renderer()
+  renderer.heading = HeadingRenderer
+  renderer.code = CodeRenderer
 
-    html = marked markdown,
-      renderer: renderer
-      gfm: true
-      breaks: false
-      sanitize: false
-      smartLists: true
-      smartypants: true
+  children = marked markdown,
+    renderer: renderer
+    gfm: true
+    breaks: false
+    sanitize: false
+    smartLists: true
+    smartypants: true
 
-    html = createSections(html)
-    html
+  createSections(children)
 
 CodeRenderer = (code, modifiers = '') ->
   className = "cg-CodeBlock"
@@ -57,14 +56,19 @@ CodeRenderer = (code, modifiers = '') ->
 HeadingRenderer = (text, level) ->
   React.DOM["h#{level}"] null, text
 
-createSections = (html) ->
-  # firstpass = true
-  # html = html.replace /<h2/g, (match) ->
-  #   if firstpass
-  #     firstpass = false
-  #     "<section class='cg-Card'>#{match}"
-  #   else
-  #     "</section><section class='cg-Card'>#{match}"
+createSections = (children) ->
+  sections = []
+  currentSection = {wrap: false, children: []} # First section isn't a card
 
-  # html += "</section>" unless firstpass
-  html
+  children.forEach (descriptor) ->    
+    if descriptor.type.displayName is 'h2' # Caveat: This isn't a documented React API
+      # start new section
+      sections.push currentSection
+      currentSection = {wrap: true, children: []}
+    currentSection.children.push(descriptor)
+
+  sections.map (s) ->
+    if s.wrap
+      section {className: 'cg-Card'}, s.children
+    else
+      s.children
