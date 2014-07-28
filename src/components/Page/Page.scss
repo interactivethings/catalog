@@ -46,19 +46,33 @@
 }
 
 .cg-Page {
+
   margin: 0 40px;
 
   & > h1 { @extend %cg-centered; @extend %cg-main-heading; }
-
   & > blockquote { @extend %cg-centered; @extend %cg-lead-text; }
 
-  & > p { @extend %cg-centered; @extend %cg-paragraph; }
+  & > p { @extend %cg-centered; @extend %cg-lead-text; }
   & > ul,
-  & > ol { @extend %cg-centered; @extend %cg-paragraph; }
+  & > ol {
+    @extend %cg-centered;
+    @extend %cg-paragraph;
+    padding-left: 0;
+    margin-bottom: 0.6em;
+  }
+  & > ul > li {
+    list-style: square;
+    list-style-position: inside;
+  }
+  & > ol > li {
+    list-style: decimal;
+    list-style-position: inside;
+  }
 
   & > p > a,
   & > ul > li > a,
   & > ol > li > a { @extend %cg-link; }
+
 }
 
 .cg-Page-loader {
