@@ -1,8 +1,9 @@
 reqwest = require('reqwest')
 marked = require('react-marked')
 React = require('react')
+Frame = require('../Frame/Frame')
 {Link} = require('react-nested-router')
-{div, section} = React.DOM
+{div, section, link, style} = React.DOM
 
 module.exports = React.createClass
 
@@ -23,7 +24,7 @@ module.exports = React.createClass
 
   fetchPageData: (src) ->
     reqwest(url: src, type: 'text')
-      .then((res) => @setState children: MarkdownRenderer(res.responseText))
+      .then((res) => @setState children: MarkdownRenderer(res.responseText, this.props))
       .fail (res) =>
         @setState
           error: res.statusText
@@ -33,10 +34,10 @@ module.exports = React.createClass
 #
 # Markdown Renderer
 #
-MarkdownRenderer = (markdown) ->
+MarkdownRenderer = (markdown, props) ->
   renderer = new marked.Renderer()
   renderer.heading = HeadingRenderer
-  renderer.code = CodeRenderer
+  renderer.code = CodeRenderer(props)
 
   children = marked markdown,
     renderer: renderer
@@ -48,10 +49,23 @@ MarkdownRenderer = (markdown) ->
 
   createSections(children)
 
-CodeRenderer = (code, modifiers = '') ->
-  className = "cg-CodeBlock"
-  className += " cg-CodeBlock--#{modifiers}" if modifiers.length > 0
-  section className: className, dangerouslySetInnerHTML: {__html: code}
+CodeRenderer = (props) ->
+  (code, modifiers = '') ->
+    if modifiers is 'code'
+      section
+        className: "cg-CodeBlock cg-CodeBlock--#{modifiers}"
+        dangerouslySetInnerHTML: {__html: code}
+    else
+      section
+        className: "cg-CodeBlock #{if modifiers then "cg-CodeBlock--#{modifiers}" else ''}"
+        Frame
+          className: 'cg-Frame'
+          head: [
+            style(null, 'html,body{margin:0;padding:0}')
+            props.styles.map (s) -> link(rel: 'stylesheet', type: 'text/css', href: s)
+          ]
+          div
+            dangerouslySetInnerHTML: {__html: code}
 
 HeadingRenderer = (text, level) ->
   React.DOM["h#{level}"] null, text

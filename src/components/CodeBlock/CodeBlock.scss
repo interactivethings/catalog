@@ -4,9 +4,14 @@ $cg-CodeBlock-patterndark: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAA
 
 
 .cg-CodeBlock {
+  border: none;
   border-radius: 2px;
+  box-sizing: border-box;
+  display: block;
   margin: 10px 0;
   padding: 20px;
+  width: 100%;
+  height: auto;
 
   &,
   &.cg-CodeBlock--patternlight { background: url($cg-CodeBlock-patternlight); }

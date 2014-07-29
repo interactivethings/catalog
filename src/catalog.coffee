@@ -11,6 +11,6 @@ Page = require('./components/Page/Page')
 window.Catalog = (config) ->
   router = Route _.extend({handler: App}, config),
     config.pages.map (page) ->
-      Route _.extend key: page.name, handler: Page, page
+      Route _.extend key: page.name, handler: Page, styles: config.styles, page
 
   React.renderComponent(router, document.body)

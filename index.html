@@ -5,35 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Catalog Documentation (%VERSION%)</title>
-
-  <style type="text/css">
-  /* Example Styles */
-  .button, .important-button {
-    border-radius: 3px;
-    font-family: sans-serif;
-    font-size: 12px;
-    padding: 4px 8px;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .button {
-    background: #2666a4;
-    color: #ffffff;
-  }
-  .button.button--disabled {
-    background: #a1afbc;
-    color: #727c86;
-  }
-  .button.button--inverted {
-    background: #ffffff;
-    color: #2666a4;
-  }
-  .important-button {
-    background: #a80050;
-    color: #fff;
-  }
-  </style>
-
   <script type="text/javascript" src="http://use.typekit.com/nkw6rrg.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
@@ -43,6 +14,7 @@
   <script>
     Catalog({
       title: "Catalog",
+      styles: ["docs/example.css"], // Styles which get injected into code frames
       pages: [
         {name: 'intro', path: '/', title: "Introduction", src: "docs/intro.md"},
         {name: 'example', title: "Example", src: "docs/example.md"}
