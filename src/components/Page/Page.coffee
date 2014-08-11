@@ -1,5 +1,5 @@
 reqwest = require('reqwest')
-marked = require('react-marked')
+marked = require('../../../lib/react-markdown')
 React = require('react')
 Frame = require('../Frame/Frame')
 {Link} = require('react-nested-router')
