@@ -74,12 +74,13 @@ createSections = (children) ->
   sections = []
   currentSection = {wrap: false, children: []} # First section isn't a card
 
-  children.forEach (descriptor) ->    
+  children.forEach (descriptor) ->
     if descriptor.type.displayName is 'h2' # Caveat: This isn't a documented React API
       # start new section
       sections.push currentSection
       currentSection = {wrap: true, children: []}
     currentSection.children.push(descriptor)
+    null
 
   sections.map (s) ->
     if s.wrap
