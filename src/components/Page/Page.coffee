@@ -1,3 +1,4 @@
+_ = require('lodash')
 reqwest = require('reqwest')
 marked = require('../../../lib/react-markdown')
 React = require('react')
@@ -24,7 +25,7 @@ module.exports = React.createClass
 
   fetchPageData: (src) ->
     reqwest(url: src, type: 'text')
-      .then((res) => @setState children: MarkdownRenderer(res.responseText, this.props))
+      .then((res) => @setState children: MarkdownRenderer(res.responseText, @props))
       .fail (res) =>
         @setState
           error: res.statusText
@@ -39,7 +40,7 @@ MarkdownRenderer = (markdown, props) ->
   renderer.heading = HeadingRenderer
   renderer.code = CodeRenderer(props)
 
-  children = marked markdown,
+  nodes = marked markdown,
     renderer: renderer
     gfm: true
     breaks: false
@@ -47,43 +48,62 @@ MarkdownRenderer = (markdown, props) ->
     smartLists: true
     smartypants: true
 
-  createSections(children)
+  nodes
+    .reduce(splitIntoSections, [[]])
+    .map(wrapSection)
+    .concat(if props.iframe then [] else props.styles.map(Style))
 
 CodeRenderer = (props) ->
   (code, modifiers = '') ->
-    if modifiers is 'code'
-      section
-        className: "cg-CodeBlock cg-CodeBlock--#{modifiers}"
-        dangerouslySetInnerHTML: {__html: code}
+    if props.iframe and modifiers isnt 'code'
+      FramedCodeBlock(code, modifiers, props.styles)
     else
-      section
-        className: "cg-CodeBlock #{if modifiers then "cg-CodeBlock--#{modifiers}" else ''}"
-        Frame
-          className: 'cg-Frame'
-          head: [
-            style(null, 'html,body{margin:0;padding:0}')
-            props.styles.map (s) -> link(rel: 'stylesheet', type: 'text/css', href: s)
-          ]
-          div
-            dangerouslySetInnerHTML: {__html: code}
+      CodeBlock(code, modifiers)
 
 HeadingRenderer = (text, level) ->
   React.DOM["h#{level}"] null, text
 
-createSections = (children) ->
-  sections = []
-  currentSection = {wrap: false, children: []} # First section isn't a card
 
-  children.forEach (descriptor) ->
-    if descriptor.type.displayName is 'h2' # Caveat: This isn't a documented React API
-      # start new section
-      sections.push currentSection
-      currentSection = {wrap: true, children: []}
-    currentSection.children.push(descriptor)
-    null
+#
+# Components
+#
+CodeBlock = (code, modifiers) ->
+  section
+    className: "cg-CodeBlock cg-CodeBlock--#{modifiers}"
+    dangerouslySetInnerHTML: {__html: code}
 
-  sections.map (s) ->
-    if s.wrap
-      section {className: 'cg-Card'}, s.children
-    else
-      s.children
+FramedCodeBlock = (code, modifiers, styles) ->
+  section
+    className: "cg-CodeBlock #{if modifiers then "cg-CodeBlock--#{modifiers}" else ''}"
+    Frame
+      className: 'cg-Frame'
+      head: [
+        style(null, 'html,body{margin:0;padding:0}')
+        styles.map(Style)
+      ]
+      div
+        dangerouslySetInnerHTML: {__html: code}
+
+Card = (children) ->
+  section {className: 'cg-Card'}, children
+
+Style = (src) ->
+  link {rel: 'stylesheet', type: 'text/css', href: src}
+
+
+#
+# Functions
+#
+
+# Splits an array of DOM nodes into sections at each <h2>
+# [h1, p, h2, p, p, h2, p] -> [[h1, p], [h2, p, p], [h2, p]]
+splitIntoSections = (sections, node) ->
+  if node.type.displayName is 'h2' # Caveat: this is a private React API call
+    sections.push([node])          # Create a new section
+  else
+    _.last(sections).push(node)    # Append to current section
+  sections
+
+# Wraps all sections except the first in a Card component
+wrapSection = (section, i) ->
+  if i is 0 then section else Card(section)

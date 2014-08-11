@@ -9,8 +9,13 @@ App = require('./components/App')
 Page = require('./components/Page/Page')
 
 window.Catalog = (config) ->
+  defaultPageOptions =
+    handler: Page
+    iframe: config.iframe or false
+    styles: config.styles
+
   router = Route _.extend({handler: App}, config),
     config.pages.map (page) ->
-      Route _.extend key: page.name, handler: Page, styles: config.styles, page
+      Route _.extend(key: page.name, defaultPageOptions, page)
 
   React.renderComponent(router, document.body)
