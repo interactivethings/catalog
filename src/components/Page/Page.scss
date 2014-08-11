@@ -45,6 +45,20 @@
   }
 }
 
+%cg-page-list-item {
+  margin-left: 1em;
+  text-indent: -1em;
+
+  &:before {
+    color: $catalog-brand-color;
+    display: inline-block;
+    font-size: 0.7em;
+    position: relative;
+    text-indent: 0;
+  }
+}
+
+
 .cg-Page {
 
   margin: 0 40px;
@@ -52,21 +66,38 @@
   & > h1 { @extend %cg-centered; @extend %cg-main-heading; }
   & > blockquote { @extend %cg-centered; @extend %cg-lead-text; }
 
-  & > p { @extend %cg-centered; @extend %cg-lead-text; }
+  & > p { @extend %cg-centered; @extend %cg-paragraph; }
   & > ul,
   & > ol {
     @extend %cg-centered;
     @extend %cg-paragraph;
+    list-style: none;
     padding-left: 0;
     margin-bottom: 0.6em;
   }
   & > ul > li {
-    list-style: square;
-    list-style-position: inside;
+    @extend %cg-page-list-item;
+
+    &:before {
+      content: "\25CF";
+      top: -0.15em;
+      width: #{(1/0.7)}em;
+    }
   }
-  & > ol > li {
-    list-style: decimal;
-    list-style-position: inside;
+  & > ol {
+    counter-reset: item;
+
+    & > li {
+      @extend %cg-page-list-item;
+
+      &:before {
+        content: counters(item, ".");
+        counter-increment: item;
+        left: -0.6em;
+        text-align: right;
+        width: #{(1/0.7)}em;
+      }
+    }
   }
 
   & > p > a,

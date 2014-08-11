@@ -4,6 +4,16 @@
 >
 > This is a new paragraph to demonstrate that it is possible to have one and how nice it looks.
 
+An ordinary paragraph can follow after the lead text. It can contain unordered lists like this:
+
+- Item 1
+- Item 2
+
+or ordered lists like this:
+
+1. Item 1
+2. Item 2
+
 ## Button
 
 This is an example button. The most common usecase is to just add the `.button` class to a link. Here's some more text, so we get several nice lines in this paragraph. Just to see how it looks.
