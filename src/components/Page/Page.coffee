@@ -1,7 +1,7 @@
 reqwest = require('reqwest')
 marked = require('../../../lib/react-markdown')
 React = require('react')
-Frame = require('../Frame/Frame')
+Frame = require('react-frame-component')
 {Link} = require('react-nested-router')
 {div, section, link, style} = React.DOM
 
