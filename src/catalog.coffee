@@ -4,7 +4,7 @@ require('./catalog.scss')
 # Load App
 _ = require('lodash')
 React = require('react')
-{Route} = require('react-nested-router')
+{Routes, Route} = require('react-router')
 App = require('./components/App')
 Page = require('./components/Page/Page')
 
@@ -14,8 +14,9 @@ window.Catalog = (config) ->
     iframe: config.iframe or false
     styles: config.styles or []
 
-  router = Route _.extend({handler: App}, config),
-    config.pages.map (page) ->
-      Route _.extend(key: page.name, defaultPageOptions, page)
+  router = Routes {location: 'hash'},
+    Route _.extend({handler: App}, config),
+      config.pages.map (page) ->
+        Route _.extend(key: page.name, defaultPageOptions, page)
 
   React.renderComponent(router, document.body)

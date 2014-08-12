@@ -3,7 +3,7 @@ reqwest = require('reqwest')
 marked = require('../../../lib/react-markdown')
 React = require('react')
 Frame = require('react-frame-component')
-{Link} = require('react-nested-router')
+{Link} = require('react-router')
 {div, section, link, style} = React.DOM
 seqKey = do -> key = 0; -> key++
 

@@ -1,5 +1,5 @@
 React = require('react')
-{Link} = require('react-nested-router')
+{Link} = require('react-router')
 {div, ul, li} = React.DOM
 
 module.exports = React.createClass
