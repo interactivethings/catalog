@@ -5,6 +5,7 @@ React = require('react')
 Frame = require('react-frame-component')
 {Link} = require('react-nested-router')
 {div, section, link, style} = React.DOM
+seqKey = do -> key = 0; -> key++
 
 module.exports = React.createClass
 
@@ -61,7 +62,7 @@ CodeRenderer = (props) ->
       CodeBlock(code, modifiers)
 
 HeadingRenderer = (text, level) ->
-  React.DOM["h#{level}"] null, text
+  React.DOM["h#{level}"] {key: seqKey()}, text
 
 
 #
@@ -69,11 +70,13 @@ HeadingRenderer = (text, level) ->
 #
 CodeBlock = (code, modifiers) ->
   section
+    key: seqKey()
     className: "cg-CodeBlock cg-CodeBlock--#{modifiers}"
     dangerouslySetInnerHTML: {__html: code}
 
 FramedCodeBlock = (code, modifiers, styles) ->
   section
+    key: seqKey()
     className: "cg-CodeBlock #{if modifiers then "cg-CodeBlock--#{modifiers}" else ''}"
     Frame
       className: 'cg-Frame'
@@ -85,10 +88,10 @@ FramedCodeBlock = (code, modifiers, styles) ->
         dangerouslySetInnerHTML: {__html: code}
 
 Card = (children) ->
-  section {className: 'cg-Card'}, children
+  section {key: seqKey(), className: 'cg-Card'}, children
 
 Style = (src) ->
-  link {rel: 'stylesheet', type: 'text/css', href: src}
+  link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
 
 
 #
