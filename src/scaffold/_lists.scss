@@ -1,0 +1,50 @@
+@mixin cg-list-base {
+  color: $catalog-text-color;
+  font-family: $catalog-font-family;
+  line-height: 1.4;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.6em;
+}
+
+@mixin cg-list-item-base {
+  margin-left: 1em;
+  text-indent: -1em;
+
+  &:before {
+    color: $catalog-brand-color;
+    display: inline-block;
+    font-size: 0.7em;
+    position: relative;
+    text-indent: 0;
+  }
+}
+
+@mixin cg-ulist {
+  @include cg-list-base;
+
+  & > li {
+    @include cg-list-item-base;
+    &:before {
+      content: "\25CF";
+      top: -0.15em;
+      width: #{(1/0.7)}em;
+    }
+  }
+}
+
+@mixin cg-olist {
+  @include cg-list-base;
+  counter-reset: item;
+
+  & > li {
+    @include cg-list-item-base;
+    &:before {
+      content: counter(item);
+      counter-increment: item;
+      left: -0.6em;
+      text-align: right;
+      width: #{(1/0.7)}em;
+    }
+  }
+}

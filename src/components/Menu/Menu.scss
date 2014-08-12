@@ -11,6 +11,7 @@
 
 .cg-Menu-link {
   @extend %cg-Menu-link-base;
+  color: $catalog-brand-color-light;
 
   &.active {
     color: #fff;
@@ -19,12 +20,12 @@
   &:hover, &:focus, &:active {
     @extend %cg-Menu-link-base;
     background: rgba(255,255,255,0.1);
+    color: #fff;
   }
 }
 
 %cg-Menu-link-base {
   border-bottom: 1px solid $catalog-brand-color-line;
-  color: $catalog-brand-color-light;
   display: block;
   font-family: $catalog-font-family;
   font-size: $catalog-font-m;

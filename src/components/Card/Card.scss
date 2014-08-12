@@ -1,48 +1,16 @@
-%cg-card-heading {
-  color: $catalog-brand-color;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-xl;
-  line-height: 1.1;
+%cg-Card-heading {
+  @include cg-heading-base($catalog-font-xl);
   margin: 0 0 1em 0;
 }
 
-%cg-card-component-heading {
-  color: $catalog-brand-color;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-s;
-  line-height: 1.1;
+%cg-Card-component-heading {
+  @include cg-heading-base($catalog-font-s);
   margin: 2em 0 0.166em -0.08em;
 }
 
-%cg-card-code {
-  font-family: $catalog-font-mono;
-  font-size: $catalog-font-xs;
-}
-
-%cg-card-paragraph {
-  color: $catalog-text-color;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-s;
-  line-height: 1.4;
-  margin: 0 0 0.6em 0;
+%cg-Card-paragraph {
+  @include cg-paragraph($catalog-font-s);
   max-width: 42em;
-}
-
-%cg-card-list {
-  color: $catalog-text-color;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-s;
-  line-height: 1.4;
-  margin: 0 0 0.6em 0;
-  max-width: 42em;
-}
-
-%cg-card-link {
-  color: $catalog-brand-color;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .cg-Card {
@@ -52,16 +20,16 @@
   margin: 30px 0;
   padding: 30px 20px;
 
-  & > h2 { @extend %cg-card-heading; }
-  & > h3,
-  & > h4 { @extend %cg-card-component-heading; }
-  & > h3 > code { @extend %cg-card-component-heading; @extend %cg-card-code; }
-  & > h4 > code { @extend %cg-card-component-heading; @extend %cg-card-code; font-weight: normal; }
-  & > p  { @extend %cg-card-paragraph; }
-  & > p > code  { @extend %cg-card-code; }
-  & > ul, & > ol { @extend %cg-card-list; }
-
-  & > p > a,
-  & > ul > li > a,
-  & > ol > li > a { @extend %cg-card-link; }
+  & > h2 { @extend %cg-Card-heading; }
+  & > h3 {
+    @extend %cg-Card-component-heading;
+    code { @extend %cg-Card-component-heading; @include cg-code; }
+  }
+  & > h4 {
+    @extend %cg-Card-component-heading;
+    code { @extend %cg-Card-component-heading; @include cg-code; font-weight: normal; }
+  }
+  & > p  { @extend %cg-Card-paragraph; }
+  & > ul { @include cg-ulist; font-size: $catalog-font-s; }
+  & > ol { @include cg-olist; font-size: $catalog-font-s; }
 }

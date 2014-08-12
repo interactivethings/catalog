@@ -1,0 +1,36 @@
+@mixin cg-heading-base($font-size) {
+  color: $catalog-brand-color;
+  font-family: $catalog-font-family;
+  font-size: $font-size;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+@mixin cg-text-base($font-size) {
+  color: $catalog-text-color;
+  font-family: $catalog-font-family;
+  font-size: $font-size;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+@mixin cg-blockquote-base {
+  quotes: none;
+  &:before, &:after {
+    content: '';
+    content: none;
+  }
+}
+
+@mixin cg-code {
+  font-family: $catalog-font-mono;
+  font-size: $catalog-font-xs;
+}
+
+@mixin cg-paragraph($font-size) {
+  @include cg-text-base($font-size);
+  margin-bottom: 0.6em;
+
+  a { @include cg-link; }
+  code { @include cg-code; }
+}
