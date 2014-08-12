@@ -15,9 +15,9 @@ window.Catalog = (config) ->
     styles: config.styles or []
 
   router = Routes {location: 'hash'},
-    Route _.extend({handler: App}, config),
-      config.pages.map((page) ->
+    Route _.extend({key: 'root', handler: App}, config),
+      config.pages.map (page) ->
         Route _.extend(key: page.name, defaultPageOptions, page)
-      ).concat(Redirect({key: 'not-found', from: '*', to: '/'}))
+    Redirect(from: '*', to: '/')
 
   React.renderComponent(router, document.body)
