@@ -12,7 +12,7 @@ window.Catalog = (config) ->
   defaultPageOptions =
     handler: Page
     iframe: config.iframe or false
-    styles: config.styles
+    styles: config.styles or []
 
   router = Route _.extend({handler: App}, config),
     config.pages.map (page) ->
