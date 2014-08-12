@@ -43,6 +43,7 @@
       content: counter(item);
       counter-increment: item;
       left: -0.6em;
+      font-weight: bold;
       text-align: right;
       width: #{(1/0.7)}em;
     }
