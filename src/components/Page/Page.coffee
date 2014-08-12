@@ -1,14 +1,16 @@
+_ = require('lodash')
 reqwest = require('reqwest')
-marked = require('marked')
+marked = require('../../../lib/react-markdown')
 React = require('react')
+Frame = require('react-frame-component')
 {Link} = require('react-nested-router')
-{div} = React.DOM
+{div, section, link, style} = React.DOM
 
 module.exports = React.createClass
 
   getInitialState: ->
     error: null
-    html: null
+    children: null
 
   componentDidMount: ->
     @fetchPageData(@props.src)
@@ -16,55 +18,92 @@ module.exports = React.createClass
   render: ->
     if @state.error?
       div {}, "Error: #{@state.error}"
-    else if @state.html?
-      div className: 'cg-Page', dangerouslySetInnerHTML: {__html: @state.html}
+    else if @state.children?
+      div {className: 'cg-Page'}, @state.children
     else
       div {className: 'cg-Page-loader'}
 
   fetchPageData: (src) ->
     reqwest(url: src, type: 'text')
-      .then((res) => @setState html: MarkdownRenderer(res.responseText))
+      .then((res) => @setState children: MarkdownRenderer(res.responseText, @props))
       .fail (res) =>
         @setState
           error: res.statusText
-          html: null
+          children: null
 
 
 #
 # Markdown Renderer
 #
-MarkdownRenderer = (markdown) ->
-    renderer = new marked.Renderer()
-    renderer.heading = HeadingRenderer
-    renderer.code = CodeRenderer
+MarkdownRenderer = (markdown, props) ->
+  renderer = new marked.Renderer()
+  renderer.heading = HeadingRenderer
+  renderer.code = CodeRenderer(props)
 
-    html = marked markdown,
-      renderer: renderer
-      gfm: true
-      breaks: false
-      sanitize: false
-      smartLists: true
-      smartypants: true
+  nodes = marked markdown,
+    renderer: renderer
+    gfm: true
+    breaks: false
+    sanitize: false
+    smartLists: true
+    smartypants: true
 
-    html = createSections(html)
-    html
+  nodes
+    .reduce(splitIntoSections, [[]])
+    .map(wrapSection)
+    .concat(if props.iframe then [] else props.styles.map(Style))
 
-CodeRenderer = (code, modifiers = '') ->
-  className = "cg-CodeBlock"
-  className += " cg-CodeBlock--#{modifiers}" if modifiers.length > 0
-  "<section class='#{className}'>#{code}</section>"
+CodeRenderer = (props) ->
+  (code, modifiers = '') ->
+    if props.iframe and modifiers isnt 'code'
+      FramedCodeBlock(code, modifiers, props.styles)
+    else
+      CodeBlock(code, modifiers)
 
 HeadingRenderer = (text, level) ->
-  "<h#{level}>#{text}</h#{level}>"
+  React.DOM["h#{level}"] null, text
 
-createSections = (html) ->
-  firstpass = true
-  html = html.replace /<h2/g, (match) ->
-    if firstpass
-      firstpass = false
-      "<section class='cg-Card'>#{match}"
-    else
-      "</section><section class='cg-Card'>#{match}"
 
-  html += "</section>" unless firstpass
-  html
+#
+# Components
+#
+CodeBlock = (code, modifiers) ->
+  section
+    className: "cg-CodeBlock cg-CodeBlock--#{modifiers}"
+    dangerouslySetInnerHTML: {__html: code}
+
+FramedCodeBlock = (code, modifiers, styles) ->
+  section
+    className: "cg-CodeBlock #{if modifiers then "cg-CodeBlock--#{modifiers}" else ''}"
+    Frame
+      className: 'cg-Frame'
+      head: [
+        style(null, 'html,body{margin:0;padding:0}')
+        styles.map(Style)
+      ]
+      div
+        dangerouslySetInnerHTML: {__html: code}
+
+Card = (children) ->
+  section {className: 'cg-Card'}, children
+
+Style = (src) ->
+  link {rel: 'stylesheet', type: 'text/css', href: src}
+
+
+#
+# Functions
+#
+
+# Splits an array of DOM nodes into sections at each <h2>
+# [h1, p, h2, p, p, h2, p] -> [[h1, p], [h2, p, p], [h2, p]]
+splitIntoSections = (sections, node) ->
+  if node.type.displayName is 'h2' # Caveat: this is a private React API call
+    sections.push([node])          # Create a new section
+  else
+    _.last(sections).push(node)    # Append to current section
+  sections
+
+# Wraps all sections except the first in a Card component
+wrapSection = (section, i) ->
+  if i is 0 then section else Card(section)

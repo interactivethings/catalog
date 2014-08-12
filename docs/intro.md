@@ -6,7 +6,7 @@ Catalog's structure allows you to document colors, typography, elements, and HTM
 
 ## Getting started
 
-To get started, look at the provided <a href="#/example">example</a>. If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
+To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
 %VERSION_LIST%
 
