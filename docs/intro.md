@@ -8,7 +8,8 @@ Catalog's structure allows you to document colors, typography, elements, and HTM
 
 To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
-%VERSION_LIST%
+* Catalog %VERSION%: [production](http://interactivethings.github.io/catalog/%VERSION%/catalog.min.js), [development](http://interactivethings.github.io/catalog/%VERSION%/catalog.js)
+* Nightly build: [experimental](http://interactivethings.github.io/catalog/catalog.js)
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/) or [Bower](http://bower.io/).
 
@@ -24,6 +25,10 @@ npm install --save interactivethings/catalog.git#%VERSION%
 bower install --save https://github.com/interactivethings/catalog.git#%VERSION%
 ```
 
+### Download source code
+
+Go to Github to download the [source code](https://github.com/interactivethings/catalog/).
+
 ### Using it on your local machine
 
 Catalog doesn't need anything besides a single Javascript file. However, to run Catalog on your local machine, you will have to use some kind of server due to browser security restrictions (the browser won't be able to load the Markdown files from your local file system). If you don't have an existing server for your project, use something simple like this Python server.
@@ -34,5 +39,5 @@ python -m SimpleHTTPServer
 
 ## More tools
 
-Catalog is a companion product to <a href="http://interactivethings.github.io/catalyst/">Catalyst</a>, our very own CSS framework.
+Catalog is a companion product to [Catalyst](http://interactivethings.github.io/catalyst/), our very own CSS framework.
 
