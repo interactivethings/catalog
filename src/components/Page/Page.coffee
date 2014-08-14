@@ -7,8 +7,8 @@ Frame = require('react-frame-component')
 Card = require('../Card/Card')
 CodeBlock = require('../CodeBlock/CodeBlock')
 FramedCodeBlock = require('../CodeBlock/FramedCodeBlock')
-{div, section, link, style} = React.DOM
-seqKey = do -> key = 0; -> "cg-Page-#{key++}"
+Loader = require('./Loader')
+{div, link} = React.DOM
 
 module.exports = React.createClass
   propTypes:
@@ -35,7 +35,7 @@ module.exports = React.createClass
     else if @state.children?
       div {className: 'cg-Page'}, @state.children
     else
-      div {className: 'cg-Page-loader'}
+      Loader()
 
   fetchPageData: ->
     reqwest(url: @props.src, type: 'text')
@@ -88,6 +88,10 @@ HeadingRenderer = (text, level) ->
 #
 # Functions
 #
+
+seqKey = do ->
+  key = 0
+  -> "cg-Page-#{key++}"
 
 createStyleElement = (src) ->
   link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
