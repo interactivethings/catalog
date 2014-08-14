@@ -5,7 +5,7 @@ React = require('react')
 Frame = require('react-frame-component')
 {Link} = require('react-router')
 {div, section, link, style} = React.DOM
-seqKey = do -> key = 0; -> key++
+seqKey = do -> key = 0; -> "cg-Page-#{key++}"
 
 module.exports = React.createClass
 
