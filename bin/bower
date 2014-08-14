@@ -3,7 +3,7 @@
 var fs = require("fs");
 
 console.log(JSON.stringify({
-  "name": "catalog",
+  "name": "catalog-styleguide",
   "version": require("../package.json").version,
   "main": "catalog.js",
   "ignore": [
