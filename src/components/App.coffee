@@ -5,6 +5,21 @@ Menu = require('./Menu/Menu')
 {div, h1} = React.DOM
 
 module.exports = React.createClass
+  propTypes:
+    title: React.PropTypes.string.isRequired
+    pages: React.PropTypes.arrayOf(React.PropTypes.shape
+      title: React.PropTypes.string.isRequired
+      name:  React.PropTypes.string.isRequired
+      src:   React.PropTypes.string.isRequired
+      path:  React.PropTypes.string
+    ).isRequired
+    styles: React.PropTypes.arrayOf(React.PropTypes.string)
+    iframe: React.PropTypes.bool
+
+  getDefaultProps: ->
+    styles: []
+    iframe: false
+
   render: ->
     AppLayout
       topNav:  AppBar(title: @props.title)

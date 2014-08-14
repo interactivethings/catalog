@@ -11,13 +11,23 @@ FramedCodeBlock = require('../CodeBlock/FramedCodeBlock')
 seqKey = do -> key = 0; -> "cg-Page-#{key++}"
 
 module.exports = React.createClass
+  propTypes:
+    title:  React.PropTypes.string.isRequired
+    name:   React.PropTypes.string.isRequired
+    src:    React.PropTypes.string.isRequired
+    styles: React.PropTypes.arrayOf(React.PropTypes.string)
+    iframe: React.PropTypes.bool
+
+  getDefaultProps: ->
+    styles: []
+    iframe: false
 
   getInitialState: ->
     error: null
     children: null
 
   componentDidMount: ->
-    @fetchPageData(@props.src)
+    @fetchPageData()
 
   render: ->
     if @state.error?
@@ -27,8 +37,8 @@ module.exports = React.createClass
     else
       div {className: 'cg-Page-loader'}
 
-  fetchPageData: (src) ->
-    reqwest(url: src, type: 'text')
+  fetchPageData: ->
+    reqwest(url: @props.src, type: 'text')
       .then((res) => @setState children: MarkdownRenderer(res.responseText, @props))
       .fail (res) =>
         @setState

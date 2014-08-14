@@ -9,15 +9,10 @@ App = require('./components/App')
 Page = require('./components/Page/Page')
 
 window.Catalog = (config) ->
-  defaultPageOptions =
-    handler: Page
-    iframe: config.iframe or false
-    styles: config.styles or []
-
   router = Routes {location: 'hash'},
-    Route _.extend({key: 'root', handler: App}, config),
+    Route _.extend(key: 'root', handler: App, config),
       config.pages.map (page) ->
-        Route _.extend(key: page.name, defaultPageOptions, page)
+        Route _.extend(key: page.name, handler: Page, page)
     Redirect(from: '*', to: '/')
 
   React.renderComponent(router, document.body)
