@@ -1,28 +1,27 @@
 #!/usr/bin/env node
 
-var _ = require('lodash');
 var fs   = require('fs');
 var path = require('path');
 var clc  = require('cli-color');
 var UglifyJS = require('uglify-js');
 
-var DEPLOYMENT_BASE_URL = 'http://interactivethings.github.io/catalog';
-
 var ROOT    = path.join(__dirname, '..');
 var VERSION = require("../package.json").version;
 var FILES   = process.argv.slice(2);
 
-if (versionExists(VERSION)) {
-  console.log(clc.red.bold("Error: a distribution for version " + VERSION + " already exists"));
-  process.exit(1);
+var newRelease = !versionExists(VERSION);
+
+if (newRelease) {
+  fs.mkdir(rpath('dist', VERSION));
+} else {
+  console.log(clc.yellow.bold("Warning: a distribution for version " + VERSION + " already exists.\nWill update nightly build without touching " + VERSION));
 }
 
-fs.mkdir(rpath('dist', VERSION));
 
 FILES.forEach(function(filepath) {
   copyAndExpandFileSync(rpath(filepath), rpath('dist', filepath));
 
-  if (filepath.match(/.js/)) {
+  if (newRelease && filepath.match(/.js/)) {
     var js = fs.readFileSync(rpath(filepath));
     fs.writeFileSync(rpath('dist', VERSION, filepath), js);
 
@@ -31,7 +30,11 @@ FILES.forEach(function(filepath) {
   }
 });
 
-console.log(clc.green("Created Catalog version " + VERSION));
+if (newRelease) {
+  console.log(clc.green("Created Catalog version " + VERSION));
+} else {
+  console.log(clc.green("Updated nightly build"));
+}
 
 
 /* Utils
@@ -41,14 +44,9 @@ function versionExists(version) {
   return fs.existsSync(rpath('dist', VERSION));
 }
 
-function isVersionDir(filepath) {
-  return filepath.match(/^\d+\.\d+\.\d.*/);
-}
-
 function copyAndExpandFileSync(srcPath, destPath) {
   var src = fs.readFileSync(srcPath);
   src = src.toString().replace(/%VERSION%/g, VERSION);
-  src = src.toString().replace(/%VERSION_LIST%/g, versionList(DEPLOYMENT_BASE_URL));
   fs.writeFileSync(destPath, src);
 }
 
@@ -58,20 +56,6 @@ function minifyJS(js) {
 
 function jsBanner() {
   return "/* Catalog " + VERSION + " */\n";
-}
-
-function versions() {
-  return fs.readdirSync(rpath('dist')).filter(isVersionDir);
-}
-
-function versionList(baseUrl) {
-  var sortedVersions = versions().sort().reverse().slice(0, 5);
-  var listItems = sortedVersions.map(function(v){
-    var devPath = baseUrl + '/' + v + '/catalog.js';
-    var minPath = baseUrl + '/' + v + '/catalog.min.js';
-    return '<li><a href="' + devPath + '">' + v + '</a> (<a href="' + minPath + '">minified</a>)</li>';
-  });
-  return '<ul>' + listItems.join('') + '</ul>';
 }
 
 function rpath() {

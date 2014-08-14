@@ -15,14 +15,20 @@ build: clean install $(GENERATED_FILES)
 watch: install
 	@bin/watch
 
-dist: build
+build-dist: build
 	@mkdir -p dist
+	@rm -rf dist/docs
 	@mkdir -p dist/docs
-	@bin/dist index.html $(wildcard docs/*) $(GENERATED_FILES)
+	@bin/dist index.html $(GENERATED_FILES) $(wildcard docs/*)
+
+dist: build-dist
 	@git add .
 	@V=`bin/version`; git commit -m "$(subst VERSION,$$V,DIST VERSION)"
+	@V=`bin/version`; git tag $$V
+
+deploy: dist
 	@git subtree push --prefix dist origin gh-pages
-	@V=`bin/version`; git tag $$V; git push origin $$V
+	@git push origin master
 
 clean:
 	@rm -rf -- $(GENERATED_FILES)
