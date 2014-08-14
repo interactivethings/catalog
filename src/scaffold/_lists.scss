@@ -11,6 +11,9 @@
   margin-left: 1em;
   text-indent: -1em;
 
+  a { @include cg-link; }
+  code { @include cg-code; }
+
   &:before {
     color: $catalog-brand-color;
     display: inline-block;
