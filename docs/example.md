@@ -70,3 +70,17 @@ This example link isn't styled at all. That's why we want to enjoy it on a `plai
 ```plainwhite
 <a href="#">Link</a>
 ```
+
+
+## Code
+
+This is a running code example.
+
+```code
+<div id="example-target"></div>
+<script>window.exampleValue = 'Example content'</script>
+<script>
+    var target = document.getElementById('example-target')
+    target.innerHTML = window.exampleValue + ' inserted by Javascript';
+</script>
+```

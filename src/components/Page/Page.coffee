@@ -4,6 +4,9 @@ marked = require('../../../lib/react-markdown')
 React = require('react')
 Frame = require('react-frame-component')
 {Link} = require('react-router')
+Card = require('../Card/Card')
+CodeBlock = require('../CodeBlock/CodeBlock')
+FramedCodeBlock = require('../CodeBlock/FramedCodeBlock')
 {div, section, link, style} = React.DOM
 seqKey = do -> key = 0; -> "cg-Page-#{key++}"
 
@@ -52,51 +55,32 @@ MarkdownRenderer = (markdown, props) ->
   nodes
     .reduce(splitIntoSections, [[]])
     .map(wrapSection)
-    .concat(if props.iframe then [] else props.styles.map(Style))
+    .concat(if props.iframe then [] else props.styles.map(createStyleElement))
 
 CodeRenderer = (props) ->
   (code, modifiers = '') ->
     if props.iframe and modifiers isnt 'code'
-      FramedCodeBlock(code, modifiers, props.styles)
+      FramedCodeBlock
+        key: seqKey()
+        code: code
+        modifiers: modifiers
+        styles: props.styles
     else
-      CodeBlock(code, modifiers)
+      CodeBlock
+        key: seqKey()
+        code: code
+        modifiers: modifiers
 
 HeadingRenderer = (text, level) ->
   React.DOM["h#{level}"] {key: seqKey()}, text
 
 
 #
-# Components
-#
-CodeBlock = (code, modifiers) ->
-  section
-    key: seqKey()
-    className: "cg-CodeBlock cg-CodeBlock--#{modifiers}"
-    dangerouslySetInnerHTML: {__html: code}
-
-FramedCodeBlock = (code, modifiers, styles) ->
-  section
-    key: seqKey()
-    className: "cg-CodeBlock #{if modifiers then "cg-CodeBlock--#{modifiers}" else ''}"
-    Frame
-      className: 'cg-Frame'
-      head: [
-        style(null, 'html,body{margin:0;padding:0}')
-        styles.map(Style)
-      ]
-      div
-        dangerouslySetInnerHTML: {__html: code}
-
-Card = (children) ->
-  section {key: seqKey(), className: 'cg-Card'}, children
-
-Style = (src) ->
-  link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
-
-
-#
 # Functions
 #
+
+createStyleElement = (src) ->
+  link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
 
 # Splits an array of DOM nodes into sections at each <h2>
 # [h1, p, h2, p, p, h2, p] -> [[h1, p], [h2, p, p], [h2, p]]
@@ -109,4 +93,4 @@ splitIntoSections = (sections, node) ->
 
 # Wraps all sections except the first in a Card component
 wrapSection = (section, i) ->
-  if i is 0 then section else Card(section)
+  if i is 0 then section else Card(key: seqKey(), section)
