@@ -29,8 +29,9 @@ module.exports = (markdown, props) ->
     .concat(if props.iframe then [] else props.styles.map(createStyleElement))
 
 CodeRenderer = (props) ->
-  (code, modifiers = '') ->
-    if props.iframe and modifiers isnt 'code'
+  (code, configStr = '') ->
+    config = consumeConfigStr(configStr)
+    if props.iframe and config.style isnt 'code'
       FramedCodeBlock
         key: seqKey()
         code: code
@@ -40,7 +41,7 @@ CodeRenderer = (props) ->
       CodeBlock
         key: seqKey()
         code: code
-        modifiers: modifiers
+        config: config
 
 HeadingRenderer = (text, level) ->
   React.DOM["h#{level}"] {key: seqKey()}, text
@@ -49,6 +50,14 @@ HeadingRenderer = (text, level) ->
 #
 # Functions
 #
+
+consumeConfigStr = (str) ->
+  [style, optionsStr] = str.split('|')
+  options = _.compact (optionsStr or '').split(',')
+
+  style: style
+  runscript: _.include options, 'run-script'
+  fullbleed: _.include options, 'fullbleed'
 
 createStyleElement = (src) ->
   link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}

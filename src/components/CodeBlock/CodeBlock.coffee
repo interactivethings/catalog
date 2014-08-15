@@ -6,11 +6,12 @@ module.exports = React.createClass
   componentDidMount:  -> @executeScripts()
   componentDidUpdate: -> @executeScripts()
   executeScripts: ->
-    _.each @getDOMNode().querySelectorAll('script'), executeScript
+    if @props.config.runscript
+      _.each @getDOMNode().querySelectorAll('script'), executeScript
 
   render: ->
     section
-      className: "cg-CodeBlock cg-CodeBlock--#{@props.modifiers}"
+      className: "cg-CodeBlock cg-CodeBlock--#{@props.config.style}"
       dangerouslySetInnerHTML: {__html: @props.code}
 
 
