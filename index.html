@@ -15,10 +15,9 @@
     Catalog({
       title: "Catalog",
       iframe: false, // Set to true to wrap each component in an iframe (experimental)
-      styles: ["docs/example.css"], // Styles which get injected into code frames
       pages: [
         {name: 'intro', path: '/', title: "Introduction", src: "docs/intro.md"},
-        {name: 'example', title: "Example", src: "docs/example.md"}
+        {name: 'example', title: "Example", src: "docs/example.md", styles: ["docs/example.css"]}
       ]
     });
   </script>
