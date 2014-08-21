@@ -13,7 +13,8 @@ window.Catalog = (config) ->
     Route _.extend(key: 'root', handler: App, config),
       config.pages.map (page) ->
         styles = _.uniq _.compact [].concat(config.styles).concat(page.styles)
-        Route _.extend(key: page.name, handler: Page, styles: styles, page)
+        scripts = _.uniq _.compact [].concat(config.scripts).concat(page.scripts)
+        Route _.extend(key: page.name, handler: Page, styles: styles, scripts: scripts, page)
     Redirect(from: '*', to: '/')
 
   React.renderComponent(router, document.body)

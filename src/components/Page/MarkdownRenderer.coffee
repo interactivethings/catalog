@@ -5,7 +5,7 @@ Frame = require('react-frame-component')
 Card = require('../Card/Card')
 CodeBlock = require('../CodeBlock/CodeBlock')
 FramedCodeBlock = require('../CodeBlock/FramedCodeBlock')
-{link} = React.DOM
+{link, script} = React.DOM
 
 seqKey = require('../../utils/seqKey')('cg-MarkdownRenderer')
 
@@ -27,6 +27,7 @@ module.exports = (markdown, props) ->
     .reduce(splitIntoSections, [[]])
     .map(wrapSection)
     .concat(if props.iframe then [] else props.styles.map(createStyleElement))
+    .concat(if props.iframe then [] else props.scripts.map(createScriptElement))
 
 CodeRenderer = (props) ->
   (code, configStr = '') ->
@@ -37,6 +38,7 @@ CodeRenderer = (props) ->
         code: code
         modifiers: modifiers
         styles: props.styles
+        scripts: props.scripts
     else
       CodeBlock
         key: seqKey()
@@ -61,6 +63,9 @@ consumeConfigStr = (str) ->
 
 createStyleElement = (src) ->
   link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
+
+createScriptElement = (src) ->
+  script {key: seqKey(), 'data-runscript': '', type: 'text/javascript', src: src}
 
 # Splits an array of DOM nodes into sections at each <h2>
 # [h1, p, h2, p, p, h2, p] -> [[h1, p], [h2, p, p], [h2, p]]

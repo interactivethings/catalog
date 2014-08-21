@@ -9,14 +9,16 @@ To start Catalog, run the following code on an empty HTML page.
 &lt;script&gt;
   Catalog({
     title: "Catalog",
-    styles: ["path/to/global-styles.css"], // Global styles (optional)
+    styles: ["path/to/global-styles.css"],  // Global styles (optional)
+    scripts: ["path/to/global-scripts.js"], // Global scripts (optional)
     pages: [
       {
-        name: 'intro',                            // A unique identifier for this page
-        path: '/',                                // This page's path (optional)
+        name: 'intro',                              // A unique identifier for this page
+        path: '/',                                  // This page's path (optional)
         title: "Introduction",
-        src: "docs/intro.md",                     // Path to the Markdown sourcefile
-        styles: ["path/to/intro-only-styles.css"] // Page-specific styles (optional)
+        src: "docs/intro.md",                       // Path to the Markdown sourcefile
+        styles: ["path/to/intro-only-styles.css"],  // Page-specific styles (optional)
+        scripts: ["path/to/intro-only-scripts.css"] // Page-specific scripts (optional)
       },
       {name: 'usage', title: "Usage", src: "docs/usage.md"},
       {name: 'example', title: "Example", src: "docs/example.md"}

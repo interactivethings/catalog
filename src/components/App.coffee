@@ -13,11 +13,13 @@ module.exports = React.createClass
       src:   React.PropTypes.string.isRequired
       path:  React.PropTypes.string
     ).isRequired
-    styles: React.PropTypes.arrayOf(React.PropTypes.string)
-    iframe: React.PropTypes.bool
+    styles:  React.PropTypes.arrayOf(React.PropTypes.string)
+    scripts: React.PropTypes.arrayOf(React.PropTypes.string)
+    iframe:  React.PropTypes.bool
 
   getDefaultProps: ->
     styles: []
+    scripts: []
     iframe: false
 
   render: ->

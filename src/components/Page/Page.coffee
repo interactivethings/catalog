@@ -6,14 +6,16 @@ MarkdownRenderer = require('./MarkdownRenderer')
 
 module.exports = React.createClass
   propTypes:
-    title:  React.PropTypes.string.isRequired
-    name:   React.PropTypes.string.isRequired
-    src:    React.PropTypes.string.isRequired
-    styles: React.PropTypes.arrayOf(React.PropTypes.string)
-    iframe: React.PropTypes.bool
+    title:   React.PropTypes.string.isRequired
+    name:    React.PropTypes.string.isRequired
+    src:     React.PropTypes.string.isRequired
+    styles:  React.PropTypes.arrayOf(React.PropTypes.string)
+    scripts: React.PropTypes.arrayOf(React.PropTypes.string)
+    iframe:  React.PropTypes.bool
 
   getDefaultProps: ->
     styles: []
+    scripts: []
     iframe: false
 
   getInitialState: ->
@@ -22,6 +24,13 @@ module.exports = React.createClass
 
   componentDidMount: ->
     @fetchPageData()
+    @executeScripts() if @state.children?
+
+  componentDidUpdate: ->
+    @executeScripts() if @state.children?
+
+  executeScripts: ->
+    _.each @getDOMNode().querySelectorAll('script[data-runscript]'), executeScript
 
   render: ->
     if @state.error?
@@ -38,3 +47,18 @@ module.exports = React.createClass
         @setState
           error: res.statusText
           children: null
+
+
+#
+# Functions
+#
+
+# Executes a script that has been inserted through innerHTML
+executeScript = (el) ->
+  src = el.src
+  head = document.getElementsByTagName("head")[0] or document.documentElement
+  script = document.createElement("script")
+  script.setAttribute "src", src
+  script.setAttribute "type", "text/javascript"
+  head.insertBefore script, head.firstChild
+  head.removeChild script

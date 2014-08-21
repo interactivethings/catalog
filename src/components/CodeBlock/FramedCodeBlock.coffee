@@ -10,7 +10,8 @@ module.exports = React.createClass
         className: 'cg-Frame'
         head: [
           style(null, 'html,body{margin:0;padding:0}')
-          @props.styles.map(createStyleElement)
+          # @props.styles.map(createStyleElement)
+          # @props.scripts.map(createScriptElement)
         ]
         div
           dangerouslySetInnerHTML: {__html: @props.code}
