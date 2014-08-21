@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catalog Documentation (1.0.0-alpha-4)</title>
+  <title>Catalog Documentation (1.0.0-beta-1)</title>
   <script type="text/javascript" src="http://use.typekit.com/nkw6rrg.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
@@ -15,10 +15,16 @@
     Catalog({
       title: "Catalog",
       iframe: false, // Set to true to wrap each component in an iframe (experimental)
-      styles: ["docs/example.css"], // Styles which get injected into code frames
       pages: [
         {name: 'intro', path: '/', title: "Introduction", src: "docs/intro.md"},
-        {name: 'example', title: "Example", src: "docs/example.md"}
+        {name: 'usage', title: "Usage", src: "docs/usage.md"},
+        {
+          name: 'example',
+          title: "Example",
+          src: "docs/example.md",
+          styles: ["docs/example.css"],
+          scripts: ["docs/example.js"]
+        }
       ]
     });
   </script>

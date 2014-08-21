@@ -8,21 +8,26 @@ Catalog's structure allows you to document colors, typography, elements, and HTM
 
 To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
-<ul><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha-4/catalog.js">1.0.0-alpha-4</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha-4/catalog.min.js">minified</a>)</li><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha-3/catalog.js">1.0.0-alpha-3</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha-3/catalog.min.js">minified</a>)</li><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha-2/catalog.js">1.0.0-alpha-2</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha-2/catalog.min.js">minified</a>)</li><li><a href="http://interactivethings.github.io/catalog/1.0.0-alpha/catalog.js">1.0.0-alpha</a> (<a href="http://interactivethings.github.io/catalog/1.0.0-alpha/catalog.min.js">minified</a>)</li></ul>
+* Catalog 1.0.0-beta-1: [production](http://interactivethings.github.io/catalog/1.0.0-beta-1/catalog.min.js), [development](http://interactivethings.github.io/catalog/1.0.0-beta-1/catalog.js)
+* Nightly build: [experimental](http://interactivethings.github.io/catalog/catalog.js)
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/) or [Bower](http://bower.io/).
 
 ### Install with npm
 
 ```code
-npm install --save interactivethings/catalog.git#1.0.0-alpha-4
+npm install --save interactivethings/catalog.git#1.0.0-beta-1
 ```
 
 ### Install with Bower
 
 ```code
-bower install --save https://github.com/interactivethings/catalog.git#1.0.0-alpha-4
+bower install --save https://github.com/interactivethings/catalog.git#1.0.0-beta-1
 ```
+
+### Download source code
+
+Go to Github to download the [source code](https://github.com/interactivethings/catalog/).
 
 ### Using it on your local machine
 
@@ -34,5 +39,5 @@ python -m SimpleHTTPServer
 
 ## More tools
 
-Catalog is a companion product to <a href="http://interactivethings.github.io/catalyst/">Catalyst</a>, our very own CSS framework.
+Catalog is a companion product to [Catalyst](http://interactivethings.github.io/catalyst/), our very own CSS framework.
 
