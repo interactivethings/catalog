@@ -27,7 +27,6 @@ module.exports = (markdown, props) ->
     .reduce(splitIntoSections, [[]])
     .map(wrapSection)
     .concat(if props.iframe then [] else props.styles.map(createStyleElement))
-    .concat(if props.iframe then [] else props.scripts.map(createScriptElement))
 
 CodeRenderer = (props) ->
   (code, configStr = '') ->
@@ -38,7 +37,7 @@ CodeRenderer = (props) ->
         code: code
         modifiers: modifiers
         styles: props.styles
-        scripts: props.scripts
+        # scripts: props.scripts
     else
       CodeBlock
         key: seqKey()

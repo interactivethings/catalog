@@ -5,6 +5,7 @@ require('./catalog.scss')
 _ = require('lodash')
 React = require('react')
 {Routes, Route, Redirect} = require('react-router')
+runscript = require('./utils/runscript')
 App = require('./components/App')
 Page = require('./components/Page/Page')
 
@@ -18,3 +19,9 @@ window.Catalog = (config) ->
     Redirect(from: '*', to: '/')
 
   React.renderComponent(router, document.body)
+
+#
+# Global actions
+#
+Catalog.actions =
+  runscript: runscript()

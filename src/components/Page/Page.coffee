@@ -23,14 +23,8 @@ module.exports = React.createClass
     children: null
 
   componentDidMount: ->
+    @props.scripts.map(Catalog.actions.runscript)
     @fetchPageData()
-    @executeScripts() if @state.children?
-
-  componentDidUpdate: ->
-    @executeScripts() if @state.children?
-
-  executeScripts: ->
-    _.each @getDOMNode().querySelectorAll('script[data-runscript]'), executeScript
 
   render: ->
     if @state.error?
@@ -47,18 +41,3 @@ module.exports = React.createClass
         @setState
           error: res.statusText
           children: null
-
-
-#
-# Functions
-#
-
-# Executes a script that has been inserted through innerHTML
-executeScript = (el) ->
-  src = el.src
-  head = document.getElementsByTagName("head")[0] or document.documentElement
-  script = document.createElement("script")
-  script.setAttribute "src", src
-  script.setAttribute "type", "text/javascript"
-  head.insertBefore script, head.firstChild
-  head.removeChild script

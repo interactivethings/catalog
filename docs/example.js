@@ -1,1 +1,2 @@
-console.log('Hello from docs/example.js');
+console.log('docs/example.js');
+window.exampleValue = 'Example.js content'

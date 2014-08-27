@@ -78,7 +78,6 @@ This is a running code example:
 
 ```bg-light|run-script
 <div id="example-target">FAILED: Javascript was not run</div>
-<script>window.exampleValue = 'Example content'</script>
 <script>
     var target = document.getElementById('example-target')
     target.innerHTML = window.exampleValue + ' inserted by Javascript';
