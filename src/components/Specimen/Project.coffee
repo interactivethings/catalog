@@ -50,10 +50,11 @@ TabbedSourceView = React.createClass
     div {},
       if @props.files.length > 1
         @props.files.map (file, i) =>
+          [path..., name] = file.split('/')
           button
             'data-tab-id': i
             onClick: @selectTab
-            file
+            name
 
       textarea
         className: 'cg-SpecimenProject-source'
