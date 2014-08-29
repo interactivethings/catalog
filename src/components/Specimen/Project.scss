@@ -1,0 +1,26 @@
+.cg-SpecimenProject {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.cg-SpecimenProject-frame {
+  border: 1px solid #eee;
+  display: block;
+}
+
+.cg-SpecimenProject-linkExternal {
+  @include cg-paragraph($catalog-font-s);
+  @include cg-link;
+  display: inline-block;
+  margin-top: 0.6em;
+}
+
+.cg-SpecimenProject-source {
+  @include cg-paragraph($catalog-font-s);
+  @include cg-code;
+  background: #eee;
+  display: block;
+  border: none;
+  height: 15em;
+  width: 100%;
+}

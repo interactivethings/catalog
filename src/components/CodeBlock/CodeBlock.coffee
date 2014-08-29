@@ -1,6 +1,8 @@
 _ = require('lodash')
 React = require('react')
-{section} = React.DOM
+SpecimenGeneric = require('../Specimen/Generic')
+SpecimenProject = require('../Specimen/Project')
+{a, div, iframe, section} = React.DOM
 
 module.exports = React.createClass
   componentDidMount:  -> @executeScripts()
@@ -8,7 +10,9 @@ module.exports = React.createClass
   executeScripts: ->
     if @props.config.runscript
       _.each @getDOMNode().querySelectorAll('script'), Catalog.actions.runscript
+
   render: ->
-    section
-      className: "cg-CodeBlock cg-CodeBlock--#{@props.config.style}"
-      dangerouslySetInnerHTML: {__html: @props.code}
+    if @props.config.style is 'specimen-project'
+      SpecimenProject(JSON.parse(@props.code))
+    else
+      SpecimenGeneric(style: @props.config.style, content: @props.code)
