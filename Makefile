@@ -24,6 +24,7 @@ DOC_TARGETS     = $(addprefix $(DIST_DIR)/,    $(DOC_SOURCES))
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
+CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
 #
@@ -49,7 +50,14 @@ nightly: build doc $(NIGHTLY_TARGETS) $(NIGHTLY_TARGETS:.js=.min.js)
 	@echo -e "$(CLI_SUCCESS) Created new nightly distribution$(CLI_RESET)"
 
 dist: _dist-precondition nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS)
-	@git add --all . && \
+	@while [ -z "$$CONTINUE" ]; do \
+			echo -e "$(CLI_QUERY) Do you want to commit version \"$(CURRENT_VERSION)\"?$(CLI_RESET)"; \
+	    read -r -p "[y/n] " CONTINUE; \
+	done; \
+	if [ $$CONTINUE != 'y' ] && [ $$CONTINUE != 'Y' ]; then \
+	    echo -e "$(CLI_ERROR) Distribution has not been committed$(CLI_RESET)"; exit 1; \
+	fi; \
+	git add --all . && \
 	git commit --message "DIST $(CURRENT_VERSION)" && \
 	git tag --force $(CURRENT_VERSION)
 	@echo -e "$(CLI_SUCCESS) Created new distribution \"$(CURRENT_VERSION)\"$(CLI_RESET)"
@@ -68,11 +76,11 @@ clean:
 # Targets
 #
 
-$(VERSION_DIR)/%: %
+$(VERSION_TARGETS): $(VERSION_DIR)/%: %
 	@mkdir -p $(dir $@)
 	@echo "/* $(PROJECT_NAME) $(CURRENT_VERSION) $(PROJECT_URL) */" | cat - $< > $@
 
-$(NIGHTLY_DIR)/%: %
+$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/%: %
 	@mkdir -p $(dir $@)
 	@echo "/* $(PROJECT_NAME) $(NIGHTLY_VERSION) $(PROJECT_URL) */" | cat - $< > $@
 
