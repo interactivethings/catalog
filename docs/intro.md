@@ -9,7 +9,8 @@ Catalog's structure allows you to document colors, typography, elements, and HTM
 To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
 * Catalog %VERSION%: [production](http://interactivethings.github.io/catalog/%VERSION%/catalog.min.js), [development](http://interactivethings.github.io/catalog/%VERSION%/catalog.js)
-* Nightly build: [experimental](http://interactivethings.github.io/catalog/catalog.js)
+* Latest build: [latest](http://interactivethings.github.io/catalog/catalog.js)
+* Nightly build: [experimental](http://interactivethings.github.io/catalog/nightly/catalog.js)
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/) or [Bower](http://bower.io/).
 
