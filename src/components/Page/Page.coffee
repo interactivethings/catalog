@@ -1,3 +1,4 @@
+_ = require('lodash')
 reqwest = require('reqwest')
 React = require('react')
 Loader = require('./Loader')
@@ -6,9 +7,9 @@ MarkdownRenderer = require('../../MarkdownRenderer')
 Card = require('../Card/Card')
 Specimen = require('../Specimen/Specimen')
 
-{div, link} = React.DOM
-
 seqKey = require('../../utils/seqKey')('cg-Page')
+
+{div, link} = React.DOM
 
 module.exports = React.createClass
   propTypes:
@@ -36,17 +37,10 @@ module.exports = React.createClass
     if @state.error?
       div {}, "Error: #{@state.error}"
     else if @state.content?
-      div {className: 'cg-Page'},
-        @props.styles.map(createStyleElement)
-        MarkdownRenderer
-          text: @state.content
-          section: (children) ->
-            Card(key: seqKey(), children)
-          renderer:
-            code: (code, configStr) =>
-              Specimen _.extend {code: code, iframe: @props.iframe, specimen: @props.specimen, styles: @props.styles}, consumeConfigStr(configStr)
-            heading: (text, level) ->
-              React.DOM["h#{level}"] {key: seqKey()}, text
+      Page
+        content: @state.content
+        styles: @props.styles
+        iframe: @props.iframe
     else
       Loader()
 
@@ -59,13 +53,32 @@ module.exports = React.createClass
           content: null
 
 
-createStyleElement = (src) ->
-  link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
+Page = React.createClass
+  render: ->
+    div {className: 'cg-Page'},
+      @styleNodes()
+      @contentNodes()
+
+  styleNodes: ->
+    @props.styles.map (src) ->
+      link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
+
+  contentNodes: ->
+    MarkdownRenderer
+      text: @props.content
+      section: (children) ->
+        Card(key: seqKey(), children)
+      renderer:
+        code: (code, configStr) =>
+          Specimen _.extend {key: seqKey(), code: code, iframe: @props.iframe, styles: @props.styles}, consumeConfigStr(configStr)
+        heading: (text, level) ->
+          React.DOM["h#{level}"] {key: seqKey()}, text
+
 
 consumeConfigStr = (str = '') ->
   [specimen, optionsStr] = str.split('|')
   options = _.compact (optionsStr or '').split(',')
 
-  specimen: specimen
+  specimen:  if _.isEmpty(specimen) then 'bg-light-pattern' else specimen
   runscript: _.include options, 'run-script'
   fullbleed: _.include options, 'fullbleed'
