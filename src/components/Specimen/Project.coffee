@@ -52,6 +52,7 @@ TabbedSourceView = React.createClass
         @props.files.map (file, i) =>
           [path..., name] = file.split('/')
           button
+            key: i
             'data-tab-id': i
             onClick: @selectTab
             name
