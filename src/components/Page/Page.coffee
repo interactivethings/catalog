@@ -1,7 +1,7 @@
 reqwest = require('reqwest')
 React = require('react')
 Loader = require('./Loader')
-MarkdownRenderer = require('./MarkdownRenderer')
+MarkdownRenderer = require('../../MarkdownRenderer')
 {div} = React.DOM
 
 module.exports = React.createClass

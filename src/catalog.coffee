@@ -6,7 +6,7 @@ _ = require('lodash')
 React = require('react')
 {Routes, Route, Redirect} = require('react-router')
 runscript = require('./utils/runscript')
-App = require('./components/App')
+App = require('./components/App/App')
 Page = require('./components/Page/Page')
 
 window.Catalog = (config) ->

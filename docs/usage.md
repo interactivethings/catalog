@@ -89,6 +89,10 @@ bg-light
 
 These styles are optimized for specific usecases.
 
+#### `specimen-generic`
+
+The default specimen.
+
 #### `specimen-code`
 
 ```specimen-code

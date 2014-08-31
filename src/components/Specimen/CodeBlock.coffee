@@ -1,7 +1,7 @@
 _ = require('lodash')
 React = require('react')
-SpecimenGeneric = require('../Specimen/Generic')
-SpecimenProject = require('../Specimen/Project')
+SpecimenGeneric = require('./Generic')
+SpecimenProject = require('./Project')
 {a, div, iframe, section} = React.DOM
 
 module.exports = React.createClass
