@@ -8,11 +8,11 @@ module.exports = React.createClass
   componentDidMount:  -> @executeScripts()
   componentDidUpdate: -> @executeScripts()
   executeScripts: ->
-    if @props.config.runscript
+    if @props.runscript
       _.each @getDOMNode().querySelectorAll('script'), Catalog.actions.runscript
 
   render: ->
-    if @props.config.style is 'specimen-project'
+    if @props.specimen is 'specimen-project'
       SpecimenProject(JSON.parse(@props.code))
     else
-      SpecimenGeneric(style: @props.config.style, content: @props.code)
+      SpecimenGeneric(style: @props.specimen, content: @props.code)

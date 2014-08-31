@@ -2,7 +2,13 @@ reqwest = require('reqwest')
 React = require('react')
 Loader = require('./Loader')
 MarkdownRenderer = require('../../MarkdownRenderer')
-{div} = React.DOM
+
+Card = require('../Card/Card')
+Specimen = require('../Specimen/Specimen')
+
+{div, link} = React.DOM
+
+seqKey = require('../../utils/seqKey')('cg-Page')
 
 module.exports = React.createClass
   propTypes:
@@ -20,7 +26,7 @@ module.exports = React.createClass
 
   getInitialState: ->
     error: null
-    children: null
+    content: null
 
   componentDidMount: ->
     @props.scripts.map(Catalog.actions.runscript)
@@ -29,15 +35,37 @@ module.exports = React.createClass
   render: ->
     if @state.error?
       div {}, "Error: #{@state.error}"
-    else if @state.children?
-      div {className: 'cg-Page'}, @state.children
+    else if @state.content?
+      div {className: 'cg-Page'},
+        @props.styles.map(createStyleElement)
+        MarkdownRenderer
+          text: @state.content
+          section: (children) ->
+            Card(key: seqKey(), children)
+          renderer:
+            code: (code, configStr) =>
+              Specimen _.extend {code: code, iframe: @props.iframe, specimen: @props.specimen, styles: @props.styles}, consumeConfigStr(configStr)
+            heading: (text, level) ->
+              React.DOM["h#{level}"] {key: seqKey()}, text
     else
       Loader()
 
   fetchPageData: ->
     reqwest(url: @props.src, type: 'text')
-      .then((res) => @setState children: MarkdownRenderer(res.responseText, @props))
+      .then((res) => @setState content: res.responseText)
       .fail (res) =>
         @setState
           error: res.statusText
-          children: null
+          content: null
+
+
+createStyleElement = (src) ->
+  link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
+
+consumeConfigStr = (str = '') ->
+  [specimen, optionsStr] = str.split('|')
+  options = _.compact (optionsStr or '').split(',')
+
+  specimen: specimen
+  runscript: _.include options, 'run-script'
+  fullbleed: _.include options, 'fullbleed'
