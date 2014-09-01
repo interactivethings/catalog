@@ -1,0 +1,24 @@
+.cg-Specimen-Color {
+  margin: 20px 0;
+  overflow: auto;
+}
+
+.cg-Specimen-Color-well {
+  $size: 100px;
+  border-radius: $size;
+  float: left;
+  height: $size;
+  line-height: $size;
+  margin: 0 20px 20px 0;
+  text-align: center;
+  width: $size;
+}
+
+.cg-Specimen-Color-label {
+  color: $catalog-text-color;
+  font-family: $catalog-font-family;
+  font-size: $catalog-font-xs;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: 0px 1px 1px #fff;
+}

@@ -1,7 +1,7 @@
 React = require('react')
-AppLayout = require('./AppLayout/AppLayout')
-AppBar = require('./AppBar/AppBar')
-Menu = require('./Menu/Menu')
+AppLayout = require('./AppLayout')
+AppBar = require('./AppBar')
+Menu = require('./Menu')
 {div, h1} = React.DOM
 
 module.exports = React.createClass

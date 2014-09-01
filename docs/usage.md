@@ -89,6 +89,10 @@ bg-light
 
 These styles are optimized for specific usecases.
 
+#### `specimen-generic`
+
+The default specimen.
+
 #### `specimen-code`
 
 ```specimen-code
@@ -100,7 +104,10 @@ function() {
 #### `specimen-color`
 
 ```specimen-color
-specimen-color (TODO)
+[
+    {"name": "light-blue", "value": "#b0f6ff"},
+    {"name": "dark-blue",  "value": "#2666a4"}
+]
 ```
 
 #### `specimen-icon`
@@ -108,6 +115,10 @@ specimen-color (TODO)
 ```specimen-icon
 specimen-icon (TODO)
 ```
+
+#### `specimen-project`
+
+See the [example](#/html-project) until more documentation is available
 
 #### `specimen-type`
 

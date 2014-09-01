@@ -1,8 +1,15 @@
+_ = require('lodash')
 reqwest = require('reqwest')
 React = require('react')
 Loader = require('./Loader')
-MarkdownRenderer = require('./MarkdownRenderer')
-{div} = React.DOM
+MarkdownRenderer = require('../../MarkdownRenderer')
+
+Card = require('../Card/Card')
+Specimen = require('../Specimen/Specimen')
+
+seqKey = require('../../utils/seqKey')('cg-Page')
+
+{div, link} = React.DOM
 
 module.exports = React.createClass
   propTypes:
@@ -20,7 +27,7 @@ module.exports = React.createClass
 
   getInitialState: ->
     error: null
-    children: null
+    content: null
 
   componentDidMount: ->
     @props.scripts.map(Catalog.actions.runscript)
@@ -29,15 +36,43 @@ module.exports = React.createClass
   render: ->
     if @state.error?
       div {}, "Error: #{@state.error}"
-    else if @state.children?
-      div {className: 'cg-Page'}, @state.children
+    else if @state.content?
+      Page
+        content: @state.content
+        styles: @props.styles
+        iframe: @props.iframe
     else
       Loader()
 
   fetchPageData: ->
     reqwest(url: @props.src, type: 'text')
-      .then((res) => @setState children: MarkdownRenderer(res.responseText, @props))
+      .then((res) => @setState content: res.responseText)
       .fail (res) =>
         @setState
           error: res.statusText
-          children: null
+          content: null
+
+
+Page = React.createClass
+  render: ->
+    div {className: 'cg-Page'},
+      @styleNodes()
+      @contentNodes()
+
+  styleNodes: ->
+    @props.styles.map (src) ->
+      link {key: seqKey(), rel: 'stylesheet', type: 'text/css', href: src}
+
+  contentNodes: ->
+    MarkdownRenderer
+      text: @props.content
+      section: (children) ->
+        Card(key: seqKey(), children)
+      renderer:
+        code: (codeBody, codeConfig) =>
+          Specimen
+            key: seqKey()
+            body: codeBody
+            config: Specimen.Config(codeConfig)
+        heading: (text, level) ->
+          React.DOM["h#{level}"] {key: seqKey()}, text

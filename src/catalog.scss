@@ -15,13 +15,10 @@ body { margin: 0; }
 //
 // Components
 //
-@import "components/AppLayout/AppLayout";
-@import "components/AppBar/AppBar";
+@import "components/App/App";
 @import "components/Card/Card";
-@import "components/CodeBlock/CodeBlock";
-@import "components/Frame/Frame";
-@import "components/Menu/Menu";
 @import "components/Page/Page";
+@import "components/Specimen/Specimen";
 
 // Overall styles
 body {

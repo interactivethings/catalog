@@ -72,6 +72,17 @@ This example link isn't styled at all. That's why we want to enjoy it on a `bg-p
 ```
 
 
+## Colors
+
+Here are some colors.
+
+```specimen-color
+[
+    {"name": "light-blue", "value": "#b0f6ff"},
+    {"name": "dark-blue",  "value": "#2666a4"}
+]
+```
+
 ## Code
 
 This is a running code example:
