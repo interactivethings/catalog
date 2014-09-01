@@ -1,6 +1,7 @@
 React = require('react')
 
 Code = require('./Code/Code')
+Color = require('./Color/Color')
 Generic = require('./Generic/Generic')
 Project = require('./Project/Project')
 
@@ -24,6 +25,8 @@ module.exports = React.createClass
     switch @props.config.specimen
       when 'specimen-code'
         Code(body: @props.body)
+      when 'specimen-color'
+        Color(colors: JSON.parse(@props.body))
       when 'specimen-project'
         Project(JSON.parse(@props.body))
       else
