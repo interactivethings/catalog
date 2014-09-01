@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install watch build doc nightly dist deploy clean
+.PHONY: install watch build doc nightly dist deploy clean clobber
 
 all: build
 
@@ -63,6 +63,9 @@ deploy:
 
 clean:
 	@rm -rf -- $(BUILD_SOURCES) uglifyjs.log
+
+clobber: clean
+	@rm -rf node_modules
 
 
 #
