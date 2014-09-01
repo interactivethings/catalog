@@ -69,16 +69,10 @@ Page = React.createClass
       section: (children) ->
         Card(key: seqKey(), children)
       renderer:
-        code: (code, configStr) =>
-          Specimen _.extend {key: seqKey(), code: code, iframe: @props.iframe, styles: @props.styles}, consumeConfigStr(configStr)
+        code: (codeBody, codeConfig) =>
+          Specimen
+            key: seqKey()
+            body: codeBody
+            config: Specimen.Config(codeConfig)
         heading: (text, level) ->
           React.DOM["h#{level}"] {key: seqKey()}, text
-
-
-consumeConfigStr = (str = '') ->
-  [specimen, optionsStr] = str.split('|')
-  options = _.compact (optionsStr or '').split(',')
-
-  specimen:  if _.isEmpty(specimen) then 'bg-light-pattern' else specimen
-  runscript: _.include options, 'run-script'
-  fullbleed: _.include options, 'fullbleed'

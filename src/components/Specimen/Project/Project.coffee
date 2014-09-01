@@ -14,9 +14,9 @@ module.exports = React.createClass
     {width, height} = parseSize(@props.size)
 
     div
-      className: 'cg-SpecimenProject'
+      className: 'cg-Specimen-Project'
       iframe
-        className: 'cg-SpecimenProject-frame'
+        className: 'cg-Specimen-Project-frame'
         src: @props.index
         marginheight: 0
         marginwidth: 0
@@ -25,7 +25,7 @@ module.exports = React.createClass
           height: "#{height}"
           width: "#{width}"
       a
-        className: 'cg-SpecimenProject-linkExternal'
+        className: 'cg-Specimen-Project-linkExternal'
         href: @props.index
         target: '_blank'
         "In neuem Fenster öffnen"
@@ -58,7 +58,7 @@ TabbedSourceView = React.createClass
             name
 
       textarea
-        className: 'cg-SpecimenProject-source'
+        className: 'cg-Specimen-Project-source'
         value: if @state.sourceCode? then @state.sourceCode else 'Loading …'
         readOnly: true
 
