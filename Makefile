@@ -35,7 +35,7 @@ CLI_RESET   = \033[0m
 
 all: build
 
-install: node_modules bower.json
+install: _print-banner node_modules bower.json
 
 watch: install
 	@bin/watch
@@ -101,7 +101,7 @@ $(DOC_TARGETS): $(DIST_DIR)/%: %
 # Preconditions
 #
 
-.PHONY: _dist-ensure-not-exists _dist-prompt-git-commit
+.PHONY: _dist-ensure-not-exists _dist-prompt-git-commit _print-banner
 _dist-ensure-not-exists:
 	@if test -d $(VERSION_DIR); then \
 		echo "A distribution for \"Catalog $(CURRENT_VERSION)\" has already been published."; \
@@ -119,6 +119,9 @@ _dist-prompt-git-commit:
 	if [ $$CONTINUE != 'y' ] && [ $$CONTINUE != 'Y' ]; then \
 		echo -e "$(CLI_ERROR) Distribution has not been committed to Git$(CLI_RESET)"; exit 1; \
 	fi
+
+_print-banner:
+	@./bin/banner
 
 
 #
