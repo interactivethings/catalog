@@ -7,7 +7,7 @@ To start Catalog, run the following code on an empty HTML page.
 ```specimen-code
 &lt;script src="catalog.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-  Catalog({
+  Catalog.start('body', {
     title: "Catalog",
     styles: ["path/to/global-styles.css"],  // Global styles (optional)
     scripts: ["path/to/global-scripts.js"], // Global scripts (optional)
@@ -22,8 +22,7 @@ To start Catalog, run the following code on an empty HTML page.
       },
       {name: 'usage', title: "Usage", src: "docs/usage.md"},
       {name: 'example', title: "Example", src: "docs/example.md"}
-    ],
-    iframe: false // Experimental
+    ]
   });
 &lt;/script&gt;
 ```

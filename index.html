@@ -12,9 +12,8 @@
 
   <script src="catalog.js"></script>
   <script>
-    Catalog({
+    Catalog.start('body', {
       title: "Catalog",
-      iframe: false, // Set to true to wrap each component in an iframe (experimental)
       pages: [
         {name: 'intro', path: '/', title: "Introduction", src: "docs/intro.md"},
         {name: 'usage', title: "Usage", src: "docs/usage.md"},

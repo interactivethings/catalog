@@ -18,12 +18,10 @@ module.exports = React.createClass
     src:     React.PropTypes.string.isRequired
     styles:  React.PropTypes.arrayOf(React.PropTypes.string)
     scripts: React.PropTypes.arrayOf(React.PropTypes.string)
-    iframe:  React.PropTypes.bool
 
   getDefaultProps: ->
     styles: []
     scripts: []
-    iframe: false
 
   getInitialState: ->
     error: null
@@ -40,7 +38,6 @@ module.exports = React.createClass
       Page
         content: @state.content
         styles: @props.styles
-        iframe: @props.iframe
     else
       Loader()
 

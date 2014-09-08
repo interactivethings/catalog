@@ -5,7 +5,10 @@ runscript = require('../utils/runscript')
 App = require('../components/App/App')
 Page = require('../components/Page/Page')
 
-Catalog = (config) ->
+#
+# Startup
+#
+module.exports.start = (selector, config) ->
   router = Routes {location: 'hash'},
     Route _.extend(key: 'root', handler: App, config),
       config.pages.map (page) ->
@@ -14,12 +17,10 @@ Catalog = (config) ->
         Route _.extend(key: page.name, handler: Page, styles: styles, scripts: scripts, page)
     Redirect(from: '*', to: '/')
 
-  React.renderComponent(router, document.body)
+  React.renderComponent(router, document.querySelector(selector))
 
 #
 # Global actions
 #
-Catalog.actions =
+module.exports.actions =
   runscript: runscript()
-
-module.exports = Catalog
