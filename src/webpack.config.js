@@ -1,6 +1,11 @@
 var path = require('path');
+var webpack = require('webpack');
 
-module.exports = {
+var env = {
+  __DEV__: process.env.NODE_ENV !== 'production'
+}
+
+var config = {
   entry: path.join(__dirname, 'catalog.coffee'),
   output: {
     filename: path.join(__dirname, '..', 'catalog.js')
@@ -17,5 +22,17 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.json', '.coffee']
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin(env)
+  ]
 };
+
+if (env.__DEV__) {
+  config.module.loaders.push({
+    test: require.resolve("react"),
+    loader: "expose?React"
+  });
+}
+
+module.exports = config;
