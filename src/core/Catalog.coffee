@@ -17,7 +17,9 @@ module.exports.start = (selector, config) ->
         Route _.extend(key: page.name, handler: Page, styles: styles, scripts: scripts, page)
     Redirect(from: '*', to: '/')
 
-  React.renderComponent(router, document.querySelector(selector))
+  rootElement = document.querySelector(selector)
+  rootElement.className += ' cg-Catalog'
+  React.renderComponent(router, rootElement)
 
 #
 # Global actions

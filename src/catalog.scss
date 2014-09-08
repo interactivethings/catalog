@@ -1,9 +1,9 @@
 @import "config";
 
 //
-// Unobtrusive reset
+// Core
 //
-body { margin: 0; }
+@import "core/Catalog";
 
 //
 // Scaffold
@@ -19,8 +19,3 @@ body { margin: 0; }
 @import "components/Card/Card";
 @import "components/Page/Page";
 @import "components/Specimen/Specimen";
-
-// Overall styles
-body {
-  background: #eee;
-}
