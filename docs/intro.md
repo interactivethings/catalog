@@ -1,8 +1,10 @@
 # Catalog
 
-> Catalog helps you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your components. It is completely dependency free, making it trivial to integrate Catalog into your application.
+> Catalog helps you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your project with clarity. It is completely dependency free, making it trivial to integrate into any application.
 
-Catalog's structure allows you to document colors, typography, elements, and HTML/CSS/JS components of your web project in a beautiful and easy to access format. The design stands back and yet holds enough visual and functional sophistication to provide a great experience to designers, developers, and clients alike.
+That last bit is where Catalog really shines. There are many great tools out there to build living style guides, but most of them depend on a build step, which is in turn dependent on a specific technology. We like to use the right tool for the job: in some cases that might be Rails or Node.js or PHP or just plain HTML. Catalog works effortlessly with all of these technologies.
+
+Use Catalog to document HTML and CSS, colors, typography, and even interactive components of your web project in a beautiful and easy to access format. The design stands back and yet holds enough visual and functional sophistication to provide a great experience to designers, developers, and clients alike.
 
 ## Getting started
 

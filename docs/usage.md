@@ -27,15 +27,38 @@ To start Catalog, run the following code on an empty HTML page.
 &lt;/script&gt;
 ```
 
-## Markdown
+## Write documentation
 
-Catalog uses Markdown together with some conventions to parse and display the documentation. Currently, it's easiest to look at the source Markdown files to understand how to structure your documents.
+Catalog lets you write documentation in [Markdown](http://daringfireball.net/projects/markdown/syntax), which “is intended to be as easy-to-read and easy-to-write as is feasible.” Have a look at the [source of this page](docs/usage.md) to see how such a document is typically structured.
 
-The most important conventions is that `h2`s will start new cards.
+To make sure that Catalog displays what you want, you need to follow some simple conventions that are shown in the following example document. Catalog uses _Card_ as the metaphor for document sections and _Specimen_ to describe different kinds of examples.
 
-## Example blocks
+```specimen-code
+# Page title (an &lt;h1&gt;)
 
-Choose either a background style or a render style (but not both), add options as if needed. An example:
+> Some lead text (a blockquote, optional)
+
+Introductory text (optional)
+
+## A Card (an &lt;h2&gt;)
+
+A new Card is started as soon as an &lt;h2&gt; is encountered.
+
+&#96;&#96;&#96;specimen-code
+function identity(x) {
+  return x;
+}
+&#96;&#96;&#96;
+
+## Another Card
+
+Some more text within this Card.
+
+```
+
+## Example Specimens
+
+Choose either a background style or a render style (but not both), add options as needed. An example:
 
 ```specimen-code
 &#96;&#96;&#96;bg-dark-pattern|run-script,fullbleed
