@@ -4,7 +4,7 @@
 
 To start Catalog, run the following code on an empty HTML page.
 
-```specimen-code
+```code
 &lt;script src="catalog.js"&gt;&lt;/script&gt;
 &lt;script&gt;
   Catalog.start('body', {
@@ -33,7 +33,7 @@ Catalog lets you write documentation in [Markdown](http://daringfireball.net/pro
 
 To make sure that Catalog displays what you want, you need to follow some simple conventions that are shown in the following example document. Catalog uses _Card_ as the metaphor for document sections and _Specimen_ to describe different kinds of examples.
 
-```specimen-code
+```code
 # Page title (an &lt;h1&gt;)
 
 > Some lead text (a blockquote, optional)
@@ -44,7 +44,7 @@ Introductory text (optional)
 
 A new Card is started as soon as an &lt;h2&gt; is encountered.
 
-&#96;&#96;&#96;specimen-code
+&#96;&#96;&#96;code
 function identity(x) {
   return x;
 }
@@ -56,103 +56,6 @@ Some more text within this Card.
 
 ```
 
-## Example Specimens
+## Specimens
 
-Choose either a background style or a render style (but not both), add options as needed. An example:
-
-```specimen-code
-&#96;&#96;&#96;bg-dark-pattern|run-script,fullbleed
-&lt;a id="dark-button" class="button button--dark"&gt;Dark button&lt;/a&gt;
-&lt;script&gt;
-    var button = document.getElementById('dark-button');
-    button.addEventListener('click', function(evt){
-        evt.preventDefault();
-        alert('Button clicked!');
-    });
-&lt;/script&gt;
-&#96;&#96;&#96;
-```
-
-### Background styles
-
-Use one of these styles to render a background that works with your component.
-
-#### `bg-light-pattern` (default)
-
-```bg-light-pattern
-bg-light-pattern
-```
-
-#### `bg-dark-pattern`
-
-```bg-dark-pattern
-<span style="color:white">bg-dark-pattern</span>
-```
-
-#### `bg-plain`
-
-```bg-plain
-bg-plain
-```
-
-#### `bg-light`
-
-```bg-light
-bg-light
-```
-
-#### `bg-dark`
-
-```bg-dark
-<span style="color:white">bg-dark</span>
-```
-
-### Specimen styles
-
-These styles are optimized for specific usecases.
-
-#### `specimen-generic`
-
-The default specimen.
-
-#### `specimen-code`
-
-```specimen-code
-function() {
-    return 'specimen-code';
-}
-```
-
-#### `specimen-color`
-
-```specimen-color
-[
-    {"name": "light-blue", "value": "#b0f6ff"},
-    {"name": "dark-blue",  "value": "#2666a4"}
-]
-```
-
-#### `specimen-icon`
-
-```specimen-icon
-specimen-icon (TODO)
-```
-
-#### `specimen-project`
-
-See the [example](#/html-project) until more documentation is available
-
-#### `specimen-type`
-
-```specimen-type
-specimen-type (TODO)
-```
-
-### Options
-
-Any number of options can be passed to a background or specimen style after the pipe character:
-
-`style|option1,option2,...`
-
-* `run-script` – will run any scripts within the source
-* `fullbleed` – removes any horizontal padding and uses the whole width available (TODO)
+Catalog provides a wide variety of specimens. See the [Specimen documentation](#/specimens) for more
