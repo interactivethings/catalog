@@ -1,3 +1,5 @@
+require('./Color.scss')
+
 React = require('react')
 {div, section, span} = React.DOM
 

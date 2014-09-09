@@ -1,3 +1,5 @@
+require('./AppBar.scss')
+
 React = require('react')
 {Link} = require('react-router')
 {div, h1} = React.DOM

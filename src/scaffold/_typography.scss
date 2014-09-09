@@ -54,16 +54,24 @@
   code { @include cg-code; }
 }
 
+@mixin cg-blockquote {
+  quotes: none;
+  &:before, &:after {
+    content: '';
+    content: none;
+  }
+}
+
 @mixin cg-code {
   font-family: $catalog-font-mono;
   font-size: $catalog-font-s;
   line-height: 1.4;
 }
 
-@mixin cg-blockquote {
-  quotes: none;
-  &:before, &:after {
-    content: '';
-    content: none;
+@mixin cg-link {
+  color: $catalog-brand-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 }

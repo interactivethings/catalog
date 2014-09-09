@@ -1,3 +1,5 @@
+require('./Menu.scss')
+
 React = require('react')
 {Link} = require('react-router')
 {div, ul, li} = React.DOM

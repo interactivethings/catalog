@@ -1,3 +1,5 @@
+require('./FramedCodeBlock.scss')
+
 React = require('react')
 Frame = require('react-frame-component')
 {div, section, style} = React.DOM

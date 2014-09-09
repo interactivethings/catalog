@@ -1,3 +1,7 @@
+@import "../../config";
+@import "../../scaffold/lists";
+@import "../../scaffold/typography";
+
 %cg-Card-heading {
   @include cg-heading(3);
   margin: 0 0 1em 0;

@@ -1,3 +1,5 @@
+require('./AppLayout.scss')
+
 React = require('react')
 {div, h1} = React.DOM
 

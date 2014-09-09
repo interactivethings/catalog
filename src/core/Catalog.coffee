@@ -1,3 +1,5 @@
+require('./Catalog.scss');
+
 _ = require('lodash')
 React = require('react')
 {Routes, Route, Redirect} = require('react-router')

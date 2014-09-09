@@ -1,3 +1,5 @@
+require('./Project.scss')
+
 React = require('react')
 reqwest = require('reqwest')
 {a, button, div, iframe, section, textarea} = React.DOM

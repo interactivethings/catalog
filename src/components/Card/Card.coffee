@@ -1,3 +1,5 @@
+require('./Card.scss')
+
 React = require('react')
 {section} = React.DOM
 
