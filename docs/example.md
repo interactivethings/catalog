@@ -48,7 +48,7 @@ This button can't be clicked. If you do something against clicking it, that is.
 
 Use this beautiful button on dark backgrounds.
 
-```bg-dark-pattern
+```html|dark
 <a class="button button--inverted" href="#">Inverted</a>
 ```
 
@@ -65,9 +65,9 @@ Similar to button, but looks more important.
 
 ## Link
 
-This example link isn't styled at all. That's why we want to enjoy it on a `bg-plain` background.
+This example link isn't styled at all. That's why we want to enjoy it on a `plain` background.
 
-```bg-plain
+```html|plain
 <a href="#">Link</a>
 ```
 
@@ -87,7 +87,7 @@ Here are some colors.
 
 This is a running code example:
 
-```bg-light|run-script
+```html|plain,run-script
 <div id="example-target">FAILED: Javascript was not run</div>
 <script>
     var target = document.getElementById('example-target')
@@ -98,7 +98,7 @@ This is a running code example:
 It uses the following code:
 
 ```code
-&#96;&#96;&#96;bg-light|run-script
+&#96;&#96;&#96;html|plain,run-script
 &lt;div id="example-target"&gt;FAILED: Javascript was not run&lt;/div&gt;
 &lt;script&gt;window.exampleValue = 'Example content'&lt;/script&gt;
 &lt;script&gt;
