@@ -1,36 +1,69 @@
-@mixin cg-heading-base($font-size) {
+@mixin cg-heading($level) {
   color: $catalog-brand-color;
-  font-family: $catalog-font-family;
-  font-size: $font-size;
-  font-weight: bold;
-  line-height: 1.1;
+
+  @if $level == 1 {
+    font-family: $catalog-font-heading;
+    font-size: $catalog-font-xxl;
+    font-weight: bold;
+    line-height: 1.1;
+    text-transform: uppercase;
+  } @else if $level == 2 {
+    font-family: $catalog-font-heading;
+    font-size: $catalog-font-xl;
+    font-weight: bold;
+    line-height: 1.1;
+    text-transform: uppercase;
+  } @else if $level == 3 {
+    font-family: $catalog-font-heading;
+    font-size: $catalog-font-xl;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  } @else if $level == 4 {
+    font-family: $catalog-font-heading;
+    font-size: $catalog-font-s;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  } @else if $level == 5 {
+    @warn "cg-heading level 5 not defined";
+  } @else if $level == 6 {
+    @warn "cg-heading level 6 not defined";
+  }
 }
 
-@mixin cg-text-base($font-size) {
+@mixin cg-text($level) {
   color: $catalog-text-color;
-  font-family: $catalog-font-family;
-  font-size: $font-size;
   font-weight: normal;
+  line-height: 1.4;
+
+  @if $level == 1 {
+    font-family: $catalog-font-family;
+    font-size: $catalog-font-l;
+  } @else if $level == 2 {
+    font-family: $catalog-font-family;
+    font-size: $catalog-font-m;
+  } @else if $level == 3 {
+    font-family: $catalog-font-family;
+    font-size: $catalog-font-s;
+    line-height: 1.4;
+    margin-bottom: 0.6em;
+  }
+
+  a    { @include cg-link; }
+  code { @include cg-code; }
+}
+
+@mixin cg-code {
+  font-family: $catalog-font-mono;
+  font-size: $catalog-font-s;
   line-height: 1.4;
 }
 
-@mixin cg-blockquote-base {
+@mixin cg-blockquote {
   quotes: none;
   &:before, &:after {
     content: '';
     content: none;
   }
-}
-
-@mixin cg-code {
-  font-family: $catalog-font-mono;
-  font-size: $catalog-font-xs;
-}
-
-@mixin cg-paragraph($font-size) {
-  @include cg-text-base($font-size);
-  margin-bottom: 0.6em;
-
-  a { @include cg-link; }
-  code { @include cg-code; }
 }

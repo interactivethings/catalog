@@ -1,6 +1,4 @@
-.cg-Menu {
-  font-family: $catalog-font-family;
-}
+.cg-Menu {}
 
 .cg-Menu-list {
   border-top: 1px solid $catalog-brand-color-line;
@@ -11,6 +9,7 @@
 
 .cg-Menu-link {
   @extend %cg-Menu-link-base;
+  @include cg-text(2);
   color: $catalog-brand-color-light;
 
   &.active {
@@ -19,6 +18,7 @@
 
   &:hover, &:focus, &:active {
     @extend %cg-Menu-link-base;
+    @include cg-text(2);
     background: rgba(255,255,255,0.1);
     color: #fff;
   }
@@ -27,9 +27,6 @@
 %cg-Menu-link-base {
   border-bottom: 1px solid $catalog-brand-color-line;
   display: block;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-m;
-  line-height: 1.4;
   padding: 15px 40px;
   text-decoration: none;
 }

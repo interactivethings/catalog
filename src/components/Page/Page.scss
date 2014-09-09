@@ -5,19 +5,18 @@
 }
 
 %cg-Page-main-heading {
-  @include cg-heading-base($catalog-font-xxl);
+  @include cg-heading(1);
   margin-top: 0.6em;
   margin-bottom: 0.45em;
-  text-transform: uppercase;
 }
 
 %cg-Page-lead-text {
-  @include cg-blockquote-base;
-  @include cg-text-base($catalog-font-l);
+  @include cg-blockquote;
   margin-top: 0;
   margin-bottom: 40px;
 
   p {
+    @include cg-text(1);
     margin: 0 0 0.75em 0;
   }
 }
@@ -27,7 +26,7 @@
 
   & > h1 { @extend %cg-Page-container; @extend %cg-Page-main-heading; }
   & > blockquote { @extend %cg-Page-container; @extend %cg-Page-lead-text; }
-  & > p { @extend %cg-Page-container; @include cg-paragraph($catalog-font-m); }
+  & > p { @extend %cg-Page-container; @include cg-text(2); }
   & > ul { @extend %cg-Page-container; @include cg-ulist; }
   & > ol { @extend %cg-Page-container; @include cg-olist; }
 }

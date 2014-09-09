@@ -1,15 +1,15 @@
 %cg-Card-heading {
-  @include cg-heading-base($catalog-font-xl);
+  @include cg-heading(3);
   margin: 0 0 1em 0;
 }
 
 %cg-Card-component-heading {
-  @include cg-heading-base($catalog-font-s);
+  @include cg-heading(4);
   margin: 2em 0 0.166em -0.08em;
 }
 
 %cg-Card-paragraph {
-  @include cg-paragraph($catalog-font-s);
+  @include cg-text(3);
   max-width: 42em;
 }
 

@@ -9,14 +9,14 @@
 }
 
 .cg-Specimen-Project-linkExternal {
-  @include cg-paragraph($catalog-font-s);
+  @include cg-text(3);
   @include cg-link;
   display: inline-block;
   margin-top: 0.6em;
 }
 
 .cg-Specimen-Project-source {
-  @include cg-paragraph($catalog-font-s);
+  @include cg-text(3);
   @include cg-code;
   background: #eee;
   display: block;

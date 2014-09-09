@@ -4,10 +4,7 @@
 }
 
 .cg-AppBar-title {
+  @include cg-heading(2);
   color: $catalog-brand-color-dark;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-xl;
-  line-height: 1.1;
   margin: 0;
-  text-transform: uppercase;
 }
