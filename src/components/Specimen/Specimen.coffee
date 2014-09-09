@@ -2,7 +2,7 @@ React = require('react')
 
 Code = require('./Code/Code')
 Color = require('./Color/Color')
-Generic = require('./Generic/Generic')
+Html = require('./Html/Html')
 Project = require('./Project/Project')
 
 module.exports = React.createClass
@@ -30,4 +30,4 @@ module.exports = React.createClass
       when 'specimen-project'
         Project(JSON.parse(@props.body))
       else
-        Generic(body: @props.body, type: @props.config.specimen)
+        Html(body: @props.body, type: @props.config.specimen)

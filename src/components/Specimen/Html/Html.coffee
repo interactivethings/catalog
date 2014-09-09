@@ -1,4 +1,4 @@
-require('./Generic.scss')
+require('./Html.scss')
 
 React = require('react')
 {section} = React.DOM
