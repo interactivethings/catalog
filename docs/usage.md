@@ -4,7 +4,7 @@
 
 To start Catalog, run the following code on an empty HTML page.
 
-```specimen-code
+```code
 &lt;script src="catalog.js"&gt;&lt;/script&gt;
 &lt;script&gt;
   Catalog.start('body', {
@@ -33,7 +33,7 @@ Catalog lets you write documentation in [Markdown](http://daringfireball.net/pro
 
 To make sure that Catalog displays what you want, you need to follow some simple conventions that are shown in the following example document. Catalog uses _Card_ as the metaphor for document sections and _Specimen_ to describe different kinds of examples.
 
-```specimen-code
+```code
 # Page title (an &lt;h1&gt;)
 
 > Some lead text (a blockquote, optional)
@@ -44,7 +44,7 @@ Introductory text (optional)
 
 A new Card is started as soon as an &lt;h2&gt; is encountered.
 
-&#96;&#96;&#96;specimen-code
+&#96;&#96;&#96;code
 function identity(x) {
   return x;
 }

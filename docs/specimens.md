@@ -6,7 +6,7 @@
 
 Choose either a background style or a render style (but not both), add options as needed. An example:
 
-```specimen-code
+```code
 &#96;&#96;&#96;bg-dark-pattern|run-script,fullbleed
 &lt;a id="dark-button" class="button button--dark"&gt;Dark button&lt;/a&gt;
 &lt;script&gt;
@@ -67,15 +67,15 @@ bg-light
 
 ## Code
 
-```specimen-code
+```code
 function() {
-    return 'specimen-code';
+    return 'code';
 }
 ```
 
 ## Color
 
-```specimen-color
+```color
 [
     {"name": "light-blue", "value": "#b0f6ff"},
     {"name": "dark-blue",  "value": "#2666a4"}
@@ -84,8 +84,8 @@ function() {
 
 ## Icon
 
-```specimen-icon
-specimen-icon (TODO)
+```icon
+icon (TODO)
 ```
 
 ## Project
@@ -94,6 +94,6 @@ See the [example](#/html-project) until more documentation is available
 
 ## Type
 
-```specimen-type
-specimen-type (TODO)
+```type
+type (TODO)
 ```

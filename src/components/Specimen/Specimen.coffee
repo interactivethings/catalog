@@ -23,11 +23,11 @@ module.exports = React.createClass
 
   render: ->
     switch @props.config.specimen
-      when 'specimen-code'
+      when 'code'
         Code(body: @props.body)
-      when 'specimen-color'
+      when 'color'
         Color(colors: JSON.parse(@props.body))
-      when 'specimen-project'
+      when 'project'
         Project(JSON.parse(@props.body))
       else
         Html(body: @props.body, type: @props.config.specimen)

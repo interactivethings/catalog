@@ -76,7 +76,7 @@ This example link isn't styled at all. That's why we want to enjoy it on a `bg-p
 
 Here are some colors.
 
-```specimen-color
+```color
 [
     {"name": "light-blue", "value": "#b0f6ff"},
     {"name": "dark-blue",  "value": "#2666a4"}
@@ -97,7 +97,7 @@ This is a running code example:
 
 It uses the following code:
 
-```specimen-code
+```code
 &#96;&#96;&#96;bg-light|run-script
 &lt;div id="example-target"&gt;FAILED: Javascript was not run&lt;/div&gt;
 &lt;script&gt;window.exampleValue = 'Example content'&lt;/script&gt;
