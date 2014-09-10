@@ -32,37 +32,38 @@ The default specimen if no argument string is specified.
 * `light` – a light checkered background (default)
 * `dark` – a dark checkered background
 * `plain` – a transparent background without any padding. If combined with `light` or `dark`, the checker pattern is removed
+* `no-source` – Removes the source code toggle button
 * `run-script` – will run any scripts within the source
 
 ### Examples
 
 #### `html|light`
 
-```
+```html|no-source
 html
 ```
 
 #### `html|dark`
 
-```html|dark
+```html|dark,no-source
 <span style="color:white">html|dark</span>
 ```
 
 #### `html|plain`
 
-```html|plain
+```html|plain,no-source
 html|plain
 ```
 
 #### `html|plain,light`
 
-```html|plain,light
+```html|plain,light,no-source
 html|plain,light
 ```
 
 #### `html|plain,dark`
 
-```html|plain,dark
+```html|plain,dark,no-source
 <span style="color:white">html|plain,dark</span>
 ```
 

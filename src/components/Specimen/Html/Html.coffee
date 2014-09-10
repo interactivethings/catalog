@@ -20,11 +20,12 @@ module.exports = Html = React.createClass
   render: ->
     section
       className: blockClass()
-      div
-        className: elementClass('toggle')
-        onClick: @toggleSource
-        title: if @state.viewSource then "Hide source" else "Show source"
-        dangerouslySetInnerHTML: {__html: "&lt;&gt;"}
+      unless @props.modifiers.contains('no-source')
+        div
+          className: elementClass('toggle')
+          onClick: @toggleSource
+          title: if @state.viewSource then "Hide source" else "Show source"
+          dangerouslySetInnerHTML: {__html: "&lt;&gt;"}
       div
         className: [elementClass('content')].concat(@modifiers(modifierClass('content'))).join(' ')
         dangerouslySetInnerHTML: {__html: @props.body}
