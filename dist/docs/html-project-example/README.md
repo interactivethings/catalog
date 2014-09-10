@@ -6,7 +6,7 @@
 
 A simple example
 
-```specimen-project
+```project
 {
     "index": "docs/html-project-example/index.html"
 }
@@ -14,7 +14,7 @@ A simple example
 
 This example has some more configuration, e.g. the size that could also be a string for "phone" or "tablet", etc. Also, these sizes could be configurable through the Catalog config.
 
-```specimen-project
+```project
 {
     "index": "docs/html-project-example/index.html",
     "readme": "docs/html-project-example/README.md",
