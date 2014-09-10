@@ -1,11 +1,11 @@
 {
   "name": "catalog-styleguide",
-  "version": "1.0.0-beta-3",
+  "version": "1.0.0",
   "description": "Catalog is the foundation for living styleguides created at Interactive Things",
   "main": "catalog.js",
   "dependencies": {},
   "devDependencies": {
-    "catalyst": "interactivethings/catalyst.git#1.0.0-alpha",
+    "catalyst": "interactivethings/catalyst.git#1.0.0-beta",
     "cli-color": "0.3.2",
     "coffee-loader": "0.7.2",
     "coffee-script": "1.8.0",
