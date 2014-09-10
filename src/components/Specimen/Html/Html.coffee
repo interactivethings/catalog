@@ -2,7 +2,7 @@ require('./Html.scss')
 
 R = require('ramda')
 React = require('react')
-{div, section} = React.DOM
+{div, pre, section} = React.DOM
 
 
 module.exports = Html = React.createClass
@@ -30,7 +30,7 @@ module.exports = Html = React.createClass
         className: [elementClass('content')].concat(@modifiers(modifierClass('content'))).join(' ')
         dangerouslySetInnerHTML: {__html: @props.body}
       if @state.viewSource
-        div
+        pre
           className: elementClass('source')
           @props.body
 
