@@ -1,3 +1,4 @@
+@import "node-bourbon/assets/stylesheets/bourbon";
 @import "catalyst/src/globals";
 @import "catalyst/src/utils/layout";
 @import "catalyst/src/grid";
@@ -12,7 +13,10 @@ $catalog-brand-color: #E54B3F;
 $catalog-brand-color-light: #F5B7B2;
 $catalog-brand-color-line: #D1312E;
 $catalog-brand-color-dark: #AA191F;
-$catalog-text-color:  #333;
+$catalog-text-color:  #333333;
+$catalog-bg-light: #CCCCCC;
+$catalog-bg-dark: #333333;
+$catalog-light-color:  #D6D6D6;
 
 
 // Fonts
