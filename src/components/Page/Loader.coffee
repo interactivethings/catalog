@@ -1,3 +1,5 @@
+require('./Loader.scss')
+
 React = require('react')
 {div} = React.DOM
 
@@ -15,6 +17,6 @@ module.exports = React.createClass
 
   render: ->
     if @state.visible
-      div {className: 'cg-Page-loader'}
+      div {className: 'cg-Page-Loader'}
     else
       null
