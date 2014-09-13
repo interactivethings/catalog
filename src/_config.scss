@@ -9,6 +9,8 @@
 
 // Colors
 
+$catalog-background: #EEEEEE;
+$catalog-white: #FFFFFF;
 $catalog-brand-color: #E54B3F;
 $catalog-brand-color-light: #F5B7B2;
 $catalog-brand-color-line: #D1312E;
@@ -28,6 +30,26 @@ $catalog-font-mono: 'Source Code Pro', monospace;
 $catalog-font-xs:  12px;
 $catalog-font-s:   14px;
 $catalog-font-m:   16px;
-$catalog-font-l:   20px;
-$catalog-font-xl:  24px;
-$catalog-font-xxl: 36px;
+$catalog-font-l:   21px;
+$catalog-font-xl:  28px;
+$catalog-font-xxl: 38px;
+
+$size-l: 21px;
+$size-xl: 28px;
+$size-xxl: 38px;
+
+// The vertical grid unit. Margin, padding, and line-height are set to multiples
+// of this value. This is the value that determines the baseline for our vertical
+// rhythm. The default value of 6px allows more fine tuned designs that still
+// obey vertical rhythm.
+$base-vertical-unit: 4px !default;
+
+// The value that multiplies the $base-vertical-unit to get the $base-line-height.
+// This gives type an ideal line-height.
+$base-line-multi: 7 !default;
+
+// Base font size in pixels.
+$base-font-size: 16px !default;
+
+// Modular scale ratio that is used to figure out all the different font sizes
+$ms-ratio: 1.333 !default;

@@ -13,14 +13,15 @@ $cg-Specimen-Html-dark-pattern: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA
 .cg-Specimen-Html-toggle {
   $padding: 5px;
   $size: 20px;
-  @include cg-code;
   @include position(absolute, -($size + 2 * $padding) (-$padding) null null);
   border: $padding solid transparent;
   color: $catalog-light-color;
   cursor: pointer;
   display: inline-block;
+  font-family: $catalog-font-mono;
   font-size: 16px;
-  font-weight: bold;
+  font-style: normal;
+  font-weight: 600;
   height: $size;
   line-height: $size;
 

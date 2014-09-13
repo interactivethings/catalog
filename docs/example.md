@@ -1,32 +1,58 @@
-# Catalog Examples
+# Page typography with a somewhat long title to make sure we have a line break
+
+> This page demonstrates how Catalog can be used. A Catalog page always starts with an introductory text like this and then describes the individual components in Catalog Cards.
+
+An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things.
+
+> Blockquotes can appear multiple times, even though that might not make too much sense … Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+- An unordered list item
+- Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+
+Ordered lists work too:
+
+1. An ordered list item
+2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+
+A final paragraph before we begin with the real thing: the Cards!
+
+## Catalog test page with a very long title to test line breaks
 
 > This page demonstrates how Catalog can be used. A Catalog page always starts with an introductory text like this and then describes the individual components in Catalog Cards.
 >
-> This is a new paragraph to demonstrate that it is possible to have one and how nice it looks.
+> This is a new paragraph to demonstrate that it is possible to have one and that having one looks nice, too. Don't make it too short because that would be slightly ugly.
 
-An ordinary paragraph can follow after the lead text. It can point to [other pages](#/). It can contain unordered lists like this:
+An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things.
 
-- Item 1
-- Item 2
+> Blockquotes can appear multiple times, even though that might not make too much sense … Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
-or ordered lists like this:
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
-1. Item 1
-2. Item 2
+Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## Button
+- An unordered list item
+- Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
-This is an example button. The most common usecase is to just add the `.button` class to a link. Here's some more text, so we get several nice lines in this paragraph. Just to see how it looks.
+Ordered lists work too:
 
-Also, here's another paragraph with a bit more content. But not just that: here's an unordered list:
+1. An ordered list item
+2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
-- Item 1
-- Item 2
-
-And an ordered list:
-
-1. The first item is always boring
-2. So what do you expect of the second item, then? It might be a bit longer to test multiple lines, but besides that: just as boring!
+A final paragraph before we begin with the real thing: the Cards!
 
 ### `.button`
 

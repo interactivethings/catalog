@@ -3,37 +3,52 @@
 @import "../../scaffold/typography";
 
 %cg-Card-heading {
+  @include cg-heading(2);
+}
+
+%cg-Card-section {
   @include cg-heading(3);
-  margin: 0 0 1em 0;
 }
 
 %cg-Card-component-heading {
   @include cg-heading(4);
-  margin: 2em 0 0.166em -0.08em;
+}
+
+%cg-Card-lead-text {
+  @include cg-blockquote;
+  p { @include cg-text(1); }
 }
 
 %cg-Card-paragraph {
-  @include cg-text(3);
-  max-width: 42em;
+  @include cg-text(2);
+  max-width: 43em;
+}
+
+%cg-Card-ulist {
+  @include cg-ulist;
+  @include cg-text(2);
+  & > li:before { color: $catalog-light-color; }
+}
+
+%cg-Card-olist {
+  @include cg-olist;
+  @include cg-text(2);
+  & > li:before { color: $catalog-light-color; }
 }
 
 .cg-Card {
   @include clearfix;
-  background: #fff;
+  background: $catalog-white;
   border-radius: 3px;
-  margin: 30px 0;
-  padding: 30px 20px;
+  box-shadow: 0px 1px 4px $catalog-light-color;
+  margin: $size-l 0;
+  padding: $size-xl $size-l;
 
   & > h2 { @extend %cg-Card-heading; }
-  & > h3 {
-    @extend %cg-Card-component-heading;
-    code { @extend %cg-Card-component-heading; @include cg-code; }
-  }
-  & > h4 {
-    @extend %cg-Card-component-heading;
-    code { @extend %cg-Card-component-heading; @include cg-code; font-weight: normal; }
-  }
+  & > h3 { @extend %cg-Card-section; }
+  & > h4 { @extend %cg-Card-component-heading; }
+  & > blockquote { @extend %cg-Card-lead-text; }
   & > p  { @extend %cg-Card-paragraph; }
-  & > ul { @include cg-ulist; font-size: $catalog-font-s; }
-  & > ol { @include cg-olist; font-size: $catalog-font-s; }
+  & > ul { @extend %cg-Card-ulist; }
+  & > ol { @extend %cg-Card-olist; }
 }

@@ -1,61 +1,61 @@
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@mixin set-type($font-size, $vertical-units: $base-line-multi) {
+  font-size: $font-size;
+  line-height: strip-units(($vertical-units * $base-vertical-unit)/$font-size);
+}
+
 @mixin cg-heading($level) {
   color: $catalog-brand-color;
+  font-family: $catalog-font-heading;
+  font-style: normal;
 
   @if $level == 1 {
-    font-family: $catalog-font-heading;
-    font-size: $catalog-font-xxl;
-    font-weight: bold;
-    line-height: 1.1;
+    @include set-type($catalog-font-xxl, 12);
+    font-weight: 600;
+    margin: 0 0 16px 0;
     text-transform: uppercase;
   } @else if $level == 2 {
-    font-family: $catalog-font-heading;
-    font-size: $catalog-font-xl;
-    font-weight: bold;
-    line-height: 1.1;
-    text-transform: uppercase;
+    @include set-type($catalog-font-xl, 8);
+    font-weight: 500;
+    margin: 0 0 12px 0;
   } @else if $level == 3 {
-    font-family: $catalog-font-heading;
-    font-size: $catalog-font-xl;
-    font-weight: bold;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-  } @else if $level == 4 {
-    font-family: $catalog-font-heading;
-    font-size: $catalog-font-s;
-    font-weight: bold;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
-  } @else if $level == 5 {
-    @warn "cg-heading level 5 not defined";
-  } @else if $level == 6 {
-    @warn "cg-heading level 6 not defined";
+    @include set-type($catalog-font-l);
+    font-weight: 500;
+    margin: 0 0 5px 0;
+  } @else {
+    @include set-type($catalog-font-m);
+    margin: 0;
   }
 }
 
 @mixin cg-text($level) {
   color: $catalog-text-color;
-  font-weight: normal;
-  line-height: 1.4;
+  font-family: $catalog-font-family;
+  font-style: normal;
+  font-weight: 300;
 
   @if $level == 1 {
-    font-family: $catalog-font-family;
-    font-size: $catalog-font-l;
+    @include set-type($catalog-font-l, 8);
+    margin: 0 0 13px 0;
   } @else if $level == 2 {
-    font-family: $catalog-font-family;
-    font-size: $catalog-font-m;
+    @include set-type($catalog-font-m, 6);
+    margin: 0 0 16px 0;
   } @else if $level == 3 {
-    font-family: $catalog-font-family;
-    font-size: $catalog-font-s;
-    line-height: 1.4;
-    margin-bottom: 0.6em;
+    // font-family: $catalog-font-family;
+    // font-size: $catalog-font-s;
+    // line-height: 1.4;
+    // margin-bottom: 0.6em;
   }
 
-  a    { @include cg-link; }
-  code { @include cg-code; }
+  @include cg-inline-elements;
 }
 
 @mixin cg-blockquote {
   quotes: none;
+  margin: 0;
   &:before, &:after {
     content: '';
     content: none;
@@ -63,9 +63,14 @@
 }
 
 @mixin cg-code {
+  background: #e1e1e1;
+  border-radius: 3px;
+  color: #555;
+  display: inline-block;
   font-family: $catalog-font-mono;
-  font-size: $catalog-font-s;
-  line-height: 1.4;
+  font-weight: 300;
+  padding: 0 0.317em;
+  text-indent: 0;
 }
 
 @mixin cg-link {
@@ -74,4 +79,11 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+@mixin cg-inline-elements {
+  i, em { font-style: italic; }
+  b, strong { font-weight: 500; }
+  a    { @include cg-link; }
+  code { @include cg-code; }
 }

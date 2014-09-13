@@ -21,7 +21,7 @@ module.exports = React.createClass
     window.removeEventListener 'resize'
 
   render: ->
-    topHeight = 66
+    topHeight = 74
     sideWidthDefault = 200
     sideWidth = if @state.sidebarVisible then sideWidthDefault else 0
     contentWidth = if @state.sidebarVisible then @state.viewportWidth - sideWidth else @state.viewportWidth
