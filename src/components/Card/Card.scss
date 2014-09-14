@@ -2,11 +2,17 @@
 @import "../../scaffold/lists";
 @import "../../scaffold/typography";
 
+@mixin cg-Card-container {
+  max-width: 671px;
+}
+
 %cg-Card-heading {
+  @include cg-Card-container;
   @include cg-heading(2);
 }
 
 %cg-Card-section {
+  @include cg-Card-container;
   @include cg-heading(3);
 
   code {
@@ -17,6 +23,7 @@
 }
 
 %cg-Card-component-heading {
+  @include cg-Card-container;
   @include cg-heading(4);
   code {
     color: $catalog-text-medium;
@@ -26,22 +33,26 @@
 }
 
 %cg-Card-lead-text {
+  @include cg-Card-container;
   @include cg-blockquote;
   p { @include cg-text(1); }
 }
 
 %cg-Card-paragraph {
+  @include cg-Card-container;
   @include cg-text(2);
   max-width: 43em;
 }
 
 %cg-Card-ulist {
+  @include cg-Card-container;
   @include cg-ulist;
   @include cg-text(2);
   & > li:before { color: $catalog-light-color; }
 }
 
 %cg-Card-olist {
+  @include cg-Card-container;
   @include cg-olist;
   @include cg-text(2);
   & > li:before { color: $catalog-light-color; }

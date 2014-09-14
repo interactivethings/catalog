@@ -3,8 +3,6 @@
 @import "../../scaffold/typography";
 
 @mixin cg-Page-container {
-  margin-left: 0;
-  margin-right: 0;
   max-width: 671px;
   padding-left: $size-l;
   padding-right: $size-l;
