@@ -82,7 +82,7 @@
 
 @mixin cg-inline-elements {
   i, em { font-style: italic; }
-  b, strong { font-weight: 500; }
+  b, strong { font-weight: 400; }
   a    { @include cg-link; }
   code { @include cg-code; }
 }
