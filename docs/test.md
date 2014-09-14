@@ -1,6 +1,6 @@
 # Page typography with a somewhat long title to make sure we have a line break
 
-> This page demonstrates how Catalog can be used. A Catalog page always starts with an introductory text like this and then describes the individual components in Catalog Cards.
+> This page demonstrates all the typographic combinations in Catalog and serves as a test case at the same time. A Catalog page always starts with an introductory text like this and then describes the individual components in Catalog Cards.
 
 An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things.
 

@@ -1,57 +1,9 @@
 @import "../config";
-@import url(http://fonts.googleapis.com/css?family=Dosis:600|Source+Sans+Pro:300,600,300italic,600italic|Source+Code+Pro:400,600);
-@import "../scaffold/typography";
-
-$base-em-font-size: 1em;
-
-// Returns a unitless number that is a multiple of our defined base vertical unit.
-// For example 3 becomes 1.125
-@function unitlessRhythm($lines: $base-line-multi, $font-size: $base-em-font-size) {
-  @return ($lines * strip-units($base-vertical-unit)) / (strip-units($font-size) * strip-units($base-font-size));
-}
-
-@mixin debug-vertical-alignment($opacity: 0.2, $vertical-unit: $base-vertical-unit, $type-base-line-multi: $base-line-multi, $type-size: $base-em-font-size) {
-  position: relative;
-
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    display: none;
-  }
-
-  &:before {
-    z-index: 10;
-    background-image: -webkit-linear-gradient(rgba(233, 0, 0, $opacity) 1px, rgba(0, 0, 0, 0) 1px);
-    background-image: linear-gradient(rgba(233, 0, 0, $opacity) 1px, rgba(0, 0, 0, 0) 1px);
-    background-size: 100% (unitlessRhythm($type-base-line-multi, $type-size) + 0rem);
-  }
-
-  &:after {
-    z-index: 9;
-    background-image: -webkit-linear-gradient(rgba(0, 233, 0, $opacity) 1px, rgba(0, 0, 0, 0) 1px);
-    background-image: linear-gradient(rgba(0, 233, 0, $opacity) 1px, rgba(0, 0, 0, 0) 1px);
-    background-size: 100% $vertical-unit;
-  }
-
-  &.va-debug:before, &.va-debug:after {
-    display: block;
-    pointer-events: none;
-  }
-}
-
+@import url(http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800|Source+Sans+Pro:300,400,500,600,700,800,300italic,600italic|Source+Code+Pro:200,300,400,500,600,700,800);
 
 .cg-Catalog {
   background: $catalog-background;
   margin: 0;
   padding: 0;
   position: relative;
-
-  // DEBUG
-  @include debug-vertical-alignment;
-  height: 3000px;
 }

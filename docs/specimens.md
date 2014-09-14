@@ -67,6 +67,18 @@ html|plain,light
 <span style="color:white">html|plain,dark</span>
 ```
 
+#### `html|plain,run-script`
+
+This is a running code example:
+
+```html|plain,run-script
+<div id="example-target">FAILED: Javascript was not run</div>
+<script>
+    var target = document.getElementById('example-target')
+    target.innerHTML = window.exampleValue + ' inserted by Javascript';
+</script>
+```
+
 ## Code
 
 To show code snippets.
