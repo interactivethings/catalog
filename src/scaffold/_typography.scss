@@ -22,12 +22,15 @@
     font-weight: 500;
     margin: 0 0 12px 0;
   } @else if $level == 3 {
-    @include set-type($catalog-font-l);
+    @include set-type($catalog-font-l, 6);
+    color: $catalog-text-medium;
     font-weight: 500;
-    margin: 0 0 5px 0;
+    margin: 23px 0 2px 0;
   } @else {
     @include set-type($catalog-font-m);
-    margin: 0;
+    color: $catalog-text-medium;
+    font-weight: 500;
+    margin: 0 0 -2px 0;
   }
 }
 
@@ -43,11 +46,6 @@
   } @else if $level == 2 {
     @include set-type($catalog-font-m, 6);
     margin: 0 0 16px 0;
-  } @else if $level == 3 {
-    // font-family: $catalog-font-family;
-    // font-size: $catalog-font-s;
-    // line-height: 1.4;
-    // margin-bottom: 0.6em;
   }
 
   @include cg-inline-elements;

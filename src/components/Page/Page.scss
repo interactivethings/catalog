@@ -48,4 +48,5 @@
   & > ul { @extend %cg-Page-ulist; }
   & > ol { @extend %cg-Page-olist; }
 
+  & > h1 + blockquote ~ blockquote p { font-style: italic; }
 }

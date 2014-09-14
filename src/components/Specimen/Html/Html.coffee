@@ -2,7 +2,7 @@ require('./Html.scss')
 
 R = require('ramda')
 React = require('react')
-{div, pre, section} = React.DOM
+{div, pre} = React.DOM
 
 
 module.exports = Html = React.createClass
@@ -18,7 +18,7 @@ module.exports = Html = React.createClass
       _.each @getDOMNode().querySelectorAll('script'), Catalog.actions.runscript
 
   render: ->
-    section
+    div
       className: blockClass()
       unless @props.modifiers.contains('no-source')
         div

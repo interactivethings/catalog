@@ -1,5 +1,8 @@
+require('./Specimen.scss')
+
 R = require('ramda')
 React = require('react')
+{section} = React.DOM
 
 Code = require('./Code/Code')
 Color = require('./Color/Color')
@@ -35,6 +38,6 @@ module.exports = Specimen = React.createClass
   render: ->
     renderer = Specimen.Renderer[@props.config.specimen]
     if renderer?
-      renderer(@props)
+      section {className: 'cg-Specimen'}, renderer(@props)
     else
       throw "Unknown specimen: #{@props.config.specimen}"
