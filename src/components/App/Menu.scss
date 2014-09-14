@@ -11,25 +11,21 @@
 }
 
 .cg-Menu-link {
-  @extend %cg-Menu-link-base;
   @include cg-text(2);
+  border-bottom: 1px solid $catalog-brand-color-line;
   color: $catalog-brand-color-light;
+  display: block;
+  margin: 0;
+  padding: 15px 40px;
+  text-decoration: none;
 
   &.active {
     color: #fff;
   }
 
   &:hover, &:focus, &:active {
-    @extend %cg-Menu-link-base;
-    @include cg-text(2);
     background: rgba(255,255,255,0.1);
     color: #fff;
+    text-decoration: none;
   }
-}
-
-%cg-Menu-link-base {
-  border-bottom: 1px solid $catalog-brand-color-line;
-  display: block;
-  padding: 15px 40px;
-  text-decoration: none;
 }

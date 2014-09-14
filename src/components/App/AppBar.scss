@@ -3,11 +3,13 @@
 
 .cg-AppBar {
   background: $catalog-brand-color;
-  padding: 20px 40px;
+  padding: $size-l $size-xxl;
 }
 
 .cg-AppBar-title {
   @include cg-heading(2);
   color: $catalog-brand-color-dark;
+  font-weight: 600;
   margin: 0;
+  text-transform: uppercase;
 }

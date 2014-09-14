@@ -22,7 +22,7 @@ module.exports = React.createClass
 
   render: ->
     topHeight = 74
-    sideWidthDefault = 200
+    sideWidthDefault = 251
     sideWidth = if @state.sidebarVisible then sideWidthDefault else 0
     contentWidth = if @state.sidebarVisible then @state.viewportWidth - sideWidth else @state.viewportWidth
     contentHeight = @state.viewportHeight - topHeight
