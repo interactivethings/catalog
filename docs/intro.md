@@ -16,23 +16,23 @@ To get started, look at the provided [example](#/example). If you view source, y
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/) or [Bower](http://bower.io/).
 
-### Install with npm
+#### Install with npm
 
 ```code
 npm install --save interactivethings/catalog.git#%VERSION%
 ```
 
-### Install with Bower
+#### Install with Bower
 
 ```code
 bower install --save https://github.com/interactivethings/catalog.git#%VERSION%
 ```
 
-### Download source code
+#### Download source code
 
 Go to Github to download the [source code](https://github.com/interactivethings/catalog/).
 
-### Using it on your local machine
+#### Using it on your local machine
 
 Catalog doesn't need anything besides a single Javascript file. However, to run Catalog on your local machine, you will have to use some kind of server due to browser security restrictions (the browser won't be able to load the Markdown files from your local file system). If you don't have an existing server for your project, use something simple like this Python server.
 
