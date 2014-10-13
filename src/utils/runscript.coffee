@@ -25,8 +25,8 @@ module.exports = ->
     ->
       new Promise (resolve, reject) ->
         execScript (script) ->
-          script.onload = resolve
-          script.onerror = reject
+          script.addEventListener 'load',  resolve, false
+          script.addEventListener 'error', reject,  false
           script.setAttribute 'src', src
 
   execInline = (src) ->
@@ -41,8 +41,7 @@ module.exports = ->
     script.setAttribute 'type', 'text/javascript'
     decorate(script)
     head = document.getElementsByTagName('head')[0] or document.documentElement
-    head.insertBefore script, head.firstChild
-    head.removeChild script
+    head.appendChild script
 
   # Public API
   (srcOrEl) ->

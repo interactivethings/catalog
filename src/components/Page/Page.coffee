@@ -30,7 +30,7 @@ module.exports = React.createClass
     content: null
 
   componentDidMount: ->
-    @props.scripts.map(Catalog.actions.runscript)
+    @props.scripts.forEach(Catalog.actions.runscript)
     @fetchPageData()
 
   render: ->
