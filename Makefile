@@ -31,14 +31,14 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install watch build doc nightly dist deploy clean clobber
+.PHONY: install server build doc nightly dist deploy clean clobber
 
 all: build
 
 install: _print-banner node_modules bower.json
 
-watch: install
-	@bin/watch
+server: install
+	@bin/server
 
 build: install clean
 	@webpack --colors --progress --hide-modules --config src/webpack.config.js

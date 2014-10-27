@@ -12,7 +12,7 @@ The only hard dependency is a recent [Node.js](http://nodejs.org/) version (we d
 
 After that, just run `make` in the project root to install all dependencies and build the project.
 
-During development, run `make watch` to automatically rebuild the project when you make changes to the source files.
+During development, run `make server` to automatically rebuild the project when you make changes to the source files.
 
 ### Publishing new versions
 
