@@ -1,4 +1,7 @@
 {Promise} = require('es6-promise')
+JSZip = require('jszip');
+saveAs = require('../../../../lib/FileSaver')
+
 require('./Project.scss')
 
 React = require('react')
@@ -31,9 +34,44 @@ module.exports = React.createClass
         className: 'cg-Specimen-Project-linkExternal'
         href: @props.index
         target: '_blank'
-        "In neuem Fenster öffnen"
+        "Open in new window"
+      a
+        className: 'cg-Specimen-Project-linkExternal'
+        href: "#"
+        onClick: @downloadPackage
+        "Download"
 
       TabbedSourceView(files: [@props.index].concat(@props.files))
+
+  downloadPackage: (evt) ->
+    evt.preventDefault()
+
+    folderName = @props.name or 'download'
+
+    zip = new JSZip()
+    root = zip.folder(folderName)
+
+    loaders = [@props.index].concat(@props.files).map (file) ->
+      new Promise (resolve, reject) ->
+        url = parseUrl(file)
+        [path..., name] = url.split('/')
+        reqwest(url: url, type: 'text')
+          .then((res) ->
+            resolve({
+              path: name,
+              content: res.responseText
+            })
+          )
+          .fail(reject)
+
+    Promise.all(loaders).then((files) ->
+      files.forEach (f) -> root.file(f.path, f.content)
+      blob = zip.generate(type: 'blob')
+      saveAs(blob, "#{folderName}.zip");
+
+    )
+    .catch (res) =>
+      console.log 'Preparing ZIP file failed', res
 
 
 TabbedSourceView = React.createClass

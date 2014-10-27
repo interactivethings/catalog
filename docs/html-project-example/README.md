@@ -16,6 +16,7 @@ This example has some more configuration, e.g. the size that could also be a str
 
 ```project
 {
+    "name": "html-project-example",
     "index": {
         "path": "docs/html-project-example/index.html",
         "template": "docs/html-project-example/template.html"
