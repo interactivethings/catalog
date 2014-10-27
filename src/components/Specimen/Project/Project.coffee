@@ -1,3 +1,4 @@
+{Promise} = require('es6-promise')
 require('./Project.scss')
 
 React = require('react')
@@ -19,7 +20,7 @@ module.exports = React.createClass
       className: 'cg-Specimen-Project'
       iframe
         className: 'cg-Specimen-Project-frame'
-        src: @props.index
+        src: parseUrl(@props.index)
         marginheight: 0
         marginwidth: 0
         scrolling: 'no'
@@ -31,6 +32,7 @@ module.exports = React.createClass
         href: @props.index
         target: '_blank'
         "In neuem Fenster öffnen"
+
       TabbedSourceView(files: [@props.index].concat(@props.files))
 
 
@@ -52,6 +54,7 @@ TabbedSourceView = React.createClass
     div {},
       if @props.files.length > 1
         @props.files.map (file, i) =>
+          file = parseUrl(file)
           [path..., name] = file.split('/')
           button
             key: i
@@ -70,13 +73,35 @@ TabbedSourceView = React.createClass
       tab: +evt.currentTarget.getAttribute('data-tab-id')
 
   loadSourceCode: ->
-    url = @props.files[@state.tab]
-    reqwest(url: url, type: 'text')
-      .then((res) => @setState sourceCode: res.responseText)
-      .fail (res) =>
+    file = @props.files[@state.tab]
+    templateUrl = parseTemplateUrl(file)
+
+    requests = [reqwest(url: parseUrl(file), type: 'text')]
+    requests.push(reqwest(url: templateUrl, type: 'text')) if templateUrl?
+
+    Promise.all(requests)
+      .then((res) =>
+        content = res.map((d) -> d.responseText)
+        @setState sourceCode: parseSourceCode(content...)
+      )
+      .catch (res) =>
         @setState
           error: res.statusText
           children: null
+
+
+parseSourceCode = (source, template) ->
+  if template?
+    doc = new DOMParser().parseFromString(source, 'text/html');
+    template.replace('${yield}', doc.body.innerHTML)
+  else
+    source
+
+parseUrl = (file) ->
+  if file.path? then file.path else file
+
+parseTemplateUrl = (file) ->
+  if file.template? then file.template else null
 
 parseSize = (size) ->
   {width, height} = size

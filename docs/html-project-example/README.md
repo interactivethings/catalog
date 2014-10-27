@@ -16,8 +16,10 @@ This example has some more configuration, e.g. the size that could also be a str
 
 ```project
 {
-    "index": "docs/html-project-example/index.html",
-    "readme": "docs/html-project-example/README.md",
+    "index": {
+        "path": "docs/html-project-example/index.html",
+        "template": "docs/html-project-example/template.html"
+    },
     "files": [
         "docs/html-project-example/data.tsv"
     ],
