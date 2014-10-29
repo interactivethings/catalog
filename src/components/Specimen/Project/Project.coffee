@@ -109,7 +109,7 @@ normalizeReferences = (files, html) ->
     continue if src is null
     for file in files
       if isSamePath(file.source, src)
-        script.setAttribute('src', file.target)
+        script.setAttribute('href', file.target)
 
   doc.documentElement.innerHTML
 
