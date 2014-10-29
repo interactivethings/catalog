@@ -5,7 +5,7 @@ reqwest = require('reqwest')
 
 module.exports = React.createClass
   getInitialState: ->
-    tab: 0
+    tab: null
     sourceCode: null
 
   getDefaultProps: ->
@@ -27,17 +27,21 @@ module.exports = React.createClass
             onClick: @selectTab
             file.target
 
-      textarea
-        className: 'cg-Specimen-Project-source'
-        value: if @state.sourceCode? then @state.sourceCode else 'Loading …'
-        readOnly: true
+      if @state.tab?
+        textarea
+          className: 'cg-Specimen-Project-source'
+          value: if @state.sourceCode? then @state.sourceCode else 'Loading …'
+          readOnly: true
 
   selectTab: (evt) ->
+    nextTab = +evt.currentTarget.getAttribute('data-tab-id')
     @setState
       sourceCode: null
-      tab: +evt.currentTarget.getAttribute('data-tab-id')
+      tab: if nextTab is @state.tab then null else nextTab
 
   loadSourceCode: ->
+    return unless @state.tab?
+
     file = @props.files[@state.tab]
 
     requests = [reqwest(url: file.source, type: 'text')]

@@ -25,6 +25,7 @@ This example has some more configuration, e.g. the size that could also be a str
         "data.tsv": "docs/html-project-example/data.tsv",
         "d3.js": "docs/html-project-example/d3.min.js"
     },
+    "sourceView": ["index.html", "data.tsv"],
     "size": {
         "height": 130,
         "width": 130

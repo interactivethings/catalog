@@ -34,7 +34,6 @@ module.exports = Specimen = React.createClass
       html:    (props) -> Html(body: props.body, modifiers: props.config.options)
       icon:    (props) -> Html(body: props.body, modifiers: props.config.options)
       type:    (props) -> Html(body: props.body, modifiers: props.config.options)
-      type:    (props) -> Project(body: props.body, modifiers: props.config.options)
       project: (props) -> Project(projectBodyToProps(props.body))
 
   render: ->

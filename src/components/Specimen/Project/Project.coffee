@@ -23,6 +23,10 @@ module.exports = React.createClass
       height: React.PropTypes.string
       width:  React.PropTypes.string
     }).isRequired
+    sourceView: React.PropTypes.array
+
+  getDefaultProps: ->
+    sourceView: []
 
   render: ->
     {width, height} = @props.size
@@ -49,7 +53,7 @@ module.exports = React.createClass
         onClick: @download
         "Download"
 
-      TabbedSourceView(files: @props.files)
+      TabbedSourceView(files: @props.files.filter (d) => _.contains @props.sourceView, d.target)
 
   download: (evt) ->
     evt.preventDefault()
