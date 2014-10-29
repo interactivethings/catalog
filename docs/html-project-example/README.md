@@ -8,7 +8,7 @@ A simple example
 
 ```project
 {
-    "index": "docs/html-project-example/index.html"
+    "index.html": "docs/html-project-example/index.html"
 }
 ```
 
@@ -17,13 +17,14 @@ This example has some more configuration, e.g. the size that could also be a str
 ```project
 {
     "name": "html-project-example",
-    "index": {
-        "path": "docs/html-project-example/index.html",
-        "template": "docs/html-project-example/template.html"
+    "files": {
+        "index.html": {
+            "source": "docs/html-project-example/index.html",
+            "template": "docs/html-project-example/template.html"
+        },
+        "data.tsv": "docs/html-project-example/data.tsv",
+        "d3.js": "docs/html-project-example/d3.min.js"
     },
-    "files": [
-        "docs/html-project-example/data.tsv"
-    ],
     "size": {
         "height": 130,
         "width": 130

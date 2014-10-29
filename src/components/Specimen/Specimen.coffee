@@ -8,6 +8,7 @@ Code = require('./Code/Code')
 Color = require('./Color/Color')
 Html = require('./Html/Html')
 Project = require('./Project/Project')
+projectBodyToProps = require('./Project/bodyToProps')
 
 
 module.exports = Specimen = React.createClass
@@ -33,7 +34,8 @@ module.exports = Specimen = React.createClass
       html:    (props) -> Html(body: props.body, modifiers: props.config.options)
       icon:    (props) -> Html(body: props.body, modifiers: props.config.options)
       type:    (props) -> Html(body: props.body, modifiers: props.config.options)
-      project: (props) -> Project(JSON.parse(props.body))
+      type:    (props) -> Project(body: props.body, modifiers: props.config.options)
+      project: (props) -> Project(projectBodyToProps(props.body))
 
   render: ->
     renderer = Specimen.Renderer[@props.config.specimen]
