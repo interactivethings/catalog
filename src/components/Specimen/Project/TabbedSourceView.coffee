@@ -1,3 +1,5 @@
+require('./TabbedSourceView.scss')
+
 React = require('react')
 reqwest = require('reqwest')
 {button, div, textarea} = React.DOM
@@ -18,10 +20,11 @@ module.exports = React.createClass
     @loadSourceCode() unless @state.sourceCode?
 
   render: ->
-    div {},
+    div {className: 'cg-Specimen-TabbedSourceView'},
       if @props.files.length > 1
         @props.files.map (file, i) =>
           button
+            className: "cg-Specimen-TabbedSourceView-tab #{'active' if i is @state.tab}"
             key: i
             'data-tab-id': i
             onClick: @selectTab
@@ -29,7 +32,7 @@ module.exports = React.createClass
 
       if @state.tab?
         textarea
-          className: 'cg-Specimen-Project-source'
+          className: 'cg-Specimen-TabbedSourceView-source'
           value: if @state.sourceCode? then @state.sourceCode else 'Loading …'
           readOnly: true
 

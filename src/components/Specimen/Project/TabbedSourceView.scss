@@ -1,0 +1,36 @@
+@import "../../../config";
+@import "../../../scaffold/typography";
+
+.cg-Specimen-TabbedSourceView {
+
+}
+
+.cg-Specimen-TabbedSourceView-tab {
+  @include cg-text(2);
+  @include cg-link;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  margin-right: 1.333em;
+  margin-top: 0.6em;
+  padding: 0;
+
+  &.active {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.cg-Specimen-TabbedSourceView-source {
+  @include cg-code;
+  background: #eee;
+  display: block;
+  border: none;
+  height: 15em;
+  width: 90%;
+}
