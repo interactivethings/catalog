@@ -143,10 +143,9 @@ filterMatching = (list, prop) ->
 
 normalizeReferencesSimple = (rootPath, files, body) ->
   for file in files
-    source = normalizePath(rootPath, file.source)
-    regexp = new RegExp("([\"\'])[\.\/a-z0-9]*(#{escapeRegExp(filename(file.source))})([\"\'])", 'gi')
+    regexp = new RegExp("([\"\'])([\.\/a-z0-9]*#{escapeRegExp(filename(file.source))})([\"\'])", 'gi')
     body = body.replace regexp, (_, left, path, right) ->
-      targetPath = if source is normalizePath(rootPath, path)
+      targetPath = if file.source is normalizePath(rootPath, path)
         file.target
       else
         path

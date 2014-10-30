@@ -24,7 +24,7 @@ This example has some more configuration, e.g. the size that could also be a str
         },
         "script.js": "docs/html-project-example/script.js",
         "data.tsv": "docs/html-project-example/example-data.tsv",
-        "d3.js": "docs/html-project-example/d3.min.js"
+        "d3.js": "docs/vendor/d3.min.js"
     },
     "sourceView": ["index.html", "script.js", "data.tsv"],
     "size": {
