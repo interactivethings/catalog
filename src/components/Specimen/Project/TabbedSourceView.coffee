@@ -2,6 +2,7 @@ require('./TabbedSourceView.scss')
 
 React = require('react')
 reqwest = require('reqwest')
+normalizeReferences = require('./normalizeReferences')
 {button, div, textarea} = React.DOM
 
 
@@ -12,6 +13,7 @@ module.exports = React.createClass
 
   getDefaultProps: ->
     files: []
+    sourceFiles: []
 
   componentDidMount: ->
     @loadSourceCode()
@@ -21,8 +23,8 @@ module.exports = React.createClass
 
   render: ->
     div {className: 'cg-Specimen-TabbedSourceView'},
-      if @props.files.length > 1
-        @props.files.map (file, i) =>
+      if @props.sourceFiles.length > 1
+        @props.sourceFiles.map (file, i) =>
           button
             className: "cg-Specimen-TabbedSourceView-tab #{'active' if i is @state.tab}"
             key: i
@@ -45,7 +47,7 @@ module.exports = React.createClass
   loadSourceCode: ->
     return unless @state.tab?
 
-    file = @props.files[@state.tab]
+    file = @props.sourceFiles[@state.tab]
 
     requests = [reqwest(url: file.source, type: 'text')]
     requests.push(reqwest(url: file.template, type: 'text')) if file.template?
@@ -53,7 +55,8 @@ module.exports = React.createClass
     Promise.all(requests)
       .then((res) =>
         content = res.map((d) -> d.responseText)
-        @setState sourceCode: parseSourceCode(content...)
+        sourceCode = parseSourceCode(content...)
+        @setState sourceCode: normalizeReferences(@props.rootPath, @props.files, sourceCode)
       )
       .catch (res) =>
         @setState
