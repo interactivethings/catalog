@@ -1,4 +1,4 @@
-/* Catalog Build 20141030.1414674674 http://interactivethings.github.io/catalog/ */
+/* Catalog 1.1.0 http://interactivethings.github.io/catalog/ */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
