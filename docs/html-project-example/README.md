@@ -2,9 +2,19 @@
 
 > Catalog lets you work with HTML projects
 
-## Line Chart
+## Example Line Chart
 
-A simple example
+A project needs an `index.html` file and will render this inside an `iframe`. A minimal project manifest looks like this:
+
+```code
+&#96;&#96;&#96;<strong>project</strong>
+{
+    "index.html": "docs/html-project-example/index.html"
+}
+&#96;&#96;&#96;
+```
+
+And renders this:
 
 ```project
 {
@@ -12,7 +22,34 @@ A simple example
 }
 ```
 
-This example has some more configuration, e.g. the size that could also be a string for "phone" or "tablet", etc. Also, these sizes could be configurable through the Catalog config.
+
+## Advanced Project Configuration
+
+This example has all configuration options available:
+
+```code
+&#96;&#96;&#96;<strong>project</strong>
+{
+    "name": "html-project-example",
+    "files": {
+        "index.html": {
+            "source": "docs/html-project-example/index.html",
+            "template": "docs/html-project-example/template.html"
+        },
+        "script.js": "docs/html-project-example/script.js",
+        "data.tsv": "docs/html-project-example/example-data.tsv",
+        "d3.js": "docs/vendor/d3.min.js"
+    },
+    "sourceView": ["index.html", "script.js", "data.tsv"],
+    "size": {
+        "height": 130,
+        "width": 130
+    }
+}
+&#96;&#96;&#96;
+```
+
+This renders the project like this:
 
 ```project
 {
@@ -34,9 +71,3 @@ This example has some more configuration, e.g. the size that could also be a str
 }
 ```
 
-### Configuration
-
-The ordinary line chart has some properties:
-
-* Property A
-* Property B
