@@ -4,6 +4,7 @@
 .cg-Specimen-Project {
   margin-top: 15px;
   margin-bottom: 30px;
+  overflow: auto;
 }
 
 .cg-Specimen-Project-frame {
@@ -12,18 +13,10 @@
 }
 
 .cg-Specimen-Project-linkExternal {
-  @include cg-text(3);
+  @include cg-text(2);
   @include cg-link;
   display: inline-block;
+  float: left;
+  margin-right: 1.333em;
   margin-top: 0.6em;
-}
-
-.cg-Specimen-Project-source {
-  @include cg-text(3);
-  @include cg-code;
-  background: #eee;
-  display: block;
-  border: none;
-  height: 15em;
-  width: 100%;
 }

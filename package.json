@@ -13,6 +13,7 @@
     "es6-promise": "1.0.0",
     "expose-loader": "0.5.3",
     "find-port": "1.0.0",
+    "jszip": "2.4.0",
     "lodash": "2.4.1",
     "mach": "0.12.0",
     "marked": "0.3.2",

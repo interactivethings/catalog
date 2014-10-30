@@ -1,25 +1,43 @@
+{Promise} = require('es6-promise')
+JSZip = require('jszip');
+saveAs = require('../../../../lib/FileSaver')
+
 require('./Project.scss')
 
 React = require('react')
 reqwest = require('reqwest')
+fileUtils = require('../../../utils/fileUtils')
+TabbedSourceView = require('./TabbedSourceView')
+normalizeReferences = require('./normalizeReferences')
 {a, button, div, iframe, section, textarea} = React.DOM
 
+
+#
+# Project component
+#
+
 module.exports = React.createClass
+  propTypes:
+    name: React.PropTypes.string.isRequired
+    index: React.PropTypes.object
+    files: React.PropTypes.array.isRequired
+    size: React.PropTypes.shape({
+      height: React.PropTypes.string
+      width:  React.PropTypes.string
+    }).isRequired
+    sourceView: React.PropTypes.array
+
   getDefaultProps: ->
-    index: null
-    files: []
-    size:
-      height: 500,
-      width: '100%'
+    sourceView: []
 
   render: ->
-    {width, height} = parseSize(@props.size)
+    {width, height} = @props.size
 
     div
       className: 'cg-Specimen-Project'
       iframe
         className: 'cg-Specimen-Project-frame'
-        src: @props.index
+        src: @props.index.source
         marginheight: 0
         marginwidth: 0
         scrolling: 'no'
@@ -28,58 +46,60 @@ module.exports = React.createClass
           width: "#{width}"
       a
         className: 'cg-Specimen-Project-linkExternal'
-        href: @props.index
+        href: @props.index.source
         target: '_blank'
-        "In neuem Fenster öffnen"
-      TabbedSourceView(files: [@props.index].concat(@props.files))
+        "Open in new window"
+      a
+        className: 'cg-Specimen-Project-linkExternal'
+        href: "#"
+        onClick: @download
+        "Download"
+
+      TabbedSourceView
+        rootPath: fileUtils.dirname(@props.index.source)
+        files: @props.files
+        sourceFiles: sourceViewFiles(@props)
+
+  download: (evt) ->
+    evt.preventDefault()
+
+    zip = new JSZip()
+    root = zip.folder(@props.name)
+
+    rootPath = fileUtils.dirname(@props.index.source)
+
+    files = @props.files.map (file) =>
+      new Promise (resolve, reject) =>
+        reqwest(url: file.source, type: 'text')
+          .then((res) =>
+            content = if _.contains sourceViewFiles(@props), file
+              normalizeReferences(rootPath, @props.files, res.responseText)
+            else
+              res.responseText
+
+            resolve({
+              path: file.target,
+              content: content
+            })
+          )
+          .fail(reject)
+
+    Promise.all(files).then((files) =>
+      files.forEach (f) -> root.file(f.path, f.content)
+      blob = zip.generate(type: 'blob')
+      saveAs(blob, "#{@props.name}.zip");
+    )
+    .catch (res) =>
+      console.log 'Preparing ZIP file failed', res
 
 
-TabbedSourceView = React.createClass
-  getInitialState: ->
-    tab: 0
-    sourceCode: null
+#
+# Utils
+#
 
-  getDefaultProps: ->
-    files: []
+sourceViewFiles = (props) ->
+  props.files.filter (d) -> _.contains props.sourceView, d.target
 
-  componentDidMount: ->
-    @loadSourceCode()
+filterMatching = (list, prop) ->
+  (d) -> _.contains(list, d[prop])
 
-  componentDidUpdate: ->
-    @loadSourceCode() unless @state.sourceCode?
-
-  render: ->
-    div {},
-      if @props.files.length > 1
-        @props.files.map (file, i) =>
-          [path..., name] = file.split('/')
-          button
-            key: i
-            'data-tab-id': i
-            onClick: @selectTab
-            name
-
-      textarea
-        className: 'cg-Specimen-Project-source'
-        value: if @state.sourceCode? then @state.sourceCode else 'Loading …'
-        readOnly: true
-
-  selectTab: (evt) ->
-    @setState
-      sourceCode: null
-      tab: +evt.currentTarget.getAttribute('data-tab-id')
-
-  loadSourceCode: ->
-    url = @props.files[@state.tab]
-    reqwest(url: url, type: 'text')
-      .then((res) => @setState sourceCode: res.responseText)
-      .fail (res) =>
-        @setState
-          error: res.statusText
-          children: null
-
-parseSize = (size) ->
-  {width, height} = size
-  height = "#{height}px" if typeof height is 'number'
-  width  = "#{width}px"  if typeof width  is 'number'
-  {width, height}
