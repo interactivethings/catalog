@@ -68,6 +68,7 @@ module.exports = React.createClass
 
     rootPath = fileUtils.dirname(@props.index.source)
 
+    virtualFiles = []
     files = @props.files.map (file) =>
       new Promise (resolve, reject) =>
         reqwest(url: file.source, type: 'text')
@@ -76,6 +77,9 @@ module.exports = React.createClass
               normalizeReferences(rootPath, @props.files, res.responseText)
             else
               res.responseText
+
+            if file is @props.index
+              virtualFiles = virtualFiles.concat(parseExposedFiles(content))
 
             resolve({
               path: file.target,
@@ -86,6 +90,7 @@ module.exports = React.createClass
 
     Promise.all(files).then((files) =>
       files.forEach (f) -> root.file(f.path, f.content)
+      virtualFiles.forEach (f) -> root.file(f.path, f.content)
       blob = zip.generate(type: 'blob')
       saveAs(blob, "#{@props.name}.zip");
     )
@@ -103,3 +108,12 @@ sourceViewFiles = (props) ->
 filterMatching = (list, prop) ->
   (d) -> _.contains(list, d[prop])
 
+parseExposedFiles = (source) ->
+  doc = new DOMParser().parseFromString(source, 'text/html');
+  files = []
+  for node in doc.querySelectorAll('[data-catalog-project-expose]')
+    console.log node
+    files.push
+      path: node.getAttribute('data-catalog-project-expose')
+      content: node.innerHTML
+  files
