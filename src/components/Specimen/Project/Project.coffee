@@ -6,6 +6,7 @@ require('./Project.scss')
 
 React = require('react')
 reqwest = require('reqwest')
+escapeRegExp = require('../../../utils/escapeRegExp')
 TabbedSourceView = require('./TabbedSourceView')
 {a, button, div, iframe, section, textarea} = React.DOM
 
@@ -53,7 +54,7 @@ module.exports = React.createClass
         onClick: @download
         "Download"
 
-      TabbedSourceView(files: @props.files.filter (d) => _.contains @props.sourceView, d.target)
+      TabbedSourceView(files: sourceViewFiles(@props))
 
   download: (evt) ->
     evt.preventDefault()
@@ -61,12 +62,14 @@ module.exports = React.createClass
     zip = new JSZip()
     root = zip.folder(@props.name)
 
+    rootPath = dirname(@props.index.source)
+
     files = @props.files.map (file) =>
       new Promise (resolve, reject) =>
         reqwest(url: file.source, type: 'text')
           .then((res) =>
-            content = if file is @props.index
-              normalizeReferences(@props.files, res.responseText)
+            content = if _.contains sourceViewFiles(@props), file
+              normalizeReferencesSimple(rootPath, @props.files, res.responseText)
             else
               res.responseText
 
@@ -90,32 +93,63 @@ module.exports = React.createClass
 # Utils
 #
 
-normalizeReferences = (files, html) ->
-  doc = new DOMParser().parseFromString(html, 'text/html')
+dirname = (path) ->
+  [_dirname..., _] = path.split('/')
+  _dirname.shift('') if _dirname[0] is ''
+  _dirname.join('/')
 
-  # Scripts
-  scripts = doc.getElementsByTagName('script')
-  for script in scripts
-    src = script.getAttribute('src')
-    continue if src is null
-    for file in files
-      if isSamePath(file.source, src)
-        script.setAttribute('src', file.target)
+# root = a/b
+# path -> a/b/path
+# ./path -> a/b/path
+# ../path -> a/path
+# ../../path -> path
+# ../../../path -> ../a/b/path
+# b/path -> a/b/path
+# /path -> /path
 
-  # Links
-  links = doc.getElementsByTagName('link')
-  for script in links
-    src = script.getAttribute('href')
-    continue if src is null
-    for file in files
-      if isSamePath(file.source, src)
-        script.setAttribute('href', file.target)
+filename = (path) ->
+  [_..., _filename] = path.split('/')
+  _filename
 
-  doc.documentElement.innerHTML
+normalizePath = (root, path) ->
+  return path if path.match(/^\//)
 
-isSamePath = (a, b) ->
-  rootPath(a) is rootPath(b)
+  rootFragments = root.split('/').reverse()
+  fragments = path.split('/').reverse()
 
-rootPath = (path) ->
-  if path.match(/^(?!http)[^\/](.*)/i) then "/#{path}" else path
+  result = []
+  for fragment in fragments
+    switch fragment
+      when '.'
+        result = result.concat(rootFragments)
+        rootFragments = []
+      when '..'
+        if rootFragments.length > 0
+          rootFragments.shift()
+        else
+          result.push(fragment)
+      else
+        rootFragments.shift() if fragment is rootFragments[0]
+        result.push(fragment)
 
+  result.concat(rootFragments).reverse().join('/')
+
+
+sourceViewFiles = (props) ->
+  props.files.filter (d) -> _.contains props.sourceView, d.target
+
+filterMatching = (list, prop) ->
+  (d) -> _.contains(list, d[prop])
+
+normalizeReferencesSimple = (rootPath, files, body) ->
+  for file in files
+    source = normalizePath(rootPath, file.source)
+    regexp = new RegExp("([\"\'])[\.\/a-z0-9]*(#{escapeRegExp(filename(file.source))})([\"\'])", 'gi')
+    body = body.replace regexp, (_, left, path, right) ->
+      targetPath = if source is normalizePath(rootPath, path)
+        file.target
+      else
+        path
+      left + targetPath + right
+    null
+  body
