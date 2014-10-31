@@ -1,8 +1,11 @@
 # Change Log
 All notable changes to Catalog will be documented in this file.
 
+## 1.1.2 - 2014-10-31
+Nested menu navigation.
+
 ## 1.1.1 - 2014-10-30
-Project specimen: allow files to be exposed for download
+Project specimen: allow files to be exposed for download.
 
 ## 1.1.0 - 2014-10-30
 Renamed `make watch` to `make server` to better describe its purpose.
