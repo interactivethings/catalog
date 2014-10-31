@@ -14,18 +14,41 @@
   @include cg-text(2);
   border-bottom: 1px solid $catalog-brand-color-line;
   color: $catalog-brand-color-light;
+  cursor: pointer;
   display: block;
   margin: 0;
   padding: 15px 40px;
   text-decoration: none;
 
-  &.active {
-    color: #fff;
+  &.cg-Menu-link--children {
+    border-bottom: none;
   }
 
   &:hover, &:focus, &:active {
     background: rgba(255,255,255,0.1);
     color: #fff;
     text-decoration: none;
+  }
+
+  &.active {
+    background: $catalog-brand-color-line;
+    color: #fff;
+  }
+}
+
+
+// Modifiers
+
+.cg-Menu-list.cg-Menu-list--nested {
+  border-top: none;
+  border-bottom: 1px solid $catalog-brand-color-line;
+  padding-left: 40px;
+  padding-bottom: 15px;
+
+  .cg-Menu-link {
+    border: none;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-top: 5px;
   }
 }

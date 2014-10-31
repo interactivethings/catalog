@@ -16,7 +16,13 @@ module.exports.start = (selector, config) ->
       config.pages.map (page) ->
         styles = _.uniq _.compact [].concat(config.styles).concat(page.styles)
         scripts = _.uniq _.compact [].concat(config.scripts).concat(page.scripts)
-        Route _.extend(key: page.name, handler: Page, styles: styles, scripts: scripts, page)
+        if page.pages?
+          page.pages.map (subpage) ->
+            styles = _.uniq _.compact [].concat(config.styles).concat(subpage.styles)
+            scripts = _.uniq _.compact [].concat(config.scripts).concat(subpage.scripts)
+            Route _.extend(key: subpage.name, handler: Page, styles: styles, scripts: scripts, subpage)
+        else
+          Route _.extend(key: page.name, handler: Page, styles: styles, scripts: scripts, page)
     Redirect(from: '*', to: '/')
 
   rootElement = document.querySelector(selector)

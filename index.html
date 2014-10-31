@@ -16,15 +16,21 @@
         {name: 'intro', path: '/', title: "Introduction", src: "docs/intro.md"},
         {name: 'usage', title: "Usage", src: "docs/usage.md"},
         {
-          name: 'specimens',
+          name: 'specimens-group',
           title: "Specimens",
-          src: "docs/specimens.md",
-          scripts: ['docs/specimens.js'],
-        },
-        {
-          name: 'html-project',
-          title: 'HTML Project',
-          src: 'docs/html-project-example/README.md'
+          pages: [
+            {
+              name: 'specimens',
+              title: "Overview",
+              src: "docs/specimens.md",
+              scripts: ['docs/specimens.js']
+            },
+            {
+              name: 'html-project',
+              title: 'HTML Project',
+              src: 'docs/html-project-example/README.md'
+            }
+          ]
         },
         {
           name: 'test',

@@ -10,7 +10,7 @@ module.exports = React.createClass
     pages: React.PropTypes.arrayOf(React.PropTypes.shape
       title: React.PropTypes.string.isRequired
       name:  React.PropTypes.string.isRequired
-      src:   React.PropTypes.string.isRequired
+      src:   React.PropTypes.string
       path:  React.PropTypes.string
     ).isRequired
     styles:  React.PropTypes.arrayOf(React.PropTypes.string)
