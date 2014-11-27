@@ -39,6 +39,7 @@ This example has all configuration options available:
 &#96;&#96;&#96;<strong>project</strong>
 {
     "name": "html-project-example",
+    "scrolling": "no",
     "files": {
         "index.html": {
             "source": "docs/html-project-example/visualization.html",
@@ -58,6 +59,7 @@ This renders the project like this:
 ```project
 {
     "name": "html-project-example",
+    "scrolling": "no",
     "files": {
         "index.html": {
             "source": "docs/html-project-example/visualization.html",
