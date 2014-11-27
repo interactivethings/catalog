@@ -12,6 +12,7 @@ INDEX = 'index.html'
 DEFAULTS =
   name: 'project'
   files: {}
+  scrolling: 'no'
   size:
     height: 500
     width: '100%'

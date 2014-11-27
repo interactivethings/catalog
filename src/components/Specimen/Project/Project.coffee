@@ -20,6 +20,7 @@ module.exports = React.createClass
   propTypes:
     name: React.PropTypes.string.isRequired
     index: React.PropTypes.object
+    scrolling: React.PropTypes.string.isRequired
     files: React.PropTypes.array.isRequired
     size: React.PropTypes.shape({
       height: React.PropTypes.string
@@ -40,7 +41,7 @@ module.exports = React.createClass
         src: @props.index.source
         marginheight: 0
         marginwidth: 0
-        scrolling: 'no'
+        scrolling: @props.scrolling
         style:
           height: "#{height}"
           width: "#{width}"
