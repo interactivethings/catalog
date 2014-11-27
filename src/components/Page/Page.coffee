@@ -1,6 +1,5 @@
 require('./Page.scss')
 
-_ = require('lodash')
 reqwest = require('reqwest')
 React = require('react')
 Loader = require('./Loader')

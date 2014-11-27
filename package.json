@@ -24,6 +24,7 @@
     "react-router": "0.5.3",
     "reqwest": "1.1.2",
     "sass-loader": "0.2.0",
+    "sprout-data": "^0.2.1",
     "style-loader": "0.8.0",
     "uglify-js": "2.4.15",
     "webpack": "1.4.0-beta4"

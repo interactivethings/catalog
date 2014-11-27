@@ -1,4 +1,4 @@
-_ = require('lodash')
+sprout = require('sprout-data')
 
 #
 # {
@@ -19,7 +19,7 @@ DEFAULTS =
 
 
 module.exports = (body) ->
-  config = _.extend {}, DEFAULTS, JSON.parse(body)
+  config = sprout.merge DEFAULTS, JSON.parse(body)
 
   # An index property must be available at one of these locations:
   #
@@ -47,7 +47,7 @@ module.exports = (body) ->
   unless index?
     throw new Error('"index.html" must be defined')
 
-  config.files[INDEX] = index
+  config = sprout.assoc config, ['files', INDEX], index
 
   # All files need to have the same interface
   files = []
