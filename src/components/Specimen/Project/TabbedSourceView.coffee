@@ -71,6 +71,8 @@ module.exports = React.createClass
 parseSourceCode = (source, template) ->
   if template?
     doc = new DOMParser().parseFromString(source, 'text/html');
+    for node in doc.querySelectorAll('[data-catalog-project-expose]')
+      node.removeAttribute('data-catalog-project-expose')
     template.replace('${yield}', doc.body.innerHTML)
   else
     source

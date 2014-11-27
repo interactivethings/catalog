@@ -68,6 +68,8 @@ module.exports = React.createClass
 
     rootPath = fileUtils.dirname(@props.index.source)
 
+    # It worked! The monkeys banged away on the keyboard and something functioning
+    # came out of it! Such mess, but such works. Wow.
     virtualFiles = []
     files = @props.files.map (file) =>
       new Promise (resolve, reject) =>
@@ -81,10 +83,28 @@ module.exports = React.createClass
             if file is @props.index
               virtualFiles = virtualFiles.concat(parseExposedFiles(content))
 
-            resolve({
-              path: file.target,
-              content: content
-            })
+              if file.template?
+                reqwest(url: file.template, type: 'text').then (templateRes) =>
+                  template = templateRes.responseText
+
+                  doc = new DOMParser().parseFromString(content, 'text/html');
+                  for node in doc.querySelectorAll('[data-catalog-project-expose]')
+                    path = node.getAttribute('data-catalog-project-expose')
+                    node.removeAttribute('data-catalog-project-expose')
+                    node.setAttribute('src', path)
+                    node.innerHTML = ''
+
+                  virtualFiles.push
+                    path: fileUtils.filename(file.template)
+                    content: template.replace('${yield}', doc.body.innerHTML)
+
+                  content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '')
+                  resolve(path: file.target, content: content)
+              else
+                content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '')
+                resolve(path: file.target, content: content)
+            else
+              resolve(path: file.target, content: content)
           )
           .fail(reject)
 
@@ -112,8 +132,9 @@ parseExposedFiles = (source) ->
   doc = new DOMParser().parseFromString(source, 'text/html');
   files = []
   for node in doc.querySelectorAll('[data-catalog-project-expose]')
-    console.log node
+    path = node.getAttribute('data-catalog-project-expose')
+    node.removeAttribute('data-catalog-project-expose')
     files.push
-      path: node.getAttribute('data-catalog-project-expose')
+      path: path
       content: node.innerHTML
   files
