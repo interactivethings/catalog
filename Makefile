@@ -11,7 +11,7 @@ BUILD_SOURCES = \
 
 DOC_SOURCES = \
 	index.html \
-	$(shell find docs -type f)
+	$(shell find docs -type f \( ! -iname ".*" \))
 
 DIST_DIR        = dist
 VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
@@ -83,7 +83,7 @@ $(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/%: %
 $(LATEST_TARGETS): $(DIST_DIR)/%.js: $(VERSION_DIR)/%.min.js
 	@cp $< $@
 
-$(DOC_TARGETS): $(DIST_DIR)/%: %
+$(DOC_TARGETS): $(DIST_DIR)/%: % package.json
 	@mkdir -p $(dir $@)
 	@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@
 
