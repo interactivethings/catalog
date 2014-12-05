@@ -85,7 +85,18 @@ $(LATEST_TARGETS): $(DIST_DIR)/%.js: $(VERSION_DIR)/%.min.js
 
 $(DOC_TARGETS): $(DIST_DIR)/%: % package.json
 	@mkdir -p $(dir $@)
-	@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@
+# Replace the string %VERSION% in supported files with the current version,
+# otherwise just copy the file to the destination
+	$(if $(or \
+			$(findstring .css,  $(suffix $<)), \
+			$(findstring .html, $(suffix $<)), \
+			$(findstring .js,   $(suffix $<)), \
+			$(findstring .md,   $(suffix $<)), \
+			$(findstring .txt,  $(suffix $<)), \
+		), \
+		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
+		@cp $< $@)
+	@echo $@
 
 %.min.js: %.js
 	@echo . Compress $<
