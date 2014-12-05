@@ -1,11 +1,12 @@
 # Change Log
 All notable changes to Catalog will be documented in this file.
 
-## 1.1.3 - 1.1.5- 2014-11-27
+## 1.1.3 - 1.1.6- 2014-11-27
 
 - Project specimen downloads now include template file. Improved output.
 - Added `scrolling` option to project specimens.
 - Fixed the 'double-index' bug (couldn't include two simple-style project specimens).
+- Fixed download of binary files like images.
 
 ## 1.1.2 - 2014-10-31
 Nested menu navigation.
