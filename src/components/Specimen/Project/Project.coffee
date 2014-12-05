@@ -74,44 +74,71 @@ module.exports = React.createClass
     virtualFiles = []
     files = @props.files.map (file) =>
       new Promise (resolve, reject) =>
-        reqwest(url: file.source, type: 'text')
-          .then((res) =>
-            content = if _.contains sourceViewFiles(@props), file
-              normalizeReferences(rootPath, @props.files, res.responseText)
-            else
-              res.responseText
 
-            if file is @props.index
-              virtualFiles = virtualFiles.concat(parseExposedFiles(content))
+        # When dealing with an image, we need to make sure to load it as binary
+        # data, not plain text. We do this by issuing a custom request with a
+        # response type of 'arraybuffer'.
+        # https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
+        #
+        # This does not work in older browsers, if a need arises to support them,
+        # we can use the jBinary library instead.
+        # https://github.com/jDataView/jBinary/wiki
+        #
+        # Also, note that our 'image' detection is extremely primitive and won't
+        # support all images, let alone other binary data.
+        if isImage(file.source)
 
-              if file.template?
-                reqwest(url: file.template, type: 'text').then (templateRes) =>
-                  template = templateRes.responseText
+          req = new XMLHttpRequest()
+          req.open('GET', file.source, true)
+          req.responseType = 'arraybuffer'
+          req.onload = (evt) ->
+            # jszip also accepts raw array buffers as input
+            resolve(path: file.target, content: req.response)
+          req.onerror = reject
+          req.send(null)
 
-                  doc = new DOMParser().parseFromString(content, 'text/html');
-                  for node in doc.querySelectorAll('[data-catalog-project-expose]')
-                    path = node.getAttribute('data-catalog-project-expose')
-                    node.removeAttribute('data-catalog-project-expose')
-                    node.setAttribute('src', path)
-                    node.innerHTML = ''
+        # In all other cases, we want to load the file as plain text and process
+        # it further before adding it to the zip file.
+        else
 
-                  virtualFiles.push
-                    path: fileUtils.filename(file.template)
-                    content: template.replace('${yield}', doc.body.innerHTML)
+          reqwest(url: file.source, type: 'text', contentType: 'text/plain')
+            .then((res) =>
+              content = if _.contains sourceViewFiles(@props), file
+                normalizeReferences(rootPath, @props.files, res.responseText)
+              else
+                res.responseText
 
+              if file is @props.index
+                virtualFiles = virtualFiles.concat(parseExposedFiles(content))
+
+                if file.template?
+                  reqwest(url: file.template, type: 'text').then (templateRes) =>
+                    template = templateRes.responseText
+
+                    doc = new DOMParser().parseFromString(content, 'text/html');
+                    for node in doc.querySelectorAll('[data-catalog-project-expose]')
+                      path = node.getAttribute('data-catalog-project-expose')
+                      node.removeAttribute('data-catalog-project-expose')
+                      node.setAttribute('src', path)
+                      node.innerHTML = ''
+
+                    virtualFiles.push
+                      path: fileUtils.filename(file.template)
+                      content: template.replace('${yield}', doc.body.innerHTML)
+
+                    content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '')
+                    resolve(path: file.target, content: content)
+                else
                   content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '')
                   resolve(path: file.target, content: content)
               else
-                content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '')
                 resolve(path: file.target, content: content)
-            else
-              resolve(path: file.target, content: content)
-          )
-          .fail(reject)
+            )
+            .fail(reject)
 
     Promise.all(files).then((files) =>
-      files.forEach (f) -> root.file(f.path, f.content)
-      virtualFiles.forEach (f) -> root.file(f.path, f.content)
+      files.forEach (f) -> root.file(f.path, f.content, binary: isImage(f.path))
+      virtualFiles.forEach (f) -> root.file(f.path, f.content, binary: isImage(f.path))
       blob = zip.generate(type: 'blob')
       saveAs(blob, "#{@props.name}.zip");
     )
@@ -122,6 +149,9 @@ module.exports = React.createClass
 #
 # Utils
 #
+
+isImage = (path) ->
+  path.match(/\.(jpe?g|gif|png)$/)
 
 sourceViewFiles = (props) ->
   props.files.filter (d) -> _.contains props.sourceView, d.target
