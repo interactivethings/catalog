@@ -50,7 +50,9 @@ module.exports = React.createClass
     file = @props.sourceFiles[@state.tab]
 
     requests = [reqwest({url: file.source, type: 'text', headers: {Accept: 'text/plain,*/*'}})]
-    requests.push(reqwest({url: file.template, type: 'text', headers: {Accept: 'text/plain,*/*'}})) if file.template?
+
+    # Currently disabled, we only show whole files
+    # requests.push(reqwest({url: file.template, type: 'text', headers: {Accept: 'text/plain,*/*'}})) if file.template?
 
     Promise.all(requests)
       .then((res) =>
