@@ -101,7 +101,7 @@ module.exports = React.createClass
         # it further before adding it to the zip file.
         else
 
-          reqwest(url: file.source, type: 'text', contentType: 'text/plain')
+          reqwest(url: file.source, type: 'text', headers: {Accept: 'text/plain,*/*'})
             .then((res) =>
               content = if _.contains sourceViewFiles(@props), file
                 normalizeReferences(rootPath, @props.files, res.responseText)
