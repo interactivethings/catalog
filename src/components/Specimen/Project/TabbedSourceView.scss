@@ -29,6 +29,7 @@
 .cg-Specimen-TabbedSourceView-source {
   @include cg-code;
   background: #eee;
+  clear: both;
   display: block;
   border: none;
   height: 15em;
