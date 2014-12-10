@@ -10,7 +10,7 @@ Use Catalog to document HTML and CSS, colors, typography, and even interactive c
 
 To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
-* Catalog 1.1.8: [production](http://interactivethings.github.io/catalog/1.1.8/catalog.min.js), [development](http://interactivethings.github.io/catalog/1.1.8/catalog.js)
+* Catalog 1.1.9: [production](http://interactivethings.github.io/catalog/1.1.9/catalog.min.js), [development](http://interactivethings.github.io/catalog/1.1.9/catalog.js)
 * Latest build: [latest](http://interactivethings.github.io/catalog/catalog.js)
 * Nightly build: [experimental](http://interactivethings.github.io/catalog/nightly/catalog.js)
 
@@ -19,13 +19,13 @@ For real projects, we recommend to install Catalog using [npm](https://www.npmjs
 #### Install with npm
 
 ```code
-npm install --save interactivethings/catalog.git#1.1.8
+npm install --save interactivethings/catalog.git#1.1.9
 ```
 
 #### Install with Bower
 
 ```code
-bower install --save https://github.com/interactivethings/catalog.git#1.1.8
+bower install --save https://github.com/interactivethings/catalog.git#1.1.9
 ```
 
 #### Download source code

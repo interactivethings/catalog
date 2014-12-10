@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to Catalog will be documented in this file.
 
-## 1.1.3 - 1.1.8 - 2014-11-27
+## 1.1.3 - 1.1.9 - 2014-11-27
 
 - Project specimen downloads now include template file. Improved output.
 - Added `scrolling` option to project specimens.

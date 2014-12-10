@@ -112,7 +112,7 @@ module.exports = React.createClass
                 virtualFiles = virtualFiles.concat(parseExposedFiles(content))
 
                 if file.template?
-                  reqwest(url: file.template, type: 'text').then (templateRes) =>
+                  reqwest(url: file.template, type: 'text', headers: {Accept: 'text/plain,*/*'}).then (templateRes) =>
                     template = templateRes.responseText
 
                     doc = new DOMParser().parseFromString(content, 'text/html');
