@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to Catalog will be documented in this file.
 
-## 1.1.3 - 1.1.7 - 2014-11-27
+## 1.1.3 - 1.1.8 - 2014-11-27
 
 - Project specimen downloads now include template file. Improved output.
 - Added `scrolling` option to project specimens.
@@ -9,6 +9,7 @@ All notable changes to Catalog will be documented in this file.
 - Fixed download of binary files like images.
 - Fixed HTTP accept headers to work on all webservers
 - Changed display of tabbed source previews to always show full, not templated, file
+- Fix accidental use of native Promise.
 
 ## 1.1.2 - 2014-10-31
 Nested menu navigation.
