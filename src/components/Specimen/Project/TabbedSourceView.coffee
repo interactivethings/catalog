@@ -1,5 +1,6 @@
 require('./TabbedSourceView.scss')
 
+{Promise} = require('es6-promise')
 React = require('react')
 reqwest = require('reqwest')
 normalizeReferences = require('./normalizeReferences')
