@@ -47,4 +47,12 @@
   & > ol { @extend %cg-Page-olist; }
 
   & > h1 + blockquote ~ blockquote p { font-style: italic; }
+
+  & > hr {
+    border: none;
+    border-bottom: 1px solid $catalog-brand-color;
+    margin: 16px 21px;
+    max-width: 671px;
+    height: 0;
+  }
 }

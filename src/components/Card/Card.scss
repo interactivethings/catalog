@@ -80,4 +80,12 @@
   & > h2 + p  { margin-top: 13px; }
   & > h2 + blockquote ~ blockquote p { font-style: italic; }
   & > h3 + h4 { margin-top: -2px}
+  
+  & > hr {
+    border: none;
+    border-bottom: 1px solid #eee;
+    margin: 16px 0;
+    max-width: 671px;
+    height: 0;
+  }
 }
