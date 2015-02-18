@@ -65,6 +65,7 @@
   box-shadow: 0px 1px 4px $catalog-light-color;
   margin: $size-l 0;
   padding: $size-xl $size-l 14px $size-l;
+  position: relative;
 
   & > h2 { @extend %cg-Card-heading; }
   & > h3 { @extend %cg-Card-section; }
