@@ -52,7 +52,11 @@ function identity(x) {
 
 ## Another Card
 
-Some more text within this Card.
+Some text within this Card, followed by a horizontal ruler.
+
+---
+
+And some more text.
 
 ```
 
