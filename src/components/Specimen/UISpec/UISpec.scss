@@ -1,0 +1,34 @@
+@import "../../../config";
+@import "../../../scaffold/lists";
+@import "../../../scaffold/typography";
+
+.cg-Specimen-UISpec {
+  align-content: flex-start;
+  align-items: stretch;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.cg-Specimen-UISpec-Item {
+  background: $catalog-background;
+  flex: 1;
+  margin: 0 10px 10px 0;
+  min-width: 300px;
+  padding: 14px;
+}
+
+.cg-Specimen-UISpec-Metadata {
+  h2 {
+    @include cg-heading(4);
+  }
+
+  ul {
+    @include cg-list-base;
+    @include cg-text(2);
+  }
+}
+
+.cg-Specimen-UISpec-Image {
+  margin-bottom: 14px;
+}

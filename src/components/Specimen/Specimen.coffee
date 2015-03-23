@@ -8,6 +8,7 @@ Code = require('./Code/Code')
 Color = require('./Color/Color')
 Html = require('./Html/Html')
 Project = require('./Project/Project')
+UISpec = require('./UISpec/UISpec')
 projectBodyToProps = require('./Project/bodyToProps')
 
 
@@ -34,6 +35,7 @@ module.exports = Specimen = React.createClass
       html:    (props) -> Html(body: props.body, modifiers: props.config.options)
       icon:    (props) -> Html(body: props.body, modifiers: props.config.options)
       type:    (props) -> Html(body: props.body, modifiers: props.config.options)
+      uispec:  (props) -> UISpec(entries: JSON.parse(props.body))
       project: (props) -> Project(projectBodyToProps(props.body))
 
   render: ->
