@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
-var clc = require('cli-color');
+var clc;
+try {
+  clc = require('cli-color');
+} catch (e) {}
 
 var banner = [
   "_             __                       ",
@@ -12,5 +15,9 @@ var banner = [
   "                                       "
 ].join("\n");
 
-console.log(clc.reset);
-console.log(clc.xterm(202)(banner));
+if (clc) {
+  console.log(clc.reset);
+  console.log(clc.xterm(202)(banner));
+} else {
+  console.log(banner);
+}
