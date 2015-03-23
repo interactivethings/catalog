@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to Catalog will be documented in this file.
 
+# 1.1.11 - 2015-03-23
+
+- Added initial draft of UISpec speciment
+
 ## 1.1.3 - 1.1.9 - 2014-11-27
 
 - Project specimen downloads now include template file. Improved output.
