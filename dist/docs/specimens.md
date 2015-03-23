@@ -154,3 +154,60 @@ Not implemented yet.
 ```type
 type (TODO)
 ```
+
+## UISpec
+
+Describe UI specifications with images and metadata.
+
+### Examples
+
+#### `uispec`
+
+```uispec
+[
+    {
+        "title": "Active Filter Press State",
+        "image": "docs/html-project-example/dynabook.png",
+        "attributes": [
+            "Fill Color: #FFFFFF, rounded corners 4px",
+            "Divider Line: 1px, #DFDFDF"
+        ],
+        "link": "http://example.com"
+    },
+    {
+        "image": "docs/html-project-example/dynabook.png",
+        "attributes": [],
+        "link": "http://example.com"
+    },
+    {
+        "title": "Active Filter Press State",
+        "attributes": [
+            "Fill Color: #FFFFFF, rounded corners 4px"
+        ],
+        "link": "http://example.com"
+    },
+    {
+        "title": "Active Filter Press State",
+        "image": "docs/html-project-example/dynabook.png",
+        "attributes": [
+            "Fill Color: #FFFFFF, rounded corners 4px",
+            "Divider Line: 1px, #DFDFDF"
+        ],
+        "link": "http://example.com"
+        "span": 2
+    },
+    {
+        "title": "Active Filter Press State",
+        "image": "docs/html-project-example/dynabook.png",
+        "attributes": [
+            "Fill Color: #FFFFFF, rounded corners 4px",
+            "Divider Line: 1px, #DFDFDF",
+            "Divider Line: 1px, #DFDFDF",
+            "Divider Line: 1px, #DFDFDF",
+            "Divider Line: 1px, #DFDFDF"
+        ],
+        "links": ["http://example.com", "http://example.com/bla"]
+    }
+]
+```
+
