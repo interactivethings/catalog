@@ -193,7 +193,7 @@ Describe UI specifications with images and metadata.
             "Fill Color: #FFFFFF, rounded corners 4px",
             "Divider Line: 1px, #DFDFDF"
         ],
-        "link": "http://example.com"
+        "link": "http://example.com",
         "span": 2
     },
     {
