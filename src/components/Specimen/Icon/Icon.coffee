@@ -1,6 +1,6 @@
 require('./Icon.scss')
 
-cx = require('classnames');
+cx = require('classnames')
 React = require('react')
 {div, img, section, span} = React.DOM
 MetadataBlock = require('../shared/MetadataBlock');
@@ -10,7 +10,7 @@ seqKey = require('../../../utils/seqKey')('cg-Specimen-Icon')
 module.exports = React.createClass
   render: ->
     section
-      className: "cg-Specimen-Icon"
+      className: 'cg-Specimen-Icon'
       @props.icons.map (def) ->
         imgSize =
           height: if def.size?.height? then def.size.height else 'auto'
@@ -20,7 +20,8 @@ module.exports = React.createClass
           attributes: [].concat(def.attributes ? [])
           links: [].concat(def.links ? []).concat(def.link ? [])
         hasMetadata = (metadata.title? or metadata.attributes.length > 0 or metadata.links > 0)
-        console.log 'META', metadata
+        bgModifiers = [].concat(def.background ? [])
+        imageClasses = ['cg-Specimen-Icon-image'].concat(bgModifiers.map(((m) -> "cg-Specimen-Icon-image--#{m}")))
 
         div
           key: seqKey()
@@ -29,7 +30,7 @@ module.exports = React.createClass
             "cg-Specimen-Icon-container--align-vertical": def.align is "vertical"
           })
           div
-            className: 'cg-Specimen-Icon-image'
+            className: cx(imageClasses...)
             img
               src: def.image
               style: imgSize
