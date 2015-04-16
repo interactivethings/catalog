@@ -2,30 +2,11 @@ require('./UISpec.scss')
 
 React = require('react')
 {a, div, h2, img, li, section, ul} = React.DOM
-
+MetadataBlock = require('../shared/MetadataBlock');
 
 Image = React.createClass
   render: ->
     img(className: "cg-Specimen-UISpec-Image", src: @props.src)
-
-Attributes = React.createClass
-  render: ->
-    ul {},
-      @props.attributes.map (attr, i) =>
-        li {key: "attr-#{i}"}, attr
-
-Links = React.createClass
-  render: ->
-    ul {},
-      @props.links.map (href, i) =>
-        li {key: "href-#{i}"}, a(href: href, href)
-
-MetadataBlock = React.createClass
-  render: ->
-    div {className: "cg-Specimen-UISpec-Metadata"},
-      h2({}, @props.title) if @props.title?
-      Attributes(attributes: @props.attributes) if @props.attributes?
-      Links(links: @props.links) if @props.links
 
 UISpecItem = React.createClass
   render: ->
@@ -49,8 +30,8 @@ module.exports = React.createClass
     @props.entries.map (entry) =>
       title: entry.title
       image: parseImage(entry.image)
-      attributes: [].concat(entry.attributes)
-      links: [].concat(entry.links).concat(entry.link)
+      attributes: [].concat(entry.attributes ? [])
+      links: [].concat(entry.links ? []).concat(entry.link ? [])
       span: entry.span
 
   render: ->

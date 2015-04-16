@@ -1,0 +1,14 @@
+@import "../../../config";
+@import "../../../scaffold/lists";
+@import "../../../scaffold/typography";
+
+.cg-Specimen-shared-MetadataBlock {
+  h2 {
+    @include cg-heading(5);
+  }
+
+  ul {
+    @include cg-list-base;
+    @include cg-text(3);
+  }
+}

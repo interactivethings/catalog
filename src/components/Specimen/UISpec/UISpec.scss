@@ -1,6 +1,4 @@
 @import "../../../config";
-@import "../../../scaffold/lists";
-@import "../../../scaffold/typography";
 
 .cg-Specimen-UISpec {
   align-content: flex-start;
@@ -16,17 +14,6 @@
   margin: 0 10px 10px 0;
   min-width: 300px;
   padding: 14px;
-}
-
-.cg-Specimen-UISpec-Metadata {
-  h2 {
-    @include cg-heading(4);
-  }
-
-  ul {
-    @include cg-list-base;
-    @include cg-text(2);
-  }
 }
 
 .cg-Specimen-UISpec-Image {
