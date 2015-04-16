@@ -135,9 +135,54 @@ Not implemented yet.
 
 #### `icon`
 
+Needs to work with SVG as well.
+
 ```icon
-icon (TODO)
+{"image": "docs/assets/icons/brush-4x.png"}
 ```
+
+With more options
+```icon
+[
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 32},
+        "description": "Bla"
+    },
+    {
+        "image": "docs/assets/icons/brush-8x.png",
+        "size": {"height": 64, "width": 64},
+        "description": "Bla bla Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+    },
+    {
+        "image": "docs/assets/icons/brush.svg",
+        "size": {"height": 32, "width": 32}
+    },
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 180},
+        "align": "vertical",
+        "description": "consectetur adipisicing elit, sed do eiusmod"
+    },
+    {
+        "image": "docs/assets/icons/brush.svg",
+        "size": {"height": 32, "width": 32}
+    },
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 32}
+    },
+    {
+        "image": "docs/assets/icons/brush-8x.png",
+        "size": {"height": 64, "width": 64}
+    },
+    {
+        "image": "docs/assets/icons/brush-8x.png",
+        "size": {"height": 64, "width": 64}
+    }
+]
+```
+
 
 ## Project
 

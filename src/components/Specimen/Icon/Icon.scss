@@ -1,0 +1,60 @@
+@import "../../../config";
+
+.cg-Specimen-Icon {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin: 20px 0;
+  overflow: auto;
+}
+
+.cg-Specimen-Icon-container {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  border-top: 1px solid $catalog-light-color;
+  margin-right: $size-l;
+  padding: $size-l/2 0;
+}
+
+.cg-Specimen-Icon-image {
+  align-self: flex-start;
+  flex: 0 0 auto;
+
+  margin-right: $size-l/2;
+  padding: $size-l/2;
+}
+
+.cg-Specimen-Icon-info {
+  align-self: stretch;
+  flex: 1 1 auto;
+
+  color: $catalog-text-color;
+  font-family: $catalog-font-family;
+  font-size: $catalog-font-xs;
+  font-style: normal;
+  font-weight: 600;
+  padding-top: $size-l/4;
+  width: 16em;
+}
+
+
+
+.cg-Specimen-Icon-container.cg-Specimen-Icon-container--align-vertical {
+  flex-direction: column;
+
+  .cg-Specimen-Icon-image {
+    align-self: stretch;
+    flex: 1 0 main-size;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .cg-Specimen-Icon-info {
+
+  }
+}
