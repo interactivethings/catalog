@@ -18,4 +18,16 @@
 
 .cg-Specimen-UISpec-Image {
   margin-bottom: 14px;
+  position: relative;
+}
+
+.cg-Specimen-UISpec-Image-overlay {
+  display: none;
+  position: absolute; top: 0; left: 0;
+}
+
+.cg-Specimen-UISpec-Image {
+  &:hover .cg-Specimen-UISpec-Image-overlay {
+    display: block;
+  }
 }

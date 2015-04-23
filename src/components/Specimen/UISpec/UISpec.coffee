@@ -6,7 +6,11 @@ MetadataBlock = require('../shared/MetadataBlock');
 
 Image = React.createClass
   render: ->
-    img(className: "cg-Specimen-UISpec-Image", src: @props.src)
+    div
+      className: "cg-Specimen-UISpec-Image"
+      img(className: "cg-Specimen-UISpec-Image-main", src: @props.src)
+      if @props.overlay?
+        img(className: "cg-Specimen-UISpec-Image-overlay", src: @props.overlay)
 
 UISpecItem = React.createClass
   render: ->
@@ -15,7 +19,7 @@ UISpecItem = React.createClass
       style.flex = @props.span
       style.minWidth = @props.span * 300
     div {className: "cg-Specimen-UISpec-Item", style: style},
-      Image(src: @props.image.src) if @props.image?
+      Image(src: @props.image.src, overlay: @props.overlay?.src) if @props.image?
       MetadataBlock(@props)
 
 
@@ -30,6 +34,7 @@ module.exports = React.createClass
     @props.entries.map (entry) =>
       title: entry.title
       image: parseImage(entry.image)
+      overlay: parseImage(entry.overlay)
       attributes: [].concat(entry.attributes ? [])
       links: [].concat(entry.links ? []).concat(entry.link ? [])
       span: entry.span

@@ -290,6 +290,7 @@ Describe UI specifications with images and metadata.
     {
         "title": "Active Filter Press State",
         "image": "docs/html-project-example/dynabook.png",
+        "overlay": "docs/html-project-example/dynabook-overlay.png",
         "attributes": [
             "Fill Color: #FFFFFF, rounded corners 4px",
             "Divider Line: 1px, #DFDFDF",
