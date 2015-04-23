@@ -1,26 +1,43 @@
 @import "../../../config";
 
 .cg-Specimen-Color {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
   margin: 20px 0;
   overflow: auto;
 }
 
-.cg-Specimen-Color-well {
-  $size: 100px;
-  border-radius: $size;
-  float: left;
-  height: $size;
-  line-height: $size;
-  margin: 0 20px 20px 0;
-  text-align: center;
-  width: $size;
+.cg-Specimen-Color-container {
+  display: flex;
+  flex: 0 1 auto;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  border-top: 1px solid $catalog-light-color;
+  margin-right: $size-l;
+  padding: $size-l/2 0;
+
+  &:first-child:last-child {
+    border-top: none;
+  }
 }
 
-.cg-Specimen-Color-label {
-  color: $catalog-text-color;
-  font-family: $catalog-font-family;
-  font-size: $catalog-font-xs;
-  font-style: normal;
-  font-weight: 600;
-  text-shadow: 0px 1px 1px #fff;
+.cg-Specimen-Color-well {
+  align-self: flex-start;
+  flex: 0 0 auto;
+
+  height: 64px;
+  margin-right: $size-l/2;
+  padding: $size-l/2;
+  width: 64px;
+}
+
+.cg-Specimen-Color-info {
+  align-self: flex-start;
+  flex: 1 1 auto;
+
+  width: 7em;
 }
