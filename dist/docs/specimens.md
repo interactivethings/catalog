@@ -129,15 +129,111 @@ None.
 
 ## Icon
 
-Not implemented yet.
+### Configuration
+
+This specimen is configured with a JSON object or array as the content. In the most simple form, it looks like this:
+
+```code
+&#96;&#96;&#96;icon
+{"image": "docs/assets/icons/brush-4x.png"}
+&#96;&#96;&#96;
+```
+
+The following JSON configuration options are available. Only `image` is required.
+
+* `image` – the path to a raster or SVG image (required)
+* `size` – an object with `height` and `width` values that the image should be displayed in
+* `title` – the image's title
+* `attributes` – An array of strings that will be displayed as lines
+* `link[s]` – a string or array of links
+* `background` – The background of the icon. Can be a string ("plain", "light", "dark") or an array ["plain", "light"].
+
+```code
+&#96;&#96;&#96;icon
+[
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 32},
+        "title": "Brush icon",
+        "attributes": [
+            "Descriptive text 1",
+            "Descriptive text 2"
+        ],
+        "link": "http://example.com",
+        "background": "dark"
+    }
+]
+&#96;&#96;&#96;
+```
 
 ### Examples
 
-#### `icon`
+#### `icon` without any details
 
 ```icon
-icon (TODO)
+{"image": "docs/assets/icons/brush-4x.png"}
 ```
+
+#### `icon`s with options
+
+It's recommended to not mix too many icon sizes, as this will lead to a nervous grid, but it is possible. Note that when an image doesn't have any additional information like title or attributes, no text-box is created.
+
+```icon
+[
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 32},
+        "title": "Default"
+    },
+    {
+        "image": "docs/assets/icons/brush.svg",
+        "size": {"height": 32, "width": 32},
+        "background": "plain",
+        "title": "Plain background",
+        "attributes": [
+            "No padding is added on the sides"
+        ]
+    },
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 32},
+        "background": ["plain", "dark"],
+        "title": "Plain dark background"
+    },
+    {
+        "image": "docs/assets/icons/brush-8x.png",
+        "size": {"height": 64, "width": 64},
+        "title": "Brush icon (large)",
+        "attributes": [
+            "Dark checkerboard background and large icon",
+            "An additional line of text"
+        ],
+        "link": "http://example.com",
+        "background": "dark"
+    },
+    {
+        "image": "docs/assets/icons/brush-4x.png",
+        "size": {"height": 32, "width": 180},
+        "title": "Brush icon (stretched)",
+        "align": "vertical"
+    },
+    {
+        "image": "docs/assets/icons/brush.svg",
+        "size": {"height": 32, "width": 32},
+        "title": "Brush icon (SVG)",
+        "align": "vertical"
+    },
+    {
+        "image": "docs/assets/icons/brush-8x.png",
+        "size": {"height": 64, "width": 64}
+    },
+    {
+        "image": "docs/assets/icons/brush-8x.png",
+        "size": {"height": 64, "width": 64}
+    }
+]
+```
+
 
 ## Project
 
@@ -189,11 +285,6 @@ Describe UI specifications with images and metadata.
     {
         "title": "Active Filter Press State",
         "image": "docs/html-project-example/dynabook.png",
-        "attributes": [
-            "Fill Color: #FFFFFF, rounded corners 4px",
-            "Divider Line: 1px, #DFDFDF"
-        ],
-        "link": "http://example.com",
         "span": 2
     },
     {
