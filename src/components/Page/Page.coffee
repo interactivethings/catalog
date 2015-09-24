@@ -2,11 +2,12 @@ require('./Page.scss')
 
 reqwest = require('reqwest')
 React = require('react')
-Loader = require('./Loader')
+Loader = React.createFactory require('./Loader')
 MarkdownRenderer = require('../../MarkdownRenderer')
 
-Card = require('../Card/Card')
-Specimen = require('../Specimen/Specimen')
+Card = React.createFactory require('../Card/Card')
+Specimen = React.createFactory require('../Specimen/Specimen')
+SpecimenConfig = require('../Specimen/Specimen').Config
 
 seqKey = require('../../utils/seqKey')('cg-Page')
 
@@ -51,7 +52,7 @@ module.exports = React.createClass
           content: null
 
 
-Page = React.createClass
+Page = React.createFactory React.createClass
   render: ->
     div {className: 'cg-Page'},
       @styleNodes()
@@ -71,6 +72,6 @@ Page = React.createClass
           Specimen
             key: seqKey()
             body: codeBody
-            config: Specimen.Config(codeConfig)
+            config: SpecimenConfig(codeConfig)
         heading: (text, level) ->
           React.DOM["h#{level}"] {key: seqKey()}, text

@@ -3,7 +3,7 @@ require('./Icon.scss')
 cx = require('classnames')
 React = require('react')
 {div, img, section, span} = React.DOM
-MetadataBlock = require('../shared/MetadataBlock');
+MetadataBlock = React.createFactory require('../shared/MetadataBlock');
 
 seqKey = require('../../../utils/seqKey')('cg-Specimen-Icon')
 
