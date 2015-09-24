@@ -1,7 +1,7 @@
 require('./Color.scss')
 
 React = require('react')
-MetadataBlock = require('../shared/MetadataBlock');
+MetadataBlock = React.createFactory require('../shared/MetadataBlock');
 {div, section, span} = React.DOM
 
 seqKey = require('../../../utils/seqKey')('cg-Specimen-Color')

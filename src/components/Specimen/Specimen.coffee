@@ -4,12 +4,12 @@ R = require('ramda')
 React = require('react')
 {section} = React.DOM
 
-Code = require('./Code/Code')
-Color = require('./Color/Color')
-Html = require('./Html/Html')
-Icon = require('./Icon/Icon')
-Project = require('./Project/Project')
-UISpec = require('./UISpec/UISpec')
+Code = React.createFactory require('./Code/Code')
+Color = React.createFactory require('./Color/Color')
+Html = React.createFactory require('./Html/Html')
+Icon = React.createFactory require('./Icon/Icon')
+Project = React.createFactory require('./Project/Project')
+UISpec = React.createFactory require('./UISpec/UISpec')
 projectBodyToProps = require('./Project/bodyToProps')
 
 

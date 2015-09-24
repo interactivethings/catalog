@@ -1,7 +1,8 @@
 require('./Menu.scss')
 
 React = require('react')
-{ActiveState, Link} = require('react-router')
+{State} = require('react-router')
+Link = React.createFactory require('react-router').Link
 {div, ul, li} = React.DOM
 
 module.exports = React.createClass
@@ -13,7 +14,7 @@ module.exports = React.createClass
         @props.pages.map (page) ->
           ListItem _.extend(key: page.name, page)
 
-ListItem = React.createClass
+ListItem = React.createFactory React.createClass
   render: ->
     li
       key: @props.name
@@ -23,19 +24,25 @@ ListItem = React.createClass
       else
         Link to: @props.name, className: 'cg-Menu-link', @props.title
 
-NestedList = React.createClass
-  mixins: [ActiveState]
+NestedList = React.createFactory React.createClass
+  mixins: [State]
 
   getInitialState: ->
     collapsed: false
 
   updateActiveState: ->
     hasActiveChild = @props.pages
-      .map((d) -> NestedList.isActive(d.name))
+      .map((d) => @isActive(d.name))
       .filter((d) -> d is true)
       .length > 0
     @setState
       collapsed: !hasActiveChild
+
+  componentWillReceiveProps: ->
+    @updateActiveState()
+
+  componentWillMount: ->
+    @updateActiveState()
 
   render: ->
     div {},

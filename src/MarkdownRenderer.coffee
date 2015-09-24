@@ -22,7 +22,7 @@ module.exports = (options) ->
 # Splits an array of DOM nodes into sections at each <h2>
 # [h1, p, h2, p, p, h2, p] -> [[h1, p], [h2, p, p], [h2, p]]
 splitIntoSections = (sections, node) ->
-  if node.type.displayName is 'h2' # Caveat: this is a private React API call
+  if node.type is 'h2'             # Caveat: this is a private React API call
     sections.push([node])          # Start a new section
   else
     _.last(sections).push(node)    # Append to current section

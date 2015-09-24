@@ -7,7 +7,7 @@ require('./Project.scss')
 React = require('react')
 reqwest = require('reqwest')
 fileUtils = require('../../../utils/fileUtils')
-TabbedSourceView = require('./TabbedSourceView')
+TabbedSourceView = React.createFactory require('./TabbedSourceView')
 normalizeReferences = require('./normalizeReferences')
 {a, button, div, iframe, section, textarea} = React.DOM
 
@@ -39,8 +39,8 @@ module.exports = React.createClass
       iframe
         className: 'cg-Specimen-Project-frame'
         src: @props.index.source
-        marginheight: 0
-        marginwidth: 0
+        marginHeight: 0
+        marginWidth: 0
         scrolling: @props.scrolling
         style:
           height: "#{height}"

@@ -3,13 +3,13 @@ require('./MetadataBlock.scss')
 React = require('react')
 {a, div, h2, img, li, section, ul} = React.DOM
 
-Attributes = React.createClass
+Attributes = React.createFactory React.createClass
   render: ->
     ul {},
       @props.attributes.map (attr, i) =>
         li {key: "attr-#{i}"}, attr
 
-Links = React.createClass
+Links = React.createFactory React.createClass
   render: ->
     ul {},
       @props.links.map (href, i) =>

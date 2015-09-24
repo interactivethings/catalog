@@ -2,9 +2,9 @@ require('./UISpec.scss')
 
 React = require('react')
 {a, div, h2, img, li, section, ul} = React.DOM
-MetadataBlock = require('../shared/MetadataBlock');
+MetadataBlock = React.createFactory require('../shared/MetadataBlock');
 
-Image = React.createClass
+Image = React.createFactory React.createClass
   render: ->
     div
       className: "cg-Specimen-UISpec-Image"
@@ -12,7 +12,7 @@ Image = React.createClass
       if @props.overlay?
         img(className: "cg-Specimen-UISpec-Image-overlay", src: @props.overlay)
 
-UISpecItem = React.createClass
+UISpecItem = React.createFactory React.createClass
   render: ->
     style = {}
     if @props.span?
@@ -31,7 +31,8 @@ module.exports = React.createClass
         when 'string' then {src: img}
         else throw "Image objects are not supported yet"
 
-    @props.entries.map (entry) =>
+    @props.entries.map (entry, i) =>
+      key: i,
       title: entry.title
       image: parseImage(entry.image)
       overlay: parseImage(entry.overlay)
