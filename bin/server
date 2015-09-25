@@ -7,7 +7,7 @@ var mach = require('mach');
 var findPort = require('find-port');
 var webpack = require("webpack");
 
-
+var watcher;
 findPort(4000, 4050, function(ports) {
   var port = ports[0];
 
@@ -17,10 +17,10 @@ findPort(4000, 4050, function(ports) {
   mach.serve(server, port);
 
   // Build and watch Webpack
-  var config = require('../src/webpack.config.js');
+  var config = require('../webpack.config.js');
   var compiler = webpack(config);
 
-  compiler.watch(100, function(err, stats) {
+  watcher = compiler.watch({}, function(err, stats) {
     if (err) return logger(clc.red.bold("Fatal error"), err);
 
     var jsonStats = stats.toJson();
@@ -52,5 +52,8 @@ function logger(banner, messages) {
 // Exit gracefully
 //
 process.on('SIGINT', function() {
+  if (watcher) {
+    watcher.close();
+  }
   process.exit();
 });

@@ -38,10 +38,13 @@ all: build
 install: _print-banner node_modules bower.json
 
 server: install
-	@bin/server
+	@UV_THREADPOOL_SIZE=100 \
+	bin/server
 
 build: install clean
-	@webpack --colors --progress --hide-modules --config src/webpack.config.js
+	UV_THREADPOOL_SIZE=100 \
+	NODE_ENV=production \
+	webpack --colors --progress --hide-modules
 
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
