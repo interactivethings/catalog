@@ -44,7 +44,7 @@ class AppLayout extends React.Component {
   static propTypes = {
     topNav: PropTypes.node,
     sideNav: PropTypes.node,
-    content: PropTypes.node,
+    children: PropTypes.node,
     theme: PropTypes.object.isRequired
   }
   state = {
@@ -90,7 +90,7 @@ class AppLayout extends React.Component {
           </div>
         }
         <div style={currentStyle.content}>
-          { this.props.content }
+          { this.props.children }
         </div>
       </div>
     );
