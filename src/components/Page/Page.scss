@@ -39,6 +39,7 @@
 .cg-Page {
   margin: 0 $size-xxl;
 
+  // Move these styles into the <Style> component in Page.js
   & > h1 { @extend %cg-Page-main-heading; }
   & > blockquote { @extend %cg-Page-lead-text; }
   & > p { @extend %cg-Page-text; }
@@ -47,12 +48,4 @@
   & > ol { @extend %cg-Page-olist; }
 
   & > h1 + blockquote ~ blockquote p { font-style: italic; }
-
-  & > hr {
-    border: none;
-    border-bottom: 1px solid $catalog-brand-color;
-    margin: 16px 21px;
-    max-width: 671px;
-    height: 0;
-  }
 }

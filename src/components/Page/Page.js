@@ -2,6 +2,8 @@ import './Page.scss';
 
 import reqwest from 'reqwest';
 import React from 'react';
+import {Style} from 'radium';
+
 import Loader from './Loader';
 import MarkdownRenderer from 'MarkdownRenderer';
 
@@ -16,7 +18,8 @@ class Page extends React.Component {
     name: React.PropTypes.string.isRequired,
     src: React.PropTypes.string.isRequired,
     styles: React.PropTypes.arrayOf(React.PropTypes.string),
-    scripts: React.PropTypes.arrayOf(React.PropTypes.string)
+    scripts: React.PropTypes.arrayOf(React.PropTypes.string),
+    theme: React.PropTypes.object.isRequired
   }
 
   static defaultProps = {
@@ -38,7 +41,7 @@ class Page extends React.Component {
     if (this.state.error) {
       return <div>Error: {this.state.error}</div>;
     } else if (this.state.content) {
-      return <PageRenderer content={this.state.content} styles={this.props.styles} />;
+      return <PageRenderer content={this.state.content} styles={this.props.styles} theme={this.props.theme}/>;
     }
     return <Loader />;
   }
@@ -58,12 +61,22 @@ class Page extends React.Component {
 class PageRenderer extends React.Component {
   static propTypes = {
     content: React.PropTypes.string.isRequired,
-    styles: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
+    styles: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+    theme: React.PropTypes.object.isRequired
   }
 
   render() {
     return (
       <div className='cg-Page'>
+        <Style scopeSelector='.cg-Page >' rules={{
+          hr: {
+            border: 'none',
+            borderBottom: `1px solid ${this.props.theme.brandColor}`,
+            margin: '16px 21px',
+            maxWidth: '671px',
+            height: 0
+          }
+        }} />
         {this.styleNodes()}
         {this.contentNodes()}
       </div>
