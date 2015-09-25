@@ -28,10 +28,8 @@ export function style(theme) {
       background: theme.brandColorLine
     },
     nestedLink: {
-      border: 'none',
-      paddingBottom: '5px',
-      paddingLeft: '20px',
-      paddingTop: '5px'
+      borderBottom: 'none',
+      padding: '5px 40px 5px 20px'
     },
     nestedChildren: {
       borderBottom: 'none',
@@ -75,7 +73,7 @@ class ListItem extends React.Component {
           :
           <Link
             style={defaultStyle}
-            activeStyle={{...defaultStyle, ...currentStyle.activeLink}}
+            activeStyle={{...defaultStyle, ...currentStyle.activeLink, ':hover': undefined}}
             to={name}>
             { title }
           </Link>
