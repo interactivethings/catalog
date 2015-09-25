@@ -25,7 +25,8 @@ export function style(theme) {
     },
     activeLink: {
       color: '#fff',
-      background: theme.brandColorLine
+      background: theme.brandColorLine,
+      ':hover': undefined
     },
     nestedLink: {
       borderBottom: 'none',
@@ -73,7 +74,7 @@ class ListItem extends React.Component {
           :
           <Link
             style={defaultStyle}
-            activeStyle={{...defaultStyle, ...currentStyle.activeLink, ':hover': undefined}}
+            activeStyle={{...defaultStyle, ...currentStyle.activeLink}}
             to={name}>
             { title }
           </Link>
