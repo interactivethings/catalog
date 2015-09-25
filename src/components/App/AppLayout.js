@@ -12,6 +12,12 @@ function style(
   }
 ) {
   return {
+    container: {
+      background: theme.background,
+      margin: 0,
+      padding: 0,
+      position: 'relative'
+    },
     topNav: {
       position: 'fixed',
       left: 0,
@@ -80,7 +86,7 @@ class AppLayout extends React.Component {
     });
 
     return (
-      <div>
+      <div style={currentStyle.container}>
         <div onClick={::this.toggleSidebar} style={currentStyle.topNav}>
           { this.props.topNav }
         </div>
