@@ -59,7 +59,15 @@ class ListItem extends React.Component {
   render() {
     const { pages, name, title, theme, nested } = this.props;
     let currentStyle = style(theme);
-    let defaultStyle = [currentStyle.link, nested ? currentStyle.nestedLink : {}];
+    let defaultStyle = {
+      ...currentStyle.link
+    };
+    if (nested) {
+      defaultStyle = {
+        ...defaultStyle,
+        ...currentStyle.nestedLink
+      };
+    }
     return (
       <li>
         { pages ?
@@ -67,7 +75,7 @@ class ListItem extends React.Component {
           :
           <Link
             style={defaultStyle}
-            activeStyle={defaultStyle.concat(currentStyle.activeLink)}
+            activeStyle={{...defaultStyle, ...currentStyle.activeLink}}
             to={name}>
             { title }
           </Link>
