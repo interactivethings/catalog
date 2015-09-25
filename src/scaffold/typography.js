@@ -17,20 +17,20 @@ export function text(theme, {level}) {
   case 1:
     return {
       ...style,
-      margin: '0 0 13px 0',
-      ...setType(theme, theme.fontL, 8)
+      ...setType(theme, {fontSize: theme.fontL, verticalUnits: 8}),
+      margin: '0 0 13px 0'
     };
   case 2:
     return {
       ...style,
-      margin: '0 0 16px 0',
-      ...setType(theme, theme.fontM, 6)
+      ...setType(theme, {fontSize: theme.fontM, verticalUnits: 6}),
+      margin: '0 0 16px 0'
     };
   case 3:
     return {
       ...style,
-      margin: '0 0 6px 0',
-      ...setType(theme, theme.fontS, 5)
+      ...setType(theme, {fontSize: theme.fontS, verticalUnits: 5}),
+      margin: '0 0 6px 0'
     };
   default:
     return style;
