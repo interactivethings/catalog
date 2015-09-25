@@ -15,9 +15,10 @@ module.exports = React.createClass
       src:   React.PropTypes.string
       path:  React.PropTypes.string
     ).isRequired,
-    page: React.PropTypes.object.isRequired,
+    page: React.PropTypes.object.isRequired
     styles:  React.PropTypes.arrayOf(React.PropTypes.string)
     scripts: React.PropTypes.arrayOf(React.PropTypes.string)
+    theme: React.PropTypes.object.isRequired
 
   getDefaultProps: ->
     styles: []
@@ -25,6 +26,7 @@ module.exports = React.createClass
 
   render: ->
     AppLayout
-      topNav:  AppBar(title: @props.title)
+      theme: @props.theme
+      topNav: AppBar(title: @props.title)
       sideNav: Menu(pages: @props.pages)
       content: RouteHandler(@props.page)

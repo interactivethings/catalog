@@ -1,12 +1,51 @@
 import React, { PropTypes } from 'react';
 
-import './AppLayout.scss';
+const SIDE_WIDTH = 251;
+
+function style(
+  theme,
+  {
+    topHeight,
+    sideWidth,
+    contentWidth,
+    contentHeight
+  }
+) {
+  return {
+    topNav: {
+      position: 'fixed',
+      left: 0,
+      top: 0,
+      cursor: 'pointer',
+      zIndex: 10,
+      height: topHeight,
+      width: SIDE_WIDTH
+    },
+    sideNav: {
+      background: theme.brandColor,
+      color: '#fff',
+      overflowY: 'auto',
+      position: 'fixed',
+      left: 0,
+      height: contentHeight,
+      width: sideWidth,
+      top: topHeight
+    },
+    content: {
+      position: 'absolute',
+      width: contentWidth,
+      top: topHeight,
+      left: sideWidth
+    }
+  };
+}
 
 class AppLayout extends React.Component {
   static propTypes = {
     topNav: PropTypes.node,
     sideNav: PropTypes.node,
-    content: PropTypes.node
+    content: PropTypes.node,
+    theme: PropTypes.object.isRequired
   }
   state = {
     viewportHeight: window.innerHeight,
@@ -29,22 +68,28 @@ class AppLayout extends React.Component {
     const { sidebarVisible, viewportWidth, viewportHeight } = this.state;
 
     const topHeight = 74;
-    const sideWidthDefault = 251;
-    const sideWidth = sidebarVisible ? sideWidthDefault : 0;
+    const sideWidth = sidebarVisible ? SIDE_WIDTH : 0;
     const contentWidth = sidebarVisible ? (viewportWidth - sideWidth) : viewportWidth;
     const contentHeight = viewportHeight - topHeight;
 
+    let currentStyle = style(this.props.theme, {
+      topHeight,
+      sideWidth,
+      contentWidth,
+      contentHeight
+    });
+
     return (
-      <div className='cg-AppLayout'>
-        <div className='cg-AppLayout-topNav' onClick={::this.toggleSidebar} style={{height: topHeight, width: sideWidthDefault}}>
+      <div>
+        <div onClick={::this.toggleSidebar} style={currentStyle.topNav}>
           { this.props.topNav }
         </div>
         { sidebarVisible &&
-          <div className='cg-AppLayout-sideNav' style={{height: contentHeight, width: sideWidth, top: topHeight}}>
+          <div style={currentStyle.sideNav}>
             { this.props.sideNav }
           </div>
         }
-        <div className='cg-AppLayout-content' style={{width: contentWidth, top: topHeight, left: sideWidth}}>
+        <div style={currentStyle.content}>
           { this.props.content }
         </div>
       </div>
