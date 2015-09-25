@@ -6,11 +6,11 @@ import './Catalog.scss';
 
 import App from 'components/App/App';
 import Page from 'components/Page/Page';
+import DefaultTheme from 'DefaultTheme';
 
 //
 // Startup
 //
-
 export function start(selector, config) {
   let pageIndex = {};
   let pageRoutes = [];
@@ -45,9 +45,14 @@ export function start(selector, config) {
   const rootElement = document.querySelector(selector);
   rootElement.className += ' cg-Catalog';
 
+  const theme = {
+    ...DefaultTheme,
+    ...config.theme
+  };
+
   Router.run(routes, HashLocation, (Root, state) => {
     React.render(
-      <Root {...config} page={pageIndex[state.pathname]} />,
+      <Root {...config} theme={theme} page={pageIndex[state.pathname]} />,
       rootElement
     );
   });
