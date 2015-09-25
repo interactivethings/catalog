@@ -3,7 +3,7 @@ import { RouteHandler } from 'react-router';
 
 import AppLayout from './AppLayout';
 import AppBar from './AppBar';
-import Menu from './Menu';
+import Menu from 'components/Menu/Menu';
 
 class App extends React.Component {
   static propTypes = {
