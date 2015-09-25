@@ -87,7 +87,7 @@ class PageRenderer extends React.Component {
           return <Specimen key={seqKey()} body={codeBody} config={Config(codeConfig)} />;
         },
         heading: (text, level) => {
-          return React.createElement(`h${level}`, {key: seqKey(), text});
+          return React.createElement(`h${level}`, {key: seqKey()}, text);
         }
       }
     });
