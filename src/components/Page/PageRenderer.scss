@@ -2,50 +2,16 @@
 @import "../../scaffold/lists";
 @import "../../scaffold/typography";
 
-@mixin cg-Page-container {
-  max-width: 671px;
-  padding-left: $size-l;
-  padding-right: $size-l;
-}
-
-%cg-Page-main-heading {
-  @include cg-Page-container;
-  @include cg-heading(1);
-}
-
-%cg-Page-lead-text {
-  @include cg-Page-container;
-  @include cg-blockquote;
-  p { @include cg-text(1); }
-}
-
-%cg-Page-text {
-  @include cg-Page-container;
-  @include cg-text(2);
-}
-
 %cg-Page-ulist {
   @include cg-ulist;
-  @include cg-text(2);
-  @include cg-Page-container;
 }
 
 %cg-Page-olist {
   @include cg-olist;
-  @include cg-text(2);
-  @include cg-Page-container;
 }
 
 .cg-Page {
-  margin: 0 $size-xxl;
-
   // Move these styles into the <Style> component in Page.js
-  & > h1 { @extend %cg-Page-main-heading; }
-  & > blockquote { @extend %cg-Page-lead-text; }
-  & > p { @extend %cg-Page-text; }
-
   & > ul { @extend %cg-Page-ulist; }
   & > ol { @extend %cg-Page-olist; }
-
-  & > h1 + blockquote ~ blockquote p { font-style: italic; }
 }

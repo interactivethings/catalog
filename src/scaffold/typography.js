@@ -37,6 +37,61 @@ export function text(theme, {level}) {
   }
 }
 
+export function link(theme) {
+  return {
+    color: theme.brandColor,
+    textDecoration: 'none',
+    ':hover': {
+      textDecoration: 'underline'
+    }
+  };
+}
+
+export function code(theme) {
+  return {
+    background: '#e1e1e1',
+    borderRadius: 3,
+    color: '#555',
+    display: 'inline-block',
+    fontFamily: theme.fontMono,
+    fontWeight: 300,
+    lineHeight: 1,
+    padding: '0.178em 0.317em',
+    textIndent: 0
+  };
+}
+
+export function inlineElements(theme, {selector = ''}) {
+  let linkStyle = link(theme);
+  let linkHoverStyle = linkStyle[':hover'];
+  delete linkStyle[':hover'];
+
+  return {
+    [`${selector} i, em`]: {
+      fontStyle: 'italic'
+    },
+    [`${selector} b, strong`]: {
+      fontWeight: 400
+    },
+    [`${selector} a`]: linkStyle,
+    [`${selector} a:hover`]: linkHoverStyle,
+    [`${selector} code`]: code(theme)
+  };
+}
+
+export function inlineBlockquote(theme) {
+  return {
+    blockquote: {
+      quotes: 'none',
+      margin: 0
+    },
+    'blockquote:before, blockquote:after': {
+      content: 'none'
+    },
+    'blockquote p': text(theme, {level: 1}),
+    ...inlineElements(theme, {selector: 'blockquote p'})
+  };
+}
 
 export function heading(theme, {level}) {
   let style = {

@@ -6,6 +6,16 @@ import { Style } from 'radium';
 import Card from 'components/Card/Card';
 import Specimen, {Config} from 'components/Specimen/Specimen';
 
+import { heading, text, inlineElements, inlineBlockquote } from 'scaffold/typography';
+
+function pageContainer(theme) {
+  return {
+    maxWidth: 671,
+    paddingLeft: theme.sizeL,
+    paddingRight: theme.sizeL
+  };
+}
+
 import './PageRenderer.scss';
 
 const seqKey = require('utils/seqKey')('cg-Page');
@@ -18,12 +28,43 @@ class PageRenderer extends React.Component {
   }
 
   render() {
+    const { theme } = this.props;
+
+    let inlineBlockquoteRules = inlineBlockquote(theme);
+    inlineBlockquoteRules.blockquote = {
+      ...pageContainer(theme),
+      ...inlineBlockquoteRules.blockquote
+    };
+
     return (
-      <div className='cg-Page'>
+      <div className='cg-Page' style={{margin: `0 ${theme.sizeXxl}px`}}>
         <Style scopeSelector='.cg-Page >' rules={{
+          h1: {
+            ...pageContainer(theme),
+            ...heading(theme, {level: 1})
+          },
+          p: {
+            ...pageContainer(theme),
+            ...text(theme, {level: 2})
+          },
+          ...inlineElements(theme, {selector: 'p'}),
+          ul: {
+            ...pageContainer(theme),
+            ...text(theme, {level: 2})
+            // ToDo: conver cg-ulist to JS mixin
+          },
+          ol: {
+            ...pageContainer(theme),
+            ...text(theme, {level: 2})
+            // ToDo: conver cg-olist to JS mixin
+          },
+          ...inlineBlockquoteRules,
+          'h1 + blockquote ~ blockquote p': {
+            fontStyle: 'italic'
+          },
           hr: {
             border: 'none',
-            borderBottom: `1px solid ${this.props.theme.brandColor}`,
+            borderBottom: `1px solid ${theme.brandColor}`,
             margin: '16px 21px',
             maxWidth: '671px',
             height: 0
