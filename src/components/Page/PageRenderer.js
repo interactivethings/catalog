@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import MarkdownRenderer from 'MarkdownRenderer';
-import { Style } from 'radium';
+import { Style as RadiumStyle } from 'radium';
 
 import Card from 'components/Card/Card';
 import Specimen, {Config} from 'components/Specimen/Specimen';
@@ -37,7 +37,7 @@ class PageRenderer extends React.Component {
 
     return (
       <div className='cg-Page' style={{margin: `0 ${theme.sizeXxl}px`}}>
-        <Style scopeSelector='.cg-Page >' rules={{
+        <RadiumStyle scopeSelector='.cg-Page >' rules={{
           h1: {
             ...pageContainer(theme),
             ...heading(theme, {level: 1})
