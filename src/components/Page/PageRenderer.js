@@ -7,6 +7,7 @@ import Card from 'components/Card/Card';
 import Specimen, {Config} from 'components/Specimen/Specimen';
 
 import { heading, text, inlineElements, inlineBlockquote } from 'scaffold/typography';
+import { inlineUlist, inlineOlist } from 'scaffold/lists';
 
 function pageContainer(theme) {
   return {
@@ -15,8 +16,6 @@ function pageContainer(theme) {
     paddingRight: theme.sizeL
   };
 }
-
-import './PageRenderer.scss';
 
 const seqKey = require('utils/seqKey')('cg-Page');
 
@@ -48,16 +47,20 @@ class PageRenderer extends React.Component {
             ...text(theme, {level: 2})
           },
           ...inlineElements(theme, {selector: 'p'}),
-          ul: {
-            ...pageContainer(theme),
-            ...text(theme, {level: 2})
-            // ToDo: conver cg-ulist to JS mixin
-          },
-          ol: {
-            ...pageContainer(theme),
-            ...text(theme, {level: 2})
-            // ToDo: conver cg-olist to JS mixin
-          },
+          ...inlineUlist(theme, {
+            selector: 'ul',
+            style: {
+              ...pageContainer(theme),
+              ...text(theme, {level: 2})
+            }
+          }),
+          ...inlineOlist(theme, {
+            selector: 'ol',
+            style: {
+              ...pageContainer(theme),
+              ...text(theme, {level: 2})
+            }
+          }),
           ...inlineBlockquoteRules,
           'h1 + blockquote ~ blockquote p': {
             fontStyle: 'italic'
