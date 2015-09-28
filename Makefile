@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build doc nightly dist deploy clean clobber
+.PHONY: install server build doc nightly dist deploy clean clobber lint
 
 all: build
 
@@ -70,6 +70,8 @@ clean:
 clobber: clean
 	@rm -rf node_modules
 
+lint:
+	eslint src
 
 #
 # Targets
