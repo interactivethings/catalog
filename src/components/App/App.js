@@ -24,11 +24,11 @@ class App extends React.Component {
     scripts: []
   }
   render() {
-    const { theme, title, pages, page } = this.props;
+    const { theme, title, logoSrc, pages, page } = this.props;
     return (
       <AppLayout
         theme={theme}
-        topNav={<AppBar title={title} theme={theme} />}
+        topNav={<AppBar title={title} logoSrc={logoSrc} theme={theme} />}
         sideNav={<Menu pages={pages} theme={theme} />}>
         <RouteHandler {...page} theme={theme} />
       </AppLayout>

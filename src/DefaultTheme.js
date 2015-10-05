@@ -30,6 +30,8 @@ export default {
   fontXl:  28,
   fontXxl: 38,
 
+  sizeS:   8,
+  sizeM:   15,
   sizeL:   21,
   sizeXl:  28,
   sizeXxl: 38,
