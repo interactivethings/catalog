@@ -13,6 +13,7 @@ export default {
   bgLight: '#CCCCCC',
   bgDark: '#333333',
   lightColor: '#D6D6D6',
+  cardRuleColor: '#EEEEEE',
 
   // Patterns
   checkerboardPatternLight: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=',

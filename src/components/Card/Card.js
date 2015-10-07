@@ -3,8 +3,6 @@ import { Style as RadiumStyle } from 'radium';
 import {heading, text, inlineElements, inlineBlockquote} from 'scaffold/typography';
 import {inlineUlist, inlineOlist } from 'scaffold/lists';
 
-import './Card.scss';
-
 const cardContainer = () => ({maxWidth: 671});
 
 class Card extends Component {
@@ -23,7 +21,14 @@ class Card extends Component {
     };
 
     return (
-      <section className='cg-Card'>
+      <section className='cg-Card' style={{
+        background: theme.cardBackground,
+        borderRadius: 3,
+        boxShadow: `0px 1px 4px ${theme.lightColor}`,
+        margin: `${theme.sizeL}px 0`,
+        padding: `${theme.sizeXl}px ${theme.sizeL}px 14px ${theme.sizeL}px`,
+        position: 'relative'
+      }} >
         <RadiumStyle
           scopeSelector='.cg-Card >'
           rules={{
@@ -65,8 +70,8 @@ class Card extends Component {
             hr: {
               ...cardContainer(theme),
               border: 'none',
-              borderBottom: `1px solid ${theme.brandColor}`,
-              margin: '16px 21px',
+              borderBottom: `1px solid ${theme.cardRuleColor}`,
+              margin: '16px 0',
               height: 0
             }
           }} />
