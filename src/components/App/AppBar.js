@@ -5,12 +5,12 @@ import { line, heading } from 'scaffold/typography';
 function style(theme) {
   return {
     bar: {
-      background: theme.brandColor,
+      background: theme.sidebarColor,
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`
     },
     h1: {
       ...heading(theme, {level: 2}),
-      color: theme.brandColorDark,
+      color: theme.sidebarColorHeading,
       fontWeight: 600,
       margin: 0,
       textTransform: 'uppercase'

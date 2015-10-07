@@ -13,8 +13,8 @@ export function style(theme) {
   return {
     link: {
       ...text(theme, { level: 2 }),
-      borderBottom: `1px solid ${theme.brandColorLine}`,
-      color: theme.brandColorLight,
+      borderBottom: `1px solid ${theme.sidebarColorLine}`,
+      color: theme.sidebarColorText,
       cursor: 'pointer',
       display: 'block',
       margin: 0,
@@ -24,8 +24,8 @@ export function style(theme) {
       ':active': pseudo
     },
     activeLink: {
-      color: '#fff',
-      background: theme.brandColorLine,
+      color: theme.sidebarColorTextActive,
+      background: theme.sidebarColorActive,
       ':hover': undefined
     },
     nestedLink: {
@@ -34,7 +34,7 @@ export function style(theme) {
     },
     nestedChildren: {
       borderBottom: 'none',
-      color: theme.brandColorLight,
+      color: theme.sidebarColorText,
       cursor: 'pointer',
       display: 'block',
       margin: 0,

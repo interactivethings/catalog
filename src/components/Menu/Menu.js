@@ -5,14 +5,14 @@ import ListItem from './ListItem';
 export function style(theme) {
   return {
     list: {
-      borderTop: `1px solid ${theme.brandColorLine}`,
+      borderTop: `1px solid ${theme.sidebarColorLine}`,
       listStyle: 'none',
       margin: 0,
       padding: 0
     },
     listNested: {
       borderTop: 'none',
-      borderBottom: `1px solid ${theme.brandColorLine}`,
+      borderBottom: `1px solid ${theme.sidebarColorLine}`,
       padding: '0 0 15px 40px'
     }
   };
