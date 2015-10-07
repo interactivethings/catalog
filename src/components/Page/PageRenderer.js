@@ -89,7 +89,7 @@ class PageRenderer extends React.Component {
     return MarkdownRenderer({
       text: this.props.content,
       section: (children) => {
-        return <Card key={seqKey()}>{children}</Card>;
+        return <Card key={seqKey()} theme={this.props.theme}>{children}</Card>;
       },
       renderer: {
         code: (codeBody, codeConfig) => {
