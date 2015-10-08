@@ -28,10 +28,10 @@ export function start(selector, config) {
       page.pages.map(subpage => {
         styles = _.uniq(_.compact([].concat(config.styles).concat(subpage.styles)));
         scripts = _.uniq(_.compact([].concat(config.scripts).concat(subpage.scripts)));
-        addPageRoute({styles, scripts, key: subpage.name, ...subpage});
+        addPageRoute({styles, scripts, key: subpage.name, superTitle: page.title, ...subpage});
       });
     } else {
-      addPageRoute({styles, scripts, key: page.name, ...page});
+      addPageRoute({styles, scripts, key: page.name, superTitle: config.title, ...page});
     }
   });
 

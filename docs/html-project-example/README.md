@@ -1,5 +1,3 @@
-# HTML Project Example
-
 > Catalog lets you work with HTML projects
 
 ## Simple HTML view

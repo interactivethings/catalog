@@ -6,12 +6,8 @@ import PageRenderer from './PageRenderer';
 
 class Page extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
-    styles: PropTypes.arrayOf(PropTypes.string),
-    scripts: PropTypes.arrayOf(PropTypes.string),
-    theme: PropTypes.object.isRequired
+    scripts: PropTypes.arrayOf(PropTypes.string)
   }
 
   static defaultProps = {
@@ -33,7 +29,7 @@ class Page extends React.Component {
     if (this.state.error) {
       return <div>Error: {this.state.error}</div>;
     } else if (this.state.content) {
-      return <PageRenderer content={this.state.content} styles={this.props.styles} theme={this.props.theme}/>;
+      return <PageRenderer {...this.props} content={this.state.content} />;
     }
     return <Loader />;
   }

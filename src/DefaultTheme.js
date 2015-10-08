@@ -4,6 +4,8 @@ export default {
   // Colors
   background: '#EEEEEE',
   cardBackground: '#FFFFFF',
+  pageHeadingBackground: '#AA191F',
+  pageHeadingTextColor: '#fff',
   brandColor: '#E54B3F',
   sidebarColor: '#E54B3F',
   sidebarColorActive: '#D1312E',

@@ -21,6 +21,8 @@ const seqKey = require('utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
   static propTypes = {
+    title: PropTypes.string.isRequired,
+    superTitle: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     styles: PropTypes.arrayOf(PropTypes.string).isRequired,
     theme: PropTypes.object.isRequired
@@ -74,6 +76,27 @@ class PageRenderer extends React.Component {
           }
         }} />
         {this.styleNodes()}
+
+        <div style={{
+          margin: `-74px -${theme.sizeXxl}px ${theme.sizeL}px -${theme.sizeXxl}px`,
+          padding: `74px ${theme.sizeXxl}px ${theme.sizeL}px ${theme.sizeXxl}px`,
+
+          background: theme.pageHeadingBackground
+        }}>
+          <h2 style={{
+            ...pageContainer(theme),
+            ...heading(theme, {level: 2}),
+            color: theme.pageHeadingTextColor,
+            marginBottom: 0
+          }}>{this.props.superTitle}</h2>
+          <h1 style={{
+            ...pageContainer(theme),
+            ...heading(theme, {level: 1}),
+            color: theme.pageHeadingTextColor,
+            marginBottom: 0
+          }}>{this.props.title}</h1>
+        </div>
+
         {this.contentNodes()}
       </div>
     );

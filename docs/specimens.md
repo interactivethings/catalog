@@ -1,5 +1,3 @@
-# Specimens
-
 > Specimens are the core of Catalog: they help you present your content.
 
 ## Overview

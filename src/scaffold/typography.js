@@ -107,7 +107,6 @@ export function heading(theme, {level}) {
       ...style,
       ...setType(theme, {fontSize: theme.fontXxl, verticalUnits: 12}),
       margin: '0 0 16px 0',
-      textTransform: 'uppercase',
       fontWeight: 600
     };
   case 2:
