@@ -12,14 +12,18 @@ function style(
     contentWidth,
     contentHeight,
     contentOffset,
-    contentTopPadding,
-    contentLeftPadding,
     sideBarAnimDur,
     sidebarVisible,
     bgVisible
   }
 ) {
   return {
+    container: {
+      background: theme.background,
+      margin: 0,
+      padding: 0,
+      position: 'relative'
+    },
     menuIcon: {
       cursor: 'pointer',
       height: 30,
@@ -28,12 +32,6 @@ function style(
       position: 'fixed',
       top: 20,
       width: 30
-    },
-    container: {
-      background: theme.background,
-      margin: 0,
-      padding: 0,
-      position: 'relative'
     },
     sideNav: {
       background: theme.sidebarColor,
@@ -63,8 +61,7 @@ function style(
       width: contentWidth,
       top: 0,
       left: contentOffset,
-      transition: `left ${sideBarAnimDur}s`,
-      padding: `${contentTopPadding}px 0 0 ${contentLeftPadding}px`
+      transition: `left ${sideBarAnimDur}s`
     }
   };
 }
@@ -113,8 +110,6 @@ class AppLayout extends React.Component {
     }
     const contentHeight = viewportHeight;
     const contentOffset = isMobileLayout ? 0 : SIDE_WIDTH;
-    const contentTopPadding = 100;
-    const contentLeftPadding = isMobileLayout ? 50 : 0;
     const sideBarAnimDur = 0.3;
     const bgVisible = isMobileLayout && sidebarVisible;
 
@@ -124,8 +119,6 @@ class AppLayout extends React.Component {
       contentWidth,
       contentHeight,
       contentOffset,
-      contentTopPadding,
-      contentLeftPadding,
       sideBarAnimDur,
       sidebarVisible,
       bgVisible
