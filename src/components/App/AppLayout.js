@@ -28,7 +28,6 @@ function style(
       cursor: 'pointer',
       height: 30,
       left: 20,
-      padding: 10,
       position: 'absolute',
       top: 20,
       width: 30
