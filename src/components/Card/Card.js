@@ -24,7 +24,7 @@ class Card extends Component {
       <section className='cg-Card' style={{
         background: theme.cardBackground,
         borderRadius: 3,
-        boxShadow: `0px 1px 4px ${theme.lightColor}`,
+        boxShadow: theme.cardShadow ? `0px 1px 4px ${theme.lightColor}` : null,
         margin: `${theme.sizeL}px 0`,
         padding: `${theme.sizeXl}px ${theme.sizeL}px 14px ${theme.sizeL}px`,
         position: 'relative'
