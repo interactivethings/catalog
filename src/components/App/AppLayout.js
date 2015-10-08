@@ -57,9 +57,8 @@ function style(
     },
     content: {
       boxSizing: 'border-box',
-      position: 'absolute',
+      position: 'relative',
       width: contentWidth,
-      top: 0,
       left: contentOffset,
       transition: `left ${sideBarAnimDur}s`
     }
