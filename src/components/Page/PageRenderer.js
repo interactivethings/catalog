@@ -78,7 +78,7 @@ class PageRenderer extends React.Component {
         {this.styleNodes()}
 
         <div style={{
-          margin: `-74px -${theme.sizeXxl}px ${theme.sizeL}px -${theme.sizeXxl}px`,
+          margin: `0 -${theme.sizeXxl}px ${theme.sizeL}px -${theme.sizeXxl}px`,
           padding: `74px ${theme.sizeXxl}px ${theme.sizeL}px ${theme.sizeXxl}px`,
 
           background: theme.pageHeadingBackground
