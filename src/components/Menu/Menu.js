@@ -11,11 +11,12 @@ export function style(theme) {
     },
     h1: {
       ...heading(theme, {level: 2}),
+      boxSizing: 'border-box',
       color: theme.sidebarColorHeading,
       fontWeight: 600,
       margin: 0,
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
-      textTransform: 'uppercase'
+      height: theme.pageHeadingHeight
     },
     img: {
       display: 'inline-block',

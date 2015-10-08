@@ -42,6 +42,8 @@ export default {
   sizeXl:  28,
   sizeXxl: 38,
 
+  pageHeadingHeight: 120,
+
   // The vertical grid unit. Margin, padding, and line-height are set to multiples
   // of this value. This is the value that determines the baseline for our vertical
   // rhythm. The default value of 6px allows more fine tuned designs that still

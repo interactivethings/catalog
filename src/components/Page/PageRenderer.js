@@ -78,23 +78,31 @@ class PageRenderer extends React.Component {
         {this.styleNodes()}
 
         <div style={{
-          margin: `0 -${theme.sizeXxl}px ${theme.sizeL}px -${theme.sizeXxl}px`,
-          padding: `74px ${theme.sizeXxl}px ${theme.sizeL}px ${theme.sizeXxl}px`,
-
+          boxSizing: 'border-box',
+          margin: `0 -${theme.sizeXxl}px ${theme.sizeXxl}px -${theme.sizeXxl}px`,
+          position: 'relative',
+          height: theme.pageHeadingHeight,
           background: theme.pageHeadingBackground
-        }}>
-          <h2 style={{
-            ...pageContainer(theme),
-            ...heading(theme, {level: 2}),
-            color: theme.pageHeadingTextColor,
-            marginBottom: 0
-          }}>{this.props.superTitle}</h2>
-          <h1 style={{
-            ...pageContainer(theme),
-            ...heading(theme, {level: 1}),
-            color: theme.pageHeadingTextColor,
-            marginBottom: 0
-          }}>{this.props.title}</h1>
+        }} >
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
+          }} >
+            <h2 style={{
+              ...pageContainer(theme),
+              ...heading(theme, {level: 2}),
+              color: theme.pageHeadingTextColor,
+              marginBottom: 0
+            }}>{this.props.superTitle}</h2>
+            <h1 style={{
+              ...pageContainer(theme),
+              ...heading(theme, {level: 1}),
+              color: theme.pageHeadingTextColor,
+              marginBottom: 0
+            }}>{this.props.title}</h1>
+          </div>
         </div>
 
         {this.contentNodes()}
