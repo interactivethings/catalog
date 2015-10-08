@@ -2,6 +2,8 @@
 
 An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things.
 
+![A cute kitty](https://placekitten.com/640/400)
+
 > Blockquotes can appear multiple times, even though that might not make too much sense … Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

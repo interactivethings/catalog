@@ -75,7 +75,10 @@ export function inlineElements(theme, {selector = ''}) {
     },
     [`${selector} a`]: linkStyle,
     [`${selector} a:hover`]: linkHoverStyle,
-    [`${selector} code`]: code(theme)
+    [`${selector} code`]: code(theme),
+    [`${selector} img`]: {
+      maxWidth: '100%'
+    }
   };
 }
 
