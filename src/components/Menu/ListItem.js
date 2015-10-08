@@ -30,7 +30,7 @@ export function style(theme) {
     },
     nestedLink: {
       borderBottom: 'none',
-      padding: '5px 40px 5px 20px'
+      padding: '5px 40px 5px 60px'
     },
     nestedChildren: {
       borderBottom: 'none',
