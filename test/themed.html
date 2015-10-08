@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalog Documentation (%VERSION%)</title>
+</head>
+<body>
+
+  <script src="/catalog.js"></script>
+  <script>
+    Catalog.start('body', {
+      title: "Catalog",
+      logoSrc: "",
+      theme: {
+        background: '#EEEEEE',
+        cardBackground: '#FFFFFF',
+        brandColor: '#032C49',
+        sidebarColor: '#F8F8F8',
+        sidebarColorActive: '#F8F8F8',
+        sidebarColorText: '#305E88',
+        sidebarColorTextActive: '#FC3B44',
+        sidebarColorLine: '#EFEFEF',
+        sidebarColorHeading: '#032C49',
+        textColor: '#333333',
+        textMedium: '#555555',
+        bgLight: '#CCCCCC',
+        bgDark: '#333333',
+        lightColor: '#D6D6D6',
+        cardRuleColor: '#EEEEEE',
+      },
+      pages: [
+        {name: 'intro', path: '/', title: "Introduction", src: "/docs/intro.md"},
+        {name: 'usage', title: "Usage", src: "/docs/usage.md"},
+        {
+          name: 'specimens-group',
+          title: "Specimens",
+          pages: [
+            {
+              name: 'specimens',
+              title: "Overview",
+              src: "/docs/specimens.md",
+              scripts: ['/docs/specimens.js']
+            },
+            {
+              name: 'html-project',
+              title: 'HTML Project',
+              src: '/docs/html-project-example/README.md'
+            }
+          ]
+        },
+        {
+          name: 'test',
+          title: "Style Test",
+          src: "/docs/test.md",
+          styles: ['/docs/test.css'],
+          scripts: ['/docs/test.js']
+        }
+      ]
+    });
+  </script>
+</body>
+</html>
