@@ -28,8 +28,8 @@ class App extends React.Component {
     return (
       <AppLayout
         theme={theme}
-        topNav={<AppBar title={title} logoSrc={logoSrc} theme={theme} />}
-        sideNav={<Menu pages={pages} theme={theme} />}>
+        sideNav={<Menu title={title} logoSrc={logoSrc} pages={pages} theme={theme} />}
+      >
         <RouteHandler {...page} theme={theme} />
       </AppLayout>
     );

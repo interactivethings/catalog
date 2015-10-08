@@ -1,9 +1,26 @@
 import React, { PropTypes } from 'react';
 
+import { heading } from 'scaffold/typography';
+
 import ListItem from './ListItem';
 
 export function style(theme) {
   return {
+    bar: {
+      background: theme.sidebarColor
+    },
+    h1: {
+      ...heading(theme, {level: 2}),
+      color: theme.sidebarColorHeading,
+      fontWeight: 600,
+      margin: 0,
+      padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
+      textTransform: 'uppercase'
+    },
+    img: {
+      display: 'inline-block',
+      width: '100%'
+    },
     list: {
       borderTop: `1px solid ${theme.sidebarColorLine}`,
       listStyle: 'none',
@@ -26,18 +43,23 @@ class Menu extends React.Component {
       src: PropTypes.string,
       path: PropTypes.string
     })).isRequired,
-    theme: PropTypes.object.isRequired
+    theme: PropTypes.object.isRequired,
+    logoSrc: PropTypes.string
   }
+
   static defaultProps = {
     styles: [],
     scripts: []
   }
+
   render() {
-    const { theme, pages } = this.props;
+    const { theme, pages, logoSrc, title } = this.props;
 
     let currentStyle = style(theme);
+
     return (
-      <div>
+      <div style={currentStyle.bar} >
+        <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.img} src={logoSrc} /> : (title ? title : '')}</h1>
         <ul style={currentStyle.list}>
           { pages.map(page => <ListItem key={page.name} {...page} theme={theme} />) }
         </ul>
