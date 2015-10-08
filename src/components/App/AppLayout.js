@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import hamburgerSrc from 'assets/burger.svg';
+import hamburgerSrc from 'assets/menu-icon.svg';
 
 const SIDE_WIDTH = 251;
 
