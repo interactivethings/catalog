@@ -29,7 +29,7 @@ function style(
       height: 30,
       left: 20,
       padding: 10,
-      position: 'fixed',
+      position: 'absolute',
       top: 20,
       width: 30
     },
