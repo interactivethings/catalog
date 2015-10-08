@@ -28,7 +28,7 @@ function style(
       width: SIDE_WIDTH
     },
     sideNav: {
-      background: theme.brandColor,
+      background: theme.sidebarColor,
       color: '#fff',
       overflowY: 'auto',
       position: 'fixed',
