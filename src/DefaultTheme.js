@@ -6,6 +6,7 @@ export default {
   cardBackground: '#FFFFFF',
   pageHeadingBackground: '#AA191F',
   pageHeadingTextColor: '#fff',
+  pageHeadingHeight: 120,
   brandColor: '#E54B3F',
   sidebarColor: '#E54B3F',
   sidebarColorActive: '#D1312E',
@@ -19,6 +20,7 @@ export default {
   bgDark: '#333333',
   lightColor: '#D6D6D6',
   cardRuleColor: '#EEEEEE',
+  cardShadow: true,
 
   // Patterns
   checkerboardPatternLight: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=',
@@ -42,7 +44,6 @@ export default {
   sizeXl:  28,
   sizeXxl: 38,
 
-  pageHeadingHeight: 120,
 
   // The vertical grid unit. Margin, padding, and line-height are set to multiples
   // of this value. This is the value that determines the baseline for our vertical
