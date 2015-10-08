@@ -6,7 +6,7 @@ import { text } from 'scaffold/typography';
 
 export function style(theme) {
   let pseudo = {
-    color: '#fff',
+    color: theme.sidebarColorTextActive,
     textDecoration: 'none',
     background: 'rgba(255,255,255,0.1)'
   };
