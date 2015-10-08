@@ -48,6 +48,7 @@ class ListItem extends React.Component {
   static propTypes = {
     pages: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
+      menuTitle: PropTypes.string,
       name: PropTypes.string.isRequired
     })),
     title: PropTypes.string.isRequired,
@@ -56,7 +57,7 @@ class ListItem extends React.Component {
     nested: PropTypes.bool
   }
   render() {
-    const { pages, name, title, theme, nested } = this.props;
+    const { pages, name, title, menuTitle, theme, nested } = this.props;
     let currentStyle = style(theme);
     let defaultStyle = {
       ...currentStyle.link
@@ -76,7 +77,7 @@ class ListItem extends React.Component {
             style={defaultStyle}
             activeStyle={{...defaultStyle, ...currentStyle.activeLink}}
             to={name}>
-            { title }
+            { menuTitle || title }
           </Link>
         }
       </li>
