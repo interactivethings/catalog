@@ -310,7 +310,8 @@ Describe UI specifications with images and metadata.
 ```download
 {
     "title": "Catalog Logo (.svg)",
+    "filename": "catalog-logo",
     "subtitle": "8 KB",
-    "url": "assets/catalog_logo.svg"
+    "url": "docs/assets/catalog_logo.svg"
 }
 ```
