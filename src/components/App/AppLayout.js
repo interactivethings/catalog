@@ -76,7 +76,7 @@ class AppLayout extends React.Component {
   state = {
     viewportHeight: window.innerHeight,
     viewportWidth: window.innerWidth,
-    sidebarVisible: true
+    sidebarVisible: false
   };
 
   componentDidMount() {
