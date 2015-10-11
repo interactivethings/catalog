@@ -301,3 +301,16 @@ Describe UI specifications with images and metadata.
 ]
 ```
 
+## Downloadable Content
+
+### Examples
+
+#### `download`
+
+```download
+{
+    "title": "Catalog Logo (.svg)",
+    "subtitle": "8 KB",
+    "url": "assets/catalog_logo.svg"
+}
+```

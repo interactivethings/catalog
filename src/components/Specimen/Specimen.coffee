@@ -10,6 +10,7 @@ Html = React.createFactory require('./Html/Html')
 Icon = React.createFactory require('./Icon/Icon')
 Project = React.createFactory require('./Project/Project')
 UISpec = React.createFactory require('./UISpec/UISpec')
+DownloadSpecimen = React.createFactory require('./DownloadSpecimen/DownloadSpecimen')
 projectBodyToProps = require('./Project/bodyToProps')
 
 
@@ -38,6 +39,7 @@ module.exports = Specimen = React.createClass
       type:    (props) -> Html(body: props.body, modifiers: props.config.options)
       uispec:  (props) -> UISpec(entries: JSON.parse(props.body))
       project: (props) -> Project(projectBodyToProps(props.body))
+      download: (props) -> DownloadSpecimen(JSON.parse(props.body))
 
   render: ->
     renderer = Specimen.Renderer[@props.config.specimen]
