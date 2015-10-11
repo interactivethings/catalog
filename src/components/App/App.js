@@ -13,6 +13,7 @@ class App extends React.Component {
       src: PropTypes.string,
       path: PropTypes.string
     })).isRequired,
+    pageNames: PropTypes.arrayOf(PropTypes.string),
     page: PropTypes.object.isRequired,
     styles: PropTypes.arrayOf(PropTypes.string),
     scripts: PropTypes.arrayOf(PropTypes.string),
@@ -24,10 +25,14 @@ class App extends React.Component {
   }
   render() {
     const { theme, title, logoSrc, pages, page } = this.props;
+
     return (
       <AppLayout
         theme={theme}
         sideNav={<Menu title={title} logoSrc={logoSrc} pages={pages} theme={theme} />}
+        pageNames={this.props.pageNames}
+        pageList={this.props.pageList}
+        currentPage={page.name}
       >
         <RouteHandler {...page} theme={theme} />
       </AppLayout>

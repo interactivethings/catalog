@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Link from 'components/Link/Link';
 import hamburgerSrc from 'assets/menu-icon.svg';
 
 const SIDE_WIDTH = 251;
@@ -55,6 +56,9 @@ function style(
       opacity: bgVisible ? 1 : 0,
       visibility: bgVisible ? 'visible' : 'hidden',
       transition: `opacity ${sideBarAnimDur}s, visibility ${sideBarAnimDur}s`
+    },
+    link: {
+      
     },
     content: {
       boxSizing: 'border-box',
@@ -124,10 +128,38 @@ class AppLayout extends React.Component {
       bgVisible
     });
 
+    let pageIndex = this.props.pageNames.indexOf(this.props.currentPage);
+    let prevPage = this.props.pageList[pageIndex - 1];
+    let nextPage = this.props.pageList[pageIndex + 1];
+
+    console.log(prevPage, nextPage);
+
     return (
       <div style={currentStyle.container}>
         <div style={currentStyle.content}>
           { this.props.children }
+        </div>
+        <div>
+          {
+            prevPage &&
+              <Link
+                to={prevPage.name}
+                style={currentStyle.link}
+              >
+                { prevPage.superTitle }
+                { prevPage.title }
+              </Link>
+          }
+          {
+            nextPage &&
+              <Link
+                to={nextPage.name}
+                style={currentStyle.link}
+              >
+                { nextPage.superTitle }
+                { nextPage.title }
+              </Link>
+          }
         </div>
         <img style={currentStyle.menuIcon} src={hamburgerSrc} onClick={::this.toggleSidebar} />
         <div style={currentStyle.navBackground} onClick={::this.toggleSidebar} />

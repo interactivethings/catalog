@@ -14,26 +14,37 @@ import DefaultTheme from 'DefaultTheme';
 export function start(selector, config) {
   let pageIndex = {};
   let pageRoutes = [];
-  const addPageRoute = (data) => {
-    let path = data.path || `/${data.name}`;
-    pageIndex[path] = data;
-    let route = <Route path={path} handler={Page} key={data.key} name={data.name} />;
-    pageRoutes.push(route);
-  };
+  let pageList = [];
+  let pageNames = [];
 
-  config.pages.forEach(page => {
-    let styles = _.uniq(_.compact([].concat(config.styles).concat(page.styles)));
-    let scripts = _.uniq(_.compact([].concat(config.scripts).concat(page.scripts)));
-    if (page.pages) {
-      page.pages.map(subpage => {
-        styles = _.uniq(_.compact([].concat(config.styles).concat(subpage.styles)));
-        scripts = _.uniq(_.compact([].concat(config.scripts).concat(subpage.scripts)));
-        addPageRoute({styles, scripts, key: subpage.name, superTitle: page.title, ...subpage});
-      });
-    } else {
-      addPageRoute({styles, scripts, key: page.name, superTitle: config.title, ...page});
+  function addPageRoute(data) {
+    // Test to ensure it has a src property, meaning its a valid route, not just a grouping
+    if (data.src) {    
+      let path = data.path || `/${data.name}`;
+      data.path = path;
+      pageIndex[path] = data;
+
+      let route = <Route path={path} handler={Page} key={data.key} name={data.name} />;
+      pageRoutes.push(route);
+      pageList.push(data);
+      pageNames.push(data.name);
     }
-  });
+  }
+
+  let globalStyles = config.styles;
+  let globalScripts = config.scripts;
+
+  function gatherPages(superTitle, group) {
+    let styles = _.uniq(_.compact([].concat(globalStyles).concat(group.styles)));
+    let scripts = _.uniq(_.compact([].concat(globalScripts).concat(group.scripts)));
+    addPageRoute({styles, scripts, key: group.name, superTitle, ...group });
+
+    if (group.pages) {
+      group.pages.forEach((p) => gatherPages(group.title, p));
+    }
+  }
+
+  config.pages.forEach((mainPage) => gatherPages(config.title, mainPage));
 
   const routes = (
     <Route handler={App}>
@@ -51,8 +62,10 @@ export function start(selector, config) {
   };
 
   Router.run(routes, HashLocation, (Root, state) => {
+    console.log(pageIndex[state.pathname], pageNames);
+
     React.render(
-      <Root {...config} theme={theme} page={pageIndex[state.pathname]} />,
+      <Root {...config} theme={theme} page={pageIndex[state.pathname]} pageNames={pageNames} pageList={pageList} />,
       rootElement
     );
   });
