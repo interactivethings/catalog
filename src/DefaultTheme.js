@@ -16,7 +16,7 @@ export default {
   sidebarColorHeading: '#AA191F',
   textColor: '#333333',
   textMedium: '#555555',
-  bgLight: '#CCCCCC',
+  bgLight: '#E6E6E6',
   bgDark: '#333333',
   lightColor: '#D6D6D6',
   cardRuleColor: '#EEEEEE',
