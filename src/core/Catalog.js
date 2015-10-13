@@ -62,8 +62,6 @@ export function start(selector, config) {
   };
 
   Router.run(routes, HashLocation, (Root, state) => {
-    console.log(pageIndex[state.pathname], pageNames);
-
     React.render(
       <Root {...config} theme={theme} page={pageIndex[state.pathname]} pageNames={pageNames} pageList={pageList} />,
       rootElement
