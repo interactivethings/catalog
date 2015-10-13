@@ -25,13 +25,6 @@
   color: #fff;
 }
 
-
-/* Baseline grid debugging */
-.cg-Catalog {
-  min-height: 5000px;
-  position: relative;
-}
-
 .cg-Catalog:before, .cg-Catalog:after {
   content: "";
   position: absolute;

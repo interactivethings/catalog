@@ -1,5 +1,3 @@
-# Specimens
-
 > Specimens are the core of Catalog: they help you present your content.
 
 ## Overview
@@ -303,3 +301,17 @@ Describe UI specifications with images and metadata.
 ]
 ```
 
+## Downloadable Content
+
+### Examples
+
+#### `download`
+
+```download
+{
+    "title": "Catalog Logo (.svg)",
+    "filename": "catalog-logo",
+    "subtitle": "8 KB",
+    "url": "docs/assets/catalog_logo.svg"
+}
+```

@@ -1,5 +1,3 @@
-# Usage
-
 ## Initialization
 
 To start Catalog, run the following code on an empty HTML page.
