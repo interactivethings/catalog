@@ -65,7 +65,7 @@ function style(
     navlink: {
       boxSizing: 'border-box',
       display: 'inline-block',
-      // verticalAlign: 'top',
+      verticalAlign: 'top',
       width: '50%',
     },
     leftNavLink: {
