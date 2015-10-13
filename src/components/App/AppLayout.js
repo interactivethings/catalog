@@ -75,6 +75,7 @@ function style(
     rightNavLink: {
       padding: `36px ${navPadding}px 36px 0`,
       textAlign: 'right',
+      borderLeft: `1px solid ${theme.background}`
     },
     link: {
       color: theme.brandColor,
