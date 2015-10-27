@@ -1,59 +1,49 @@
 #!/usr/bin/env node
 
-var _ = require('lodash');
-var clc = require('cli-color');
+/*eslint-disable*/
+
 var path = require('path');
-var mach = require('mach');
-var findPort = require('find-port');
-var webpack = require("webpack");
+var express = require('express');
+var webpack = require('webpack');
+var devMiddleware = require('webpack-dev-middleware');
+var hotMiddleware = require('webpack-hot-middleware');
+var historyApiFallback = require('connect-history-api-fallback');
+var portfinder = require('portfinder');
+var webpackConfig = require('../webpack.config');
 
-var watcher;
-findPort(4000, 4050, function(ports) {
-  var port = ports[0];
-
-  // Start static webserver
-  var server = mach.stack();
-  server.use(mach.file, {index: ['index.html'], root: '.'});
-  mach.serve(server, port);
-
-  // Build and watch Webpack
-  var config = require('../webpack.config.js');
+function server(options, config) {
+  var app = express();
   var compiler = webpack(config);
 
-  watcher = compiler.watch({}, function(err, stats) {
-    if (err) return logger(clc.red.bold("Fatal error"), err);
+  app.use(historyApiFallback());
 
-    var jsonStats = stats.toJson();
-    if (jsonStats.errors.length) return logger(clc.red.bold("Error"), jsonStats.errors);
-    if (jsonStats.warnings.length) logger(clc.yellow("Warning"), jsonStats.warnings);
+  app.use(devMiddleware(compiler, {
+      publicPath: config.output.publicPath,
+      contentBase: config.output.contentBase,
+      stats: {
+        assets: true,
+        chunkModules: false,
+        chunkOrigins: false,
+        chunks: false,
+        colors: true,
+        hash: false,
+        timings: true,
+        version: false
+      }
+    }));
 
-    afterCompile(jsonStats);
+  app.use(hotMiddleware(compiler));
+
+  app.use(express.static('.'));
+
+  app.listen(options.port, options.host, function (err, result) {
+    if (err) { throw err };
+
+    console.log('Listening at http://' + options.host + ':' + options.port);
   });
-});
+};
 
-
-//
-// Helpers
-//
-function afterCompile(jsonStats) {
-  console.log(clc.green("Webpacked"), jsonStats.assets.map(_.property('name')).join(', '));
-}
-
-function logger(banner, messages) {
-  messages = [].concat(messages);
-  console.log(banner);
-  messages.forEach(function(messages) {
-    console.log(messages);
-  });
-}
-
-
-//
-// Exit gracefully
-//
-process.on('SIGINT', function() {
-  if (watcher) {
-    watcher.close();
-  }
-  process.exit();
+portfinder.getPort({port: 8080, host: '0.0.0.0'}, function(err, port) {
+  if (err) { throw err; }
+  server({port: port, host: '0.0.0.0'}, webpackConfig);
 });

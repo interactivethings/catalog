@@ -33,13 +33,12 @@ CLI_RESET   = \033[0m
 
 .PHONY: install server build doc nightly dist deploy clean clobber lint
 
-all: build
+all: server
 
-install: _print-banner node_modules bower.json
+install: _print-banner node_modules
 
 server: install
-	@UV_THREADPOOL_SIZE=100 \
-	bin/server
+	@UV_THREADPOOL_SIZE=100 bin/server
 
 build: install clean
 	UV_THREADPOOL_SIZE=100 \

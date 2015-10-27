@@ -5,20 +5,9 @@ var assignDeep = require('assign-deep');
 var values = require('object-values');
 var bourbon = require('node-bourbon');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var DedupePlugin = webpack.optimize.DedupePlugin;
-var DefinePlugin = require('webpack').DefinePlugin;
-var OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-
-var config = {
-  env: process.env.NODE_ENV || 'development',
-  globals: {
-    __DEV__: (process.env.NODE_ENV === 'development'),
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-  }
-}
+var env = process.env.NODE_ENV || 'development';
 
 var sassLoader = function(loadersDef) {
   return loadersDef + '?includePaths[]=' + [
@@ -30,7 +19,7 @@ var sassLoader = function(loadersDef) {
 
 var loaders = {
   common: {
-    js: {test: /\.js$/, include: [resolveHere('src')], loaders: ['babel?stage=0']},
+    js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'},
     coffee: {test: /\.coffee$/, loader: 'coffee-loader'},
     scss: {test: /\.scss$/, loader: sassLoader('style!css!sass')},
     css: {test: /\.css$/, loader: 'style!css'},
@@ -52,23 +41,23 @@ var loaders = {
     html: {test: /\.html$/, loader: 'file?name=[name].[ext]'}
   },
 
-  development: {
-    js: {
-      loaders: ['babel?stage=0']
-    }
-  },
+  development: {},
 
   production: {}
 }
 
 var webpackConfig = {
   common: {
+    output: {
+      path: resolveHere('.'),
+      filename: 'catalog.js'
+    },
     resolve: {
       root: resolveHere('src'),
       extensions: ['', '.js', '.coffee', '.json', '.css', '.scss']
     },
     module: {
-      loaders: values(assignDeep(loaders.common, loaders[config.env])),
+      loaders: values(assignDeep(loaders.common, loaders[env])),
       noParse: [
         /\.min\.js$/
       ]
@@ -77,16 +66,19 @@ var webpackConfig = {
 
   development: {
     entry: [
+      'webpack-hot-middleware/client',
       resolveHere('src/catalog')
     ],
     output: {
-      path: resolveHere('.'),
-      filename: 'catalog.js',
       pathinfo: true
     },
     devtool: '#eval-source-map',
     plugins: [
-      new DefinePlugin(config.globals)
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+       '__DEV__': JSON.stringify(true),
+       'process.env.NODE_ENV': JSON.stringify('development')
+      })
     ]
   },
 
@@ -94,21 +86,20 @@ var webpackConfig = {
     entry: {
       app: resolveHere('src/catalog')
     },
-    output: {
-      path: resolveHere('.'),
-      filename: 'catalog.js'
-    },
     plugins: [
-      new DefinePlugin(config.globals),
-      new DedupePlugin(),
-      new UglifyJsPlugin({
+      new webpack.DefinePlugin({
+        '__DEV__': JSON.stringify(false),
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
         }
-      }),
-      new OccurenceOrderPlugin()
+      })
     ]
   }
 };
 
-module.exports = assignDeep(webpackConfig.common, webpackConfig[config.env]);
+module.exports = assignDeep(webpackConfig.common, webpackConfig[env]);
