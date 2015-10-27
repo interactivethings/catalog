@@ -52,12 +52,12 @@ class ListItem extends React.Component {
       name: PropTypes.string.isRequired
     })),
     title: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
     theme: PropTypes.object.isRequired,
     nested: PropTypes.bool
   }
   render() {
-    const { pages, name, title, menuTitle, theme, nested } = this.props;
+    const { pages, name, path, title, menuTitle, theme, nested } = this.props;
     let currentStyle = style(theme);
     let defaultStyle = {
       ...currentStyle.link
@@ -76,7 +76,7 @@ class ListItem extends React.Component {
           <Link
             style={defaultStyle}
             activeStyle={{...defaultStyle, ...currentStyle.activeLink}}
-            to={name}>
+            to={path}>
             { menuTitle || title }
           </Link>
         }

@@ -6,7 +6,7 @@ import PageRenderer from './PageRenderer';
 
 class Page extends React.Component {
   static propTypes = {
-    src: PropTypes.string.isRequired,
+    page: PropTypes.object.isRequired,
     scripts: PropTypes.arrayOf(PropTypes.string)
   }
 
@@ -35,7 +35,7 @@ class Page extends React.Component {
   }
 
   fetchPageData() {
-    reqwest({url: this.props.src, type: 'text'})
+    reqwest({url: this.props.page.src, type: 'text'})
       .then((res) => this.setState({content: res.responseText}))
       .fail((res) => {
         return this.setState({

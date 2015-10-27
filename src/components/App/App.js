@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { RouteHandler } from 'react-router';
 
 import AppLayout from './AppLayout';
 import Menu from 'components/Menu/Menu';
@@ -11,7 +10,7 @@ class App extends React.Component {
       title: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       src: PropTypes.string,
-      path: PropTypes.string
+      path: PropTypes.string.isRequired
     })).isRequired,
     pageNames: PropTypes.arrayOf(PropTypes.string),
     page: PropTypes.object.isRequired,
@@ -31,10 +30,12 @@ class App extends React.Component {
         theme={theme}
         sideNav={<Menu title={title} logoSrc={logoSrc} pages={pages} theme={theme} />}
         pageNames={this.props.pageNames}
-        pageList={this.props.pageList}
-        currentPage={page.name}
+        pages={this.props.pages}
+        currentPage={page ? page.name : 'foo'}
       >
-        <RouteHandler {...page} theme={theme} />
+        {
+         this.props.children
+        }
       </AppLayout>
     );
   }

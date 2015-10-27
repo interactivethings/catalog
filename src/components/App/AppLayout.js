@@ -122,7 +122,7 @@ class AppLayout extends React.Component {
     children: PropTypes.node,
     theme: PropTypes.object.isRequired,
     pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-    pageList: PropTypes.array.isRequired,
+    pages: PropTypes.array.isRequired,
     currentPage: PropTypes.string,
   }
 
@@ -180,8 +180,8 @@ class AppLayout extends React.Component {
     });
 
     let pageIndex = this.props.pageNames.indexOf(this.props.currentPage);
-    let prevPage = this.props.pageList[pageIndex - 1];
-    let nextPage = this.props.pageList[pageIndex + 1];
+    let prevPage = this.props.pages[pageIndex - 1];
+    let nextPage = this.props.pages[pageIndex + 1];
 
     let leftIcon = (
       <svg style={currentStyle.leftLinkIcon} width='37px' height='26px' viewBox='0 0 37 26'>
@@ -196,7 +196,7 @@ class AppLayout extends React.Component {
           <div style={currentStyle.navbar}>
             <div style={{ ...currentStyle.navlink, ...currentStyle.leftNavLink }}>{
               prevPage &&
-              <Link to={prevPage.name} style={currentStyle.link}>
+              <Link to={prevPage.path} style={currentStyle.link}>
                 { !isMobileLayout && leftIcon }
                 <div style={currentStyle.linklabels}>
                   <h4 style={currentStyle.linkSuperTitle}>{ prevPage.superTitle }</h4>
@@ -207,7 +207,7 @@ class AppLayout extends React.Component {
             }</div>
             <div style={{ ...currentStyle.navlink, ...currentStyle.rightNavLink }}>{
               nextPage &&
-              <Link to={nextPage.name} style={currentStyle.link}>
+              <Link to={nextPage.path} style={currentStyle.link}>
                 <div style={currentStyle.linklabels}>
                   <h4 style={currentStyle.linkSuperTitle}>{ nextPage.superTitle }</h4>
                   <h3 style={currentStyle.linkTitle}>{ nextPage.title }</h3>

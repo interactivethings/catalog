@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { State } from 'react-router';
 
 import Link from 'components/Link/Link';
 import ListItem, { style as listItemStyle } from './ListItem';
@@ -7,11 +6,11 @@ import { style as menuStyle } from './Menu';
 import Radium from 'radium';
 
 const NestedList = React.createClass({
-  mixins: [State],
   propTypes: {
     pages: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired
     })),
     title: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -20,7 +19,7 @@ const NestedList = React.createClass({
   render() {
     const { theme, pages, title } = this.props;
     const collapsed = !pages
-      .map((d) => this.isActive(d.name))
+      .map((d) => this.props.history.isActive(d.path))
       .filter(Boolean)
       .length;
 

@@ -41,8 +41,9 @@ class Menu extends React.Component {
     pages: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
       src: PropTypes.string,
-      path: PropTypes.string
+      path: PropTypes.string.isRequired
     })).isRequired,
     theme: PropTypes.object.isRequired,
     logoSrc: PropTypes.string

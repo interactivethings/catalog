@@ -1,5 +1,8 @@
 import React from 'react';
-import Router, { Route, Redirect, HashLocation } from 'react-router';
+import ReactDOM from 'react-dom';
+import {Router, Route, Redirect} from 'react-router';
+import createHistory from 'history/lib/createHashHistory';
+
 import runscript from 'utils/runscript';
 
 import './Catalog.scss';
@@ -20,11 +23,15 @@ export function start(selector, config) {
   function addPageRoute(data) {
     // Test to ensure it has a src property, meaning its a valid route, not just a grouping
     if (data.src) {    
-      let path = data.path || `/${data.name}`;
+      const path = data.path || `/${data.name}`;
       data.path = path;
       pageIndex[path] = data;
 
-      let route = <Route path={path} handler={Page} key={data.key} name={data.name} />;
+      const route = {
+        path,
+        component: Page
+      };
+
       pageRoutes.push(route);
       pageList.push(data);
       pageNames.push(data.name);
@@ -46,12 +53,10 @@ export function start(selector, config) {
 
   config.pages.forEach((mainPage) => gatherPages(config.title, mainPage));
 
-  const routes = (
-    <Route handler={App}>
-      { pageRoutes }
-      <Redirect from='*' to='/' />
-    </Route>
-  );
+  const routes = {
+    component: App,
+    childRoutes: pageRoutes
+  };
 
   const rootElement = document.querySelector(selector);
   rootElement.className += ' cg-Catalog';
@@ -61,12 +66,12 @@ export function start(selector, config) {
     ...config.theme
   };
 
-  Router.run(routes, HashLocation, (Root, state) => {
-    React.render(
-      <Root {...config} theme={theme} page={pageIndex[state.pathname]} pageNames={pageNames} pageList={pageList} />,
-      rootElement
-    );
-  });
+  ReactDOM.render(
+    <Router history={createHistory()} routes={routes} createElement={(Component, props) => {
+      return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pageList} />;
+    }} />,
+    rootElement
+  );
 }
 
 //

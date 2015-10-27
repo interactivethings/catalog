@@ -5,9 +5,10 @@
   "main": "catalog.js",
   "dependencies": {
     "history": "^1.12.3",
-    "react": "^0.13.3",
-    "react-router": "^0.13.0",
-    "marked": "0.3.2"
+    "marked": "0.3.2",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3"
   },
   "devDependencies": {
     "assign-deep": "0.3.1",

@@ -79,7 +79,7 @@ class Html extends React.Component {
     const {modifiers} = this.props;
     modifiers
       .filter( modifier => modifier === 'run-script')
-      .map( modifier => React.findDOMNode(this).querySelectorAll('script'))
+      .map( modifier => this.refs.specimen.querySelectorAll('script'))
       .forEach(script => Catalog.actions.runscript(script[0]));
   }
 
@@ -106,7 +106,7 @@ class Html extends React.Component {
       : null;
 
     return (
-      <div style={styles.container} className='cg-Specimen-Html'>
+      <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
         {toggle}
         <div style={[styles.content, modifierStyles]} dangerouslySetInnerHTML={{__html: body}} />
         {source}
