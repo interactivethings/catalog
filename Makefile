@@ -147,7 +147,3 @@ node_modules: package.json
 	@npm install
 	@touch $@
 
-bower.json: package.json
-	@rm -f $@
-	@bin/bower > $@
-	@chmod a-w $@
