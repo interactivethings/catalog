@@ -1,3 +1,4 @@
+import 'babel/polyfill';
 // Polyfill for DOMParser.parseFromString support
 import '../lib/DOMParser';
 

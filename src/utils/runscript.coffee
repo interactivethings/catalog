@@ -1,5 +1,3 @@
-{Promise} = require('es6-promise')
-
 #
 # Sequentially runs scripts as they are added
 #

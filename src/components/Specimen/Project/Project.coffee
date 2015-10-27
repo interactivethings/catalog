@@ -1,4 +1,3 @@
-{Promise} = require('es6-promise')
 JSZip = require('jszip');
 saveAs = require('../../../../lib/FileSaver')
 
