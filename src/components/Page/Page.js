@@ -1,5 +1,6 @@
 import reqwest from 'reqwest';
 import React, { PropTypes } from 'react';
+import {actions} from 'core/Catalog';
 import {page} from 'core/PropTypes';
 
 import Loader from './Loader';
@@ -21,7 +22,7 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    this.props.page.scripts.forEach(Catalog.actions.runscript);
+    this.props.page.scripts.forEach(actions.runscript);
     this.fetchPageData();
   }
 
