@@ -20,7 +20,7 @@ class FramedCodeBlock extends React.Component {
     let styles = getStyle(theme);
     return (
       <section className={'cg-CodeBlock ' + (modifiers ? 'cg-CodeBlock--' + modifiers : '')}>
-        <Frame style={styles.container}>
+        <Frame style={styles.container} head={<style>{'body,html{margin:0;padding:0}'}</style>}>
           <div dangerouslySetInnerHTML={{__html: code}} />
         </Frame>
       </section>

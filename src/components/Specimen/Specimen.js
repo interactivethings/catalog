@@ -10,6 +10,9 @@ import UISpec from './UISpec/UISpec';
 import DownloadSpecimen from './DownloadSpecimen/DownloadSpecimen';
 import projectBodyToProps from './Project/bodyToProps';
 
+// The used plugin is out of date at the moment
+import FramedCodeBlock from './Framed/FramedCodeBlock';
+
 const DEFAULT_SPECIMEN = 'html';
 
 const Renderer = {
@@ -23,6 +26,7 @@ const Renderer = {
     return <Project {...projectBodyToProps(props.body)} theme={props.theme}/>
   },
   download: (props) => <DownloadSpecimen {...R.merge( JSON.parse(props.body) )} theme={props.theme}/>,
+  // framed: (props) => <FramedCodeBlock code={props.body} theme={props.theme}/>,
 }
 
 // .cg-Specimen {
