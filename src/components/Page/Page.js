@@ -7,8 +7,7 @@ import PageRenderer from './PageRenderer';
 
 class Page extends React.Component {
   static propTypes = {
-    page: page.isRequired,
-    scripts: PropTypes.arrayOf(PropTypes.string)
+    page: page.isRequired
   }
 
   static defaultProps = {
@@ -22,7 +21,7 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    this.props.scripts.forEach(Catalog.actions.runscript);
+    this.props.page.scripts.forEach(Catalog.actions.runscript);
     this.fetchPageData();
   }
 
