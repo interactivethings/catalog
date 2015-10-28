@@ -87,7 +87,7 @@ class PageRenderer extends React.Component {
             position: 'absolute',
             bottom: 0,
             left: 0,
-            padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
+            padding: `${theme.sizeL}px ${theme.sizeXxl}px`
           }} >
             <h2 style={{
               ...pageContainer(theme),
