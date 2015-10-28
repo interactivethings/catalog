@@ -24,7 +24,6 @@ class PageRenderer extends React.Component {
     title: PropTypes.string.isRequired,
     superTitle: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    styles: PropTypes.arrayOf(PropTypes.string).isRequired,
     theme: PropTypes.object.isRequired
   }
 
@@ -111,7 +110,7 @@ class PageRenderer extends React.Component {
   }
 
   styleNodes() {
-    return this.props.styles.map((src) => {
+    return this.props.page.styles.map((src) => {
       return <link key={seqKey()} href={src} rel='stylesheet' type='text/css' />;
     });
   }
