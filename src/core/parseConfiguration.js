@@ -1,9 +1,7 @@
-// TODO bring back page styles and scripts
-
 const flattenPages = (pages) => {
-  return pages.reduce((flattened, page) => {
-    return flattened.concat(page.pages ? [page, ...page.pages] : [page]);
-  }, []);
+  return pages
+    .reduce((flattened, page) => flattened.concat(page.pages ? [page, ...page.pages] : [page]), [])
+    .filter((page) => page.src);
 };
 
 const indexPages = (flattenedPages) => {
@@ -27,14 +25,14 @@ export default (configuration) => {
       {
         ...page,
         path: page.path || `/${page.name}`,
-        pages: page.pages ? page.pages.reduce(pageReducer, []) : null,
+        pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configurationStyles, ...pageStyles])),
         scripts: Array.from(new Set([...configurationScripts, ...pageScripts]))
       }
     ];
   };
 
-  const pages = configuration.pages.reduce(pageReducer, []);
+  const pages = configuration.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: configuration.title}));
   const pageList = flattenPages(pages);
   const pageIndex = indexPages(pageList);
   const pageNames = pageList.map((page) => page.name);
@@ -43,6 +41,6 @@ export default (configuration) => {
     pages,
     pageList,
     pageIndex,
-    pageNames   
+    pageNames
   };
 };

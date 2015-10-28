@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {page} from 'core/PropTypes';
 
 import MarkdownRenderer from 'MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
@@ -21,8 +22,7 @@ const seqKey = require('utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
-    superTitle: PropTypes.string.isRequired,
+    page: page.isRequired,
     content: PropTypes.string.isRequired,
     theme: PropTypes.object.isRequired
   }
@@ -94,13 +94,13 @@ class PageRenderer extends React.Component {
               ...heading(theme, {level: 2}),
               color: theme.pageHeadingTextColor,
               marginBottom: 0
-            }}>{this.props.superTitle}</h2>
+            }}>{this.props.page.superTitle}</h2>
             <h1 style={{
               ...pageContainer(theme),
               ...heading(theme, {level: 1}),
               color: theme.pageHeadingTextColor,
               marginBottom: 0
-            }}>{this.props.title}</h1>
+            }}>{this.props.page.title}</h1>
           </div>
         </div>
 

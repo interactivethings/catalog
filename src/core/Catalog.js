@@ -45,7 +45,7 @@ export function start(selector, config) {
 
   ReactDOM.render(
     <Router history={createHistory()} routes={routes} createElement={(Component, props) => {
-      return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} logoSrc={config.logoSrc} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pages} />;
+      return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} logoSrc={config.logoSrc} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pages} pageList={pageList} />;
     }} />,
     rootElement
   );

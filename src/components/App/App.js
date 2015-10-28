@@ -12,22 +12,18 @@ class App extends React.Component {
     page: page.isRequired,
     styles: PropTypes.arrayOf(PropTypes.string),
     scripts: PropTypes.arrayOf(PropTypes.string),
-    theme: PropTypes.object.isRequired
+    theme: PropTypes.object.isRequired,
+    children: PropTypes.element.isRequired
   }
   static defaultProps = {
     styles: [],
     scripts: []
   }
   render() {
-    const { theme, title, logoSrc, pages, page, history } = this.props;
-
     return (
       <AppLayout
-        theme={theme}
-        sideNav={<Menu title={title} logoSrc={logoSrc} pages={pages} theme={theme} history={history} />}
-        pageNames={this.props.pageNames}
-        pages={this.props.pages}
-        currentPage={page ? page.name : 'foo'}
+        {...this.props}
+        sideNav={<Menu {...this.props} />}
       >
         {
          this.props.children

@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import React, { PropTypes } from 'react';
-import {pages} from 'core/PropTypes';
+import {page, pages} from 'core/PropTypes';
 import Link from 'components/Link/Link';
 import hamburgerSrc from 'assets/menu-icon.svg';
 
@@ -123,8 +123,10 @@ class AppLayout extends React.Component {
     children: PropTypes.node,
     theme: PropTypes.object.isRequired,
     pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+    page: page.isRequired,
     pages: pages.isRequired,
     currentPage: PropTypes.string,
+    pageList: pages.isRequired,
   }
 
   state = {
@@ -180,9 +182,10 @@ class AppLayout extends React.Component {
       navPadding,
     });
 
-    let pageIndex = this.props.pageNames.indexOf(this.props.currentPage);
-    let prevPage = this.props.pages[pageIndex - 1];
-    let nextPage = this.props.pages[pageIndex + 1];
+
+    let pageIndex = this.props.pageNames.indexOf(this.props.page.name);
+    let prevPage = this.props.pageList[pageIndex - 1];
+    let nextPage = this.props.pageList[pageIndex + 1];
 
     let leftIcon = (
       <svg style={currentStyle.leftLinkIcon} width='37px' height='26px' viewBox='0 0 37 26'>
