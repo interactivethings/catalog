@@ -3,25 +3,13 @@
 var resolveHere = require('path').resolve.bind(null, __dirname);
 var assignDeep = require('assign-deep');
 var values = require('object-values');
-var bourbon = require('node-bourbon');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var env = process.env.NODE_ENV || 'development';
-
-var sassLoader = function(loadersDef) {
-  return loadersDef + '?includePaths[]=' + [
-    resolveHere('node_modules'),
-    resolveHere('src'),
-    bourbon.includePaths
-  ].join('&includePaths[]=');
-}
 
 var loaders = {
   common: {
     js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'},
-    coffee: {test: /\.coffee$/, loader: 'coffee-loader'},
-    scss: {test: /\.scss$/, loader: sassLoader('style!css!sass')},
     css: {test: /\.css$/, loader: 'style!css'},
 
     // Images
