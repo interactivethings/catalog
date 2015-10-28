@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import {pages} from 'core/PropTypes';
 import { heading } from 'scaffold/typography';
 
 import ListItem from './ListItem';
@@ -38,15 +38,10 @@ export function style(theme) {
 
 class Menu extends React.Component {
   static propTypes = {
-    pages: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
-      src: PropTypes.string,
-      path: PropTypes.string.isRequired
-    })).isRequired,
+    pages: pages.isRequired,
     theme: PropTypes.object.isRequired,
-    logoSrc: PropTypes.string
+    logoSrc: PropTypes.string,
+    history: PropTypes.object.isRequired
   }
 
   static defaultProps = {
@@ -55,7 +50,7 @@ class Menu extends React.Component {
   }
 
   render() {
-    const { theme, pages, logoSrc, title } = this.props;
+    const { theme, pages, logoSrc, title, history } = this.props;
 
     let currentStyle = style(theme);
 
@@ -63,7 +58,7 @@ class Menu extends React.Component {
       <div style={currentStyle.bar} >
         <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.img} src={logoSrc} /> : (title ? title : '')}</h1>
         <ul style={currentStyle.list}>
-          { pages.map(page => <ListItem key={page.name} {...page} theme={theme} />) }
+          { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
         </ul>
       </div>
     );

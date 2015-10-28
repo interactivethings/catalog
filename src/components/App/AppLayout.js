@@ -1,5 +1,6 @@
 /* eslint-disable comma-dangle */
 import React, { PropTypes } from 'react';
+import {pages} from 'core/PropTypes';
 import Link from 'components/Link/Link';
 import hamburgerSrc from 'assets/menu-icon.svg';
 
@@ -122,7 +123,7 @@ class AppLayout extends React.Component {
     children: PropTypes.node,
     theme: PropTypes.object.isRequired,
     pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-    pages: PropTypes.array.isRequired,
+    pages: pages.isRequired,
     currentPage: PropTypes.string,
   }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Redirect} from 'react-router';
 import createHistory from 'history/lib/createHashHistory';
+import parseConfiguration from './parseConfiguration';
 
 import runscript from 'utils/runscript';
 
@@ -11,47 +12,23 @@ import App from 'components/App/App';
 import Page from 'components/Page/Page';
 import DefaultTheme from 'DefaultTheme';
 
+
 //
 // Startup
 //
 export function start(selector, config) {
-  let pageIndex = {};
-  let pageRoutes = [];
-  let pageList = [];
-  let pageNames = [];
+  const {pages, pageList, pageIndex, pageNames} = parseConfiguration(config);
 
-  function addPageRoute(data) {
-    // Test to ensure it has a src property, meaning its a valid route, not just a grouping
-    if (data.src) {    
-      const path = data.path || `/${data.name}`;
-      data.path = path;
-      pageIndex[path] = data;
-
-      const route = {
-        path,
-        component: Page
-      };
-
-      pageRoutes.push(route);
-      pageList.push(data);
-      pageNames.push(data.name);
+  const pageRoutes = pageList.map((page) => {
+    if (!page.src) {
+      return false;
     }
-  }
 
-  let globalStyles = config.styles;
-  let globalScripts = config.scripts;
-
-  function gatherPages(superTitle, group) {
-    let styles = _.uniq(_.compact([].concat(globalStyles).concat(group.styles)));
-    let scripts = _.uniq(_.compact([].concat(globalScripts).concat(group.scripts)));
-    addPageRoute({styles, scripts, key: group.name, superTitle, ...group });
-
-    if (group.pages) {
-      group.pages.forEach((p) => gatherPages(group.title, p));
-    }
-  }
-
-  config.pages.forEach((mainPage) => gatherPages(config.title, mainPage));
+    return {
+      path: page.path,
+      component: Page
+    };
+  }).filter(Boolean);
 
   const routes = {
     component: App,
@@ -68,7 +45,7 @@ export function start(selector, config) {
 
   ReactDOM.render(
     <Router history={createHistory()} routes={routes} createElement={(Component, props) => {
-      return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pageList} />;
+      return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} logoSrc={config.logoSrc} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pages} />;
     }} />,
     rootElement
   );

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {pages, page} from 'core/PropTypes';
 
 import AppLayout from './AppLayout';
 import Menu from 'components/Menu/Menu';
@@ -6,14 +7,9 @@ import Menu from 'components/Menu/Menu';
 class App extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    pages: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      src: PropTypes.string,
-      path: PropTypes.string.isRequired
-    })).isRequired,
+    pages: pages.isRequired,
     pageNames: PropTypes.arrayOf(PropTypes.string),
-    page: PropTypes.object.isRequired,
+    page: page.isRequired,
     styles: PropTypes.arrayOf(PropTypes.string),
     scripts: PropTypes.arrayOf(PropTypes.string),
     theme: PropTypes.object.isRequired
@@ -23,12 +19,12 @@ class App extends React.Component {
     scripts: []
   }
   render() {
-    const { theme, title, logoSrc, pages, page } = this.props;
+    const { theme, title, logoSrc, pages, page, history } = this.props;
 
     return (
       <AppLayout
         theme={theme}
-        sideNav={<Menu title={title} logoSrc={logoSrc} pages={pages} theme={theme} />}
+        sideNav={<Menu title={title} logoSrc={logoSrc} pages={pages} theme={theme} history={history} />}
         pageNames={this.props.pageNames}
         pages={this.props.pages}
         currentPage={page ? page.name : 'foo'}

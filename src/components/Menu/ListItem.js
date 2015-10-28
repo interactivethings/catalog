@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {page} from 'core/PropTypes';
 
 import Link from 'components/Link/Link';
 import NestedList from './NestedList';
@@ -46,18 +47,14 @@ export function style(theme) {
 
 class ListItem extends React.Component {
   static propTypes = {
-    pages: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      menuTitle: PropTypes.string,
-      name: PropTypes.string.isRequired
-    })),
-    title: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
+    page: page.isRequired,
     theme: PropTypes.object.isRequired,
-    nested: PropTypes.bool
+    nested: PropTypes.bool,
+    history: PropTypes.object.isRequired
   }
   render() {
-    const { pages, name, path, title, menuTitle, theme, nested } = this.props;
+    const { page, theme, nested } = this.props;
+    const { name, path, pages, title, menuTitle } = page;
     let currentStyle = style(theme);
     let defaultStyle = {
       ...currentStyle.link
@@ -70,16 +67,17 @@ class ListItem extends React.Component {
     }
     return (
       <li>
-        { pages ?
-          <NestedList {...this.props} />
-          :
-          <Link
-            style={defaultStyle}
-            activeStyle={{...defaultStyle, ...currentStyle.activeLink}}
-            to={path}>
-            { menuTitle || title }
-          </Link>
-        }
+      { pages ?
+        <NestedList {...this.props} {...page} pages={pages} /> :
+        <Link
+          style={defaultStyle}
+          activeStyle={currentStyle.activeLink}
+          to={path}
+          onlyActiveOnIndex={path === '/'} // FIXME: somehow this doesn't work; a bug in react-router?
+        >
+          { menuTitle || title }
+        </Link>
+      }
       </li>
     );
   }

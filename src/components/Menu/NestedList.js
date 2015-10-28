@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {pages} from 'core/PropTypes';
 
 import Link from 'components/Link/Link';
 import ListItem, { style as listItemStyle } from './ListItem';
@@ -7,19 +8,16 @@ import Radium from 'radium';
 
 const NestedList = React.createClass({
   propTypes: {
-    pages: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired
-    })),
+    pages: pages.isRequired,
     title: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired
+    theme: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
   },
   render() {
-    const { theme, pages, title } = this.props;
+    const { theme, pages, title, history } = this.props;
     const collapsed = !pages
-      .map((d) => this.props.history.isActive(d.path))
+      .map((d) => d.path && this.props.history.isActive(d.path))
       .filter(Boolean)
       .length;
 
@@ -31,14 +29,14 @@ const NestedList = React.createClass({
     return (
       <div>
         <Link
-          to={pages[0].path || pages[0].name}
+          to={pages[0].path}
           style={[currentStyle.link, collapsed ? {} : currentStyle.activeLink]}
           activeStyle={{...currentStyle.link, ...currentStyle.activeLink}} >
           { title }
         </Link>
         { !collapsed &&
           <ul style={[currentStyle.list, currentStyle.listNested, {padding: 0}]}>
-            { pages.map(page => <ListItem key={page.name} {...page} nested theme={theme} />) }
+            { pages.map(page => <ListItem history={history} key={page.name} page={page} nested theme={theme} />) }
           </ul>
         }
       </div>
