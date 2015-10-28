@@ -6,7 +6,7 @@ import parseConfiguration from './parseConfiguration';
 
 import runscript from 'utils/runscript';
 
-import './Catalog.scss';
+import './Catalog.css';
 
 import App from 'components/App/App';
 import Page from 'components/Page/Page';
