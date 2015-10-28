@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Redirect} from 'react-router';
+import {Router} from 'react-router';
 import createHistory from 'history/lib/createHashHistory';
 import parseConfiguration from './parseConfiguration';
 
