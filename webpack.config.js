@@ -41,8 +41,7 @@ var webpackConfig = {
       filename: 'catalog.js'
     },
     resolve: {
-      root: resolveHere('src'),
-      extensions: ['', '.js', '.coffee', '.json', '.css', '.scss']
+      root: resolveHere('src')
     },
     module: {
       loaders: values(assignDeep(loaders.common, loaders[env])),
