@@ -23,7 +23,7 @@ const Renderer = {
   type: (props) => <Html body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme}/>,
   project: (props) => <Project {...projectBodyToProps(props.body)} theme={props.theme}/>,
-  download: (props) => <DownloadSpecimen {...R.merge( JSON.parse(props.body) )} theme={props.theme}/>,
+  download: (props) => <DownloadSpecimen {...JSON.parse(props.body)} theme={props.theme}/>,
   framed: (props) => <FramedCodeBlock code={props.body} theme={props.theme}/>
 };
 
@@ -50,13 +50,6 @@ function getStyle() {
 
 
 class Specimen extends React.Component {
-
-  static propTypes = {
-    body: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired,
-    config: PropTypes.object.isRequired
-  }
-
   render() {
     let {theme, config} = this.props;
     let styles = getStyle(theme);
@@ -71,22 +64,28 @@ class Specimen extends React.Component {
   throwError(specimen) {
     throw new Error('Unknown specimen: ' + specimen);
   }
-
-  static Config = (input) => {
-    let inputValue = input ? input : '';
-    let removeEmpty = R.filter(R.complement(R.isEmpty));
-    let readInput = R.compose(removeEmpty, R.split('|'));
-    let parseOptions = R.compose(R.uniq, removeEmpty, R.split(','));
-    let ref = readInput(inputValue);
-    let specimen = ref[0];
-    let optionsStr = ref[1];
-    let options = parseOptions(optionsStr ? optionsStr : '');
-    options.contains = R.flip(R.contains)(options);
-    return {
-      specimen: specimen ? specimen : DEFAULT_SPECIMEN,
-      options: options
-    };
-  }
 }
+
+Specimen.Config = (input) => {
+  let inputValue = input ? input : '';
+  let removeEmpty = R.filter(R.complement(R.isEmpty));
+  let readInput = R.compose(removeEmpty, R.split('|'));
+  let parseOptions = R.compose(R.uniq, removeEmpty, R.split(','));
+  let ref = readInput(inputValue);
+  let specimen = ref[0];
+  let optionsStr = ref[1];
+  let options = parseOptions(optionsStr ? optionsStr : '');
+  options.contains = R.flip(R.contains)(options);
+  return {
+    specimen: specimen ? specimen : DEFAULT_SPECIMEN,
+    options: options
+  };
+};
+
+Specimen.propTypes = {
+  body: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired,
+  config: PropTypes.object.isRequired
+};
 
 export default Specimen;
