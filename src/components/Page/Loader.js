@@ -6,7 +6,7 @@ const SHOW_AFTER_MS = 500;
 const loaderKeyframes = Radium.keyframes({
   '0%': {transform: 'rotate(0deg)' },
   '50%': {transform: 'rotate(180deg)' },
-  '100%': {transform: 'rotate(360deg)' },
+  '100%': {transform: 'rotate(360deg)' }
 }, 'Loader');
 
 const styles = {
@@ -18,36 +18,34 @@ const styles = {
     height: '50px',
     margin: 'calc(50% - 25px) auto 0 auto',
     width: '50px',
-    animation: `${loaderKeyframes} 2s linear infinite`,
+    animation: `${loaderKeyframes} 2s linear infinite`
   },
   hidden: {
-    display: 'none',
-  },
-}
+    display: 'none'
+  }
+};
 
 class Loader extends React.Component {
   state = {
     visible: false
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.interval = setTimeout( () => this.setState({visible: true}), SHOW_AFTER_MS);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     if (this.interval) {
       clearTimeout(this.interval);
     }
   }
 
   render() {
-    const {theme} = this.props;
-
     let loader = this.state.visible
       ? styles.spinner
       : styles.hidden;
 
-    return <div style={loader} className='cg-Page-Loader'/>
+    return <div style={loader} className='cg-Page-Loader'/>;
   }
 }
 

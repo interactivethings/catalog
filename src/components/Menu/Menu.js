@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {pages} from 'core/PropTypes';
+import CatalogPropTypes from 'core/PropTypes';
 import { heading } from 'scaffold/typography';
 
 import ListItem from './ListItem';
@@ -38,10 +38,11 @@ export function style(theme) {
 
 class Menu extends React.Component {
   static propTypes = {
-    pages: pages.isRequired,
+    pages: CatalogPropTypes.pages.isRequired,
     theme: PropTypes.object.isRequired,
     logoSrc: PropTypes.string,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    title: PropTypes.string
   }
 
   static defaultProps = {
@@ -54,9 +55,11 @@ class Menu extends React.Component {
 
     let currentStyle = style(theme);
 
+    let titleString = title ? title : '';
+
     return (
       <div style={currentStyle.bar} >
-        <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.img} src={logoSrc} /> : (title ? title : '')}</h1>
+        <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.img} src={logoSrc} /> : titleString }</h1>
         <ul style={currentStyle.list}>
           { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
         </ul>

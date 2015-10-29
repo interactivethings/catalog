@@ -12,11 +12,11 @@ function generateAttributeElement(attributes) {
 }
 
 function generateLinkElement(links, style) {
-  return links.map((link, i) => {
+  return links.map((linkElement, i) => {
     return (
-      <li key={`${link}-${i}`}>
-        <a key={i} style={style} href={link}>
-          {link}
+      <li key={`${linkElement}-${i}`}>
+        <a key={i} style={style} href={linkElement}>
+          {linkElement}
         </a>
       </li>);
   });
@@ -27,7 +27,7 @@ class MetadataBlock extends React.Component {
     theme: PropTypes.object.isRequired,
     title: PropTypes.string,
     attributes: PropTypes.array,
-    links: PropTypes.array,
+    links: PropTypes.array
   }
 
   static defaultProps = {
@@ -43,12 +43,12 @@ class MetadataBlock extends React.Component {
       list: {
         ...text(theme, {level: 3}),
         listStyle: 'none',
-        padding: 0,
+        padding: 0
       },
       link: {
-        ...link(theme),
+        ...link(theme)
       }
-    }
+    };
 
     let titleElement = title ? <h2 style={styles.title}>{title}</h2> : null;
     let attributeElement = attributes && attributes.length > 0
@@ -64,7 +64,7 @@ class MetadataBlock extends React.Component {
         {attributeElement}
         {linkElement}
       </div>
-    )
+    );
   }
 }
 

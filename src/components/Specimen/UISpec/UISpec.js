@@ -6,23 +6,22 @@ import MetadataBlock from '../shared/MetadataBlock';
 
 function parseImage(image) {
   switch (typeof image) {
-    case 'string' : {
-      return image;
-      break;
-    }
-    case 'undefined' : {
-      return null;
-      break;
-    }
-    default: {
-      throw "Image objects are not supported yet";
-    }
+  case 'string' : {
+    return image;
+  }
+  case 'undefined' : {
+    return null;
+  }
+  default: {
+    throw new Error('Image objects are not supported yet');
+  }
   }
 }
 
 class UISpec extends React.Component {
   static propTypes = {
     theme: PropTypes.object.isRequired,
+    entries: PropTypes.array.isRequired
   }
   render() {
     const {theme, entries} = this.props;
@@ -33,7 +32,7 @@ class UISpec extends React.Component {
         alignItems: 'stretch',
         display: 'flex',
         flexFlow: 'row wrap',
-        justifyContent: 'flex-start',
+        justifyContent: 'flex-start'
       },
       container: {
         flex: '1 0 auto',
@@ -41,10 +40,10 @@ class UISpec extends React.Component {
         minWidth: '300px',
         padding: '14px',
         position: 'relative',
-        background: theme.background,
+        background: theme.background
       },
       image: {
-        marginBottom: '14px',
+        marginBottom: '14px'
       },
       overlay: {
         opacity: 0,
@@ -52,10 +51,10 @@ class UISpec extends React.Component {
         top: '14px',
         left: '14px',
         ':hover': {
-          opacity: 1,
+          opacity: 1
         }
-      },
-    }
+      }
+    };
 
     let entryObjects = entries.map( (entry, key) => {
       let overlay = entry.overlay !== undefined
@@ -67,10 +66,10 @@ class UISpec extends React.Component {
         : null;
 
       let links = []
-        .concat(entry.links != null
+        .concat(entry.links
           ? entry.links
           : [])
-        .concat(entry.link != null
+        .concat(entry.link
           ? entry.link
           : []);
 
@@ -85,7 +84,7 @@ class UISpec extends React.Component {
             attributes={entry.attributes}
             />
         </div>
-      )
+      );
     });
 
     return (

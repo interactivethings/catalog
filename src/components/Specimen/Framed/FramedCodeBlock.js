@@ -1,23 +1,25 @@
 import React, { PropTypes } from 'react';
 import Frame from 'react-frame-component';
 
-function getStyle(theme) {
+function getStyle() {
   return {
     container: {
       border: 'none',
       height: '100%',
-      width: '100%',
-    },
-  }
+      width: '100%'
+    }
+  };
 }
 
 class FramedCodeBlock extends React.Component {
   static propTypes = {
     theme: PropTypes.object.isRequired,
+    code: PropTypes.string.isRequired,
+    modifiers: PropTypes.array
   }
   render() {
-    const {theme, code, modifiers} = this.props;
-    let styles = getStyle(theme);
+    const {code, modifiers} = this.props;
+    let styles = getStyle();
     return (
       <section className={'cg-CodeBlock ' + (modifiers ? 'cg-CodeBlock--' + modifiers : '')}>
         <Frame style={styles.container} head={<style>{'body,html{margin:0;padding:0}'}</style>}>

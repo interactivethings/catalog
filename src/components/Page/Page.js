@@ -1,14 +1,15 @@
 import reqwest from 'reqwest';
-import React, { PropTypes } from 'react';
+
+import React from 'react';
 import {actions} from 'core/Catalog';
-import {page} from 'core/PropTypes';
+import CatalogPropTypes from 'core/PropTypes';
 
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';
 
 class Page extends React.Component {
   static propTypes = {
-    page: page.isRequired
+    page: CatalogPropTypes.page.isRequired
   }
 
   static defaultProps = {

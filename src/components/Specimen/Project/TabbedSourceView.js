@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import reqwest from 'reqwest'
+import reqwest from 'reqwest';
 import normalizeReferences from './normalizeReferences';
 
 import {text, link, code} from 'scaffold/typography';
@@ -22,8 +22,8 @@ function getStyle(theme) {
         outline: 'none'
       }
     },
-    active:{
-      textDecoration: 'underline',
+    active: {
+      textDecoration: 'underline'
     },
     source: {
       ...code(theme),
@@ -32,16 +32,21 @@ function getStyle(theme) {
       display: 'block',
       border: 'none',
       height: '15em',
-      width: '90%',
-    },
-  }
+      width: '90%'
+    }
+  };
 }
 
 class Project extends React.Component {
 
+  static propTypes = {
+    sourceFiles: PropTypes.array.isRequired,
+    theme: PropTypes.object.isRequired
+  }
+
   state= {
     tab: null,
-    sourceCode: null,
+    sourceCode: null
   }
 
   componentDidMount() {
@@ -49,29 +54,29 @@ class Project extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.sourceCode == null) {
+    if (!this.state.sourceCode) {
       this.loadSourceCode();
     }
   }
 
-  render(){
+  render() {
     let {sourceFiles, theme} = this.props;
     let styles = getStyle(theme);
 
     let fileTabs = sourceFiles.length > 1
       ? sourceFiles.map( (file, i) => {
-        let activeTab = i == this.state.tab
+        let activeTab = i === parseInt(this.state.tab, 10)
           ? styles.active
           : undefined;
-        return <button
+        return (<button
           onClick={this.selectTab.bind(this, this)}
           key={i}
           data-tab-id={i}
           style={[styles.button, activeTab ]}
         >
         {file.target}
-        </button>
-        })
+        </button>);
+      })
       : null;
 
     let sourceView = this.state.tab
@@ -82,12 +87,12 @@ class Project extends React.Component {
         />
       : null;
 
-    return(
+    return (
         <div className='cg-Specimen-TabbedSourceView'>
           {fileTabs}
           {sourceView}
         </div>
-      )
+      );
   }
 
   selectTab(_context, evt) {
@@ -99,11 +104,9 @@ class Project extends React.Component {
         : nextTab
     });
   }
-
   loadSourceCode() {
-
     let {sourceFiles} = this.props;
-    if (this.state.tab == null) {
+    if (!this.state.tab) {
       return;
     }
     let file = sourceFiles[this.state.tab];
@@ -114,11 +117,11 @@ class Project extends React.Component {
           return d.responseText;
         });
         let sourceCode = _this.parseSourceCode(...content);
-         _this.setState({
+        _this.setState({
           sourceCode: normalizeReferences(_this.props.rootPath, _this.props.files, sourceCode)
         });
       };
-    })(this))["catch"](((_this) =>{
+    })(this)).catch(((_this) =>{
       return (res) => {
         return _this.setState({
           error: res.statusText,
@@ -137,9 +140,8 @@ class Project extends React.Component {
       });
       template.replace('${yield}', doc.body.innerHTML);
       return template;
-    } else {
-      return source;
     }
+    return source;
   }
 }
 

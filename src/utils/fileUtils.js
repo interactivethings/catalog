@@ -1,19 +1,22 @@
-
-let slice = [].slice;
-
 let dirname = (path) => {
-  var _, _dirname, i, ref;
-  ref = path.split('/'), _dirname = 2 <= ref.length ? slice.call(ref, 0, i = ref.length - 1) : (i = 0, []), _ = ref[i++];
-  if (_dirname[0] === '') {
-    _dirname.shift('');
+  let ref = path.split('/');
+
+  // if URL did start with /, discard the now empty string
+  if ( ref[0].length === 0 ) {
+    ref.shift();
+    ref.pop();
+    return ref.join('/');
   }
-  return _dirname.join('/');
+  ref.pop();
+  return ref.join('/');
 };
 
 let filename = (path) => {
-  var _, _filename, i, ref;
-  ref = path.split('/'), _ = 2 <= ref.length ? slice.call(ref, 0, i = ref.length - 1) : (i = 0, []), _filename = ref[i++];
-  return _filename;
+  // separate by /
+  let ref = path.split('/');
+  // get last element of array
+  let name = ref.slice(-1)[0];
+  return name;
 };
 
 // root = a/b
@@ -26,32 +29,31 @@ let filename = (path) => {
 // /path -> /path
 
 let normalizePath = (root, path) => {
-  var fragment, fragments, i, len, result, rootFragments;
   if (path.match(/^\//)) {
     return path;
   }
-  rootFragments = root.split('/').reverse();
-  fragments = path.split('/').reverse();
-  result = [];
-  for (i = 0, len = fragments.length; i < len; i++) {
-    fragment = fragments[i];
+  let rootFragments = root.split('/').reverse();
+  let fragments = path.split('/').reverse();
+  let result = [];
+  for (let i = 0, len = fragments.length; i < len; i++) {
+    let fragment = fragments[i];
     switch (fragment) {
-      case '.':
-        result = result.concat(rootFragments);
-        rootFragments = [];
-        break;
-      case '..':
-        if (rootFragments.length > 0) {
-          rootFragments.shift();
-        } else {
-          result.push(fragment);
-        }
-        break;
-      default:
-        if (fragment === rootFragments[0]) {
-          rootFragments.shift();
-        }
+    case '.':
+      result = result.concat(rootFragments);
+      rootFragments = [];
+      break;
+    case '..':
+      if (rootFragments.length > 0) {
+        rootFragments.shift();
+      } else {
         result.push(fragment);
+      }
+      break;
+    default:
+      if (fragment === rootFragments[0]) {
+        rootFragments.shift();
+      }
+      result.push(fragment);
     }
   }
   return result.concat(rootFragments).reverse().join('/');

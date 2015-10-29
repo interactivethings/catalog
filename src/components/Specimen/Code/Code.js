@@ -3,7 +3,6 @@ import React, { PropTypes } from 'react';
 function getStyle(theme) {
   return {
     container: {
-      border: 'none',
       borderRadius: '2px',
       boxSizing: 'border-box',
       display: 'block',
@@ -19,20 +18,20 @@ function getStyle(theme) {
       fontSize: theme.fontXs,
       lineHeight: 1.4,
       overflowX: 'scroll',
-      whiteSpace: 'pre',
+      whiteSpace: 'pre'
     }
-  }
+  };
 }
 
 class Code extends React.Component {
   static propTypes = {
     body: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired,
+    theme: PropTypes.object.isRequired
   }
   render() {
     const {theme, body} = this.props;
     let styles = getStyle(theme);
-    return <section style={styles.container} dangerouslySetInnerHTML={{__html: body}}/>
+    return <section style={styles.container} dangerouslySetInnerHTML={{__html: body}}/>;
   }
 }
 
