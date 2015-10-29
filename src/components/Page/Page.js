@@ -8,18 +8,12 @@ import Loader from './Loader';
 import PageRenderer from './PageRenderer';
 
 class Page extends React.Component {
-  static propTypes = {
-    page: CatalogPropTypes.page.isRequired
-  }
-
-  static defaultProps = {
-    styles: [],
-    scripts: []
-  }
-
-  state = {
-    error: null,
-    content: null
+  constructor() {
+    super();
+    this.state = {
+      error: null,
+      content: null
+    };
   }
 
   componentDidMount() {
@@ -47,5 +41,14 @@ class Page extends React.Component {
       });
   }
 }
+
+Page.propTypes = {
+  page: CatalogPropTypes.page.isRequired
+};
+
+Page.defaultProps = {
+  styles: [],
+  scripts: []
+};
 
 export default Page;

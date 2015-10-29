@@ -19,10 +19,6 @@ function parseImage(image) {
 }
 
 class UISpec extends React.Component {
-  static propTypes = {
-    theme: PropTypes.object.isRequired,
-    entries: PropTypes.array.isRequired
-  }
   render() {
     const {theme, entries} = this.props;
 
@@ -94,5 +90,10 @@ class UISpec extends React.Component {
     );
   }
 }
+
+UISpec.propTypes = {
+  theme: PropTypes.object.isRequired,
+  entries: PropTypes.array.isRequired
+};
 
 export default Radium(UISpec);

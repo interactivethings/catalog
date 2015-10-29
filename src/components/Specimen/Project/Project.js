@@ -33,20 +33,6 @@ function getStyle(theme) {
 }
 
 class Project extends React.Component {
-
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    index: PropTypes.object,
-    scrolling: PropTypes.string.isRequired,
-    files: PropTypes.array.isRequired,
-    size: PropTypes.shape({
-      height: PropTypes.string,
-      width: PropTypes.string
-    }).isRequired,
-    sourceView: PropTypes.array,
-    theme: PropTypes.object.isRequired
-  }
-
   render() {
     let {index, scrolling, files, size, theme} = this.props;
     let styles = getStyle(theme);
@@ -223,8 +209,19 @@ class Project extends React.Component {
   isImage(path) {
     return path.match(/\.(jpe?g|gif|png)$/);
   }
-
-
 }
+
+Project.propTypes = {
+  name: PropTypes.string.isRequired,
+  index: PropTypes.object,
+  scrolling: PropTypes.string.isRequired,
+  files: PropTypes.array.isRequired,
+  size: PropTypes.shape({
+    height: PropTypes.string,
+    width: PropTypes.string
+  }).isRequired,
+  sourceView: PropTypes.array,
+  theme: PropTypes.object.isRequired
+};
 
 export default Radium(Project);

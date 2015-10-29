@@ -21,12 +21,6 @@ function pageContainer(theme) {
 const seqKey = require('utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
-  static propTypes = {
-    page: CatalogPropTypes.page.isRequired,
-    content: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired
-  }
-
   render() {
     const { theme } = this.props;
 
@@ -132,5 +126,11 @@ class PageRenderer extends React.Component {
     });
   }
 }
+
+PageRenderer.propTypes = {
+  page: CatalogPropTypes.page.isRequired,
+  content: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired
+};
 
 export default PageRenderer;

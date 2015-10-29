@@ -23,17 +23,6 @@ function generateLinkElement(links, style) {
 }
 
 class MetadataBlock extends React.Component {
-  static propTypes = {
-    theme: PropTypes.object.isRequired,
-    title: PropTypes.string,
-    attributes: PropTypes.array,
-    links: PropTypes.array
-  }
-
-  static defaultProps = {
-    theme: {}
-  }
-
   render() {
     const {theme, attributes, title, links} = this.props;
     let styles = {
@@ -67,5 +56,16 @@ class MetadataBlock extends React.Component {
     );
   }
 }
+
+MetadataBlock.defaultProps = {
+  theme: {}
+};
+
+MetadataBlock.propTypes = {
+  theme: PropTypes.object.isRequired,
+  title: PropTypes.string,
+  attributes: PropTypes.array,
+  links: PropTypes.array
+};
 
 export default Radium(MetadataBlock);

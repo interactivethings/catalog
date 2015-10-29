@@ -66,14 +66,12 @@ function getStyle(theme) {
 }
 
 class Html extends React.Component {
-
-  static propTypes = {
-    body: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired,
-    modifiers: PropTypes.array
+  constructor() {
+    super();
+    this.state = {
+      viewSource: false
+    };
   }
-
-  state = { viewSource: false }
 
   componentDidMount() {
     const {modifiers} = this.props;
@@ -118,5 +116,11 @@ class Html extends React.Component {
     this.setState({viewSource: !this.state.viewSource});
   }
 }
+
+Html.propTypes = {
+  body: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired,
+  modifiers: PropTypes.array
+};
 
 export default Radium(Html);

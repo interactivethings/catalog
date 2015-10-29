@@ -38,15 +38,12 @@ function getStyle(theme) {
 }
 
 class Project extends React.Component {
-
-  static propTypes = {
-    sourceFiles: PropTypes.array.isRequired,
-    theme: PropTypes.object.isRequired
-  }
-
-  state= {
-    tab: null,
-    sourceCode: null
+  constructor() {
+    super();
+    this.state = {
+      tab: null,
+      sourceCode: null
+    };
   }
 
   componentDidMount() {
@@ -144,5 +141,10 @@ class Project extends React.Component {
     return source;
   }
 }
+
+Project.propTypes = {
+  sourceFiles: PropTypes.array.isRequired,
+  theme: PropTypes.object.isRequired
+};
 
 export default Radium(Project);

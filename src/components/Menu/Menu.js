@@ -37,19 +37,6 @@ export function style(theme) {
 }
 
 class Menu extends React.Component {
-  static propTypes = {
-    pages: CatalogPropTypes.pages.isRequired,
-    theme: PropTypes.object.isRequired,
-    logoSrc: PropTypes.string,
-    history: PropTypes.object.isRequired,
-    title: PropTypes.string
-  }
-
-  static defaultProps = {
-    styles: [],
-    scripts: []
-  }
-
   render() {
     const { theme, pages, logoSrc, title, history } = this.props;
 
@@ -67,5 +54,18 @@ class Menu extends React.Component {
     );
   }
 }
+
+Menu.propTypes = {
+  pages: CatalogPropTypes.pages.isRequired,
+  theme: PropTypes.object.isRequired,
+  logoSrc: PropTypes.string,
+  history: PropTypes.object.isRequired,
+  title: PropTypes.string
+};
+
+Menu.defaultProps = {
+  styles: [],
+  scripts: []
+};
 
 export default Menu;

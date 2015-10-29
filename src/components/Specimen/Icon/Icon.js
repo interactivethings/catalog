@@ -4,11 +4,6 @@ import Radium from 'radium';
 import MetadataBlock from '../shared/MetadataBlock';
 
 class Icon extends React.Component {
-  static propTypes = {
-    theme: PropTypes.object.isRequired,
-    icons: PropTypes.array.isRequired
-  }
-
   render() {
     const {icons, theme} = this.props;
     let styles = {
@@ -123,5 +118,10 @@ class Icon extends React.Component {
     );
   }
 }
+
+Icon.propTypes = {
+  theme: PropTypes.object.isRequired,
+  icons: PropTypes.array.isRequired
+};
 
 export default Radium(Icon);

@@ -118,22 +118,16 @@ function style(
 }
 
 class AppLayout extends React.Component {
-  static propTypes = {
-    sideNav: PropTypes.node,
-    children: PropTypes.node,
-    theme: PropTypes.object.isRequired,
-    pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-    page: CatalogPropTypes.page.isRequired,
-    pages: CatalogPropTypes.pages.isRequired,
-    currentPage: PropTypes.string,
-    pageList: CatalogPropTypes.pages.isRequired,
-  }
 
-  state = {
-    viewportHeight: window.innerHeight,
-    viewportWidth: window.innerWidth,
-    sidebarVisible: false
-  };
+  constructor() {
+    super();
+    this.onResize = this.onResize.bind(this);
+    this.state = {
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+      sidebarVisible: false
+    };
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
@@ -143,7 +137,7 @@ class AppLayout extends React.Component {
     window.removeEventListener('resize', this.onResize);
   }
 
-  onResize = () => {
+  onResize() {
     this.setState({
       viewportHeight: window.innerHeight,
       viewportWidth: window.innerWidth
@@ -223,8 +217,8 @@ class AppLayout extends React.Component {
             }</div>
           </div>
         </div>
-        <img style={currentStyle.menuIcon} src={hamburgerSrc} onClick={::this.toggleSidebar} />
-        <div style={currentStyle.navBackground} onClick={::this.toggleSidebar} />
+        <img style={currentStyle.menuIcon} src={hamburgerSrc} onClick={this.toggleSidebar.bind(this)} />
+        <div style={currentStyle.navBackground} onClick={this.toggleSidebar.bind(this)} />
         <div style={currentStyle.sideNav}>
           { this.props.sideNav }
         </div>
@@ -238,5 +232,16 @@ class AppLayout extends React.Component {
     });
   }
 }
+
+AppLayout.propTypes = {
+  sideNav: PropTypes.node,
+  children: PropTypes.node,
+  theme: PropTypes.object.isRequired,
+  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  page: CatalogPropTypes.page.isRequired,
+  pages: CatalogPropTypes.pages.isRequired,
+  currentPage: PropTypes.string,
+  pageList: CatalogPropTypes.pages.isRequired,
+};
 
 export default AppLayout;

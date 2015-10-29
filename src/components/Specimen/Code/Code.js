@@ -24,15 +24,16 @@ function getStyle(theme) {
 }
 
 class Code extends React.Component {
-  static propTypes = {
-    body: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired
-  }
   render() {
     const {theme, body} = this.props;
     let styles = getStyle(theme);
     return <section style={styles.container} dangerouslySetInnerHTML={{__html: body}}/>;
   }
 }
+
+Code.propTypes = {
+  body: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired
+};
 
 export default Code;

@@ -37,21 +37,6 @@ function getStyle(theme) {
 }
 
 class DownloadSpecimen extends React.Component {
-  static propTypes = {
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    url: PropTypes.string.isRequired,
-    filename: PropTypes.string,
-    theme: PropTypes.object.isRequired
-  }
-
-  static defaultProps = {
-    title: '',
-    subtitle: '',
-    url: '',
-    theme: {}
-  }
-
   render() {
     let styles = getStyle(this.props.theme);
 
@@ -68,5 +53,20 @@ class DownloadSpecimen extends React.Component {
     );
   }
 }
+
+DownloadSpecimen.defaultProps = {
+  title: '',
+  subtitle: '',
+  url: '',
+  theme: {}
+};
+
+DownloadSpecimen.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  url: PropTypes.string,
+  filename: PropTypes.string,
+  theme: PropTypes.object.isRequired
+};
 
 export default DownloadSpecimen;

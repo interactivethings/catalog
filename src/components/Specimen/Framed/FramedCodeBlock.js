@@ -12,11 +12,6 @@ function getStyle() {
 }
 
 class FramedCodeBlock extends React.Component {
-  static propTypes = {
-    theme: PropTypes.object.isRequired,
-    code: PropTypes.string.isRequired,
-    modifiers: PropTypes.array
-  }
   render() {
     const {code, modifiers} = this.props;
     let styles = getStyle();
@@ -29,5 +24,11 @@ class FramedCodeBlock extends React.Component {
     );
   }
 }
+
+FramedCodeBlock.propTypes = {
+  theme: PropTypes.object.isRequired,
+  code: PropTypes.string.isRequired,
+  modifiers: PropTypes.array
+};
 
 export default FramedCodeBlock;

@@ -3,10 +3,6 @@ import MetadataBlock from '../shared/MetadataBlock';
 import Radium from 'radium';
 
 class Color extends React.Component {
-  static propTypes = {
-    colors: PropTypes.array.isRequired,
-    theme: PropTypes.object.isRequired
-  }
   render() {
     const {theme, colors} = this.props;
     let styles = {
@@ -65,5 +61,10 @@ class Color extends React.Component {
     );
   }
 }
+
+Color.propTypes = {
+  colors: PropTypes.array.isRequired,
+  theme: PropTypes.object.isRequired
+};
 
 export default Radium(Color);

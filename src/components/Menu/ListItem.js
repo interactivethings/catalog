@@ -46,12 +46,6 @@ export function style(theme) {
 }
 
 class ListItem extends React.Component {
-  static propTypes = {
-    page: CatalogPropTypes.page.isRequired,
-    theme: PropTypes.object.isRequired,
-    nested: PropTypes.bool,
-    history: PropTypes.object.isRequired
-  }
   render() {
     const { page, theme, nested } = this.props;
     const { path, pages, title, menuTitle } = page;
@@ -82,5 +76,12 @@ class ListItem extends React.Component {
     );
   }
 }
+
+ListItem.propTypes = {
+  page: CatalogPropTypes.page.isRequired,
+  theme: PropTypes.object.isRequired,
+  nested: PropTypes.bool,
+  history: PropTypes.object.isRequired
+};
 
 export default ListItem;

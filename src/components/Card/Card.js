@@ -6,11 +6,6 @@ import {inlineUlist, inlineOlist } from 'scaffold/lists';
 const cardContainer = () => ({maxWidth: 671});
 
 class Card extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    theme: PropTypes.object.isRequired
-  }
-
   render() {
     const {theme, children} = this.props;
 
@@ -80,5 +75,10 @@ class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  children: PropTypes.node,
+  theme: PropTypes.object.isRequired
+};
 
 export default Card;

@@ -26,8 +26,11 @@ const styles = {
 };
 
 class Loader extends React.Component {
-  state = {
-    visible: false
+  constructor() {
+    super();
+    this.state = {
+      visible: false
+    };
   }
 
   componentDidMount() {
