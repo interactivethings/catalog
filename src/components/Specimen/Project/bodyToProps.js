@@ -1,4 +1,4 @@
-import sprout from 'sprout-data';
+import R from 'ramda';
 
 const INDEX = 'index.html';
 
@@ -24,7 +24,7 @@ function parseSize(size) {
 }
 
 module.exports = (body) => {
-  let config = sprout.merge(DEFAULTS, JSON.parse(body));
+  let config = R.merge(DEFAULTS, JSON.parse(body));
 
   let index = null;
 
@@ -49,7 +49,7 @@ module.exports = (body) => {
   if (!index) {
     throw new Error('"index.html" must be defined');
   }
-  config = sprout.assoc(config, ['files', INDEX], index);
+  config = R.assocPath(['files', INDEX], index, config);
   let files = [];
   let ref = config.files;
   for (let target in ref) {

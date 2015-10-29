@@ -1,3 +1,4 @@
+import R from 'ramda';
 //
 // Sequentially runs scripts as they are added
 //
@@ -52,10 +53,10 @@ module.exports = () => {
     };
   };
   return (srcOrEl) => {
-    if (_.isString(srcOrEl) && !_.isEmpty(srcOrEl.trim())) {
+    if (R.is(String, srcOrEl) && !R.isEmpty(srcOrEl.trim())) {
       enqueue(execRemote(srcOrEl));
     }
-    if (srcOrEl.textContent && !_.isEmpty(srcOrEl.textContent.trim())) {
+    if (srcOrEl.textContent && !R.isEmpty(srcOrEl.textContent.trim())) {
       return enqueue(execInline(srcOrEl.textContent));
     }
   };

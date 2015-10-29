@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import R from 'ramda';
 import marked from '../lib/react-markdown';
 
 let MARKDOWN_CONFIG = {
@@ -13,7 +13,7 @@ let splitIntoSections = (sections, node) => {
   if (node.type === 'h2') {
     sections.push([node]);
   } else {
-    _.last(sections).push(node);
+    R.last(sections).push(node);
   }
   return sections;
 };
@@ -36,7 +36,7 @@ module.exports = (options) => {
       renderer[type] = handler;
     }
   }
-  let markedOptions = _.extend({
+  let markedOptions = R.merge({
     renderer: renderer
   }, MARKDOWN_CONFIG);
   return marked(options.text, markedOptions).reduce(splitIntoSections, [[]]).map(wrapSection(options.section));

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import R from 'ramda';
 import reqwest from 'reqwest';
 import JSZip from 'jszip';
 import Radium from 'radium';
@@ -73,12 +74,12 @@ class Project extends React.Component {
 
   sourceViewFiles(props) {
     return props.files.filter((d) => {
-      return _.contains(props.sourceView, d.target);
+      return R.contains(d.target, R.or(props.sourceView, []));
     });
   }
 
   filterMatching(list, prop) {
-    (d) => _.contains(list, d[prop]);
+    (d) => R.contains(d[prop], list);
   }
 
   parseExposedFiles(source) {
@@ -147,7 +148,7 @@ class Project extends React.Component {
               Accept: 'text/plain,*/*'
             }
           }).then( (res) => {
-            let content = _.contains(_context.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, res.responseText) : res.responseText;
+            let content = R.contains(_context.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, res.responseText) : res.responseText;
             if (file === props.index) {
               virtualFiles = virtualFiles.concat(_context.parseExposedFiles(content));
               if (file.template) {
