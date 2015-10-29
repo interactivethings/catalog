@@ -8,7 +8,7 @@ const SIZE = 20;
 function getStyle(theme) {
   return {
     container: {
-      position:'relative',
+      position: 'relative'
     },
     toggle: {
       border: PADDING + 'px solid transparent',
@@ -27,12 +27,12 @@ function getStyle(theme) {
       top: -(SIZE + 2 * PADDING) + 'px',
       userSelect: 'none',
       ':hover': {
-        color: theme.textColor,
-      },
+        color: theme.textColor
+      }
     },
     source: {
       ...code(theme),
-      padding: SIZE + 'px',
+      padding: SIZE + 'px'
     },
     content: {
       background: `url(${theme.checkerboardPatternLight})`,
@@ -41,28 +41,28 @@ function getStyle(theme) {
       boxSizing: 'border-box',
       display: 'block',
       padding: '20px',
-      position:'relative',
-      width: '100%',
+      position: 'relative',
+      width: '100%'
     },
     light: {
-      background: `url(${theme.checkerboardPatternLight})`,
+      background: `url(${theme.checkerboardPatternLight})`
     },
     dark: {
-      background: `url(${theme.checkerboardPatternDark})`,
+      background: `url(${theme.checkerboardPatternDark})`
     },
     plain: {
       background: 'transparent',
-      padding: '20px 0',
+      padding: '20px 0'
     },
     plain_light: {
       background: theme.bgLight,
-      padding: '20px',
+      padding: '20px'
     },
     plain_dark: {
       background: theme.bgDark,
-      padding: '20px',
-    },
-  }
+      padding: '20px'
+    }
+  };
 }
 
 class Html extends React.Component {
@@ -70,7 +70,7 @@ class Html extends React.Component {
   static propTypes = {
     body: PropTypes.string.isRequired,
     theme: PropTypes.object.isRequired,
-    modifiers: PropTypes.array,
+    modifiers: PropTypes.array
   }
 
   state = { viewSource: false }
@@ -79,7 +79,7 @@ class Html extends React.Component {
     const {modifiers} = this.props;
     modifiers
       .filter( modifier => modifier === 'run-script')
-      .map( modifier => this.refs.specimen.querySelectorAll('script'))
+      .map( () => this.refs.specimen.querySelectorAll('script'))
       .forEach(script => Catalog.actions.runscript(script[0]));
   }
 
@@ -88,9 +88,9 @@ class Html extends React.Component {
     let styles = getStyle(theme);
 
     if (modifiers.contains('plain' && 'light')) {
-      modifiers.push('plain_light')
-    } else if (modifiers.contains('plain' && 'dark')){
-      modifiers.push('plain_dark')
+      modifiers.push('plain_light');
+    } else if (modifiers.contains('plain' && 'dark')) {
+      modifiers.push('plain_dark');
     }
 
     let modifierStyles = modifiers.map( (modifier) => {
@@ -114,7 +114,7 @@ class Html extends React.Component {
     );
   }
 
-  toggleSource() {
+  toggleSource() {
     this.setState({viewSource: !this.state.viewSource});
   }
 }

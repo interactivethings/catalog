@@ -5,13 +5,6 @@
 module.exports = () => {
   let current = null;
   let queue = [];
-  let enqueue = (handler) => {
-    if (current != null) {
-      return queue.push(handler);
-    } else {
-      return dequeue(handler);
-    }
-  };
   let dequeue = (handler) => {
     current = handler();
     current.then( () => {
@@ -20,9 +13,22 @@ module.exports = () => {
         return dequeue(queue.shift());
       }
     });
-    return current["catch"]( () => {
-      return console.error('Error loading script');
+    return current.catch( () => {
+      throw new Error('Error loading script');
     });
+  };
+  let enqueue = (handler) => {
+    if (current !== null) {
+      return queue.push(handler);
+    }
+    return dequeue(handler);
+  };
+  let execScript = (decorate) => {
+    let script = document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    decorate(script);
+    let head = document.getElementsByTagName('head')[0] || document.documentElement;
+    return head.appendChild(script);
   };
   let execRemote = (src) => {
     return () => {
@@ -37,21 +43,13 @@ module.exports = () => {
   };
   let execInline = (src) => {
     return () => {
-      return new Promise( (resolve, reject) => {
+      return new Promise( (resolve) => {
         return execScript( (script) => {
           script.appendChild(document.createTextNode(src));
           return resolve();
         });
       });
     };
-  };
-  let execScript = (decorate) => {
-    var head, script;
-    script = document.createElement('script');
-    script.setAttribute('type', 'text/javascript');
-    decorate(script);
-    head = document.getElementsByTagName('head')[0] || document.documentElement;
-    return head.appendChild(script);
   };
   return (srcOrEl) => {
     if (_.isString(srcOrEl) && !_.isEmpty(srcOrEl.trim())) {

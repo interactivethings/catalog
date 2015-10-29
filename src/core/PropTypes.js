@@ -1,6 +1,6 @@
 import {PropTypes} from 'react';
 
-export const page = PropTypes.shape({
+const page = PropTypes.shape({
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   path: PropTypes.string,
@@ -10,4 +10,9 @@ export const page = PropTypes.shape({
   scripts: PropTypes.array.isRequired
 });
 
-export const pages = PropTypes.arrayOf(page);
+const pages = PropTypes.arrayOf(page);
+
+export default {
+  page,
+  pages
+};

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {page} from 'core/PropTypes';
+import CatalogPropTypes from 'core/PropTypes';
 
 import Link from 'components/Link/Link';
 import NestedList from './NestedList';
@@ -47,14 +47,14 @@ export function style(theme) {
 
 class ListItem extends React.Component {
   static propTypes = {
-    page: page.isRequired,
+    page: CatalogPropTypes.page.isRequired,
     theme: PropTypes.object.isRequired,
     nested: PropTypes.bool,
     history: PropTypes.object.isRequired
   }
   render() {
     const { page, theme, nested } = this.props;
-    const { name, path, pages, title, menuTitle } = page;
+    const { path, pages, title, menuTitle } = page;
     let currentStyle = style(theme);
     let defaultStyle = {
       ...currentStyle.link

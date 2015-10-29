@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {page} from 'core/PropTypes';
+import CatalogPropTypes from 'core/PropTypes';
 
 import MarkdownRenderer from 'MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
@@ -22,7 +22,7 @@ const seqKey = require('utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
   static propTypes = {
-    page: page.isRequired,
+    page: CatalogPropTypes.page.isRequired,
     content: PropTypes.string.isRequired,
     theme: PropTypes.object.isRequired
   }

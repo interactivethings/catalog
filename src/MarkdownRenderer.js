@@ -9,20 +9,6 @@ let MARKDOWN_CONFIG = {
   smartypants: true
 };
 
-module.exports = (options) => {
-  var handler, markedOptions, ref, renderer, type;
-  renderer = new marked.Renderer();
-  ref = options.renderer || {};
-  for (type in ref) {
-    handler = ref[type];
-    renderer[type] = handler;
-  }
-  markedOptions = _.extend({
-    renderer: renderer
-  }, MARKDOWN_CONFIG);
-  return marked(options.text, markedOptions).reduce(splitIntoSections, [[]]).map(wrapSection(options.section));
-};
-
 let splitIntoSections = (sections, node) => {
   if (node.type === 'h2') {
     sections.push([node]);
@@ -36,8 +22,22 @@ let wrapSection = (sectionComponent) =>{
   return (nodes, i) => {
     if (i === 0) {
       return nodes;
-    } else {
-      return sectionComponent(nodes);
     }
+    return sectionComponent(nodes);
   };
+};
+
+module.exports = (options) => {
+  let renderer = new marked.Renderer();
+  let ref = options.renderer || {};
+  for (let type in ref) {
+    if ({}.hasOwnProperty.call(ref, type)) {
+      let handler = ref[type];
+      renderer[type] = handler;
+    }
+  }
+  let markedOptions = _.extend({
+    renderer: renderer
+  }, MARKDOWN_CONFIG);
+  return marked(options.text, markedOptions).reduce(splitIntoSections, [[]]).map(wrapSection(options.section));
 };

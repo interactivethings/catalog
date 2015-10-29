@@ -146,27 +146,27 @@ export function heading(theme, {level}) {
 
 export function line(theme, {level}) {
   switch (level) {
-    case 1:
-      return {
-        ...setType(theme, {fontSize: theme.fontXxl, verticalUnits: 12})
-      };
-    case 2:
-      return {
-        ...setType(theme, {fontSize: theme.fontXl, verticalUnits: 8})
-      };
-    case 3:
-      return {
-        ...setType(theme, {fontSize: theme.fontL, verticalUnits: 6})
-      };
-    case 4:
-      return {
-        ...setType(theme, {fontSize: theme.fontM, verticalUnits: theme.baseLineMulti})
-      };
-    case 5:
-      return {
-        ...setType(theme, {fontSize: theme.fontS, verticalUnits: 5})
-      };
-    default:
-      return {};
+  case 1:
+    return {
+      ...setType(theme, {fontSize: theme.fontXxl, verticalUnits: 12})
+    };
+  case 2:
+    return {
+      ...setType(theme, {fontSize: theme.fontXl, verticalUnits: 8})
+    };
+  case 3:
+    return {
+      ...setType(theme, {fontSize: theme.fontL, verticalUnits: 6})
+    };
+  case 4:
+    return {
+      ...setType(theme, {fontSize: theme.fontM, verticalUnits: theme.baseLineMulti})
+    };
+  case 5:
+    return {
+      ...setType(theme, {fontSize: theme.fontS, verticalUnits: 5})
+    };
+  default:
+    return {};
   }
 }

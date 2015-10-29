@@ -37,11 +37,12 @@ function getStyle(theme) {
 }
 
 class DownloadSpecimen extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    url: PropTypes.string,
-    theme: PropTypes.object
+    url: PropTypes.string.isRequired,
+    filename: PropTypes.string,
+    theme: PropTypes.object.isRequired
   }
 
   static defaultProps = {
