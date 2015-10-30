@@ -2,33 +2,34 @@
 
 export default {
   // Colors
-  background: '#EEEEEE',
+  background: '#F9F9F9',
   cardBackground: '#FFFFFF',
-  pageHeadingBackground: '#AA191F',
+  pageHeadingBackground: '#003B5C',
   pageHeadingTextColor: '#fff',
-  pageHeadingHeight: 120,
-  brandColor: '#E54B3F',
-  sidebarColor: '#E54B3F',
+  pageHeadingHeight: 200,
+  brandColor: '#3F7397',
+  sidebarColor: '#FFFFFF',
   sidebarColorActive: '#D1312E',
-  sidebarColorText: '#F5B7B2',
-  sidebarColorTextActive: '#FFFFFF',
-  sidebarColorLine: '#D1312E',
-  sidebarColorHeading: '#AA191F',
-  textColor: '#333333',
+  sidebarColorText: '#003B5C',
+  sidebarColorTextActive: '#FF5555',
+  sidebarColorLine: '#EBEBEB',
+  sidebarColorHeading: '#003B5C',
+  textColor: '#003B5C',
+  linkColor: '#FF5555',
   textMedium: '#555555',
-  bgLight: '#E6E6E6',
+  bgLight: '#F2F2F2',
   bgDark: '#333333',
   lightColor: '#D6D6D6',
   cardRuleColor: '#EEEEEE',
-  cardShadow: true,
+  cardShadow: false,
 
   // Patterns
   checkerboardPatternLight: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=',
   checkerboardPatternDark: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==',
 
   // Fonts
-  fontFamily: "'Source Sans Pro', sans-serif",
-  fontHeading: "'Dosis', sans-serif",
+  fontFamily: "'Roboto', sans-serif",
+  fontHeading: "'Roboto', sans-serif",
   fontMono: "'Source Code Pro', monospace",
 
   fontXs:  12,

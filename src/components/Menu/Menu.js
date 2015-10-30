@@ -16,21 +16,26 @@ export function style(theme) {
       fontWeight: 600,
       margin: 0,
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
-      height: theme.pageHeadingHeight
+      height: theme.pageHeadingHeight,
+      display: 'flex',
+      alignItems: 'bottom',
+      justifyContent: 'left'
     },
     img: {
       display: 'inline-block',
-      width: '100%'
+      width: '100%',
+      alignSelf: 'flex-end',
+      paddingBottom: '45px'
     },
     list: {
-      borderTop: `1px solid ${theme.sidebarColorLine}`,
+      borderBottom: `1px solid ${theme.sidebarColorLine}`,
       listStyle: 'none',
       margin: 0,
       padding: 0
     },
     listNested: {
       borderTop: 'none',
-      borderBottom: `1px solid ${theme.sidebarColorLine}`,
+      borderBottom: 'none',
       padding: '0 0 15px 40px'
     }
   };

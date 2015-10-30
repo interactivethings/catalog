@@ -45,6 +45,7 @@ function style(
       height: contentHeight,
       width: sideWidth,
       top: 0,
+      borderRight: `1px solid ${theme.sidebarColorLine}`,
       transition: `left ${sideBarAnimDur}s`,
     },
     navBackground: {

@@ -39,7 +39,7 @@ export function text(theme, {level}) {
 
 export function link(theme) {
   return {
-    color: theme.brandColor,
+    color: theme.linkColor,
     textDecoration: 'none',
     ':hover': {
       textDecoration: 'underline'
@@ -49,14 +49,16 @@ export function link(theme) {
 
 export function code(theme) {
   return {
-    background: '#e1e1e1',
+    background: theme.bgLight,
+    border: `1px solid ${theme.lightColor}`,
+    margin: '1px 5px',
     borderRadius: 3,
     color: '#555',
     display: 'inline-block',
     fontFamily: theme.fontMono,
     fontWeight: 300,
     lineHeight: 1,
-    padding: '0.178em 0.317em',
+    padding: '0.05em 0.317em 0.18em',
     textIndent: 0
   };
 }

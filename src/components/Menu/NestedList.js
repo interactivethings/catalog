@@ -31,7 +31,7 @@ const NestedList = React.createClass({
         <Link
           to={pages[0].path}
           style={[currentStyle.link, collapsed ? {} : currentStyle.activeLink]}
-          activeStyle={{...currentStyle.link, ...currentStyle.activeLink}} >
+          activeStyle={{...currentStyle.link, ...currentStyle.activeSection}} >
           { title }
         </Link>
         { !collapsed &&

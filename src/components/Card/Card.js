@@ -20,6 +20,7 @@ class Card extends Component {
         background: theme.cardBackground,
         borderRadius: 3,
         boxShadow: theme.cardShadow ? `0px 1px 4px ${theme.lightColor}` : null,
+        border: `1px solid ${theme.cardRuleColor}`,
         margin: `${theme.sizeL}px 0`,
         padding: `${theme.sizeXl}px ${theme.sizeL}px 14px ${theme.sizeL}px`,
         position: 'relative'
@@ -29,7 +30,9 @@ class Card extends Component {
           rules={{
             h2: {
               ...cardContainer(theme),
-              ...heading(theme, {level: 2})
+              ...heading(theme, {level: 2}),
+              maxWidth: 'none',
+              width: '100%'
             },
             h3: {
               ...cardContainer(theme),
@@ -37,7 +40,8 @@ class Card extends Component {
             },
             h4: {
               ...cardContainer(theme),
-              ...heading(theme, {level: 4})
+              ...heading(theme, {level: 4}),
+              marginBottom: '10px'
             },
             p: {
               ...cardContainer(theme),
@@ -70,7 +74,7 @@ class Card extends Component {
               height: 0
             }
           }} />
-       {children}
+        {children}
       </section>
     );
   }

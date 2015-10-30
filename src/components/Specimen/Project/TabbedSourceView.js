@@ -26,13 +26,18 @@ function getStyle(theme) {
       textDecoration: 'underline'
     },
     source: {
+      ...text(theme, {level: 2}),
       ...code(theme),
+      padding: '20px',
       background: '#eee',
       clear: 'both',
       display: 'block',
       border: 'none',
       height: '15em',
-      width: '90%'
+      width: '100%',
+      ':focus': {
+        outline: 'none'
+      }
     }
   };
 }

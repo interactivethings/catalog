@@ -14,7 +14,7 @@ export function style(theme) {
   return {
     link: {
       ...text(theme, { level: 2 }),
-      borderBottom: `1px solid ${theme.sidebarColorLine}`,
+      borderTop: `1px solid ${theme.sidebarColorLine}`,
       color: theme.sidebarColorText,
       cursor: 'pointer',
       display: 'block',
@@ -26,14 +26,15 @@ export function style(theme) {
     },
     activeLink: {
       color: theme.sidebarColorTextActive,
-      background: theme.sidebarColorActive,
       ':hover': undefined
     },
     nestedLink: {
+      borderTop: 'none',
       borderBottom: 'none',
-      padding: '5px 40px 5px 60px'
+      padding: '5px 40px 10px 60px'
     },
     nestedChildren: {
+      borderTop: 'none',
       borderBottom: 'none',
       color: theme.sidebarColorText,
       cursor: 'pointer',
