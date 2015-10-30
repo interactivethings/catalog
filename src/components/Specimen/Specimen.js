@@ -21,7 +21,7 @@ const Renderer = {
   html: (props) => <Html body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   icon: (props) => <Icon icons={[].concat(JSON.parse(props.body))} theme={props.theme}/>,
   type: (props) => <Html body={props.body} modifiers={props.config.options} theme={props.theme}/>,
-  uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme}/>,
+  uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme} />,
   project: (props) => <Project {...projectBodyToProps(props.body)} theme={props.theme}/>,
   download: (props) => <DownloadSpecimen {...JSON.parse(props.body)} theme={props.theme}/>,
   framed: (props) => <FramedCodeBlock code={props.body} theme={props.theme}/>

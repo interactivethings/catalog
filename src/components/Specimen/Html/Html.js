@@ -85,9 +85,9 @@ class Html extends React.Component {
     const {theme, modifiers, body} = this.props;
     let styles = getStyle(theme);
 
-    if (modifiers.contains('plain' && 'light')) {
+    if (modifiers.contains('plain') && modifiers.contains('light')) {
       modifiers.push('plain_light');
-    } else if (modifiers.contains('plain' && 'dark')) {
+    } else if (modifiers.contains('plain') && modifiers.contains('dark')) {
       modifiers.push('plain_dark');
     }
 
