@@ -49,10 +49,36 @@ class UISpec extends React.Component {
         ':hover': {
           opacity: 1
         }
+      },
+      light: {
+        background: `url(${theme.checkerboardPatternLight})`
+      },
+      dark: {
+        background: `url(${theme.checkerboardPatternDark})`
+      },
+      plain: {
+        background: 'transparent',
+        padding: `${theme.sizeL / 2}px 0`
+      },
+      plain_light: {
+        background: theme.bgLight,
+        padding: `${theme.sizeL / 2}px`
+      },
+      plain_dark: {
+        background: theme.bgDark,
+        padding: `${theme.sizeL / 2}px`
       }
     };
 
     let entryObjects = entries.map( (entry, key) => {
+      let background = []
+        .concat(entry.background !== null
+          ? entry.background
+          : [])
+        .join('_');
+
+      let isDark = entry.background ? background.indexOf('dark') > -1 : false;
+
       let overlay = entry.overlay !== undefined
         ? <img style={styles.overlay} src={parseImage( entry.overlay )}/>
         : null;
@@ -70,12 +96,13 @@ class UISpec extends React.Component {
           : []);
 
       return (
-        <div key={key} style={[styles.container, minWidth]}>
+        <div key={key} style={[styles.container, minWidth, styles[background]]}>
           <img style={styles.image} src={parseImage( entry.image )}/>
           {overlay}
           <MetadataBlock
             title={entry.title}
             theme={theme}
+            inverted={isDark}
             links={links}
             attributes={entry.attributes}
             />

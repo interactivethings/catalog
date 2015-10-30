@@ -283,7 +283,8 @@ Describe UI specifications with images and metadata.
     {
         "title": "Active Filter Press State",
         "image": "docs/html-project-example/dynabook.png",
-        "span": 2
+        "span": 2,
+        "background": ["plain","dark"]
     },
     {
         "title": "Active Filter Press State",
@@ -296,7 +297,8 @@ Describe UI specifications with images and metadata.
             "Divider Line: 1px, #DFDFDF",
             "Divider Line: 1px, #DFDFDF"
         ],
-        "links": ["http://example.com", "http://example.com/bla"]
+        "links": ["http://example.com", "http://example.com/bla"],
+        "background": "dark"
     }
 ]
 ```

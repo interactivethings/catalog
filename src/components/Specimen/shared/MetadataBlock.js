@@ -24,7 +24,7 @@ function generateLinkElement(links, style) {
 
 class MetadataBlock extends React.Component {
   render() {
-    const {theme, attributes, title, links} = this.props;
+    const {theme, attributes, title, links, inverted} = this.props;
     let styles = {
       title: {
         ...heading(theme, {level: 5})
@@ -36,12 +36,17 @@ class MetadataBlock extends React.Component {
       },
       link: {
         ...link(theme)
+      },
+      dark: {
+        color: theme.lightColor
       }
     };
 
-    let titleElement = title ? <h2 style={styles.title}>{title}</h2> : null;
+    let dark = inverted ? styles.dark : null;
+
+    let titleElement = title ? <h2 style={[styles.title, dark]}>{title}</h2> : null;
     let attributeElement = attributes && attributes.length > 0
-      ? <ul style={styles.list}>{generateAttributeElement(attributes)}</ul>
+      ? <ul style={[styles.list, dark]}>{generateAttributeElement(attributes)}</ul>
       : null;
     let linkElement = links && links.length > 0
       ? <ul style={styles.list}>{generateLinkElement(links, styles.link)}</ul>
@@ -65,7 +70,8 @@ MetadataBlock.propTypes = {
   theme: PropTypes.object.isRequired,
   title: PropTypes.string,
   attributes: PropTypes.array,
-  links: PropTypes.array
+  links: PropTypes.array,
+  inverted: PropTypes.bool
 };
 
 export default Radium(MetadataBlock);
