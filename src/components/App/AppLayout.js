@@ -103,7 +103,7 @@ class AppLayout extends React.Component {
     const { sidebarVisible, viewportWidth, viewportHeight } = this.state;
 
     const isMobileLayout = viewportWidth < 1000;
-    const sideWidth = SIDE_WIDTH;
+    const sideWidth = SIDE_WIDTH - 1;
     let sideBarOffset;
     let contentWidth;
     if (isMobileLayout) {
