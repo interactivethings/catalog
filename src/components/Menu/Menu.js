@@ -21,7 +21,7 @@ export function style(theme) {
       alignItems: 'bottom',
       justifyContent: 'left'
     },
-    img: {
+    logo: {
       display: 'inline-block',
       width: '100%',
       alignSelf: 'flex-end',
@@ -51,7 +51,7 @@ class Menu extends React.Component {
 
     return (
       <div style={currentStyle.bar} >
-        <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.img} src={logoSrc} /> : titleString }</h1>
+        <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div  style={currentStyle.logo}>{titleString}</div> }</h1>
         <ul style={currentStyle.list}>
           { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
         </ul>
