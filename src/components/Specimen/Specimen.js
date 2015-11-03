@@ -27,37 +27,14 @@ const Renderer = {
   framed: (props) => <FramedCodeBlock code={props.body} theme={props.theme}/>
 };
 
-// .cg-Specimen {
-//   margin: -6px 0 24px 0;
-
-//   & + .cg-Specimen {
-//     margin-top: 33px;
-//   }
-
-//   h3 + & { margin-top: 12px; }
-//   h4 + & { margin-top: 10px; }
-
-//   & + h3 { margin-top: 28px; }
-// }
-
-function getStyle() {
-  return {
-    container: {
-      margin: '-6px 0 24px 0'
-    }
-  };
-}
-
-
 class Specimen extends React.Component {
   render() {
-    let {theme, config} = this.props;
-    let styles = getStyle(theme);
+    let {config} = this.props;
     let renderer = Renderer[config.specimen];
 
     let specimen = renderer ? renderer(this.props) : this.throwError(config.specimen);
     return (
-      <section style={styles.container}>{specimen}</section>
+      <section>{specimen}</section>
       );
   }
 
