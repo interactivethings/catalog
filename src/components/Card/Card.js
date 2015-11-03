@@ -12,7 +12,10 @@ class Card extends Component {
     let inlineBlockquoteRules = inlineBlockquote(theme);
     inlineBlockquoteRules.blockquote = {
       ...cardContainer(theme),
-      ...inlineBlockquoteRules.blockquote
+      ...inlineBlockquoteRules.blockquote,
+      borderLeft: 'none',
+      margin: 0,
+      opacity: 0.5
     };
 
     return (
@@ -40,8 +43,7 @@ class Card extends Component {
             },
             h4: {
               ...cardContainer(theme),
-              ...heading(theme, {level: 4}),
-              marginBottom: '10px'
+              ...heading(theme, {level: 6})
             },
             p: {
               ...cardContainer(theme),
