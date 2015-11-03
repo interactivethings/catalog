@@ -53,7 +53,10 @@ function getStyles(theme, isMobileLayout) {
     },
     linkTitle: {
       fontSize: theme.fontL,
-      margin: '0'
+      margin: '0',
+      ':hover': {
+        textDecoration: 'underline'
+      }
     }
   };
 }
@@ -88,7 +91,7 @@ class NavigationBar extends React.Component {
             { !isMobileLayout && leftIcon }
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ prevPage.superTitle }</h4>
-              <h3 style={styles.linkTitle}>{ prevPage.title }</h3>
+              <h3 style={styles.linkTitle} key='left'>{ prevPage.title }</h3>
             </div>
             { isMobileLayout && leftIcon }
           </Link>
@@ -98,7 +101,7 @@ class NavigationBar extends React.Component {
           <Link to={nextPage.path} style={styles.link}>
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ nextPage.superTitle }</h4>
-              <h3 style={styles.linkTitle}>{ nextPage.title }</h3>
+              <h3 style={styles.linkTitle} key='right'>{ nextPage.title }</h3>
             </div>
             {rightIcon}
           </Link>
