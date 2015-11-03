@@ -33,7 +33,7 @@ class PageRenderer extends React.Component {
     return (
       <div className='cg-Page' style={{margin: `0 ${theme.sizeXxl}px`, flex: 1}}>
         <RadiumStyle scopeSelector='.cg-Page >' rules={{
-          h1: {
+          h2: {
             ...pageContainer(theme),
             ...heading(theme, {level: 1})
           },
@@ -46,14 +46,16 @@ class PageRenderer extends React.Component {
             selector: 'ul',
             style: {
               ...pageContainer(theme),
-              ...text(theme, {level: 2})
+              ...text(theme, {level: 2}),
+              marginLeft: '2em'
             }
           }),
           ...inlineOlist(theme, {
             selector: 'ol',
             style: {
               ...pageContainer(theme),
-              ...text(theme, {level: 2})
+              ...text(theme, {level: 2}),
+              marginLeft: '2em'
             }
           }),
           ...inlineBlockquoteRules,
@@ -83,18 +85,19 @@ class PageRenderer extends React.Component {
             left: 0,
             padding: `${theme.sizeL}px ${theme.sizeXxl}px`
           }} >
+            <h4 style={{
+              ...pageContainer(theme),
+              ...heading(theme, {level: 4}),
+              color: theme.pageHeadingTextColor,
+              opacity: 0.6,
+              marginBottom: 0
+            }}>{this.props.page.superTitle}</h4>
             <h2 style={{
               ...pageContainer(theme),
               ...heading(theme, {level: 2}),
               color: theme.pageHeadingTextColor,
               marginBottom: 0
-            }}>{this.props.page.superTitle}</h2>
-            <h1 style={{
-              ...pageContainer(theme),
-              ...heading(theme, {level: 1}),
-              color: theme.pageHeadingTextColor,
-              marginBottom: 0
-            }}>{this.props.page.title}</h1>
+            }}>{this.props.page.title}</h2>
           </div>
         </div>
 
