@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Radium from 'radium';
 
 import downloadIconSrc from 'assets/download-icon.svg';
 
@@ -6,7 +7,12 @@ function getStyle(theme) {
   return {
     container: {
       display: 'block',
-      width: '100%'
+      width: '100%',
+      height: 120,
+      transition: '.4s background',
+      ':hover': {
+        background: theme.bgLight
+      }
     },
     a: {
       cursor: 'pointer',
@@ -69,4 +75,4 @@ DownloadSpecimen.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default DownloadSpecimen;
+export default Radium(DownloadSpecimen);
