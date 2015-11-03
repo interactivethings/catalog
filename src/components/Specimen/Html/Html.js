@@ -8,7 +8,8 @@ const SIZE = 20;
 function getStyle(theme) {
   return {
     container: {
-      position: 'relative'
+      position: 'relative',
+      marginBottom: '30px'
     },
     toggle: {
       border: PADDING + 'px solid transparent',
