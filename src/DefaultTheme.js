@@ -16,7 +16,7 @@ export default {
   sidebarColorHeading: '#003B5C',
   textColor: '#003B5C',
   linkColor: '#FF5555',
-  textMedium: '#555555',
+  textMedium: '#003B5C',
   bgLight: '#F2F2F2',
   bgDark: '#333333',
   lightColor: '#D6D6D6',
@@ -54,11 +54,11 @@ export default {
 
   // The value that multiplies the baseVerticalUnit to get the baseLineHeight.
   // This gives type an ideal lineHeight.
-  baseLineMulti: 7,
+  baseLineMulti: 10,
 
   // Base font size in pixels.
-  baseFontSize: 16,
+  baseFontSize: 18,
 
   // Modular scale ratio that is used to figure out all the different font sizes
-  msRatio: 1.333
+  msRatio: 1 + 1 / 6
 };

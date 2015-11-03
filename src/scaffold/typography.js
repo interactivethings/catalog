@@ -1,8 +1,20 @@
 function setType(theme, {fontSize, verticalUnits}) {
   return {
-    fontSize,
-    lineHeight: (verticalUnits * theme.baseVerticalUnit) / fontSize
+    fontSize: fontSize + 'px',
+    lineHeight: `${(verticalUnits * theme.baseVerticalUnit) / fontSize}em`
   };
+}
+
+function modularScale(opts) {
+  let { base, ratios, length } = opts;
+  let scaleArray = [base];
+
+  Array(length).fill().map( ( ) => {
+    let a = scaleArray[scaleArray.length - 1];
+    scaleArray.push(a * ratios);
+  });
+
+  return scaleArray.reverse();
 }
 
 export function text(theme, {level}) {
@@ -13,28 +25,16 @@ export function text(theme, {level}) {
     fontWeight: 300
   };
 
-  switch (level) {
-  case 1:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontL, verticalUnits: 8}),
-      margin: '0 0 13px 0'
-    };
-  case 2:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontM, verticalUnits: 6}),
-      margin: '0 0 16px 0'
-    };
-  case 3:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontS, verticalUnits: 5}),
-      margin: '0 0 6px 0'
-    };
-  default:
-    return style;
-  }
+  let fontSizes = modularScale({
+    base: theme.baseFontSize - 4,
+    ratios: theme.msRatio,
+    length: 3
+  });
+
+  return {
+    ...style,
+    ...setType(theme, {fontSize: fontSizes[level], verticalUnits: fontSizes[level] / 2.5})
+  };
 }
 
 export function link(theme) {
@@ -88,7 +88,8 @@ export function inlineBlockquote(theme) {
   return {
     blockquote: {
       quotes: 'none',
-      margin: 0
+      margin: '50px 0',
+      borderLeft: `1px solid ${theme.sidebarColorLine}`
     },
     'blockquote:before, blockquote:after': {
       content: 'none'
@@ -106,44 +107,17 @@ export function heading(theme, {level}) {
     fontWeight: 500
   };
 
-  switch (level) {
-  case 1:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontXxl, verticalUnits: 12}),
-      margin: '0 0 16px 0',
-      fontWeight: 600
-    };
-  case 2:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontXl, verticalUnits: 8}),
-      margin: '0 0 12px 0'
-    };
-  case 3:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontL, verticalUnits: 6}),
-      margin: '23px 0 2px 0',
-      color: theme.textMedium
-    };
-  case 4:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontM, verticalUnits: theme.baseLineMulti}),
-      margin: '0 0 -2px 0',
-      color: theme.textMedium
-    };
-  case 5:
-    return {
-      ...style,
-      ...setType(theme, {fontSize: theme.fontS, verticalUnits: 5}),
-      margin: '0 0 1px 0',
-      color: theme.textMedium
-    };
-  default:
-    return style;
-  }
+  let fontSizes = modularScale({
+    base: theme.baseFontSize,
+    ratios: theme.msRatio,
+    length: 6
+  });
+
+  return {
+    ...style,
+    ...setType(theme, {fontSize: fontSizes[level], verticalUnits: theme.baseLineMulti}),
+    margin: `0 0 ${fontSizes[level]}px`
+  };
 }
 
 export function line(theme, {level}) {
