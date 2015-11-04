@@ -11,32 +11,33 @@ class Page extends React.Component {
   constructor() {
     super();
     this.state = {
-      error: null,
       content: null
     };
   }
 
   componentDidMount() {
     this.context.page.scripts.forEach(actions.runscript);
-    this.fetchPageData();
+    this.fetchPageData(this.context.page.src);
+  }
+
+  componentWillReceiveProps(_, nextContext) {
+    if (nextContext.page.src !== this.context.page.src) {
+      this.setState({content: null});
+      this.fetchPageData(nextContext.page.src);
+    }
   }
 
   render() {
-    if (this.state.error) {
-      return <div>Error: {this.state.error}</div>;
-    } else if (this.state.content) {
-      return <PageRenderer {...this.props} {...this.context} content={this.state.content} />;
-    }
-    return <Loader />;
+    const content = this.state.content || <Loader />;
+    return <PageRenderer {...this.props} {...this.context} content={content} />;
   }
 
-  fetchPageData() {
-    reqwest({url: this.context.page.src, type: 'text'})
+  fetchPageData(url) {
+    reqwest({url, type: 'text'})
       .then((res) => this.setState({content: res.responseText}))
       .fail((res) => {
         return this.setState({
-          error: res.statusText,
-          content: null
+          content: res.statusText
         });
       });
   }

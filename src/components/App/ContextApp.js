@@ -12,7 +12,7 @@ class App extends React.Component {
         sideNav={<Menu {...this.context} />}
       >
         {
-         React.cloneElement(Children.only(this.props.children), {key: this.context.location.pathname})
+         Children.only(this.props.children)
         }
       </AppLayout>
     );

@@ -113,6 +113,9 @@ class PageRenderer extends React.Component {
   }
 
   contentNodes() {
+    if (React.isValidElement(this.props.content)) {
+      return this.props.content;
+    }
     return MarkdownRenderer({
       text: this.props.content,
       section: (children) => {
@@ -132,7 +135,7 @@ class PageRenderer extends React.Component {
 
 PageRenderer.propTypes = {
   page: CatalogPropTypes.page.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.node.isRequired,
   theme: PropTypes.object.isRequired
 };
 
