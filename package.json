@@ -5,7 +5,6 @@
   "main": "catalog-lib.js",
   "dependencies": {
     "history": "^1.12.3",
-    "classnames": "1.2.0",
     "jszip": "^2.5.0",
     "marked": "0.3.2",
     "radium": "^0.14.1",
