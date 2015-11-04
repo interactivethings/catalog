@@ -112,10 +112,12 @@ var libConfig = {
       commonjs: 'react-router',
       amd: 'react-router'
     }
-  }
+  },
+  plugins: [
+  ]
 }
 
 module.exports = [
   assignDeep({}, webpackConfig.common, webpackConfig[env]),
-  assignDeep({}, webpackConfig.common, libConfig, webpackConfig[env])
+  assignDeep({}, webpackConfig.common, webpackConfig[env], libConfig)
 ];
