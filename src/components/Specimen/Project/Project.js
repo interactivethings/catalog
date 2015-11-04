@@ -3,10 +3,10 @@ import R from 'ramda';
 import JSZip from 'jszip';
 import Radium from 'radium';
 // Polyfill for DOMParser.parseFromString support
-import '../../../../lib/DOMParser';
+import 'utils/DOMParser';
 
-import fileUtils from '../../../utils/fileUtils';
-import saveAs from '../../../../lib/FileSaver';
+import fileUtils from 'utils/fileUtils';
+import saveAs from 'utils/FileSaver';
 import {text, link} from 'scaffold/typography';
 
 import normalizeReferences from './normalizeReferences';

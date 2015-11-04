@@ -1,5 +1,5 @@
 import R from 'ramda';
-import marked from '../lib/react-markdown';
+import marked from 'utils/react-markdown';
 
 let MARKDOWN_CONFIG = {
   gfm: true,
