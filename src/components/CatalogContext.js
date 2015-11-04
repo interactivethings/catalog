@@ -5,18 +5,12 @@ import ContextApp from 'components/App/ContextApp';
 import CatalogPropTypes from 'core/PropTypes';
 
 class CatalogContext extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.pageConfiguration = parseConfiguration(props.configuration);
-  }
-
   getChildContext() {
-    const {title, theme, logoSrc} = this.props.configuration;
-    const {pages, pageList, pageNames, pageIndex} = this.pageConfiguration;
+    const {title, theme, logoSrc, pages, pageList, pageNames, pageIndex} = this.props.configuration;
     const {location} = this.context;
     return {
-      theme: {...DefaultTheme, ...theme},
       page: pageIndex[location.pathname],
+      theme,
       title,
       pages,
       pageList,
@@ -51,10 +45,20 @@ CatalogContext.childContextTypes = {
   logoSrc: PropTypes.string
 };
 
-export default function createCatalogContext(configuration) {
-  return class ConfiguredCatalogContext extends Component {
-    render() {
-      return <CatalogContext configuration={configuration}><ContextApp>{this.props.children}</ContextApp></CatalogContext>;
-    }
+export default function createCatalogContext(config) {
+  const configuration = {
+    ...config,
+    ...parseConfiguration(config),
+    theme: {...DefaultTheme, ...config.theme}
   };
+
+  const ConfiguredCatalogContext = ({children}) => (
+    <CatalogContext
+      configuration={configuration}
+    >
+      <ContextApp>{children}</ContextApp>
+    </CatalogContext>
+  );
+
+  return ConfiguredCatalogContext;
 }
