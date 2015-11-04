@@ -136,8 +136,8 @@ class Project extends React.Component {
           }
         })
         .then((response) => response.text())
-        .then((text) => {
-          let content = R.contains(this.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, text) : text;
+        .then((source) => {
+          let content = R.contains(this.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, source) : source;
           if (file === props.index) {
             virtualFiles = virtualFiles.concat(this.parseExposedFiles(content));
             if (file.template) {
