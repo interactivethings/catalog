@@ -16,7 +16,7 @@
   "peerDependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^1.0.0-rc3"
+    "react-router": "^1.0.0-rc4"
   },
   "devDependencies": {
     "assign-deep": "0.3.1",
@@ -38,7 +38,7 @@
     "portfinder": "^0.4.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^1.0.0-rc3",
+    "react-router": "^1.0.0-rc4",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
