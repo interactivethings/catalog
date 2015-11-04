@@ -33,6 +33,9 @@ function getStyle(theme) {
   };
 }
 
+const imagePathRe = /\.(jpe?g|gif|png)$/;
+const isImage = (path) => imagePathRe.test(path);
+
 class Project extends React.Component {
   render() {
     let {index, scrolling, files, size, theme} = this.props;
@@ -97,8 +100,7 @@ class Project extends React.Component {
     // It worked! The monkeys banged away on the keyboard and something functioning
     // came out of it! Such mess, but such works. Wow.
 
-    let files = props.files.map(((_context) => {
-      return (file) => {
+    let files = props.files.map((file) => {
         return new Promise((resolve, reject) => {
           // When dealing with an image, we need to make sure to load it as binary
           // data, not plain text. We do this by issuing a custom request with a
@@ -112,7 +114,7 @@ class Project extends React.Component {
           // Also, note that our 'image' detection is extremely primitive and won't
           // support all images, let alone other binary data.
 
-          if (_context.isImage(file.source)) {
+          if (isImage(file.source)) {
             let req = new XMLHttpRequest();
             req.open('GET', file.source, true);
             req.responseType = 'arraybuffer';
@@ -135,9 +137,9 @@ class Project extends React.Component {
           })
           .then((response) => response.text())
           .then((text) => {
-            let content = R.contains(_context.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, text) : text;
+            let content = R.contains(this.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, text) : text;
             if (file === props.index) {
-              virtualFiles = virtualFiles.concat(_context.parseExposedFiles(content));
+              virtualFiles = virtualFiles.concat(this.parseExposedFiles(content));
               if (file.template) {
                 return fetch(file.template, {
                   headers: {
@@ -179,36 +181,29 @@ class Project extends React.Component {
             });
           }).catch(reject);
         });
-      };
-    })(this));
+    });
 
-    Promise.all(files).then(((_context) => {
-      return (filesResponse) =>{
+    Promise.all(files).then((filesResponse) =>{
         filesResponse.forEach( (f) => {
           return root.file(f.path, f.content, {
-            binary: _context.isImage(f.path)
+            binary: isImage(f.path)
           });
         });
         virtualFiles.forEach( (f) => {
           return root.file(f.path, f.content, {
-            binary: _context.isImage(f.path)
+            binary: isImage(f.path)
           });
         });
         let blob = zip.generate({
           type: 'blob'
         });
         return saveAs(blob, props.name + '.zip');
-      };
-    })(this)).catch(((_context) => {
-      return (res) => {
-        throw new Error('Preparing ZIP file failed', res, _context);
-      };
-    })(this));
+    }).catch((error) => {
+        throw new Error('Preparing ZIP file failed', error);
+    });
   }
 
-  isImage(path) {
-    return path.match(/\.(jpe?g|gif|png)$/);
-  }
+
 }
 
 Project.propTypes = {
