@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build doc nightly dist deploy clean clobber lint
+.PHONY: install server build watch doc nightly dist deploy clean clobber lint
 
 all: server
 
@@ -41,9 +41,12 @@ server: install
 	@UV_THREADPOOL_SIZE=100 bin/server
 
 build: install clean
-	UV_THREADPOOL_SIZE=100 \
 	NODE_ENV=production \
 	webpack --colors --progress --hide-modules
+
+watch: install clean
+	NODE_ENV=production \
+	webpack --watch --colors --progress --hide-modules
 
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
