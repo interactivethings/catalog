@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import reqwest from 'reqwest';
 import normalizeReferences from './normalizeReferences';
 
 import {text, link, code} from 'scaffold/typography';
@@ -56,7 +55,7 @@ class Project extends React.Component {
   }
 
   componentDidUpdate() {
-    if (!this.state.sourceCode) {
+    if (!this.state.sourceCode && !this.state.error) {
       this.loadSourceCode();
     }
   }
@@ -112,25 +111,21 @@ class Project extends React.Component {
       return;
     }
     let file = sourceFiles[this.state.tab];
-    let requests = [reqwest({ url: file.source, type: 'text', headers: { Accept: 'text/plain,*/*' } }) ];
-    Promise.all(requests).then(((_this) =>{
-      return (res) => {
-        let content = res.map((d) => {
-          return d.responseText;
+
+    fetch(file.source)
+      .then((response) => response.text())
+      .then((text) => {
+        const sourceCode = this.parseSourceCode(text);
+        this.setState({
+          sourceCode: normalizeReferences(this.props.rootPath, this.props.files, sourceCode)
         });
-        let sourceCode = _this.parseSourceCode(...content);
-        _this.setState({
-          sourceCode: normalizeReferences(_this.props.rootPath, _this.props.files, sourceCode)
+      })
+      .catch((error) => {
+        this.setState({
+          error: error,
+          sourceCode: null
         });
-      };
-    })(this)).catch(((_this) =>{
-      return (res) => {
-        return _this.setState({
-          error: res.statusText,
-          children: null
-        });
-      };
-    })(this));
+      });
   }
 
   parseSourceCode(source, template) {

@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import R from 'ramda';
-import reqwest from 'reqwest';
 import JSZip from 'jszip';
 import Radium from 'radium';
 // Polyfill for DOMParser.parseFromString support
@@ -129,26 +128,25 @@ class Project extends React.Component {
           // In all other cases, we want to load the file as plain text and process
           // it further before adding it to the zip file.
 
-          return reqwest({
-            url: file.source,
-            type: 'text',
+          return fetch(file.source, {
             headers: {
               Accept: 'text/plain,*/*'
             }
-          }).then( (res) => {
-            let content = R.contains(_context.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, res.responseText) : res.responseText;
+          })
+          .then((response) => response.text())
+          .then((text) => {
+            let content = R.contains(_context.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, text) : text;
             if (file === props.index) {
               virtualFiles = virtualFiles.concat(_context.parseExposedFiles(content));
               if (file.template) {
-                return reqwest({
-                  url: file.template,
-                  type: 'text',
+                return fetch(file.template, {
                   headers: {
                     Accept: 'text/plain,*/*'
                   }
-                }).then((templateRes) => {
+                })
+                .then((response) => response.text())
+                .then((template) => {
                   // var doc, i, len, node, path, ref, template;
-                  let template = templateRes.responseText;
                   let doc = new DOMParser().parseFromString(content, 'text/html');
                   let ref = doc.querySelectorAll('[data-catalog-project-expose]');
                   for (let i = 0, len = ref.length; i < len; i++) {
@@ -179,7 +177,7 @@ class Project extends React.Component {
               path: file.target,
               content: content
             });
-          }).fail(reject);
+          }).catch(reject);
         });
       };
     })(this));

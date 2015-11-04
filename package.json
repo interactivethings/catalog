@@ -5,12 +5,12 @@
   "main": "catalog-lib.js",
   "dependencies": {
     "history": "^1.12.3",
+    "isomorphic-fetch": "^2.2.0",
     "jszip": "^2.5.0",
     "marked": "0.3.2",
     "radium": "^0.14.1",
     "ramda": "^0.18.0",
-    "react-frame-component": "0.3.4",
-    "reqwest": "1.1.2"
+    "react-frame-component": "0.3.4"
   },
   "peerDependencies": {
     "react": "^0.14.0",

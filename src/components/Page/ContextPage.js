@@ -1,5 +1,3 @@
-import reqwest from 'reqwest';
-
 import React, {PropTypes} from 'react';
 import {actions} from 'core/Catalog';
 import CatalogPropTypes from 'core/PropTypes';
@@ -33,11 +31,12 @@ class Page extends React.Component {
   }
 
   fetchPageData(url) {
-    reqwest({url, type: 'text'})
-      .then((res) => this.setState({content: res.responseText}))
-      .fail((res) => {
+    fetch(url)
+      .then((response) => response.text())
+      .then((text) => this.setState({content: text}))
+      .catch((error) => {
         return this.setState({
-          content: res.statusText
+          content: error
         });
       });
   }

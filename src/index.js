@@ -1,3 +1,4 @@
+import 'isomorphic-fetch';
 import {start, actions} from './core/Catalog';
 
 export default {
