@@ -101,105 +101,105 @@ class Project extends React.Component {
     // came out of it! Such mess, but such works. Wow.
 
     let files = props.files.map((file) => {
-        return new Promise((resolve, reject) => {
-          // When dealing with an image, we need to make sure to load it as binary
-          // data, not plain text. We do this by issuing a custom request with a
-          // response type of 'arraybuffer'.
-          // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
-          //
-          // This does not work in older browsers, if a need arises to support them,
-          // we can use the jBinary library instead.
-          // https://github.com/jDataView/jBinary/wiki
-          //
-          // Also, note that our 'image' detection is extremely primitive and won't
-          // support all images, let alone other binary data.
+      return new Promise((resolve, reject) => {
+        // When dealing with an image, we need to make sure to load it as binary
+        // data, not plain text. We do this by issuing a custom request with a
+        // response type of 'arraybuffer'.
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
+        //
+        // This does not work in older browsers, if a need arises to support them,
+        // we can use the jBinary library instead.
+        // https://github.com/jDataView/jBinary/wiki
+        //
+        // Also, note that our 'image' detection is extremely primitive and won't
+        // support all images, let alone other binary data.
 
-          if (isImage(file.source)) {
-            let req = new XMLHttpRequest();
-            req.open('GET', file.source, true);
-            req.responseType = 'arraybuffer';
-            req.onload = () => {
-              return resolve({
-                path: file.target,
-                content: req.response
-              });
-            };
-            req.onerror = reject;
-            return req.send(null);
+        if (isImage(file.source)) {
+          let req = new XMLHttpRequest();
+          req.open('GET', file.source, true);
+          req.responseType = 'arraybuffer';
+          req.onload = () => {
+            return resolve({
+              path: file.target,
+              content: req.response
+            });
+          };
+          req.onerror = reject;
+          return req.send(null);
+        }
+        // In all other cases, we want to load the file as plain text and process
+        // it further before adding it to the zip file.
+
+        return fetch(file.source, {
+          headers: {
+            Accept: 'text/plain,*/*'
           }
-          // In all other cases, we want to load the file as plain text and process
-          // it further before adding it to the zip file.
-
-          return fetch(file.source, {
-            headers: {
-              Accept: 'text/plain,*/*'
-            }
-          })
-          .then((response) => response.text())
-          .then((text) => {
-            let content = R.contains(this.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, text) : text;
-            if (file === props.index) {
-              virtualFiles = virtualFiles.concat(this.parseExposedFiles(content));
-              if (file.template) {
-                return fetch(file.template, {
-                  headers: {
-                    Accept: 'text/plain,*/*'
-                  }
-                })
-                .then((response) => response.text())
-                .then((template) => {
-                  // var doc, i, len, node, path, ref, template;
-                  let doc = new DOMParser().parseFromString(content, 'text/html');
-                  let ref = doc.querySelectorAll('[data-catalog-project-expose]');
-                  for (let i = 0, len = ref.length; i < len; i++) {
-                    let node = ref[i];
-                    let path = node.getAttribute('data-catalog-project-expose');
-                    node.removeAttribute('data-catalog-project-expose');
-                    node.setAttribute('src', path);
-                    node.innerHTML = '';
-                  }
-                  virtualFiles.push({
-                    path: fileUtils.filename(file.template),
-                    content: template.replace('${yield}', doc.body.innerHTML)
-                  });
-                  content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '');
-                  return resolve({
-                    path: file.target,
-                    content: content
-                  });
+        })
+        .then((response) => response.text())
+        .then((text) => {
+          let content = R.contains(this.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, text) : text;
+          if (file === props.index) {
+            virtualFiles = virtualFiles.concat(this.parseExposedFiles(content));
+            if (file.template) {
+              return fetch(file.template, {
+                headers: {
+                  Accept: 'text/plain,*/*'
+                }
+              })
+              .then((response) => response.text())
+              .then((template) => {
+                // var doc, i, len, node, path, ref, template;
+                const doc = new DOMParser().parseFromString(content, 'text/html');
+                const ref = doc.querySelectorAll('[data-catalog-project-expose]');
+                for (let i = 0, len = ref.length; i < len; i++) {
+                  const node = ref[i];
+                  const path = node.getAttribute('data-catalog-project-expose');
+                  node.removeAttribute('data-catalog-project-expose');
+                  node.setAttribute('src', path);
+                  node.innerHTML = '';
+                }
+                virtualFiles.push({
+                  path: fileUtils.filename(file.template),
+                  content: template.replace('${yield}', doc.body.innerHTML)
                 });
-              }
-              content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '');
-              return resolve({
-                path: file.target,
-                content: content
+                content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '');
+                return resolve({
+                  path: file.target,
+                  content: content
+                });
               });
             }
+            content = content.replace(/\s+data-catalog-project-expose=[\"\'].+?[\"\']/, '');
             return resolve({
               path: file.target,
               content: content
             });
-          }).catch(reject);
-        });
+          }
+          return resolve({
+            path: file.target,
+            content: content
+          });
+        }).catch(reject);
+      });
     });
 
     Promise.all(files).then((filesResponse) =>{
-        filesResponse.forEach( (f) => {
-          return root.file(f.path, f.content, {
-            binary: isImage(f.path)
-          });
+      filesResponse.forEach( (f) => {
+        return root.file(f.path, f.content, {
+          binary: isImage(f.path)
         });
-        virtualFiles.forEach( (f) => {
-          return root.file(f.path, f.content, {
-            binary: isImage(f.path)
-          });
+      });
+      virtualFiles.forEach( (f) => {
+        return root.file(f.path, f.content, {
+          binary: isImage(f.path)
         });
-        let blob = zip.generate({
-          type: 'blob'
-        });
-        return saveAs(blob, props.name + '.zip');
+      });
+      const blob = zip.generate({
+        type: 'blob'
+      });
+      return saveAs(blob, props.name + '.zip');
     }).catch((error) => {
-        throw new Error('Preparing ZIP file failed', error);
+      throw new Error('Preparing ZIP file failed', error);
     });
   }
 
