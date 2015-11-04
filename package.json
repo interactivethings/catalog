@@ -2,7 +2,7 @@
   "name": "catalog-styleguide",
   "version": "1.1.12",
   "description": "Catalog is the foundation for living styleguides created at Interactive Things",
-  "main": "catalog.js",
+  "main": "catalog-lib.js",
   "dependencies": {
     "history": "^1.12.3",
     "classnames": "1.2.0",
@@ -10,10 +10,13 @@
     "marked": "0.3.2",
     "radium": "^0.14.1",
     "ramda": "^0.18.0",
+    "react-frame-component": "0.3.4",
+    "reqwest": "1.1.2"
+  },
+  "peerDependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^1.0.0-rc3",
-    "reqwest": "1.1.2"
+    "react-router": "^1.0.0-rc3"
   },
   "devDependencies": {
     "assign-deep": "0.3.1",
@@ -28,13 +31,14 @@
     "eslint": "^1.0.0",
     "eslint-config-interactivethings": "^2.0.1",
     "eslint-plugin-react": "^3.1.1",
-    "expose-loader": "^0.7.0",
     "express": "^4.13.3",
     "file-loader": "^0.8.1",
     "json-loader": "^0.5.3",
     "object-values": "^1.0.0",
     "portfinder": "^0.4.0",
-    "react-frame-component": "0.3.4",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",

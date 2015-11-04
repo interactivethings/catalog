@@ -3,6 +3,8 @@ import R from 'ramda';
 import reqwest from 'reqwest';
 import JSZip from 'jszip';
 import Radium from 'radium';
+// Polyfill for DOMParser.parseFromString support
+import '../../../../lib/DOMParser';
 
 import fileUtils from '../../../utils/fileUtils';
 import saveAs from '../../../../lib/FileSaver';

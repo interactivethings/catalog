@@ -37,6 +37,8 @@ var loaders = {
 var webpackConfig = {
   common: {
     output: {
+      library: 'Catalog',
+      libraryTarget: 'umd',
       path: resolveHere('.'),
       filename: 'catalog.js'
     },
@@ -54,7 +56,7 @@ var webpackConfig = {
   development: {
     entry: [
       'webpack-hot-middleware/client',
-      resolveHere('src/catalog')
+      resolveHere('src/index')
     ],
     output: {
       pathinfo: true
@@ -70,9 +72,7 @@ var webpackConfig = {
   },
 
   production: {
-    entry: {
-      app: resolveHere('src/catalog')
-    },
+    entry: resolveHere('src/index'),
     plugins: [
       new webpack.DefinePlugin({
         '__DEV__': JSON.stringify(false),
@@ -89,4 +89,33 @@ var webpackConfig = {
   }
 };
 
-module.exports = assignDeep(webpackConfig.common, webpackConfig[env]);
+var libConfig = {
+  output: {
+    filename: 'catalog-lib.js'
+  },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    },
+    'react-router': {
+      root: 'ReactRouter',
+      commonjs2: 'react-router',
+      commonjs: 'react-router',
+      amd: 'react-router'
+    }
+  }
+}
+
+module.exports = [
+  assignDeep({}, webpackConfig.common, webpackConfig[env]),
+  assignDeep({}, webpackConfig.common, libConfig, webpackConfig[env])
+];

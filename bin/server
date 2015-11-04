@@ -13,26 +13,30 @@ var webpackConfig = require('../webpack.config');
 
 function server(options, config) {
   var app = express();
-  var compiler = webpack(config);
+  var configs = Array.isArray(config) ? config : [config];
 
   app.use(historyApiFallback());
 
-  app.use(devMiddleware(compiler, {
-      publicPath: config.output.publicPath,
-      contentBase: config.output.contentBase,
-      stats: {
-        assets: true,
-        chunkModules: false,
-        chunkOrigins: false,
-        chunks: false,
-        colors: true,
-        hash: false,
-        timings: true,
-        version: false
-      }
-    }));
+  configs.forEach(function(c) {
+    var compiler = webpack(c);
 
-  app.use(hotMiddleware(compiler));
+    app.use(devMiddleware(compiler, {
+        publicPath: c.output.publicPath,
+        contentBase: c.output.contentBase,
+        stats: {
+          assets: true,
+          chunkModules: false,
+          chunkOrigins: false,
+          chunks: false,
+          colors: true,
+          hash: false,
+          timings: true,
+          version: false
+        }
+      }));
+
+    app.use(hotMiddleware(compiler));
+  });
 
   app.use(express.static('.'));
 

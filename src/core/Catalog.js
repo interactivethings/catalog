@@ -19,39 +19,41 @@ import DefaultTheme from 'DefaultTheme';
 // Startup
 //
 export function start(selector, config) {
-  const {pages, pageList, pageIndex, pageNames} = parseConfiguration(config);
+    const {pages, pageList, pageIndex, pageNames} = parseConfiguration(config);
 
-  const pageRoutes = pageList.map((page) => {
-    if (!page.src) {
-      return false;
-    }
+    const pageRoutes = pageList.map((page) => {
+      if (!page.src) {
+        return false;
+      }
 
-    return {
-      path: page.path,
-      component: Page
+      return {
+        path: page.path,
+        component: Page
+      };
+    }).filter(Boolean);
+
+    const routes = {
+      component: App,
+      childRoutes: pageRoutes
     };
-  }).filter(Boolean);
 
-  const routes = {
-    component: App,
-    childRoutes: pageRoutes
-  };
+    const rootElement = document.querySelector(selector);
+    rootElement.className += ' cg-Catalog';
 
-  const rootElement = document.querySelector(selector);
-  rootElement.className += ' cg-Catalog';
+    const theme = {
+      ...DefaultTheme,
+      ...config.theme
+    };
 
-  const theme = {
-    ...DefaultTheme,
-    ...config.theme
-  };
+    ReactDOM.render(
+      <Router history={createHistory()} routes={routes} createElement={(Component, props) => {
+        return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} logoSrc={config.logoSrc} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pages} pageList={pageList} />;
+      }} />,
+      rootElement
+    );
+  }
 
-  ReactDOM.render(
-    <Router history={createHistory()} routes={routes} createElement={(Component, props) => {
-      return <Component key={Math.random()} {...props} title={config.title} superTitle={config.title} theme={theme} logoSrc={config.logoSrc} page={pageIndex[props.location.pathname]} pageNames={pageNames} pages={pages} pageList={pageList} />;
-    }} />,
-    rootElement
-  );
-}
+
 
 //
 // Global actions
