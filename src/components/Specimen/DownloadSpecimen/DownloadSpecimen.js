@@ -9,6 +9,7 @@ function getStyle(theme) {
       display: 'block',
       width: '100%',
       height: 120,
+      background: theme.background,
       transition: '.4s background',
       ':hover': {
         background: theme.bgLight

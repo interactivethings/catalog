@@ -11,7 +11,7 @@ function itemRules(theme, {selector, style = {}, before = {}}) {
     ...inlineElements(theme, {selector}),
     [selector]: {
       margin: '0 0 0 -0.8em',
-      textIndent: '-1em',
+      textIndent: '-1.6em',
       ...style
     },
     [`${selector}:before`]: {
@@ -54,7 +54,7 @@ export function inlineOlist(theme, {selector, style = {}}) {
       before: {
         content: 'counter(item)',
         counterIncrement: 'item',
-        left: '-0.6em',
+        left: '-0.3em',
         top: '-0.05em',
         fontWeight: 600,
         textAlign: 'center',

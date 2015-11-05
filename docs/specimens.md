@@ -32,37 +32,50 @@ The default specimen if no argument string is specified.
 * `plain` – a transparent background without any padding. If combined with `light` or `dark`, the checker pattern is removed
 * `no-source` – Removes the source code toggle button
 * `run-script` – will run any scripts within the source
+* `span-[1-6]` – defines the width
 
 ### Examples
 
-#### `html|light`
+#### `html|no-source,light`
 
-```html|no-source
-html
+```html|no-source,light
+html|no-source,light
 ```
 
-#### `html|dark`
+#### `html|no-source,dark`
 
-```html|dark,no-source
-<span style="color:white">html|dark</span>
+```html|no-source,dark
+<span style="color:white">html|no-source,dark</span>
 ```
 
-#### `html|plain`
+#### `html|no-source,plain`
 
-```html|plain,no-source
-html|plain
+```html|no-source,plain
+html|no-source,plain
 ```
 
-#### `html|plain,light`
+#### `html|no-source,plain,light`
 
-```html|plain,light,no-source
-html|plain,light
+```html|no-source,plain,light
+html|no-source,plain,light
 ```
 
-#### `html|plain,dark`
+#### `html|no-source,plain,dark`
 
-```html|plain,dark,no-source
-<span style="color:white">html|plain,dark</span>
+```html|no-source,plain,dark
+<span style="color:white">html|no-source,plain,dark</span>
+```
+
+#### `html|no-source,span-{number}`
+
+```html|no-source,span-1
+
+```
+```html|no-source,span-2
+
+```
+```html|no-source,span-3
+
 ```
 
 #### `html|plain,run-script`
@@ -77,21 +90,29 @@ This is a running code example:
 </script>
 ```
 
+
+
 ## Code
 
 To show code snippets.
 
 ### Options
 
-None.
+- `span-[1-6]` defines the width
 
 ### Examples
 
-#### `code`
+#### `code|span-3`
 
-```code
-function() {
-    return 'code';
+```code|span-3
+handleClick() {
+	console.log('clicked');
+}
+```
+
+```code|span-3
+.Button {
+	background: $primary;
 }
 ```
 
@@ -99,7 +120,8 @@ function() {
 
 ### Configuration
 
-This specimen is configured with a JSON array as the content.
+This specimen is configured with a JSON array as the content. 
+The color codes in the palette can be copied to the clipboard by selecting the text.
 
 ```code
 &#96;&#96;&#96;color
@@ -112,7 +134,8 @@ This specimen is configured with a JSON array as the content.
 
 ### Options
 
-None.
+- `palette` generates a list of the colors.
+- `span-[1-6]` defines the width of the palette
 
 ### Examples
 
@@ -121,184 +144,252 @@ None.
 ```color
 [
     {"name": "light-blue", "value": "#b0f6ff"},
-    {"name": "dark-blue",  "value": "#2666a4"}
+    {"name": "dark-blue",  "value": "#2666a4"},
+    {"name": "bright-red",  "value": "#ff5555"}
 ]
 ```
 
-## Icon
+#### `color|palette,span-3`
 
-### Configuration
-
-This specimen is configured with a JSON object or array as the content. In the most simple form, it looks like this:
-
-```code
-&#96;&#96;&#96;icon
-{"image": "docs/assets/icons/brush-4x.png"}
-&#96;&#96;&#96;
-```
-
-The following JSON configuration options are available. Only `image` is required.
-
-* `image` – the path to a raster or SVG image (required)
-* `size` – an object with `height` and `width` values that the image should be displayed in
-* `title` – the image's title
-* `attributes` – An array of strings that will be displayed as lines
-* `link[s]` – a string or array of links
-* `background` – The background of the icon. Can be a string ("plain", "light", "dark") or an array ["plain", "light"].
-
-```code
-&#96;&#96;&#96;icon
-[
-    {
-        "image": "docs/assets/icons/brush-4x.png",
-        "size": {"height": 32, "width": 32},
-        "title": "Brush icon",
-        "attributes": [
-            "Descriptive text 1",
-            "Descriptive text 2"
-        ],
-        "link": "http://example.com",
-        "background": "dark"
-    }
-]
-&#96;&#96;&#96;
-```
-
-### Examples
-
-#### `icon` without any details
-
-```icon
-{"image": "docs/assets/icons/brush-4x.png"}
-```
-
-#### `icon`s with options
-
-It's recommended to not mix too many icon sizes, as this will lead to a nervous grid, but it is possible. Note that when an image doesn't have any additional information like title or attributes, no text-box is created.
-
-```icon
-[
-    {
-        "image": "docs/assets/icons/brush-4x.png",
-        "size": {"height": 32, "width": 32},
-        "title": "Default"
-    },
-    {
-        "image": "docs/assets/icons/brush.svg",
-        "size": {"height": 32, "width": 32},
-        "background": "plain",
-        "title": "Plain background",
-        "attributes": [
-            "No padding is added on the sides"
-        ]
-    },
-    {
-        "image": "docs/assets/icons/brush-4x.png",
-        "size": {"height": 32, "width": 32},
-        "background": ["plain", "dark"],
-        "title": "Plain dark background"
-    },
-    {
-        "image": "docs/assets/icons/brush-8x.png",
-        "size": {"height": 64, "width": 64},
-        "title": "Brush icon (large)",
-        "attributes": [
-            "Dark checkerboard background and large icon",
-            "An additional line of text"
-        ],
-        "link": "http://example.com",
-        "background": "dark"
-    },
-    {
-        "image": "docs/assets/icons/brush-4x.png",
-        "size": {"height": 32, "width": 180},
-        "title": "Brush icon (stretched)",
-        "align": "vertical"
-    },
-    {
-        "image": "docs/assets/icons/brush.svg",
-        "size": {"height": 32, "width": 32},
-        "title": "Brush icon (SVG)",
-        "align": "vertical"
-    },
-    {
-        "image": "docs/assets/icons/brush-8x.png",
-        "size": {"height": 64, "width": 64}
-    },
-    {
-        "image": "docs/assets/icons/brush-8x.png",
-        "size": {"height": 64, "width": 64}
-    }
+```color|palette,span-3
+[	
+	{"name": "50", "value": "#e3f1fc"},
+	{"name": "100", "value": "#c2d8ea"},
+	{"name": "200", "value": "#a1c0d8"},
+	{"name": "300", "value": "#80a8c6"}
 ]
 ```
+
+```color|palette,span-3
+[	
+	{"name": "White", "value": "#ffffff"},
+	{"name": "Snow White", "value": "#f9f9f9"},
+	{"name": "Bright White", "value": "#f2f2f2"},
+	{"name": "Smoke White", "value": "#ebebeb"}
+]
+```
+
+
 
 
 ## Project
 
 See the [example](#/html-project) until more documentation is available
 
+
+## Hint
+
+Can be used to highlight important aspects.
+
+### Example
+
+```code|span-3
+&#96;&#96;&#96;hint|span-3
+Make sure to use &lt;pre&gt;text-rendering: optimizeLegibility;&lt;/pre&gt;on 
+fonts over 36px, as well as &lt;pre&gt;-webkit-font-smoothing: antialiased;
+&lt;/pre&gt; and &lt;pre&gt;-moz-osx-font-smoothing: grayscale;&lt;/pre&gt; on dark 
+backgrounds.
+&#96;&#96;&#96;
+```
+
+```hint|span-3
+Make sure to use <pre>text-rendering: optimizeLegibility;</pre>on fonts over 36px,
+as well as <pre>-webkit-font-smoothing: antialiased;</pre> and <pre>-moz-osx-font-smoothing: grayscale;</pre> on dark backgrounds.
+
+```
+
+
 ## Type
 
-Not implemented yet.
+
+```uispec
+[
+	{
+		"title":"Example configuration with px values",
+		"background": ["plain"],
+		"span":3
+	},
+	{
+		"title":"Example using em values based on a major third scale",
+		"background": ["plain"],
+		"span":3
+	}
+]
+```
+
+```code|span-3
+&#96;&#96;&#96;type
+[
+	{
+		"headings": [98,28,21,16,14,12],
+		"paragraph": {"size": 18, "line": 28}
+	}
+]
+&#96;&#96;&#96;
+```
+
+
+```code|span-3
+&#96;&#96;&#96;type|<strong>em</strong>
+[
+	{
+		"headings": [3.052, 2.441, 1.953, 1.563, 1.25, 1],
+		"paragraph": {"size": 1, "line": 1.25}
+	}
+]
+&#96;&#96;&#96;
+```
+
+### Options
+
+#### Arguments
+
+- `em` sets the font size and line height using em. Otherwise px is used
+- `kern` activates browser kerning and ligature use
+- `smoothing` applies browser text antialising
+- `kafka` Mighty morphin' Samsa fill text
+
+#### Keys
+
+- `headings: array` takes an array and generates a list headings
+- `paragraph: array` builds a paragraph and takes [font size, line height]
+- `background: string` defines the background color, takes hex code or color name
+- `color: string` defines the font color, takes hex code or color name
+
 
 ### Examples
 
-#### `type`
+#### `type|kern,smoothen,kafka`
 
-```type
-type (TODO)
+
+```type|kern,smoothen,kafka,span-4
+[
+	{
+		"headings": [98,28,21,16,14,12],
+		"paragraph": {"size": 18, "line": 28},
+		"font": "sans-serif",
+		"color": "#00263e"
+	}
+]
 ```
+
+```type|kern,smoothen,kafka,shorter,span-2
+[
+	{
+		"paragraph": {"size": 18, "line": 28},
+		"background": "#ff5555",
+		"color": "#801a1a",
+		"font": "sans-serif"
+	},
+	{
+		"paragraph": {"size": 18, "line": 28},
+		"background": "#00263e",
+		"color": "#a1c0d8",
+		"font": "sans-serif"
+	},
+	{
+		"paragraph": {"size": 18, "line": 28},
+		"background": "#111",
+		"color": "#aaa",
+		"font": "sans-serif"
+	}
+]
+```
+
+
 
 ## UISpec
 
-Describe UI specifications with images and metadata.
+A flexible Element to describe UI specifications with images and metadata.
+
+### Options
+
+#### Arguments
+
+- `span` Defines the width, default value is `span-2`
+
+#### Keys
+
+- `title: string` the title _optional_
+- `image: string` image to display (gets scaled if it extends the container) _optional_
+- `overlay: string` image for mouseover, useful to describe proportions _optional_
+- `attributes: array` text description; each entry is a new line _optional_
+- `link: string` a link _optional_
+- `span: integer` can be used for nesting _optional_
+
 
 ### Examples
 
-#### `uispec`
+#### `uispec|span-{number}`
+
 
 ```uispec
 [
     {
-        "title": "Active Filter Press State",
-        "image": "docs/html-project-example/dynabook.png",
+        "title": "Simple image",
+        "image": "docs/html-project-example/catalog_logo.png"
+    },
+    {   
+        "title": "Image with overlay",
+        "image": "docs/html-project-example/catalog_logo.png",
+        "overlay": "docs/html-project-example/catalog_logo-overlay.png",
         "attributes": [
-            "Fill Color: #FFFFFF, rounded corners 4px",
-            "Divider Line: 1px, #DFDFDF"
-        ],
-        "link": "http://example.com"
+            "and a description"
+        ]
     },
     {
-        "image": "docs/html-project-example/dynabook.png",
-        "attributes": [],
-        "link": "http://example.com"
-    },
-    {
-        "title": "Active Filter Press State",
+        "title": "Image with overlay",
+        "image": "docs/html-project-example/catalog_logo.png",
+        "overlay": "docs/html-project-example/catalog_logo-overlay.png",
         "attributes": [
-            "Fill Color: #FFFFFF, rounded corners 4px"
+            "a description,",
+            "and a link:"
         ],
-        "link": "http://example.com"
+        "link": "http://interactivethings.github.io/catalog/"
     },
     {
-        "title": "Active Filter Press State",
-        "image": "docs/html-project-example/dynabook.png",
-        "span": 2,
-        "background": ["plain","dark"]
+        "title": "span-1",
+        "span": 1
     },
     {
-        "title": "Active Filter Press State",
-        "image": "docs/html-project-example/dynabook.png",
-        "overlay": "docs/html-project-example/dynabook-overlay.png",
-        "attributes": [
-            "Fill Color: #FFFFFF, rounded corners 4px",
-            "Divider Line: 1px, #DFDFDF",
-            "Divider Line: 1px, #DFDFDF",
-            "Divider Line: 1px, #DFDFDF",
-            "Divider Line: 1px, #DFDFDF"
-        ],
-        "links": ["http://example.com", "http://example.com/bla"],
-        "background": "dark"
+        "title": "span-2",
+        "span": 2
+    },
+    {
+        "title": "span-3",
+        "span": 3
+    },
+    {
+        "title": "span-1",
+        "span": 1
+    },
+	{
+        "title": "span-5",
+        "span": 5
+    }
+]
+```
+
+---
+
+#### Background Styles
+
+```uispec
+[   
+    {
+        "background": ["light"],
+        "image": "docs/html-project-example/catalog_logo.png",
+        "attributes": ["light"]
+    },
+    {
+        "background": ["plain","dark"],
+        "image": "docs/html-project-example/catalog_logo--white.png",
+        "attributes": ["plain dark"]
+    },
+    {
+        "background": ["dark"],
+        "image": "docs/html-project-example/catalog_logo--white.png",
+        "attributes": ["dark"]
     }
 ]
 ```
@@ -307,9 +398,9 @@ Describe UI specifications with images and metadata.
 
 ### Examples
 
-#### `download`
+#### `download|span-2`
 
-```download
+```download|span-2
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",

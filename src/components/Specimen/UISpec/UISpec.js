@@ -24,25 +24,25 @@ class UISpec extends React.Component {
 
     let styles = {
       section: {
-        alignContent: 'flex-start',
-        alignItems: 'stretch',
         display: 'flex',
         flexFlow: 'row wrap',
-        justifyContent: 'flex-start'
+        paddingBottom: 10,
+        width: 'calc(100% + 10px)'
       },
       container: {
-        flex: '1 0 auto',
+        boxSizing: 'border-box',
         margin: '0 10px 10px 0',
-        minWidth: '300px',
         padding: '14px',
         position: 'relative',
         background: theme.background
       },
       image: {
-        marginBottom: '14px'
+        marginBottom: '14px',
+        maxWidth: '100%'
       },
       overlay: {
         opacity: 0,
+        maxWidth: 'calc(100% - 28px)',
         position: 'absolute',
         top: '14px',
         left: '14px',
@@ -58,7 +58,7 @@ class UISpec extends React.Component {
       },
       plain: {
         background: 'transparent',
-        padding: `${theme.sizeL / 2}px 0`
+        padding: 0
       },
       plain_light: {
         background: theme.bgLight,
@@ -80,12 +80,14 @@ class UISpec extends React.Component {
       let isDark = entry.background ? background.indexOf('dark') > -1 : false;
 
       let overlay = entry.overlay !== undefined
-        ? <img style={styles.overlay} src={parseImage( entry.overlay )}/>
+        ? <img key={key} style={styles.overlay} src={parseImage( entry.overlay )}/>
         : null;
 
+      let basicGrid = [1 / 6, 1 / 3, 1 / 2, 2 / 3, 5 / 6, 1];
+
       let minWidth = entry.span !== undefined
-        ? {flex: entry.span, minWidth: `${entry.span * 300}px`}
-        : null;
+        ? {flexBasis: `calc(${basicGrid[entry.span - 1] * 100}% - 10px)`}
+        : {flexBasis: `calc(${basicGrid[1] * 100}% - 10px)`};
 
       let links = []
         .concat(entry.links

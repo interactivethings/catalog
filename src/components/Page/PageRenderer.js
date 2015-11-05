@@ -47,7 +47,7 @@ class PageRenderer extends React.Component {
             style: {
               ...pageContainer(theme),
               ...text(theme, {level: 2}),
-              marginLeft: '2em'
+              marginLeft: '2.4em'
             }
           }),
           ...inlineOlist(theme, {
@@ -55,7 +55,7 @@ class PageRenderer extends React.Component {
             style: {
               ...pageContainer(theme),
               ...text(theme, {level: 2}),
-              marginLeft: '2em'
+              marginLeft: '2.4em'
             }
           }),
           ...inlineBlockquoteRules,

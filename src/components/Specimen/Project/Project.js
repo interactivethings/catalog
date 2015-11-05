@@ -17,7 +17,8 @@ function getStyle(theme) {
     container: {
       marginTop: '15px',
       marginBottom: '30px',
-      overflow: 'auto'
+      overflow: 'auto',
+      flexBasis: '100%'
     },
     frame: {
       border: '1px solid #eee',
