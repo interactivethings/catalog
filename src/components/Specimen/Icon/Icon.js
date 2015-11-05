@@ -13,19 +13,18 @@ class Icon extends React.Component {
         flexWrap: 'wrap',
         justifyContent: 'flex-start',
         margin: '20px 0',
-        overflow: 'auto'
+        overflow: 'auto',
+        width: 'calc(100% + 10px)'
       },
       container: {
         display: 'flex',
-        flex: '1 1 auto',
+        boxSizing: 'border-box',
+        background: theme.bgLight,
         justifyContent: 'flex-start',
         flexDirection: 'row',
-        borderTop: `1px solid ${theme.lightColor}`,
-        marginRight: `${theme.sizeL / 2}px`,
-        padding: `${theme.sizeL / 2}px 0`
-      },
-      single: {
-        borderTop: 'none'
+        margin: `0 ${theme.sizeL / 2}px ${theme.sizeL / 2}px 0 `,
+        padding: `${theme.sizeL / 2}px`,
+        flexBasis: `calc(${1/6 * 100}% - ${theme.sizeL / 2}px)`
       },
       image: {
         alignSelf: 'flex-start',
@@ -42,7 +41,7 @@ class Icon extends React.Component {
       },
       plain: {
         background: 'transparent',
-        padding: `${theme.sizeL / 2}px 0`
+        padding: `0`
       },
       plain_light: {
         background: theme.bgLight,
@@ -68,6 +67,7 @@ class Icon extends React.Component {
         textAlign: 'center'
       },
       info_vertical: {
+        padding: 0,
         marginBottom: `${theme.sizeL / 4}px`
       }
     };
@@ -77,8 +77,6 @@ class Icon extends React.Component {
         width: icon.size && icon.size.width ? icon.size.width + 'px' : 'auto',
         height: icon.size && icon.size.height ? icon.size.height + 'px' : 'auto'
       };
-      let singleElement = icons.length <= 1 ? styles.single : undefined;
-      // let align = icon.align ? icon.align : undefined;
 
       let background = []
         .concat(icon.background !== null
@@ -87,8 +85,8 @@ class Icon extends React.Component {
         .join('_');
 
       let container = icon.align === 'vertical'
-        ? [styles.container, styles.container_vertical, singleElement]
-        : [styles.container, singleElement];
+        ? [styles.container, styles.container_vertical]
+        : [styles.container];
 
       let image = icon.align === 'vertical'
         ? [styles.image, styles.image_vertical, imgSize, styles[background]]
@@ -98,16 +96,18 @@ class Icon extends React.Component {
         ? [styles.info, styles.info_vertical]
         : styles.info;
 
-      return (
-        <div style={container} key={'cg-Specimen-Icon' + key}>
-          <img src={icon.image} style={image}/>
-          <div style={info}>
+      let attributes =  (<div style={info}>
             <MetadataBlock
               theme={theme}
               title={icon.title}
               attributes={icon.attributes}
               links={[].concat(icon.link || icon.links)}/>
-          </div>
+          </div>);
+
+      return (
+        <div style={container} key={'cg-Specimen-Icon' + key}>
+          <img src={icon.image} style={image}/>
+          {attributes}
         </div>);
     });
 
