@@ -26,7 +26,10 @@ class Card extends Component {
         border: `1px solid ${theme.cardRuleColor}`,
         margin: `${theme.sizeL}px 0`,
         padding: `${theme.sizeXl}px ${theme.sizeL}px 14px ${theme.sizeL}px`,
-        position: 'relative'
+        position: 'relative',
+        display: 'flex',
+        flexFlow: 'row wrap',
+        maxWidth: 1140
       }} >
         <RadiumStyle
           scopeSelector='.cg-Card >'
@@ -34,20 +37,36 @@ class Card extends Component {
             h2: {
               ...cardContainer(theme),
               ...heading(theme, {level: 2}),
+              marginBottom: '10px',
               maxWidth: 'none',
-              width: '100%'
+              flexBasis: '100%'
             },
             h3: {
               ...cardContainer(theme),
-              ...heading(theme, {level: 3})
+              ...heading(theme, {level: 3}),
+              marginTop: 15,
+              marginBottom: 0,
+              maxWidth: 'none',
+              flexBasis: '100%'
             },
             h4: {
               ...cardContainer(theme),
-              ...heading(theme, {level: 6})
+              ...heading(theme, {level: 6}),
+              maxWidth: 'none',
+              marginTop: '15px',
+              marginBottom: 0,
+              flexBasis: '100%'
             },
             p: {
               ...cardContainer(theme),
-              ...text(theme, {level: 2})
+              ...text(theme, {level: 2}),
+              flexBasis: '100%'
+            },
+            section: {
+              boxSizing: 'border-box',
+              justifyContent: 'space-between',
+              alignSelf: 'flex-start ',
+              display: 'flex'
             },
             ...inlineElements(theme, {selector: 'p'}),
             ...inlineUlist(theme, {
@@ -71,9 +90,10 @@ class Card extends Component {
             hr: {
               ...cardContainer(theme),
               border: 'none',
-              borderBottom: `1px solid ${theme.cardRuleColor}`,
-              margin: '16px 0',
-              height: 0
+              margin: '0',
+              height: 0,
+              maxWidth: 'none',
+              flexBasis: '100%'
             }
           }} />
         {children}

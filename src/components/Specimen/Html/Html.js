@@ -9,7 +9,7 @@ function getStyle(theme) {
   return {
     container: {
       position: 'relative',
-      marginBottom: '30px'
+      flexBasis: '100%'
     },
     toggle: {
       border: PADDING + 'px solid transparent',
@@ -53,7 +53,7 @@ function getStyle(theme) {
     },
     plain: {
       background: 'transparent',
-      padding: '20px 0'
+      padding: '0'
     },
     plain_light: {
       background: theme.bgLight,
