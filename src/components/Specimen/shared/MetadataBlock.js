@@ -27,12 +27,14 @@ class MetadataBlock extends React.Component {
     const {theme, attributes, title, links, inverted} = this.props;
     let styles = {
       title: {
-        ...heading(theme, {level: 5})
+        ...heading(theme, {level: 6}),
+        margin: 0
       },
       list: {
         ...text(theme, {level: 3}),
         listStyle: 'none',
-        padding: 0
+        padding: 0,
+        margin: 0
       },
       link: {
         ...link(theme)
