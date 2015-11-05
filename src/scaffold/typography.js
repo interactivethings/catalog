@@ -73,7 +73,7 @@ export function inlineElements(theme, {selector = ''}) {
       fontStyle: 'italic'
     },
     [`${selector} b, strong`]: {
-      fontWeight: 400
+      fontWeight: 600
     },
     [`${selector} a`]: linkStyle,
     [`${selector} a:hover`]: linkHoverStyle,
