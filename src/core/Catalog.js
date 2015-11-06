@@ -18,7 +18,7 @@ import Page from 'components/Page/ContextPage';
 // Startup
 //
 export function start(selector, config) {
-  const {pages, pageList, pageIndex, pageNames} = parseConfiguration(config);
+  const {pages, pageList, pageIndex} = parseConfiguration(config);
 
   const pageRoutes = pageList.map((page) => {
     if (!page.src) {

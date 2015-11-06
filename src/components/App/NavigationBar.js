@@ -64,11 +64,11 @@ function getStyles(theme, isMobileLayout) {
 class NavigationBar extends React.Component {
 
   render() {
-    let {isMobileLayout, pageNames, pageList, page, theme} = this.props;
+    let {isMobileLayout, pageList, page, theme} = this.props;
 
     let styles = getStyles(theme, isMobileLayout);
 
-    let pageIndex = pageNames.indexOf(page.name);
+    let pageIndex = pageList.findIndex((p) => p.name === page.name);
     let prevPage = pageList[pageIndex - 1];
     let nextPage = pageList[pageIndex + 1];
 
@@ -114,7 +114,6 @@ class NavigationBar extends React.Component {
 NavigationBar.propTypes = {
   isMobileLayout: PropTypes.bool,
   theme: PropTypes.object.isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   page: CatalogPropTypes.page.isRequired,
   pageList: CatalogPropTypes.pages.isRequired
 };

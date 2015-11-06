@@ -27,7 +27,6 @@ App.defaultProps = {
 App.propTypes = {
   title: PropTypes.string.isRequired,
   pages: CatalogPropTypes.pages.isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string),
   page: CatalogPropTypes.page.isRequired,
   styles: PropTypes.arrayOf(PropTypes.string),
   scripts: PropTypes.arrayOf(PropTypes.string),

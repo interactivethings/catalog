@@ -28,7 +28,6 @@ App.contextTypes = {
   title: PropTypes.string.isRequired,
   page: CatalogPropTypes.page.isRequired,
   pages: CatalogPropTypes.pages.isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   pageList: PropTypes.arrayOf(CatalogPropTypes.page).isRequired,
   theme: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,

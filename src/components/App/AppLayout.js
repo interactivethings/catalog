@@ -155,7 +155,6 @@ AppLayout.propTypes = {
   sideNav: PropTypes.node,
   children: PropTypes.node,
   theme: PropTypes.object.isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   page: CatalogPropTypes.page.isRequired,
   pages: CatalogPropTypes.pages.isRequired,
   currentPage: PropTypes.string,

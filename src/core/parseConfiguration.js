@@ -35,12 +35,10 @@ export default (configuration) => {
   const pages = configuration.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: configuration.title}));
   const pageList = flattenPages(pages);
   const pageIndex = indexPages(pageList);
-  const pageNames = pageList.map((page) => page.name);
 
   return {
     pages,
     pageList,
-    pageIndex,
-    pageNames
+    pageIndex
   };
 };

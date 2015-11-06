@@ -6,7 +6,7 @@ import CatalogPropTypes from 'core/PropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {
-    const {title, theme, logoSrc, pages, pageList, pageNames, pageIndex} = this.props.configuration;
+    const {title, theme, logoSrc, pages, pageList, pageIndex} = this.props.configuration;
     const {location} = this.context;
     return {
       page: pageIndex[location.pathname],
@@ -14,7 +14,6 @@ class CatalogContext extends Component {
       title,
       pages,
       pageList,
-      pageNames,
       logoSrc
     };
   }
@@ -40,7 +39,6 @@ CatalogContext.childContextTypes = {
   theme: PropTypes.object.isRequired,
   pages: PropTypes.array.isRequired,
   pageList: PropTypes.arrayOf(CatalogPropTypes.page).isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   page: CatalogPropTypes.page.isRequired,
   logoSrc: PropTypes.string
 };
