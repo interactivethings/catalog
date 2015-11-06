@@ -47,9 +47,4 @@ Page.contextTypes = {
   theme: PropTypes.object.isRequired
 };
 
-Page.defaultProps = {
-  styles: [],
-  scripts: []
-};
-
 export default Page;
