@@ -19,16 +19,11 @@ class App extends React.Component {
   }
 }
 
-App.defaultProps = {
-  styles: [],
-  scripts: []
-};
-
 App.contextTypes = {
   title: PropTypes.string.isRequired,
   page: CatalogPropTypes.page.isRequired,
   pages: CatalogPropTypes.pages.isRequired,
-  pageList: PropTypes.arrayOf(CatalogPropTypes.page).isRequired,
+  pageTree: CatalogPropTypes.pages.isRequired,
   theme: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,

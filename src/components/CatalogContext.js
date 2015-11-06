@@ -6,14 +6,14 @@ import CatalogPropTypes from 'core/PropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {
-    const {title, theme, logoSrc, pages, pageList, pageIndex} = this.props.configuration;
+    const {title, theme, logoSrc, pages, pageTree} = this.props.configuration;
     const {location} = this.context;
     return {
-      page: pageIndex[location.pathname],
+      page: pages.find((p) => p.path === location.pathname),
       theme,
       title,
       pages,
-      pageList,
+      pageTree,
       logoSrc
     };
   }
@@ -37,8 +37,8 @@ CatalogContext.contextTypes = {
 CatalogContext.childContextTypes = {
   title: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
-  pages: PropTypes.array.isRequired,
-  pageList: PropTypes.arrayOf(CatalogPropTypes.page).isRequired,
+  pages: CatalogPropTypes.pages.isRequired,
+  pageTree: CatalogPropTypes.pages.isRequired,
   page: CatalogPropTypes.page.isRequired,
   logoSrc: PropTypes.string
 };
@@ -51,9 +51,7 @@ export default function createCatalogContext(config) {
   };
 
   const ConfiguredCatalogContext = ({children}) => (
-    <CatalogContext
-      configuration={configuration}
-    >
+    <CatalogContext configuration={configuration}>
       <ContextApp>{children}</ContextApp>
     </CatalogContext>
   );

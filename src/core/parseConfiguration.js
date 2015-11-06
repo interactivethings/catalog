@@ -1,16 +1,8 @@
-const flattenPages = (pages) => {
-  return pages
-    .reduce((flattened, page) => flattened.concat(page.pages ? [page, ...page.pages] : [page]), [])
-    .filter((page) => page.src);
-};
-
-const indexPages = (flattenedPages) => {
-  return flattenedPages.reduce((index, page) => {
-    return {
-      ...index,
-      [page.path]: page
-    };
-  }, {});
+const flattenPageTree = (pageTree) => {
+  return pageTree
+    .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
+    .filter((page) => page.src)
+    .map((page, i) => ({...page, index: i}));
 };
 
 export default (configuration) => {
@@ -32,13 +24,11 @@ export default (configuration) => {
     ];
   };
 
-  const pages = configuration.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: configuration.title}));
-  const pageList = flattenPages(pages);
-  const pageIndex = indexPages(pageList);
+  const pageTree = configuration.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: configuration.title}));
+  const pages = flattenPageTree(pageTree);
 
   return {
     pages,
-    pageList,
-    pageIndex
+    pageTree
   };
 };

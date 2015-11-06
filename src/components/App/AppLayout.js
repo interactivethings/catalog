@@ -100,6 +100,7 @@ class AppLayout extends React.Component {
   }
 
   render() {
+    const {theme, pages, page} = this.props;
     const { sidebarVisible, viewportWidth, viewportHeight } = this.state;
 
     const isMobileLayout = viewportWidth < 1000;
@@ -129,11 +130,14 @@ class AppLayout extends React.Component {
       contentOffset,
     });
 
+    const nextPage = pages[page.index + 1];
+    const previousPage = pages[page.index - 1];
+
     return (
       <div style={currentStyle.container}>
         <div style={currentStyle.content}>
           { this.props.children }
-          <NavigationBar {...this.props} isMobileLayout={isMobileLayout} />
+          <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} isMobileLayout={isMobileLayout} />
         </div>
         <img style={currentStyle.menuIcon} src={hamburgerSrc} onClick={this.toggleSidebar.bind(this)} />
         <div style={currentStyle.navBackground} onClick={this.toggleSidebar.bind(this)} />
@@ -156,9 +160,7 @@ AppLayout.propTypes = {
   children: PropTypes.node,
   theme: PropTypes.object.isRequired,
   page: CatalogPropTypes.page.isRequired,
-  pages: CatalogPropTypes.pages.isRequired,
-  currentPage: PropTypes.string,
-  pageList: CatalogPropTypes.pages.isRequired,
+  pages: CatalogPropTypes.pages.isRequired
 };
 
 export default AppLayout;

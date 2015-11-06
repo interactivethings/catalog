@@ -68,7 +68,7 @@ class ListItem extends React.Component {
           style={defaultStyle}
           activeStyle={currentStyle.activeLink}
           to={path}
-          onlyActiveOnIndex={path === '/'} // FIXME: somehow this doesn't work; a bug in react-router?
+          onlyActiveOnIndex={path === '/'}
         >
           { menuTitle || title }
         </Link>

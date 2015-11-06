@@ -64,13 +64,9 @@ function getStyles(theme, isMobileLayout) {
 class NavigationBar extends React.Component {
 
   render() {
-    let {isMobileLayout, pageList, page, theme} = this.props;
+    let {isMobileLayout, nextPage, previousPage, theme} = this.props;
 
     let styles = getStyles(theme, isMobileLayout);
-
-    let pageIndex = pageList.findIndex((p) => p.name === page.name);
-    let prevPage = pageList[pageIndex - 1];
-    let nextPage = pageList[pageIndex + 1];
 
     let leftIcon = (
       <svg style={styles.leftLinkIcon} width='37px' height='26px' viewBox='0 0 37 26'>
@@ -86,12 +82,12 @@ class NavigationBar extends React.Component {
     return (
       <div style={styles.navbar}>
         <div style={[ styles.navlink, styles.leftNavLink ]}>{
-          prevPage &&
-          <Link to={prevPage.path} style={styles.link}>
+          previousPage &&
+          <Link to={previousPage.path} style={styles.link}>
             { !isMobileLayout && leftIcon }
             <div style={styles.linklabels}>
-              <h4 style={styles.linkSuperTitle}>{ prevPage.superTitle }</h4>
-              <h3 style={styles.linkTitle} key='left'>{ prevPage.title }</h3>
+              <h4 style={styles.linkSuperTitle}>{ previousPage.superTitle }</h4>
+              <h3 style={styles.linkTitle} key='left'>{ previousPage.title }</h3>
             </div>
             { isMobileLayout && leftIcon }
           </Link>
@@ -114,8 +110,8 @@ class NavigationBar extends React.Component {
 NavigationBar.propTypes = {
   isMobileLayout: PropTypes.bool,
   theme: PropTypes.object.isRequired,
-  page: CatalogPropTypes.page.isRequired,
-  pageList: CatalogPropTypes.pages.isRequired
+  nextPage: CatalogPropTypes.page,
+  previousPage: CatalogPropTypes.page
 };
 
 export default Radium(NavigationBar);

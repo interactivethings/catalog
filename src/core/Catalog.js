@@ -18,18 +18,14 @@ import Page from 'components/Page/ContextPage';
 // Startup
 //
 export function start(selector, config) {
-  const {pages, pageList, pageIndex} = parseConfiguration(config);
+  const {pages} = parseConfiguration(config);
 
-  const pageRoutes = pageList.map((page) => {
-    if (!page.src) {
-      return false;
-    }
-
+  const pageRoutes = pages.map((page) => {
     return {
       path: page.path,
       component: Page
     };
-  }).filter(Boolean);
+  });
 
   const routes = {
     component: CatalogContext(config),

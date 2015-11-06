@@ -43,7 +43,7 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const { theme, pages, logoSrc, title, history } = this.props;
+    const { theme, pageTree, logoSrc, title, history } = this.props;
 
     let currentStyle = style(theme);
 
@@ -53,7 +53,7 @@ class Menu extends React.Component {
       <div style={currentStyle.bar} >
         <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div  style={currentStyle.logo}>{titleString}</div> }</h1>
         <ul style={currentStyle.list}>
-          { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
+          { pageTree.map((page) => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
         </ul>
       </div>
     );
@@ -61,7 +61,7 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  pages: CatalogPropTypes.pages.isRequired,
+  pageTree: CatalogPropTypes.pages.isRequired,
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   history: PropTypes.object.isRequired,
