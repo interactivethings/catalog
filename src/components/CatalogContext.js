@@ -1,6 +1,4 @@
 import React, {Component, PropTypes, Children} from 'react';
-import DefaultTheme from 'DefaultTheme';
-import parseConfiguration from 'utils/parseConfiguration';
 import ContextApp from 'components/App/ContextApp';
 import CatalogPropTypes from 'CatalogPropTypes';
 
@@ -44,14 +42,8 @@ CatalogContext.childContextTypes = {
 };
 
 export default function createCatalogContext(config) {
-  const configuration = {
-    ...config,
-    ...parseConfiguration(config),
-    theme: {...DefaultTheme, ...config.theme}
-  };
-
   const ConfiguredCatalogContext = ({children}) => (
-    <CatalogContext configuration={configuration}>
+    <CatalogContext configuration={config}>
       <ContextApp>{children}</ContextApp>
     </CatalogContext>
   );

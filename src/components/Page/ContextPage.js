@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import {actions} from 'core/Catalog';
 import CatalogPropTypes from 'CatalogPropTypes';
+import runscript from 'utils/runscript';
 
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';
@@ -14,7 +14,7 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
-    this.context.page.scripts.forEach(actions.runscript);
+    this.context.page.scripts.forEach(runscript);
     this.fetchPageData(this.context.page.src);
   }
 

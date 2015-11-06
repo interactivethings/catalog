@@ -5,6 +5,8 @@ import hamburgerSrc from 'assets/menu-icon.svg';
 
 import NavigationBar from './NavigationBar';
 
+import './Catalog.css';
+
 const SIDE_WIDTH = 251;
 
 function style(

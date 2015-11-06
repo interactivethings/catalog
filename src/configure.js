@@ -1,3 +1,5 @@
+import DefaultTheme from 'DefaultTheme';
+
 const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
@@ -5,11 +7,11 @@ const flattenPageTree = (pageTree) => {
     .map((page, i) => ({...page, index: i}));
 };
 
-export default (configuration) => {
+export default (config) => {
   const pageReducer = (pages, page) => {
-    const configurationStyles = configuration.styles || [];
+    const configStyles = config.styles || [];
     const pageStyles = page.styles || [];
-    const configurationScripts = configuration.scripts || [];
+    const configScripts = config.scripts || [];
     const pageScripts = page.scripts || [];
 
     return [
@@ -18,16 +20,18 @@ export default (configuration) => {
         ...page,
         path: page.path || `/${page.name}`,
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
-        styles: Array.from(new Set([...configurationStyles, ...pageStyles])),
-        scripts: Array.from(new Set([...configurationScripts, ...pageScripts]))
+        styles: Array.from(new Set([...configStyles, ...pageStyles])),
+        scripts: Array.from(new Set([...configScripts, ...pageScripts]))
       }
     ];
   };
 
-  const pageTree = configuration.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: configuration.title}));
+  const pageTree = config.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: config.title}));
   const pages = flattenPageTree(pageTree);
 
   return {
+    ...config,
+    theme: {...DefaultTheme, ...config.theme},
     pages,
     pageTree
   };

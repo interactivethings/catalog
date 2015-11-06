@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import {code} from 'scaffold/typography';
+import runscript from 'utils/runscript';
 
 const PADDING = 3;
 const SIZE = 20;
@@ -79,7 +80,7 @@ class Html extends React.Component {
     modifiers
       .filter( modifier => modifier === 'run-script')
       .map( () => this.refs.specimen.querySelectorAll('script'))
-      .forEach(script => Catalog.actions.runscript(script[0]));
+      .forEach((script) => runscript(script[0]));
   }
 
   render() {
