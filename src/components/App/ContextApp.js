@@ -1,5 +1,5 @@
 import React, { PropTypes, Children } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from 'CatalogPropTypes';
 
 import AppLayout from './AppLayout';
 import Menu from 'components/Menu/Menu';

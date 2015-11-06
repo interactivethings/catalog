@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from 'CatalogPropTypes';
 
 import MarkdownRenderer from 'utils/MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';

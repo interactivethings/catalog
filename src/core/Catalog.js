@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router} from 'react-router';
 import createHistory from 'history/lib/createHashHistory';
-import parseConfiguration from './parseConfiguration';
+import parseConfiguration from 'utils/parseConfiguration';
 
 import runscript from 'utils/runscript';
 

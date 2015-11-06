@@ -1,8 +1,8 @@
 import React, {Component, PropTypes, Children} from 'react';
 import DefaultTheme from 'DefaultTheme';
-import parseConfiguration from 'core/parseConfiguration';
+import parseConfiguration from 'utils/parseConfiguration';
 import ContextApp from 'components/App/ContextApp';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from 'CatalogPropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {

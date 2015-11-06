@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from 'CatalogPropTypes';
 import { heading } from 'scaffold/typography';
 
 import ListItem from './ListItem';

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {actions} from 'core/Catalog';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from 'CatalogPropTypes';
 
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';

@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from 'CatalogPropTypes';
 import hamburgerSrc from 'assets/menu-icon.svg';
 
 import NavigationBar from './NavigationBar';
