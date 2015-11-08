@@ -11,11 +11,11 @@ function generateAttributeElement(attributes) {
   });
 }
 
-function generateLinkElement(links, style) {
+function generateLinkElement(links, styles) {
   return links.map((linkElement, i) => {
     return (
-      <li key={`${linkElement}-${i}`}>
-        <a key={i} style={style} href={linkElement}>
+      <li key={`${linkElement}-${i}`} style={styles.truncate}>
+        <a key={i} href={linkElement} style={styles.link}>
           {linkElement}
         </a>
       </li>);
@@ -33,8 +33,13 @@ class MetadataBlock extends React.Component {
       list: {
         ...text(theme, {level: 3}),
         listStyle: 'none',
-        padding: 0,
-        margin: 0
+        padding: 0
+      },
+      truncate: {
+        maxWidth: '100%',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden'
       },
       link: {
         ...link(theme)
@@ -51,7 +56,7 @@ class MetadataBlock extends React.Component {
       ? <ul style={[styles.list, dark]}>{generateAttributeElement(attributes)}</ul>
       : null;
     let linkElement = links && links.length > 0
-      ? <ul style={styles.list}>{generateLinkElement(links, styles.link)}</ul>
+      ? <ul style={styles.list}>{generateLinkElement(links, styles)}</ul>
       : null;
 
     return (
