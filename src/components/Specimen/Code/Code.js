@@ -15,25 +15,62 @@ function getStyle(theme) {
       border: '1px solid #eee',
       color: theme.textColor,
       fontFamily: theme.fontMono,
-      fontSize: theme.fontXs,
+      fontSize: theme.fontS,
       lineHeight: 1.4,
       overflowX: 'scroll',
-      whiteSpace: 'pre'
+      whiteSpace: 'pre',
+      position: 'relative'
+    },
+    toggle: {
+      textDecoration: 'underline',
+      cursor: 'pointer',
+      marginBottom: 0,
+      textAlign: 'right',
+      WebkitUserSelect: 'none',
+      MozUserSelect: 'none'
     }
   };
 }
 
 class Code extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      viewSource: true
+    };
+  }
+  componentWillMount() {
+    this.props.modifiers && this.props.modifiers.contains('collapsed') ? this.setState({viewSource: false}) : null;
+  }
+
   render() {
-    const {theme, body} = this.props;
+    const {theme, body, modifiers} = this.props;
     let styles = getStyle(theme);
-    return <section style={styles.container} dangerouslySetInnerHTML={{__html: body}}/>;
+
+    let toggle = modifiers && modifiers.contains('collapsed')
+      ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>{this.state.viewSource ? 'hide code' : <div>show code<br/></div> }</div>
+      : null;
+
+    let content = this.state.viewSource
+      ? <div dangerouslySetInnerHTML={{__html: body}}></div>
+      : null;
+
+    return (
+      <section style={styles.container}>
+        {toggle}
+        {content}
+      </section>
+      );
+  }
+  toggleSource() {
+    this.setState({viewSource: !this.state.viewSource});
   }
 }
 
 Code.propTypes = {
   body: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  modifiers: PropTypes.array
 };
 
 export default Code;
