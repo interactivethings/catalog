@@ -8,7 +8,7 @@ function getStyle(theme) {
     container: {
       display: 'block',
       width: '100%',
-      height: 120,
+      height: 80,
       background: theme.background,
       transition: '.4s background',
       ':hover': {
@@ -20,14 +20,14 @@ function getStyle(theme) {
       display: 'block'
     },
     img: {
-      width: 120,
-      height: 120
+      width: 80,
+      height: 80
     },
     titleblock: {
       fontFamily: theme.fontFamily,
       display: 'inline-block',
       verticalAlign: 'top',
-      padding: '30px 40px'
+      padding: '20px 0 0 20px'
     },
     title: {
       fontSize: theme.fontS,
