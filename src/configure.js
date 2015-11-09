@@ -1,5 +1,8 @@
 import DefaultTheme from 'DefaultTheme';
 
+// Removes potential multiple slashes from concatenating paths
+const normalizePath = (path) => path.replace(/\/+/g, '/');
+
 const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
@@ -14,13 +17,14 @@ export default (config) => {
     const pageStyles = page.styles || [];
     const configScripts = config.scripts || [];
     const pageScripts = page.scripts || [];
+    const basePath = config.basePath || '/';
 
     return [
       ...pages,
       {
         ...page,
-        path: page.path || `/${page.name}`,
         index: ++pageIndex,
+        path: normalizePath(`/${basePath}/${page.path || page.name}`),
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),
         scripts: Array.from(new Set([...configScripts, ...pageScripts]))
