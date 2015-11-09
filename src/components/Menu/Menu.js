@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import CatalogPropTypes from 'core/PropTypes';
-import { heading } from 'scaffold/typography';
+import { heading, text } from 'scaffold/typography';
+import Link from 'components/Link/Link';
 
 import ListItem from './ListItem';
 
@@ -37,6 +38,17 @@ export function style(theme) {
       borderTop: 'none',
       borderBottom: 'none',
       padding: '0 0 15px 40px'
+    },
+    info: {
+      ...text(theme, {level: 4}),
+      position: 'absolute',
+      bottom: 0,
+      fontSize: 12,
+      padding: 20,
+      color: theme.lightColor
+    },
+    link: {
+      color: theme.lightColor
     }
   };
 }
@@ -51,10 +63,17 @@ class Menu extends React.Component {
 
     return (
       <div style={currentStyle.bar} >
-        <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div  style={currentStyle.logo}>{titleString}</div> }</h1>
+        <Link to='/'>
+          <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div  style={currentStyle.logo}>{titleString}</div> }</h1>
+        </Link>
         <ul style={currentStyle.list}>
           { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
         </ul>
+        <div style={currentStyle.info}>
+          Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog'>catalog</a>,
+          an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com'>Interactive Things</a>.
+          Please report issues <a style={currentStyle.link} href='https://github.com/interactivethings/catalog/issues'>here</a>.
+        </div>
       </div>
     );
   }
