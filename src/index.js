@@ -15,5 +15,7 @@ const start = (selector, config) => {
 };
 
 export default {
-  start
+  start,
+  configure,
+  configureRoutes
 };
