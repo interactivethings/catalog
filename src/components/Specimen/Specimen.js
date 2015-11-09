@@ -9,6 +9,7 @@ import Type from './Type/Type';
 import Project from './Project/Project';
 import UISpec from './UISpec/UISpec';
 import DownloadSpecimen from './DownloadSpecimen/DownloadSpecimen';
+import ReactComponent from './ReactComponent/ReactComponent';
 import projectBodyToProps from './Project/bodyToProps';
 
 // The used plugin is out of date at the moment
@@ -29,7 +30,12 @@ const Renderer = {
   icon: (props) => <Icon icons={[].concat(JSON.parse(props.body))} theme={props.theme}/>,
   project: (props) => <Project {...projectBodyToProps(props.body)} theme={props.theme}/>,
   type: (props) => <Type entries={JSON.parse(props.body)} modifiers={props.config.options} theme={props.theme}/>,
-  uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme} />
+  uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme} />,
+  react: (props) => {
+    const component = props.config.options[0];
+    const componentProps = JSON.parse(props.body);
+    return <ReactComponent component={component} props={componentProps} theme={props.theme} />;
+  }
 };
 
 class Specimen extends React.Component {
@@ -58,9 +64,7 @@ Specimen.Config = (input) => {
   let removeEmpty = R.filter(R.complement(R.isEmpty));
   let readInput = R.compose(removeEmpty, R.split('|'));
   let parseOptions = R.compose(R.uniq, removeEmpty, R.split(','));
-  let ref = readInput(inputValue);
-  let specimen = ref[0];
-  let optionsStr = ref[1];
+  let [specimen, optionsStr] = readInput(inputValue);
   let options = parseOptions(optionsStr ? optionsStr : '');
   options.contains = R.flip(R.contains)(options);
   return {
