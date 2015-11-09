@@ -6,11 +6,12 @@ const normalizePath = (path) => path.replace(/\/+/g, '/');
 const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
-    .filter((page) => page.src);
+    .filter((page) => page.src || page.component)
+    .map((page, index) => ({...page, index}));
 };
 
 export default (config) => {
-  let pageIndex = 0;
+  let pageId = 0;
 
   const pageReducer = (pages, page) => {
     const configStyles = config.styles || [];
@@ -23,7 +24,7 @@ export default (config) => {
       ...pages,
       {
         ...page,
-        index: ++pageIndex,
+        id: ++pageId,
         path: normalizePath(`/${basePath}/${page.path || page.name}`),
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),

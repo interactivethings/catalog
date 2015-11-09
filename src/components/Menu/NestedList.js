@@ -35,7 +35,7 @@ const NestedList = React.createClass({
         </Link>
         { !collapsed &&
           <ul style={[currentStyle.list, currentStyle.listNested, {padding: 0}]}>
-            { pages.map(page => <ListItem history={history} key={page.index} page={page} nested theme={theme} />) }
+            { pages.map(page => <ListItem history={history} key={page.id} page={page} nested theme={theme} />) }
           </ul>
         }
       </div>
