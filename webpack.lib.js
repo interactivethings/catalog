@@ -1,14 +1,15 @@
 /*eslint-disable*/
 
 var webpack = require('webpack');
+var path = require('path');
 var assignDeep = require('assign-deep');
 var webpackConfig = require('./webpack.config');
 
 var libConfig = {
   entry: './src/index',
   output: {
-    filename: 'catalog-lib.js',
-    libraryTarget: 'umd'
+    path: path.resolve(__dirname, 'lib'),
+    filename: 'catalog.js'
   },
   externals: {
     react: {

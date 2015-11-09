@@ -2,7 +2,7 @@
   "name": "catalog-styleguide",
   "version": "2.0.0-alpha1",
   "description": "Catalog is the foundation for living styleguides created at Interactive Things",
-  "main": "catalog-lib.js",
+  "main": "lib/catalog.js",
   "dependencies": {
     "history": "^1.12.3",
     "isomorphic-fetch": "^2.2.0",

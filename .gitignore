@@ -3,3 +3,4 @@
 node_modules
 /catalog*.js
 /*.log
+/lib
