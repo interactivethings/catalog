@@ -45,8 +45,9 @@ build: install clean
 	webpack --colors --progress --hide-modules
 
 watch: install clean
-	NODE_ENV=production \
-	webpack --watch --colors --progress --hide-modules
+	BABEL_ENV=production \
+	NODE_ENV=development \
+	webpack --watch --config=./webpack.lib.js --colors --progress --hide-modules
 
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"

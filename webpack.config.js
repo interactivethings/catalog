@@ -89,35 +89,5 @@ var webpackConfig = {
   }
 };
 
-var libConfig = {
-  output: {
-    filename: 'catalog-lib.js'
-  },
-  externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react'
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom'
-    },
-    'react-router': {
-      root: 'ReactRouter',
-      commonjs2: 'react-router',
-      commonjs: 'react-router',
-      amd: 'react-router'
-    }
-  },
-  plugins: [
-  ]
-}
 
-module.exports = [
-  assignDeep({}, webpackConfig.common, webpackConfig[env]),
-  assignDeep({}, webpackConfig.common, webpackConfig[env], libConfig)
-];
+module.exports = assignDeep({}, webpackConfig.common, webpackConfig[env]);
