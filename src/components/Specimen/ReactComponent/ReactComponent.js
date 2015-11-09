@@ -1,6 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import {text} from 'scaffold/typography';
-
 
 const registeredComponents = {
   FooBar: ({name}) => <button>{name}</button>
@@ -9,38 +7,48 @@ const registeredComponents = {
 function getStyle(theme) {
   return {
     container: {
-      ...text(theme, {level: 2}),
-      fontFamily: theme.fontFamily,
-      background: '#fff6dd',
-      color: '#ffb400',
+      position: 'relative',
       flexBasis: '100%',
-      border: '1px solid #ffefaa',
-      padding: '20px',
+      margin: '0 0 20px 0' 
+    },
+    content: {
+      background: `url(${theme.checkerboardPatternLight})`,
+      border: 'none',
       borderRadius: '2px',
-      marginTop: 10
+      boxSizing: 'border-box',
+      display: 'block',
+      padding: '20px',
+      position: 'relative',
+      width: '100%'
     }
   };
 }
 
 class ReactComponentSpecimen extends Component {
   render() {
-    const {theme, component, props} = this.props;
+    const {theme} = this.context;
+    const {component, props} = this.props;
     const styles = getStyle(theme);
 
     const ComponentClass = registeredComponents[component] || component;
 
     return (
       <section style={styles.container}>
-        {React.createElement(ComponentClass, props)}
+        <div style={styles.content}>
+          {React.createElement(ComponentClass, props)}
+        </div>
       </section>
     );
   }
 }
 
 ReactComponentSpecimen.propTypes = {
-  theme: PropTypes.object.isRequired,
   component: PropTypes.any.isRequired,
   props: PropTypes.object.isRequired
+};
+
+ReactComponentSpecimen.contextTypes = {
+  theme: PropTypes.object.isRequired
 };
 
 export default ReactComponentSpecimen;

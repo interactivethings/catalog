@@ -7,7 +7,8 @@ const cardContainer = () => ({maxWidth: 671});
 
 class Card extends Component {
   render() {
-    const {theme, children} = this.props;
+    const {theme} = this.context;
+    const {children} = this.props;
 
     let inlineBlockquoteRules = inlineBlockquote(theme);
     inlineBlockquoteRules.blockquote = {
@@ -110,7 +111,10 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
+};
+
+Card.contextTypes = {
   theme: PropTypes.object.isRequired
 };
 
