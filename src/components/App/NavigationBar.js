@@ -14,7 +14,11 @@ function getStyles(theme, isMobileLayout) {
       boxSizing: 'border-box',
       display: 'inline-block',
       verticalAlign: 'top',
-      width: '50%'
+      width: '50%',
+      transition: '.2s background',
+      ':hover': {
+        background: theme.lightColor
+      }
     },
     leftNavLink: {
       padding: `36px 0 36px ${navPadding}px`,
@@ -53,10 +57,7 @@ function getStyles(theme, isMobileLayout) {
     },
     linkTitle: {
       fontSize: theme.fontL,
-      margin: '0',
-      ':hover': {
-        textDecoration: 'underline'
-      }
+      margin: '0'
     }
   };
 }
@@ -81,23 +82,23 @@ class NavigationBar extends React.Component {
 
     return (
       <div style={styles.navbar}>
-        <div style={[ styles.navlink, styles.leftNavLink ]}>{
+        <div style={styles.navlink} key='left'>{
           previousPage &&
-          <Link to={previousPage.path} style={styles.link}>
+          <Link to={previousPage.path} style={[styles.link, styles.leftNavLink]}>
             { !isMobileLayout && leftIcon }
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ previousPage.superTitle }</h4>
-              <h3 style={styles.linkTitle} key='left'>{ previousPage.title }</h3>
+              <h3 style={styles.linkTitle}>{ previousPage.title }</h3>
             </div>
             { isMobileLayout && leftIcon }
           </Link>
         }</div>
-        <div style={[ styles.navlink, styles.rightNavLink]}>{
+        <div style={styles.navlink} key='right'>{
           nextPage &&
-          <Link to={nextPage.path} style={styles.link}>
+          <Link to={nextPage.path} style={[styles.link, styles.rightNavLink]}>
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ nextPage.superTitle }</h4>
-              <h3 style={styles.linkTitle} key='right'>{ nextPage.title }</h3>
+              <h3 style={styles.linkTitle}>{ nextPage.title }</h3>
             </div>
             {rightIcon}
           </Link>
