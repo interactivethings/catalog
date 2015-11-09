@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 
-import MetadataBlock from '../shared/MetadataBlock';
+import {text, link, heading} from 'scaffold/typography';
 
 
 function parseImage(image) {
@@ -18,6 +18,20 @@ function parseImage(image) {
   }
 }
 
+function generateLinkList(links, styles) {
+  let items = links.map( (url, key) => {
+    return <li key={key} style={styles.truncate}><a style={styles.link} href={url}>{url}</a></li>;
+  });
+  return items;
+}
+
+function generateList(attributes) {
+  let items = attributes.map( (content, key) => {
+    return <li key={key}>{content}</li>;
+  });
+  return items;
+}
+
 class UISpec extends React.Component {
   render() {
     const {theme, entries} = this.props;
@@ -26,15 +40,15 @@ class UISpec extends React.Component {
       section: {
         display: 'flex',
         flexFlow: 'row wrap',
-        paddingBottom: 10,
-        width: 'calc(100% + 10px)'
+        minWidth: 'calc(100% + 10px)'
       },
       container: {
         boxSizing: 'border-box',
         margin: '0 10px 10px 0',
         padding: '14px',
         position: 'relative',
-        background: theme.background
+        background: theme.background,
+        color: theme.textColor
       },
       image: {
         marginBottom: '14px',
@@ -49,6 +63,30 @@ class UISpec extends React.Component {
         ':hover': {
           opacity: 1
         }
+      },
+      title: {
+        ...heading(theme, {level: 6}),
+        margin: 0
+      },
+      link: {
+        ...link(theme),
+        maxWidth: '100%',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden'
+      },
+      truncate: {
+        maxWidth: '100%',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden'
+      },
+      list: {
+        ...text(theme, {level: 3}),
+        listStyleType: 'none',
+        paddingLeft: 0,
+        marginLeft: 0,
+        marginTop: 5
       },
       light: {
         background: `url(${theme.checkerboardPatternLight})`
@@ -79,15 +117,25 @@ class UISpec extends React.Component {
 
       let isDark = entry.background ? background.indexOf('dark') > -1 : false;
 
-      let overlay = entry.overlay !== undefined
-        ? <img key={key} style={styles.overlay} src={parseImage( entry.overlay )}/>
+      let title = entry.title !== undefined
+        ? <div style={styles.title}>{entry.title}</div>
         : null;
 
-      let basicGrid = [1 / 6, 1 / 3, 1 / 2, 2 / 3, 5 / 6, 1];
+      let image = entry.image !== undefined || entry.image_srcset !== undefined
+        ? <img key={'image' + key} style={styles.image} srcSet={entry.image_srcset ? entry.image_srcset : '' }  src={parseImage(entry.image)}/>
+        : null;
+
+      let overlay = entry.overlay !== undefined
+        ? <img key={'overlay' + key} style={styles.overlay} srcSet={entry.overlay_srcset ? entry.overlay_srcset : '' } src={parseImage( entry.overlay )}/>
+        : null;
+
+      let video = entry.video !== undefined
+        ? <video src={entry.video} controls width='100%'>Open <a href={entry.video} target='_blank'>video</a> in a new Tab</video>
+        : null;
 
       let minWidth = entry.span !== undefined
-        ? {flexBasis: `calc(${basicGrid[entry.span - 1] * 100}% - 10px)`}
-        : {flexBasis: `calc(${basicGrid[1] * 100}% - 10px)`};
+        ? {flexBasis: `calc(${ entry.span / 6 * 100}% - 10px)`}
+        : {flexBasis: `calc(${ 1 / 3 * 100}% - 10px)`};
 
       let links = []
         .concat(entry.links
@@ -97,17 +145,22 @@ class UISpec extends React.Component {
           ? entry.link
           : []);
 
+      let attributeList = entry.attributes !== undefined
+        ? <ul style={{...styles.list, color: isDark ? 'white' : 'inherit'}}>{generateList(entry.attributes)}</ul>
+        : null;
+
+      let linkList = links.length > 0
+        ? <ul style={{...styles.list}}>{generateLinkList(links, styles)}</ul>
+        : null;
+
       return (
         <div key={key} style={[styles.container, minWidth, styles[background]]}>
-          <img style={styles.image} src={parseImage( entry.image )}/>
+          {image}
           {overlay}
-          <MetadataBlock
-            title={entry.title}
-            theme={theme}
-            inverted={isDark}
-            links={links}
-            attributes={entry.attributes}
-            />
+          {video}
+          {title}
+          {attributeList}
+          {linkList}
         </div>
       );
     });

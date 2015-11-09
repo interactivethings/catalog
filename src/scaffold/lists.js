@@ -2,6 +2,7 @@ import { inlineElements } from './typography';
 
 function baseListStyle() {
   return {
+    minWidth: 630,
     listStyle: 'none'
   };
 }

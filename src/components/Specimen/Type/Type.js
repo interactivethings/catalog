@@ -7,7 +7,8 @@ function getStyle(theme) {
       flexBasis: '100%',
       textRendering: 'initial',
       WebkitFontSmoothing: 'initial',
-      MozOsxFontSmoothing: 'initial'
+      MozOsxFontSmoothing: 'initial',
+      marginTop: 10
     },
     wrapper: {
       padding: `${theme.sizeL}px`,
@@ -30,6 +31,11 @@ function getStyle(theme) {
     smoothing: {
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale'
+    },
+    list: {
+      listStyleType: 'none',
+      paddingLeft: 0,
+      marginLeft: 0
     }
   };
 }
@@ -52,18 +58,26 @@ class Type extends React.Component {
     let kerning = modifiers.contains('kern') ? styles.kerning : null;
     // check if the modifier demands font smoothing
     let smoothing = modifiers.contains('smoothen') ? styles.smoothing : null;
+    // Use single word or sentence for headlines
+    let headlineText = modifiers.contains('single') ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
+
 
     let type = entries.map( (entry, key) => {
       let fontColor = entry.color ? {color: entry.color} : null;
       let fontFamily = entry.font ? {fontFamily: entry.font} : null;
       let backgroundColor = entry.background ? {backgroundColor: entry.background} : null;
+      let fontWeight = entry.weight ? {fontWeight: entry.weight} : null;
+      let letterSpacing = entry.tracking ? {letterSpacing: entry.tracking + unit} : null;
+      let backgroundImage = entry.image ? {backgroundImage: `url(${entry.image})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} : null;
 
-      let colorDescription = (
-        <div style={{...styles.title, ...fontColor}}>
-          {entry.color ? `${!entry.background ? 'text color:' : ''} ${entry.color}` : null}
-          {entry.color && entry.background ? ' on ' : null}
-          {entry.background ? `${!entry.background ? 'background color:' : ''} ${entry.background}` : null}
-        </div>
+
+      let description = (
+        <ul style={{...styles.title, ...styles.list, ...fontColor}}>
+          {entry.color ? <li style={styles.list}>color: {entry.color + ';'}</li> : null}
+          {entry.background ? <li style={styles.list}>background-color: {entry.background + ';'}</li> : null}
+          {fontWeight ? <li style={styles.list}>font-weight: {entry.weight + ';'}</li> : null}
+          {letterSpacing ? <li style={styles.list}>letter-spacing: {entry.tracking + unit + ';'}</li> : null}
+        </ul>
         );
 
       let headings = entry.headings
@@ -71,7 +85,7 @@ class Type extends React.Component {
           return (
             <div key={i}>
               <div style={{...styles.title, ...fontColor}}>h{i + 1} ({heading + unit})</div>
-              <div style={{...styles.heading, ...fontFamily, fontSize: `${heading + unit}`}}>The quick brown fox jumps over the lazy dog</div>
+              <div style={{...styles.heading, ...fontFamily, ...fontWeight, ...letterSpacing, fontSize: `${heading + unit}`}}>{headlineText}</div>
             </div>
             );
         })
@@ -83,7 +97,7 @@ class Type extends React.Component {
             <div style={{...styles.title, ...fontColor}}>
               Paragraph ({entry.paragraph.size + unit}/{entry.paragraph.line + unit})
             </div>
-            <div style={{...fontFamily, fontSize: `${entry.paragraph.size + unit}`, lineHeight: `${entry.paragraph.line + unit}`}}>
+            <div style={{...fontFamily, ...fontWeight, ...letterSpacing, fontSize: `${entry.paragraph.size + unit}`, lineHeight: `${entry.paragraph.line + unit}`}}>
               {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
             </div>
           </div>
@@ -91,11 +105,11 @@ class Type extends React.Component {
         : null;
 
       return (
-        <div key={key} style={{...styles.wrapper, ...kerning, ...smoothing, ...fontColor, ...backgroundColor}}>
+        <div key={key} style={{...styles.wrapper, ...kerning, ...smoothing, ...fontColor, ...backgroundColor, ...backgroundImage}}>
           {headings}
           {headings && paragraph ? <br/> : null}
           {paragraph}
-          {colorDescription}
+          {description}
         </div>);
     });
 

@@ -21,7 +21,7 @@ import Icon from './Icon/Icon';
 const DEFAULT_SPECIMEN = 'html';
 
 const Renderer = {
-  code: (props) => <Code body={props.body} theme={props.theme}/>,
+  code: (props) => <Code body={props.body} theme={props.theme} modifiers={props.config.options}/>,
   hint: (props) => <Hint body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   color: (props) => <Color colors={JSON.parse(props.body)} theme={props.theme} modifiers={props.config.options}/>,
   download: (props) => <DownloadSpecimen {...JSON.parse(props.body)} theme={props.theme}/>,
@@ -43,6 +43,8 @@ class Specimen extends React.Component {
     let {config} = this.props;
     let renderer = Renderer[config.specimen];
 
+    // Responsiveness is not good the moment, ideally we would have the measurements
+    // from Applayout available through props or redux
     let customWidth = config.options.filter( modifier => modifier.match(/span/g)).map( modifier => {
       let getInteger = parseInt(modifier.replace( /^\D+/g, ''), 10);
       return {flexBasis: `calc(${ getInteger / 6 * 100}% - 10px)`, margin: '0 10px 10px 0'};
@@ -50,7 +52,7 @@ class Specimen extends React.Component {
 
     let specimen = renderer ? renderer(this.props) : this.throwError(config.specimen);
     return (
-      <section className='cg-Client' style={customWidth ? customWidth : {flexBasis: `100%`}}>{specimen}</section>
+      <section className='cg-Client' style={customWidth && window.innerWidth > 640 ? customWidth : {flexBasis: 'calc(100% - 10px)'}}>{specimen}</section>
       );
   }
 

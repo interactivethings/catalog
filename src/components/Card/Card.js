@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Style as RadiumStyle } from 'radium';
-import {heading, text, inlineElements, inlineBlockquote} from 'scaffold/typography';
+import {heading, text, code, inlineElements, inlineBlockquote} from 'scaffold/typography';
 import {inlineUlist, inlineOlist } from 'scaffold/lists';
 
 const cardContainer = () => ({maxWidth: 671});
@@ -25,7 +25,7 @@ class Card extends Component {
         boxShadow: theme.cardShadow ? `0px 1px 4px ${theme.lightColor}` : null,
         border: `1px solid ${theme.cardRuleColor}`,
         margin: `${theme.sizeL}px 0`,
-        padding: `${theme.sizeXl}px ${theme.sizeL}px 14px ${theme.sizeL}px`,
+        padding: '28px 10px 14px 20px',
         position: 'relative',
         display: 'flex',
         flexFlow: 'row wrap',
@@ -54,8 +54,15 @@ class Card extends Component {
               ...heading(theme, {level: 6}),
               maxWidth: 'none',
               marginTop: '15px',
-              marginBottom: 0,
+              marginBottom: 10,
               flexBasis: '100%'
+            },
+            'h4 code': {
+              ...code(theme)
+            },
+            'h4 code:first-child': {
+              ...code(theme),
+              marginLeft: 0
             },
             p: {
               ...cardContainer(theme),

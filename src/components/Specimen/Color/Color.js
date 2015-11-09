@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import MetadataBlock from '../shared/MetadataBlock';
 import Radium from 'radium';
 
 class Color extends React.Component {
@@ -25,21 +24,13 @@ class Color extends React.Component {
         flexDirection: 'column'
       },
       box: {
-        display: 'flex',
-        flex: '0 1 auto',
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
-        marginRight: theme.sizeL,
-        padding: `${theme.sizeL / 2}px 0`
+        flexBasis: `calc(${ 1 / 6 * 100}%)`
       },
       well: {
         alignSelf: 'flex-start',
         flex: '0 0 auto',
-        height: '64px',
-        marginRight: `${theme.sizeL / 2}px`,
-        padding: `${theme.sizeL / 2}px`,
-        width: '64px',
-        borderRadius: 64
+        height: '111px',
+        marginRight: 10
       },
       mono: {
         fontFamily: theme.fontMono,
@@ -47,10 +38,22 @@ class Color extends React.Component {
       },
       paletteItem: {
         padding: '20px',
+        flexBasis: 'calc(100% - 10px)',
         flex: 1
       },
-      paletteText: {
+      text: {
         fontFamily: theme.fontFamily,
+        color: theme.textColor,
+        marginRight: 10,
+        flex: '0 0 auto',
+        boxSizing: 'border-box',
+        padding: '10px',
+        flexBasis: 'calc(100% - 10px)',
+        background: theme.background
+      },
+      textPalette: {
+        fontFamily: theme.fontFamily,
+        color: theme.textColor,
         filter: 'invert(60%) hue-rotate(0deg)',
         mixBlendMode: 'difference',
         textOverflow: 'ellipsis',
@@ -68,14 +71,15 @@ class Color extends React.Component {
       }
     };
 
-    let isPalette = modifiers.contains('palette') || modifiers.contains('palette-vertical');
+
+    let isPalette = modifiers.contains('palette') || modifiers.contains('palette-horizontal');
 
     let colorSwatches = colors.map( (color, key) => {
       return (
-        <div key={'cg-Specimen-Color' + key} style={styles.box}>
-          <div style={{ ...styles.well, backgroundColor: color.value}}/>
-          <div style={styles.info}>
-            <MetadataBlock title={color.name} attributes={[color.value]} theme={theme}/>
+        <div key={'cg-Specimen-Color' + key} style={{ ...styles.box}}>
+          <div style={{...styles.well, background: color.value}}/>
+          <div style={{...styles.text}} key={key}>
+            {color.name} <div style={styles.mono} onClick={this.handleClick}>{color.value}</div>
           </div>
         </div>
       );
@@ -84,15 +88,15 @@ class Color extends React.Component {
     let colorPalette = colors.map( (color, key) => {
       return (
         <div key={'cg-Specimen-Color' + key} style={{ ...styles.paletteItem,  backgroundColor: color.value}}>
-        <div style={{...styles.paletteText, color: color.value}} key={key}>
-          {color.name} <div style={styles.mono} onClick={this.handleClick}>{color.value}</div>
-        </div>
+          <div style={{...styles.textPalette, color: color.value}} key={key}>
+            {color.name} <div style={styles.mono} onClick={this.handleClick}>{color.value}</div>
+          </div>
         </div>
       );
     });
 
     return (
-      <section style={[styles.container, isPalette && !modifiers.contains('palette-vertical') ? styles.columns : styles.rows ]}>
+      <section style={[styles.container, isPalette && !modifiers.contains('palette-horizontal') ? styles.columns : styles.rows ]}>
         {isPalette ? colorPalette : colorSwatches }
       </section>
     );

@@ -135,6 +135,7 @@ The color codes in the palette can be copied to the clipboard by selecting the t
 ### Options
 
 - `palette` generates a list of the colors.
+- `palette-horizontal` generates a horizontal list
 - `span-[1-6]` defines the width of the palette
 
 ### Examples
@@ -174,12 +175,18 @@ The color codes in the palette can be copied to the clipboard by selecting the t
 
 ## Project
 
-See the [example](#/html-project) until more documentation is available
+Take a look at the [example](#/html-project) until more documentation is available.
 
 
 ## Hint
 
 Can be used to highlight important aspects.
+
+### Options
+#### Arguments
+
+- `directive` good for _dos_
+- `warning` good for _don'ts_
 
 ### Example
 
@@ -195,7 +202,26 @@ backgrounds.
 ```hint|span-3
 Make sure to use <pre>text-rendering: optimizeLegibility;</pre>on fonts over 36px,
 as well as <pre>-webkit-font-smoothing: antialiased;</pre> and <pre>-moz-osx-font-smoothing: grayscale;</pre> on dark backgrounds.
+```
 
+```code|span-3,directive
+&#96;&#96;&#96;hint|span-3,directive
+Make it so!
+&#96;&#96;&#96;
+```
+
+```hint|span-3,directive
+Make it so!
+```
+
+```code|span-3
+&#96;&#96;&#96;hint|span-3,warning
+No &lt;strong&gt;stairway&lt;/strong&gt;
+&#96;&#96;&#96;
+```
+
+```hint|span-3,warning
+No <strong>stairway</strong>
 ```
 
 
@@ -248,32 +274,36 @@ as well as <pre>-webkit-font-smoothing: antialiased;</pre> and <pre>-moz-osx-fon
 - `kern` activates browser kerning and ligature use
 - `smoothing` applies browser text antialising
 - `kafka` Mighty morphin' Samsa fill text
+- `single` Uses single word for headline
 
 #### Keys
 
 - `headings: array` takes an array and generates a list headings
 - `paragraph: array` builds a paragraph and takes [font size, line height]
 - `background: string` defines the background color, takes hex code or color name
+- `image: string` defines the background image
 - `color: string` defines the font color, takes hex code or color name
+- `tracking: integer` defines tracking respectively letter-spacing
+- `weight: integer` defines the font weight
 
 
 ### Examples
 
-#### `type|kern,smoothen,kafka`
+#### `type|kern,smoothen,kafka`  and on the right  `type|span-2,kern,smoothen,shorter,single`
 
 
 ```type|kern,smoothen,kafka,span-4
 [
 	{
 		"headings": [98,28,21,16,14,12],
-		"paragraph": {"size": 18, "line": 28},
+		"paragraph": {"size": 18, "line": 30},
 		"font": "sans-serif",
 		"color": "#00263e"
 	}
 ]
 ```
 
-```type|kern,smoothen,kafka,shorter,span-2
+```type|span-2,kern,smoothen,shorter,single
 [
 	{
 		"paragraph": {"size": 18, "line": 28},
@@ -282,25 +312,35 @@ as well as <pre>-webkit-font-smoothing: antialiased;</pre> and <pre>-moz-osx-fon
 		"font": "sans-serif"
 	},
 	{
-		"paragraph": {"size": 18, "line": 28},
+		"headings": [42],
+		"image": "docs/html-project-example/gradient.png",
+		"color": "#fff",
+		"font": "sans-serif",
+		"weight": 600,
+		"tracking": -3
+	},
+	{
+		"paragraph": {"size": 14, "line": 18},
 		"background": "#00263e",
 		"color": "#a1c0d8",
 		"font": "sans-serif"
 	},
 	{
-		"paragraph": {"size": 18, "line": 28},
+		"paragraph": {"size": 12, "line": 18},
 		"background": "#111",
 		"color": "#aaa",
-		"font": "sans-serif"
+		"font": "sans-serif",
+		"weight": 600
 	}
 ]
 ```
 
 
 
+
 ## UISpec
 
-A flexible Element to describe UI specifications with images and metadata.
+A flexible Element to describe UI specifications with images and metadata. Note that setting multiple keys is optional, which means that `uispec` can be used for hero images, section titles, offsetting elements etc.
 
 ### Options
 
@@ -310,12 +350,13 @@ A flexible Element to describe UI specifications with images and metadata.
 
 #### Keys
 
-- `title: string` the title _optional_
-- `image: string` image to display (gets scaled if it extends the container) _optional_
-- `overlay: string` image for mouseover, useful to describe proportions _optional_
-- `attributes: array` text description; each entry is a new line _optional_
-- `link: string` a link _optional_
-- `span: integer` can be used for nesting _optional_
+- `title: string` the title 
+- `image: string` image to display (gets scaled if it extends the container) 
+- `overlay: string` image for mouseover, useful to describe proportions
+- `video: string` url to a video file
+- `attributes: array` text description; each entry is a new line 
+- `link: string` a link 
+- `span: integer` can be used for nesting
 
 
 ### Examples
