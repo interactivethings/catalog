@@ -22,7 +22,7 @@ const seqKey = require('utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
   render() {
-    const { theme } = this.props;
+    const { page, theme } = this.context;
 
     let inlineBlockquoteRules = inlineBlockquote(theme);
     inlineBlockquoteRules.blockquote = {
@@ -91,13 +91,13 @@ class PageRenderer extends React.Component {
               color: theme.pageHeadingTextColor,
               opacity: 0.6,
               marginBottom: 0
-            }}>{this.props.page.superTitle}</h4>
+            }}>{page.superTitle}</h4>
             <h2 style={{
               ...pageContainer(theme),
               ...heading(theme, {level: 2}),
               color: theme.pageHeadingTextColor,
               marginBottom: 0
-            }}>{this.props.page.title}</h2>
+            }}>{page.title}</h2>
           </div>
         </div>
 
@@ -107,7 +107,7 @@ class PageRenderer extends React.Component {
   }
 
   styleNodes() {
-    return this.props.page.styles.map((src) => {
+    return this.context.page.styles.map((src) => {
       return <link key={seqKey()} href={src} rel='stylesheet' type='text/css' />;
     });
   }
@@ -119,11 +119,11 @@ class PageRenderer extends React.Component {
     return MarkdownRenderer({
       text: this.props.content,
       section: (children) => {
-        return <Card key={seqKey()} theme={this.props.theme}>{children}</Card>;
+        return <Card key={seqKey()} theme={this.context.theme}>{children}</Card>;
       },
       renderer: {
         code: (codeBody, codeConfig) => {
-          return <Specimen key={seqKey()} body={codeBody} config={Config(codeConfig)} theme={this.props.theme} />;
+          return <Specimen key={seqKey()} body={codeBody} config={Config(codeConfig)} theme={this.context.theme} />;
         },
         heading: (headingText, level) => {
           return React.createElement(`h${level}`, {key: seqKey()}, headingText);
@@ -134,8 +134,11 @@ class PageRenderer extends React.Component {
 }
 
 PageRenderer.propTypes = {
+  content: PropTypes.node.isRequired
+};
+
+PageRenderer.contextTypes = {
   page: CatalogPropTypes.page.isRequired,
-  content: PropTypes.node.isRequired,
   theme: PropTypes.object.isRequired
 };
 

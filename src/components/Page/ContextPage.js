@@ -27,7 +27,7 @@ class Page extends React.Component {
 
   render() {
     const content = this.state.content || <Loader />;
-    return <PageRenderer {...this.props} {...this.context} content={content} />;
+    return <PageRenderer content={content} />;
   }
 
   fetchPageData(url) {
@@ -43,8 +43,7 @@ class Page extends React.Component {
 }
 
 Page.contextTypes = {
-  page: CatalogPropTypes.page.isRequired,
-  theme: PropTypes.object.isRequired
+  page: CatalogPropTypes.page.isRequired
 };
 
 export default Page;
