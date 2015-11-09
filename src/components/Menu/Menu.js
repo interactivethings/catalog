@@ -67,7 +67,7 @@ class Menu extends React.Component {
           <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div  style={currentStyle.logo}>{titleString}</div> }</h1>
         </Link>
         <ul style={currentStyle.list}>
-          { pageTree.map((page) => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
+          { pageTree.map((page) => <ListItem key={page.index} page={page} theme={theme} history={history} />) }
         </ul>
         <div style={currentStyle.info}>
           Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog'>catalog</a>,
