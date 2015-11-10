@@ -235,22 +235,10 @@ No <strong>stairway</strong>;
 ```
 
 
-```code|span-3
-&#96;&#96;&#96;type|<strong>em</strong>
-[
-	{
-		"headings": [3.052, 2.441, 1.953, 1.563, 1.25, 1],
-		"paragraph": {"size": 1, "line": 1.25}
-	}
-]
-&#96;&#96;&#96;
-```
-
 ### Options
 
 #### Arguments
 
-- `em` sets the font size and line height using em. Otherwise px is used
 - `kern` activates browser kerning and ligature use
 - `smoothing` applies browser text antialising
 - `kafka` Mighty morphin' Samsa fill text
