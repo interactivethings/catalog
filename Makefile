@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build watch doc nightly lib dist deploy clean clobber lint
+.PHONY: install server build watch doc nightly lib dist deploy clean clobber lint test
 
 all: server
 
@@ -40,7 +40,7 @@ install: node_modules
 server: install _print-banner
 	@UV_THREADPOOL_SIZE=100 bin/server
 
-build: install clean
+build: install clean test
 	NODE_ENV=production \
 	webpack --colors --progress --hide-modules
 
@@ -52,6 +52,9 @@ watch: install clean
 lib: install clean
 	NODE_ENV=production \
 	webpack --config=./webpack.lib.js --colors --progress --hide-modules
+
+test:
+	@babel-node test/*.js | faucet
 
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
