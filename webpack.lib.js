@@ -29,6 +29,12 @@ var libConfig = {
       commonjs2: 'react-router',
       commonjs: 'react-router',
       amd: 'react-router'
+    },
+    'history': {
+      root: 'History',
+      commonjs2: 'history',
+      commonjs: 'history',
+      amd: 'history'
     }
   },
   plugins: [
