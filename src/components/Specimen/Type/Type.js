@@ -64,9 +64,10 @@ class Type extends React.Component {
 
     let type = entries.map( (entry, key) => {
       let fontColor = entry.color ? {color: entry.color} : null;
-      let fontFamily = entry.font ? {fontFamily: entry.font} : null;
+      let isItalic = entry.italic ? 'italic' : 'normal';
+      let fontFamily = entry.font ? entry.font : 'inherit';
       let backgroundColor = entry.background ? {backgroundColor: entry.background} : null;
-      let fontWeight = entry.weight ? {fontWeight: entry.weight} : null;
+      let fontWeight = entry.weight ? entry.weight : 'normal';
       let letterSpacing = entry.tracking ? {letterSpacing: entry.tracking + unit} : null;
       let backgroundImage = entry.image ? {backgroundImage: `url(${entry.image})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} : null;
 
@@ -75,40 +76,59 @@ class Type extends React.Component {
         <ul style={{...styles.title, ...styles.list, ...fontColor}}>
           {entry.color ? <li style={styles.list}>color: {entry.color + ';'}</li> : null}
           {entry.background ? <li style={styles.list}>background-color: {entry.background + ';'}</li> : null}
-          {fontWeight ? <li style={styles.list}>font-weight: {entry.weight + ';'}</li> : null}
+          {fontWeight !== 'normal' ? <li style={styles.list}>font-weight: {entry.weight + ';'}</li> : null}
           {letterSpacing ? <li style={styles.list}>letter-spacing: {entry.tracking + unit + ';'}</li> : null}
         </ul>
         );
 
       let headings = entry.headings
         ? entry.headings.map( (heading, i) => {
+          let isPixel = typeof heading === 'number' ? 'px' : '';
           return (
             <div key={i}>
-              <div style={{...styles.title, ...fontColor}}>h{i + 1} ({heading + unit})</div>
-              <div style={{...styles.heading, ...fontFamily, ...fontWeight, ...letterSpacing, fontSize: `${heading + unit}`}}>{headlineText}</div>
+              <div style={{...styles.title, ...fontColor}}>h{i + 1} ({heading + isPixel})</div>
+              <div style={{...styles.heading, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${heading + isPixel} ${fontFamily}`}}>{headlineText}</div>
             </div>
             );
         })
         : null;
 
-      let paragraph = entry.paragraph
-        ? (
-          <div style={styles.paragraph}>
-            <div style={{...styles.title, ...fontColor}}>
-              Paragraph ({entry.paragraph.size + unit}/{entry.paragraph.line + unit})
+      let paragraphs = entry.paragraphs
+        ? entry.paragraphs.map( (paragraph, i) => {
+          let values = paragraph.split('/').map((item) => {
+            return /[a-z]/i.test(item) ? `${item}` : `${item}px`;
+          }).join('/');
+          return (
+            <div key={i}>
+              <div style={{...styles.title, ...fontColor}}>
+                Paragraph ({values})
+              </div>
+              <div style={{...styles.paragraph, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${values} ${fontFamily}`}}>
+                {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
+              </div>
             </div>
-            <div style={{...fontFamily, ...fontWeight, ...letterSpacing, fontSize: `${entry.paragraph.size + unit}`, lineHeight: `${entry.paragraph.line + unit}`}}>
-              {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
-            </div>
-          </div>
-        )
+            );
+        })
         : null;
+
+      // let paragraph = entry.paragraph
+      //   ? (
+      //     <div style={styles.paragraph}>
+      //       <div style={{...styles.title, ...fontColor}}>
+      //         Paragraph ({entry.paragraph.size + typeof heading === 'number' ? 'px' : '';}/{entry.paragraph.line + unit})
+      //       </div>
+      //       <div style={{...fontFamily, ...fontWeight, ...letterSpacing, fontSize: `${entry.paragraph.size + unit}`, lineHeight: `${entry.paragraph.line + unit}`}}>
+      //         {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
+      //       </div>
+      //     </div>
+      //   )
+      //   : null;
 
       return (
         <div key={key} style={{...styles.wrapper, ...kerning, ...smoothing, ...fontColor, ...backgroundColor, ...backgroundImage}}>
           {headings}
-          {headings && paragraph ? <br/> : null}
-          {paragraph}
+          {headings && paragraphs ? <br/> : null}
+          {paragraphs}
           {description}
         </div>);
     });

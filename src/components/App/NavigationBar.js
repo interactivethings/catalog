@@ -90,7 +90,6 @@ class NavigationBar extends React.Component {
               <h4 style={styles.linkSuperTitle}>{ previousPage.superTitle }</h4>
               <h3 style={styles.linkTitle}>{ previousPage.title }</h3>
             </div>
-            { isMobileLayout && leftIcon }
           </Link>
         }</div>
         <div style={styles.navlink} key='right'>{
@@ -100,7 +99,7 @@ class NavigationBar extends React.Component {
               <h4 style={styles.linkSuperTitle}>{ nextPage.superTitle }</h4>
               <h3 style={styles.linkTitle}>{ nextPage.title }</h3>
             </div>
-            {rightIcon}
+            { !isMobileLayout && rightIcon}
           </Link>
         }</div>
       </div>

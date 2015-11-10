@@ -2,38 +2,48 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import normalizeReferences from './normalizeReferences';
 
-import {text, link, code} from 'scaffold/typography';
+import {text} from 'scaffold/typography';
 
 
 function getStyle(theme) {
   return {
     button: {
       ...text(theme, {level: 2}),
-      ...link(theme),
-      background: 'transparent',
-      border: 'none',
+      background: '#eee',
+      color: theme.brandColor,
+      borderBottom: 'none',
       cursor: 'pointer',
       display: 'inline-block',
       float: 'left',
-      margin: '0.6em 1.333em 0 0',
-      padding: 0,
+      textAlign: 'center',
+      minWidth: 120,
+      padding: 10,
+      borderRight: '1px solid transparent',
       ':focus': {
         outline: 'none'
       }
     },
     active: {
-      textDecoration: 'underline'
+      background: 'white',
+      borderRight: '1px solid #eee'
     },
     source: {
-      ...text(theme, {level: 2}),
-      ...code(theme),
-      padding: '20px',
-      background: '#eee',
+      ...text(theme, {level: 3}),
+      fontWeight: 400,
+      background: '#fff',
+      borderLeft: 'none',
+      borderBottom: 'none',
+      borderRight: 'none',
+      borderTop: '1px solid #eee',
+      color: theme.textColor,
+      fontFamily: theme.fontMono,
+      lineHeight: 1.4,
       clear: 'both',
       display: 'block',
-      border: 'none',
-      height: '15em',
+      padding: 20,
+      height: '50vh',
       width: '100%',
+      boxSizing: 'border-box',
       ':focus': {
         outline: 'none'
       }
@@ -69,14 +79,14 @@ class Project extends React.Component {
         let activeTab = i === parseInt(this.state.tab, 10)
           ? styles.active
           : undefined;
-        return (<button
+        return (<div
           onClick={this.selectTab.bind(this, this)}
           key={i}
           data-tab-id={i}
-          style={[styles.button, activeTab ]}
+          style={[styles.button, activeTab]}
         >
         {file.target}
-        </button>);
+        </div>);
       })
       : null;
 
