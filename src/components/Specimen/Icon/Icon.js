@@ -24,7 +24,7 @@ class Icon extends React.Component {
         flexDirection: 'row',
         margin: `0 ${theme.sizeL / 2}px ${theme.sizeL / 2}px 0 `,
         padding: `${theme.sizeL / 2}px`,
-        flexBasis: `calc(${1/6 * 100}% - ${theme.sizeL / 2}px)`
+        flexBasis: `calc(${1 / 6 * 100}% - ${theme.sizeL / 2}px)`
       },
       image: {
         alignSelf: 'flex-start',
