@@ -4,7 +4,6 @@
   "description": "Catalog is the foundation for living styleguides created at Interactive Things",
   "main": "lib/catalog.js",
   "dependencies": {
-    "history": "^1.12.3",
     "isomorphic-fetch": "^2.2.0",
     "jszip": "^2.5.0",
     "marked": "0.3.2",
@@ -15,7 +14,8 @@
   "peerDependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^1.0.0-rc4"
+    "react-router": "^1.0.0",
+    "history": "^1.12.3"
   },
   "devDependencies": {
     "assign-deep": "0.3.1",
@@ -31,11 +31,12 @@
     "eslint-plugin-react": "^3.1.1",
     "express": "^4.13.3",
     "file-loader": "^0.8.1",
+    "history": "^1.12.3",
     "object-values": "^1.0.0",
     "portfinder": "^0.4.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^1.0.0-rc4",
+    "react-router": "^1.0.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
