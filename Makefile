@@ -35,9 +35,9 @@ CLI_RESET   = \033[0m
 
 all: server
 
-install: _print-banner node_modules
+install: node_modules
 
-server: install
+server: install _print-banner
 	@UV_THREADPOOL_SIZE=100 bin/server
 
 build: install clean
