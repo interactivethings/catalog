@@ -24,7 +24,7 @@ test('Specimen without options', (t) => {
 test('Specimen with only boolean options', (t) => {
   t.plan(2);
   t.deepEqual(parseSpecimen('', 'html|foo'), {specimen: 'html', options: {foo: true}, body: ''});
-  t.deepEqual(parseSpecimen('', 'html|foo,bar'), {specimen: 'html', options: {foo: false, bar: true}, body: ''});
+  t.deepEqual(parseSpecimen('', 'html|foo,bar'), {specimen: 'html', options: {foo: true, bar: true}, body: ''});
 });
 
 test('Camelize options', (t) => {
