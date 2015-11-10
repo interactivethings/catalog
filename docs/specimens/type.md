@@ -61,7 +61,6 @@ Another use case is to document the ratio between the font size and the line hei
 
 #### Arguments
 
-- `em` sets the font size and line height using em. Otherwise px is used
 - `kern` activates browser kerning and ligature use
 - `smoothing` applies browser text antialising
 - `kafka` Mighty morphin' Samsa fill text

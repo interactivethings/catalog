@@ -50,8 +50,6 @@ class Type extends React.Component {
 
     // check if a shorter paragraph should is demanded
     let truncate = modifiers.contains('shorter') ? 100 : null;
-    // check if the modifier is set to em, otherwise assume px
-    let unit = modifiers.contains('em') ? 'em' : 'px';
     // check if alternate dummy text is set
     let dummyText = modifiers.contains('kafka') ? kafka : lorem;
     // check if the modifier demands kerning
@@ -68,7 +66,7 @@ class Type extends React.Component {
       let fontFamily = entry.font ? entry.font : 'inherit';
       let backgroundColor = entry.background ? {backgroundColor: entry.background} : null;
       let fontWeight = entry.weight ? entry.weight : 'normal';
-      let letterSpacing = entry.tracking ? {letterSpacing: entry.tracking + unit} : null;
+      let letterSpacing = entry.tracking ? {letterSpacing: entry.tracking} : null;
       let backgroundImage = entry.image ? {backgroundImage: `url(${entry.image})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} : null;
 
 
@@ -77,7 +75,7 @@ class Type extends React.Component {
           {entry.color ? <li style={styles.list}>color: {entry.color + ';'}</li> : null}
           {entry.background ? <li style={styles.list}>background-color: {entry.background + ';'}</li> : null}
           {fontWeight !== 'normal' ? <li style={styles.list}>font-weight: {entry.weight + ';'}</li> : null}
-          {letterSpacing ? <li style={styles.list}>letter-spacing: {entry.tracking + unit + ';'}</li> : null}
+          {letterSpacing ? <li style={styles.list}>letter-spacing: {entry.tracking + ';'}</li> : null}
         </ul>
         );
 
@@ -110,19 +108,6 @@ class Type extends React.Component {
             );
         })
         : null;
-
-      // let paragraph = entry.paragraph
-      //   ? (
-      //     <div style={styles.paragraph}>
-      //       <div style={{...styles.title, ...fontColor}}>
-      //         Paragraph ({entry.paragraph.size + typeof heading === 'number' ? 'px' : '';}/{entry.paragraph.line + unit})
-      //       </div>
-      //       <div style={{...fontFamily, ...fontWeight, ...letterSpacing, fontSize: `${entry.paragraph.size + unit}`, lineHeight: `${entry.paragraph.line + unit}`}}>
-      //         {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
-      //       </div>
-      //     </div>
-      //   )
-      //   : null;
 
       return (
         <div key={key} style={{...styles.wrapper, ...kerning, ...smoothing, ...fontColor, ...backgroundColor, ...backgroundImage}}>

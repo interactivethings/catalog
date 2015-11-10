@@ -2,7 +2,6 @@ import { inlineElements } from './typography';
 
 function baseListStyle() {
   return {
-    minWidth: 630,
     listStyle: 'none'
   };
 }
@@ -13,6 +12,7 @@ function itemRules(theme, {selector, style = {}, before = {}}) {
     [selector]: {
       margin: '0 0 0 -0.8em',
       textIndent: '-1.6em',
+      boxSizing: 'border-box',
       ...style
     },
     [`${selector}:before`]: {

@@ -2,9 +2,6 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 
 class Color extends React.Component {
-  handleClick() {
-    document.execCommand('copy');
-  }
   render() {
     const {theme, colors, modifiers} = this.props;
     let styles = {
@@ -33,8 +30,7 @@ class Color extends React.Component {
         marginRight: 10
       },
       mono: {
-        fontFamily: theme.fontMono,
-        cursor: 'copy'
+        fontFamily: theme.fontMono
       },
       paletteItem: {
         padding: '20px',
@@ -79,7 +75,7 @@ class Color extends React.Component {
         <div key={'cg-Specimen-Color' + key} style={{ ...styles.box}}>
           <div style={{...styles.well, background: color.value}}/>
           <div style={{...styles.text}} key={key}>
-            {color.name} <div style={styles.mono} onClick={this.handleClick}>{color.value}</div>
+            {color.name} <div style={styles.mono}>{color.value}</div>
           </div>
         </div>
       );
@@ -89,7 +85,7 @@ class Color extends React.Component {
       return (
         <div key={'cg-Specimen-Color' + key} style={{ ...styles.paletteItem,  backgroundColor: color.value}}>
           <div style={{...styles.textPalette, color: color.value}} key={key}>
-            {color.name} <div style={styles.mono} onClick={this.handleClick}>{color.value}</div>
+            {color.name} <div style={styles.mono}>{color.value}</div>
           </div>
         </div>
       );

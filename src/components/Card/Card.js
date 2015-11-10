@@ -59,7 +59,8 @@ class Card extends Component {
               flexBasis: '100%'
             },
             'h4 code': {
-              ...code(theme)
+              ...code(theme),
+              wordBreak: 'break-all'
             },
             'h4 code:first-child': {
               ...code(theme),

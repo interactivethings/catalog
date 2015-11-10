@@ -31,7 +31,7 @@ class PageRenderer extends React.Component {
     };
 
     return (
-      <div className='cg-Page' style={{margin: `0 ${theme.sizeXxl}px`, flex: 1}}>
+      <div className='cg-Page' style={{margin: `0 ${window.innerWidth > 640 ? theme.sizeXxl : 10}px`, flex: 1}}>
         <RadiumStyle scopeSelector='.cg-Page >' rules={{
           h2: {
             ...pageContainer(theme),
