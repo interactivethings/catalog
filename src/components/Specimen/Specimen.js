@@ -11,7 +11,7 @@ import Hint from './Hint/Hint';
 import Image from './Image/Image';
 import Type from './Type/Type';
 import Project from './Project/Project';
-import DownloadSpecimen from './DownloadSpecimen/DownloadSpecimen';
+import Download from './Download/Download';
 import projectBodyToProps from './Project/bodyToProps';
 import Video from './Video/Video';
 
@@ -31,7 +31,7 @@ const Renderer = {
   code: (props) => <Code body={props.body} theme={props.theme} modifiers={props.config.options}/>,
   hint: (props) => <Hint body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   color: (props) => <Color colors={JSON.parse(props.body)} theme={props.theme} modifiers={props.config.options}/>,
-  download: (props) => <DownloadSpecimen {...JSON.parse(props.body)} theme={props.theme}/>,
+  download: (props) => <Download {...JSON.parse(props.body)} theme={props.theme}/>,
   framed: (props) => <FramedCodeBlock code={props.body} theme={props.theme}/>,
   html: (props) => <Html body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   icon: (props) => <Icon icons={[].concat(JSON.parse(props.body))} theme={props.theme}/>,
