@@ -1,16 +1,22 @@
 import React, { PropTypes } from 'react';
 import R from 'ramda';
 
+
+import Audio from './Audio/Audio';
+import Button from './Button/Button';
 import Code from './Code/Code';
 import Color from './Color/Color';
 import Html from './Html/Html';
 import Hint from './Hint/Hint';
+import Image from './Image/Image';
 import Type from './Type/Type';
 import Project from './Project/Project';
-import UISpec from './UISpec/UISpec';
 import DownloadSpecimen from './DownloadSpecimen/DownloadSpecimen';
 import projectBodyToProps from './Project/bodyToProps';
+import Video from './Video/Video';
 
+// Mostly replaced through Image/Video/Audio specimens
+import UISpec from './UISpec/UISpec';
 // The used plugin is out of date at the moment
 import FramedCodeBlock from './Framed/FramedCodeBlock';
 // As is adds mor confusion than benefit at the moment, images and icons should
@@ -20,6 +26,8 @@ import Icon from './Icon/Icon';
 const DEFAULT_SPECIMEN = 'html';
 
 const Renderer = {
+  audio: (props) => <Audio entries={JSON.parse(props.body)} theme={props.theme}/>,
+  button: (props) => <Button {...JSON.parse(props.body)} theme={props.theme}/>,
   code: (props) => <Code body={props.body} theme={props.theme} modifiers={props.config.options}/>,
   hint: (props) => <Hint body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   color: (props) => <Color colors={JSON.parse(props.body)} theme={props.theme} modifiers={props.config.options}/>,
@@ -27,9 +35,11 @@ const Renderer = {
   framed: (props) => <FramedCodeBlock code={props.body} theme={props.theme}/>,
   html: (props) => <Html body={props.body} modifiers={props.config.options} theme={props.theme}/>,
   icon: (props) => <Icon icons={[].concat(JSON.parse(props.body))} theme={props.theme}/>,
+  image: (props) => <Image entries={JSON.parse(props.body)} theme={props.theme}/>,
   project: (props) => <Project {...projectBodyToProps(props.body)} theme={props.theme}/>,
   type: (props) => <Type entries={JSON.parse(props.body)} modifiers={props.config.options} theme={props.theme}/>,
-  uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme} />
+  uispec: (props) => <UISpec entries={JSON.parse(props.body)} theme={props.theme} />,
+  video: (props) => <Video entries={JSON.parse(props.body)} theme={props.theme}/>
 };
 
 class Specimen extends React.Component {
