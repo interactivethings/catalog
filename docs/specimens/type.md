@@ -5,6 +5,7 @@
 The type specimen can be used to reflect various elements concerning typography. The most obvious use case is to represent the ratio and hierarchy of headings.
 
 
+
 ### Headings only
 
 ```type
@@ -36,7 +37,7 @@ Another use case is to document the ratio between the font size and the line hei
 ```type
 [
     {
-        "paragraph": {"size": 18, "line": 28},
+        "paragraphs": ["18/28", "12/21"],
         "font": "sans-serif",
         "color": "#00263e"
     }
@@ -48,7 +49,7 @@ Another use case is to document the ratio between the font size and the line hei
 &#96;&#96;&#96;type
 [
     {
-        "paragraph": {"size": 18, "line": 28},
+        "paragraphs": ["18/28"],
         "font": "sans-serif",
         "color": "#00263e"
     }
@@ -58,5 +59,22 @@ Another use case is to document the ratio between the font size and the line hei
 
 ### Options
 
+#### Arguments
+
+- `em` sets the font size and line height using em. Otherwise px is used
+- `kern` activates browser kerning and ligature use
+- `smoothing` applies browser text antialising
+- `kafka` Mighty morphin' Samsa fill text
+- `single` Uses single word for headline
+
+#### Keys
+
+- `headings: array` takes an array and generates a list headings
+- `paragraph: array` builds a paragraph and takes [font size, line height]
+- `background: string` defines the background color, takes hex code or color name
+- `image: string` defines the background image
+- `color: string` defines the font color, takes hex code or color name
+- `tracking: integer` defines tracking respectively letter-spacing
+- `weight: integer` defines the font weight
 
 
