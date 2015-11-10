@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build watch doc nightly dist deploy clean clobber lint
+.PHONY: install server build watch doc nightly lib dist deploy clean clobber lint
 
 all: server
 
@@ -48,6 +48,10 @@ watch: install clean
 	BABEL_ENV=production \
 	NODE_ENV=development \
 	webpack --watch --config=./webpack.lib.js --colors --progress --hide-modules
+
+lib: install clean
+	NODE_ENV=production \
+	webpack --config=./webpack.lib.js --colors --progress --hide-modules
 
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
@@ -148,6 +152,6 @@ _print-banner:
 #
 
 node_modules: package.json
-	@npm install
+	@npm install --ignore-scripts
 	@touch $@
 
