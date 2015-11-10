@@ -19,8 +19,8 @@ export function style(theme) {
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
       height: theme.pageHeadingHeight,
       display: 'flex',
-      alignItems: 'bottom',
-      justifyContent: 'left'
+      alignItems: 'flex-end',
+      justifyContent: 'flex-end'
     },
     logo: {
       display: 'inline-block',
@@ -63,16 +63,16 @@ class Menu extends React.Component {
 
     return (
       <div style={currentStyle.bar} >
-        <Link to='/'>
-          <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div  style={currentStyle.logo}>{titleString}</div> }</h1>
+        <Link to='/' style={{textDecoration: 'none'}}>
+          <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
         </Link>
         <ul style={currentStyle.list}>
           { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
         </ul>
         <div style={currentStyle.info}>
-          Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog'>catalog</a>,
-          an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com'>Interactive Things</a>.
-          Please report issues <a style={currentStyle.link} href='https://github.com/interactivethings/catalog/issues'>here</a>.
+          Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>catalog</a>,
+          an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com' target='_blank'>Interactive Things</a>.
+          Please report issues <a style={currentStyle.link} href='https://github.com/interactivethings/catalog/issues' target='_blank'>here</a>.
         </div>
       </div>
     );
