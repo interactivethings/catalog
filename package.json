@@ -1,5 +1,5 @@
 {
-  "name": "catalog-styleguide",
+  "name": "catalog",
   "version": "2.0.0-alpha1",
   "description": "Catalog is the foundation for living styleguides created at Interactive Things",
   "main": "lib/catalog.js",
