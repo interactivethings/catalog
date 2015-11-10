@@ -10,23 +10,7 @@ var env = process.env.NODE_ENV || 'development';
 var loaders = {
   common: {
     js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'},
-    css: {test: /\.css$/, loader: 'style!css'},
-
-    // Images
-    png: {test: /\.png$/, loader: 'url?limit=8192&mimetype=image/png'},
-    gif: {test: /\.gif$/, loader: 'url?limit=8192&mimetype=image/gif'},
-    jpg: {test: /\.jpe?g$/, loader: 'file?mimetype=image/jpg'},
     svg: {test: /\.svg$/, loader: 'url?limit=8192&mimetype=image/svg+xml'},
-
-    // Fonts
-    woff2: {test: /\.woff2$/, loader: 'url?limit=8192&mimetype=application/font-woff2'},
-    woff: {test: /\.woff$/, loader: 'url?limit=8192&mimetype=application/font-woff'},
-    ttf: {test: /\.ttf$/, loader: 'file'},
-    eot: {test: /\.eot$/, loader: 'file'},
-
-    // Other
-    json: {test: /\.json$/, loader: 'json'},
-    html: {test: /\.html$/, loader: 'file?name=[name].[ext]'}
   },
 
   development: {},

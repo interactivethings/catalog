@@ -5,9 +5,18 @@ import hamburgerSrc from 'assets/menu-icon.svg';
 
 import NavigationBar from './NavigationBar';
 
-import './Catalog.css';
-
 const SIDE_WIDTH = 251;
+
+const globalStyle = `
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+`;
 
 function style(
   theme,
@@ -137,6 +146,7 @@ class AppLayout extends React.Component {
 
     return (
       <div style={currentStyle.container}>
+        <style>{globalStyle}</style>
         <div style={currentStyle.content}>
           { this.props.children }
           <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} isMobileLayout={isMobileLayout} />
