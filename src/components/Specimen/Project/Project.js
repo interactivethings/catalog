@@ -21,14 +21,20 @@ function getStyle(theme) {
     },
     frame: {
       border: '1px solid #eee',
-      display: 'block'
+      display: 'block',
+      marginBottom: 20
+    },
+    tabBar: {
+      border: '1px solid #eee',
+      minHeight: 45
     },
     link: {
       ...text(theme, {level: 2}),
       ...link(theme),
+      padding: '10px 20px',
+      color: theme.linkColor,
       display: 'inline-block',
-      float: 'left',
-      margin: '0.6em 1.333em 0 0'
+      float: 'right'
     }
   };
 }
@@ -37,6 +43,7 @@ class Project extends React.Component {
   render() {
     let {index, scrolling, files, size, theme} = this.props;
     let styles = getStyle(theme);
+    let sourceFiles = this.sourceViewFiles(this.props);
 
     return (
       <div className='cg-Specimen-Project' style={styles.container}>
@@ -47,14 +54,16 @@ class Project extends React.Component {
           marginWidth='0'
           style={[styles.frame, size]}
         />
-      <a key={'new-window'} style={styles.link} href={index.source} target='_blank'>Open in new window</a>
-      <a key={'download'} style={styles.link} href='#' onClick={this.download.bind(this, this.props)}>Download</a>
-      <TabbedSourceView
-        rootPath={fileUtils.dirname(index.source)}
-        files={files}
-        theme={theme}
-        sourceFiles={this.sourceViewFiles(this.props)}
-      />
+        <div style={sourceFiles.length > 1 ? styles.tabBar : null}>
+          <a key={'new-window'} style={styles.link} href={index.source} target='_blank'>Open in new tab</a>
+          <a key={'download'} style={styles.link} href='#' onClick={this.download.bind(this, this.props)}>Download as .zip</a>
+          <TabbedSourceView
+            rootPath={fileUtils.dirname(index.source)}
+            files={files}
+            theme={theme}
+            sourceFiles={sourceFiles}
+          />
+        </div>
       </div>
     );
   }
