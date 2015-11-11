@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Hint from './Hint/Hint';
+import Span from './Span';
 
 const getUnknownSpecimen = (specimen) => ({theme}) => <Hint warning body={`Unknown Specimen: <strong>${specimen}</strong>`} theme={theme} />;
 
@@ -9,17 +10,10 @@ export default class SpecimenWrapper extends Component {
     const {theme, getSpecimen} = this.context;
     const Specimen = getSpecimen(specimen) || getUnknownSpecimen(specimen);
 
-    const style = {
-      margin: '0 10px 10px 0',
-      flexBasis: options.span && window.innerWidth > 640 ?
-        `calc(${ options.span / 6 * 100}% - 10px)` :
-        'calc(100% - 10px)'
-    };
-
     return (
-      <section style={style}>
+      <Span span={options.span}>
         <Specimen {...options} body={body} theme={theme} />
-      </section>
+      </Span>
     );
   }
 }
