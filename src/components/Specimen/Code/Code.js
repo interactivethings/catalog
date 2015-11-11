@@ -21,12 +21,12 @@ function getStyle(theme) {
       padding: 20,
       boxSizing: 'border-box',
       width: '100%',
-      minHeight: 200,
       height: 'auto',
       border: 'none',
       color: theme.textColor,
       fontFamily: theme.fontMono,
       fontWeight: 400,
+      whiteSpace: 'pre-wrap',
       resize: 'vertical',
       ':focus': {
         outline: 'none',
@@ -45,8 +45,6 @@ function getStyle(theme) {
   };
 }
 
-const parser = new DOMParser();
-
 class Code extends React.Component {
   constructor() {
     super();
@@ -62,15 +60,12 @@ class Code extends React.Component {
     const {theme, body, modifiers} = this.props;
     let styles = getStyle(theme);
 
-    let doc = parser.parseFromString(body, 'text/html');
-    let docBody = doc.getElementsByTagName('body')[0].innerHTML;
-
     let toggle = modifiers && modifiers.contains('collapsed')
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>{this.state.viewSource ? 'close' : 'show example code' }</div>
       : null;
 
     let content = this.state.viewSource
-      ? <textarea style={styles.code} value={docBody} readOnly />
+      ? <pre style={styles.code}><code>{body.replace(/'''/g, '```')}</code></pre>
       : null;
 
     return (
