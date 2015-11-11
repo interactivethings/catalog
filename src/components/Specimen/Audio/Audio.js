@@ -5,7 +5,7 @@ import {heading} from 'scaffold/typography';
 
 class Audio extends React.Component {
   render() {
-    const {entries, theme} = this.props;
+    const {body, theme} = this.props;
 
     let styles = {
       section: {
@@ -25,7 +25,7 @@ class Audio extends React.Component {
       }
     };
 
-    let entryObjects = entries.map( (entry, key) => {
+    let entryObjects = body.map( (entry, key) => {
       let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
         ? entry.autoplay
         : null;
@@ -64,7 +64,7 @@ class Audio extends React.Component {
 
 Audio.propTypes = {
   theme: PropTypes.object.isRequired,
-  entries: PropTypes.array.isRequired
+  body: PropTypes.array.isRequired
 };
 
 export default Radium(Audio);

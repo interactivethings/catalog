@@ -19,7 +19,7 @@ function generateList(attributes) {
 
 class Image extends React.Component {
   render() {
-    const {theme, entries} = this.props;
+    const {theme, body} = this.props;
 
     let styles = {
       section: {
@@ -93,7 +93,7 @@ class Image extends React.Component {
       }
     };
 
-    let entryObjects = entries.map( (entry, key) => {
+    let entryObjects = body.map( (entry, key) => {
       let background = []
         .concat(entry.background !== null
           ? entry.background
@@ -155,7 +155,7 @@ class Image extends React.Component {
 
 Image.propTypes = {
   theme: PropTypes.object.isRequired,
-  entries: PropTypes.array.isRequired
+  body: PropTypes.array.isRequired
 };
 
 export default Radium(Image);

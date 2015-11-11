@@ -1,4 +1,5 @@
 import DefaultTheme from 'DefaultTheme';
+import DefaultSpecimens from 'DefaultSpecimens';
 
 // Removes potential multiple slashes from concatenating paths
 const normalizePath = (path) => path.replace(/\/+/g, '/');
@@ -39,6 +40,7 @@ export default (config) => {
   return {
     ...config,
     theme: {...DefaultTheme, ...config.theme},
+    specimens: {...DefaultSpecimens, ...config.specimens},
     pages,
     pageTree
   };

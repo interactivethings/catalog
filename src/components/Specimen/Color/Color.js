@@ -3,7 +3,7 @@ import Radium from 'radium';
 
 class Color extends React.Component {
   render() {
-    const {theme, colors, modifiers} = this.props;
+    const {theme, body, ...options} = this.props;
     let styles = {
       container: {
         display: 'flex',
@@ -68,9 +68,9 @@ class Color extends React.Component {
     };
 
 
-    let isPalette = modifiers.contains('palette') || modifiers.contains('palette-horizontal');
+    let isPalette = options.palette || options.paletteHorizontal;
 
-    let colorSwatches = colors.map( (color, key) => {
+    let colorSwatches = body.map( (color, key) => {
       return (
         <div key={'cg-Specimen-Color' + key} style={{ ...styles.box}}>
           <div style={{...styles.well, background: color.value}}/>
@@ -81,7 +81,7 @@ class Color extends React.Component {
       );
     });
 
-    let colorPalette = colors.map( (color, key) => {
+    let colorPalette = body.map( (color, key) => {
       return (
         <div key={'cg-Specimen-Color' + key} style={{ ...styles.paletteItem,  backgroundColor: color.value}}>
           <div style={{...styles.textPalette, color: color.value}} key={key}>
@@ -92,7 +92,7 @@ class Color extends React.Component {
     });
 
     return (
-      <section style={[styles.container, isPalette && !modifiers.contains('palette-horizontal') ? styles.columns : styles.rows ]}>
+      <section style={[styles.container, isPalette && !options.paletteHorizontal ? styles.columns : styles.rows ]}>
         {isPalette ? colorPalette : colorSwatches }
       </section>
     );
@@ -100,9 +100,11 @@ class Color extends React.Component {
 }
 
 Color.propTypes = {
-  colors: PropTypes.array.isRequired,
+  body: PropTypes.array.isRequired,
   modifiers: PropTypes.array,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  palette: PropTypes.bool,
+  paletteHorizontal: PropTypes.bool
 };
 
 export default Radium(Color);

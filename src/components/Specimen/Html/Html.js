@@ -76,39 +76,36 @@ class Html extends React.Component {
   }
 
   componentDidMount() {
-    const {modifiers} = this.props;
-    modifiers
-      .filter( modifier => modifier === 'run-script')
-      .map( () => this.refs.specimen.querySelectorAll('script'))
-      .forEach((script) => runscript(script[0]));
+    const {runScript} = this.props;
+    if (runScript) {
+      Array.from(this.refs.specimen.querySelectorAll('script'))
+        .forEach(runscript);
+    }
   }
 
   render() {
-    const {theme, modifiers, body} = this.props;
-    let styles = getStyle(theme);
-
-    if (modifiers.contains('plain') && modifiers.contains('light')) {
-      modifiers.push('plain_light');
-    } else if (modifiers.contains('plain') && modifiers.contains('dark')) {
-      modifiers.push('plain_dark');
-    }
-
-    let modifierStyles = modifiers.map( (modifier) => {
-      return styles[modifier];
-    }).concat();
+    const {theme, body, ...options} = this.props;
+    const styles = getStyle(theme);
+    const exampleStyles = {
+      ...(options.plain ? styles.plain : null),
+      ...(options.light ? styles.light : null),
+      ...(options.dark ? styles.dark : null),
+      ...(options.plain && options.light ? styles.plain_light : null),
+      ...(options.plain && options.dark ? styles.plain_dark : null)
+    };
 
     let source = this.state.viewSource
       ? <pre style={styles.source}>{body}</pre>
       : null;
 
-    let toggle = !modifiers.contains('no-source')
+    let toggle = !options.noSource
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
       : null;
 
     return (
       <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
         {toggle}
-        <div style={[styles.content, modifierStyles]} dangerouslySetInnerHTML={{__html: body}} />
+        <div style={[styles.content, exampleStyles]} dangerouslySetInnerHTML={{__html: body}} />
         {source}
       </div>
     );
@@ -122,7 +119,11 @@ class Html extends React.Component {
 Html.propTypes = {
   body: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
-  modifiers: PropTypes.array
+  runScript: PropTypes.bool,
+  plain: PropTypes.bool,
+  light: PropTypes.bool,
+  dark: PropTypes.bool,
+  noSource: PropTypes.bool
 };
 
 export default Radium(Html);

@@ -5,7 +5,7 @@ import {heading} from 'scaffold/typography';
 
 class Video extends React.Component {
   render() {
-    const {entries, theme} = this.props;
+    const {body, theme} = this.props;
 
     let styles = {
       section: {
@@ -25,7 +25,7 @@ class Video extends React.Component {
       }
     };
 
-    let entryObjects = entries.map( (entry, key) => {
+    let entryObjects = body.map( (entry, key) => {
       let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
         ? entry.autoplay
         : null;
@@ -68,7 +68,7 @@ class Video extends React.Component {
 
 Video.propTypes = {
   theme: PropTypes.object.isRequired,
-  entries: PropTypes.array.isRequired
+  body: PropTypes.array.isRequired
 };
 
 export default Radium(Video);

@@ -4,10 +4,11 @@ import CatalogPropTypes from 'CatalogPropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {
-    const {title, theme, logoSrc, pages, pageTree} = this.props.configuration;
+    const {title, theme, logoSrc, pages, pageTree, specimens} = this.props.configuration;
     const {location} = this.context;
     return {
       page: pages.find((p) => p.path === location.pathname),
+      getSpecimen: (specimen) => specimens[specimen],
       theme,
       title,
       pages,
@@ -38,7 +39,8 @@ CatalogContext.childContextTypes = {
   pages: CatalogPropTypes.pages.isRequired,
   pageTree: CatalogPropTypes.pages.isRequired,
   page: CatalogPropTypes.page.isRequired,
-  logoSrc: PropTypes.string
+  logoSrc: PropTypes.string,
+  getSpecimen: PropTypes.func.isRequired
 };
 
 export default function createCatalogContext(config) {

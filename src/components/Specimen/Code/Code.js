@@ -55,21 +55,24 @@ class Code extends React.Component {
     };
   }
   componentWillMount() {
-    this.props.modifiers && this.props.modifiers.contains('collapsed') ? this.setState({viewSource: false}) : null;
+    if (this.props.collapsed) {
+      this.setState({viewSource: false});
+    }
   }
 
   render() {
-    const {theme, body, modifiers} = this.props;
+    const {theme, body, collapsed} = this.props;
+    const {viewSource} = this.state;
     let styles = getStyle(theme);
 
     let doc = parser.parseFromString(body, 'text/html');
     let docBody = doc.getElementsByTagName('body')[0].innerHTML;
 
-    let toggle = modifiers && modifiers.contains('collapsed')
-      ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>{this.state.viewSource ? 'close' : 'show example code' }</div>
+    let toggle = collapsed
+      ? <div style={styles.toggle} onClick={() => this.setState({viewSource: !viewSource})}>{viewSource ? 'close' : 'show example code' }</div>
       : null;
 
-    let content = this.state.viewSource
+    let content = viewSource
       ? <textarea style={styles.code} value={docBody} readOnly />
       : null;
 
@@ -80,15 +83,12 @@ class Code extends React.Component {
       </section>
       );
   }
-  toggleSource() {
-    this.setState({viewSource: !this.state.viewSource});
-  }
 }
 
 Code.propTypes = {
   body: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
-  modifiers: PropTypes.array
+  collapsed: PropTypes.bool
 };
 
 export default Radium(Code);

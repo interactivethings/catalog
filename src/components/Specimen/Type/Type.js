@@ -45,22 +45,22 @@ const kafka = `One morning, when Gregor Samsa woke from troubled dreams, he foun
 
 class Type extends React.Component {
   render() {
-    const {theme, entries, modifiers} = this.props;
+    const {theme, body, ...options} = this.props;
     let styles = getStyle(theme);
 
     // check if a shorter paragraph should is demanded
-    let truncate = modifiers.contains('shorter') ? 100 : null;
+    let truncate = options.shorter ? 100 : null;
     // check if alternate dummy text is set
-    let dummyText = modifiers.contains('kafka') ? kafka : lorem;
+    let dummyText = options.kafka ? kafka : lorem;
     // check if the modifier demands kerning
-    let kerning = modifiers.contains('kern') ? styles.kerning : null;
+    let kerning = options.kern ? styles.kerning : null;
     // check if the modifier demands font smoothing
-    let smoothing = modifiers.contains('smoothen') ? styles.smoothing : null;
+    let smoothing = options.smoothen ? styles.smoothing : null;
     // Use single word or sentence for headlines
-    let headlineText = modifiers.contains('single') ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
+    let headlineText = options.single ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
 
 
-    let type = entries.map( (entry, key) => {
+    let type = body.map( (entry, key) => {
       let fontColor = entry.color ? {color: entry.color} : null;
       let isItalic = entry.italic ? 'italic' : 'normal';
       let fontFamily = entry.font ? entry.font : 'inherit';
@@ -127,8 +127,12 @@ class Type extends React.Component {
 }
 
 Type.propTypes = {
-  modifiers: PropTypes.array,
-  entries: PropTypes.array.isRequired,
+  shorter: PropTypes.bool,
+  kafka: PropTypes.bool,
+  kern: PropTypes.bool,
+  smoothen: PropTypes.bool,
+  single: PropTypes.bool,
+  body: PropTypes.array.isRequired,
   theme: PropTypes.object.isRequired
 };
 

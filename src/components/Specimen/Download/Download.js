@@ -45,15 +45,16 @@ function getStyle(theme) {
 
 class DownloadSpecimen extends React.Component {
   render() {
-    let styles = getStyle(this.props.theme);
+    const {theme, body: {title, subtitle, url, filename}} = this.props;
+    const styles = getStyle(theme);
 
     return (
       <div style={styles.container} >
-        <a style={styles.a} href={this.props.url} download={this.props.filename || this.props.title} >
+        <a style={styles.a} href={url} download={filename || title} >
           <img src={downloadIconSrc} style={styles.img}  />
           <div style={styles.titleblock}>
-            <h2 style={styles.title}>{this.props.title}</h2>
-            <h3 style={styles.subtitle}>{this.props.subtitle}</h3>
+            <h2 style={styles.title}>{title}</h2>
+            <h3 style={styles.subtitle}>{subtitle}</h3>
           </div>
         </a>
       </div>
@@ -69,11 +70,13 @@ DownloadSpecimen.defaultProps = {
 };
 
 DownloadSpecimen.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  url: PropTypes.string,
-  filename: PropTypes.string,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  body: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    url: PropTypes.string,
+    filename: PropTypes.string
+  }).isRequired
 };
 
 export default Radium(DownloadSpecimen);

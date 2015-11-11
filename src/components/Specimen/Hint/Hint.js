@@ -30,11 +30,11 @@ function getStyle(theme) {
 
 class Hint extends React.Component {
   render() {
-    const {theme, body, modifiers} = this.props;
+    const {theme, body, ...options} = this.props;
     let styles = getStyle(theme);
 
-    let warning = modifiers.contains('warning') ? styles.warning : null;
-    let directive = modifiers.contains('directive') ? styles.directive : null;
+    let warning = options.warning ? styles.warning : null;
+    let directive = options.directive ? styles.directive : null;
 
     return (
       <section style={{...styles.container, ...warning, ...directive}} className='cg-Hint'>
@@ -57,8 +57,9 @@ class Hint extends React.Component {
 
 Hint.propTypes = {
   body: PropTypes.string.isRequired,
-  modifiers: PropTypes.array,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  warning: PropTypes.bool,
+  directive: PropTypes.bool
 };
 
 export default Hint;

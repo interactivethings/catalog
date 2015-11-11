@@ -7,6 +7,7 @@ import 'utils/DOMParser';
 
 import fileUtils from 'utils/fileUtils';
 import saveAs from 'utils/FileSaver';
+import bodyToProps from './bodyToProps';
 import {text, link} from 'scaffold/typography';
 
 import normalizeReferences from './normalizeReferences';
@@ -45,9 +46,12 @@ const isImage = (path) => imagePathRe.test(path);
 
 class Project extends React.Component {
   render() {
-    let {index, scrolling, files, size, theme} = this.props;
+    let {theme, body} = this.props;
+    const projectConfig = bodyToProps(body);
+    const {index, scrolling, files, size} = projectConfig;
+    
     let styles = getStyle(theme);
-    let sourceFiles = this.sourceViewFiles(this.props);
+    let sourceFiles = this.sourceViewFiles(projectConfig);
 
     return (
       <div className='cg-Specimen-Project' style={styles.container}>
@@ -60,7 +64,7 @@ class Project extends React.Component {
         />
         <div style={sourceFiles.length > 1 ? styles.tabBar : null}>
           <a key={'new-window'} style={styles.link} href={index.source} target='_blank'>Open in new tab</a>
-          <a key={'download'} style={styles.link} href='#' onClick={this.download.bind(this, this.props)}>Download as .zip</a>
+          <a key={'download'} style={styles.link} href='#' onClick={this.download.bind(this, projectConfig)}>Download as .zip</a>
           <TabbedSourceView
             rootPath={fileUtils.dirname(index.source)}
             files={files}
@@ -72,9 +76,9 @@ class Project extends React.Component {
     );
   }
 
-  sourceViewFiles(props) {
-    return props.files.filter((d) => {
-      return R.contains(d.target, R.or(props.sourceView, []));
+  sourceViewFiles(projectConfig) {
+    return projectConfig.files.filter((d) => {
+      return R.contains(d.target, R.or(projectConfig.sourceView, []));
     });
   }
 
@@ -99,18 +103,18 @@ class Project extends React.Component {
     return files;
   }
 
-  download(props, evt) {
+  download(projectConfig, evt) {
     evt.preventDefault();
 
     let zip = new JSZip();
-    let root = zip.folder(props.name);
-    let rootPath = fileUtils.dirname(props.index.source);
+    let root = zip.folder(projectConfig.name);
+    let rootPath = fileUtils.dirname(projectConfig.index.source);
     let virtualFiles = [];
 
     // It worked! The monkeys banged away on the keyboard and something functioning
     // came out of it! Such mess, but such works. Wow.
 
-    let files = props.files.map((file) => {
+    let files = projectConfig.files.map((file) => {
       return new Promise((resolve, reject) => {
         // When dealing with an image, we need to make sure to load it as binary
         // data, not plain text. We do this by issuing a custom request with a
@@ -147,8 +151,8 @@ class Project extends React.Component {
         })
         .then((response) => response.text())
         .then((source) => {
-          let content = R.contains(this.sourceViewFiles(props), file) ? normalizeReferences(rootPath, props.files, source) : source;
-          if (file === props.index) {
+          let content = R.contains(this.sourceViewFiles(projectConfig), file) ? normalizeReferences(rootPath, projectConfig.files, source) : source;
+          if (file === projectConfig.index) {
             virtualFiles = virtualFiles.concat(this.parseExposedFiles(content));
             if (file.template) {
               return fetch(file.template, {
@@ -207,7 +211,7 @@ class Project extends React.Component {
       const blob = zip.generate({
         type: 'blob'
       });
-      return saveAs(blob, props.name + '.zip');
+      return saveAs(blob, projectConfig.name + '.zip');
     }).catch((error) => {
       throw new Error('Preparing ZIP file failed', error);
     });
@@ -217,16 +221,8 @@ class Project extends React.Component {
 }
 
 Project.propTypes = {
-  name: PropTypes.string.isRequired,
-  index: PropTypes.object,
-  scrolling: PropTypes.string.isRequired,
-  files: PropTypes.array.isRequired,
-  size: PropTypes.shape({
-    height: PropTypes.string,
-    width: PropTypes.string
-  }).isRequired,
-  sourceView: PropTypes.array,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  body: PropTypes.object.isRequired
 };
 
 export default Radium(Project);

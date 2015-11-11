@@ -5,7 +5,8 @@ import MarkdownRenderer from 'utils/MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
 
 import Card from 'components/Card/Card';
-import Specimen, {Config} from 'components/Specimen/Specimen';
+import SpecimenWrapper from 'components/Specimen/SpecimenWrapper';
+import parseSpecimen from 'utils/parseSpecimen';
 
 import { heading, text, inlineElements, inlineBlockquote } from 'scaffold/typography';
 import { inlineUlist, inlineOlist } from 'scaffold/lists';
@@ -123,7 +124,8 @@ class PageRenderer extends React.Component {
       },
       renderer: {
         code: (codeBody, codeConfig) => {
-          return <Specimen key={seqKey()} body={codeBody} config={Config(codeConfig)} theme={this.context.theme} />;
+          const specProps = parseSpecimen(codeBody, codeConfig);
+          return <SpecimenWrapper key={seqKey()} {...specProps} />;
         },
         heading: (headingText, level) => {
           return React.createElement(`h${level}`, {key: seqKey()}, headingText);

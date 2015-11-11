@@ -24,7 +24,7 @@ function parseSize(size) {
 }
 
 module.exports = (body) => {
-  let config = R.merge(DEFAULTS, JSON.parse(body));
+  let config = R.merge(DEFAULTS, body);
 
   let index = null;
 

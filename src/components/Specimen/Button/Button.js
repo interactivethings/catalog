@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Radium from 'radium';
 import {heading} from 'scaffold/typography';
 
@@ -32,21 +32,25 @@ function getStyle(theme) {
   };
 }
 
-class Button extends React.Component {
+class Button extends Component {
   render() {
-    let styles = getStyle(this.props.theme);
+    const {theme, body: {url, title}} = this.props;
+    let styles = getStyle(theme);
+
     return (
-        <a style={[styles.container, styles.a]} href={this.props.url}>
-          {this.props.title || this.props.url}
+        <a style={[styles.container, styles.a]} href={url}>
+          {title || url}
         </a>
     );
   }
 }
 
 Button.propTypes = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  body: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string
+  })
 };
 
 export default Radium(Button);

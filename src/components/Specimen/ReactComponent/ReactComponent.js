@@ -26,8 +26,7 @@ function getStyle(theme) {
 
 class ReactComponentSpecimen extends Component {
   render() {
-    const {theme} = this.context;
-    const {component, props} = this.props;
+    const {theme, body: {component, props}} = this.props;
     const styles = getStyle(theme);
 
     const ComponentClass = registeredComponents[component] || component;
@@ -43,12 +42,11 @@ class ReactComponentSpecimen extends Component {
 }
 
 ReactComponentSpecimen.propTypes = {
-  component: PropTypes.any.isRequired,
-  props: PropTypes.object.isRequired
-};
-
-ReactComponentSpecimen.contextTypes = {
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  body: PropTypes.shape({
+    component: PropTypes.any,
+    props: PropTypes.object    
+  })
 };
 
 export default ReactComponentSpecimen;
