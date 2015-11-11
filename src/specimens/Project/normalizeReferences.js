@@ -1,5 +1,5 @@
-import escapeRegExp from '../../../utils/escapeRegExp';
-import fileUtils from '../../../utils/fileUtils';
+import escapeRegExp from 'utils/escapeRegExp';
+import fileUtils from 'utils/fileUtils';
 
 module.exports = (rootPath, files, body) => {
   files.map(file => {

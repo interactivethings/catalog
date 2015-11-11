@@ -9,4 +9,4 @@ export {default as configureRoutes} from './configureRoutes';
 export {default as Card} from 'components/Card/Card';
 
 // Specimens
-export {default as ReactSpecimen} from 'components/Specimen/ReactComponent/ReactComponent';
+export {default as ReactSpecimen} from 'specimens/ReactComponent';

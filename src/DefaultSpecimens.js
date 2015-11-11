@@ -1,25 +1,25 @@
-import Audio from 'components/Specimen/Audio/Audio';
-import Button from 'components/Specimen/Button/Button';
-import Code from 'components/Specimen/Code/Code';
-import Color from 'components/Specimen/Color/Color';
-import Html from 'components/Specimen/Html/Html';
-import Hint from 'components/Specimen/Hint/Hint';
-import Image from 'components/Specimen/Image/Image';
-import Type from 'components/Specimen/Type/Type';
-import Project from 'components/Specimen/Project/Project';
-import Download from 'components/Specimen/Download/Download';
-import ReactComponent from 'components/Specimen/ReactComponent/ReactComponent';
-import Video from 'components/Specimen/Video/Video';
+import Audio from 'specimens/Audio';
+import Button from 'specimens/Button';
+import Code from 'specimens/Code';
+import Color from 'specimens/Color';
+import Html from 'specimens/Html';
+import Hint from 'specimens/Hint';
+import Image from 'specimens/Image';
+import Type from 'specimens/Type';
+import Project from 'specimens/Project/Project';
+import Download from 'specimens/Download';
+import ReactComponent from 'specimens/ReactComponent';
+import Video from 'specimens/Video';
 
 // Mostly replaced through Image/Video/Audio specimens
-// import UISpec from 'components/Specimen/UISpec/UISpec';
+// import UISpec from 'specimens/UISpec';
 
 // The used plugin is out of date at the moment
-// import FramedCodeBlock from 'components/Specimen/Framed/FramedCodeBlock';
+// import FramedCodeBlock from 'specimens/FramedCodeBlock';
 
 // As is adds mor confusion than benefit at the moment, images and icons should
 // be displayed with either UISpec or Html for more complex needs
-// import Icon from 'components/Specimen/Icon/Icon';
+// import Icon from 'specimens/Icon';
 
 export default {
   audio: Audio,
