@@ -2,7 +2,8 @@ import { inlineElements } from './typography';
 
 function baseListStyle() {
   return {
-    listStyle: 'none'
+    listStyle: 'none',
+    width: '100%'
   };
 }
 

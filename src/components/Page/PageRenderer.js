@@ -37,9 +37,17 @@ class PageRenderer extends React.Component {
             ...pageContainer(theme),
             ...heading(theme, {level: 1})
           },
+          h3: {
+            ...pageContainer(theme),
+            ...heading(theme, {level: 4}),
+            marginTop: 50
+          },
           p: {
             ...pageContainer(theme),
             ...text(theme, {level: 2})
+          },
+          section: {
+            ...pageContainer(theme)
           },
           ...inlineElements(theme, {selector: 'p'}),
           ...inlineUlist(theme, {

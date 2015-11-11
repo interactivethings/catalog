@@ -56,7 +56,6 @@ export function code(theme) {
     color: '#555',
     display: 'inline-block',
     fontFamily: theme.fontMono,
-    fontWeight: 300,
     lineHeight: 1,
     padding: '0.05em 0.317em 0.18em',
     textIndent: 0
