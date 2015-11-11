@@ -5,16 +5,20 @@ export default class Span extends Component {
     const {children, span} = this.props;
 
     const style = {
-      margin: '0 10px 10px 0',
+      boxSizing: 'border-box',
+      display: 'flex',
       flexBasis: span && window.innerWidth > 640 ?
         `calc(${span / 6 * 100}% - 10px)` :
-        'calc(100% - 10px)'
+        'calc(100% - 10px)',
+      margin: '0 10px 10px 0',
+      padding: 0,
+      position: 'relative'
     };
 
     return (
-      <section style={style}>
+      <div {...this.props} style={{...style, ...this.props.style}}>
         {children}
-      </section>
+      </div>
     );
   }
 }

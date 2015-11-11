@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Span from 'components/Specimen/Span';
 
 import {text, link, heading} from 'scaffold/typography';
 
@@ -29,7 +30,6 @@ class Image extends React.Component {
       },
       container: {
         boxSizing: 'border-box',
-        margin: '0 10px 10px 0',
         padding: '14px',
         position: 'relative',
         background: theme.background,
@@ -135,13 +135,15 @@ class Image extends React.Component {
         : null;
 
       return (
-        <div key={key} style={[styles.container, minWidth, styles[background]]}>
-          {image}
-          {overlay}
-          {title}
-          {attributeList}
-          {linkList}
-        </div>
+        <Span key={key} span={entry.span || 2} >
+          <div style={{...styles.container, ...styles[background]}}>
+            {image}
+            {overlay}
+            {title}
+            {attributeList}
+            {linkList}
+          </div>
+        </Span>
       );
     });
 

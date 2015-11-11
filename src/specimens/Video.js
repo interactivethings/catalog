@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Span from 'components/Specimen/Span';
 
 import {heading} from 'scaffold/typography';
 
@@ -43,18 +44,14 @@ class Video extends React.Component {
         : null;
 
       let video = entry.src !== undefined
-        ? <video src={entry.src} autoPlay={autoplay} loop={loop} muted={muted} controls width='100%'>Open <a href={entry.src} target='_blank'>video</a> in a new Tab</video>
+        ? <video src={entry.src} autoPlay={autoplay} loop={loop} muted={muted} controls style={{width: '100%', height: '100%'}}>Open <a href={entry.src} target='_blank'>video</a> in a new Tab</video>
         : null;
 
-      let minWidth = entry.span !== undefined
-        ? {flexBasis: `calc(${ entry.span / 6 * 100}% - 10px)`}
-        : {flexBasis: 'calc(100% - 10px)'};
-
       return (
-        <div key={key} style={[styles.container, minWidth]}>
+        <Span key={key} span={entry.span}>
           {video}
           {title}
-        </div>
+        </Span>
       );
     });
 

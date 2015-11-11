@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Span from 'components/Specimen/Span';
 
 import {heading} from 'scaffold/typography';
 
@@ -12,12 +13,6 @@ class Audio extends React.Component {
         display: 'flex',
         flexFlow: 'row wrap',
         minWidth: 'calc(100% + 10px)'
-      },
-      container: {
-        boxSizing: 'border-box',
-        margin: '0 10px 10px 0',
-        padding: 0,
-        position: 'relative'
       },
       title: {
         ...heading(theme, {level: 6}),
@@ -42,15 +37,11 @@ class Audio extends React.Component {
         ? <audio style={{ width: '100%'}} src={entry.src} autoPlay={autoplay} loop={loop} controls width='100%'></audio>
         : null;
 
-      let minWidth = entry.span !== undefined
-        ? {flexBasis: `calc(${ entry.span / 6 * 100}% - 10px)`}
-        : {flexBasis: 'calc(100% - 10px)'};
-
       return (
-        <div key={key} style={[styles.container, minWidth]}>
+        <Span key={key} span={entry.span}>
           {audio}
           {title}
-        </div>
+        </Span>
       );
     });
 
