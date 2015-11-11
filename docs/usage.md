@@ -3,8 +3,8 @@
 To start Catalog, run the following code on an empty HTML page.
 
 ```code
-&lt;script src="catalog.js"&gt;&lt;/script&gt;
-&lt;script&gt;
+<script src="catalog.js"></script>
+<script>
   Catalog.start('body', {
     title: "Catalog",
     styles: ["path/to/global-styles.css"],  // Global styles (optional)
@@ -22,7 +22,7 @@ To start Catalog, run the following code on an empty HTML page.
       {name: 'example', title: "Example", src: "docs/example.md"}
     ]
   });
-&lt;/script&gt;
+</script>
 ```
 
 ## Write documentation
@@ -32,21 +32,19 @@ Catalog lets you write documentation in [Markdown](http://daringfireball.net/pro
 To make sure that Catalog displays what you want, you need to follow some simple conventions that are shown in the following example document. Catalog uses _Card_ as the metaphor for document sections and _Specimen_ to describe different kinds of examples.
 
 ```code
-# Page title (an &lt;h1&gt;)
-
 > Some lead text (a blockquote, optional)
 
 Introductory text (optional)
 
-## A Card (an &lt;h2&gt;)
+## A Card (an <h2>)
 
-A new Card is started as soon as an &lt;h2&gt; is encountered.
+A new Card is started as soon as an <h2> is encountered.
 
-&#96;&#96;&#96;code
+'''code
 function identity(x) {
   return x;
 }
-&#96;&#96;&#96;
+'''
 
 ## Another Card
 
