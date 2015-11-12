@@ -8,7 +8,10 @@ import ListItem from './ListItem';
 export function style(theme) {
   return {
     bar: {
-      background: theme.sidebarColor
+      background: theme.sidebarColor,
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
     },
     h1: {
       ...heading(theme, {level: 2}),
@@ -32,7 +35,8 @@ export function style(theme) {
       borderBottom: `1px solid ${theme.sidebarColorLine}`,
       listStyle: 'none',
       margin: 0,
-      padding: 0
+      padding: 0,
+      height: '100%'
     },
     listNested: {
       borderTop: 'none',
@@ -41,11 +45,11 @@ export function style(theme) {
     },
     info: {
       ...text(theme, {level: 4}),
-      position: 'absolute',
-      bottom: 0,
       fontSize: 12,
       padding: 20,
-      color: theme.lightColor
+      color: theme.lightColor,
+      alignSelf: 'flex-end',
+      height: '100%'
     },
     link: {
       color: theme.lightColor
@@ -69,6 +73,7 @@ class Menu extends React.Component {
         <ul style={currentStyle.list}>
           { pageTree.map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
         </ul>
+        <div style={{flex: 1}}/>
         <div style={currentStyle.info}>
           Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>catalog</a>,
           an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com' target='_blank'>Interactive Things</a>.
