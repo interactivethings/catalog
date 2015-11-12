@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import R from 'ramda';
 import JSZip from 'jszip';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 // Polyfill for DOMParser.parseFromString support
 import 'utils/DOMParser';
 
@@ -49,7 +50,7 @@ class Project extends React.Component {
     let {theme, body} = this.props;
     const projectConfig = bodyToProps(body);
     const {index, scrolling, files, size} = projectConfig;
-    
+
     let styles = getStyle(theme);
     let sourceFiles = this.sourceViewFiles(projectConfig);
 
@@ -225,4 +226,4 @@ Project.propTypes = {
   body: PropTypes.object.isRequired
 };
 
-export default Radium(Project);
+export default Specimen(Radium(Project));
