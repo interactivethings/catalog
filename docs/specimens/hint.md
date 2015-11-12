@@ -6,6 +6,7 @@ Can be used to highlight important aspects.
 
 - `directive` good for _dos_
 - `warning` good for _don'ts_
+- `neutral` a neutral style
 
 ### Examples
 
@@ -36,5 +37,15 @@ No <strong>stairway</strong>
 ```code
 '''hint|warning
 No <strong>stairway</strong>;
+'''
+```
+
+```hint|neutral
+A neutral hint.
+```
+
+```code
+'''hint|neutral
+A neutral hint.
 '''
 ```

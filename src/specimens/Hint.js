@@ -14,7 +14,13 @@ function getStyle(theme) {
       border: '1px solid #ffefaa',
       padding: '10px 20px 8px',
       borderRadius: '2px',
-      marginTop: 10
+      marginTop: 10,
+      height: '100%'
+    },
+    neutral: {
+      background: '#f9f9f9',
+      color: '#999',
+      border: '1px solid #eee',
     },
     warning: {
       background: '#fff5f5',
@@ -36,9 +42,10 @@ class Hint extends React.Component {
 
     let warning = options.warning ? styles.warning : null;
     let directive = options.directive ? styles.directive : null;
+    let neutral = options.neutral ? styles.neutral : null;
 
     return (
-      <section style={{...styles.container, ...warning, ...directive}} className='cg-Hint'>
+      <section style={{...styles.container, ...warning, ...directive, ...neutral}} className='cg-Hint'>
         <RadiumStyle
           scopeSelector='.cg-Hint'
           rules={{
