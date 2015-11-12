@@ -31,8 +31,10 @@ class PageRenderer extends React.Component {
       ...inlineBlockquoteRules.blockquote
     };
 
+    let margin = window.innerWidth > 640 ? theme.sizeXxl : 10;
+
     return (
-      <div className='cg-Page' style={{margin: `0 ${window.innerWidth > 640 ? theme.sizeXxl : 10}px`, flex: 1}}>
+      <div className='cg-Page' style={{margin: `0 ${margin}px`, flex: 1}}>
         <RadiumStyle scopeSelector='.cg-Page >' rules={{
           h2: {
             ...pageContainer(theme),
@@ -56,7 +58,9 @@ class PageRenderer extends React.Component {
             style: {
               ...pageContainer(theme),
               ...text(theme, {level: 2}),
-              marginLeft: '2.4em'
+              marginLeft: '2.4em',
+              boxSizing: 'border-box',
+              width: 'calc(100% - 2.4em)'
             }
           }),
           ...inlineOlist(theme, {
@@ -83,7 +87,7 @@ class PageRenderer extends React.Component {
 
         <div style={{
           boxSizing: 'border-box',
-          margin: `0 -${theme.sizeXxl}px ${theme.sizeXxl}px -${theme.sizeXxl}px`,
+          margin: `0 -${margin}px ${margin}px -${margin}px`,
           position: 'relative',
           height: theme.pageHeadingHeight,
           background: theme.pageHeadingBackground
