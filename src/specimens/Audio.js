@@ -23,19 +23,19 @@ class Audio extends React.Component {
 
     let entryObjects = body.map( (entry, key) => {
       let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
-        ? entry.autoplay
-        : null;
+        ? true
+        : false;
 
       let loop = entry.loop !== undefined && entry.loop !== 'false'
-        ? entry.loop
-        : null;
+        ? true
+        : false;
 
       let title = entry.title !== undefined
         ? <div style={styles.title}>{entry.title}</div>
         : null;
 
       let audio = entry.src !== undefined
-        ? <audio style={{ width: '100%'}} src={entry.src} autoPlay={autoplay} loop={loop} controls width='100%'></audio>
+        ? <audio style={{ width: '100%'}} src={entry.src} autoPlay={autoplay} loop={loop} controls></audio>
         : null;
 
       return (
