@@ -18,6 +18,11 @@ class Audio extends React.Component {
       title: {
         ...heading(theme, {level: 6}),
         margin: 0
+      },
+      container: {
+        width: '100%',
+        padding: 20,
+        background: theme.background
       }
     };
 
@@ -31,8 +36,8 @@ class Audio extends React.Component {
         : false;
 
       let title = entry.title !== undefined
-        ? <div style={styles.title}>{entry.title}</div>
-        : null;
+        ? entry.title
+        : entry.src.split('/').slice(-1)[0];
 
       let audio = entry.src !== undefined
         ? <audio style={{ width: '100%'}} src={entry.src} autoPlay={autoplay} loop={loop} controls></audio>
@@ -40,8 +45,10 @@ class Audio extends React.Component {
 
       return (
         <Span key={key} span={entry.span}>
-          {audio}
-          {title}
+          <div style={styles.container}>
+            <div style={styles.title}>{title}</div>
+            {audio}
+          </div>
         </Span>
       );
     });
