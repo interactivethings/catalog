@@ -112,7 +112,7 @@ class Image extends React.Component {
         : null;
 
       let overlay = entry.overlay !== undefined
-        ? <img key={'overlay' + key} style={styles.overlay} srcSet={entry.overlay} />
+        ? <img key={'overlay' + key} style={[styles.overlay, background === 'plain' ? {top: 0, left: 0, maxWidth: '100%'} : null ]} srcSet={entry.overlay} />
         : null;
 
       let minWidth = entry.span !== undefined
