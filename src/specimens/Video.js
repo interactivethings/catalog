@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 import Span from 'components/Specimen/Span';
 
 import {heading} from 'scaffold/typography';
@@ -68,4 +69,4 @@ Video.propTypes = {
   body: PropTypes.array.isRequired
 };
 
-export default Radium(Video);
+export default Specimen(Radium(Video));

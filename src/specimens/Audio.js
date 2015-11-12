@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 import Span from 'components/Specimen/Span';
 
 import {heading} from 'scaffold/typography';
@@ -58,4 +59,4 @@ Audio.propTypes = {
   body: PropTypes.array.isRequired
 };
 
-export default Radium(Audio);
+export default Specimen(Radium(Audio));

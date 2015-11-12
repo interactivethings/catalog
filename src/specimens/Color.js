@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 
 class Color extends React.Component {
   render() {
@@ -107,4 +108,4 @@ Color.propTypes = {
   paletteHorizontal: PropTypes.bool
 };
 
-export default Radium(Color);
+export default Specimen(Radium(Color));

@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 import {heading} from 'scaffold/typography';
 
 function getStyle(theme) {
@@ -53,4 +54,4 @@ Button.propTypes = {
   })
 };
 
-export default Radium(Button);
+export default Specimen(Radium(Button));

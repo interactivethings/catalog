@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import Specimen from 'components/Specimen/Specimen';
 
 const registeredComponents = {
   FooBar: ({name}) => <button>{name}</button>
@@ -49,4 +50,4 @@ ReactComponentSpecimen.propTypes = {
   })
 };
 
-export default ReactComponentSpecimen;
+export default Specimen(ReactComponentSpecimen);

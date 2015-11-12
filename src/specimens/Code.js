@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import {text} from 'scaffold/typography';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 
 function getStyle(theme) {
   return {
@@ -86,4 +87,4 @@ Code.propTypes = {
   collapsed: PropTypes.bool
 };
 
-export default Radium(Code);
+export default Specimen(Radium(Code));

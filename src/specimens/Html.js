@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 import {code} from 'scaffold/typography';
 import runscript from 'utils/runscript';
 
@@ -126,4 +127,4 @@ Html.propTypes = {
   noSource: PropTypes.bool
 };
 
-export default Radium(Html);
+export default Specimen(Radium(Html));

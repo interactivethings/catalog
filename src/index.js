@@ -7,8 +7,10 @@ export {default as configureRoutes} from './configureRoutes';
 
 // Components
 export {default as Card} from 'components/Card/Card';
-export {default as SpecimenWrapper} from 'components/Specimen/SpecimenWrapper';
 export {default as Span} from 'components/Specimen/Span';
+
+// Higher-order component for creating specimens
+export {default as Specimen} from 'components/Specimen/Specimen';
 
 // Specimens
 export {default as AudioSpecimen} from 'specimens/Audio';

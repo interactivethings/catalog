@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 
 import MetadataBlock from 'components/Specimen/shared/MetadataBlock';
 
@@ -124,4 +125,4 @@ Icon.propTypes = {
   icons: PropTypes.array.isRequired
 };
 
-export default Radium(Icon);
+export default Specimen(Radium(Icon));

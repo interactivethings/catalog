@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Specimen from 'components/Specimen/Specimen';
 
 function getStyle(theme) {
   return {
@@ -136,4 +137,4 @@ Type.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default Type;
+export default Specimen(Type);

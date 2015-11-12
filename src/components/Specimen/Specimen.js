@@ -6,7 +6,7 @@ import Span from './Span';
 export default function wrapSpecimen(WrappedSpecimen) {
   const Specimen = (props, {theme}) => (
     <Span span={props.span}>
-      <WrappedSpecimen />
+      <WrappedSpecimen {...props} theme={theme} />
     </Span>
   );
 

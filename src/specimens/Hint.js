@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Style as RadiumStyle } from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 import {text} from 'scaffold/typography';
 
 function getStyle(theme) {
@@ -62,4 +63,4 @@ Hint.propTypes = {
   directive: PropTypes.bool
 };
 
-export default Hint;
+export default Specimen(Hint);

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Specimen from 'components/Specimen/Specimen';
 
 import downloadIconSrc from 'assets/download-icon.svg';
 
@@ -79,4 +80,4 @@ DownloadSpecimen.propTypes = {
   }).isRequired
 };
 
-export default Radium(DownloadSpecimen);
+export default Specimen(Radium(DownloadSpecimen));
