@@ -17,22 +17,20 @@ It can be used to document design specifications that are done in an animation p
 
 ### Example
 
-```video
+```video|span-3
 [   
     {
-        "src": "http://www.w3schools.com/html/mov_bbb.mp4",
-        "muted": "true"
+        "src": "docs/html-project-example/video.m4v"
     }
 ]
 ```
 
 
 ```code
-'''video
+'''video|span-3
 [   
     {
-        "src": "http://www.w3schools.com/html/mov_bbb.mp4",
-        "muted": "true"
+        "src": "docs/html-project-example/video.m4v"
     }
 ]
 '''
