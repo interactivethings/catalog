@@ -49,10 +49,12 @@ class DownloadSpecimen extends React.Component {
     const {theme, body: {title, subtitle, url, filename}} = this.props;
     const styles = getStyle(theme);
 
+    let image = this.props.span !== 1 || window.innerWidth < 630 ? <img src={downloadIconSrc} style={styles.img}  /> : null;
+
     return (
       <div style={styles.container} >
         <a style={styles.a} href={url} download={filename || title} >
-          <img src={downloadIconSrc} style={styles.img}  />
+          {image}
           <div style={styles.titleblock}>
             <h2 style={styles.title}>{title}</h2>
             <h3 style={styles.subtitle}>{subtitle}</h3>
@@ -72,6 +74,7 @@ DownloadSpecimen.defaultProps = {
 
 DownloadSpecimen.propTypes = {
   theme: PropTypes.object.isRequired,
+  span: PropTypes.number,
   body: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
