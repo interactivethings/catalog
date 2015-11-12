@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from 'components/Specimen/Specimen';
-import {code} from 'scaffold/typography';
+import {text} from 'scaffold/typography';
 import runscript from 'utils/runscript';
 
 const PADDING = 3;
@@ -34,8 +34,18 @@ function getStyle(theme) {
       }
     },
     source: {
-      ...code(theme),
-      padding: SIZE + 'px'
+      ...text(theme, {level: 3}),
+      borderLeft: '1px solid #eee',
+      borderRight: '1px solid #eee',
+      borderBottom: '1px solid #eee',
+      padding: 20,
+      margin: 0,
+      boxSizing: 'border-box',
+      width: '100%',
+      height: 'auto',
+      color: theme.textColor,
+      fontFamily: theme.fontMono,
+      fontWeight: 400
     },
     content: {
       background: `url(${theme.checkerboardPatternLight})`,

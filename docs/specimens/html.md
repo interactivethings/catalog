@@ -28,7 +28,7 @@ This example uses the `run-script` argument to execute the JavaScript automatica
 <div id="example-target">FAILED: Javascript was not run</div>
 <script>
     var target = document.getElementById('example-target')
-    target.innerHTML = exampleValue + ' inserted by Javascript';
+    target.innerHTML = exampleValue + ' inserted by JavaScript';
 </script>
 ```
 
@@ -38,7 +38,7 @@ This example uses the `run-script` argument to execute the JavaScript automatica
 <div id="example-target">FAILED: Javascript was not run</div>
 <script>
     var target = document.getElementById('example-target')
-    target.innerHTML = window.exampleValue + ' inserted by Javascript';
+    target.innerHTML = exampleValue + ' inserted by JavaScript';
 </script>
 '''
 ```
