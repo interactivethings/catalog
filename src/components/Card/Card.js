@@ -37,8 +37,8 @@ class Card extends Component {
           rules={{
             h2: {
               ...cardContainer(theme),
-              ...heading(theme, {level: 2}),
-              marginBottom: '10px',
+              ...heading(theme, {level: 1}),
+              marginBottom: 20,
               maxWidth: 'none',
               flexBasis: '100%'
             },
@@ -46,7 +46,7 @@ class Card extends Component {
               ...cardContainer(theme),
               ...heading(theme, {level: 3}),
               marginTop: 15,
-              marginBottom: 0,
+              marginBottom: 10,
               maxWidth: 'none',
               flexBasis: '100%'
             },

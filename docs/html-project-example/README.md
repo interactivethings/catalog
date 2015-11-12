@@ -5,11 +5,11 @@
 A project needs an `index.html` file and will render this inside an `iframe`. A minimal project manifest looks like this and will render the iframe at a default size and without allowing you to scroll content.
 
 ```code
-&#96;&#96;&#96;<strong>project</strong>
+'''<strong>project</strong>
 {
     "index.html": "docs/html-project-example/simple.html"
 }
-&#96;&#96;&#96;
+'''
 ```
 
 It renders this:
@@ -26,7 +26,7 @@ It renders this:
 This example has all configuration options available:
 
 ```code
-&#96;&#96;&#96;<strong>project</strong>
+'''<strong>project</strong>
 {
     "name": "html-project-example",
     "scrolling": "no",
@@ -45,7 +45,7 @@ This example has all configuration options available:
         "width": 960
     }
 }
-&#96;&#96;&#96;
+'''
 ```
 
 This renders the project like this:
