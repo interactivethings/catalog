@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import Hint from './Hint/Hint';
+import Hint from 'specimens/Hint';
 import Span from './Span';
 
 const getUnknownSpecimen = (specimen) => ({theme}) => <Hint warning body={`Unknown Specimen: <strong>${specimen}</strong>`} theme={theme} />;
