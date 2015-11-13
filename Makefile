@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build watch doc nightly lib dist deploy clean clobber lint test
+.PHONY: install server build build-lib build-standalone watch-lib doc nightly dist deploy clean clobber lint test
 
 all: server
 
@@ -40,16 +40,18 @@ install: node_modules
 server: install _print-banner
 	@UV_THREADPOOL_SIZE=100 bin/server
 
-build: install clean test
-	NODE_ENV=production \
-	webpack --colors --progress --hide-modules
+build: install clean test build-lib build-standalone
 
-watch: install clean
+watch-lib: install clean
 	BABEL_ENV=production \
 	NODE_ENV=development \
 	webpack --watch --config=./webpack.lib.js --colors --progress --hide-modules
 
-lib: install clean
+build-standalone:
+	NODE_ENV=production \
+	webpack --colors --progress --hide-modules
+
+build-lib:
 	NODE_ENV=production \
 	webpack --config=./webpack.lib.js --colors --progress --hide-modules
 

@@ -23,8 +23,8 @@ var webpackConfig = {
     output: {
       library: 'Catalog',
       libraryTarget: 'umd',
-      path: resolveHere('.'),
-      filename: 'catalog.js'
+      path: resolveHere('lib'),
+      filename: 'catalog-standalone.js'
     },
     resolve: {
       root: resolveHere('src')
