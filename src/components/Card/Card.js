@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Style as RadiumStyle } from 'radium';
-import {heading, text, code, inlineElements, inlineBlockquote} from 'scaffold/typography';
-import {inlineUlist, inlineOlist } from 'scaffold/lists';
+import {heading, text, code, inlineElements, inlineBlockquote} from '../../scaffold/typography';
+import {inlineUlist, inlineOlist } from '../../scaffold/lists';
 
 const cardContainer = () => ({maxWidth: 671});
 

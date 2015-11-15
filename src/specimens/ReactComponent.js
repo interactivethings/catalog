@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import Specimen from 'components/Specimen/Specimen';
+import Specimen from '../components/Specimen/Specimen';
 
 const registeredComponents = {
   FooBar: ({name}) => <button>{name}</button>

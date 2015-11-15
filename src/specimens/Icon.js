@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
+import Specimen from '../components/Specimen/Specimen';
 
-import MetadataBlock from 'components/Specimen/shared/MetadataBlock';
+import MetadataBlock from '../components/Specimen/shared/MetadataBlock';
 
 class Icon extends React.Component {
   render() {

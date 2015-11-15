@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
-import Span from 'components/Specimen/Span';
+import Specimen from '../components/Specimen/Specimen';
+import Span from '../components/Specimen/Span';
 
-import {heading} from 'scaffold/typography';
+import {heading} from '../scaffold/typography';
 
 class Audio extends React.Component {
   render() {

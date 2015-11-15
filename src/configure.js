@@ -1,5 +1,5 @@
-import DefaultTheme from 'DefaultTheme';
-import DefaultSpecimens from 'DefaultSpecimens';
+import DefaultTheme from './DefaultTheme';
+import DefaultSpecimens from './DefaultSpecimens';
 
 // Removes potential multiple slashes from concatenating paths
 const normalizePath = (path) => path.replace(/\/+/g, '/');

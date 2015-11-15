@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
-import {text} from 'scaffold/typography';
-import runscript from 'utils/runscript';
+import Specimen from '../components/Specimen/Specimen';
+import {text} from '../scaffold/typography';
+import runscript from '../utils/runscript';
 
 const PADDING = 3;
 const SIZE = 20;

@@ -9,8 +9,7 @@ var env = process.env.NODE_ENV || 'development';
 
 var loaders = {
   common: {
-    js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'},
-    svg: {test: /\.svg$/, loader: 'url?limit=8192&mimetype=image/svg+xml'},
+    js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'}
   },
 
   development: {},
@@ -25,9 +24,6 @@ var webpackConfig = {
       libraryTarget: 'umd',
       path: resolveHere('lib'),
       filename: 'catalog-standalone.js'
-    },
-    resolve: {
-      root: resolveHere('src')
     },
     module: {
       loaders: values(assignDeep(loaders.common, loaders[env])),

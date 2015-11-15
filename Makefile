@@ -31,7 +31,7 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build build-lib build-standalone watch-lib doc nightly dist deploy clean clobber lint test
+.PHONY: install server build build-lib build-umd-lib build-umd-standalone watch-lib doc nightly dist deploy clean clobber lint test
 
 all: server
 
@@ -40,18 +40,21 @@ install: node_modules
 server: install _print-banner
 	@UV_THREADPOOL_SIZE=100 bin/server
 
-build: install clean test build-lib build-standalone
+build: install clean test build-lib
 
 watch-lib: install clean
 	BABEL_ENV=production \
 	NODE_ENV=development \
-	webpack --watch --config=./webpack.lib.js --colors --progress --hide-modules
+	babel src --watch --out-dir lib
 
-build-standalone:
+build-lib:
+	babel src --out-dir lib
+
+build-umd-standalone:
 	NODE_ENV=production \
 	webpack --colors --progress --hide-modules
 
-build-lib:
+build-umd-lib:
 	NODE_ENV=production \
 	webpack --config=./webpack.lib.js --colors --progress --hide-modules
 

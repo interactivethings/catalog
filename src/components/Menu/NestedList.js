@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'CatalogPropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
-import Link from 'components/Link/Link';
+import Link from '../Link/Link';
 import ListItem, { style as listItemStyle } from './ListItem';
 import { style as menuStyle } from './Menu';
 import Radium from 'radium';

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
+import Specimen from '../components/Specimen/Specimen';
 
 class Color extends React.Component {
   render() {

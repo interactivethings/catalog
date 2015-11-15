@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react';
 import R from 'ramda';
 import JSZip from 'jszip';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
+import Specimen from '../../components/Specimen/Specimen';
 // Polyfill for DOMParser.parseFromString support
-import 'utils/DOMParser';
+import '../../utils/DOMParser';
 
-import fileUtils from 'utils/fileUtils';
-import saveAs from 'utils/FileSaver';
+import fileUtils from '../../utils/fileUtils';
+import saveAs from '../../utils/FileSaver';
 import bodyToProps from './bodyToProps';
-import {text, link} from 'scaffold/typography';
+import {text, link} from '../../scaffold/typography';
 
 import normalizeReferences from './normalizeReferences';
 import TabbedSourceView from './TabbedSourceView';

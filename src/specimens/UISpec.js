@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 
-import {text, link, heading} from 'scaffold/typography';
+import {text, link, heading} from '../scaffold/typography';
 
 
 function parseImage(image) {

@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'CatalogPropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
-import Link from 'components/Link/Link';
+import Link from '../Link/Link';
 import NestedList from './NestedList';
-import { text } from 'scaffold/typography';
+import { text } from '../../scaffold/typography';
 
 export function style(theme) {
   let pseudo = {

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import {text} from 'scaffold/typography';
+import {text} from '../scaffold/typography';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
+import Specimen from '../components/Specimen/Specimen';
 
 function getStyle(theme) {
   return {

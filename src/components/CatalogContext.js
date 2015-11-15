@@ -1,6 +1,6 @@
 import React, {Component, PropTypes, Children} from 'react';
-import ContextApp from 'components/App/ContextApp';
-import CatalogPropTypes from 'CatalogPropTypes';
+import ContextApp from './App/ContextApp';
+import CatalogPropTypes from '../CatalogPropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {

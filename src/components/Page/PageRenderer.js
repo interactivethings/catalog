@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'CatalogPropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
-import MarkdownRenderer from 'utils/MarkdownRenderer';
+import MarkdownRenderer from '../../utils/MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
 
-import Card from 'components/Card/Card';
-import MarkdownSpecimen from 'components/Specimen/MarkdownSpecimen';
-import parseSpecimen from 'utils/parseSpecimen';
+import Card from '../Card/Card';
+import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
+import parseSpecimen from '../../utils/parseSpecimen';
 
-import { heading, text, inlineElements, inlineBlockquote } from 'scaffold/typography';
-import { inlineUlist, inlineOlist } from 'scaffold/lists';
+import { heading, text, inlineElements, inlineBlockquote } from '../../scaffold/typography';
+import { inlineUlist, inlineOlist } from '../../scaffold/lists';
 
 function pageContainer(theme) {
   return {
@@ -19,7 +19,7 @@ function pageContainer(theme) {
   };
 }
 
-const seqKey = require('utils/seqKey')('cg-Page');
+const seqKey = require('../../utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
   render() {

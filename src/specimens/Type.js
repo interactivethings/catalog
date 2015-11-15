@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Specimen from 'components/Specimen/Specimen';
+import Specimen from '../components/Specimen/Specimen';
 
 function getStyle(theme) {
   return {

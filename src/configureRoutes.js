@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route} from 'react-router';
-import CatalogContext from 'components/CatalogContext';
-import Page from 'components/Page/ContextPage';
-import PageRenderer from 'components/Page/PageRenderer';
+import CatalogContext from './components/CatalogContext';
+import Page from './components/Page/ContextPage';
+import PageRenderer from './components/Page/PageRenderer';
 
 const wrapComponent = (Component) => {
   const WrappedComponent = () => <PageRenderer content={<Component />} />;

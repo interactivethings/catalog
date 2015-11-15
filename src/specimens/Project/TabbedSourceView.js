@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import normalizeReferences from './normalizeReferences';
 
-import {text} from 'scaffold/typography';
+import {text} from '../../scaffold/typography';
 
 
 function getStyle(theme) {

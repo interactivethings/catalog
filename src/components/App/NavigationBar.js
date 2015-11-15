@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import CatalogPropTypes from 'CatalogPropTypes';
-import Link from 'components/Link/Link';
+import CatalogPropTypes from '../../CatalogPropTypes';
+import Link from '../Link/Link';
 
 function getStyles(theme, isMobileLayout) {
   let navPadding = isMobileLayout ? 26 : 60;

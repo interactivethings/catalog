@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import CatalogPropTypes from 'CatalogPropTypes';
-import runscript from 'utils/runscript';
+import CatalogPropTypes from '../../CatalogPropTypes';
+import runscript from '../../utils/runscript';
 
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';

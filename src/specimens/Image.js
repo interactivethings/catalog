@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import Specimen from 'components/Specimen/Specimen';
-import Span from 'components/Specimen/Span';
+import Specimen from '../components/Specimen/Specimen';
+import Span from '../components/Specimen/Span';
 
-import {text, link, heading} from 'scaffold/typography';
+import {text, link, heading} from '../scaffold/typography';
 
 function generateLinkList(links, styles) {
   let items = links.map( (url, key) => {

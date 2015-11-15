@@ -1,8 +1,8 @@
 import React, { PropTypes, Children } from 'react';
-import CatalogPropTypes from 'CatalogPropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
 import AppLayout from './AppLayout';
-import Menu from 'components/Menu/Menu';
+import Menu from '../Menu/Menu';
 
 class App extends React.Component {
   render() {
