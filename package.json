@@ -34,7 +34,6 @@
     "eslint-plugin-react": "^3.1.1",
     "express": "^4.13.3",
     "faucet": "0.0.1",
-    "file-loader": "^0.8.1",
     "history": "^1.12.3",
     "object-values": "^1.0.0",
     "portfinder": "^0.4.0",
@@ -45,8 +44,6 @@
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
     "tape": "^4.2.2",
-    "uglify-js": "2.4.15",
-    "url-loader": "^0.5.5",
     "webpack": "^1.8.9",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1"

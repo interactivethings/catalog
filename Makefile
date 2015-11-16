@@ -4,7 +4,6 @@ PATH  := node_modules/.bin:$(PATH)
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
 CURRENT_VERSION = $(shell ./bin/version)
-NIGHTLY_VERSION = Build $(shell date "+%Y%m%d.%s")
 
 BUILD_SOURCES = \
 	catalog.js
@@ -15,10 +14,8 @@ DOC_SOURCES = \
 
 DIST_DIR        = dist
 VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
-NIGHTLY_DIR     = $(DIST_DIR)/nightly
 
 VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(BUILD_SOURCES))
-NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/, $(BUILD_SOURCES))
 LATEST_TARGETS  = $(addprefix $(DIST_DIR)/,    $(BUILD_SOURCES))
 DOC_TARGETS     = $(addprefix $(DIST_DIR)/,    $(DOC_SOURCES))
 
@@ -31,32 +28,30 @@ CLI_RESET   = \033[0m
 # Recipes
 #
 
-.PHONY: install server build build-lib build-umd-lib build-umd-standalone watch-lib doc nightly dist deploy clean clobber lint test
+.PHONY: install server build build-lib build-umd-lib build-umd watch-lib doc dist deploy clean clobber lint test
 
 all: server
 
 install: node_modules
 
 server: install _print-banner
-	@UV_THREADPOOL_SIZE=100 bin/server
+	@NODE_ENV=hot bin/server
 
-build: install clean test build-lib
+build: install clean test build-lib build-umd build-umd-lib
 
 watch-lib: install clean
-	BABEL_ENV=production \
-	NODE_ENV=development \
 	babel src --watch --out-dir lib
 
 build-lib:
 	babel src --out-dir lib
 
-build-umd-standalone:
-	NODE_ENV=production \
-	webpack --colors --progress --hide-modules
+build-umd:
+	NODE_ENV=development webpack ./src/index ./lib/umd/catalog.js --colors --progress --hide-modules
+	NODE_ENV=production webpack ./src/index ./lib/umd/catalog.min.js --colors --progress --hide-modules
 
 build-umd-lib:
-	NODE_ENV=production \
-	webpack --config=./webpack.lib.js --colors --progress --hide-modules
+	NODE_ENV=development webpack ./src/index ./lib/umd/catalog-lib.js --config=./webpack.lib.js --colors --progress --hide-modules
+	NODE_ENV=production webpack ./src/index ./lib/umd/catalog-lib.min.js --config=./webpack.lib.js --colors --progress --hide-modules
 
 test:
 	@babel-node test/*.js | faucet
@@ -64,10 +59,7 @@ test:
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
-nightly: build doc $(NIGHTLY_TARGETS) $(NIGHTLY_TARGETS:.js=.min.js)
-	@echo -e "$(CLI_SUCCESS) Created new nightly distribution$(CLI_RESET)"
-
-dist: _dist-ensure-not-exists nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS) _dist-prompt-git-commit
+dist: _dist-ensure-not-exists $(VERSION_TARGETS) $(LATEST_TARGETS) _dist-prompt-git-commit
 	git add --all . && \
 	git commit --message "DIST $(CURRENT_VERSION)" && \
 	git tag --force $(CURRENT_VERSION)
@@ -117,15 +109,6 @@ $(DOC_TARGETS): $(DIST_DIR)/%: % package.json
 		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
 		@cp $< $@)
 	@echo $@
-
-%.min.js: %.js
-	@echo . Compress $<
-	@uglifyjs $< \
-		--mangle \
-		--compress \
-		--comments /$(PROJECT_NAME)/ \
-		--output $@ \
-		2> uglifyjs.log
 
 
 #

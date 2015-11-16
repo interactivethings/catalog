@@ -2,57 +2,57 @@
 
 var resolveHere = require('path').resolve.bind(null, __dirname);
 var assignDeep = require('assign-deep');
-var values = require('object-values');
 var webpack = require('webpack');
 
 var env = process.env.NODE_ENV || 'development';
 
-var loaders = {
-  common: {
-    js: {test: /\.js$/, include: [resolveHere('src')], loader: 'babel'}
+var baseConfig = {
+  entry: resolveHere('src/index'),
+  output: {
+    library: 'Catalog',
+    libraryTarget: 'umd'
   },
-
-  development: {},
-
-  production: {}
-}
+  module: {
+    loaders: [{test: /\.js$/, include: [resolveHere('src')], loader: 'babel'}]
+  }
+};
 
 var webpackConfig = {
-  common: {
-    output: {
-      library: 'Catalog',
-      libraryTarget: 'umd',
-      path: resolveHere('lib'),
-      filename: 'catalog-standalone.js'
-    },
-    module: {
-      loaders: values(assignDeep(loaders.common, loaders[env])),
-      noParse: [
-        /\.min\.js$/
-      ]
-    }
-  },
-
-  development: {
+  // Used for the local development server
+  hot: {
     entry: [
       'webpack-hot-middleware/client',
       resolveHere('src/index')
     ],
     output: {
+      path: resolveHere('.'),
+      filename: 'catalog.js',
       pathinfo: true
     },
     devtool: '#eval-source-map',
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
        '__DEV__': JSON.stringify(true),
        'process.env.NODE_ENV': JSON.stringify('development')
-      })
+      }),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.optimize.OccurenceOrderPlugin()
     ]
   },
 
+  // Used for unminified development build
+  development: {
+    plugins: [
+      new webpack.DefinePlugin({
+       '__DEV__': JSON.stringify(true),
+       'process.env.NODE_ENV': JSON.stringify('development')
+      }),
+      new webpack.optimize.OccurenceOrderPlugin()
+    ]
+  },
+
+  // Minified production build
   production: {
-    entry: resolveHere('src/index'),
     plugins: [
       new webpack.DefinePlugin({
         '__DEV__': JSON.stringify(false),
@@ -69,5 +69,4 @@ var webpackConfig = {
   }
 };
 
-
-module.exports = assignDeep({}, webpackConfig.common, webpackConfig[env]);
+module.exports = assignDeep({}, baseConfig, webpackConfig[env]);
