@@ -15,10 +15,10 @@ DOC_SOURCES = \
 
 DIST_DIR        = dist
 VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
-NIGHTLY_DIR     = $(DIST_DIR)/nightly
+NIGHTLY_DIR     = $(DIST_DIR)/v1/nightly
 
 VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(BUILD_SOURCES))
-NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/v1/, $(BUILD_SOURCES))
+NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/, $(BUILD_SOURCES))
 LATEST_TARGETS  = $(addprefix $(DIST_DIR)/v1/,    $(BUILD_SOURCES))
 DOC_TARGETS     = $(addprefix $(DIST_DIR)/v1/,    $(DOC_SOURCES))
 
