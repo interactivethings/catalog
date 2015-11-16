@@ -78,7 +78,7 @@ $(VERSION_TARGETS): $(VERSION_DIR)/%: %
 	@mkdir -p $(dir $@)
 	@echo "/* $(PROJECT_NAME) $(CURRENT_VERSION) $(PROJECT_URL) */" | cat - $< > $@
 
-$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/v1/%: %
+$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/%: %
 	@mkdir -p $(dir $@)
 	@echo "/* $(PROJECT_NAME) $(NIGHTLY_VERSION) $(PROJECT_URL) */" | cat - $< > $@
 
