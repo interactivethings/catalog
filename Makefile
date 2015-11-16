@@ -18,7 +18,7 @@ VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
 NIGHTLY_DIR     = $(DIST_DIR)/nightly
 
 VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(BUILD_SOURCES))
-NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/v1, $(BUILD_SOURCES))
+NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/v1/, $(BUILD_SOURCES))
 LATEST_TARGETS  = $(addprefix $(DIST_DIR)/v1/,    $(BUILD_SOURCES))
 DOC_TARGETS     = $(addprefix $(DIST_DIR)/v1/,    $(DOC_SOURCES))
 
@@ -52,10 +52,7 @@ doc: install $(DOC_TARGETS)
 nightly: build doc $(NIGHTLY_TARGETS) $(NIGHTLY_TARGETS:.js=.min.js)
 	@echo -e "$(CLI_SUCCESS) Created new nightly distribution$(CLI_RESET)"
 
-dist: _dist-ensure-not-exists nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS) _dist-prompt-git-commit
-	git add --all . && \
-	git commit --message "DIST $(CURRENT_VERSION)" && \
-	git tag --force $(CURRENT_VERSION)
+dist: nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Created new distribution \"$(CURRENT_VERSION)\"$(CLI_RESET)"
 
 deploy:
@@ -81,14 +78,14 @@ $(VERSION_TARGETS): $(VERSION_DIR)/%: %
 	@mkdir -p $(dir $@)
 	@echo "/* $(PROJECT_NAME) $(CURRENT_VERSION) $(PROJECT_URL) */" | cat - $< > $@
 
-$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/%: %
+$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/v1/%: %
 	@mkdir -p $(dir $@)
 	@echo "/* $(PROJECT_NAME) $(NIGHTLY_VERSION) $(PROJECT_URL) */" | cat - $< > $@
 
-$(LATEST_TARGETS): $(DIST_DIR)/%.js: $(VERSION_DIR)/%.min.js
+$(LATEST_TARGETS): $(DIST_DIR)/v1/%.js: $(VERSION_DIR)/%.min.js
 	@cp $< $@
 
-$(DOC_TARGETS): $(DIST_DIR)/%: % package.json
+$(DOC_TARGETS): $(DIST_DIR)/v1/%: % package.json
 	@mkdir -p $(dir $@)
 # Replace the string %VERSION% in supported files with the current version,
 # otherwise just copy the file to the destination
