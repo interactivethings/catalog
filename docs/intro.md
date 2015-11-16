@@ -1,3 +1,5 @@
+> **This is the documentation vor Catalog v1.x. For the current documentation go to [https://interactivethings.github.io/catalog/](https://interactivethings.github.io/catalog/)**
+
 > Catalog helps you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your project with clarity. It is completely dependency free, making it trivial to integrate into any application.
 
 That last bit is where Catalog really shines. There are many great tools out there to build living style guides, but most of them depend on a build step, which is in turn dependent on a specific technology. We like to use the right tool for the job: in some cases that might be Rails or Node.js or PHP or just plain HTML. Catalog works effortlessly with all of these technologies.
@@ -8,16 +10,16 @@ Use Catalog to document HTML and CSS, colors, typography, and even interactive c
 
 To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
-* Catalog %VERSION%: [production](http://interactivethings.github.io/catalog/%VERSION%/catalog.min.js), [development](http://interactivethings.github.io/catalog/%VERSION%/catalog.js)
-* Latest build: [latest](http://interactivethings.github.io/catalog/catalog.js)
-* Nightly build: [experimental](http://interactivethings.github.io/catalog/nightly/catalog.js)
+* Catalog %VERSION%: [production](https://interactivethings.github.io/catalog/%VERSION%/catalog.min.js), [development](https://interactivethings.github.io/catalog/%VERSION%/catalog.js)
+* Latest build: [latest](https://interactivethings.github.io/catalog/v1/catalog.js)
+* Nightly build: [experimental](https://interactivethings.github.io/catalog/v1/nightly/catalog.js)
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/) or [Bower](http://bower.io/).
 
 #### Install with npm
 
 ```code
-npm install --save interactivethings/catalog.git#%VERSION%
+npm install --save catalog%VERSION%
 ```
 
 #### Install with Bower

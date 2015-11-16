@@ -18,9 +18,9 @@ VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
 NIGHTLY_DIR     = $(DIST_DIR)/nightly
 
 VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(BUILD_SOURCES))
-NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/, $(BUILD_SOURCES))
-LATEST_TARGETS  = $(addprefix $(DIST_DIR)/,    $(BUILD_SOURCES))
-DOC_TARGETS     = $(addprefix $(DIST_DIR)/,    $(DOC_SOURCES))
+NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/v1, $(BUILD_SOURCES))
+LATEST_TARGETS  = $(addprefix $(DIST_DIR)/v1/,    $(BUILD_SOURCES))
+DOC_TARGETS     = $(addprefix $(DIST_DIR)/v1/,    $(DOC_SOURCES))
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
