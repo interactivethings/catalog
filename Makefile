@@ -52,7 +52,10 @@ doc: install $(DOC_TARGETS)
 nightly: build doc $(NIGHTLY_TARGETS) $(NIGHTLY_TARGETS:.js=.min.js)
 	@echo -e "$(CLI_SUCCESS) Created new nightly distribution$(CLI_RESET)"
 
-dist: nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS)
+dist: _dist-ensure-not-exists nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS) _dist-prompt-git-commit
+	git add --all . && \
+	git commit --message "DIST $(CURRENT_VERSION)" && \
+	git tag --force $(CURRENT_VERSION)
 	@echo -e "$(CLI_SUCCESS) Created new distribution \"$(CURRENT_VERSION)\"$(CLI_RESET)"
 
 deploy:
