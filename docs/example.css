@@ -1,0 +1,26 @@
+/* Example Styles */
+.button, .important-button {
+  border-radius: 3px;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 4px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.button {
+  background: #2666a4;
+  color: #ffffff;
+}
+.button.button--disabled {
+  background: #a1afbc;
+  color: #727c86;
+}
+.button.button--inverted {
+  background: #ffffff;
+  color: #2666a4;
+}
+.important-button {
+  background: #a80050;
+  color: #fff;
+}
