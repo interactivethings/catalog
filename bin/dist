@@ -29,13 +29,8 @@ read -p "Publish to gh-pages? [Yn] " publish_gh
 
 if [ "$publish_gh" != 'n' ] && [ "$publish_gh" != 'N' ]
 then
-  if [ "$prerelease" == 'y' ] || [ "$prerelease" == 'Y' ]
-  then
-    PUBLIC_LIB_URL=https://npmcdn.com/catalog@next/catalog.min.js make docs
-  else
-    PUBLIC_LIB_URL=https://npmcdn.com/catalog/catalog.min.js make docs
-  fi
-
+  make docs
+  
   git subtree split --prefix site --branch gh-pages && \
   git push --force origin gh-pages:gh-pages && \
   git branch -D gh-pages

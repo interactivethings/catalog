@@ -3,8 +3,8 @@ PATH  := node_modules/.bin:$(PATH)
 
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
-PUBLIC_LIB_URL ?= https://npmcdn.com/catalog/catalog.min.js
 CURRENT_VERSION = $(shell ./bin/version)
+PUBLIC_LIB_URL = https://npmcdn.com/catalog@$(CURRENT_VERSION)/catalog.min.js
 
 UMD_BUILD_TARGETS = \
 	catalog.js \
@@ -62,7 +62,7 @@ catalog-lib.min.js:
 
 ### DOCUMENTATION AND DEPLOYMENT
 
-docs: node_modules $(SITE_DIR)/index.html $(DOC_TARGETS)
+docs: $(SITE_DIR)/index.html $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
 dist:
