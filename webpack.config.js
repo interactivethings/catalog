@@ -3,8 +3,11 @@
 var resolveHere = require('path').resolve.bind(null, __dirname);
 var assignDeep = require('assign-deep');
 var webpack = require('webpack');
+var version = require('./package.json').version;
 
 var env = process.env.NODE_ENV || 'development';
+
+var bannerPlugin = new webpack.BannerPlugin('Catalog ' + version + ' http://interactivethings.github.io/catalog/');
 
 var baseConfig = {
   entry: resolveHere('src/index'),
@@ -47,7 +50,8 @@ var webpackConfig = {
        '__DEV__': JSON.stringify(true),
        'process.env.NODE_ENV': JSON.stringify('development')
       }),
-      new webpack.optimize.OccurenceOrderPlugin()
+      new webpack.optimize.OccurenceOrderPlugin(),
+      bannerPlugin
     ]
   },
 
@@ -64,7 +68,8 @@ var webpackConfig = {
         compress: {
           warnings: false
         }
-      })
+      }),
+      bannerPlugin
     ]
   }
 };
