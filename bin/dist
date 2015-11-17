@@ -1,21 +1,46 @@
 #!/bin/bash
 
+CLI_SUCCESS = \033[1;32m✔
+CLI_ERROR   = \033[1;31m✘
+CLI_QUERY   = \033[1;36m→
+CLI_RESET   = \033[0m
+
 read -p "Enter a new version (current: $(./bin/version)): " version
 
 npm version "$version" 
 
-read -p "Publish to npm? [Yn] " publish
+read -p 'Is this a prerelase version? [yN] ' prerelease
 
-if [ "$publish" != 'n' ] && [ "$publish" != 'N' ]
+read -p "Publish to npm? [Yn] " publish_npm
+
+if [ "$publish_npm" != 'n' ] && [ "$publish_npm" != 'N' ]
 then
-  read -p 'Is this a prerelase version? [yN] ' prerelease
-
   if [ "$prerelease" == 'y' ] || [ "$prerelease" == 'Y' ]
   then
     npm publish --tag next
   else
     npm publish
   fi
+
+  echo -e "$CLI_SUCCESS Published version \"$version\" to npm$CLI_RESET"
+fi
+
+read -p "Publish to gh-pages? [Yn] " publish_gh
+
+if [ "$publish_gh" != 'n' ] && [ "$publish_gh" != 'N' ]
+then
+  if [ "$prerelease" == 'y' ] || [ "$prerelease" == 'Y' ]
+  then
+    PUBLIC_LIB_URL=https://npmcdn.com/catalog@next/catalog.min.js make docs
+  else
+    PUBLIC_LIB_URL=https://npmcdn.com/catalog/catalog.min.js make docs
+  fi
+
+  git subtree split --prefix site --branch gh-pages && \
+  git push --force origin gh-pages:gh-pages && \
+  git branch -D gh-pages
+
+  echo -e "$CLI_SUCCESS Published version \"$version\" to gh-pages$CLI_RESET"
 fi
 
 exit 0

@@ -17,36 +17,32 @@ var banner = [
   "       /   )          /)          ",
   "_____ /   _  _/_ _   // _  ______.",
   "     /   (_(_(__(_(_(/_(_)(_/     ",
-  "     \\___/               .-/—     ",
+  "     \\___/               .-/—    ",
   "                        (_/       "
 ].join("\n");
 
 function server(options, config) {
   var app = express();
-  var configs = Array.isArray(config) ? config : [config];
 
   app.use(historyApiFallback());
 
-  configs.forEach(function(c) {
-    var compiler = webpack(c);
+  var compiler = webpack(config);
 
-    app.use(devMiddleware(compiler, {
-        publicPath: c.output.publicPath,
-        contentBase: c.output.contentBase,
-        stats: {
-          assets: true,
-          chunkModules: false,
-          chunkOrigins: false,
-          chunks: false,
-          colors: true,
-          hash: false,
-          timings: true,
-          version: false
-        }
-      }));
+  app.use(devMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: {
+      assets: true,
+      chunkModules: false,
+      chunkOrigins: false,
+      chunks: false,
+      colors: true,
+      hash: false,
+      timings: true,
+      version: false
+    }
+  }));
 
-    app.use(hotMiddleware(compiler));
-  });
+  app.use(hotMiddleware(compiler));
 
   app.use(express.static('.'));
 

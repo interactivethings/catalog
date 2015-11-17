@@ -3,6 +3,7 @@ PATH  := node_modules/.bin:$(PATH)
 
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
+PUBLIC_LIB_URL ?= https://npmcdn.com/catalog/catalog.min.js
 CURRENT_VERSION = $(shell ./bin/version)
 
 UMD_BUILD_TARGETS = \
@@ -12,22 +13,17 @@ UMD_BUILD_TARGETS = \
 	catalog-lib.min.js
 
 DOC_SOURCES = \
-	index.html \
 	$(shell find docs -type f \( ! -iname ".*" \))
 
-DIST_DIR        = dist
-VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
-
-VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(UMD_BUILD_TARGETS))
-LATEST_TARGETS  = $(addprefix $(DIST_DIR)/,    $(UMD_BUILD_TARGETS))
-DOC_TARGETS     = $(addprefix $(DIST_DIR)/,    $(DOC_SOURCES))
+SITE_DIR        = site
+DOC_TARGETS     = $(addprefix $(SITE_DIR)/, $(DOC_SOURCES))
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib doc dist deploy clean clobber lint test
+.PHONY: server build watch-lib docs dist deploy clean clobber lint test
 
 all: server
 
@@ -66,18 +62,11 @@ catalog-lib.min.js:
 
 ### DOCUMENTATION AND DEPLOYMENT
 
-doc: install $(DOC_TARGETS)
+docs: node_modules $(SITE_DIR)/index.html $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
 dist:
 	@bin/dist
-
-deploy:
-	@git subtree split --prefix $(DIST_DIR) --branch gh-pages && \
-	git push --force origin gh-pages:gh-pages && \
-	git branch -D gh-pages
-	@echo -e "$(CLI_SUCCESS) Deployed distribution \"$(CURRENT_VERSION)\" to $(PROJECT_URL)$(CLI_RESET)"
-
 
 ### CLEAN
 
@@ -94,18 +83,21 @@ lint:
 # Targets
 #
 
-$(DOC_TARGETS): $(DIST_DIR)/%: % package.json
+$(SITE_DIR)/index.html: index.html package.json
+	@mkdir -p $(dir $@)
+	@sed -e 's#catalog.js#$(PUBLIC_LIB_URL)#g' \
+			$< > $@
+
+$(DOC_TARGETS): $(SITE_DIR)/%: % package.json
 	@mkdir -p $(dir $@)
 # Replace the string %VERSION% in supported files with the current version,
 # otherwise just copy the file to the destination
 	$(if $(or \
-			$(findstring .css,  $(suffix $<)), \
-			$(findstring .html, $(suffix $<)), \
-			$(findstring .js,   $(suffix $<)), \
 			$(findstring .md,   $(suffix $<)), \
 			$(findstring .txt,  $(suffix $<)), \
 		), \
-		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
+		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' \
+			$< > $@, \
 		@cp $< $@)
 	@echo $@
 
