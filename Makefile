@@ -5,8 +5,11 @@ PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
 CURRENT_VERSION = $(shell ./bin/version)
 
-BUILD_SOURCES = \
-	catalog.js
+UMD_BUILD_TARGETS = \
+	catalog.js \
+	catalog.min.js \
+	catalog-lib.js \
+	catalog-lib.min.js
 
 DOC_SOURCES = \
 	index.html \
@@ -15,8 +18,8 @@ DOC_SOURCES = \
 DIST_DIR        = dist
 VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
 
-VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(BUILD_SOURCES))
-LATEST_TARGETS  = $(addprefix $(DIST_DIR)/,    $(BUILD_SOURCES))
+VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(UMD_BUILD_TARGETS))
+LATEST_TARGETS  = $(addprefix $(DIST_DIR)/,    $(UMD_BUILD_TARGETS))
 DOC_TARGETS     = $(addprefix $(DIST_DIR)/,    $(DOC_SOURCES))
 
 CLI_SUCCESS = \033[1;32m✔
@@ -24,37 +27,44 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-#
-# Recipes
-#
-
-.PHONY: install server build build-lib build-umd-lib build-umd watch-lib doc dist deploy clean clobber lint test
+.PHONY: server build watch-lib doc dist deploy clean clobber lint test
 
 all: server
 
-install: node_modules
 
-server: install _print-banner
+### DEVELOPMENT
+
+server: node_modules _print-banner
 	@NODE_ENV=hot bin/server
 
-build: install clean test build-lib build-umd build-umd-lib
-
-watch-lib: install clean
+watch-lib: node_modules
 	babel src --watch --out-dir lib
-
-build-lib:
-	babel src --out-dir lib
-
-build-umd:
-	NODE_ENV=development webpack ./src/index ./lib/umd/catalog.js --colors --progress --hide-modules
-	NODE_ENV=production webpack ./src/index ./lib/umd/catalog.min.js --colors --progress --hide-modules
-
-build-umd-lib:
-	NODE_ENV=development webpack ./src/index ./lib/umd/catalog-lib.js --config=./webpack.lib.js --colors --progress --hide-modules
-	NODE_ENV=production webpack ./src/index ./lib/umd/catalog-lib.min.js --config=./webpack.lib.js --colors --progress --hide-modules
 
 test:
 	@babel-node test/*.js | faucet
+
+
+### BUILDS
+
+build: node_modules clean test lib $(UMD_BUILD_TARGETS)
+
+lib:
+	babel src --out-dir $@
+
+catalog.js:
+	@NODE_ENV=development webpack ./src/index ./$@ --colors --progress --hide-modules
+
+catalog.min.js:
+	@NODE_ENV=production webpack ./src/index ./$@ --colors --progress --hide-modules
+
+catalog-lib.js:
+	@NODE_ENV=development webpack ./src/index ./$@ --config=./webpack.lib.js --colors --progress --hide-modules
+
+catalog-lib.min.js:
+	@NODE_ENV=production webpack ./src/index ./$@ --config=./webpack.lib.js --colors --progress --hide-modules
+
+
+### DOCUMENTATION AND DEPLOYMENT
 
 doc: install $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
@@ -71,8 +81,11 @@ deploy:
 	git branch -D gh-pages
 	@echo -e "$(CLI_SUCCESS) Deployed distribution \"$(CURRENT_VERSION)\" to $(PROJECT_URL)$(CLI_RESET)"
 
+
+### CLEAN
+
 clean:
-	@rm -rf -- $(BUILD_SOURCES) uglifyjs.log
+	@rm -rf -- lib $(UMD_BUILD_TARGETS)
 
 clobber: clean
 	@rm -rf node_modules
@@ -83,17 +96,6 @@ lint:
 #
 # Targets
 #
-
-$(VERSION_TARGETS): $(VERSION_DIR)/%: %
-	@mkdir -p $(dir $@)
-	@echo "/* $(PROJECT_NAME) $(CURRENT_VERSION) $(PROJECT_URL) */" | cat - $< > $@
-
-$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/%: %
-	@mkdir -p $(dir $@)
-	@echo "/* $(PROJECT_NAME) $(NIGHTLY_VERSION) $(PROJECT_URL) */" | cat - $< > $@
-
-$(LATEST_TARGETS): $(DIST_DIR)/%.js: $(VERSION_DIR)/%.min.js
-	@cp $< $@
 
 $(DOC_TARGETS): $(DIST_DIR)/%: % package.json
 	@mkdir -p $(dir $@)
