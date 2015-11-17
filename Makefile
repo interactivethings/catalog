@@ -23,7 +23,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib docs dist deploy clean clobber lint test
+.PHONY: server build watch-lib docs publish-docs dist deploy clean clobber lint test
 
 all: server
 
@@ -64,6 +64,12 @@ catalog-lib.min.js:
 
 docs: $(SITE_DIR)/index.html $(DOC_TARGETS)
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
+
+publish-docs: docs
+	@git subtree split --prefix site --branch gh-pages && \
+	git push --force origin gh-pages:gh-pages && \
+	git branch -D gh-pages
+	@echo -e "$(CLI_SUCCESS) Published version \"$version\" to gh-pages$(CLI_RESET)"
 
 dist:
 	@bin/dist
