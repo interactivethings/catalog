@@ -27,7 +27,7 @@
     "babel-eslint": "^4.1.1",
     "babel-loader": "^5.0.0",
     "babel-plugin-react-transform": "^1.1.1",
-    "cli-color": "0.3.2",
+    "cli-color": "1.1.0",
     "connect-history-api-fallback": "^1.1.0",
     "eslint": "^1.0.0",
     "eslint-config-interactivethings": "^2.0.1",

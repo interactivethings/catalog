@@ -34,7 +34,7 @@ all: server
 
 ### DEVELOPMENT
 
-server: node_modules _print-banner
+server: node_modules
 	@NODE_ENV=hot bin/server
 
 watch-lib: node_modules
@@ -135,10 +135,6 @@ _dist-prompt-git-commit:
 	if [ $$CONTINUE != 'y' ] && [ $$CONTINUE != 'Y' ]; then \
 		echo -e "$(CLI_ERROR) Distribution has not been committed to Git$(CLI_RESET)"; exit 1; \
 	fi
-
-_print-banner:
-	@./bin/banner
-
 
 #
 # Dependencies
