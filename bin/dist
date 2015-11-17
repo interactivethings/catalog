@@ -25,17 +25,17 @@ then
   echo -e "$CLI_SUCCESS Published version \"$version\" to npm$CLI_RESET"
 fi
 
-read -p "Publish to gh-pages? [Yn] " publish_gh
+# read -p "Publish to gh-pages? [Yn] " publish_gh
 
-if [ "$publish_gh" != 'n' ] && [ "$publish_gh" != 'N' ]
-then
-  make docs
+# if [ "$publish_gh" != 'n' ] && [ "$publish_gh" != 'N' ]
+# then
+#   make docs
   
-  git subtree split --prefix site --branch gh-pages && \
-  git push --force origin gh-pages:gh-pages && \
-  git branch -D gh-pages
+#   git subtree split --prefix site --branch gh-pages && \
+#   git push --force origin gh-pages:gh-pages && \
+#   git branch -D gh-pages
 
-  echo -e "$CLI_SUCCESS Published version \"$version\" to gh-pages$CLI_RESET"
-fi
+#   echo -e "$CLI_SUCCESS Published version \"$version\" to gh-pages$CLI_RESET"
+# fi
 
 exit 0
