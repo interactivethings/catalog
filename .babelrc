@@ -1,7 +1,7 @@
 {
   "stage": 2,
   "env": {
-    "development": {
+    "hot": {
       "plugins": ["react-transform"],
       "extra": {
         "react-transform": {

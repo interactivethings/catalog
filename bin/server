@@ -9,28 +9,38 @@ var devMiddleware = require('webpack-dev-middleware');
 var hotMiddleware = require('webpack-hot-middleware');
 var historyApiFallback = require('connect-history-api-fallback');
 var portfinder = require('portfinder');
+var clc = require('cli-color');
 var webpackConfig = require('../webpack.config');
+
+var banner = [
+  "         __                       ",
+  "       /   )          /)          ",
+  "_____ /   _  _/_ _   // _  ______.",
+  "     /   (_(_(__(_(_(/_(_)(_/     ",
+  "     \\___/               .-/—    ",
+  "                        (_/       "
+].join("\n");
 
 function server(options, config) {
   var app = express();
-  var compiler = webpack(config);
 
   app.use(historyApiFallback());
 
+  var compiler = webpack(config);
+
   app.use(devMiddleware(compiler, {
-      publicPath: config.output.publicPath,
-      contentBase: config.output.contentBase,
-      stats: {
-        assets: true,
-        chunkModules: false,
-        chunkOrigins: false,
-        chunks: false,
-        colors: true,
-        hash: false,
-        timings: true,
-        version: false
-      }
-    }));
+    publicPath: config.output.publicPath,
+    stats: {
+      assets: true,
+      chunkModules: false,
+      chunkOrigins: false,
+      chunks: false,
+      colors: true,
+      hash: false,
+      timings: true,
+      version: false
+    }
+  }));
 
   app.use(hotMiddleware(compiler));
 
@@ -38,8 +48,9 @@ function server(options, config) {
 
   app.listen(options.port, options.host, function (err, result) {
     if (err) { throw err };
-
-    console.log('Listening at http://' + options.host + ':' + options.port);
+    console.log(clc.erase.screen);
+    console.log(clc.red(banner));
+    console.log(clc.red('\nCatalog server running at ' + clc.underline('http://' + options.host + ':' + options.port)) + '\n');
   });
 };
 

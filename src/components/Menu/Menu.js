@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
-import { heading, text } from 'scaffold/typography';
-import Link from 'components/Link/Link';
+import CatalogPropTypes from '../../CatalogPropTypes';
+import { heading, text } from '../../scaffold/typography';
+import Link from '../Link/Link';
 
 import ListItem from './ListItem';
 
 export function style(theme) {
   return {
     bar: {
-      background: theme.sidebarColor
+      background: theme.sidebarColor,
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
     },
     h1: {
       ...heading(theme, {level: 2}),
@@ -32,7 +35,8 @@ export function style(theme) {
       borderBottom: `1px solid ${theme.sidebarColorLine}`,
       listStyle: 'none',
       margin: 0,
-      padding: 0
+      padding: 0,
+      height: '100%'
     },
     listNested: {
       borderTop: 'none',
@@ -41,11 +45,11 @@ export function style(theme) {
     },
     info: {
       ...text(theme, {level: 4}),
-      position: 'absolute',
-      bottom: 0,
       fontSize: 12,
       padding: 20,
-      color: theme.lightColor
+      color: theme.lightColor,
+      alignSelf: 'flex-end',
+      height: '100%'
     },
     link: {
       color: theme.lightColor
@@ -55,7 +59,7 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const { theme, pages, logoSrc, title, history } = this.props;
+    const { theme, pageTree, logoSrc, title, history } = this.props;
 
     let currentStyle = style(theme);
 
@@ -67,8 +71,9 @@ class Menu extends React.Component {
           <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
         </Link>
         <ul style={currentStyle.list}>
-          { pages.map(page => <ListItem key={page.name} page={page} theme={theme} history={history} />) }
+          { pageTree.map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
         </ul>
+        <div style={{flex: 1}}/>
         <div style={currentStyle.info}>
           Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>catalog</a>,
           an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com' target='_blank'>Interactive Things</a>.
@@ -80,7 +85,7 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  pages: CatalogPropTypes.pages.isRequired,
+  pageTree: CatalogPropTypes.pages.isRequired,
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   history: PropTypes.object.isRequired,

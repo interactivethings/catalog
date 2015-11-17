@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { Style as RadiumStyle } from 'radium';
-import {heading, text, code, inlineElements, inlineBlockquote} from 'scaffold/typography';
-import {inlineUlist, inlineOlist } from 'scaffold/lists';
+import {heading, text, code, inlineElements, inlineBlockquote} from '../../scaffold/typography';
+import {inlineUlist, inlineOlist } from '../../scaffold/lists';
 
 const cardContainer = () => ({maxWidth: 671});
 
 class Card extends Component {
   render() {
-    const {theme, children} = this.props;
+    const {theme} = this.context;
+    const {children} = this.props;
 
     let inlineBlockquoteRules = inlineBlockquote(theme);
     inlineBlockquoteRules.blockquote = {
@@ -111,7 +112,10 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
+};
+
+Card.contextTypes = {
   theme: PropTypes.object.isRequired
 };
 

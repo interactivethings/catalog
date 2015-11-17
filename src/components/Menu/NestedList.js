@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
-import Link from 'components/Link/Link';
+import Link from '../Link/Link';
 import ListItem, { style as listItemStyle } from './ListItem';
 import { style as menuStyle } from './Menu';
 import Radium from 'radium';
@@ -10,7 +10,6 @@ const NestedList = React.createClass({
   propTypes: {
     pages: CatalogPropTypes.pages.isRequired,
     title: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
     theme: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
   },
@@ -36,7 +35,7 @@ const NestedList = React.createClass({
         </Link>
         { !collapsed &&
           <ul style={[currentStyle.list, currentStyle.listNested, {padding: 0}]}>
-            { pages.map(page => <ListItem history={history} key={page.name} page={page} nested theme={theme} />) }
+            { pages.map(page => <ListItem history={history} key={page.id} page={page} nested theme={theme} />) }
           </ul>
         }
       </div>

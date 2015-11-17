@@ -1,11 +1,29 @@
-/* eslint-disable comma-dangle */
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
-import hamburgerSrc from 'assets/menu-icon.svg';
-
+import CatalogPropTypes from '../../CatalogPropTypes';
 import NavigationBar from './NavigationBar';
 
 const SIDE_WIDTH = 251;
+
+const globalStyle = `
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+`;
+
+const MenuIcon = (props) => (
+  <svg {...props} width='27px' height='20px' viewBox='0 0 27 20'>
+    <g fill='#FFFFFF'>
+      <rect x='0' y='16' width='26' height='4' />
+      <rect x='0' y='8' width='26' height='4' />
+      <rect x='0' y='0' width='26' height='4' />
+    </g>
+  </svg>
+);
 
 function style(
   theme,
@@ -16,7 +34,7 @@ function style(
     contentHeight,
     contentOffset,
     sideBarAnimDur,
-    bgVisible,
+    bgVisible
   }
 ) {
   return {
@@ -26,7 +44,7 @@ function style(
       padding: 0,
       width: '100%',
       height: '100%',
-      position: 'relative',
+      position: 'relative'
     },
     menuIcon: {
       cursor: 'pointer',
@@ -34,7 +52,7 @@ function style(
       left: 20,
       position: 'absolute',
       top: 20,
-      width: 30,
+      width: 30
     },
     sideNav: {
       background: theme.sidebarColor,
@@ -46,7 +64,7 @@ function style(
       width: sideWidth,
       top: 0,
       borderRight: `1px solid ${theme.sidebarColorLine}`,
-      transition: `left ${sideBarAnimDur}s`,
+      transition: `left ${sideBarAnimDur}s`
     },
     navBackground: {
       position: 'fixed',
@@ -57,7 +75,7 @@ function style(
       backgroundColor: 'rgba(0, 0, 0, 0.2)',
       opacity: bgVisible ? 1 : 0,
       visibility: bgVisible ? 'visible' : 'hidden',
-      transition: `opacity ${sideBarAnimDur}s, visibility ${sideBarAnimDur}s`,
+      transition: `opacity ${sideBarAnimDur}s, visibility ${sideBarAnimDur}s`
     },
     content: {
       boxSizing: 'border-box',
@@ -67,7 +85,7 @@ function style(
       position: 'relative',
       width: contentWidth,
       left: contentOffset,
-      transition: `left ${sideBarAnimDur}s`,
+      transition: `left ${sideBarAnimDur}s`
     }
   };
 }
@@ -100,6 +118,7 @@ class AppLayout extends React.Component {
   }
 
   render() {
+    const {theme, pages, page} = this.props;
     const { sidebarVisible, viewportWidth, viewportHeight } = this.state;
 
     const isMobileLayout = viewportWidth < 1000;
@@ -126,16 +145,20 @@ class AppLayout extends React.Component {
       bgVisible,
       contentWidth,
       contentHeight,
-      contentOffset,
+      contentOffset
     });
+
+    const nextPage = pages[page.index + 1];
+    const previousPage = pages[page.index - 1];
 
     return (
       <div style={currentStyle.container}>
+        <style>{globalStyle}</style>
         <div style={currentStyle.content}>
           { this.props.children }
-          <NavigationBar {...this.props} isMobileLayout={isMobileLayout} />
+          <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} isMobileLayout={isMobileLayout} />
         </div>
-        <img style={currentStyle.menuIcon} src={hamburgerSrc} onClick={this.toggleSidebar.bind(this)} />
+        <MenuIcon style={currentStyle.menuIcon} onClick={this.toggleSidebar.bind(this)} />
         <div style={currentStyle.navBackground} onClick={this.toggleSidebar.bind(this)} />
         <div style={currentStyle.sideNav}>
           { this.props.sideNav }
@@ -155,11 +178,8 @@ AppLayout.propTypes = {
   sideNav: PropTypes.node,
   children: PropTypes.node,
   theme: PropTypes.object.isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   page: CatalogPropTypes.page.isRequired,
-  pages: CatalogPropTypes.pages.isRequired,
-  currentPage: PropTypes.string,
-  pageList: CatalogPropTypes.pages.isRequired,
+  pages: CatalogPropTypes.pages.isRequired
 };
 
 export default AppLayout;

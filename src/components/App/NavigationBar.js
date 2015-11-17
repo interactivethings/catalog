@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import CatalogPropTypes from 'core/PropTypes';
-import Link from 'components/Link/Link';
+import CatalogPropTypes from '../../CatalogPropTypes';
+import Link from '../Link/Link';
 
 function getStyles(theme, isMobileLayout) {
   let navPadding = isMobileLayout ? 26 : 60;
@@ -65,13 +65,9 @@ function getStyles(theme, isMobileLayout) {
 class NavigationBar extends React.Component {
 
   render() {
-    let {isMobileLayout, pageNames, pageList, page, theme} = this.props;
+    let {isMobileLayout, nextPage, previousPage, theme} = this.props;
 
     let styles = getStyles(theme, isMobileLayout);
-
-    let pageIndex = pageNames.indexOf(page.name);
-    let prevPage = pageList[pageIndex - 1];
-    let nextPage = pageList[pageIndex + 1];
 
     let leftIcon = (
       <svg style={styles.leftLinkIcon} width='37px' height='26px' viewBox='0 0 37 26'>
@@ -87,12 +83,12 @@ class NavigationBar extends React.Component {
     return (
       <div style={styles.navbar}>
         <div style={styles.navlink} key='left'>{
-          prevPage &&
-          <Link to={prevPage.path} style={[styles.link, styles.leftNavLink]}>
+          previousPage &&
+          <Link to={previousPage.path} style={[styles.link, styles.leftNavLink]}>
             { !isMobileLayout && leftIcon }
             <div style={styles.linklabels}>
-              <h4 style={styles.linkSuperTitle}>{ prevPage.superTitle }</h4>
-              <h3 style={styles.linkTitle}>{ prevPage.title }</h3>
+              <h4 style={styles.linkSuperTitle}>{ previousPage.superTitle }</h4>
+              <h3 style={styles.linkTitle}>{ previousPage.title }</h3>
             </div>
           </Link>
         }</div>
@@ -114,9 +110,8 @@ class NavigationBar extends React.Component {
 NavigationBar.propTypes = {
   isMobileLayout: PropTypes.bool,
   theme: PropTypes.object.isRequired,
-  pageNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-  page: CatalogPropTypes.page.isRequired,
-  pageList: CatalogPropTypes.pages.isRequired
+  nextPage: CatalogPropTypes.page,
+  previousPage: CatalogPropTypes.page
 };
 
 export default Radium(NavigationBar);

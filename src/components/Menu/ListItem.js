@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
-import Link from 'components/Link/Link';
+import Link from '../Link/Link';
 import NestedList from './NestedList';
-import { text } from 'scaffold/typography';
+import { text } from '../../scaffold/typography';
 
 export function style(theme) {
   let pseudo = {
@@ -68,7 +68,7 @@ class ListItem extends React.Component {
           style={defaultStyle}
           activeStyle={currentStyle.activeLink}
           to={path}
-          onlyActiveOnIndex={path === '/'} // FIXME: somehow this doesn't work; a bug in react-router?
+          onlyActiveOnIndex={path === '/'}
         >
           { menuTitle || title }
         </Link>

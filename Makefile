@@ -4,67 +4,81 @@ PATH  := node_modules/.bin:$(PATH)
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
 CURRENT_VERSION = $(shell ./bin/version)
-NIGHTLY_VERSION = Build $(shell date "+%Y%m%d.%s")
+PUBLIC_LIB_URL = https://npmcdn.com/catalog@$(CURRENT_VERSION)/catalog.min.js
 
-BUILD_SOURCES = \
-	catalog.js
+UMD_BUILD_TARGETS = \
+	catalog.js \
+	catalog.min.js \
+	catalog-lib.js \
+	catalog-lib.min.js
 
 DOC_SOURCES = \
-	index.html \
 	$(shell find docs -type f \( ! -iname ".*" \))
 
-DIST_DIR        = dist
-VERSION_DIR     = $(DIST_DIR)/$(CURRENT_VERSION)
-NIGHTLY_DIR     = $(DIST_DIR)/nightly
-
-VERSION_TARGETS = $(addprefix $(VERSION_DIR)/, $(BUILD_SOURCES))
-NIGHTLY_TARGETS = $(addprefix $(NIGHTLY_DIR)/, $(BUILD_SOURCES))
-LATEST_TARGETS  = $(addprefix $(DIST_DIR)/,    $(BUILD_SOURCES))
-DOC_TARGETS     = $(addprefix $(DIST_DIR)/,    $(DOC_SOURCES))
+SITE_DIR        = site
+DOC_TARGETS     = $(addprefix $(SITE_DIR)/, $(DOC_SOURCES))
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-#
-# Recipes
-#
-
-.PHONY: install server build doc nightly dist deploy clean clobber lint
+.PHONY: server build watch-lib docs publish-docs dist deploy clean clobber lint test
 
 all: server
 
-install: _print-banner node_modules
+### DEVELOPMENT
 
-server: install
-	@UV_THREADPOOL_SIZE=100 bin/server
+server: node_modules
+	@NODE_ENV=hot bin/server
 
-build: install clean
-	UV_THREADPOOL_SIZE=100 \
-	NODE_ENV=production \
-	webpack --colors --progress --hide-modules
+watch-lib: node_modules
+	babel src --watch --out-dir lib
 
-doc: install $(DOC_TARGETS)
+test:
+	@babel-node test/*.js | faucet
+
+
+### BUILDS
+
+build: node_modules clean test lib $(UMD_BUILD_TARGETS)
+
+lib:
+	babel src --out-dir $@
+
+catalog.js:
+	@NODE_ENV=development webpack ./src/index ./$@ --colors --progress --hide-modules
+
+catalog.min.js:
+	@NODE_ENV=production webpack ./src/index ./$@ --colors --progress --hide-modules
+
+catalog-lib.js:
+	@NODE_ENV=development webpack ./src/index ./$@ --config=./webpack.lib.js --colors --progress --hide-modules
+
+catalog-lib.min.js:
+	@NODE_ENV=production webpack ./src/index ./$@ --config=./webpack.lib.js --colors --progress --hide-modules
+
+
+### DOCUMENTATION AND DEPLOYMENT
+
+docs: $(SITE_DIR)/index.html $(DOC_TARGETS)
+	@git add $(SITE_DIR)
+	@git commit --allow-empty -m "Update docs"
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
-nightly: build doc $(NIGHTLY_TARGETS) $(NIGHTLY_TARGETS:.js=.min.js)
-	@echo -e "$(CLI_SUCCESS) Created new nightly distribution$(CLI_RESET)"
-
-dist: _dist-ensure-not-exists nightly $(VERSION_TARGETS) $(VERSION_TARGETS:.js=.min.js) $(LATEST_TARGETS) _dist-prompt-git-commit
-	git add --all . && \
-	git commit --message "DIST $(CURRENT_VERSION)" && \
-	git tag --force $(CURRENT_VERSION)
-	@echo -e "$(CLI_SUCCESS) Created new distribution \"$(CURRENT_VERSION)\"$(CLI_RESET)"
-
-deploy:
-	@git subtree split --prefix $(DIST_DIR) --branch gh-pages && \
+publish-docs: docs
+	@git subtree split --prefix site --branch gh-pages && \
 	git push --force origin gh-pages:gh-pages && \
 	git branch -D gh-pages
-	@echo -e "$(CLI_SUCCESS) Deployed distribution \"$(CURRENT_VERSION)\" to $(PROJECT_URL)$(CLI_RESET)"
+	@echo -e "$(CLI_SUCCESS) Published version \"$(CURRENT_VERSION)\" to gh-pages$(CLI_RESET)"
+
+dist:
+	@bin/dist
+
+### CLEAN
 
 clean:
-	@rm -rf -- $(BUILD_SOURCES) uglifyjs.log
+	@rm -rf -- lib $(UMD_BUILD_TARGETS)
 
 clobber: clean
 	@rm -rf node_modules
@@ -76,74 +90,29 @@ lint:
 # Targets
 #
 
-$(VERSION_TARGETS): $(VERSION_DIR)/%: %
+$(SITE_DIR)/index.html: index.html package.json
 	@mkdir -p $(dir $@)
-	@echo "/* $(PROJECT_NAME) $(CURRENT_VERSION) $(PROJECT_URL) */" | cat - $< > $@
+	@sed -e 's#catalog.js#$(PUBLIC_LIB_URL)#g' \
+			$< > $@
 
-$(NIGHTLY_TARGETS): $(NIGHTLY_DIR)/%: %
-	@mkdir -p $(dir $@)
-	@echo "/* $(PROJECT_NAME) $(NIGHTLY_VERSION) $(PROJECT_URL) */" | cat - $< > $@
-
-$(LATEST_TARGETS): $(DIST_DIR)/%.js: $(VERSION_DIR)/%.min.js
-	@cp $< $@
-
-$(DOC_TARGETS): $(DIST_DIR)/%: % package.json
+$(DOC_TARGETS): $(SITE_DIR)/%: % package.json
 	@mkdir -p $(dir $@)
 # Replace the string %VERSION% in supported files with the current version,
 # otherwise just copy the file to the destination
 	$(if $(or \
-			$(findstring .css,  $(suffix $<)), \
-			$(findstring .html, $(suffix $<)), \
-			$(findstring .js,   $(suffix $<)), \
 			$(findstring .md,   $(suffix $<)), \
 			$(findstring .txt,  $(suffix $<)), \
 		), \
-		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
+		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' \
+			$< > $@, \
 		@cp $< $@)
 	@echo $@
-
-%.min.js: %.js
-	@echo . Compress $<
-	@uglifyjs $< \
-		--mangle \
-		--compress \
-		--comments /$(PROJECT_NAME)/ \
-		--output $@ \
-		2> uglifyjs.log
-
-
-#
-# Preconditions
-#
-
-.PHONY: _dist-ensure-not-exists _dist-prompt-git-commit _print-banner
-_dist-ensure-not-exists:
-	@if test -d $(VERSION_DIR); then \
-		echo "A distribution for \"Catalog $(CURRENT_VERSION)\" has already been published."; \
-		echo "You should create a new version by bumping the version number in \"package.json\"."; \
-		echo "If you really must recreate the existing version, delete it first."; \
-		echo -e "$(CLI_ERROR) Did not create new distribution$(CLI_RESET)"; \
-		exit 1; \
-	fi
-
-_dist-prompt-git-commit:
-	@while [ -z "$$CONTINUE" ]; do \
-		echo -e "$(CLI_QUERY) Do you want to create a Git commit for version \"$(CURRENT_VERSION)\"?$(CLI_RESET)"; \
-		read -r -p "[y/n] " CONTINUE; \
-	done; \
-	if [ $$CONTINUE != 'y' ] && [ $$CONTINUE != 'Y' ]; then \
-		echo -e "$(CLI_ERROR) Distribution has not been committed to Git$(CLI_RESET)"; exit 1; \
-	fi
-
-_print-banner:
-	@./bin/banner
-
 
 #
 # Dependencies
 #
 
 node_modules: package.json
-	@npm install
+	@npm install --ignore-scripts
 	@touch $@
 

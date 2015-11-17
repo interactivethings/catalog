@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from 'core/PropTypes';
+import CatalogPropTypes from '../../CatalogPropTypes';
 
-import MarkdownRenderer from 'MarkdownRenderer';
+import MarkdownRenderer from '../../utils/MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
 
-import Card from 'components/Card/Card';
-import Specimen, {Config} from 'components/Specimen/Specimen';
+import Card from '../Card/Card';
+import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
+import parseSpecimen from '../../utils/parseSpecimen';
 
-import { heading, text, inlineElements, inlineBlockquote } from 'scaffold/typography';
-import { inlineUlist, inlineOlist } from 'scaffold/lists';
+import { heading, text, inlineElements, inlineBlockquote } from '../../scaffold/typography';
+import { inlineUlist, inlineOlist } from '../../scaffold/lists';
 
 function pageContainer(theme) {
   return {
@@ -18,11 +19,11 @@ function pageContainer(theme) {
   };
 }
 
-const seqKey = require('utils/seqKey')('cg-Page');
+const seqKey = require('../../utils/seqKey')('cg-Page');
 
 class PageRenderer extends React.Component {
   render() {
-    const { theme } = this.props;
+    const { page, theme } = this.context;
 
     let inlineBlockquoteRules = inlineBlockquote(theme);
     inlineBlockquoteRules.blockquote = {
@@ -30,8 +31,10 @@ class PageRenderer extends React.Component {
       ...inlineBlockquoteRules.blockquote
     };
 
+    let margin = window.innerWidth > 640 ? theme.sizeXxl : 10;
+
     return (
-      <div className='cg-Page' style={{margin: `0 ${window.innerWidth > 640 ? theme.sizeXxl : 10}px`, flex: 1}}>
+      <div className='cg-Page' style={{margin: `0 ${margin}px`, flex: 1}}>
         <RadiumStyle scopeSelector='.cg-Page >' rules={{
           h2: {
             ...pageContainer(theme),
@@ -55,7 +58,9 @@ class PageRenderer extends React.Component {
             style: {
               ...pageContainer(theme),
               ...text(theme, {level: 2}),
-              marginLeft: '2.4em'
+              marginLeft: '2.4em',
+              boxSizing: 'border-box',
+              width: 'calc(100% - 2.4em)'
             }
           }),
           ...inlineOlist(theme, {
@@ -82,7 +87,7 @@ class PageRenderer extends React.Component {
 
         <div style={{
           boxSizing: 'border-box',
-          margin: `0 -${theme.sizeXxl}px ${theme.sizeXxl}px -${theme.sizeXxl}px`,
+          margin: `0 -${margin}px ${margin}px -${margin}px`,
           position: 'relative',
           height: theme.pageHeadingHeight,
           background: theme.pageHeadingBackground
@@ -99,13 +104,13 @@ class PageRenderer extends React.Component {
               color: theme.pageHeadingTextColor,
               opacity: 0.6,
               marginBottom: 0
-            }}>{this.props.page.superTitle}</h4>
+            }}>{page.superTitle}</h4>
             <h2 style={{
               ...pageContainer(theme),
               ...heading(theme, {level: 2}),
               color: theme.pageHeadingTextColor,
               marginBottom: 0
-            }}>{this.props.page.title}</h2>
+            }}>{page.title}</h2>
           </div>
         </div>
 
@@ -115,20 +120,24 @@ class PageRenderer extends React.Component {
   }
 
   styleNodes() {
-    return this.props.page.styles.map((src) => {
+    return this.context.page.styles.map((src) => {
       return <link key={seqKey()} href={src} rel='stylesheet' type='text/css' />;
     });
   }
 
   contentNodes() {
+    if (React.isValidElement(this.props.content)) {
+      return this.props.content;
+    }
     return MarkdownRenderer({
       text: this.props.content,
       section: (children) => {
-        return <Card key={seqKey()} theme={this.props.theme}>{children}</Card>;
+        return <Card key={seqKey()} theme={this.context.theme}>{children}</Card>;
       },
       renderer: {
         code: (codeBody, codeConfig) => {
-          return <Specimen key={seqKey()} body={codeBody} config={Config(codeConfig)} theme={this.props.theme} />;
+          const specProps = parseSpecimen(codeBody, codeConfig);
+          return <MarkdownSpecimen key={seqKey()} {...specProps} />;
         },
         heading: (headingText, level) => {
           return React.createElement(`h${level}`, {key: seqKey()}, headingText);
@@ -139,8 +148,11 @@ class PageRenderer extends React.Component {
 }
 
 PageRenderer.propTypes = {
+  content: PropTypes.node.isRequired
+};
+
+PageRenderer.contextTypes = {
   page: CatalogPropTypes.page.isRequired,
-  content: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired
 };
 
