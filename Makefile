@@ -27,7 +27,6 @@ CLI_RESET   = \033[0m
 
 all: server
 
-
 ### DEVELOPMENT
 
 server: node_modules
