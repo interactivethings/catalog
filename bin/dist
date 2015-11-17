@@ -1,9 +1,9 @@
 #!/bin/bash
 
-CLI_SUCCESS = \033[1;32m✔
-CLI_ERROR   = \033[1;31m✘
-CLI_QUERY   = \033[1;36m→
-CLI_RESET   = \033[0m
+CLI_SUCCESS="\033[1;32m✔"
+CLI_ERROR="\033[1;31m✘"
+CLI_QUERY="\033[1;36m→"
+CLI_RESET="\033[0m"
 
 read -p "Enter a new version (current: $(./bin/version)): " version
 
