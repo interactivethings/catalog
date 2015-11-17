@@ -63,13 +63,15 @@ catalog-lib.min.js:
 ### DOCUMENTATION AND DEPLOYMENT
 
 docs: $(SITE_DIR)/index.html $(DOC_TARGETS)
+	@git add $^
+	@git commit -am "Update docs"
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
 publish-docs: docs
 	@git subtree split --prefix site --branch gh-pages && \
 	git push --force origin gh-pages:gh-pages && \
 	git branch -D gh-pages
-	@echo -e "$(CLI_SUCCESS) Published version \"$version\" to gh-pages$(CLI_RESET)"
+	@echo -e "$(CLI_SUCCESS) Published version \"$(CURRENT_VERSION)\" to gh-pages$(CLI_RESET)"
 
 dist:
 	@bin/dist

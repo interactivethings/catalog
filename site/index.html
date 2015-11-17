@@ -4,13 +4,24 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catalog Documentation (1.1.12)</title>
+  <title>Catalog</title>
+  <script>
+    if (location.hostname !== 'localhost') {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-53158985-1', 'auto');
+      ga('send', 'pageview');      
+    }
+  </script>
 </head>
 <body>
-
-  <script src="catalog.js"></script>
+  <div id="catalog" />
+  <script src="https://npmcdn.com/catalog/catalog.min.js"></script>
   <script>
-    Catalog.start('body', {
+    Catalog.start('#catalog', {
       title: "Catalog",
       logoSrc: "docs/assets/catalog_logo.svg",
       theme: {
@@ -30,9 +41,62 @@
               scripts: ['docs/specimens.js']
             },
             {
-              name: 'html-project',
-              title: 'HTML Project',
+              name: 'audio',
+
+              title: "Audio",
+              src: "docs/specimens/audio.md"
+            },
+            {
+              name: 'button',
+              title: "Button",
+              src: "docs/specimens/button.md"
+            },
+            {
+              name: 'code',
+              title: "Code",
+              src: "docs/specimens/code.md"
+            },
+            {
+              name: 'color',
+              title: "Color",
+              src: "docs/specimens/color.md"
+            },
+            {
+              name: 'download',
+              title: "Download",
+              src: "docs/specimens/download.md"
+            },
+            {
+              name: 'hint',
+              title: "Hint",
+              src: "docs/specimens/hint.md"
+            },
+            {
+              name: 'html',
+              title: "HTML",
+              src: "docs/specimens/html.md",
+              scripts: ['docs/example-script.js'],
+              styles: ['docs/example-style.css']
+            },
+            {
+              name: 'image',
+              title: "Image",
+              src: "docs/specimens/image.md"
+            },
+            {
+              name: 'project',
+              title: 'Project',
               src: 'docs/html-project-example/README.md'
+            },
+            {
+              name: 'type',
+              title: "Type",
+              src: "docs/specimens/type.md"
+            },
+            {
+              name: 'video',
+              title: "Video",
+              src: "docs/specimens/video.md"
             }
           ]
         },
@@ -46,16 +110,5 @@
       ]
     });
   </script>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-53158985-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-
 </body>
 </html>
