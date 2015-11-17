@@ -63,7 +63,7 @@ catalog-lib.min.js:
 
 docs: $(SITE_DIR)/index.html $(DOC_TARGETS)
 	@git add $(SITE_DIR)
-	@git commit -am "Update docs"
+	@git commit $^ -m "Update docs"
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
 publish-docs: docs
