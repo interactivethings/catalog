@@ -62,7 +62,7 @@ catalog-lib.min.js:
 ### DOCUMENTATION AND DEPLOYMENT
 
 docs: $(SITE_DIR)/index.html $(DOC_TARGETS)
-	git add $^
+	@git add $(SITE_DIR)
 	@git commit -am "Update docs"
 	@echo -e "$(CLI_SUCCESS) Updated documentation$(CLI_RESET)"
 
