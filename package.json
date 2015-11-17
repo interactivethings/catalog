@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.0",
+    "js-yaml": "^3.4.3",
     "jszip": "^2.5.0",
     "marked": "0.3.2",
     "radium": "^0.14.1",

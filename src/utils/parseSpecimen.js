@@ -1,4 +1,7 @@
 import R from 'ramda';
+import yaml, {CORE_SCHEMA} from 'js-yaml';
+
+const yamlOptions = {schema: CORE_SCHEMA};
 
 const removeEmpty = R.filter(R.complement(R.isEmpty));
 const splitType = R.compose(removeEmpty, R.split('|'));
@@ -36,7 +39,8 @@ const parseSpecimenOptions = (optionsStr = '') => {
 
 const parseSpecimenBody = (bodyStr = '') => {
   try {
-    return JSON.parse(bodyStr);
+    const parsed = yaml.safeLoad(bodyStr, yamlOptions);
+    return typeof parsed === 'string' || parsed === void 0 ? bodyStr : parsed;
   } catch (e) {
     return bodyStr;
   }

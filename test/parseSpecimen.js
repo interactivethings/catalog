@@ -13,7 +13,12 @@ test('String body', (t) => {
 
 test('JSON body', (t) => {
   t.plan(1);
-  t.deepEqual(parseSpecimen('{"foo": "bar"}'), {specimen: 'code', options: {}, body: {foo: 'bar'}});
+  t.deepEqual(parseSpecimen('{"foo": "bar", "baz": 12.3, "nothing": null, "really": true}'), {specimen: 'code', options: {}, body: {foo: 'bar', baz: 12.3, nothing: null, really: true}});
+});
+
+test('YAML body', (t) => {
+  t.plan(1);
+  t.deepEqual(parseSpecimen('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), {specimen: 'code', options: {}, body: {foo: 'bar', baz: 12.3, nothing: null, really: true}});
 });
 
 test('Specimen without options', (t) => {

@@ -16,7 +16,8 @@ var baseConfig = {
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [{test: /\.js$/, include: [resolveHere('src')], loader: 'babel'}]
+    loaders: [{test: /\.js$/, include: [resolveHere('src')], loader: 'babel'}],
+    noParse: /\.min\.js$/
   }
 };
 
@@ -57,6 +58,12 @@ var webpackConfig = {
 
   // Minified production build
   production: {
+    resolve: {
+      alias: {
+        // Shaves off 70 kB from minified build!
+        'js-yaml': 'js-yaml/dist/js-yaml.min.js'
+      }
+    },
     plugins: [
       new webpack.DefinePlugin({
         '__DEV__': JSON.stringify(false),
