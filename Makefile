@@ -8,9 +8,7 @@ PUBLIC_LIB_URL = https://npmcdn.com/catalog@$(CURRENT_VERSION)/catalog.min.js
 
 UMD_BUILD_TARGETS = \
 	catalog.js \
-	catalog.min.js \
-	catalog-lib.js \
-	catalog-lib.min.js
+	catalog.min.js
 
 DOC_SOURCES = \
 	$(shell find docs -type f \( ! -iname ".*" \))
@@ -47,16 +45,10 @@ lib:
 	babel src --ignore __tests__ --out-dir $@
 
 catalog.js:
-	@NODE_ENV=development webpack ./src/index ./$@ --colors --progress --hide-modules
+	@NODE_ENV=development webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
 
 catalog.min.js:
-	@NODE_ENV=production webpack ./src/index ./$@ --colors --progress --hide-modules
-
-catalog-lib.js:
-	@NODE_ENV=development webpack ./src/index ./$@ --config=./webpack.lib.js --colors --progress --hide-modules
-
-catalog-lib.min.js:
-	@NODE_ENV=production webpack ./src/index ./$@ --config=./webpack.lib.js --colors --progress --hide-modules
+	@NODE_ENV=production webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
 
 
 ### DOCUMENTATION AND DEPLOYMENT
