@@ -12,7 +12,6 @@ export {default as Specimen} from './components/Specimen/Specimen';
 
 // Specimens
 export {default as AudioSpecimen} from './specimens/Audio';
-export {default as ButtonSpecimen} from './specimens/Button';
 export {default as CodeSpecimen} from './specimens/Code';
 export {default as ColorSpecimen} from './specimens/Color';
 export {default as HtmlSpecimen} from './specimens/Html';

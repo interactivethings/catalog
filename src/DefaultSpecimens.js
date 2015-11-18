@@ -1,5 +1,4 @@
 import Audio from './specimens/Audio';
-import Button from './specimens/Button';
 import Code from './specimens/Code';
 import Color from './specimens/Color';
 import Html from './specimens/Html';
@@ -22,7 +21,6 @@ import Video from './specimens/Video';
 
 export default {
   audio: Audio,
-  button: Button,
   code: Code,
   color: Color,
   html: Html,
