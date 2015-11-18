@@ -3,7 +3,6 @@
 export default {
   // Colors
   background: '#F9F9F9',
-  cardBackground: '#FFFFFF',
   pageHeadingBackground: '#003B5C',
   pageHeadingTextColor: '#fff',
   pageHeadingHeight: 200,
@@ -20,8 +19,6 @@ export default {
   bgLight: '#F2F2F2',
   bgDark: '#333333',
   lightColor: '#D6D6D6',
-  cardRuleColor: '#EEEEEE',
-  cardShadow: false,
 
   // Patterns
   checkerboardPatternLight: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=',

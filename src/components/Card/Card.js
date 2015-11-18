@@ -21,12 +21,8 @@ class Card extends Component {
 
     return (
       <section className='cg-Card' style={{
-        background: theme.cardBackground,
-        borderRadius: 3,
-        boxShadow: theme.cardShadow ? `0px 1px 4px ${theme.lightColor}` : null,
-        border: `1px solid ${theme.cardRuleColor}`,
         margin: `${theme.sizeL}px 0`,
-        padding: '28px 10px 14px 20px',
+        padding: '28px 11px 14px 21px',
         position: 'relative',
         display: 'flex',
         flexFlow: 'row wrap',
