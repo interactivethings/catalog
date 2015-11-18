@@ -8,7 +8,7 @@ import configureRoutes from './configureRoutes';
 
 export default (config, element) => {
   ReactDOM.render(
-    <Router history={createHistory()} routes={configureRoutes(configure(config))} />,
+    <Router history={createHistory({queryKey: false})} routes={configureRoutes(configure(config))} />,
     element
   );
 };
