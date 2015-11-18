@@ -19,9 +19,9 @@
 </head>
 <body>
   <div id="catalog" />
-  <script src="https://npmcdn.com/catalog@2.0.0-alpha4/catalog.min.js"></script>
+  <script src="https://npmcdn.com/catalog@2.0.0-alpha7/catalog.min.js"></script>
   <script>
-    Catalog.start('#catalog', {
+    Catalog.render({
       title: "Catalog",
       logoSrc: "docs/assets/catalog_logo.svg",
       theme: {
@@ -101,6 +101,16 @@
           ]
         },
         {
+          title: 'React',
+          pages: [
+            {
+              title: 'Overview',
+              path: 'react',
+              src: 'docs/react/overview.md'
+            }
+          ]
+        },
+        {
           name: 'test',
           title: "Style Test",
           src: "docs/test.md",
@@ -108,7 +118,7 @@
           scripts: ['docs/test.js']
         }
       ]
-    });
+    }, document.getElementById('catalog'));
   </script>
 </body>
 </html>
