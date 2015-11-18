@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import {text} from '../scaffold/typography';
-import runscript from '../utils/runscript';
 
 const PADDING = 3;
 const SIZE = 20;
@@ -86,14 +85,6 @@ class Html extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const {runScript} = this.props;
-    if (runScript) {
-      Array.from(this.refs.specimen.querySelectorAll('script'))
-        .forEach(runscript);
-    }
-  }
-
   render() {
     const {theme, body, ...options} = this.props;
     const styles = getStyle(theme);
@@ -114,7 +105,7 @@ class Html extends React.Component {
       : null;
 
     return (
-      <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
+      <div style={styles.container} className='cg-Specimen-Html'>
         {toggle}
         <div style={[styles.content, exampleStyles]} dangerouslySetInnerHTML={{__html: body}} />
         {source}
@@ -130,7 +121,6 @@ class Html extends React.Component {
 Html.propTypes = {
   body: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
-  runScript: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
