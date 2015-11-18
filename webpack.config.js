@@ -10,7 +10,7 @@ var env = process.env.NODE_ENV || 'development';
 var bannerPlugin = new webpack.BannerPlugin('Catalog ' + version + ' http://interactivethings.github.io/catalog/');
 
 var baseConfig = {
-  entry: resolveHere('src/index'),
+  entry: resolveHere('src/index-standalone'),
   output: {
     library: 'Catalog',
     libraryTarget: 'umd'
@@ -26,7 +26,7 @@ var webpackConfig = {
   hot: {
     entry: [
       'webpack-hot-middleware/client',
-      resolveHere('src/index')
+      resolveHere('src/index-standalone')
     ],
     output: {
       path: resolveHere('.'),

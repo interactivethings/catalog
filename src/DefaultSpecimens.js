@@ -8,7 +8,6 @@ import Image from './specimens/Image';
 import Type from './specimens/Type';
 import Project from './specimens/Project/Project';
 import Download from './specimens/Download';
-import ReactComponent from './specimens/ReactComponent';
 import Video from './specimens/Video';
 
 // Mostly replaced through Image/Video/Audio specimens
@@ -32,6 +31,5 @@ export default {
   type: Type,
   project: Project,
   download: Download,
-  react: ReactComponent,
   video: Video
 };

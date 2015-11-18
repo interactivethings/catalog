@@ -1,5 +1,7 @@
+import 'isomorphic-fetch';
+
 // Configuration
-// export {default as start} from './start';
+export {default as start} from './start';
 export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
 
@@ -21,5 +23,4 @@ export {default as ImageSpecimen} from './specimens/Image';
 export {default as TypeSpecimen} from './specimens/Type';
 export {default as ProjectSpecimen} from './specimens/Project/Project';
 export {default as DownloadSpecimen} from './specimens/Download';
-export {default as ReactSpecimen} from './specimens/ReactSpecimen/ReactSpecimen';
 export {default as VideoSpecimen} from './specimens/Video';
