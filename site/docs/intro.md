@@ -8,8 +8,8 @@ Use Catalog to document HTML and CSS, colors, typography, and even interactive c
 
 To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
 
-* 2.0.0-alpha4 Standalone: [production](https://npmcdn.com/catalog@2.0.0-alpha4/catalog.min.js), [development](https://npmcdn.com/catalog@2.0.0-alpha4/catalog.js)
-* 2.0.0-alpha4 without React: [production](https://npmcdn.com/catalog@2.0.0-alpha4/catalog-lib.min.js), [development](https://npmcdn.com/catalog@2.0.0-alpha4/catalog-lib.js)
+* 2.0.0-alpha7 Standalone: [production](https://npmcdn.com/catalog@2.0.0-alpha7/catalog.min.js), [development](https://npmcdn.com/catalog@2.0.0-alpha7/catalog.js)
+* 2.0.0-alpha7 without React: [production](https://npmcdn.com/catalog@2.0.0-alpha7/catalog-lib.min.js), [development](https://npmcdn.com/catalog@2.0.0-alpha7/catalog-lib.js)
 
 For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/).
 
