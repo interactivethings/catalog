@@ -6,9 +6,9 @@ import createHistory from 'history/lib/createHashHistory';
 import configure from './configure';
 import configureRoutes from './configureRoutes';
 
-export default (selector, config) => {
+export default (config, element) => {
   ReactDOM.render(
     <Router history={createHistory()} routes={configureRoutes(configure(config))} />,
-    document.querySelector(selector)
+    element
   );
 };

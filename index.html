@@ -21,7 +21,7 @@
   <div id="catalog" />
   <script src="catalog.js"></script>
   <script>
-    Catalog.start('#catalog', {
+    Catalog.render({
       title: "Catalog",
       logoSrc: "docs/assets/catalog_logo.svg",
       theme: {
@@ -108,7 +108,7 @@
           scripts: ['docs/test.js']
         }
       ]
-    });
+    }, document.getElementById('catalog'));
   </script>
 </body>
 </html>
