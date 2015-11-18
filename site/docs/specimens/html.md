@@ -9,7 +9,6 @@ It is also the fallback if no specimen is specified.
 ### Arguments
 #### Functional
 * `no-source` Removes the source code toggle button
-* `run-script` will run any scripts within the source
 
 #### Visual
 * `light` a light checkered background (default)
@@ -22,29 +21,7 @@ It is also the fallback if no specimen is specified.
 
 ### Functional examples
 
-This example uses the `run-script` argument to execute the JavaScript automatically. The `exampleValue` variable is declared in a file that is added and only available to this page in the catalog configuration. To see how this is done, take a look at the [Initialization](/#/usage) guide.
-
-```html|run-script
-<div id="example-target">FAILED: Javascript was not run</div>
-<script>
-    var target = document.getElementById('example-target')
-    target.innerHTML = exampleValue + ' inserted by JavaScript';
-</script>
-```
-
-
-```code
-'''html|run-script
-<div id="example-target">FAILED: Javascript was not run</div>
-<script>
-    var target = document.getElementById('example-target')
-    target.innerHTML = exampleValue + ' inserted by JavaScript';
-</script>
-'''
-```
-
-
-This is example shows a similar approach, but uses the linked stylesheet information.
+This is example uses the configured stylesheet.
 
 ```html
 <div class="button">

@@ -39,12 +39,6 @@ hello world
 ```
 
 
-## Button
-
-```button|span-2
-    {"url":"/#/button", "title":"Go to button documentation"}
-```
-
 ## Code
 
 The code specimen is intended to display source code, either as block or collapsed drawer.
