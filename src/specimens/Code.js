@@ -27,6 +27,7 @@ function getStyle(theme) {
       color: theme.textColor,
       fontFamily: theme.fontMono,
       fontWeight: 400,
+      margin: 0,
       whiteSpace: 'pre-wrap',
       resize: 'vertical',
       ':focus': {
