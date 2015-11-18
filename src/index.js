@@ -1,4 +1,5 @@
 // Configuration
+export {default as render} from './render';
 export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
 
