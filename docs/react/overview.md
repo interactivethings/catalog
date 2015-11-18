@@ -1,7 +1,7 @@
 ## Installation
 
 ```
-npm install catalog --save
+npm install catalog@next --save
 ```
 
 ## Usage
