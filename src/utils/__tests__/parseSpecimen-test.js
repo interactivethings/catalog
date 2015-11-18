@@ -1,5 +1,5 @@
 import test from 'tape';
-import parseSpecimen from '../src/utils/parseSpecimen';
+import parseSpecimen from '../parseSpecimen';
 
 test('Defaults', (t) => {
   t.plan(1);

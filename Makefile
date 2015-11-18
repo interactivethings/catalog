@@ -33,10 +33,10 @@ server: node_modules
 	@NODE_ENV=hot bin/server
 
 watch-lib: node_modules
-	babel src --watch --out-dir lib
+	babel src --watch --ignore __tests__ --out-dir lib
 
 test:
-	@babel-node test/*.js | faucet
+	@babel-tape-runner "src/**/__tests__/*.js" | faucet
 
 
 ### BUILDS
@@ -44,7 +44,7 @@ test:
 build: node_modules clean test lib $(UMD_BUILD_TARGETS)
 
 lib:
-	babel src --out-dir $@
+	babel src --ignore __tests__ --out-dir $@
 
 catalog.js:
 	@NODE_ENV=development webpack ./src/index ./$@ --colors --progress --hide-modules
