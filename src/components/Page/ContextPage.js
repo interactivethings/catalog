@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {Component} from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
 import runscript from '../../utils/runscript';
 
@@ -8,7 +8,7 @@ import PageRenderer from './PageRenderer';
 const docSrc = (src) => '.' + src.replace(/^docs/, '');
 const getDocContext = () => require.context('raw!../../../docs', true, /\.md$/);
 
-class Page extends React.Component {
+class Page extends Component {
   constructor() {
     super();
     this.state = {
