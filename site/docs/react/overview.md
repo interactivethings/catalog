@@ -8,7 +8,7 @@ npm install catalog@next --save
 
 ### Standalone
 
-```
+```code|lang-jsx
 import {render} from 'catalog';
 import Intro from './docs/Intro';
 import ButtonDocs from './docs/Buttons';
@@ -38,7 +38,7 @@ render({
 
 Instead of directly rendering, Catalog can provide its routes to mix them with your existing ones.
 
-```
+```code|lang-jsx
 import {configure, configureRoutes} from 'catalog';
 import Intro from './docs/Intro';
 import ButtonDocs from './docs/Buttons';
@@ -78,7 +78,7 @@ Instead of using Markdown files, you can use Catalog's components directly. This
 
 If you provide these components to the configuration (see above), they will display nicely as individual pages.
 
-```
+```code|lang-jsx
 import React from 'react';
 import {Card, ReactSpecimen} from 'catalog';
 import Button from 'components/Button/Button';
