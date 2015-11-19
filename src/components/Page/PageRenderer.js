@@ -31,7 +31,7 @@ class PageRenderer extends React.Component {
       ...inlineBlockquoteRules.blockquote
     };
 
-    let margin = window.innerWidth > 640 ? theme.sizeXxl : 10;
+    let margin = window.innerWidth > 640 ? theme.sizeL : 0;
 
     return (
       <div className='cg-Page' style={{margin: `0 ${margin}px`, flex: 1}}>
@@ -96,7 +96,7 @@ class PageRenderer extends React.Component {
             position: 'absolute',
             bottom: 0,
             left: 0,
-            padding: `${theme.sizeL}px ${theme.sizeXxl}px`
+            padding: `${theme.sizeL}px ${margin}px`
           }} >
             <h4 style={{
               ...pageContainer(theme),
