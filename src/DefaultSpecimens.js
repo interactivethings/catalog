@@ -27,7 +27,7 @@ export default {
   hint: Hint,
   image: Image,
   type: Type,
-  project: Project,
+  'project_dont_use_this': Project,
   download: Download,
   video: Video
 };
