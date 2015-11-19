@@ -46,6 +46,10 @@ class Card extends Component {
               maxWidth: 'none',
               flexBasis: '100%'
             },
+            'h3 code': {
+              ...code(theme),
+              wordBreak: 'break-all'
+            },
             h4: {
               ...cardContainer(theme),
               ...heading(theme, {level: 6}),
