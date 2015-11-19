@@ -5,7 +5,8 @@ import NavigationBar from './NavigationBar';
 const SIDE_WIDTH = 251;
 
 const globalStyle = `
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,600);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
 
 body {
   text-rendering: optimizeLegibility;

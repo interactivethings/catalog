@@ -42,7 +42,7 @@ function getStyle(theme) {
     },
     title: {
       fontSize: theme.fontS,
-      fontWeight: 'bold',
+      fontWeight: 600,
       color: theme.brandColor,
       margin: 0
     },
