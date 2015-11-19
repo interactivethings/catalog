@@ -1,6 +1,6 @@
 {
   "name": "catalog",
-  "version": "2.0.0-alpha9",
+  "version": "2.0.0-alpha10",
   "description": "Catalog is the foundation for living styleguides created at Interactive Things",
   "main": "lib/index.js",
   "scripts": {
