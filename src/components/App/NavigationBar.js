@@ -4,7 +4,7 @@ import CatalogPropTypes from '../../CatalogPropTypes';
 import Link from '../Link/Link';
 
 function getStyles(theme, isMobileLayout) {
-  let navPadding = isMobileLayout ? 26 : 60;
+  let navPadding = isMobileLayout ? theme.sizeL : theme.sizeL * 2;
   return {
     navbar: {
       width: '100%',
@@ -21,11 +21,11 @@ function getStyles(theme, isMobileLayout) {
       }
     },
     leftNavLink: {
-      padding: `36px 0 36px ${navPadding}px`,
+      padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${navPadding}px`,
       textAlign: 'left'
     },
     rightNavLink: {
-      padding: `36px ${navPadding}px 36px 0`,
+      padding: `${theme.sizeXl}px ${navPadding}px ${theme.sizeXl}px 0`,
       textAlign: 'right',
       borderLeft: `1px solid ${theme.background}`
     },
@@ -53,11 +53,13 @@ function getStyles(theme, isMobileLayout) {
     },
     linkSuperTitle: {
       fontSize: theme.fontM,
-      margin: '0'
+      margin: '0',
+      fontWeight: 400
     },
     linkTitle: {
       fontSize: theme.fontL,
-      margin: '0'
+      margin: '0',
+      fontWeight: 400
     }
   };
 }
