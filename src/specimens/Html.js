@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
 import {text} from '../scaffold/typography';
 
 const PADDING = 3;
@@ -9,6 +10,9 @@ const SIZE = 20;
 function getStyle(theme) {
   return {
     container: {
+      border: '1px solid #eee',
+      borderRadius: '2px',
+      boxSizing: 'border-box',
       position: 'relative',
       flexBasis: '100%'
     },
@@ -33,26 +37,16 @@ function getStyle(theme) {
       }
     },
     source: {
-      ...text(theme, {level: 3}),
-      borderLeft: '1px solid #eee',
-      borderRight: '1px solid #eee',
-      borderBottom: '1px solid #eee',
-      padding: 20,
-      margin: 0,
+      borderTop: '1px solid #eee',
       boxSizing: 'border-box',
       width: '100%',
-      height: 'auto',
-      color: theme.textColor,
-      fontFamily: theme.fontMono,
-      fontWeight: 400
+      height: 'auto'
     },
     content: {
       background: `url(${theme.checkerboardPatternLight})`,
-      border: 'none',
-      borderRadius: '2px',
       boxSizing: 'border-box',
       display: 'block',
-      padding: '20px',
+      padding: 20,
       position: 'relative',
       width: '100%'
     },
@@ -97,7 +91,7 @@ class Html extends React.Component {
     };
 
     let source = this.state.viewSource
-      ? <pre style={styles.source}>{body}</pre>
+      ? <div style={styles.source} ><HighlightedCode language='markup' code={body} theme={theme} /></div>
       : null;
 
     let toggle = !options.noSource

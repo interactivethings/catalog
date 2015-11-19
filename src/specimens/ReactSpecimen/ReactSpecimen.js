@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
+import Radium from 'radium';
 import Specimen from '../../components/Specimen/Specimen';
-import {text} from '../../scaffold/typography';
+import HighlightedCode from '../../components/HighlightedCode/HighlightedCode';
 import reactElementToString from './reactElementToString';
 
 function getStyle(theme) {
@@ -20,27 +21,7 @@ function getStyle(theme) {
       padding: 20,
       position: 'relative',
       width: '100%'
-    },
-    code: {
-      ...text(theme, {level: 3}),
-      background: '#fff',
-      borderTop: '1px solid #eee',
-      boxSizing: 'border-box',
-      color: theme.textColor,
-      display: 'block',
-      fontFamily: theme.fontMono,
-      fontWeight: 400,
-      height: 'auto',
-      margin: 0,
-      padding: 20,
-      whiteSpace: 'pre-wrap',
-      width: '100%',
-      resize: 'vertical',
-      ':focus': {
-        outline: 'none',
-        color: theme.brandColor
-      }
-    },
+    }
   };
 }
 
@@ -54,7 +35,7 @@ class ReactSpecimen extends Component {
         <div style={styles.content}>
           {children}
         </div>
-        <pre style={styles.code}><code>{reactElementToString(children)}</code></pre>
+        <HighlightedCode language='jsx' code={reactElementToString(children)} theme={theme} />
       </section>
     );
   }
@@ -65,4 +46,4 @@ ReactSpecimen.propTypes = {
   children: PropTypes.element.isRequired
 };
 
-export default Specimen(ReactSpecimen);
+export default Specimen(Radium(ReactSpecimen));

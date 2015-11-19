@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import {text} from '../scaffold/typography';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
 
 function getStyle(theme) {
   return {
@@ -61,7 +62,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const {theme, body, collapsed} = this.props;
+    const {theme, body, collapsed, lang} = this.props;
     const {viewSource} = this.state;
     let styles = getStyle(theme);
 
@@ -70,7 +71,7 @@ class Code extends React.Component {
       : null;
 
     let content = this.state.viewSource
-      ? <pre style={styles.code}><code>{body.replace(/'''/g, '```')}</code></pre>
+      ? <HighlightedCode language={lang} code={body.replace(/'''/g, '```')} theme={theme} />
       : null;
 
     return (
@@ -85,7 +86,8 @@ class Code extends React.Component {
 Code.propTypes = {
   body: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
-  collapsed: PropTypes.bool
+  collapsed: PropTypes.bool,
+  lang: PropTypes.string
 };
 
 export default Specimen(Radium(Code));

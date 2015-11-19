@@ -13,12 +13,21 @@ export default {
   sidebarColorTextActive: '#FF5555',
   sidebarColorLine: '#EBEBEB',
   sidebarColorHeading: '#003B5C',
-  textColor: '#003B5C',
+  textColor: '#00263E',
   linkColor: '#FF5555',
   textMedium: '#003B5C',
   bgLight: '#F2F2F2',
   bgDark: '#333333',
   lightColor: '#D6D6D6',
+
+  codeStyles: {
+    tag: {color: '#FF5555'},
+    punctuation: {color: '#535353'},
+    script: {color: '#3F7397'},
+    function: {color: '#FF5555'},
+    keyword: {color: '#3F7397'},
+    string: {color: '#00263E'}
+  },
 
   // Patterns
   checkerboardPatternLight: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=',

@@ -15,6 +15,13 @@ const optionToKeyValue = (option: String) => {
     return {span: +span};
   }
 
+  // TODO don't hardcode
+  const langMatch = /^lang-(\w+)$/.exec(option);
+  if (langMatch) {
+    const [, lang] = langMatch;
+    return {lang};
+  }
+
   return {
     [camelize(option)]: true
   };
