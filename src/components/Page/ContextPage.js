@@ -5,6 +5,9 @@ import runscript from '../../utils/runscript';
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';
 
+const docSrc = (src) => '.' + src.replace(/^docs/, '');
+const getDocContext = () => require.context('raw!../../../docs', true, /\.md$/);
+
 class Page extends React.Component {
   constructor() {
     super();
@@ -13,13 +16,32 @@ class Page extends React.Component {
     };
   }
 
+  componentWillMount() {
+    if (module.hot) {
+      let ctx = getDocContext();
+      this.setState({content: ctx(docSrc(this.context.page.src))});
+
+      module.hot.accept(ctx.id, () => {
+        ctx = getDocContext();
+        this.setState({content: ctx(docSrc(this.context.page.src))});
+      });
+      return;
+    }
+
+    this.fetchPageData(this.context.page.src);
+  }
+
   componentDidMount() {
     this.context.page.scripts.forEach(runscript);
-    this.fetchPageData(this.context.page.src);
   }
 
   componentWillReceiveProps(_, nextContext) {
     if (nextContext.page.src !== this.context.page.src) {
+      if (module.hot) {
+        const ctx = getDocContext();
+        this.setState({content: ctx(docSrc(nextContext.page.src))});
+        return;
+      }
       this.setState({content: null});
       this.fetchPageData(nextContext.page.src);
     }
