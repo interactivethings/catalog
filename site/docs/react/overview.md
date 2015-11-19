@@ -83,7 +83,7 @@ import React from 'react';
 import {Card, ReactSpecimen} from 'catalog';
 import Button from 'components/Button/Button';
 
-export default ButtonDocs = () => (
+export default () => (
   <Card>
     <h2>My Buttons</h2>
 
