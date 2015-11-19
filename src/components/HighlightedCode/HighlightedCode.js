@@ -15,10 +15,10 @@ const getStyle = (theme) => {
       display: 'block',
       height: 'auto',
       margin: 0,
+      overflow: 'auto',
       padding: 20,
-      whiteSpace: 'pre-wrap',
-      width: '100%',
-      resize: 'vertical'
+      whiteSpace: 'pre',
+      width: '100%'
     },
     code: {
       fontFamily: theme.fontMono,
