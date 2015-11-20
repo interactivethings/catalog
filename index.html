@@ -19,7 +19,7 @@
 </head>
 <body>
   <div id="catalog" />
-  <script src="https://npmcdn.com/catalog@2.0.0-alpha13/catalog.min.js"></script>
+  <script src="https://npmcdn.com/catalog@2.0.0-alpha14/catalog.min.js"></script>
   <script>
     Catalog.render({
       title: "Catalog",
@@ -37,8 +37,7 @@
             {
               name: 'specimens',
               title: "Overview",
-              src: "docs/specimens.md",
-              scripts: ['docs/specimens.js']
+              src: "docs/specimens.md"
             },
             {
               name: 'audio',
@@ -70,7 +69,6 @@
               name: 'html',
               title: "HTML",
               src: "docs/specimens/html.md",
-              scripts: ['docs/example-script.js'],
               styles: ['docs/example-style.css']
             },
             {
@@ -103,9 +101,9 @@
         {
           name: 'test',
           title: "Style Test",
-          src: "docs/test.md",
-          styles: ['docs/test.css'],
-          scripts: ['docs/test.js']
+          src: "docs/test/test.md",
+          styles: ['docs/test/test.css'],
+          scripts: ['docs/test/test.js']
         }
       ]
     }, document.getElementById('catalog'));

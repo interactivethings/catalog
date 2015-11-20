@@ -17,7 +17,7 @@ The audio specimen can be used to document the audible aspects, for example back
 ```audio|span-2
 [   
     {
-        "src": "docs/html-project-example/sound.mp3"
+        "src": "docs/assets/sound.mp3"
     }
 ]
 ```
@@ -26,7 +26,7 @@ The audio specimen can be used to document the audible aspects, for example back
 '''audio|span-2
   [   
       {
-          "src": "docs/html-project-example/sound.mp3"
+          "src": "docs/assets/sound.mp3"
       }
   ]
 '''
