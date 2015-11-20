@@ -90,7 +90,7 @@ Another use case is to document the ratio between the font size and the line hei
     },
     {
         "paragraphs": ["14/24"],
-        "image": "docs/html-project-example/gradient.png",
+        "image": "docs/assets/gradient.png",
         "color": "#fff",
         "font": "sans-serif"
     },
@@ -118,7 +118,7 @@ Another use case is to document the ratio between the font size and the line hei
     },
     {
         "paragraphs": ["14/24"],
-        "image": "docs/html-project-example/gradient.png",
+        "image": "docs/assets/gradient.png",
         "color": "#fff",
         "font": "sans-serif"
     },

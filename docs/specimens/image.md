@@ -20,7 +20,7 @@ By using a plain background and no title you can place a simple image.
 ```image
 [
     {
-        "src": "docs/html-project-example/image_bw.jpg",
+        "src": "docs/assets/image_bw.jpg",
         "background": ["plain"],
         "span": 6
     }
@@ -33,7 +33,7 @@ _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 '''image
 [
     {
-        "src": "docs/html-project-example/image_bw.jpg",
+        "src": "docs/assets/image_bw.jpg",
         "background": ["plain"],
         "span": 6
     }
@@ -49,8 +49,8 @@ The overlay image is useful to document layout measurements for implementation.
 ```image
 [
     {   
-        "src": "docs/html-project-example/catalog_logo.png",
-        "overlay": "docs/html-project-example/catalog_logo-overlay.png",
+        "src": "docs/assets/catalog_logo.png",
+        "overlay": "docs/assets/catalog_logo-overlay.png",
         "span": 6
     }
 ]
@@ -60,8 +60,8 @@ The overlay image is useful to document layout measurements for implementation.
 '''image
 [
     {   
-        "src": "docs/html-project-example/catalog_logo.png",
-        "overlay": "docs/html-project-example/catalog_logo-overlay.png",
+        "src": "docs/assets/catalog_logo.png",
+        "overlay": "docs/assets/catalog_logo-overlay.png",
         "span": 6
     }
 ]
@@ -79,7 +79,7 @@ By adding attributes it is possible to specify implementation details.
 ```image
 [
     {
-        "src": "docs/html-project-example/catalog_logo.png",
+        "src": "docs/assets/catalog_logo.png",
         "span": 6,
         "background": ["dark"],
         "attributes": [
@@ -94,7 +94,7 @@ By adding attributes it is possible to specify implementation details.
 '''image
 [
     {
-        "src": "docs/html-project-example/catalog_logo.png",
+        "src": "docs/assets/catalog_logo.png",
         "span": 6,
         "background": ["dark"],
         "attributes": [

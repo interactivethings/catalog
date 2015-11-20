@@ -121,8 +121,8 @@ Take a look at the [documentation](/#/image) for more information.
 ```image
 [
     {   
-        "src": "docs/html-project-example/catalog_logo.png",
-        "overlay": "docs/html-project-example/catalog_logo-overlay.png",
+        "src": "docs/assets/catalog_logo.png",
+        "overlay": "docs/assets/catalog_logo-overlay.png",
         "background": "plain light",
         "span": 6
     }
