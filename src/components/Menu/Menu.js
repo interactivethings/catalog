@@ -48,8 +48,7 @@ export function style(theme) {
       fontSize: 12,
       padding: 20,
       color: theme.lightColor,
-      alignSelf: 'flex-end',
-      height: '100%'
+      alignSelf: 'flex-end'
     },
     link: {
       color: theme.lightColor
@@ -67,13 +66,14 @@ class Menu extends React.Component {
 
     return (
       <div style={currentStyle.bar} >
-        <Link to='/' style={{textDecoration: 'none'}}>
-          <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
-        </Link>
-        <ul style={currentStyle.list}>
-          { pageTree.map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
-        </ul>
-        <div style={{flex: 1}}/>
+        <div style={{flex: 1}}>
+          <Link to='/' style={{textDecoration: 'none'}}>
+            <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
+          </Link>
+          <ul style={currentStyle.list}>
+            { pageTree.map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
+          </ul>
+        </div>
         <div style={currentStyle.info}>
           Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>catalog</a>,
           an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com' target='_blank'>Interactive Things</a>.
