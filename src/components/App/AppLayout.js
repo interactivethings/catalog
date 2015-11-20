@@ -65,7 +65,8 @@ function style(
       top: 0,
       borderRight: `1px solid ${theme.sidebarColorLine}`,
       transform: `translateX(${sideBarOffset}px)`,
-      transition: `transform ${sideBarAnimDur}s`
+      transition: `transform ${sideBarAnimDur}s`,
+      WebkitOverflowScrolling: 'touch'
     },
     navBackground: {
       position: 'fixed',
@@ -96,6 +97,7 @@ class AppLayout extends React.Component {
   constructor() {
     super();
     this.onResize = this.onResize.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
     this.state = {
       viewportHeight: window.innerHeight,
       viewportWidth: window.innerWidth,
@@ -159,8 +161,8 @@ class AppLayout extends React.Component {
           { this.props.children }
           <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} isMobileLayout={isMobileLayout} />
         </div>
-        <MenuIcon style={currentStyle.menuIcon} onClick={this.toggleSidebar.bind(this)} />
-        <div style={currentStyle.navBackground} onClick={this.toggleSidebar.bind(this)} />
+        <MenuIcon style={currentStyle.menuIcon} onClick={this.toggleSidebar} onTouchStart={this.toggleSidebar} />
+        <div style={currentStyle.navBackground} onClick={this.toggleSidebar} onTouchStart={this.toggleSidebar} />
         <div style={currentStyle.sideNav}>
           { this.props.sideNav }
         </div>
@@ -168,7 +170,8 @@ class AppLayout extends React.Component {
     );
   }
 
-  toggleSidebar() {
+  toggleSidebar(e) {
+    e.preventDefault();
     this.setState({
       sidebarVisible: !this.state.sidebarVisible
     });
