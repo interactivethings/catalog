@@ -20,7 +20,7 @@ It can be used to document design specifications that are done in an animation p
 ```video|span-3
 [   
     {
-        "src": "docs/html-project-example/video.m4v"
+        "src": "docs/assets/video.m4v"
     }
 ]
 ```
@@ -30,7 +30,7 @@ It can be used to document design specifications that are done in an animation p
 '''video|span-3
 [   
     {
-        "src": "docs/html-project-example/video.m4v"
+        "src": "docs/assets/video.m4v"
     }
 ]
 '''

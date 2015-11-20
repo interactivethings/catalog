@@ -1,36 +1,37 @@
-> Catalog helps you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your project with clarity. It is completely dependency free, making it trivial to integrate into any application.
+> Catalog lets you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your project with clarity. It is completely dependency free, making it trivial to integrate into any application.
 
-That last bit is where Catalog really shines. There are many great tools out there to build living style guides, but most of them depend on a build step, which is in turn dependent on a specific technology. We like to use the right tool for the job: in some cases that might be Rails or Node.js or PHP or just plain HTML. Catalog works effortlessly with all of these technologies.
+That last bit is where Catalog really shines. There are many great tools out there to build living style guides, but most of them depend on a build step, which is in turn dependent on a specific technology. We like to use the right tool for the job: in some cases that might be React, Rails, Node.js, PHP or just plain HTML. Catalog works effortlessly with all of these technologies.
 
 Use Catalog to document HTML and CSS, colors, typography, and even interactive components of your web project in a beautiful and easy to access format. The design stands back and yet holds enough visual and functional sophistication to provide a great experience to designers, developers, and clients alike.
 
 ## Getting started
 
-To get started, look at the provided [example](#/example). If you view source, you will see that you need to load the Catalog CSS and Javascript and then configure it. To get started quickly, you can use one of these hosted versions of Catalog:
+Download one of the following versions of Catalog, and then read [how to get started](#/usage).
 
-* 2.0.0-alpha13 Standalone: [production](https://npmcdn.com/catalog@2.0.0-alpha13/catalog.min.js), [development](https://npmcdn.com/catalog@2.0.0-alpha13/catalog.js)
+### Standalone Downloads
 
-For real projects, we recommend to install Catalog using [npm](https://www.npmjs.org/).
+#### Catalog 2.0.0-alpha14 (production)
 
-#### Install with npm
+Compressed, production-ready version of Catalog: https://npmcdn.com/catalog@2.0.0-alpha14/catalog.min.js
 
-```code
-npm install --save catalog
-```
+#### Catalog 2.0.0-alpha14 (development)
 
-#### Download source code
+Uncompressed, development version of Catalog with debug information enabled: https://npmcdn.com/catalog@2.0.0-alpha14/catalog.js
 
-Go to Github to download the [source code](https://github.com/interactivethings/catalog/).
+### npm
 
-#### Using it on your local machine
-
-Catalog doesn't need anything besides a single Javascript file. However, to run Catalog on your local machine, you will have to use some kind of server due to browser security restrictions (the browser won't be able to load the Markdown files from your local file system). If you don't have an existing server for your project, use something simple like this Python server.
+Use the npm module if you want to integrate Catalog to document React components. For details, see the [React documentation](#/react).
 
 ```code
-python -m SimpleHTTPServer
+npm install catalog --save
 ```
 
-## More tools
+The **react**, **react-dom**, **react-router**, and **history** modules are peerDependencies, so you need to install them separately.
 
-Catalog is a companion product to [Catalyst](http://interactivethings.github.io/catalyst/), our very own CSS framework.
+### Source Code
 
+Catalog is Open Source and on [GitHub](https://github.com/interactivethings/catalog/).
+
+### Credits
+
+Catalog is developed by [many people](https://github.com/interactivethings/catalog/blob/master/AUTHORS) at [Interactive Things](http://www.interactivethings.com/), a User Experience and Data Visualization Studio based in Zürich.
