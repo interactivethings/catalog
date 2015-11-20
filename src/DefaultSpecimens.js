@@ -5,7 +5,6 @@ import Html from './specimens/Html';
 import Hint from './specimens/Hint';
 import Image from './specimens/Image';
 import Type from './specimens/Type';
-import Project from './specimens/Project/Project';
 import Download from './specimens/Download';
 import Video from './specimens/Video';
 
@@ -27,7 +26,6 @@ export default {
   hint: Hint,
   image: Image,
   type: Type,
-  'project_dont_use_this': Project,
   download: Download,
   video: Video
 };
