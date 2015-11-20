@@ -32,7 +32,6 @@ function style(
     sideBarOffset,
     sideWidth,
     contentWidth,
-    contentHeight,
     contentOffset,
     sideBarAnimDur,
     bgVisible
@@ -60,7 +59,7 @@ function style(
       color: '#fff',
       overflowY: 'auto',
       position: 'fixed',
-      height: contentHeight,
+      height: '100vh',
       width: sideWidth,
       top: 0,
       borderRight: `1px solid ${theme.sidebarColorLine}`,
@@ -72,8 +71,8 @@ function style(
       position: 'fixed',
       top: 0,
       left: 0,
-      width: '100%',
-      height: contentHeight,
+      width: '100vw',
+      height: '100vh',
       backgroundColor: 'rgba(0, 0, 0, 0.2)',
       opacity: bgVisible ? 1 : 0,
       visibility: bgVisible ? 'visible' : 'hidden',
@@ -99,7 +98,6 @@ class AppLayout extends React.Component {
     this.onResize = this.onResize.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.state = {
-      viewportHeight: window.innerHeight,
       viewportWidth: window.innerWidth,
       sidebarVisible: false
     };
@@ -115,14 +113,13 @@ class AppLayout extends React.Component {
 
   onResize() {
     this.setState({
-      viewportHeight: window.innerHeight,
       viewportWidth: window.innerWidth
     });
   }
 
   render() {
     const {theme, pages, page} = this.props;
-    const { sidebarVisible, viewportWidth, viewportHeight } = this.state;
+    const { sidebarVisible, viewportWidth } = this.state;
 
     const isMobileLayout = viewportWidth < 1000;
     const sideWidth = SIDE_WIDTH - 1;
@@ -135,7 +132,6 @@ class AppLayout extends React.Component {
       sideBarOffset = 0;
       contentWidth = viewportWidth - SIDE_WIDTH;
     }
-    const contentHeight = viewportHeight;
     const contentOffset = isMobileLayout ? 0 : SIDE_WIDTH;
     const sideBarAnimDur = 0.3;
     const bgVisible = isMobileLayout && sidebarVisible;
@@ -147,7 +143,6 @@ class AppLayout extends React.Component {
       sideBarAnimDur,
       bgVisible,
       contentWidth,
-      contentHeight,
       contentOffset
     });
 
