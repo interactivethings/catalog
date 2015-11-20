@@ -17,7 +17,6 @@ const getStyle = (theme) => {
       margin: 0,
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
-      overflowScrolling: 'touch',
       padding: 20,
       whiteSpace: 'pre',
       width: '100%'
