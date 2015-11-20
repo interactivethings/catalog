@@ -1,7 +1,17 @@
 {
   "name": "catalog",
   "version": "2.0.0-alpha11",
-  "description": "Catalog is the foundation for living styleguides created at Interactive Things",
+  "description": "Create living style guides using Markdown or React",
+  "keywords": [
+    "styleguide",
+    "style guide",
+    "docs",
+    "documentation",
+    "react",
+    "markdown"
+  ],
+  "homepage": "https://interactivethings.github.io/catalog/",
+  "bugs": "https://github.com/interactivethings/catalog/issues",
   "main": "lib/index.js",
   "engines": {
     "npm": ">=2.14.12"
@@ -55,10 +65,9 @@
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1"
   },
-  "author": "Peter Gassner <peter@interactivethings.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/interactivethings/catalog.git"
   },
-  "license": "MIT"
+  "license": "BSD-3-Clause"
 }
