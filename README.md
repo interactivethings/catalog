@@ -7,5 +7,3 @@ Refer to the [documentation](http://interactivethings.github.io/catalog/) to fin
 ## Development
 
 After that, just run `make` in the project root to install all dependencies and start the development server.
-
-During development, run `make server` to automatically rebuild the project when you make changes to the source files.
