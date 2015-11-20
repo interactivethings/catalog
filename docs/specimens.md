@@ -5,7 +5,7 @@
 Specimens are defined as Markdown code blocks with an argument string.
 
 ```code
-'''html|dark,run-script
+'''html|dark
 Content goes here...
 '''
 ```
@@ -30,9 +30,7 @@ The documentation displays options in a list, using the following pattern:
 
 ## HTML
 
-The HTML specimen can be used to display and run scripts. For an overview of all available options, see the [HTML specimen documentation page](/#/html).
-
-Note that this is also the default specimen if no argument string is specified.
+The HTML specimen can be used to render HTML snippets. For an overview of all available options, see the [HTML specimen documentation page](/#/html).
 
 ```html|no-source
 hello world
