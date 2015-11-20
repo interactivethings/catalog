@@ -60,12 +60,12 @@ function style(
       color: '#fff',
       overflowY: 'auto',
       position: 'fixed',
-      left: sideBarOffset,
       height: contentHeight,
       width: sideWidth,
       top: 0,
       borderRight: `1px solid ${theme.sidebarColorLine}`,
-      transition: `left ${sideBarAnimDur}s`
+      transform: `translateX(${sideBarOffset}px)`,
+      transition: `transform ${sideBarAnimDur}s`
     },
     navBackground: {
       position: 'fixed',
@@ -85,8 +85,8 @@ function style(
       flexDirection: 'column',
       position: 'relative',
       width: contentWidth,
-      left: contentOffset,
-      transition: `left ${sideBarAnimDur}s`
+      transform: `translateX(${contentOffset}px)`,
+      transition: `transform ${sideBarAnimDur}s`
     }
   };
 }
