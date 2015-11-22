@@ -48,11 +48,12 @@ export default class HighlightedCode extends Component {
   render() {
     const {language, theme, code} = this.props;
     const styles = getStyle(theme);
+    const lang = Prism.languages.hasOwnProperty(language) ? language : 'markup';
 
     return (
       <pre style={styles.pre}>
         <code style={styles.code}>
-          {renderPrismTokens(Prism.tokenize(code, Prism.languages[language], language), theme.codeStyles)}
+          {renderPrismTokens(Prism.tokenize(code, Prism.languages[lang], lang), theme.codeStyles)}
         </code>
       </pre>
     );
