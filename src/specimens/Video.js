@@ -27,7 +27,7 @@ class Video extends React.Component {
       }
     };
 
-    let entryObjects = body.map( (entry, key) => {
+    let entryObjects = [].concat(body).map( (entry, key) => {
       let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
         ? entry.autoplay
         : null;
@@ -66,7 +66,7 @@ class Video extends React.Component {
 
 Video.propTypes = {
   theme: PropTypes.object.isRequired,
-  body: PropTypes.array.isRequired
+  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default Specimen(Radium(Video));

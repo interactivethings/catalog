@@ -71,7 +71,7 @@ class Color extends React.Component {
 
     let isPalette = options.palette || options.paletteHorizontal;
 
-    let colorSwatches = body.map( (color, key) => {
+    let colorSwatches = [].concat(body).map( (color, key) => {
       return (
         <div key={'cg-Specimen-Color' + key} style={{ ...styles.box}}>
           <div style={{...styles.well, background: color.value}}/>
@@ -101,8 +101,7 @@ class Color extends React.Component {
 }
 
 Color.propTypes = {
-  body: PropTypes.array.isRequired,
-  modifiers: PropTypes.array,
+  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   theme: PropTypes.object.isRequired,
   palette: PropTypes.bool,
   paletteHorizontal: PropTypes.bool

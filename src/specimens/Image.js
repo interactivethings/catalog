@@ -94,7 +94,7 @@ class Image extends React.Component {
       }
     };
 
-    let entryObjects = body.map( (entry, key) => {
+    let entryObjects = [].concat(body).map( (entry, key) => {
       let background = []
         .concat(entry.background !== null
           ? entry.background
@@ -158,7 +158,7 @@ class Image extends React.Component {
 
 Image.propTypes = {
   theme: PropTypes.object.isRequired,
-  body: PropTypes.array.isRequired
+  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default Specimen(Radium(Image));

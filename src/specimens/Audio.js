@@ -26,7 +26,7 @@ class Audio extends React.Component {
       }
     };
 
-    let entryObjects = body.map( (entry, key) => {
+    let entryObjects = [].concat(body).map( (entry, key) => {
       let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
         ? true
         : false;
@@ -63,7 +63,7 @@ class Audio extends React.Component {
 
 Audio.propTypes = {
   theme: PropTypes.object.isRequired,
-  body: PropTypes.array.isRequired
+  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default Specimen(Radium(Audio));

@@ -61,7 +61,7 @@ class Type extends React.Component {
     let headlineText = options.single ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
 
 
-    let type = body.map( (entry, key) => {
+    let type = [].concat(body).map( (entry, key) => {
       let fontColor = entry.color ? {color: entry.color} : null;
       let isItalic = entry.italic ? 'italic' : 'normal';
       let fontFamily = entry.font ? entry.font : 'inherit';
@@ -133,7 +133,7 @@ Type.propTypes = {
   kern: PropTypes.bool,
   smoothen: PropTypes.bool,
   single: PropTypes.bool,
-  body: PropTypes.array.isRequired,
+  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   theme: PropTypes.object.isRequired
 };
 

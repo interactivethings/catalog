@@ -27,24 +27,20 @@ The type specimen can be used to reflect various elements concerning typography.
 The most obvious use case is to represent the ratio and hierarchy of headings.
 
 ```type
-[
-    {
-        "headings": [98,28,21,16,14,12],
-        "font": "sans-serif",
-        "color": "#00263e"
-    }
-]
+{
+  "headings": [98,28,21,16,14,12],
+  "font": "sans-serif",
+  "color": "#00263e"
+}
 ```
 
-```code
+```code|lang-javascript
 '''type
-[
-    {
-        "headings": [98,28,21,16,14,12],
-        "font": "sans-serif",
-        "color": "#00263e"
-    }
-]
+{
+  "headings": [98,28,21,16,14,12],
+  "font": "sans-serif",
+  "color": "#00263e"
+}
 '''
 ```
 
@@ -53,25 +49,21 @@ The most obvious use case is to represent the ratio and hierarchy of headings.
 Another use case is to document the ratio between the font size and the line height for text bodies. 
 
 ```type
-[
-    {
-        "paragraphs": ["18/28", "12/21"],
-        "font": "sans-serif",
-        "color": "#00263e"
-    }
-]
+{
+  "paragraphs": ["18/28", "12/21"],
+  "font": "sans-serif",
+  "color": "#00263e"
+}
 ```
 
 
-```code
+```code|lang-javascript
 '''type
-[
-    {
-        "paragraphs": ["18/28"],
-        "font": "sans-serif",
-        "color": "#00263e"
-    }
-]
+{
+  "paragraphs": ["18/28"],
+  "font": "sans-serif",
+  "color": "#00263e"
+}
 '''
 ```
 
@@ -105,7 +97,7 @@ Another use case is to document the ratio between the font size and the line hei
 ]
 ```
 
-```code|span-3
+```code|lang-javascript,span-3
 '''type|span-3,kern,smoothen,single
 [
     {
@@ -188,7 +180,7 @@ Passes Level <strong>AAA</strong> even for small text
 ```
 
 
-```code|collapsed
+```code|lang-javascript,collapsed
 '''type|span-4,kern,smoothen
 [
     {
