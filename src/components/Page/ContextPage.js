@@ -45,9 +45,10 @@ class Page extends Component {
           this.setState({content: ctx(docSrc(nextContext.page.src))});
           return;
         }
-        this.setState({content: null});
-        this.fetchPageData(nextContext.page.src);
       }
+      
+      this.setState({content: null});
+      this.fetchPageData(nextContext.page.src);
     }
   }
 
