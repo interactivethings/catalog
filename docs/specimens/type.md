@@ -160,7 +160,7 @@ Does not pass any tests.
 ```
 
 ```hint|span-2,directive
-Passes Level <strong>AA</strong> for large text
+Passes Level **AA** for large text
 ```
 
 
@@ -177,7 +177,7 @@ Passes Level <strong>AA</strong> for large text
 ```
 
 ```hint|span-2,directive
-Passes Level <strong>AAA</strong> even for small text
+Passes Level **AAA** even for small text
 ```
 
 
@@ -209,7 +209,7 @@ Does not pass any tests.
 '''
 
 '''hint|span-2,directive
-Passes Level <strong>AA</strong> for large text
+Passes Level **AA** for large text
 '''
 
 
@@ -226,7 +226,7 @@ Passes Level <strong>AA</strong> for large text
 '''
 
 '''hint|span-2,directive
-Passes Level <strong>AAA</strong> even for small text
+Passes Level **AAA** even for small text
 '''
 ```
 
