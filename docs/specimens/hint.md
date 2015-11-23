@@ -11,12 +11,12 @@ Can be used to highlight important aspects.
 ### Examples
 
 ```hint
-Make sure to use <pre>text-rendering: optimizeLegibility;</pre>on fonts over 36px, as well as <pre>-webkit-font-smoothing: antialiased;</pre> and <pre>-moz-osx-font-smoothing: grayscale;</pre> on dark backgrounds.
+Make sure to use `text-rendering: optimizeLegibility;` on fonts over 36px, as well as `-webkit-font-smoothing: antialiased;` and `-moz-osx-font-smoothing: grayscale;` on dark backgrounds.
 ```
 
 ```code
 '''hint
-Make sure to use <pre>text-rendering: optimizeLegibility;</pre>on fonts over 36px, as well as <pre>-webkit-font-smoothing: antialiased;</pre> and <pre>-moz-osx-font-smoothing: grayscale;</pre> on dark backgrounds.
+Make sure to use `text-rendering: optimizeLegibility;`on fonts over 36px, as well as `-webkit-font-smoothing: antialiased;` and `-moz-osx-font-smoothing: grayscale;` on dark backgrounds.
 '''
 ```
 
@@ -31,12 +31,12 @@ Make it so!
 ```
 
 ```hint|warning
-No <strong>stairway</strong>
+No **stairway**.
 ```
 
 ```code
 '''hint|warning
-No <strong>stairway</strong>;
+No **stairway**.
 '''
 ```
 

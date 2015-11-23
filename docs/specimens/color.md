@@ -30,7 +30,7 @@ The color swatches are useful to document single or important colors like the ma
 ]
 ```
 
-```code
+```code|lang-javascript
 '''color
 [
     {"name": "light-blue", "value": "#b0f6ff"},
@@ -56,7 +56,7 @@ Color palettes can be used for sets that contain more colors. For example to doc
 ]
 ```
 
-```code
+```code|lang-javascript
 '''color|palette
 [
     {"value": "#e3f1fc"},
@@ -87,7 +87,7 @@ displaying a diverging color scale
 ]
 ```
 
-```code
+```code|lang-javascript
 '''color|palette-horizontal
 [
     {"value":"#543005"},
@@ -145,7 +145,7 @@ displaying a diverging color scale
 ]
 ```
 
-```code|collapsed
+```code|collapsed,lang-javascript
 '''color|span-2,palette
 [
     {"value": "#ffff00"},

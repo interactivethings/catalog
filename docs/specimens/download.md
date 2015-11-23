@@ -132,7 +132,3 @@
 '''
 ```
 
-
-```hint
-If you want to have multiple files available for download automatically, keep in mind that the Project specimen can pack them into a .zip.
-```
