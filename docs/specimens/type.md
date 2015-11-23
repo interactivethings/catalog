@@ -11,6 +11,7 @@ The type specimen can be used to reflect various elements concerning typography.
 - `image: string` defines the background image
 - `color: string` defines the font color, takes hex code or color name
 - `tracking: integer` defines tracking respectively letter-spacing
+- `style: string` can be italic or oblique, default is "normal" 
 - `weight: integer` defines the font weight
 
 ### Arguments

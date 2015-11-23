@@ -63,7 +63,7 @@ class Type extends React.Component {
 
     let type = [].concat(body).map( (entry, key) => {
       let fontColor = entry.color ? {color: entry.color} : null;
-      let isItalic = entry.italic ? 'italic' : 'normal';
+      let isItalic = entry.style ? entry.style : 'normal';
       let fontFamily = entry.font ? entry.font : 'inherit';
       let backgroundColor = entry.background ? {backgroundColor: entry.background} : null;
       let fontWeight = entry.weight ? entry.weight : 'normal';
@@ -76,6 +76,7 @@ class Type extends React.Component {
           {entry.color ? <li style={styles.list}>color: {entry.color + ';'}</li> : null}
           {entry.background ? <li style={styles.list}>background-color: {entry.background + ';'}</li> : null}
           {fontWeight !== 'normal' ? <li style={styles.list}>font-weight: {entry.weight + ';'}</li> : null}
+          {isItalic !== 'normal' ? <li style={styles.list}>font-style: {entry.style + ';'}</li> : null}
           {letterSpacing ? <li style={styles.list}>letter-spacing: {entry.tracking + ';'}</li> : null}
         </ul>
         );
