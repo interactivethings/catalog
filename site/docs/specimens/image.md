@@ -18,26 +18,22 @@ Images can be used as graphical elements, to document implemtation details with 
 By using a plain background and no title you can place a simple image.
 
 ```image
-[
-    {
-        "src": "docs/assets/image_bw.jpg",
-        "background": ["plain"],
-        "span": 6
-    }
-]
+{
+    "src": "docs/assets/image_bw.jpg",
+    "background": ["plain"],
+    "span": 6
+}
 ```
 
 _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 
-```code
+```code|lang-javascript
 '''image
-[
-    {
-        "src": "docs/assets/image_bw.jpg",
-        "background": ["plain"],
-        "span": 6
-    }
-]
+{
+    "src": "docs/assets/image_bw.jpg",
+    "background": ["plain"],
+    "span": 6
+}
 '''
 ```
 
@@ -47,28 +43,22 @@ _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 The overlay image is useful to document layout measurements for implementation.
 
 ```image
-[
-    {   
-        "src": "docs/assets/catalog_logo.png",
-        "overlay": "docs/assets/catalog_logo-overlay.png",
-        "span": 6
-    }
-]
+{   
+    "src": "docs/assets/catalog_logo.png",
+    "overlay": "docs/assets/catalog_logo-overlay.png",
+    "span": 6
+}
 ```
 
-```code
+```code|lang-javascript
 '''image
-[
-    {   
-        "src": "docs/assets/catalog_logo.png",
-        "overlay": "docs/assets/catalog_logo-overlay.png",
-        "span": 6
-    }
-]
+{   
+    "src": "docs/assets/catalog_logo.png",
+    "overlay": "docs/assets/catalog_logo-overlay.png",
+    "span": 6
+}
 '''
 ```
-
-
 
 
 
@@ -77,32 +67,28 @@ The overlay image is useful to document layout measurements for implementation.
 By adding attributes it is possible to specify implementation details.
 
 ```image
-[
-    {
-        "src": "docs/assets/catalog_logo.png",
-        "span": 6,
-        "background": ["dark"],
-        "attributes": [
-          "alt text: catalog logo",
-          "add .2s fade in animation"
-        ]
-    }
-]
+{
+    "src": "docs/assets/catalog_logo.png",
+    "span": 6,
+    "background": ["dark"],
+    "attributes": [
+      "alt text: catalog logo",
+      "add .2s fade in animation"
+    ]
+}
 ```
 
-```code
+```code|lang-javascript
 '''image
-[
-    {
-        "src": "docs/assets/catalog_logo.png",
-        "span": 6,
-        "background": ["dark"],
-        "attributes": [
-          "alt text: catalog logo",
-          "add .2s fade in animation"
-        ]
-    }
-]
+{
+    "src": "docs/assets/catalog_logo.png",
+    "span": 6,
+    "background": ["dark"],
+    "attributes": [
+      "alt text: catalog logo",
+      "add .2s fade in animation"
+    ]
+}
 '''
 ```
 

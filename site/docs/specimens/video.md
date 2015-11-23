@@ -17,21 +17,17 @@ It can be used to document design specifications that are done in an animation p
 
 ### Example
 
-```video|span-3
-[   
-    {
-        "src": "docs/assets/video.m4v"
-    }
-]
+```video
+{
+    "src": "docs/assets/video.m4v"
+}
 ```
 
 
-```code
-'''video|span-3
-[   
-    {
-        "src": "docs/assets/video.m4v"
-    }
-]
+```code|lang-javascript
+'''video
+{
+    "src": "docs/assets/video.m4v"
+}
 '''
 ```
