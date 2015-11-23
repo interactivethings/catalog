@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Style as RadiumStyle } from 'radium';
+import MarkdownRenderer from '../utils/MarkdownRenderer';
 import Specimen from '../components/Specimen/Specimen';
 import {text} from '../scaffold/typography';
 
@@ -49,15 +50,16 @@ class Hint extends React.Component {
         <RadiumStyle
           scopeSelector='.cg-Hint'
           rules={{
-            pre: {
+            code: {
               display: 'inline',
               borderRadius: '2px',
               background: 'rgba(0,0,0,.03)',
+              fontFamily: theme.fontMono,
               padding: '4px 5px',
               whiteSpace: 'pre-wrap'
             }
           }}/>
-          <div dangerouslySetInnerHTML={{__html: body}}/>
+          <div>{MarkdownRenderer({text: body})}</div>
         </section>
       );
   }
