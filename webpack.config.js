@@ -37,7 +37,7 @@ var webpackConfig = {
     plugins: [
       new webpack.DefinePlugin({
        '__DEV__': JSON.stringify(true),
-       'process.env.NODE_ENV': JSON.stringify('development')
+       'process.env.NODE_ENV': JSON.stringify('catalog-hot-development')
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.optimize.OccurenceOrderPlugin()
