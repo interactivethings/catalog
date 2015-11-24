@@ -1,5 +1,4 @@
 SHELL := /bin/bash
-PATH  := node_modules/.bin:$(PATH)
 
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
@@ -28,13 +27,13 @@ all: server
 ### DEVELOPMENT
 
 server: node_modules
-	@NODE_ENV=hot bin/server
+	@NODE_ENV=hot $$(npm bin)/nodemon -q -w webpack.config.js -w bin --exec bin/server
 
 watch-lib: node_modules
-	babel src --watch --ignore __tests__ --out-dir lib
+	$$(npm bin)/babel src --watch --ignore __tests__ --out-dir lib
 
 test:
-	@babel-tape-runner "src/**/__tests__/*.js" | faucet
+	@$$(npm bin)/babel-tape-runner "src/**/__tests__/*.js" | $$(npm bin)/faucet
 
 
 ### BUILDS
@@ -42,13 +41,13 @@ test:
 build: node_modules clean test lib $(UMD_BUILD_TARGETS)
 
 lib:
-	babel src --ignore __tests__ --out-dir $@
+	$$(npm bin)/babel src --ignore __tests__ --out-dir $@
 
 catalog.js:
-	@NODE_ENV=development webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
+	@NODE_ENV=development $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
 
 catalog.min.js:
-	@NODE_ENV=production webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
+	@NODE_ENV=production $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
 
 
 ### DOCUMENTATION AND DEPLOYMENT
@@ -76,7 +75,7 @@ clobber: clean
 	@rm -rf node_modules
 
 lint:
-	eslint src
+	$$(npm bin)/eslint src
 
 #
 # Targets

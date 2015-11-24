@@ -25,7 +25,7 @@ var webpackConfig = {
   // Used for the local development server
   hot: {
     entry: [
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?noInfo=true&reload=true',
       resolveHere('src/index-standalone')
     ],
     output: {

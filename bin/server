@@ -42,7 +42,7 @@ function server(options, config) {
     }
   }));
 
-  app.use(hotMiddleware(compiler));
+  app.use(hotMiddleware(compiler, {log: false}));
 
   app.use(express.static('.'));
 
