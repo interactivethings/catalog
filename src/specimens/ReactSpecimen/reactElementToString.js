@@ -20,12 +20,6 @@ Needs work:
 
 */
 
-const formatProp = (k, v) => {
-  return v === true ? k :
-    typeof v === 'string' ? `${k}='${v}'` :
-    `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
-};
-
 const reactElementToString = (el, indent = '') => {
   if (el === void 0) {
     return '';
@@ -45,6 +39,13 @@ const reactElementToString = (el, indent = '') => {
     displayName = type.displayName;
     defaultProps = type.defaultProps;
   }
+
+  const formatProp = (k, v) => {
+    return v === true ? k :
+      typeof v === 'string' ? `${k}='${v}'` :
+      React.isValidElement(v) ? `${k}={${reactElementToString(v)}}` :
+      `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
+  };
 
   const propKeys = Object.keys(props)
     .sort()
