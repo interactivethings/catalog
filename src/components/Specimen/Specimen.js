@@ -2,21 +2,51 @@
 
 import React, {PropTypes} from 'react';
 import Span from './Span';
+import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
+import parseSpecimenBody from '../../utils/parseSpecimenBody';
 
-export default function wrapSpecimen(WrappedSpecimen) {
-  const Specimen = (props, {theme}) => (
-    <Span span={props.span}>
-      <WrappedSpecimen {...props} theme={theme} />
-    </Span>
-  );
+const identity = (v) => v;
 
-  Specimen.propTypes = {
-    span: PropTypes.number
+export default function Specimen(mapBodyToProps = identity, mapOptionsToProps = []) {
+  const parseOptions = parseSpecimenOptions(mapOptionsToProps);
+  const parseBody = parseSpecimenBody(mapBodyToProps);
+
+  return (WrappedSpecimen) => {
+    const Specimen = (props, {theme}) => {
+      const {rawOptions, rawBody} = props;
+      const optionProps = parseOptions(rawOptions);
+      const bodyProps = parseBody(rawBody);
+      const span = props.span || optionProps.span;
+
+      if (Array.isArray(bodyProps)) {
+        return (
+          <Span span={span}>
+            {bodyProps.map((specimenProps, i) => (
+              <Span key={i} span={specimenProps.span}>
+                <WrappedSpecimen {...optionProps} {...specimenProps} {...props}  theme={theme} />
+              </Span>
+            ))}
+          </Span>
+        );
+      }
+
+      return (
+        <Span span={span}>
+          <WrappedSpecimen {...optionProps} {...bodyProps} {...props} theme={theme} />
+        </Span>
+      );
+    };
+
+    Specimen.propTypes = {
+      span: PropTypes.number,
+      rawBody: PropTypes.string,
+      rawOptions: PropTypes.string
+    };
+
+    Specimen.contextTypes = {
+      theme: PropTypes.object.isRequired
+    };
+
+    return Specimen;
   };
-
-  Specimen.contextTypes = {
-    theme: PropTypes.object.isRequired
-  };
-
-  return Specimen;
 }
