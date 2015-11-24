@@ -26,5 +26,6 @@ export default class Span extends Component {
 
 Span.propTypes = {
   span: PropTypes.number,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  style: PropTypes.object
 };
