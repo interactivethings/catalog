@@ -4,14 +4,13 @@ import Specimen from '../components/Specimen/Specimen';
 
 class Color extends React.Component {
   render() {
-    const {theme, body, ...options} = this.props;
+    const {theme, value, name, palette, paletteHorizontal} = this.props;
     let styles = {
       container: {
         display: 'flex',
         alignItems: 'stretch',
         flexWrap: 'wrap',
         justifyContent: 'flex-start',
-        margin: '20px 0',
         overflow: 'auto',
         flexBasis: '100%'
       },
@@ -25,7 +24,7 @@ class Color extends React.Component {
         flexBasis: `calc(${ 1 / 6 * 100}%)`
       },
       well: {
-        alignSelf: 'flex-start',
+        alignSelf: 'stretch',
         flex: '0 0 auto',
         height: '111px',
         marginRight: 10
@@ -69,42 +68,49 @@ class Color extends React.Component {
     };
 
 
-    let isPalette = options.palette || options.paletteHorizontal;
+    let isPalette = palette || paletteHorizontal;
 
-    let colorSwatches = [].concat(body).map( (color, key) => {
+    if (isPalette) {
       return (
-        <div key={'cg-Specimen-Color' + key} style={{ ...styles.box}}>
-          <div style={{...styles.well, background: color.value}}/>
-          <div style={{...styles.text}} key={key}>
-            {color.name} <div style={styles.mono}>{color.value}</div>
+        <section style={[styles.container, paletteHorizontal ? styles.rows : styles.columns ]}>
+          <div style={{ ...styles.paletteItem,  backgroundColor: value}}>
+            <div style={{...styles.textPalette, color: value}}>
+              {name} <div style={styles.mono}>{value}</div>
+            </div>
           </div>
-        </div>
+        </section>
       );
-    });
-
-    let colorPalette = body.map( (color, key) => {
-      return (
-        <div key={'cg-Specimen-Color' + key} style={{ ...styles.paletteItem,  backgroundColor: color.value}}>
-          <div style={{...styles.textPalette, color: color.value}} key={key}>
-            {color.name} <div style={styles.mono}>{color.value}</div>
-          </div>
-        </div>
-      );
-    });
+    }
 
     return (
-      <section style={[styles.container, isPalette && !options.paletteHorizontal ? styles.columns : styles.rows ]}>
-        {isPalette ? colorPalette : colorSwatches }
-      </section>
+      // <section style={[styles.container, styles.columns]}>
+        <div style={{flexBasis: '100%'}}>
+          <div style={{...styles.well,background: value}} />
+          <div style={{...styles.text}}>
+            {name} <div style={styles.mono}>{value}</div>
+          </div>
+        </div>
+      // </section>
     );
   }
 }
 
 Color.propTypes = {
-  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   theme: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string,
   palette: PropTypes.bool,
   paletteHorizontal: PropTypes.bool
 };
 
-export default Specimen(Radium(Color));
+Color.defaultProps = {
+  palette: false,
+  paletteHorizontal: false
+};
+
+const mapBodyToProps = (parsed) => ({
+  ...parsed,
+  span: parsed.palette || parsed.paletteHorizontal ? null : 1
+});
+
+export default Specimen(mapBodyToProps)(Radium(Color));
