@@ -30,7 +30,7 @@ The documentation displays options in a list, using the following pattern:
 
 ## HTML
 
-The HTML specimen can be used to render HTML snippets. For an overview of all available options, see the [HTML specimen documentation page](/#/html).
+The HTML specimen can be used to render HTML snippets. For an overview of all available options, see the [HTML specimen documentation page](#/html).
 
 ```html|no-source
 hello world
@@ -40,7 +40,7 @@ hello world
 ## Code
 
 The code specimen is intended to display source code, either as block or collapsed drawer.
-See the [documentation](/#/code) to learn about the options.
+See the [documentation](#/code) to learn about the options.
 
 ```code
 '''code
@@ -51,7 +51,7 @@ let {foo, bar} = baz;
 
 ## Color
 
-The color specimen can be used to document colors ranging from a single swatch to more complex palettes and palette columns. All options are described [here](/#/color).
+The color specimen can be used to document colors ranging from a single swatch to more complex palettes and palette columns. All options are described [here](#/color).
 
 ```color|palette-horizontal
 [   
@@ -77,14 +77,14 @@ If you only need to display a single HTML document or make a file available for 
 This specimen can be used to highlight important aspects.
 ```
 
-More options are documented [here](/#/hint).
+More options are documented [here](#/hint).
 
 
 
 ## Type
 
 The type specimen can be used to document various typographic characteristics. 
-Please see the specimen [documentation](/#/type) for an overview of all options.
+Please see the specimen [documentation](#/type) for an overview of all options.
 
 ```type|span-4,kern,smoothen,shorter
 [
@@ -116,7 +116,7 @@ Please see the specimen [documentation](/#/type) for an overview of all options.
 ### Image
 
 A responsive image specimen.
-Take a look at the [documentation](/#/image) for more information.
+Take a look at the [documentation](#/image) for more information.
 
 ```image
 [
@@ -132,15 +132,15 @@ Take a look at the [documentation](/#/image) for more information.
 
 ### Video
 
-Allows embedding video files. See the available [options](/#/video).
+Allows embedding video files. See the available [options](#/video).
 
 
 ### Audio
 
-A simple Audio player. See the available [options](/#/audio).
+A simple Audio player. See the available [options](#/audio).
 
 
 
 ## Download
 
-Download one or more assets with the [download](/#/download) specimen.
+Download one or more assets with the [download](#/download) specimen.
