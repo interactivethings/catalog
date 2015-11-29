@@ -17,5 +17,5 @@ export default {
   // image: Image,
   // type: Type,
   download: Download,
-  // video: Video
+  video: Video
 };
