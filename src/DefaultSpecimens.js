@@ -16,6 +16,6 @@ export default {
   hint: Hint,
   // image: Image,
   // type: Type,
-  // download: Download,
+  download: Download,
   // video: Video
 };
