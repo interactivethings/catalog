@@ -80,7 +80,7 @@ class Html extends React.Component {
   }
 
   render() {
-    const {theme, body, ...options} = this.props;
+    const {theme, text, ...options} = this.props;
     const styles = getStyle(theme);
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
@@ -91,7 +91,7 @@ class Html extends React.Component {
     };
 
     let source = this.state.viewSource
-      ? <div style={styles.source} ><HighlightedCode language='markup' code={body} theme={theme} /></div>
+      ? <div style={styles.source} ><HighlightedCode language='markup' code={text} theme={theme} /></div>
       : null;
 
     let toggle = !options.noSource
@@ -101,7 +101,7 @@ class Html extends React.Component {
     return (
       <div style={styles.container} className='cg-Specimen-Html'>
         {toggle}
-        <div style={[styles.content, exampleStyles]} dangerouslySetInnerHTML={{__html: body}} />
+        <div style={[styles.content, exampleStyles]} dangerouslySetInnerHTML={{__html: text}} />
         {source}
       </div>
     );
@@ -113,7 +113,7 @@ class Html extends React.Component {
 }
 
 Html.propTypes = {
-  body: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
   plain: PropTypes.bool,
   light: PropTypes.bool,
@@ -121,4 +121,4 @@ Html.propTypes = {
   noSource: PropTypes.bool
 };
 
-export default Specimen(Radium(Html));
+export default Specimen((_, raw) => ({text: raw}))(Radium(Html));

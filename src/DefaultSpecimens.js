@@ -12,7 +12,7 @@ export default {
   audio: Audio,
   code: Code,
   // color: Color,
-  // html: Html,
+  html: Html,
   hint: Hint,
   // image: Image,
   // type: Type,
