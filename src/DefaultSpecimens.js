@@ -11,11 +11,11 @@ import Video from './specimens/Video';
 export default {
   audio: Audio,
   code: Code,
-  color: Color,
-  html: Html,
+  // color: Color,
+  // html: Html,
   hint: Hint,
-  image: Image,
-  type: Type,
-  download: Download,
-  video: Video
+  // image: Image,
+  // type: Type,
+  // download: Download,
+  // video: Video
 };
