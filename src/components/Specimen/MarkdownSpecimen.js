@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import Hint from '../../specimens/Hint';
 import parseSpecimenType from '../../utils/parseSpecimenType';
 
-const getUnknownSpecimen = (specimenType) => () => <Hint warning>Unknown Specimen: **{specimenType}**</Hint>;
+const getUnknownSpecimen = (specimenType) => () => <Hint warning text={`Unknown Specimen: **${specimenType}**`} />;
 
 export default class MarkdownSpecimen extends Component {
   render() {
