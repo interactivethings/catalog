@@ -6,7 +6,6 @@ import { Style as RadiumStyle } from 'radium';
 
 import Card from '../Card/Card';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
-import parseSpecimen from '../../utils/parseSpecimen';
 
 import { heading, text, inlineElements, inlineBlockquote } from '../../scaffold/typography';
 import { inlineUlist, inlineOlist } from '../../scaffold/lists';
@@ -135,9 +134,8 @@ class PageRenderer extends React.Component {
         return <Card key={seqKey()} theme={this.context.theme}>{children}</Card>;
       },
       renderer: {
-        code: (codeBody, codeConfig) => {
-          const specProps = parseSpecimen(codeBody, codeConfig);
-          return <MarkdownSpecimen key={seqKey()} {...specProps} />;
+        code: (body, options) => {
+          return <MarkdownSpecimen key={seqKey()} body={body} options={options} />;
         },
         heading: (headingText, level) => {
           return React.createElement(`h${level}`, {key: seqKey()}, headingText);

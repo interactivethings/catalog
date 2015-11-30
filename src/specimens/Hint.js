@@ -15,7 +15,6 @@ function getStyle(theme) {
       border: '1px solid #ffefaa',
       padding: '10px 20px 8px',
       borderRadius: '2px',
-      marginTop: 10,
       height: '100%'
     },
     neutral: {
@@ -38,15 +37,15 @@ function getStyle(theme) {
 
 class Hint extends React.Component {
   render() {
-    const {theme, body, ...options} = this.props;
-    let styles = getStyle(theme);
+    const {theme, text, warning, neutral, directive} = this.props;
+    const styles = getStyle(theme);
 
-    let warning = options.warning ? styles.warning : null;
-    let directive = options.directive ? styles.directive : null;
-    let neutral = options.neutral ? styles.neutral : null;
+    const warningStyle = warning ? styles.warning : null;
+    const directiveStyle = directive ? styles.directive : null;
+    const neutralStyle = neutral ? styles.neutral : null;
 
     return (
-      <section style={{...styles.container, ...warning, ...directive, ...neutral}} className='cg-Hint'>
+      <section style={{...styles.container, ...warningStyle, ...directiveStyle, ...neutralStyle}} className='cg-Hint'>
         <RadiumStyle
           scopeSelector='.cg-Hint'
           rules={{
@@ -59,17 +58,18 @@ class Hint extends React.Component {
               whiteSpace: 'pre-wrap'
             }
           }}/>
-          <div>{MarkdownRenderer({text: body})}</div>
+          <div>{MarkdownRenderer({text: text})}</div>
         </section>
       );
   }
 }
 
 Hint.propTypes = {
-  body: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
   warning: PropTypes.bool,
+  neutral: PropTypes.bool,
   directive: PropTypes.bool
 };
 
-export default Specimen(Hint);
+export default Specimen((_, raw) => ({text: raw}))(Hint);

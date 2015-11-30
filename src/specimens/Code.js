@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import {text} from '../scaffold/typography';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import mapSpecimenOption from '../utils/mapSpecimenOption';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
 
 function getStyle(theme) {
@@ -10,7 +11,6 @@ function getStyle(theme) {
       ...text(theme, {level: 3}),
       boxSizing: 'border-box',
       display: 'block',
-      margin: '10px 0 20px',
       width: '100%',
       background: '#fff',
       border: '1px solid #eee',
@@ -62,7 +62,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const {theme, body, collapsed, lang} = this.props;
+    const {theme, children, collapsed, lang} = this.props;
     const {viewSource} = this.state;
     let styles = getStyle(theme);
 
@@ -71,7 +71,7 @@ class Code extends React.Component {
       : null;
 
     let content = this.state.viewSource
-      ? <HighlightedCode language={lang} code={body.replace(/'''/g, '```')} theme={theme} />
+      ? <HighlightedCode language={lang} code={children.replace(/'''/g, '```')} theme={theme} />
       : null;
 
     return (
@@ -84,10 +84,14 @@ class Code extends React.Component {
 }
 
 Code.propTypes = {
-  body: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
   collapsed: PropTypes.bool,
   lang: PropTypes.string
 };
 
-export default Specimen(Radium(Code));
+const mapOptionsToProps = mapSpecimenOption(/^lang-(\w+)$/, (lang) => ({lang}));
+
+const mapBodyToProps = (parsed, raw) => ({children: raw});
+
+export default Specimen(mapBodyToProps, mapOptionsToProps)(Radium(Code));

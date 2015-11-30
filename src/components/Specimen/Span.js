@@ -10,6 +10,7 @@ export default class Span extends Component {
       flexBasis: span && window.innerWidth > 640 ?
         `calc(${span / 6 * 100}% - 10px)` :
         'calc(100% - 10px)',
+      flexWrap: 'wrap',
       margin: '0 10px 10px 0',
       padding: 0,
       position: 'relative'
@@ -25,5 +26,6 @@ export default class Span extends Component {
 
 Span.propTypes = {
   span: PropTypes.number,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  style: PropTypes.object
 };

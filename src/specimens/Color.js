@@ -4,107 +4,32 @@ import Specimen from '../components/Specimen/Specimen';
 
 class Color extends React.Component {
   render() {
-    const {theme, body, ...options} = this.props;
+    const {theme, value, name} = this.props;
     let styles = {
-      container: {
-        display: 'flex',
-        alignItems: 'stretch',
-        flexWrap: 'wrap',
-        justifyContent: 'flex-start',
-        margin: '20px 0',
-        overflow: 'auto',
-        flexBasis: '100%'
-      },
-      rows: {
-        flexDirection: 'row'
-      },
-      columns: {
-        flexDirection: 'column'
-      },
-      box: {
-        flexBasis: `calc(${ 1 / 6 * 100}%)`
-      },
-      well: {
-        alignSelf: 'flex-start',
-        flex: '0 0 auto',
-        height: '111px',
-        marginRight: 10
-      },
-      mono: {
-        fontFamily: theme.fontMono
-      },
-      paletteItem: {
-        padding: '20px',
-        flexBasis: 'calc(100% - 10px)',
-        flex: 1
-      },
       text: {
         fontFamily: theme.fontFamily,
         color: theme.textColor,
-        marginRight: 10,
-        flex: '0 0 auto',
         boxSizing: 'border-box',
-        padding: '10px',
-        flexBasis: 'calc(100% - 10px)',
+        padding: '10px 0',
         background: theme.background
-      },
-      textPalette: {
-        fontFamily: theme.fontFamily,
-        color: theme.textColor,
-        filter: 'invert(60%) hue-rotate(0deg)',
-        mixBlendMode: 'difference',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        opacity: 0.5,
-        ':hover': {
-          opacity: 1
-        }
-      },
-      info: {
-        alignSelf: 'flex-start',
-        flex: '1 1 auto',
-        width: '7em'
       }
     };
 
-
-    let isPalette = options.palette || options.paletteHorizontal;
-
-    let colorSwatches = [].concat(body).map( (color, key) => {
-      return (
-        <div key={'cg-Specimen-Color' + key} style={{ ...styles.box}}>
-          <div style={{...styles.well, background: color.value}}/>
-          <div style={{...styles.text}} key={key}>
-            {color.name} <div style={styles.mono}>{color.value}</div>
-          </div>
-        </div>
-      );
-    });
-
-    let colorPalette = body.map( (color, key) => {
-      return (
-        <div key={'cg-Specimen-Color' + key} style={{ ...styles.paletteItem,  backgroundColor: color.value}}>
-          <div style={{...styles.textPalette, color: color.value}} key={key}>
-            {color.name} <div style={styles.mono}>{color.value}</div>
-          </div>
-        </div>
-      );
-    });
-
     return (
-      <section style={[styles.container, isPalette && !options.paletteHorizontal ? styles.columns : styles.rows ]}>
-        {isPalette ? colorPalette : colorSwatches }
-      </section>
+      <div style={{width: '100%'}}>
+        <div style={{height: 120, background: value}} />
+        <div style={styles.text}>
+          {name} <div style={{fontFamily: theme.fontMono}}>{value}</div>
+        </div>
+      </div>
     );
   }
 }
 
 Color.propTypes = {
-  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   theme: PropTypes.object.isRequired,
-  palette: PropTypes.bool,
-  paletteHorizontal: PropTypes.bool
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string
 };
 
-export default Specimen(Radium(Color));
+export default Specimen()(Radium(Color));

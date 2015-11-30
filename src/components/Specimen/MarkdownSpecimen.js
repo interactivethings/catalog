@@ -1,24 +1,23 @@
 import React, { PropTypes, Component } from 'react';
 import Hint from '../../specimens/Hint';
+import parseSpecimenType from '../../utils/parseSpecimenType';
 
-const getUnknownSpecimen = (specimen) => () => <Hint warning body={`Unknown Specimen: <strong>${specimen}</strong>`} />;
+const getUnknownSpecimen = (specimenType) => () => <Hint warning text={`Unknown Specimen: **${specimenType}**`} />;
 
 export default class MarkdownSpecimen extends Component {
   render() {
-    const {options, body, specimen} = this.props;
+    const {options, body} = this.props;
     const {getSpecimen} = this.context;
-    const Specimen = getSpecimen(specimen) || getUnknownSpecimen(specimen);
+    const specimenType = parseSpecimenType(options);
+    const Specimen = getSpecimen(specimenType) || getUnknownSpecimen(specimenType);
 
-    return (
-      <Specimen {...options} body={body} />
-    );
+    return <Specimen rawOptions={options} rawBody={body} />;
   }
 }
 
 MarkdownSpecimen.propTypes = {
-  body: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]).isRequired,
-  specimen: PropTypes.string.isRequired,
-  options: PropTypes.object.isRequired
+  body: PropTypes.string.isRequired,
+  options: PropTypes.string.isRequired
 };
 
 MarkdownSpecimen.contextTypes = {

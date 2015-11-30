@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import Span from '../components/Specimen/Span';
 
 import {heading} from '../scaffold/typography';
 
 class Video extends React.Component {
   render() {
-    const {body, theme} = this.props;
+    const {src, title, muted, loop, autoplay, theme} = this.props;
 
     let styles = {
       section: {
@@ -27,38 +26,19 @@ class Video extends React.Component {
       }
     };
 
-    let entryObjects = [].concat(body).map( (entry, key) => {
-      let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
-        ? entry.autoplay
-        : null;
-
-      let loop = entry.loop !== undefined && entry.loop !== 'false'
-        ? entry.loop
-        : null;
-
-      let muted = entry.muted !== undefined && entry.muted !== 'false'
-        ? entry.muted
-        : null;
-
-      let title = entry.title !== undefined
-        ? <div style={styles.title}>{entry.title}</div>
-        : null;
-
-      let video = entry.src !== undefined
-        ? <video src={entry.src} autoPlay={autoplay} loop={loop} muted={muted} controls style={{width: '100%', height: '100%'}}>Open <a href={entry.src} target='_blank'>video</a> in a new Tab</video>
-        : null;
-
-      return (
-        <Span key={key} span={entry.span}>
-          {video}
-          {title}
-        </Span>
-      );
-    });
-
     return (
       <section style={styles.section}>
-        {entryObjects}
+        <video
+          src={src}
+          autoPlay={autoplay}
+          loop={loop}
+          muted={muted}
+          controls
+          style={{width: '100%', height: '100%'}}
+        >
+          Open <a href={src} target='_blank'>video</a> in a new Tab
+        </video>
+        {title && <div style={styles.title}>{title}</div>}
       </section>
     );
   }
@@ -66,7 +46,11 @@ class Video extends React.Component {
 
 Video.propTypes = {
   theme: PropTypes.object.isRequired,
-  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  muted: PropTypes.bool,
+  loop: PropTypes.bool,
+  autoplay: PropTypes.bool
 };
 
-export default Specimen(Radium(Video));
+export default Specimen()(Radium(Video));

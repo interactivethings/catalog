@@ -7,7 +7,7 @@ import {heading} from '../scaffold/typography';
 
 class Audio extends React.Component {
   render() {
-    const {body, theme} = this.props;
+    const {src, title, loop, autoplay, span, theme} = this.props;
 
     let styles = {
       section: {
@@ -21,49 +21,34 @@ class Audio extends React.Component {
       },
       container: {
         width: '100%',
-        padding: 20,
         background: theme.background
       }
     };
 
-    let entryObjects = [].concat(body).map( (entry, key) => {
-      let autoplay = entry.autoplay !== undefined && entry.autoplay !== 'false'
-        ? true
-        : false;
-
-      let loop = entry.loop !== undefined && entry.loop !== 'false'
-        ? true
-        : false;
-
-      let title = entry.title !== undefined
-        ? entry.title
-        : entry.src.split('/').slice(-1)[0];
-
-      let audio = entry.src !== undefined
-        ? <audio style={{ width: '100%'}} src={entry.src} autoPlay={autoplay} loop={loop} controls></audio>
-        : null;
-
-      return (
-        <Span key={key} span={entry.span}>
-          <div style={styles.container}>
-            <div style={styles.title}>{title}</div>
-            {audio}
-          </div>
-        </Span>
-      );
-    });
+    const audioTitle = title !== undefined ?
+      title :
+      src.split('/').slice(-1)[0];
 
     return (
-      <section style={styles.section}>
-        {entryObjects}
-      </section>
+        <div style={styles.container}>
+          <div style={styles.title}>{audioTitle}</div>
+          <audio style={{ width: '100%'}} src={src} autoPlay={autoplay} loop={loop} controls />
+        </div>
     );
   }
 }
 
 Audio.propTypes = {
   theme: PropTypes.object.isRequired,
-  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  loop: PropTypes.bool,
+  autoplay: PropTypes.bool
 };
 
-export default Specimen(Radium(Audio));
+Audio.defaultProps = {
+  loop: false,
+  autoplay: false
+};
+
+export default Specimen()(Radium(Audio));

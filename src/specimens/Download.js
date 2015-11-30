@@ -56,7 +56,7 @@ function getStyle(theme) {
 
 class DownloadSpecimen extends React.Component {
   render() {
-    const {theme, body: {title, subtitle, url, filename}} = this.props;
+    const {theme, title, subtitle, url, filename} = this.props;
     const styles = getStyle(theme);
 
     let image = this.props.span !== 1 || window.innerWidth < 630 ? <DownloadIcon style={styles.img} /> : null;
@@ -78,19 +78,16 @@ class DownloadSpecimen extends React.Component {
 DownloadSpecimen.defaultProps = {
   title: '',
   subtitle: '',
-  url: '',
   theme: {}
 };
 
 DownloadSpecimen.propTypes = {
   theme: PropTypes.object.isRequired,
   span: PropTypes.number,
-  body: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    url: PropTypes.string,
-    filename: PropTypes.string
-  }).isRequired
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  filename: PropTypes.string
 };
 
-export default Specimen(Radium(DownloadSpecimen));
+export default Specimen()(Radium(DownloadSpecimen));
