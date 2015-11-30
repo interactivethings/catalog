@@ -1,43 +1,24 @@
 import React, { PropTypes } from 'react';
-import Radium from 'radium';
+import Radium, {Style} from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import Span from '../components/Specimen/Span';
+import MarkdownRenderer from '../utils/MarkdownRenderer';
 
 import {text, link, heading} from '../scaffold/typography';
 
-function generateLinkList(links, styles) {
-  let items = links.map( (url, key) => {
-    return <li key={key} style={styles.truncate}><a style={styles.link} href={url}>{url}</a></li>;
-  });
-  return items;
-}
-
-function generateList(attributes) {
-  let items = attributes.map( (content, key) => {
-    return <li key={key}>{content}</li>;
-  });
-  return items;
-}
-
 class Image extends React.Component {
   render() {
-    const {theme, body} = this.props;
+    const {theme, src, title, overlay, description, ...options} = this.props;
 
     let styles = {
-      section: {
-        display: 'flex',
-        flexFlow: 'row wrap',
-        minWidth: 'calc(100% + 10px)'
-      },
       container: {
         boxSizing: 'border-box',
-        padding: '14px',
+        padding: '20px',
         position: 'relative',
-        background: theme.background,
-        color: theme.textColor
+        background: `url(${theme.checkerboardPatternLight})`,
+        color: theme.textColor,
+        width: '100%'
       },
       image: {
-        marginBottom: '14px',
         maxWidth: '100%'
       },
       overlay: {
@@ -67,18 +48,16 @@ class Image extends React.Component {
         whiteSpace: 'nowrap',
         overflow: 'hidden'
       },
-      list: {
-        ...text(theme, {level: 3}),
-        listStyleType: 'none',
-        paddingLeft: 0,
-        marginLeft: 0,
+      description: {
+        ...text(theme, {level: 2}),
         marginTop: 5
       },
       light: {
         background: `url(${theme.checkerboardPatternLight})`
       },
       dark: {
-        background: `url(${theme.checkerboardPatternDark})`
+        background: `url(${theme.checkerboardPatternDark})`,
+        color: '#fff'
       },
       plain: {
         background: 'transparent',
@@ -94,71 +73,34 @@ class Image extends React.Component {
       }
     };
 
-    let entryObjects = [].concat(body).map( (entry, key) => {
-      let background = []
-        .concat(entry.background !== null
-          ? entry.background
-          : [])
-        .join('_');
-
-      let isDark = entry.background ? background.indexOf('dark') > -1 : false;
-
-      let title = entry.title !== undefined
-        ? <div style={styles.title}>{entry.title}</div>
-        : null;
-
-      let image = entry.src !== undefined
-        ? <img key={'image' + key} style={styles.image} srcSet={entry.src}/>
-        : null;
-
-      let overlay = entry.overlay !== undefined
-        ? <img key={'overlay' + key} style={[styles.overlay, background === 'plain' ? {top: 0, left: 0, maxWidth: '100%'} : null ]} srcSet={entry.overlay} />
-        : null;
-
-      let minWidth = entry.span !== undefined
-        ? {flexBasis: `calc(${ entry.span / 6 * 100}% - 10px)`}
-        : {flexBasis: `calc(${ 1 / 3 * 100}% - 10px)`};
-
-      let links = []
-        .concat(entry.links
-          ? entry.links
-          : [])
-        .concat(entry.link
-          ? entry.link
-          : []);
-
-      let attributeList = entry.attributes !== undefined
-        ? <ul style={{...styles.list, color: isDark ? 'white' : 'inherit'}}>{generateList(entry.attributes)}</ul>
-        : null;
-
-      let linkList = links.length > 0
-        ? <ul style={{...styles.list}}>{generateLinkList(links, styles)}</ul>
-        : null;
-
-      return (
-        <Span key={key} span={entry.span || 2} >
-          <div style={{...styles.container, ...styles[background]}}>
-            {image}
-            {overlay}
-            {title}
-            {attributeList}
-            {linkList}
-          </div>
-        </Span>
-      );
-    });
+    const backgroundStyle = {
+      ...(options.plain ? styles.plain : null),
+      ...(options.light ? styles.light : null),
+      ...(options.dark ? styles.dark : null),
+      ...(options.plain && options.light ? styles.plain_light : null),
+      ...(options.plain && options.dark ? styles.plain_dark : null)
+    };
 
     return (
-      <section style={styles.section}>
-        {entryObjects}
-      </section>
+        <div style={{...styles.container, ...backgroundStyle}}>
+          <img style={styles.image} srcSet={src}/>
+          {overlay && <img style={[styles.overlay, options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null ]} srcSet={overlay} />}
+          {title && <div style={styles.title}>{title}</div>}
+          {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{MarkdownRenderer({text: description})}</div>}
+        </div>
     );
   }
 }
 
 Image.propTypes = {
   theme: PropTypes.object.isRequired,
-  body: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  overlay: PropTypes.string,
+  description: PropTypes.string,
+  plain: PropTypes.bool,
+  light: PropTypes.bool,
+  dark: PropTypes.bool
 };
 
-export default Specimen(Radium(Image));
+export default Specimen()(Radium(Image));

@@ -14,7 +14,7 @@ export default {
   // color: Color,
   html: Html,
   hint: Hint,
-  // image: Image,
+  image: Image,
   type: Type,
   download: Download,
   video: Video
