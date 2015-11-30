@@ -6,33 +6,33 @@ Images can be used as graphical elements, to document implemtation details with 
 - `src: string` image to display (gets scaled if it extends the container) 
 - `overlay: string` image for mouseover, useful to describe proportions
 - `title: string` the title 
-- `attributes: array` text description; each entry is a new line 
-- `link: string` a link 
-- `span: integer` can be used for nesting
-- `background: array` refer to the [HTML documentation](/#/html) for the different backgrounds
+- `description: string` Markdown-formatted text description
 
+#### Visual
+* `light` a light checkered background (default)
+* `dark` a dark checkered background
+* `plain` a transparent background without any padding.
+* `plain,dark` a solid, dark background without the checkered pattern
+* `plain,light` a solid, light background without the checkered pattern
+* `span-[1-6]` defines the width
 
 
 ### Example: Hero Image
 
 By using a plain background and no title you can place a simple image.
 
-```image
+```image|plain
 {
-    "src": "docs/assets/image_bw.jpg",
-    "background": ["plain"],
-    "span": 6
+    "src": "docs/assets/image_bw.jpg"
 }
 ```
 
 _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 
 ```code|lang-javascript
-'''image
+'''image|plain
 {
-    "src": "docs/assets/image_bw.jpg",
-    "background": ["plain"],
-    "span": 6
+    "src": "docs/assets/image_bw.jpg"
 }
 '''
 ```
@@ -45,8 +45,7 @@ The overlay image is useful to document layout measurements for implementation.
 ```image
 {   
     "src": "docs/assets/catalog_logo.png",
-    "overlay": "docs/assets/catalog_logo-overlay.png",
-    "span": 6
+    "overlay": "docs/assets/catalog_logo-overlay.png"
 }
 ```
 
@@ -54,8 +53,7 @@ The overlay image is useful to document layout measurements for implementation.
 '''image
 {   
     "src": "docs/assets/catalog_logo.png",
-    "overlay": "docs/assets/catalog_logo-overlay.png",
-    "span": 6
+    "overlay": "docs/assets/catalog_logo-overlay.png"
 }
 '''
 ```
@@ -66,29 +64,48 @@ The overlay image is useful to document layout measurements for implementation.
 
 By adding attributes it is possible to specify implementation details.
 
-```image
+```image|dark
 {
     "src": "docs/assets/catalog_logo.png",
-    "span": 6,
-    "background": ["dark"],
-    "attributes": [
-      "alt text: catalog logo",
-      "add .2s fade in animation"
-    ]
+    "description": "alt text: catalog logo, add .2s fade in animation",
+    "title": "Catalog Logo"
 }
 ```
 
 ```code|lang-javascript
-'''image
+'''image|dark
 {
     "src": "docs/assets/catalog_logo.png",
-    "span": 6,
-    "background": ["dark"],
-    "attributes": [
-      "alt text: catalog logo",
-      "add .2s fade in animation"
-    ]
+    "description": "alt text: catalog logo, add .2s fade in animation",
+    "title": "Catalog Logo"
 }
 '''
 ```
 
+### Multiple images
+
+```image|span-5
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+```
+
+```image|span-1
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+```
+
+```code|lang-javascript
+'''image|span-5
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+'''
+
+'''image|span-1
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+'''
+```
