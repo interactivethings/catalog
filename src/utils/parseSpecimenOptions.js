@@ -1,4 +1,5 @@
 import R from 'ramda';
+import mapSpecimenOption from './mapSpecimenOption';
 
 const removeEmpty = R.filter(R.complement(R.isEmpty));
 const splitType = R.compose(removeEmpty, R.split('|'));
@@ -6,32 +7,23 @@ const splitOptions = R.compose(removeEmpty, R.split(','));
 
 const camelize = (str) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
 
-const mapOptionToProp = (mapper, option) => {
-  const match = mapper.test.exec(option);
-  if (match) {
-    const [, value] = match;
-    return mapper.map(value);
-  }
-  return null;
-};
+const nothing: Function = () => null;
+const mapSpanToProp: Function = mapSpecimenOption(/^span-(\d)$/, (v) => ({span: +v}));
+const camelizeOption: Function = (option) => ({[camelize(option)]: true});
 
-const defaultMapOptionsToProps = [
-  {test: /^span-(\d)$/, map: (v) => ({span: +v})}
-];
-
-const optionToKeyValue = (mapOptionsToProps = []) => (option: String) => {
-  for (let mapper of mapOptionsToProps.concat(defaultMapOptionsToProps)) {
-    const prop = mapOptionToProp(mapper, option);
-    if (prop !== null) {
-      return prop;
+const optionToKeyValue = (mapOptionsToProps: Function) => (option: String) => {
+  for (let mapper of [mapOptionsToProps, mapSpanToProp]) {
+    if (typeof mapper === 'function') {
+      const prop = mapper(option);
+      if (prop !== null) {
+        return prop;
+      }
     }
   }
-  return {
-    [camelize(option)]: true
-  };
+  return camelizeOption(option);
 };
 
-const parseSpecimenOptions = (mapOptionsToProps) => (options = '') => {
+const parseSpecimenOptions = (mapOptionsToProps = nothing) => (options = '') => {
   const [, restOptions = ''] = splitType(options);
   return R.mergeAll(splitOptions(restOptions).map(optionToKeyValue(mapOptionsToProps)));
 };

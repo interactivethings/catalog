@@ -9,6 +9,7 @@ export {default as Span} from './components/Specimen/Span';
 
 // Higher-order component for creating specimens
 export {default as Specimen} from './components/Specimen/Specimen';
+export {default as mapSpecimenOption} from './utils/mapSpecimenOption'; 
 
 // Specimens
 export {default as AudioSpecimen} from './specimens/Audio';

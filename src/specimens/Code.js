@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import {text} from '../scaffold/typography';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import mapSpecimenOption from '../utils/mapSpecimenOption';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
 
 function getStyle(theme) {
@@ -90,9 +91,8 @@ Code.propTypes = {
   lang: PropTypes.string
 };
 
-const mapOptionsToProps = [
-  {test: /^lang-(\w+)$/, map: (lang) => ({lang})}
-];
+const mapOptionsToProps = mapSpecimenOption(/^lang-(\w+)$/, (lang) => ({lang}));
+
 const mapBodyToProps = (parsed, raw) => ({children: raw});
 
 export default Specimen(mapBodyToProps, mapOptionsToProps)(Radium(Code));
