@@ -4,7 +4,8 @@ const yamlOptions = {schema: CORE_SCHEMA};
 
 const defaultMapBodyToProps = (parsedBody, rawBody) => parsedBody || rawBody;
 
-const parseSpecimenBody = (mapBodyToProps = defaultMapBodyToProps) => (body = '') => {
+const parseSpecimenBody = (_mapBodyToProps: ?Function) => (body = '') => {
+  const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
   try {
     const parsed = yaml.safeLoad(body, yamlOptions);
     return typeof parsed === 'string' ? mapBodyToProps(body, body) : 

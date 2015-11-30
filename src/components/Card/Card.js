@@ -48,7 +48,8 @@ class Card extends Component {
             },
             'h3 code': {
               ...code(theme),
-              wordBreak: 'break-all'
+              wordBreak: 'break-all',
+              flexBasis: '100%'
             },
             h4: {
               ...cardContainer(theme),
@@ -67,10 +68,10 @@ class Card extends Component {
               marginLeft: 0
             },
             p: {
-              ...cardContainer(theme),
               ...text(theme, {level: 2}),
               flexBasis: '100%'
             },
+            'p > span': cardContainer(theme),
             section: {
               boxSizing: 'border-box',
               justifyContent: 'space-between',
