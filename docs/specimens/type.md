@@ -72,58 +72,70 @@ Another use case is to document the ratio between the font size and the line hei
 ### Example: Combining different styles
 
 ```type|span-3,kern,smoothen,single
-[
-    {
-        "headings": [42],
-        "background": "#ff5555",
-        "color": "#fff",
-        "font": "sans-serif",
-        "weight": 600,
-        "tracking": -3
-    },
-    {
-        "paragraphs": ["14/24"],
-        "image": "docs/assets/gradient.png",
-        "color": "#fff",
-        "font": "sans-serif"
-    },
-    {
-        "headings": [42],
-        "background": "#00263e",
-        "color": "#a1c0d8",
-        "font": "sans-serif",
-        "tracking": 10,
-        "weight": 100
-    }
-]
+{
+    "headings": [42],
+    "background": "#ff5555",
+    "color": "#fff",
+    "font": "sans-serif",
+    "weight": 600,
+    "tracking": -3
+}
 ```
 
 ```code|lang-javascript,span-3
 '''type|span-3,kern,smoothen,single
-[
-    {
-        "headings": [42],
-        "background": "#ff5555",
-        "color": "#fff",
-        "font": "sans-serif",
-        "weight": 600,
-        "tracking": -3
-    },
-    {
-        "paragraphs": ["14/24"],
-        "image": "docs/assets/gradient.png",
-        "color": "#fff",
-        "font": "sans-serif"
-    },
-    {
-        "headings": [42],
-        "background": "#00263e",
-        "color": "#a1c0d8",
-        "font": "sans-serif",
-        "tracking": 10,
-        "weight": 100
-    }
-]
+{
+    "headings": [42],
+    "background": "#ff5555",
+    "color": "#fff",
+    "font": "sans-serif",
+    "weight": 600,
+    "tracking": -3
+}
+'''
+```
+
+```type|span-3,kern,smoothen,single
+{
+    "paragraphs": ["14/24"],
+    "image": "docs/assets/gradient.png",
+    "color": "#fff",
+    "font": "sans-serif"
+}
+```
+
+```code|lang-javascript,span-3
+'''type|span-3,kern,smoothen,single
+{
+    "paragraphs": ["14/24"],
+    "image": "docs/assets/gradient.png",
+    "color": "#fff",
+    "font": "sans-serif"
+}
+'''
+```
+
+```type|span-3,kern,smoothen,single
+{
+    "headings": [42],
+    "background": "#00263e",
+    "color": "#a1c0d8",
+    "font": "sans-serif",
+    "tracking": 10,
+    "weight": 100
+}
+```
+
+```code|lang-javascript,span-3
+'''type|span-3,kern,smoothen,single
+{
+    "headings": [42],
+    "background": "#00263e",
+    "color": "#a1c0d8",
+    "font": "sans-serif",
+    "tracking": 10,
+    "weight": 100
+}
 '''
 ```
 
@@ -134,14 +146,12 @@ with the help of the [hint specimen](/#/hint).
 
 
 ```type|span-4,kern,smoothen
-[
-    {
-        "headings": [42],
-        "background": "#f5f5f5",
-        "color": "#efefef",
-        "font": "sans-serif"
-    }
-]
+{
+    "headings": [42],
+    "background": "#f5f5f5",
+    "color": "#efefef",
+    "font": "sans-serif"
+}
 ```
 
 ```hint|span-2,warning
@@ -149,14 +159,14 @@ Does not pass any tests.
 ```
 
 ```type|span-4,kern,smoothen
-[
-    {
-        "headings": [42],
-        "background": "#f5f5f5",
-        "color": "#888",
-        "font": "sans-serif"
-    }
-]
+
+{
+    "headings": [42],
+    "background": "#f5f5f5",
+    "color": "#888",
+    "font": "sans-serif"
+}
+
 ```
 
 ```hint|span-2,directive
@@ -165,15 +175,13 @@ Passes Level **AA** for large text
 
 
 ```type|span-4,kern,smoothen,shorter
-[
-    {
-        "headings": [42],
-        "paragraphs": ["14/24"],
-        "background": "#f5f5f5",
-        "color": "#333",
-        "font": "sans-serif"
-    }
-]
+{
+    "headings": [42],
+    "paragraphs": ["14/24"],
+    "background": "#f5f5f5",
+    "color": "#333",
+    "font": "sans-serif"
+}
 ```
 
 ```hint|span-2,directive

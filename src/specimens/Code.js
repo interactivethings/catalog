@@ -11,7 +11,6 @@ function getStyle(theme) {
       ...text(theme, {level: 3}),
       boxSizing: 'border-box',
       display: 'block',
-      margin: '10px 0 20px',
       width: '100%',
       background: '#fff',
       border: '1px solid #eee',

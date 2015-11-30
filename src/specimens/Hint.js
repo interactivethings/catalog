@@ -15,7 +15,6 @@ function getStyle(theme) {
       border: '1px solid #ffefaa',
       padding: '10px 20px 8px',
       borderRadius: '2px',
-      marginTop: 10,
       height: '100%'
     },
     neutral: {

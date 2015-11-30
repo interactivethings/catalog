@@ -82,3 +82,30 @@ By adding attributes it is possible to specify implementation details.
 '''
 ```
 
+### Multiple images
+
+```image|span-5
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+```
+
+```image|span-1
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+```
+
+```code|lang-javascript
+'''image|span-5
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+'''
+
+'''image|span-1
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+'''
+```

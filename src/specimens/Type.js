@@ -5,14 +5,16 @@ function getStyle(theme) {
   return {
     container: {
       background: theme.background,
-      flexBasis: '100%',
+      width: '100%',
       textRendering: 'initial',
       WebkitFontSmoothing: 'initial',
       MozOsxFontSmoothing: 'initial',
-      marginTop: 10
+      display: 'flex'
     },
     wrapper: {
-      padding: `${theme.sizeL}px`
+      padding: `10px 20px`,
+      boxSizing: 'border-box',
+      width: '100%'
     },
     title: {
       fontFamily: theme.fontMono,
