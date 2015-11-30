@@ -25,8 +25,7 @@ export function style(theme) {
       ':active': pseudo
     },
     activeLink: {
-      color: theme.sidebarColorTextActive,
-      ':hover': undefined
+      color: theme.sidebarColorTextActive
     },
     nestedLink: {
       borderTop: 'none',
