@@ -23,10 +23,10 @@ class Image extends React.Component {
       },
       overlay: {
         opacity: 0,
-        maxWidth: 'calc(100% - 28px)',
+        maxWidth: '100%',
         position: 'absolute',
-        top: '14px',
-        left: '14px',
+        top: '20px',
+        left: '20px',
         ':hover': {
           opacity: 1
         }
