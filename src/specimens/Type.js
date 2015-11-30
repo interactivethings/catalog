@@ -4,7 +4,7 @@ import Specimen from '../components/Specimen/Specimen';
 function getStyle(theme) {
   return {
     container: {
-      background: theme.background,
+      background: '#fff',
       width: '100%',
       textRendering: 'initial',
       WebkitFontSmoothing: 'initial',
