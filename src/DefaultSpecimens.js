@@ -15,7 +15,7 @@ export default {
   html: Html,
   hint: Hint,
   // image: Image,
-  // type: Type,
+  type: Type,
   download: Download,
   video: Video
 };
