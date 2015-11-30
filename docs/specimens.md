@@ -53,8 +53,8 @@ let {foo, bar} = baz;
 
 The color specimen can be used to document colors ranging from a single swatch to more complex palettes and palette columns. All options are described [here](/#/color).
 
-```color|palette-horizontal
-[   
+```color-palette|horizontal
+colors: [
     {"value": "#e3f1fc"},
     {"value": "#c2d8ea"},
     {"value": "#a1c0d8"},
@@ -87,26 +87,23 @@ The type specimen can be used to document various typographic characteristics.
 Please see the specimen [documentation](/#/type) for an overview of all options.
 
 ```type|span-4,kern,smoothen,shorter
-[
-    {
-        "headings": [98,28,21,16,14,12],
-        "color": "#333",
-        "background": "#fff",
-        "font": "sans-serif",
-        "weight": 600,
-        "tracking": "-0.05em"
-    }
-]
+{
+    "headings": [98,28,21,16,14,12],
+    "color": "#333",
+    "background": "#fff",
+    "font": "sans-serif",
+    "weight": 600,
+    "tracking": "-0.05em"
+}
 ```
+
 ```type|span-2,kern,smoothen,kafka
-[
-    {
-        "paragraphs": ["16/21"],
-        "background": "#fff",
-        "color": "#333",
-        "font": "serif"
-    }
-]
+{
+    "paragraphs": ["16/21"],
+    "background": "#fff",
+    "color": "#333",
+    "font": "serif"
+}
 ```
 
 
