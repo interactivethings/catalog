@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
 
-import MarkdownRenderer from '../../utils/MarkdownRenderer';
+import {renderPageMarkdown} from '../../utils/MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
 
 import Card from '../Card/Card';
@@ -13,8 +13,6 @@ import { inlineUlist, inlineOlist } from '../../scaffold/lists';
 function pageContainer(theme) {
   return {
     maxWidth: 671,
-    paddingLeft: theme.sizeL,
-    paddingRight: theme.sizeL
   };
 }
 
@@ -30,63 +28,68 @@ class PageRenderer extends React.Component {
       ...inlineBlockquoteRules.blockquote
     };
 
-    let margin = window.innerWidth > 640 ? theme.sizeL : 0;
+    let margin = window.innerWidth > 640 ? theme.sizeL * 2 : theme.sizeL;
 
     return (
-      <div className='cg-Page' style={{margin: `0 ${margin}px`, flex: 1}}>
-        <RadiumStyle scopeSelector='.cg-Page >' rules={{
-          h2: {
-            ...pageContainer(theme),
-            ...heading(theme, {level: 1})
-          },
-          h3: {
-            ...pageContainer(theme),
-            ...heading(theme, {level: 4}),
-            marginTop: 50
-          },
-          p: {
-            ...pageContainer(theme),
-            ...text(theme, {level: 2})
-          },
-          section: {
-            ...pageContainer(theme)
-          },
-          ...inlineElements(theme, {selector: 'p'}),
-          ...inlineUlist(theme, {
-            selector: 'ul',
-            style: {
-              ...pageContainer(theme),
-              ...text(theme, {level: 2}),
-              marginLeft: '2.4em',
-              boxSizing: 'border-box',
-              width: 'calc(100% - 2.4em)'
-            }
-          }),
-          ...inlineOlist(theme, {
-            selector: 'ol',
-            style: {
-              ...pageContainer(theme),
-              ...text(theme, {level: 2}),
-              marginLeft: '2.4em'
-            }
-          }),
-          ...inlineBlockquoteRules,
-          'h1 + blockquote ~ blockquote p': {
-            fontStyle: 'italic'
-          },
-          hr: {
-            border: 'none',
-            borderBottom: `1px solid ${theme.brandColor}`,
-            margin: '16px 21px',
-            maxWidth: '671px',
-            height: 0
-          }
+      <div className='cg-Page' style={{margin: 0, flex: 1}}>
+        <RadiumStyle scopeSelector='.cg-Page > div >' rules={{
+          // h2: {
+          //   ...pageContainer(theme),
+          //   ...heading(theme, {level: 1})
+          // },
+          // h3: {
+          //   ...pageContainer(theme),
+          //   ...heading(theme, {level: 4}),
+          //   marginTop: 50
+          // },
+          // h4: {
+          //   ...pageContainer(theme),
+          //   ...heading(theme, {level: 5}),
+          //   marginTop: 50
+          // },
+          // p: {
+          //   ...pageContainer(theme),
+          //   ...text(theme, {level: 2})
+          // },
+          // section: {
+          //   ...pageContainer(theme)
+          // },
+          // ...inlineElements(theme, {selector: 'p'}),
+          // ...inlineUlist(theme, {
+          //   selector: 'ul',
+          //   style: {
+          //     ...pageContainer(theme),
+          //     ...text(theme, {level: 2}),
+          //     marginLeft: '2.4em',
+          //     boxSizing: 'border-box',
+          //     width: 'calc(100% - 2.4em)'
+          //   }
+          // }),
+          // ...inlineOlist(theme, {
+          //   selector: 'ol',
+          //   style: {
+          //     ...pageContainer(theme),
+          //     ...text(theme, {level: 2}),
+          //     marginLeft: '2.4em'
+          //   }
+          // }),
+          // ...inlineBlockquoteRules,
+          // 'h1 + blockquote ~ blockquote p': {
+          //   fontStyle: 'italic'
+          // },
+          // hr: {
+          //   border: 'none',
+          //   borderBottom: `1px solid ${theme.brandColor}`,
+          //   margin: '16px 21px',
+          //   maxWidth: '671px',
+          //   height: 0
+          // }
         }} />
         {this.styleNodes()}
 
         <div style={{
           boxSizing: 'border-box',
-          margin: `0 -${margin}px ${margin}px -${margin}px`,
+          margin: `0 0 ${margin}px 0`,
           position: 'relative',
           height: theme.pageHeadingHeight,
           background: theme.pageHeadingBackground
@@ -125,21 +128,19 @@ class PageRenderer extends React.Component {
   }
 
   contentNodes() {
-    if (React.isValidElement(this.props.content)) {
-      return this.props.content;
+    const {content} = this.props;
+    const {theme} = this.context;
+    if (React.isValidElement(content)) {
+      return content;
     }
-    return MarkdownRenderer({
-      text: this.props.content,
-      section: (children) => {
-        return <Card key={seqKey()} theme={this.context.theme}>{children}</Card>;
-      },
-      renderer: {
-        code: (body, options) => {
-          return <MarkdownSpecimen key={seqKey()} body={body} options={options} />;
-        },
-        heading: (headingText, level) => {
-          return React.createElement(`h${level}`, {key: seqKey()}, headingText);
-        }
+    return renderPageMarkdown(content, {
+      styles: {
+        h1: heading(theme, {level: 1}),
+        h2: heading(theme, {level: 2}),
+        h3: heading(theme, {level: 3}),
+        h4: heading(theme, {level: 4}),
+        p: text(theme, {level: 2}),
+        ...inlineElements(theme, {selector: ''})
       }
     });
   }

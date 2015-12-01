@@ -74,7 +74,7 @@ export function inlineElements(theme, {selector = ''}) {
     [`${selector} b, strong`]: {
       fontWeight: 600
     },
-    [`${selector} a`]: linkStyle,
+    a: linkStyle,
     [`${selector} a:hover`]: linkHoverStyle,
     [`${selector} code`]: code(theme),
     [`${selector} img`]: {
@@ -115,7 +115,8 @@ export function heading(theme, {level}) {
   return {
     ...style,
     ...setType(theme, {fontSize: fontSizes[level], verticalUnits: theme.baseLineMulti}),
-    margin: `0 0 ${fontSizes[level]}px`
+    margin: `0 0 ${fontSizes[level]}px`,
+    flexBasis: '100%'
   };
 }
 

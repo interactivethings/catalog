@@ -31,13 +31,13 @@ class Card extends Component {
         <RadiumStyle
           scopeSelector='.cg-Card >'
           rules={{
-            h2: {
-              ...cardContainer(theme),
-              ...heading(theme, {level: 1}),
-              marginBottom: 20,
-              maxWidth: 'none',
-              flexBasis: '100%'
-            },
+            // h2: {
+            //   ...cardContainer(theme),
+            //   ...heading(theme, {level: 1}),
+            //   marginBottom: 20,
+            //   maxWidth: 'none',
+            //   flexBasis: '100%'
+            // },
             h3: {
               ...cardContainer(theme),
               ...heading(theme, {level: 3}),
