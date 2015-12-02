@@ -7,7 +7,7 @@ import { Style as RadiumStyle } from 'radium';
 import Card from '../Card/Card';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 
-import { heading, text, inlineElements, inlineBlockquote } from '../../scaffold/typography';
+import { heading, text, inlineElements, inlineBlockquote, code } from '../../scaffold/typography';
 import { inlineUlist, inlineOlist } from '../../scaffold/lists';
 
 function pageContainer(theme) {
@@ -140,6 +140,21 @@ class PageRenderer extends React.Component {
         h3: heading(theme, {level: 3}),
         h4: heading(theme, {level: 4}),
         p: text(theme, {level: 2}),
+        li: text(theme, {level: 2}),
+        code: code(theme),
+        blockquote: {
+          quotes: 'none',
+          margin: '50px 0',
+          paddingLeft: 20,
+          borderLeft: `2px solid ${theme.sidebarColorLine}`
+        },
+        hr: {
+          border: 'none',
+          margin: '0',
+          height: 0,
+          maxWidth: 'none',
+          flexBasis: '100%'
+        },
         ...inlineElements(theme, {selector: ''})
       }
     });
