@@ -9,8 +9,6 @@ const globalStyle = `
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
 
 body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
 }

@@ -22,7 +22,10 @@ export function text(theme, {level}) {
     color: theme.textColor,
     fontFamily: theme.fontFamily,
     fontStyle: 'normal',
-    fontWeight: 400
+    fontWeight: 400,
+    textRendering: 'optimizeLegibility',
+    WebkitFontSmoothing: 'antialiased'
+
   };
 
   let fontSizes = modularScale({
@@ -103,7 +106,9 @@ export function heading(theme, {level}) {
     color: theme.brandColor,
     fontFamily: theme.fontHeading,
     fontStyle: 'normal',
-    fontWeight: 400
+    fontWeight: 400,
+    textRendering: 'optimizeLegibility',
+    WebkitFontSmoothing: 'antialiased'
   };
 
   let fontSizes = modularScale({
