@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Radium, {Style} from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import MarkdownRenderer from '../utils/MarkdownRenderer';
+import {renderContentMarkdown} from '../utils/MarkdownRenderer';
 
 import {text, link, heading} from '../scaffold/typography';
 
@@ -86,7 +86,7 @@ class Image extends React.Component {
           <img style={styles.image} srcSet={src}/>
           {overlay && <img style={[styles.overlay, options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null ]} srcSet={overlay} />}
           {title && <div style={styles.title}>{title}</div>}
-          {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{MarkdownRenderer({text: description})}</div>}
+          {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderContentMarkdown(description)}</div>}
         </div>
     );
   }

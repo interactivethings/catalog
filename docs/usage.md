@@ -68,6 +68,6 @@ And some more text.
 
 ```
 
-## Specimens
+## Specimens
 
 Catalog provides a wide variety of specimens. See the [Specimen documentation](#/specimens) for more
