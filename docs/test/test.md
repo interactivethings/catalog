@@ -18,11 +18,15 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 - An unordered list item
+  - A nested list item
+    - three levels deep
 - Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 Ordered lists work too:
 
 1. An ordered list item
+  1. A nested list item
+    1. three levels deep
 2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 A final paragraph before we begin with the real thing: the Cards!
@@ -50,11 +54,15 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 Are totally possible.
 
 - An unordered list item
+  - A nested list item
+    - three levels deep
 - Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 Ordered lists work too:
 
 1. An ordered list item
+  1. A nested list item
+    1. three levels deep
 2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 ### `.button` button

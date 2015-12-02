@@ -56,18 +56,14 @@ class PageRenderer extends React.Component {
             selector: 'ul',
             style: {
               ...pageContainer(theme),
-              ...text(theme, {level: 2}),
-              marginLeft: '2.4em',
-              boxSizing: 'border-box',
-              width: 'calc(100% - 2.4em)'
+              ...text(theme, {level: 2})
             }
           }),
           ...inlineOlist(theme, {
             selector: 'ol',
             style: {
               ...pageContainer(theme),
-              ...text(theme, {level: 2}),
-              marginLeft: '2.4em'
+              ...text(theme, {level: 2})
             }
           }),
           ...inlineBlockquoteRules,
