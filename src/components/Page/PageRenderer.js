@@ -135,7 +135,7 @@ class PageRenderer extends React.Component {
       },
       renderer: {
         code: (body, options) => {
-          return <MarkdownSpecimen key={seqKey()} body={body} options={options} />;
+          return <MarkdownSpecimen key={seqKey()} body={body} options={options || ''} />;
         },
         heading: (headingText, level) => {
           return React.createElement(`h${level}`, {key: seqKey()}, headingText);
