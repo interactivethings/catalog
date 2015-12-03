@@ -1,3 +1,4 @@
+
 > This page demonstrates all the typographic combinations in Catalog and serves as a test case at the same time. A Catalog page always starts with an introductory text like this and then describes the individual components in Catalog Cards.
 
 An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things.
@@ -32,6 +33,11 @@ Ordered lists work too:
 A final paragraph before we begin with the real thing: the Cards!
 
 ## Catalog test page with a very long title to test line breaks
+
+# A H1 …
+
+## and a H2 should look the same
+
 
 > A Card can be started with a blockquote, just like a page. But it's usually not done and an introductory paragraph is used instead.
 

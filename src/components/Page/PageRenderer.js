@@ -35,6 +35,10 @@ class PageRenderer extends React.Component {
     return (
       <div className='cg-Page' style={{margin: `0 ${margin}px`, flex: 1}}>
         <RadiumStyle scopeSelector='.cg-Page >' rules={{
+          h1: {
+            ...pageContainer(theme),
+            ...heading(theme, {level: 1})
+          },
           h2: {
             ...pageContainer(theme),
             ...heading(theme, {level: 1})
