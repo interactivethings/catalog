@@ -36,7 +36,7 @@ const reactElementToString = (el, indent = '') => {
   if (typeof type === 'string') {
     displayName = type;
   } else {
-    displayName = type.displayName;
+    displayName = type.displayName || type.name;
     defaultProps = type.defaultProps;
   }
 
