@@ -105,5 +105,5 @@ $(DOC_TARGETS): $(SITE_DIR)/%: % package.json
 
 node_modules: package.json
 	@npm install --ignore-scripts
-	@touch $@
+	@/usr/bin/touch $@
 
