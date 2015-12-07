@@ -1,3 +1,4 @@
+
 > This page demonstrates all the typographic combinations in Catalog and serves as a test case at the same time. A Catalog page always starts with an introductory text like this and then describes the individual components in Catalog Cards.
 
 An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things. It can repeat things.
@@ -18,16 +19,25 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 - An unordered list item
+  - A nested list item
+    - three levels deep
 - Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 Ordered lists work too:
 
 1. An ordered list item
+  1. A nested list item
+    1. three levels deep
 2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 A final paragraph before we begin with the real thing: the Cards!
 
 ## Catalog test page with a very long title to test line breaks
+
+# A H1 …
+
+## and a H2 should look the same
+
 
 > A Card can be started with a blockquote, just like a page. But it's usually not done and an introductory paragraph is used instead.
 
@@ -50,11 +60,15 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 Are totally possible.
 
 - An unordered list item
+  - A nested list item
+    - three levels deep
 - Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 Ordered lists work too:
 
 1. An ordered list item
+  1. A nested list item
+    1. three levels deep
 2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 ### `.button` button
