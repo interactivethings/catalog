@@ -46,4 +46,4 @@ ReactSpecimen.propTypes = {
   children: PropTypes.element.isRequired
 };
 
-export default Specimen(Radium(ReactSpecimen));
+export default Specimen()(Radium(ReactSpecimen));
