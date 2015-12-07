@@ -4,19 +4,11 @@ import CatalogPropTypes from '../../CatalogPropTypes';
 import MarkdownRenderer from '../../utils/MarkdownRenderer';
 import { Style as RadiumStyle } from 'radium';
 
-import Card from '../Card/Card';
+import PageHeader from './PageHeader';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 
 import { heading, text, inlineElements, inlineBlockquote } from '../../scaffold/typography';
 import { inlineUlist, inlineOlist } from '../../scaffold/lists';
-
-function pageContainer(theme) {
-  return {
-    maxWidth: 671,
-    paddingLeft: theme.sizeL,
-    paddingRight: theme.sizeL
-  };
-}
 
 const seqKey = require('../../utils/seqKey')('cg-Page');
 
@@ -24,56 +16,69 @@ class PageRenderer extends React.Component {
   render() {
     const { page, theme } = this.context;
 
+
+    let margin = window.innerWidth > 640 ? 20 * 2 : 20;
+
     let inlineBlockquoteRules = inlineBlockquote(theme);
     inlineBlockquoteRules.blockquote = {
-      ...pageContainer(theme),
-      ...inlineBlockquoteRules.blockquote
+      ...inlineBlockquoteRules.blockquote,
+      padding: `0 ${margin / 2}px`,
+      marginLeft: -margin / 2 - 1,
+      marginTop: 10,
+      marginBottom: 10
     };
 
-    let margin = window.innerWidth > 640 ? theme.sizeL : 0;
+    const pageStyle = {
+      boxSizing: 'border-box',
+      margin: `0 ${Math.max(0, margin - 10)}px 0 ${margin}px`,
+      flex: 1,
+      display: 'flex',
+      flexFlow: 'row wrap',
+      padding: '0 0 12px 0'
+    };
+
+    const blockStyle = {
+      flexBasis: '100%',
+      margin: `12px 0 20px 0`
+    };
 
     return (
-      <div className='cg-Page' style={{margin: `0 ${margin}px`, flex: 1}}>
+      <div className='cg-Page' style={pageStyle}>
         <RadiumStyle scopeSelector='.cg-Page >' rules={{
           h1: {
-            ...pageContainer(theme),
-            ...heading(theme, {level: 1})
+            ...heading(theme, {level: 1}),
+            ...blockStyle
           },
           h2: {
-            ...pageContainer(theme),
-            ...heading(theme, {level: 1})
+            ...heading(theme, {level: 2}),
+            ...blockStyle
           },
           h3: {
-            ...pageContainer(theme),
+            ...heading(theme, {level: 3}),
+            ...blockStyle
+          },
+          h4: {
             ...heading(theme, {level: 4}),
-            marginTop: 50
+            ...blockStyle
           },
           p: {
-            ...pageContainer(theme),
-            ...text(theme, {level: 2})
-          },
-          section: {
-            ...pageContainer(theme)
+            ...text(theme, {level: 2}),
+            ...blockStyle
           },
           ...inlineElements(theme, {selector: 'p'}),
           ...inlineUlist(theme, {
             selector: 'ul',
             style: {
-              ...pageContainer(theme),
               ...text(theme, {level: 2})
             }
           }),
           ...inlineOlist(theme, {
             selector: 'ol',
             style: {
-              ...pageContainer(theme),
               ...text(theme, {level: 2})
             }
           }),
           ...inlineBlockquoteRules,
-          'h1 + blockquote ~ blockquote p': {
-            fontStyle: 'italic'
-          },
           hr: {
             border: 'none',
             borderBottom: `1px solid ${theme.brandColor}`,
@@ -84,34 +89,7 @@ class PageRenderer extends React.Component {
         }} />
         {this.styleNodes()}
 
-        <div style={{
-          boxSizing: 'border-box',
-          margin: `0 -${margin}px ${margin}px -${margin}px`,
-          position: 'relative',
-          height: theme.pageHeadingHeight,
-          background: theme.pageHeadingBackground
-        }} >
-          <div style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            padding: `${theme.sizeL}px ${margin}px`
-          }} >
-            <h4 style={{
-              ...pageContainer(theme),
-              ...heading(theme, {level: 4}),
-              color: theme.pageHeadingTextColor,
-              opacity: 0.6,
-              marginBottom: 0
-            }}>{page.superTitle}</h4>
-            <h2 style={{
-              ...pageContainer(theme),
-              ...heading(theme, {level: 2}),
-              color: theme.pageHeadingTextColor,
-              marginBottom: 0
-            }}>{page.title}</h2>
-          </div>
-        </div>
+        <PageHeader theme={theme} margin={margin} title={page.title} superTitle={page.superTitle} />
 
         {this.contentNodes()}
       </div>
@@ -130,9 +108,6 @@ class PageRenderer extends React.Component {
     }
     return MarkdownRenderer({
       text: this.props.content,
-      section: (children) => {
-        return <Card key={seqKey()} theme={this.context.theme}>{children}</Card>;
-      },
       renderer: {
         code: (body, options) => {
           return <MarkdownSpecimen key={seqKey()} body={body} options={options || ''} />;
