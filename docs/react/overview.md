@@ -26,7 +26,7 @@ render({
       path: '/',
       title: 'Introduction',
       component: Intro
-    }
+    },
     {
       title: 'Components',
       pages: [
