@@ -11,7 +11,7 @@ export default class Span extends Component {
         `calc(${span / 6 * 100}% - 10px)` :
         'calc(100% - 10px)',
       flexWrap: 'wrap',
-      margin: '12px 10px 20px 0',
+      margin: '12px 10px 0 0',
       padding: 0,
       position: 'relative'
     };

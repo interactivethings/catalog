@@ -4,6 +4,17 @@ import { heading, text, inlineElements, inlineBlockquote } from '../../scaffold/
 import { inlineUlist, inlineOlist } from '../../scaffold/lists';
 
 
+const blockStyle = {
+  flexBasis: '100%',
+  margin: `24px 0 0 0`
+};
+
+const headingBlockStyle = {
+  flexBasis: '100%',
+  margin: `32px 0 0 0`
+};
+
+
 export default class Page extends Component {
   render() {
     const {children} = this.props;
@@ -16,8 +27,8 @@ export default class Page extends Component {
       ...inlineBlockquoteRules.blockquote,
       padding: `0 ${margin / 2}px`,
       marginLeft: -margin / 2 - 1,
-      marginTop: 12,
-      marginBottom: 24
+      marginTop: 24,
+      marginBottom: 0
     };
 
     const pageStyle = {
@@ -25,12 +36,7 @@ export default class Page extends Component {
       margin: `0 ${Math.max(0, margin - 10)}px 0 ${margin}px`,
       display: 'flex',
       flexFlow: 'row wrap',
-      padding: `24px 0 12px 0`
-    };
-
-    const blockStyle = {
-      flexBasis: '100%',
-      margin: `12px 0 20px 0`
+      padding: `24px 0 48px 0`
     };
 
     return (
@@ -38,35 +44,41 @@ export default class Page extends Component {
         <Style scopeSelector='.cg-Page >' rules={{
           h1: {
             ...heading(theme, {level: 1}),
-            ...blockStyle
+            ...headingBlockStyle
           },
           h2: {
             ...heading(theme, {level: 2}),
-            ...blockStyle
+            ...headingBlockStyle
           },
           h3: {
             ...heading(theme, {level: 3}),
-            ...blockStyle
+            ...headingBlockStyle
           },
           h4: {
             ...heading(theme, {level: 4}),
-            ...blockStyle
+            ...headingBlockStyle
           },
           p: {
             ...text(theme, {level: 2}),
             ...blockStyle
           },
           ...inlineElements(theme, {selector: 'p'}),
+          ...inlineElements(theme, {selector: 'h1'}),
+          ...inlineElements(theme, {selector: 'h2'}),
+          ...inlineElements(theme, {selector: 'h3'}),
+          ...inlineElements(theme, {selector: 'h4'}),
           ...inlineUlist(theme, {
             selector: 'ul',
             style: {
-              ...text(theme, {level: 2})
+              ...text(theme, {level: 2}),
+              ...blockStyle
             }
           }),
           ...inlineOlist(theme, {
             selector: 'ol',
             style: {
-              ...text(theme, {level: 2})
+              ...text(theme, {level: 2}),
+              ...blockStyle
             }
           }),
           ...inlineBlockquoteRules,

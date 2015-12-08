@@ -10,7 +10,7 @@ An ordinary paragraph can follow after the lead text. It can repeat things. It c
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `(...args) => {return args;}` text.
 
 ---
 

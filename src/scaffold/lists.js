@@ -9,7 +9,7 @@ function baseListStyle() {
 }
 
 export function inlineUlist(theme, {selector, style = {}, level = 0}) {
-  const nestedStyles = level < 3 ? inlineUlist(theme, {selector: `${selector} > li > ul`, style, level: level + 1}) : {};
+  const nestedStyles = level < 3 ? inlineUlist(theme, {selector: `${selector} > li > ul`, style: {...style, margin: 0}, level: level + 1}) : {};
   return {
     [selector]: {
       listStyle: 'disc',
@@ -25,7 +25,7 @@ export function inlineUlist(theme, {selector, style = {}, level = 0}) {
 }
 
 export function inlineOlist(theme, {selector, style = {}, level = 0}) {
-  const nestedStyles = level < 3 ? inlineOlist(theme, {selector: `${selector} > li > ol`, style, level: level + 1}) : {};
+  const nestedStyles = level < 3 ? inlineOlist(theme, {selector: `${selector} > li > ol`, style: {...style, margin: 0}, level: level + 1}) : {};
   return {
     [selector]: {
       listStyle: 'decimal',

@@ -52,14 +52,13 @@ export function link(theme) {
 export function code(theme) {
   return {
     background: theme.bgLight,
-    border: `1px solid ${theme.lightColor}`,
-    margin: '1px 5px',
-    borderRadius: 3,
-    color: '#555',
+    border: `1px solid #eee`,
+    borderRadius: 1,
+    // color: theme.textColor,
     display: 'inline-block',
     fontFamily: theme.fontMono,
     lineHeight: 1,
-    padding: '0.05em 0.317em 0.18em',
+    padding: '0.2em 0.2em',
     textIndent: 0
   };
 }
