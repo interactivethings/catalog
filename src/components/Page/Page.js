@@ -34,6 +34,7 @@ export default class Page extends Component {
     const pageStyle = {
       boxSizing: 'border-box',
       margin: `0 ${Math.max(0, margin - 10)}px 0 ${margin}px`,
+      maxWidth: '64em',
       display: 'flex',
       flexFlow: 'row wrap',
       padding: `24px 0 48px 0`
