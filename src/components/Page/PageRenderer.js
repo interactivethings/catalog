@@ -1,11 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
-import runscript from '../../utils/runscript';
-
-import MarkdownRenderer from '../../utils/MarkdownRenderer';
-
 import Page from './Page';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
+import runscript from '../../utils/runscript';
+import renderMarkdown from '../../utils/renderMarkdown';
 
 const seqKey = require('../../utils/seqKey')('cg-Page');
 
@@ -20,7 +18,7 @@ const renderContent = (content) => {
 
   return (
     <Page>
-      {MarkdownRenderer({
+      {renderMarkdown({
         text: content,
         renderer: {
           code: (body, options) => {

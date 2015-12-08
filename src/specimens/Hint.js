@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Style as RadiumStyle } from 'radium';
-import MarkdownRenderer from '../utils/MarkdownRenderer';
+import renderMarkdown from '../utils/renderMarkdown';
 import Specimen from '../components/Specimen/Specimen';
 import {text} from '../scaffold/typography';
 
@@ -58,7 +58,7 @@ class Hint extends React.Component {
               whiteSpace: 'pre-wrap'
             }
           }}/>
-          <div>{MarkdownRenderer({text: text})}</div>
+          <div>{renderMarkdown({text})}</div>
         </section>
       );
   }
