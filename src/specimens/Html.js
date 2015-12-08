@@ -101,7 +101,7 @@ class Html extends React.Component {
     return (
       <div style={styles.container} className='cg-Specimen-Html'>
         {toggle}
-        <div style={[styles.content, exampleStyles]} dangerouslySetInnerHTML={{__html: text}} />
+        <div style={{...styles.content, ...exampleStyles}} dangerouslySetInnerHTML={{__html: text}} />
         {source}
       </div>
     );

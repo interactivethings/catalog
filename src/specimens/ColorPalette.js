@@ -76,7 +76,7 @@ class ColorPalette extends React.Component {
     const paletteItems = colors.map((color, i) => <ColorPaletteItem key={i} {...color} styles={styles} />);
 
     return (
-      <section style={[styles.container, horizontal ? styles.rows : styles.columns ]}>
+      <section style={{...styles.container, ...(horizontal ? styles.rows : styles.columns)}}>
         {paletteItems}
       </section>
     );

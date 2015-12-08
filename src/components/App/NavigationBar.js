@@ -86,7 +86,7 @@ class NavigationBar extends React.Component {
       <div style={styles.navbar}>
         <div style={styles.navlink} key='left'>{
           previousPage &&
-          <Link to={previousPage.path} style={[styles.link, styles.leftNavLink]}>
+          <Link to={previousPage.path} style={{...styles.link, ...styles.leftNavLink}}>
             { !isMobileLayout && leftIcon }
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ previousPage.superTitle }</h4>
@@ -96,7 +96,7 @@ class NavigationBar extends React.Component {
         }</div>
         <div style={styles.navlink} key='right'>{
           nextPage &&
-          <Link to={nextPage.path} style={[styles.link, styles.rightNavLink]}>
+          <Link to={nextPage.path} style={{...styles.link, ...styles.rightNavLink}}>
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ nextPage.superTitle }</h4>
               <h3 style={styles.linkTitle}>{ nextPage.title }</h3>
