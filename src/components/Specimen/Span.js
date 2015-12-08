@@ -10,6 +10,10 @@ export default class Span extends Component {
       flexBasis: span && window.innerWidth > 640 ?
         `calc(${span / 6 * 100}% - 10px)` :
         'calc(100% - 10px)',
+      // Bug fix for Firefox; width and flexBasis don't work on horizontally scrolling code blocks
+      maxWidth: span && window.innerWidth > 640 ?
+        `calc(${span / 6 * 100}% - 10px)` :
+        'calc(100% - 10px)',
       flexWrap: 'wrap',
       margin: '24px 10px 0 0',
       padding: 0,
