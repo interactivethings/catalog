@@ -5,9 +5,7 @@ import Span from './Span';
 import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
 import parseSpecimenBody from '../../utils/parseSpecimenBody';
 
-const identity = (v) => v;
-
-export default function Specimen(mapBodyToProps = identity, mapOptionsToProps = []) {
+export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Function) {
   const parseOptions = parseSpecimenOptions(mapOptionsToProps);
   const parseBody = parseSpecimenBody(mapBodyToProps);
 
