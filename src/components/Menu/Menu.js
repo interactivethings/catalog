@@ -35,8 +35,7 @@ export function style(theme) {
       borderBottom: `1px solid ${theme.sidebarColorLine}`,
       listStyle: 'none',
       margin: 0,
-      padding: 0,
-      height: '100%'
+      padding: 0
     },
     listNested: {
       borderTop: 'none',
