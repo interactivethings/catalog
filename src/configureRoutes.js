@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 import CatalogContext from './components/CatalogContext';
-import Page from './components/Page/ContextPage';
+import PageContentLoader from './components/Page/PageContentLoader';
 import PageRenderer from './components/Page/PageRenderer';
 
 const wrapComponent = (Component) => {
@@ -10,11 +10,11 @@ const wrapComponent = (Component) => {
 };
 
 const pageToRoute = ({path, component}) => ({
-  component: component ? wrapComponent(component) : Page,
+  component: component ? wrapComponent(component) : PageContentLoader,
   path
 });
 
-const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? wrapComponent(component) : Page} />;
+const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? wrapComponent(component) : PageContentLoader} />;
 
 export default (config) => ({
   component: CatalogContext(config),

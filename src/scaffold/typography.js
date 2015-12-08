@@ -25,7 +25,6 @@ export function text(theme, {level}) {
     fontWeight: 400,
     textRendering: 'optimizeLegibility',
     WebkitFontSmoothing: 'antialiased'
-
   };
 
   let fontSizes = modularScale({
@@ -90,20 +89,32 @@ export function inlineBlockquote(theme) {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '50px 0',
-      borderLeft: `1px solid ${theme.sidebarColorLine}`
+      marginTop: 0,
+      marginBottom: 50,
+      marginRight: 0,
+      borderLeft: `1px solid ${theme.lightColor}`
     },
-    'blockquote:before, blockquote:after': {
+    'blockquote :first-child': {
+      marginTop: 0
+    },
+    'blockquote :last-child': {
+      marginBottom: 0
+    },
+    'blockquote::before, blockquote::after': {
       content: 'none'
     },
-    'blockquote p': text(theme, {level: 1}),
+    'blockquote p': {
+      ...text(theme, {level: 1})
+    },
     ...inlineElements(theme, {selector: 'blockquote p'})
   };
 }
 
+
 export function heading(theme, {level}) {
   let style = {
     color: theme.brandColor,
+    flexBasis: '100%',
     fontFamily: theme.fontHeading,
     fontStyle: 'normal',
     fontWeight: 400,
@@ -111,16 +122,17 @@ export function heading(theme, {level}) {
     WebkitFontSmoothing: 'antialiased'
   };
 
-  let fontSizes = modularScale({
+  const fontSizes = modularScale({
     base: theme.baseFontSize,
     ratios: theme.msRatio,
     length: 6
   });
 
+
   return {
     ...style,
     ...setType(theme, {fontSize: fontSizes[level], verticalUnits: theme.baseLineMulti}),
-    margin: `0 0 ${fontSizes[level]}px`
+    margin: `0 0 ${fontSizes[level]}px 0`
   };
 }
 

@@ -5,6 +5,7 @@ export {default as configureRoutes} from './configureRoutes';
 
 // Components
 export {default as Card} from './components/Card/Card';
+export {default as Page} from './components/Page/Page';
 export {default as Span} from './components/Specimen/Span';
 
 // Higher-order component for creating specimens

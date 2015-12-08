@@ -84,11 +84,11 @@ If you provide these components to the configuration (see above), they will disp
 
 ```code|lang-jsx
 import React from 'react';
-import {Card, ReactSpecimen} from 'catalog';
+import {Page, ReactSpecimen} from 'catalog';
 import Button from 'components/Button/Button';
 
 export default () => (
-  <Card>
+  <Page>
     <h2>My Buttons</h2>
 
     <p>Are so nice</p>
@@ -111,6 +111,6 @@ export default () => (
     <ReactSpecimen span={3}>
       <Button disabled primary>Foo</Button>
     </ReactSpecimen>
-  </Card>
+  </Page>
 );
 ```
