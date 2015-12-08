@@ -47,8 +47,7 @@ export function style(theme) {
       ...text(theme, {level: 4}),
       fontSize: 12,
       padding: 20,
-      color: theme.lightColor,
-      alignSelf: 'flex-end'
+      color: theme.lightColor
     },
     link: {
       color: theme.lightColor
@@ -75,9 +74,7 @@ class Menu extends React.Component {
           </ul>
         </div>
         <div style={currentStyle.info}>
-          Running on <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>catalog</a>,
-          an Open Source project by <a style={currentStyle.link} href='http://www.interactivethings.com' target='_blank'>Interactive Things</a>.
-          Please report issues <a style={currentStyle.link} href='https://github.com/interactivethings/catalog/issues' target='_blank'>here</a>.
+          Powered by <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>Catalog</a>
         </div>
       </div>
     );
