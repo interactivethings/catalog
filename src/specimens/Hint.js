@@ -14,8 +14,7 @@ function getStyle(theme) {
       flexBasis: '100%',
       border: '1px solid #ffefaa',
       padding: '10px 20px 8px',
-      borderRadius: '2px',
-      height: '100%'
+      borderRadius: '2px'
     },
     neutral: {
       background: '#f9f9f9',
