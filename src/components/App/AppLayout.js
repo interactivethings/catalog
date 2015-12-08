@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
 import NavigationBar from './NavigationBar';
+import PageHeader from '../Page/PageHeader';
 
 const SIDE_WIDTH = 251;
 
@@ -151,7 +152,10 @@ class AppLayout extends React.Component {
       <div style={currentStyle.container}>
         <style>{globalStyle}</style>
         <div style={currentStyle.content}>
-          { this.props.children }
+          <PageHeader theme={theme} margin={isMobileLayout ? theme.sizeL : theme.sizeL * 2} title={page.title} superTitle={page.superTitle} />
+          <div style={{flex: 1}}>
+            { this.props.children }
+          </div>
           <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} isMobileLayout={isMobileLayout} />
         </div>
         <MenuIcon style={currentStyle.menuIcon} onClick={this.toggleSidebar} onTouchStart={this.toggleSidebar} />

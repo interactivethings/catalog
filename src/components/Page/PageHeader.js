@@ -8,11 +8,9 @@ export default class PageHeader extends Component {
     return (
       <div style={{
         boxSizing: 'border-box',
-        margin: `0 -${margin}px ${margin}px -${margin}px`,
         position: 'relative',
         height: theme.pageHeadingHeight,
-        background: theme.pageHeadingBackground,
-        flexBasis: `calc(100% + ${margin * 2}px)`
+        background: theme.pageHeadingBackground
       }} >
         <div style={{
           position: 'absolute',
