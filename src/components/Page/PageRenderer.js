@@ -81,9 +81,8 @@ class PageRenderer extends React.Component {
           ...inlineBlockquoteRules,
           hr: {
             border: 'none',
-            borderBottom: `1px solid ${theme.brandColor}`,
-            margin: '16px 21px',
-            maxWidth: '671px',
+            flexBasis: '100%',
+            margin: 0,
             height: 0
           }
         }} />
