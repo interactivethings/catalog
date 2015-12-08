@@ -12,7 +12,7 @@ class Video extends React.Component {
       section: {
         display: 'flex',
         flexFlow: 'row wrap',
-        minWidth: 'calc(100% + 10px)'
+        width: '100%'
       },
       container: {
         boxSizing: 'border-box',
