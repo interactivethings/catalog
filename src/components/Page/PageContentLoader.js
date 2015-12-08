@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
-import runscript from '../../utils/runscript';
 
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';
@@ -8,7 +7,7 @@ import PageRenderer from './PageRenderer';
 const docSrc = (src) => '.' + src.replace(/^docs/, '');
 const getDocContext = () => require.context('raw!../../../docs', true, /\.md$/);
 
-class Page extends Component {
+class PageContentLoader extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,10 +30,6 @@ class Page extends Component {
     }
 
     this.fetchPageData(this.context.page.src);
-  }
-
-  componentDidMount() {
-    this.context.page.scripts.forEach(runscript);
   }
 
   componentWillReceiveProps(_, nextContext) {
@@ -69,8 +64,8 @@ class Page extends Component {
   }
 }
 
-Page.contextTypes = {
+PageContentLoader.contextTypes = {
   page: CatalogPropTypes.page.isRequired
 };
 
-export default Page;
+export default PageContentLoader;
