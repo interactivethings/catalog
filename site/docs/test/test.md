@@ -10,7 +10,7 @@ An ordinary paragraph can follow after the lead text. It can repeat things. It c
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `(...args) => {return args;}` text.
 
 ---
 
@@ -25,8 +25,28 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Ordered lists work too:
 
-1. An ordered list item
+1. An ordered list item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis libero excepturi a architecto et inventore fugiat voluptas eaque itaque beatae, sequi optio atque possimus doloremque nam, explicabo, repellat voluptate nostrum.
   1. A nested list item
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
+    1. three levels deep
     1. three levels deep
 2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
