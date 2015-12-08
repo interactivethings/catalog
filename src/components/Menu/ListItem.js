@@ -19,7 +19,7 @@ export function style(theme) {
       cursor: 'pointer',
       display: 'block',
       margin: 0,
-      padding: '15px 40px',
+      padding: '16px 40px',
       textDecoration: 'none',
       ':hover': pseudo,
       ':active': pseudo
@@ -30,7 +30,7 @@ export function style(theme) {
     nestedLink: {
       borderTop: 'none',
       borderBottom: 'none',
-      padding: '5px 40px 10px 60px'
+      padding: '0 24px 16px 60px'
     },
     nestedChildren: {
       borderTop: 'none',
