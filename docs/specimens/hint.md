@@ -20,32 +20,52 @@ Make sure to use `text-rendering: optimizeLegibility;`on fonts over 36px, as wel
 '''
 ```
 
-```hint|directive
+```hint|directive,span-4
 Make it so!
 ```
 
-```code
+```code|span-2
 '''hint|directive
 Make it so!
 '''
 ```
 
-```hint|warning
+```hint|warning,span-4
 No **stairway**.
 ```
 
-```code
+```code|span-2
 '''hint|warning
 No **stairway**.
 '''
 ```
 
-```hint|neutral
+```hint|neutral,span-4
 A neutral hint.
 ```
 
-```code
+```code|span-2
 '''hint|neutral
 A neutral hint.
+'''
+```
+
+```hint|span-4
+# Supports
+
+even Markdown with [links](http://example.com)
+
+- and
+  - lists
+```
+
+```code|span-2
+'''hint
+# Supports
+
+even Markdown with [links](http://example.com)
+
+- and
+  - lists
 '''
 ```
