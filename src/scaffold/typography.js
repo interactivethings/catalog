@@ -24,7 +24,8 @@ export function text(theme, {level}) {
     fontStyle: 'normal',
     fontWeight: 400,
     textRendering: 'optimizeLegibility',
-    WebkitFontSmoothing: 'antialiased'
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale'
   };
 
   let fontSizes = modularScale({
@@ -118,7 +119,8 @@ export function heading(theme, {level}) {
     fontStyle: 'normal',
     fontWeight: 400,
     textRendering: 'optimizeLegibility',
-    WebkitFontSmoothing: 'antialiased'
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale'
   };
 
   const fontSizes = modularScale({
