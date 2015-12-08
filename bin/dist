@@ -15,6 +15,8 @@ read -p "Publish to npm? [Yn] " publish_npm
 
 if [ "$publish_npm" != 'n' ] && [ "$publish_npm" != 'N' ]
 then
+  make build
+  
   if [ "$prerelease" == 'y' ] || [ "$prerelease" == 'Y' ]
   then
     npm publish --tag next
