@@ -1,6 +1,6 @@
 {
   "name": "catalog",
-  "version": "2.0.0-alpha20",
+  "version": "2.0.0-beta.1",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
@@ -16,8 +16,7 @@
   "engines": {
     "npm": ">=2.14.12"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "isomorphic-fetch": "^2.2.0",
     "js-yaml": "^3.4.3",
