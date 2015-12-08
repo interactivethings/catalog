@@ -17,6 +17,9 @@ export function inlineUlist(theme, {selector, style = {}, level = 0}) {
       ...style
     },
     ...inlineElements(theme, {selector}),
+    [`${selector} code:first-child`]: {
+      marginLeft: 0
+    },
     ...nestedStyles,
   };
 }
@@ -31,6 +34,9 @@ export function inlineOlist(theme, {selector, style = {}, level = 0}) {
       ...style
     },
     ...inlineElements(theme, {selector}),
+    [`${selector} code:first-child`]: {
+      marginLeft: 0
+    },
     ...nestedStyles,
   };
 }
