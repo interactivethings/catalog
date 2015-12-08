@@ -12,7 +12,7 @@ export default function Specimen(mapBodyToProps = identity, mapOptionsToProps = 
   const parseBody = parseSpecimenBody(mapBodyToProps);
 
   return (WrappedSpecimen) => {
-    const Specimen = (props, {theme}) => {
+    const SpecimenContainer = (props, {theme}) => {
       const {rawOptions, rawBody} = props;
       const optionProps = parseOptions(rawOptions);
       const bodyProps = parseBody(rawBody);
@@ -37,16 +37,16 @@ export default function Specimen(mapBodyToProps = identity, mapOptionsToProps = 
       );
     };
 
-    Specimen.propTypes = {
+    SpecimenContainer.propTypes = {
       span: PropTypes.number,
       rawBody: PropTypes.string,
       rawOptions: PropTypes.string
     };
 
-    Specimen.contextTypes = {
+    SpecimenContainer.contextTypes = {
       theme: PropTypes.object.isRequired
     };
 
-    return Specimen;
+    return SpecimenContainer;
   };
 }
