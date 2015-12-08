@@ -119,8 +119,7 @@ export function heading(theme, {level}) {
     fontStyle: 'normal',
     fontWeight: 400,
     textRendering: 'optimizeLegibility',
-    WebkitFontSmoothing: 'antialiased',
-    width: '100%'
+    WebkitFontSmoothing: 'antialiased'
   };
 
   const fontSizes = modularScale({
