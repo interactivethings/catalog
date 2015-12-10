@@ -21,18 +21,44 @@ function getStyle(theme) {
       padding: 20,
       position: 'relative',
       width: '100%'
+    },
+    light: {
+      background: `url(${theme.checkerboardPatternLight})`
+    },
+    dark: {
+      background: `url(${theme.checkerboardPatternDark})`
+    },
+    plain: {
+      background: 'transparent',
+      padding: '0'
+    },
+    plain_light: {
+      background: theme.bgLight,
+      padding: '20px'
+    },
+    plain_dark: {
+      background: theme.bgDark,
+      padding: '20px'
     }
   };
 }
 
 class ReactSpecimen extends Component {
   render() {
-    const {theme, children, noSource} = this.props;
+    const {theme, children, noSource, ...options} = this.props;
     const styles = getStyle(theme);
+
+    const exampleStyles = {
+      ...(options.plain ? styles.plain : null),
+      ...(options.light ? styles.light : null),
+      ...(options.dark ? styles.dark : null),
+      ...(options.plain && options.light ? styles.plain_light : null),
+      ...(options.plain && options.dark ? styles.plain_dark : null)
+    };
 
     return (
       <section style={styles.container}>
-        <div style={styles.content}>
+        <div style={{...styles.content, ...exampleStyles}}>
           {children}
         </div>
         {!noSource && <HighlightedCode language='jsx' code={reactElementToString(children)} theme={theme} />}
@@ -44,7 +70,10 @@ class ReactSpecimen extends Component {
 ReactSpecimen.propTypes = {
   theme: PropTypes.object.isRequired,
   children: PropTypes.element.isRequired,
-  noSource: PropTypes.bool
+  noSource: PropTypes.bool,
+  plain: PropTypes.bool,
+  light: PropTypes.bool,
+  dark: PropTypes.bool
 };
 
 export default Specimen()(Radium(ReactSpecimen));
