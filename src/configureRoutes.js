@@ -21,7 +21,7 @@ export default (config) => ({
   childRoutes: config.pages.map(pageToRoute)
 });
 
-export const jsx = (config) => (
+export const configureJSXRoutes = (config) => (
   <Route component={CatalogContext(config)}>
     {config.pages.map(pageToJSXRoute)}
   </Route>

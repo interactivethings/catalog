@@ -2,7 +2,7 @@ import DefaultTheme from './DefaultTheme';
 import DefaultSpecimens from './DefaultSpecimens';
 
 // Removes potential multiple slashes from concatenating paths
-const normalizePath = (path) => path.replace(/\/+/g, '/');
+const normalizePath = (path) => path.replace(/\/+/g, '/').replace(/\/$/, '');
 
 const flattenPageTree = (pageTree) => {
   return pageTree
@@ -26,7 +26,8 @@ export default (config) => {
       {
         ...page,
         id: ++pageId,
-        path: normalizePath(`/${basePath}/${page.path || page.name}`),
+        // Currently, catalog can't be nested inside other page routes, it messes up <Link> matching. Use `basePath`
+        path: normalizePath('/' + [basePath, page.path].join('/')),
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),
         scripts: Array.from(new Set([...configScripts, ...pageScripts]))

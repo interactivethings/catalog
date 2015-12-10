@@ -4,6 +4,7 @@ import 'isomorphic-fetch';
 export {default as render} from './render';
 export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
+export {configureJSXRoutes} from './configureRoutes';
 
 // Components
 export {default as Card} from './components/Page/Page';
