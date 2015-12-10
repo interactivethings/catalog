@@ -27,7 +27,7 @@ function getStyle(theme) {
 
 class ReactSpecimen extends Component {
   render() {
-    const {theme, children} = this.props;
+    const {theme, children, noSource} = this.props;
     const styles = getStyle(theme);
 
     return (
@@ -35,7 +35,7 @@ class ReactSpecimen extends Component {
         <div style={styles.content}>
           {children}
         </div>
-        <HighlightedCode language='jsx' code={reactElementToString(children)} theme={theme} />
+        {!noSource && <HighlightedCode language='jsx' code={reactElementToString(children)} theme={theme} />}
       </section>
     );
   }
@@ -43,7 +43,8 @@ class ReactSpecimen extends Component {
 
 ReactSpecimen.propTypes = {
   theme: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  noSource: PropTypes.bool
 };
 
 export default Specimen()(Radium(ReactSpecimen));
