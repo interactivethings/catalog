@@ -8,7 +8,7 @@ function getStyle(theme) {
   return {
     container: {
       position: 'relative',
-      flexBasis: '100%',
+      width: '100%',
       border: '1px solid #eee',
       margin: '0 0 20px 0'
     },
