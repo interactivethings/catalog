@@ -22,6 +22,12 @@ export default (config) => {
     const pageScripts = page.scripts || [];
     const basePath = config.basePath || '/';
 
+    if (process.env.NODE_ENV !== 'production') {
+      if (page.name) {
+        console.error('Catalog warning: The page configuration property `name` is deprecated; use `path` instead.', page);
+      }
+    }
+
     return [
       ...pages,
       {
