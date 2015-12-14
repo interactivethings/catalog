@@ -3,7 +3,7 @@ import DefaultSpecimens from './DefaultSpecimens';
 
 // Removes potential multiple slashes from concatenating paths
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
-const stripTrailingSlash = (path) => path.replace(/\/$/, '');
+const stripTrailingSlashes = (path) => path.replace(/\/+$/, '');
 
 const flattenPageTree = (pageTree) => {
   return pageTree
@@ -28,7 +28,7 @@ export default (config) => {
         ...page,
         id: ++pageId,
         // Currently, catalog can't be nested inside other page routes, it messes up <Link> matching. Use `basePath`
-        path: removeMultiSlashes('/' + stripTrailingSlash([basePath, page.path || page.name].join('/'))),
+        path: removeMultiSlashes('/' + stripTrailingSlashes([basePath, page.path || page.name].join('/'))),
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),
         scripts: Array.from(new Set([...configScripts, ...pageScripts]))
