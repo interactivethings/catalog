@@ -67,7 +67,7 @@ make dist
 prompts for a new version number and publishes to npm. _Don't edit package.json manually._
 
 ```
-make publish-docs
+make gh-pages
 ```
 
 builds and publishes Catalog's documentation to GitHub Pages
