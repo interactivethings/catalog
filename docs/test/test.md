@@ -151,13 +151,3 @@ Similar to button, but looks more important.
 <a class="important-button" href="#">Important Button</a>
 ```
 
-
-## Subsubtitled Card
-
-#### Subsubtitle
-
-* List item
-
-## Paragraphed Card
-
-Starts directly with a paragraph – can you believe this?!
