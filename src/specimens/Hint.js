@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Style as RadiumStyle } from 'radium';
+import {Style} from 'radium';
 import renderMarkdown from '../utils/renderMarkdown';
 import Specimen from '../components/Specimen/Specimen';
 import {text} from '../scaffold/typography';
@@ -19,7 +19,7 @@ function getStyle(theme) {
     neutral: {
       background: '#f9f9f9',
       color: '#999',
-      border: '1px solid #eee',
+      border: '1px solid #eee'
     },
     warning: {
       background: '#fff5f5',
@@ -45,7 +45,7 @@ class Hint extends React.Component {
 
     return (
       <section style={{...styles.container, ...warningStyle, ...directiveStyle, ...neutralStyle}} className='cg-Hint'>
-        <RadiumStyle
+        <Style
           scopeSelector='.cg-Hint'
           rules={{
             code: {

@@ -26,8 +26,8 @@ export default class Page extends Component {
     inlineBlockquoteRules.blockquote = {
       ...inlineBlockquoteRules.blockquote,
       padding: `0 ${margin / 2}px`,
-      marginLeft: -margin / 2 - 1,
-      marginTop: 24,
+      marginLeft: `${-margin / 2 - 1}px`,
+      marginTop: '24px',
       marginBottom: 0
     };
 

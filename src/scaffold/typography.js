@@ -90,7 +90,7 @@ export function inlineBlockquote(theme) {
     blockquote: {
       quotes: 'none',
       marginTop: 0,
-      marginBottom: 50,
+      marginBottom: '50px',
       marginRight: 0,
       borderLeft: `1px solid ${theme.lightColor}`
     },
