@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
-const DownloadIcon = (props) => (
-  <svg {...props} viewBox='0 0 120 120'>
+const DownloadIcon = ({style, fill}) => (
+  <svg style={style} viewBox='0 0 120 120'>
     <g fill='none' fill-rule='evenodd'>
-      <rect width='120' height='120' fill='#EBEBEB' rx='2'/>
-      <g fill='#FFF'>
+      <rect width='120' height='120' fill='#EEEEEE' rx='2'/>
+      <g fill={fill}>
         <path d='M72.647 53.353c-.468-.47-1.226-.47-1.697 0L61 63.303V36.2c0-.662-.538-1.2-1.2-1.2-.662 0-1.2.538-1.2 1.2v27.103l-9.95-9.95c-.47-.47-1.23-.47-1.7 0-.468.468-.468 1.226 0 1.697l12 12c.236.232.543.35.85.35.307 0 .614-.118.85-.353l12-12c.468-.468.468-1.226-.003-1.694z'/>
         <path d='M79 75.8H40.6c-1.985 0-3.6-1.615-3.6-3.6v-4.8c0-.662.538-1.2 1.2-1.2.662 0 1.2.538 1.2 1.2v4.8c0 .662.538 1.2 1.2 1.2H79c.662 0 1.2-.538 1.2-1.2v-4.8c0-.662.538-1.2 1.2-1.2.662 0 1.2.538 1.2 1.2v4.8c0 1.985-1.615 3.6-3.6 3.6z'/>
       </g>
@@ -17,18 +17,19 @@ const DownloadIcon = (props) => (
 function getStyle(theme) {
   return {
     container: {
-      display: 'block',
       width: '100%',
       height: 80,
-      background: theme.background,
+      background: '#fff',
+      border: '1px solid #eee',
       transition: '.4s background',
-      ':hover': {
-        background: theme.bgLight
-      }
+      // Keep, so Radium attaches hover state
+      ':hover': {}
     },
     a: {
       cursor: 'pointer',
-      display: 'block'
+      display: 'flex',
+      flexDirection: 'row',
+      textDecoration: 'none'
     },
     img: {
       width: 80,
@@ -36,20 +37,27 @@ function getStyle(theme) {
     },
     titleblock: {
       fontFamily: theme.fontFamily,
-      display: 'inline-block',
-      verticalAlign: 'top',
-      padding: '20px 0 0 20px'
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      flex: 1,
+      lineHeight: 1.33333,
+      padding: '12px 0 12px 16px',
+      textRendering: 'optimizeLegibility',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale'
     },
     title: {
+      color: theme.brandColor,
       fontSize: theme.fontS,
       fontWeight: 600,
-      color: theme.brandColor,
       margin: 0
     },
     subtitle: {
       fontSize: theme.fontS,
-      color: theme.textMedium,
+      color: '#999',
       margin: 0
+
     }
   };
 }
@@ -58,16 +66,19 @@ class DownloadSpecimen extends React.Component {
   render() {
     const {theme, title, subtitle, url, filename} = this.props;
     const styles = getStyle(theme);
+    const isHovered = Radium.getState(this.state, null, ':hover');
+    const textColor = isHovered ? {color: theme.linkColor} : {};
+    const arrowFill = isHovered ? theme.linkColor : theme.brandColor;
 
-    let image = this.props.span !== 1 || window.innerWidth < 630 ? <DownloadIcon style={styles.img} /> : null;
+    const image = this.props.span !== 1 || window.innerWidth < 630 ? <DownloadIcon style={styles.img} fill={arrowFill} /> : null;
 
     return (
       <div style={styles.container} >
-        <a style={styles.a} href={url} download={filename || title} >
+        <a style={styles.a} href={url} download={filename} >
           {image}
           <div style={styles.titleblock}>
-            <h2 style={styles.title}>{title}</h2>
-            <h3 style={styles.subtitle}>{subtitle}</h3>
+            <h2 style={{...styles.title, ...textColor}}>{title}</h2>
+            <h3 style={{...styles.subtitle, ...textColor}}>{subtitle}</h3>
           </div>
         </a>
       </div>
