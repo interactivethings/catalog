@@ -14,18 +14,16 @@
 #### Basic example
 
 ```download
-{
-    "title": "Catalog Logo (.svg)",
-    "url": "docs/assets/catalog_logo.svg"
-}
+title: Catalog Logo (.svg)
+subtitle: 8 KB
+url: docs/assets/catalog_logo.svg
 ```
 
 ```code
 '''download
-{
-    "title": "Catalog Logo (.svg)",
-    "url": "docs/assets/catalog_logo.svg"
-}
+title: Catalog Logo (.svg)
+subtitle: 8 KB
+url: docs/assets/catalog_logo.svg
 '''
 ```
 
@@ -49,7 +47,7 @@
 ```
 ```download|span-3
 {
-    "title": "Catalog Logo (.svg)",
+    "title": "Catalog Logo with a veeerrryy long title (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
@@ -124,7 +122,7 @@
 '''
 '''download|span-2
 {
-    "title": "Catalog Logo (.svg)",
+    "title": "Catalog Logo with a veeerrryy long title (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
