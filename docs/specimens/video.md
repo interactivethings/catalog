@@ -11,7 +11,7 @@ It can be used to document design specifications that are done in an animation p
 - `autoplay: boolean` if true, the video clip plays without interaction
 - `loop: boolean ` if true, the video clip plays repeatedly
 
-### Arguments
+### Options
 - `span-[1-6]` defines the width of the video player
 
 

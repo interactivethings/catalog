@@ -9,7 +9,7 @@ The audio specimen can be used to document the audible aspects, for example back
 - `autoplay: boolean` if true, the audio clip plays without interaction
 - `loop: boolean ` if true, the audio clip plays repeatedly
 
-### Arguments
+### Options
 - `span-[1-6]` defines the width of the audio player
 
 ### Example

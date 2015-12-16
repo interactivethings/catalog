@@ -14,7 +14,7 @@ The type specimen can be used to reflect various elements concerning typography.
 - `style: string` can be italic or oblique, default is "normal" 
 - `weight: integer` defines the font weight
 
-### Arguments
+### Options
 
 - `kern` activates browser kerning and ligature use
 - `smoothing` applies browser text antialising

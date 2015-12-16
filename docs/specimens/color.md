@@ -9,7 +9,7 @@ Name is optional.
 - __`value: string`__ defines the color
 - `name: string` defines the color name
 
-### Arguments
+### Options
 
 - `span-[1-6]` defines the width of the palette
 

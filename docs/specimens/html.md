@@ -6,7 +6,7 @@ Per default, a code toggle button allows easy access to the source without havin
 
 It is also the fallback if no specimen is specified.
 
-### Arguments
+### Options
 #### Functional
 * `no-source` Removes the source code toggle button
 
