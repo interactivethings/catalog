@@ -2,7 +2,7 @@
 
 Can be used to highlight important aspects.
 
-### Arguments
+### Options
 
 - `directive` good for _dos_
 - `warning` good for _don'ts_

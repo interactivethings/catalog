@@ -1,6 +1,6 @@
 ## Code
 
-### Arguments
+### Options
 
 - `collapsed` useful for longer or redundant code that still needs to be accessible
 - `lang-{language}` sets the syntax for the code

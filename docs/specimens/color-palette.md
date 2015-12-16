@@ -6,7 +6,7 @@
     - __`value: string`__ defines the color value
     - `name: string` defines the color name
 
-### Arguments
+### Options
 
 - `horizontal` generates a horizontal list
 - `span-[1-6]` defines the width of the palette

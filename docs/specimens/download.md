@@ -6,7 +6,7 @@
 - `filename: string` Changes the file name under which it will be saved
 - `subtitle: string` For example the file size
 
-### Arguments
+### Options
 - `span-[1-6]` defines the download specimen width
 
 ### Examples

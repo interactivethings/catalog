@@ -2,7 +2,7 @@
 
 ### Basic usage
 
-Specimens are defined as Markdown code blocks with an argument string.
+Specimens are defined as Markdown code blocks with an option string.
 
 ```code
 '''html|dark
@@ -10,17 +10,17 @@ Content goes here...
 '''
 ```
 
-The format of the code block argument string is as follows: `specimen-type|option1,option2`. 
+The format of the code block option string is as follows: `specimen-type|option1,option2`. 
 _Note that no spaces are allowed._
 
-The first part – the one before the `|`-character – is the specimen __type__. The available types are described below. The second part after the `|` is a list of comma-separated __options__ for the specimen. This second part is optional, so both of the following are valid argument strings: `html` and `html|dark`.
+The first part – the one before the `|`-character – is the specimen __type__. The available types are described below. The second part after the `|` is a list of comma-separated __options__ for the specimen. This second part is optional, so both of the following are valid option strings: `html` and `html|dark`.
 
 ### Documentation conventions
 
 The documentation displays options in a list, using the following pattern:
 
-- __`argument: type`__ Argument is the name, and type defines the expected type.
-- __`src: string`__ Bold arguments/keys indicate that they are required to be defined
+- __`option: type`__ Option is the name, and type defines the expected type.
+- __`src: string`__ Bold options/keys indicate that they are required to be defined
 - `loop: boolean` while regular ones are always optional.
 
 
