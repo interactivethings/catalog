@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Radium from 'radium';
+import Frame from '../../components/Frame/Frame';
 import Specimen from '../../components/Specimen/Specimen';
 import HighlightedCode from '../../components/HighlightedCode/HighlightedCode';
 import reactElementToString from './reactElementToString';
@@ -45,7 +46,7 @@ function getStyle(theme) {
 
 class ReactSpecimen extends Component {
   render() {
-    const {theme, children, noSource, ...options} = this.props;
+    const {theme, children, noSource, frame, ...options} = this.props;
     const styles = getStyle(theme);
 
     const exampleStyles = {
@@ -59,7 +60,7 @@ class ReactSpecimen extends Component {
     return (
       <section style={styles.container}>
         <div style={{...styles.content, ...exampleStyles}}>
-          {children}
+          {frame ? <Frame>{children}</Frame> : children }
         </div>
         {!noSource && <HighlightedCode language='jsx' code={reactElementToString(children)} theme={theme} />}
       </section>
@@ -73,7 +74,8 @@ ReactSpecimen.propTypes = {
   noSource: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
+  frame: PropTypes.bool
 };
 
 export default Specimen()(Radium(ReactSpecimen));

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
+import Frame from '../components/Frame/Frame';
 import Specimen from '../components/Specimen/Specimen';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
 import {text} from '../scaffold/typography';
@@ -80,7 +81,7 @@ class Html extends React.Component {
   }
 
   render() {
-    const {theme, text, ...options} = this.props;
+    const {theme, text, frame, ...options} = this.props;
     const styles = getStyle(theme);
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
@@ -98,10 +99,14 @@ class Html extends React.Component {
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
       : null;
 
+    const content = <div dangerouslySetInnerHTML={{__html: text}} />;
+
     return (
       <div style={styles.container} className='cg-Specimen-Html'>
         {toggle}
-        <div style={{...styles.content, ...exampleStyles}} dangerouslySetInnerHTML={{__html: text}} />
+        <div style={{...styles.content, ...exampleStyles}}>
+          {frame ? <Frame>{content}</Frame> : content }
+        </div>
         {source}
       </div>
     );
@@ -118,7 +123,9 @@ Html.propTypes = {
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
-  noSource: PropTypes.bool
+  noSource: PropTypes.bool,
+  frame: PropTypes.bool
 };
+
 
 export default Specimen((_, raw) => ({text: raw}))(Radium(Html));
