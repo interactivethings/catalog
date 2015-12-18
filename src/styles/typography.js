@@ -75,7 +75,7 @@ export const textBlock = (theme, selector = 'p', level = 0) => ({
   [selector]: {
     ...text(theme, level),
     flexBasis: '100%',
-    margin: `24px 0 0 0`
+    margin: `16px 0 0 0`
   },
   ...inlineElements(theme, `${selector} >`)
 });
@@ -84,7 +84,7 @@ export const headingBlock = (theme, selector = 'h1', level = 0) => ({
   [selector]: {
     ...heading(theme, level),
     flexBasis: '100%',
-    margin: `32px 0 0 0`
+    margin: `48px 0 0 0`
   },
   ...inlineElements(theme, `${selector} >`)
 });
@@ -96,7 +96,7 @@ export const unorderedList = (theme, selector = 'ul', level = 0, depth = 0) => {
       ...baseListStyle,
       ...text(theme, level),
       listStyle: 'disc',
-      marginTop: depth > 0 ? 0 : '24px',
+      marginTop: depth > 0 ? 0 : '16px',
       marginBottom: 0
     },
     ...inlineElements(theme, selector),
@@ -111,7 +111,7 @@ export function orderedList(theme, selector = 'ol', level = 0, depth = 0) {
       ...baseListStyle,
       ...text(theme, level),
       listStyle: 'ordinal',
-      marginTop: depth > 0 ? 0 : '24px',
+      marginTop: depth > 0 ? 0 : '16px',
       marginBottom: 0
     },
     ...inlineElements(theme, selector),
@@ -123,7 +123,7 @@ export const blockquote = (theme) => {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '24px 0 0 -1em',
+      margin: '48px 0 32px -1em',
       padding: '0 0 0 1em',
       borderLeft: `1px solid ${theme.lightColor}`
     },

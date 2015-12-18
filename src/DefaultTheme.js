@@ -66,5 +66,5 @@ export default {
   baseFontSize: 16,
 
   // Modular scale ratio that is used to figure out all the different font sizes
-  msRatio: 1.25
+  msRatio: 1.33
 };
