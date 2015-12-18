@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {heading} from '../../scaffold/typography';
+import {heading} from '../../styles/typography';
 
 export default class PageHeader extends Component {
   render() {
@@ -18,17 +18,17 @@ export default class PageHeader extends Component {
           left: margin
         }} >
           <h2 style={{
-            ...heading(theme, {level: 4}),
+            ...heading(theme, 1),
             color: theme.pageHeadingTextColor,
             opacity: 0.6,
-            marginBottom: 0
+            margin: 0
           }}>
             {superTitle}
           </h2>
           <h1 style={{
-            ...heading(theme, {level: 2}),
+            ...heading(theme, 3),
             color: theme.pageHeadingTextColor,
-            marginBottom: 0
+            margin: 0
           }}>
             {title}
           </h1>

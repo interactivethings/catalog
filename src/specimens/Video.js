@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
-import {heading} from '../scaffold/typography';
+import {heading} from '../styles/typography';
 
 class Video extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class Video extends React.Component {
         position: 'relative'
       },
       title: {
-        ...heading(theme, {level: 6}),
+        ...heading(theme, 1),
         margin: 0
       }
     };

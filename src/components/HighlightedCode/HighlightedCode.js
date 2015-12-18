@@ -2,12 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-markdown';
-import {text} from '../../scaffold/typography';
+import {text} from '../../styles/typography';
 
 const getStyle = (theme) => {
   return {
     pre: {
-      ...text(theme, {level: 3}),
+      ...text(theme, -0.5),
       background: '#fff',
       border: 'none',
       boxSizing: 'border-box',

@@ -3,7 +3,7 @@ import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import renderMarkdown from '../utils/renderMarkdown';
 
-import {text, link, heading} from '../scaffold/typography';
+import {text, heading} from '../styles/typography';
 
 class Image extends React.Component {
   render() {
@@ -34,13 +34,6 @@ class Image extends React.Component {
       title: {
         ...heading(theme, {level: 6}),
         margin: 0
-      },
-      link: {
-        ...link(theme),
-        maxWidth: '100%',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden'
       },
       truncate: {
         maxWidth: '100%',

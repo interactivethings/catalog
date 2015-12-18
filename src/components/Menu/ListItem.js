@@ -3,7 +3,7 @@ import CatalogPropTypes from '../../CatalogPropTypes';
 
 import Link from '../Link/Link';
 import NestedList from './NestedList';
-import { text } from '../../scaffold/typography';
+import { text } from '../../styles/typography';
 
 export function style(theme) {
   let pseudo = {
@@ -13,7 +13,7 @@ export function style(theme) {
   };
   return {
     link: {
-      ...text(theme, { level: 2 }),
+      ...text(theme),
       borderTop: `1px solid ${theme.sidebarColorLine}`,
       color: theme.sidebarColorText,
       cursor: 'pointer',

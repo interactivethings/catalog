@@ -3,7 +3,6 @@ import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
 import Specimen from '../components/Specimen/Specimen';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
-import {text} from '../scaffold/typography';
 
 const PADDING = 3;
 const SIZE = 20;

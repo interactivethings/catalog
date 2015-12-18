@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
-import { heading, text } from '../../scaffold/typography';
+import { heading, text } from '../../styles/typography';
 import Link from '../Link/Link';
 
 import ListItem from './ListItem';
@@ -14,7 +14,7 @@ export function style(theme) {
       flexDirection: 'column'
     },
     h1: {
-      ...heading(theme, {level: 2}),
+      ...heading(theme, 1),
       boxSizing: 'border-box',
       color: theme.sidebarColorHeading,
       fontWeight: 600,
@@ -43,8 +43,7 @@ export function style(theme) {
       padding: '0 0 15px 40px'
     },
     info: {
-      ...text(theme, {level: 4}),
-      fontSize: 12,
+      ...text(theme, -1),
       padding: 20,
       color: theme.lightColor
     },

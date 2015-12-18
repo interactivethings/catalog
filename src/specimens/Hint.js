@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 import {Style} from 'radium';
 import renderMarkdown from '../utils/renderMarkdown';
 import Specimen from '../components/Specimen/Specimen';
-import {text} from '../scaffold/typography';
+import {text} from '../styles/typography';
 
 function getStyle(theme) {
   return {
     container: {
-      ...text(theme, {level: 2}),
+      ...text(theme),
       fontFamily: theme.fontFamily,
       background: '#fff6dd',
       color: '#ffb400',

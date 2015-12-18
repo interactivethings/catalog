@@ -3,7 +3,7 @@ import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import Span from '../components/Specimen/Span';
 
-import {heading} from '../scaffold/typography';
+import {heading} from '../styles/typography';
 
 class Audio extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class Audio extends React.Component {
         minWidth: 'calc(100% + 10px)'
       },
       title: {
-        ...heading(theme, {level: 6}),
+        ...heading(theme, 1),
         margin: 0
       },
       container: {

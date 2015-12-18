@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {text} from '../scaffold/typography';
+import {text} from '../styles/typography';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import mapSpecimenOption from '../utils/mapSpecimenOption';
@@ -8,7 +8,7 @@ import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
 function getStyle(theme) {
   return {
     container: {
-      ...text(theme, {level: 3}),
+      ...text(theme, -0.5),
       boxSizing: 'border-box',
       display: 'block',
       width: '100%',
@@ -17,24 +17,6 @@ function getStyle(theme) {
       color: theme.textColor,
       fontFamily: theme.fontMono,
       fontWeight: 400
-    },
-    code: {
-      ...text(theme, {level: 3}),
-      padding: 20,
-      boxSizing: 'border-box',
-      width: '100%',
-      height: 'auto',
-      border: 'none',
-      color: theme.textColor,
-      fontFamily: theme.fontMono,
-      fontWeight: 400,
-      margin: 0,
-      whiteSpace: 'pre-wrap',
-      resize: 'vertical',
-      ':focus': {
-        outline: 'none',
-        color: theme.brandColor
-      }
     },
     toggle: {
       textDecoration: 'underline',

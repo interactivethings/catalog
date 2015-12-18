@@ -6,6 +6,9 @@ An ordinary paragraph can follow after the lead text. It can repeat things. It c
 ![A cute kitty](https://placekitten.com/640/400)
 
 > Blockquotes can appear multiple times, even though that might not make too much sense … Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+>
+> - Blockquotes
+>   - With lists
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -52,18 +55,28 @@ Ordered lists work too:
 
 A final paragraph before we begin with the real thing: the Cards!
 
-## Catalog test page with a very long title to test line breaks
+# H1 Lorem ipsum dolor sit amet
 
-# A H1 …
+## H2 Lorem ipsum dolor sit amet
 
-## and a H2 should look the same
+### H3 Lorem ipsum dolor sit amet
 
+#### H4 Lorem ipsum dolor sit amet
 
-> A Card can be started with a blockquote, just like a page. But it's usually not done and an introductory paragraph is used instead.
+##### H5 Lorem ipsum dolor sit amet
+
+###### H6 Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolorum recusandae esse, nisi laborum animi aspernatur quidem sequi ipsum blanditiis unde. Sapiente totam atque autem quis saepe aliquid expedita voluptatibus.
+
+> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi facilis ipsam alias excepturi deserunt, amet tenetur soluta iste id dolorem corporis dolore, cupiditate! Vitae illo corrupti quasi at, minima tempore.
 
 An ordinary paragraph can follow after the lead text. It can repeat things. It can repeat things. It can repeat things. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 
 > Blockquotes appear differently when used within the text.
+>
+> - Blockquotes
+>   - With lists
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

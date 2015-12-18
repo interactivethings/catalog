@@ -63,8 +63,8 @@ export default {
   baseLineMulti: 10,
 
   // Base font size in pixels.
-  baseFontSize: 18,
+  baseFontSize: 16,
 
   // Modular scale ratio that is used to figure out all the different font sizes
-  msRatio: 1 + 1 / 6
+  msRatio: 1.25
 };
