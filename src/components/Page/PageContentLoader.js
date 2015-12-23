@@ -53,7 +53,7 @@ class PageContentLoader extends Component {
   }
 
   fetchPageData(url) {
-    fetch(url)
+    fetch(url, {credentials: 'same-origin'})
       .then((response) => response.text())
       .then((text) => this.setState({content: text}))
       .catch((error) => {
