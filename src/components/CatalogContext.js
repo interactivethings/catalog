@@ -2,17 +2,12 @@ import React, {Component, PropTypes, Children} from 'react';
 import ContextApp from './App/ContextApp';
 import CatalogPropTypes from '../CatalogPropTypes';
 
-const matchPagePath = (pagePath, pathname) => {
-  const re = new RegExp(`${pagePath}/?$`);
-  return re.test(pathname);
-}
-
 class CatalogContext extends Component {
   getChildContext() {
     const {title, theme, logoSrc, pages, pageTree, specimens} = this.props.configuration;
-    const {location} = this.context;
+    const {router} = this.context;
     return {
-      page: pages.find((p) => matchPagePath(p.path, location.pathname)),
+      page: pages.find((p) => router.isActive(p.path)),
       getSpecimen: (specimen) => specimens[specimen],
       theme,
       title,
@@ -35,7 +30,7 @@ CatalogContext.propTypes = {
 
 CatalogContext.contextTypes = {
   // From react-router
-  location: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 CatalogContext.childContextTypes = {
