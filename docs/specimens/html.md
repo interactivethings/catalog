@@ -9,6 +9,7 @@ It is also the fallback if no specimen is specified.
 ### Options
 #### Functional
 * `no-source` Removes the source code toggle button
+* `frame` Wraps output in an `<iframe>` (to prevent style collisions and allow for viewport-relative styling (e.g. using `vw` or `position: fixed`))
 
 #### Visual
 * `light` a light checkered background (default)
@@ -19,7 +20,7 @@ It is also the fallback if no specimen is specified.
 * `span-[1-6]` defines the width
 
 
-### Functional examples
+### Basic example
 
 This is example uses the configured stylesheet.
 
@@ -37,6 +38,25 @@ This is example uses the configured stylesheet.
 '''
 ```
 
+### Framed example
+
+The `frame` option dynamically wraps the content in an `<iframe>`. This is useful to encapsulate styles and for viewport-oriented layout (such as using `vw` or `position: fixed`)
+
+```html|frame
+<div style='width:100vw;background:#262626;color:#FFF'>
+    <p>Hello</p>
+    <p>World</p>
+</div>
+```
+
+```code
+'''html|frame
+<div style='width:100vw;background:#262626;color:#FFF'>
+    <p>Hello</p>
+    <p>World</p>
+</div>
+'''
+```
 
 
 ### Visual examples

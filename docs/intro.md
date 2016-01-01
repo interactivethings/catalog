@@ -10,13 +10,13 @@ Download one of the following versions of Catalog, and then read [how to get sta
 
 ### Standalone Downloads
 
-#### Catalog 2.0.0-beta.8 (production)
+#### Catalog 2.0.0-beta.13 (production)
 
-Compressed, production-ready version of Catalog: https://npmcdn.com/catalog@2.0.0-beta.8/catalog.min.js
+Compressed, production-ready version of Catalog: https://npmcdn.com/catalog@2.0.0-beta.13/catalog.min.js
 
-#### Catalog 2.0.0-beta.8 (development)
+#### Catalog 2.0.0-beta.13 (development)
 
-Uncompressed, development version of Catalog with debug information enabled: https://npmcdn.com/catalog@2.0.0-beta.8/catalog.js
+Uncompressed, development version of Catalog with debug information enabled: https://npmcdn.com/catalog@2.0.0-beta.13/catalog.js
 
 ### npm
 

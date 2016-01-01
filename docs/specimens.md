@@ -1,6 +1,6 @@
 > Specimens are the core of Catalog: they help you present your content.
 
-### Basic usage
+## Basic usage
 
 Specimens are defined as Markdown code blocks with an option string.
 
@@ -15,7 +15,7 @@ _Note that no spaces are allowed._
 
 The first part – the one before the `|`-character – is the specimen __type__. The available types are described below. The second part after the `|` is a list of comma-separated __options__ for the specimen. This second part is optional, so both of the following are valid option strings: `html` and `html|dark`.
 
-### Documentation conventions
+## Documentation conventions
 
 The documentation displays options in a list, using the following pattern:
 
@@ -25,7 +25,7 @@ The documentation displays options in a list, using the following pattern:
 
 
 
-### These specimen are available to use out of the box:
+These specimen are available to use out of the box:
 
 
 ## HTML
