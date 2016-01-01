@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 import configure from './configure';
+import warning from './utils/warning';
 import CatalogContext from './components/CatalogContext';
 import PageContentLoader from './components/Page/PageContentLoader';
 import PageRenderer from './components/Page/PageRenderer';
@@ -17,7 +18,14 @@ const pageToRoute = ({path, component}) => ({
 
 const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? wrapComponent(component) : PageContentLoader} />;
 
-const autoConfigure = (config) => config.__catalogConfig ? config : configure(config);
+const autoConfigure = (config) => {
+  warning(
+    !config.__catalogConfig,
+    'The `configure` function is deprecated; use `configureRoutes` or `configureJSXRoutes` directly.'
+  );
+
+  return config.__catalogConfig ? config : configure(config);
+};
 
 export default (config) => {
   const finalConfig = autoConfigure(config);
