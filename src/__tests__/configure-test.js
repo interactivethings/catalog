@@ -15,6 +15,7 @@ test('Configuration with default theme and specimens', (t) => {
       }
     ]
   }), {
+    __catalogConfig: true,
     title: 'Catalog',
     specimens: DefaultSpecimens,
     theme: DefaultTheme,
@@ -69,6 +70,7 @@ test('Configuration with nested pages', (t) => {
       }
     ]
   }), {
+    __catalogConfig: true,
     title: 'Catalog',
     specimens: DefaultSpecimens,
     theme: DefaultTheme,
@@ -95,7 +97,7 @@ test('Configuration with nested pages', (t) => {
         scripts: [],
         styles: []
       }
-    ], // Why?
+    ],
     pageTree: [
       {
         id: 1,

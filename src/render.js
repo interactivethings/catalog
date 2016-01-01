@@ -4,12 +4,11 @@ import {Router} from 'react-router';
 import createHistory from 'history/lib/createHashHistory';
 import useScroll from 'scroll-behavior/lib/useSimpleScroll';
 
-import configure from './configure';
 import configureRoutes from './configureRoutes';
 
 export default (config, element) => {
   ReactDOM.render(
-    <Router history={useScroll(createHistory)({queryKey: false})} routes={configureRoutes(configure(config))} />,
+    <Router history={useScroll(createHistory)({queryKey: false})} routes={configureRoutes(config)} />,
     element
   );
 };

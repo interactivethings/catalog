@@ -47,6 +47,8 @@ export default (config) => {
 
   return {
     ...config,
+    // Used to check in configureRoutes() if input is already configured
+    __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
     specimens: {...DefaultSpecimens, ...config.specimens},
     pages,

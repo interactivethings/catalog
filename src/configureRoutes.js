@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router';
+import configure from './configure';
 import CatalogContext from './components/CatalogContext';
 import PageContentLoader from './components/Page/PageContentLoader';
 import PageRenderer from './components/Page/PageRenderer';
@@ -16,13 +17,21 @@ const pageToRoute = ({path, component}) => ({
 
 const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? wrapComponent(component) : PageContentLoader} />;
 
-export default (config) => ({
-  component: CatalogContext(config),
-  childRoutes: config.pages.map(pageToRoute)
-});
+const autoConfigure = (config) => config.__catalogConfig ? config : configure(config);
 
-export const configureJSXRoutes = (config) => (
-  <Route component={CatalogContext(config)}>
-    {config.pages.map(pageToJSXRoute)}
-  </Route>
-);
+export default (config) => {
+  const finalConfig = autoConfigure(config);
+  return {
+    component: CatalogContext(finalConfig),
+    childRoutes: finalConfig.pages.map(pageToRoute)
+  };
+};
+
+export const configureJSXRoutes = (config) => {
+  const finalConfig = autoConfigure(config);
+  return (
+    <Route component={CatalogContext(finalConfig)}>
+      {finalConfig.pages.map(pageToJSXRoute)}
+    </Route>
+  );
+};
