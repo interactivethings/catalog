@@ -1,3 +1,4 @@
+import warning from './utils/warning';
 import DefaultTheme from './DefaultTheme';
 import DefaultSpecimens from './DefaultSpecimens';
 
@@ -22,11 +23,24 @@ export default (config) => {
     const pageScripts = page.scripts || [];
     const basePath = config.basePath || '/';
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (page.name) {
-        console.error('Catalog warning: The page configuration property `name` is deprecated; use `path` instead.', page);
-      }
-    }
+    warning(
+      !page.name,
+      'The page configuration property `name` is deprecated; use `path` instead.',
+      page
+    );
+
+    warning(
+      page.title,
+      'The page configuration property `title` is missing.',
+      page
+    );
+
+    warning(
+      (page.src && !page.component && !page.pages) || (!page.src && page.component && !page.pages) || (!page.src && !page.component && page.pages),
+      'The page configuration should (only) have one of these properties: `src`, `component` or `pages`.',
+      page
+    );
+
 
     return [
       ...pages,

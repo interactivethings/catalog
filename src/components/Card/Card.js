@@ -1,10 +1,10 @@
 import React from 'react';
+import warning from '../../utils/warning';
 import Page from '../Page/Page';
 
 const Card = (props) => {
-  if (process.env.NODE_ENV !== 'production') {
-    console.error('Catalog warning: The `Card` component is deprecated; use `Page` instead.');
-  }
+  warning(false, 'The `Card` component is deprecated; use `Page` instead.');
+
   return <Page {...props} />;
 };
 
