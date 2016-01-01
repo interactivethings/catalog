@@ -1,3 +1,4 @@
+import 'babel/polyfill';
 import 'isomorphic-fetch';
 
 // Configuration
@@ -7,12 +8,13 @@ export {default as configureRoutes} from './configureRoutes';
 export {configureJSXRoutes} from './configureRoutes';
 
 // Components
-export {default as Card} from './components/Page/Page';
+export {default as Card} from './components/Card/Card';
 export {default as Page} from './components/Page/Page';
 export {default as Span} from './components/Specimen/Span';
 
 // Higher-order component for creating specimens
 export {default as Specimen} from './components/Specimen/Specimen';
+export {default as mapSpecimenOption} from './utils/mapSpecimenOption'; 
 
 // Specimens
 export {default as AudioSpecimen} from './specimens/Audio';
