@@ -1,5 +1,5 @@
-var marked = require('marked');
-var React = require('react');
+import marked from 'marked';
+import React from 'react';
 
 function extend(o1, o2) {
   Object.keys(o2).forEach(function (key) {
@@ -373,4 +373,4 @@ var Marked = function(src, opt, callback) {
 
 Marked.Renderer = ReactRenderer
 
-module.exports = Marked;
+export default Marked;

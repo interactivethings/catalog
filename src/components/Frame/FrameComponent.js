@@ -5,10 +5,10 @@ Original https://github.com/ryanseddon/react-frame-component/
 
 */
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var assign = require('object-assign');
-var raf = require('raf');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'object-assign';
+import raf from 'raf';
 
 var hasConsole = typeof window !== 'undefined' && window.console;
 var noop = function() {}
@@ -79,4 +79,4 @@ var Frame = React.createClass({
   }
 });
 
-module.exports = Frame;
+export default Frame;
