@@ -41,7 +41,7 @@ test:
 build: node_modules clean test lib $(UMD_BUILD_TARGETS)
 
 lib:
-	$$(npm bin)/babel src --ignore __tests__ --out-dir $@
+	@$$(npm bin)/babel src --ignore __tests__ --out-dir $@
 
 catalog.js:
 	@NODE_ENV=development $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
