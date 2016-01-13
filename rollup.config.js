@@ -1,10 +1,11 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import npm from 'rollup-plugin-npm';
+import uglify from 'rollup-plugin-uglify';
 
 export default {
   entry: 'src/index-standalone.js',
-  dest: 'catalog.js',
+  dest: 'catalog.min.js',
   format: 'umd',
   moduleName: 'Catalog',
   plugins: [
@@ -26,6 +27,7 @@ export default {
     }),
     babel({
       exclude: 'node_modules/**'
-    })
+    }),
+    uglify()
   ]
 };
