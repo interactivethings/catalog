@@ -22,7 +22,7 @@ export default {
         // of a module in node_modules
         'node_modules/radium/lib/index.js': [ 'Style' ],
         'node_modules/react/react.js': [ 'Component', 'PropTypes', 'Children' ],
-        'node_modules/js-yaml/index.js': [ 'CORE_SCHEMA' ]
+        'node_modules/js-yaml/dist/js-yaml.min.js': [ 'CORE_SCHEMA' ]
       }
     }),
     babel({

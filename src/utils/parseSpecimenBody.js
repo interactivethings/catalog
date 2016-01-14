@@ -1,4 +1,4 @@
-import yaml, {CORE_SCHEMA} from 'js-yaml';
+import yaml, {CORE_SCHEMA} from 'js-yaml/dist/js-yaml.min.js';
 
 const yamlOptions = {schema: CORE_SCHEMA};
 
