@@ -4,8 +4,9 @@ import Page from './Page';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 import runscript from '../../utils/runscript';
 import renderMarkdown from '../../utils/renderMarkdown';
+import seqKey from '../../utils/seqKey';
 
-const seqKey = require('../../utils/seqKey')('cg-Page');
+const getSeqKey = seqKey('cg-Page');
 
 const renderStyles = (styles) => {
   return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
@@ -22,7 +23,7 @@ const renderContent = (content) => {
         text: content,
         renderer: {
           code: (body, options) => {
-            return <MarkdownSpecimen key={seqKey()} body={body} options={options || ''} />;
+            return <MarkdownSpecimen key={getSeqKey()} body={body} options={options || ''} />;
           }
         }
       })}
