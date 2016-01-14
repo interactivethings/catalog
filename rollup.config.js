@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import npm from 'rollup-plugin-npm';
 import uglify from 'rollup-plugin-uglify';
+import replace from 'rollup-plugin-replace';
 
 export default {
   entry: 'src/index-standalone.js',
@@ -27,6 +28,9 @@ export default {
     }),
     babel({
       exclude: 'node_modules/**'
+    }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     uglify()
   ]
