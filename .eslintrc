@@ -1,3 +1,6 @@
 {
-  "extends": "interactivethings"
+  "extends": "interactivethings",
+  "rules": {
+    "react/no-multi-comp": 0
+  }
 }
