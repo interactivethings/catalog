@@ -1,21 +1,22 @@
 import React, {Component, PropTypes} from 'react';
-import {Style} from 'radium';
+import Radium, {Style} from 'radium';
 import { headingBlock, textBlock, blockquote, unorderedList, orderedList } from '../../styles/typography';
 
-export default class Page extends Component {
+class Page extends Component {
   render() {
     const {children} = this.props;
     const {theme} = this.context;
 
-    const margin = window.innerWidth > 640 ? 20 * 2 : 20;
-
     const pageStyle = {
       boxSizing: 'border-box',
-      margin: `0 ${Math.max(0, margin - 10)}px 0 ${margin}px`,
+      margin: `0 0 0 20px`,
       maxWidth: '64em',
       display: 'flex',
       flexFlow: 'row wrap',
-      padding: `24px 0 48px 0`
+      padding: `24px 0 48px 0`,
+      '@media (min-width: 1000px)': {
+        margin: `0 30px 0 40px`
+      }
     };
 
     return (
@@ -65,4 +66,6 @@ Page.propTypes = {
 Page.contextTypes = {
   theme: PropTypes.object.isRequired
 };
+
+export default Radium(Page);
 

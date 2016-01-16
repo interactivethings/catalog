@@ -1,23 +1,25 @@
 import React, {Component, PropTypes} from 'react';
+import Radium from 'radium';
 
-export default class Span extends Component {
+class Span extends Component {
   render() {
     const {children, span} = this.props;
 
     const style = {
       boxSizing: 'border-box',
       display: 'flex',
-      flexBasis: span && window.innerWidth > 640 ?
-        `calc(${span / 6 * 100}% - 10px)` :
-        'calc(100% - 10px)',
+      flexBasis: 'calc(100% - 10px)',
       // Bug fix for Firefox; width and flexBasis don't work on horizontally scrolling code blocks
-      maxWidth: span && window.innerWidth > 640 ?
-        `calc(${span / 6 * 100}% - 10px)` :
-        'calc(100% - 10px)',
+      maxWidth: 'calc(100% - 10px)',
       flexWrap: 'wrap',
       margin: '24px 10px 0 0',
       padding: 0,
-      position: 'relative'
+      position: 'relative',
+      '@media (min-width: 640px)': {
+        flexBasis: `calc(${span / 6 * 100}% - 10px)`,
+        // Bug fix for Firefox; width and flexBasis don't work on horizontally scrolling code blocks
+        maxWidth: `calc(${span / 6 * 100}% - 10px)`
+      }
     };
 
     return (
@@ -33,3 +35,9 @@ Span.propTypes = {
   children: PropTypes.node.isRequired,
   style: PropTypes.object
 };
+
+Span.defaulProps = {
+  span: 6
+};
+
+export default Radium(Span);
