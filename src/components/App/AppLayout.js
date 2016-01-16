@@ -5,7 +5,7 @@ import NavigationBar from './NavigationBar';
 import PageHeader from '../Page/PageHeader';
 
 const SIDEBAR_WIDTH = 251;
-const SIDEBAR_ANIMATION_DURATION = 0.3;
+const SIDEBAR_ANIMATION_DURATION = 0.25;
 
 const globalStyle = `
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,600);
@@ -54,7 +54,7 @@ const getStyles = (theme, sidebarVisible) => ({
     top: 0,
     borderRight: `1px solid ${theme.sidebarColorLine}`,
     transform: `translateX(${sidebarVisible ? 0 : -SIDEBAR_WIDTH}px)`,
-    transition: `transform ${SIDEBAR_ANIMATION_DURATION}s`,
+    transition: `transform ${SIDEBAR_ANIMATION_DURATION}s ease-in-out`,
     WebkitOverflowScrolling: 'touch',
     '@media (min-width: 1000px)': {
       transform: `translateX(0px)`
