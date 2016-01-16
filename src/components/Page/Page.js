@@ -13,7 +13,7 @@ class Page extends Component {
       maxWidth: '64em',
       display: 'flex',
       flexFlow: 'row wrap',
-      padding: `24px 0 48px 0`,
+      padding: `48px 0`,
       '@media (min-width: 1000px)': {
         margin: `0 30px 0 40px`
       }
@@ -21,6 +21,7 @@ class Page extends Component {
 
     return (
       <div className='cg-Page' style={pageStyle}>
+        {children}
         <Style scopeSelector='.cg-Page >' rules={{
           // Text styles
           ...headingBlock(theme, 'h1', 4),
@@ -49,11 +50,12 @@ class Page extends Component {
           ...headingBlock(theme, 'blockquote > h6', 1),
           ...textBlock(theme, 'blockquote > p', 1),
           ...unorderedList(theme, 'blockquote > ul', 1),
-          ...orderedList(theme, 'blockquote > ol', 1)
+          ...orderedList(theme, 'blockquote > ol', 1),
 
+          ':first-child': {
+            marginTop: 0
+          }
         }} />
-
-        {children}
       </div>
     );
   }
