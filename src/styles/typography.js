@@ -51,6 +51,10 @@ const inlineElements = (theme, selector = '') => {
   };
 };
 
+const adjacent = (precedingSelectors = [], selector = '', style = {}) => ({
+  [precedingSelectors.map((s) => `${s}+${selector}`).join(',')]: style
+});
+
 // Exports
 
 // Text font style
@@ -86,6 +90,9 @@ export const headingBlock = (theme, selector = 'h1', level = 0) => ({
     flexBasis: '100%',
     margin: `48px 0 0 0`
   },
+  ...adjacent(['blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'], selector, {
+    margin: `16px 0 0 0`
+  }),
   ...inlineElements(theme, `${selector} >`)
 });
 
@@ -123,8 +130,8 @@ export const blockquote = (theme) => {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '48px 0 32px -1em',
-      padding: '0 0 0 1em',
+      margin: '48px 0 32px -20px',
+      padding: '0 0 0 20px',
       borderLeft: `1px solid ${theme.lightColor}`
     },
     'blockquote > :first-child': {
