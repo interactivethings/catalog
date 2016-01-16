@@ -70,7 +70,8 @@ export const heading = (theme, level = 0) => ({
   ...baseTextStyle,
   color: theme.brandColor,
   fontFamily: theme.fontHeading,
-  fontSize: getFontSize(theme, level)
+  fontSize: getFontSize(theme, level),
+  lineHeight: 1.2
 });
 
 // Block element styles
