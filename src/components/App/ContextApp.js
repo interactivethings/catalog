@@ -1,4 +1,5 @@
 import React, { PropTypes, Children } from 'react';
+import {StyleRoot} from 'radium';
 import CatalogPropTypes from '../../CatalogPropTypes';
 
 import AppLayout from './AppLayout';
@@ -7,14 +8,16 @@ import Menu from '../Menu/Menu';
 class App extends React.Component {
   render() {
     return (
-      <AppLayout
-        {...this.context}
-        sideNav={<Menu {...this.context} />}
-      >
-        {
-         Children.only(this.props.children)
-        }
-      </AppLayout>
+      <StyleRoot>
+        <AppLayout
+          {...this.context}
+          sideNav={<Menu {...this.context} />}
+        >
+          {
+           Children.only(this.props.children)
+          }
+        </AppLayout>
+      </StyleRoot>
     );
   }
 }
