@@ -44,10 +44,10 @@ lib:
 	@$$(npm bin)/babel src --ignore __tests__ --out-dir $@
 
 catalog.js:
-	@NODE_ENV=development $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
+	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
 
 catalog.min.js:
-	@NODE_ENV=production $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
+	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
 
 
 ### DOCUMENTATION AND DEPLOYMENT
