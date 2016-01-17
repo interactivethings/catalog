@@ -14,6 +14,9 @@ class Page extends Component {
       display: 'flex',
       flexFlow: 'row wrap',
       padding: `48px 0`,
+      '@media (min-width: 640px)': {
+        margin: `0 10px 0 20px`
+      },
       '@media (min-width: 1000px)': {
         margin: `0 30px 0 40px`
       }
