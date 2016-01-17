@@ -8,9 +8,9 @@ class Span extends Component {
     const style = {
       boxSizing: 'border-box',
       display: 'flex',
-      flexBasis: 'calc(100% - 10px)',
+      flexBasis: '100%',
       // Bug fix for Firefox; width and flexBasis don't work on horizontally scrolling code blocks
-      maxWidth: 'calc(100% - 10px)',
+      maxWidth: '100%',
       flexWrap: 'wrap',
       margin: '24px 10px 0 0',
       padding: 0,
