@@ -1,4 +1,4 @@
-## Getting Started
+> The standalone version of Catalog is completely dependency-free. All you need to get started writing your styleguide is one HTML document.
 
 To use Catalog, all you need is a HTML document which looks like this:
 
@@ -12,7 +12,7 @@ To use Catalog, all you need is a HTML document which looks like this:
 </head>
 <body>
   <div id="catalog" />
-  <script src="catalog.js"></script>
+  <script src="https://npmcdn.com/catalog/catalog.js"></script>
   <script>
     Catalog.render({
       title: 'Catalog',
@@ -43,16 +43,18 @@ python -m SimpleHTTPServer
 
 Catalog lets you write documentation in [Markdown](http://daringfireball.net/projects/markdown/syntax), which “is intended to be as easy-to-read and easy-to-write as is feasible.” Have a look at the [source of this page](docs/usage.md) to see how such a document is typically structured.
 
-To make sure that Catalog displays what you want, you need to follow some simple conventions that are shown in the following example document. Catalog uses **Card** as the metaphor for document sections and **Specimen** to describe different kinds of examples.
+In addition to regular Markdown, Catalog provides [**Specimens**](#/specimens) to embed rich examples like colors, rendered HTML content, typography definitions, videos, etc.
 
-```code
+```code|lang-markdown
 > Some lead text (a blockquote, optional)
 
 Introductory text (optional)
 
-## A Card (an <h2>)
+## A Title
 
-A new Card is started as soon as an <h2> is encountered.
+Some description.
+
+### A subtitle
 
 This is a code specimen:
 
@@ -62,12 +64,13 @@ function identity(x) {
 }
 '''
 
-## Another Card
+## Another Title
 
 And some more text.
 
+'''image
+src: img/cat.jpg
+'''
+
 ```
 
-## Specimens
-
-Catalog provides a wide variety of specimens. See the [Specimen documentation](#/specimens) for more

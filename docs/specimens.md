@@ -1,6 +1,6 @@
 > Specimens are the core of Catalog: they help you present your content.
 
-## Basic usage
+### Using Specimens
 
 Specimens are defined as Markdown code blocks with an option string.
 
@@ -13,22 +13,73 @@ Content goes here...
 The format of the code block option string is as follows: `specimen-type|option1,option2`. 
 _Note that no spaces are allowed._
 
-The first part – the one before the `|`-character – is the specimen __type__. The available types are described below. The second part after the `|` is a list of comma-separated __options__ for the specimen. This second part is optional, so both of the following are valid option strings: `html` and `html|dark`.
+### Specimen Type
 
-## Documentation conventions
+The first part – the one before the `|`-character – is the specimen __type__. The available types are described below.
+
+For example:
+
+```code
+'''image
+...
+'''
+```
+
+### Specimen Options
+
+The second part after the `|` is a list of comma-separated __options__ for the specimen. This second part is optional, so both of the following are valid option strings: `html` and `html|dark`.
+
+For example:
+
+```code
+'''code|lang-jsx,span-3
+...
+'''
+```
+
+### Specimen Content
+
+The content is what is written between the opening and closing triple-backticks ` ``` `. There are two types of content:
+
+#### Strings
+
+The [HTML](#/html), [Code](#/code), and [Hint](#/hint) specimens take a simple string as content which will be rendered according to the specimen type.
+
+For example:
+
+```code
+'''html
+<p>Some HTML</p>
+'''
+```
+
+#### Properties
+
+Other specimens (like [Color](#/color)) take structured content as input which is defined by __properties__. This content can be written in YAML or JSON syntax.
+
+For example:
+
+```code
+'''color
+name: Red
+value: #f00
+'''
+```
+
+#### Documentation conventions
 
 The documentation displays options in a list, using the following pattern:
 
 - __`option: type`__ Option is the name, and type defines the expected type.
-- __`src: string`__ Bold options/keys indicate that they are required to be defined
+- __`src: string`__ Bold options/properties indicate that they are required to be defined
 - `loop: boolean` while regular ones are always optional.
 
 
 
-These specimen are available to use out of the box:
+## Specimen Types
 
 
-## HTML
+### HTML
 
 The HTML specimen can be used to render HTML snippets. For an overview of all available options, see the [HTML specimen documentation page](#/html).
 
@@ -37,7 +88,7 @@ hello world
 ```
 
 
-## Code
+### Code
 
 The code specimen is intended to display source code, either as block or collapsed drawer.
 See the [documentation](#/code) to learn about the options.
@@ -49,7 +100,7 @@ let {foo, bar} = baz;
 ```
 
 
-## Color
+### Color
 
 The color specimen can be used to document colors ranging from a single swatch to more complex palettes and palette columns. All options are described [here](#/color).
 
@@ -62,16 +113,7 @@ colors: [
 ]
 ```
 
-
-## Project
-
-This specimen allows the documentation of cohering documents and offers the possibility to offer the files in one .zip file.
-To learn more, take a look at the [documentation](#/project) which covers different use cases.
-
-If you only need to display a single HTML document or make a file available for download, keep in mind that there are also the [html](#/html) and [download](#/download) specimen which cover these cases with less overhead.
-
-
-## Hint
+### Hint
 
 ```hint
 This specimen can be used to highlight important aspects.
@@ -80,8 +122,7 @@ This specimen can be used to highlight important aspects.
 More options are documented [here](#/hint).
 
 
-
-## Type
+### Type
 
 The type specimen can be used to document various typographic characteristics. 
 Please see the specimen [documentation](#/type) for an overview of all options.
@@ -108,9 +149,9 @@ Please see the specimen [documentation](#/type) for an overview of all options.
 
 
 
-## Media
+### Media
 
-### Image
+#### Image
 
 A responsive image specimen.
 Take a look at the [documentation](#/image) for more information.
@@ -127,17 +168,17 @@ Take a look at the [documentation](#/image) for more information.
 ```
 
 
-### Video
+#### Video
 
 Allows embedding video files. See the available [options](#/video).
 
 
-### Audio
+#### Audio
 
 A simple Audio player. See the available [options](#/audio).
 
 
 
-## Download
+### Download
 
 Download one or more assets with the [download](#/download) specimen.

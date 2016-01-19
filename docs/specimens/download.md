@@ -1,6 +1,6 @@
 ## Download
 
-### Keys
+### Properties
 - __`url: string`__ The URL pointing to the file
 - __`title: string`__ The title for the button
 - `filename: string` Changes the file name under which it will be saved
