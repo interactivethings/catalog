@@ -1,4 +1,4 @@
-![Catalog Logo](docs/assets/catalog_logo.svg)
+![Catalog Logo](docs/assets/catalog_logo.svg?raw=true)
 
 # Catalog
 
