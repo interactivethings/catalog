@@ -1,3 +1,5 @@
+![Catalog Logo](docs/assets/catalog_logo.svg)
+
 # Catalog
 
 Catalog lets you create beautiful living style guides quickly and easily.
@@ -14,10 +16,8 @@ Catalog can also be [directly integrated into a React app](http://interactivethi
 
 #### Standalone Builds
 
-_Will be available once v2.0.0 is released. In the meanwhile you can use the prerelease builds._
-
 - Production: https://npmcdn.com/catalog/catalog.min.js
-- Development: https://npmcdn.com/catalog/catalog.js
+- Development (with helpful warnings): https://npmcdn.com/catalog/catalog.js
 
 #### Prerelease Builds
 
@@ -27,7 +27,7 @@ _Will be available once v2.0.0 is released. In the meanwhile you can use the pre
 #### npm
 
 ```
-npm install catalog@next --save
+npm install catalog --save
 ```
 
 The `react`, `react-dom`, `react-router`, and `history` modules are peerDependencies, so you need to install them separately.
