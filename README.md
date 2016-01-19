@@ -1,4 +1,4 @@
-![Catalog Logo](docs/assets/catalog_logo.svg?raw=true)
+![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
 
 # Catalog
 
