@@ -8,9 +8,9 @@ Content is written in Markdown so you can focus on documenting your components.
 
 The [standalone version](http://interactivethings.github.io/catalog/#/usage) is completely dependency free, making it trivial to integrate Catalog into your application.
 
-Catalog can also be [directly integrated into a React app](http://interactivethings.github.io/catalog/#/react) to document components directly.
+Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react) to document components directly.
 
-[Read Catalog's documentation](http://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
+[Read Catalog's documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
 
 ## Installation
 
@@ -74,4 +74,4 @@ builds and publishes Catalog's documentation to GitHub Pages
 
 ## Credits
 
-Catalog is developed by [many people](https://github.com/interactivethings/catalog/blob/master/AUTHORS) at [Interactive Things](http://www.interactivethings.com/), a User Experience and Data Visualization Studio based in Zürich.
+Catalog is developed by [many people](https://github.com/interactivethings/catalog/blob/master/AUTHORS) at [Interactive Things](https://www.interactivethings.com/), a User Experience and Data Visualization Studio based in Zürich.
