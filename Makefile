@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
 CURRENT_VERSION = $(shell ./bin/version)
-PUBLIC_LIB_URL = https://npmcdn.com/catalog@$(CURRENT_VERSION)/catalog.min.js
+PUBLIC_LIB_URL = https://npmcdn.com/catalog/catalog.min.js
 
 UMD_BUILD_TARGETS = \
 	catalog.js \
