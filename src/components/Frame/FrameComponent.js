@@ -57,6 +57,11 @@ var Frame = React.createClass({
       // extensions also inject into the body and can mess up React.
       doc.body.innerHTML = '<div></div>';
 
+      // Clone styles from parent document head into the iframe, so components which use webpack's style-loader get rendered correctly.
+      // This doesn't clone any Catalog styles because they are either inline styles or part of the body.
+      var pageStyles = Array.from(document.querySelectorAll('head > style'));
+      pageStyles.forEach((s) => {doc.body.appendChild(s.cloneNode(true))});
+
       swallowInvalidHeadWarning();
       ReactDOM.render(contents, doc.body.firstChild, () => {
         if (this.props.onRender) {
