@@ -51,7 +51,8 @@ export default (config) => {
         path: removeMultiSlashes('/' + stripTrailingSlashes([basePath, page.path || page.name].join('/'))),
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),
-        scripts: Array.from(new Set([...configScripts, ...pageScripts]))
+        scripts: Array.from(new Set([...configScripts, ...pageScripts])),
+        imports: {...config.imports, ...page.imports}
       }
     ];
   };

@@ -1,9 +1,12 @@
 import React, { PropTypes, Component } from 'react';
+import CatalogPropTypes from '../../CatalogPropTypes';
 import Radium from 'radium';
 import Frame from '../../components/Frame/Frame';
 import Specimen from '../../components/Specimen/Specimen';
 import HighlightedCode from '../../components/HighlightedCode/HighlightedCode';
+import Hint from '../../specimens/Hint';
 import reactElementToString from './reactElementToString';
+import transformJSX from '../../utils/transformJSX';
 
 function getStyle(theme) {
   return {
@@ -47,6 +50,7 @@ function getStyle(theme) {
 class ReactSpecimen extends Component {
   render() {
     const {theme, children, noSource, frame, ...options} = this.props;
+    const {page: {imports}} = this.context;
     const styles = getStyle(theme);
 
     const exampleStyles = {
@@ -57,12 +61,28 @@ class ReactSpecimen extends Component {
       ...(options.plain && options.dark ? styles.plain_dark : null)
     };
 
+    const jsx = typeof children === 'string';
+    let element = null;
+    let error = null;
+    let code = '';
+
+    if (jsx) {
+      const transformed = transformJSX(children, imports);
+      element = transformed.element;
+      error = transformed.error ? <Hint warning text={`Couldn't render specimen: ${transformed.error}`} /> : null;
+      code = children;
+    } else {
+      element = children;
+      code = reactElementToString(children);
+    }
+
     return (
       <section style={styles.container}>
         <div style={{...styles.content, ...exampleStyles}}>
-          {frame ? <Frame>{children}</Frame> : children }
+          {error}
+          {!error && frame ? <Frame>{element}</Frame> : element }
         </div>
-        {!noSource && <HighlightedCode language='jsx' code={reactElementToString(children)} theme={theme} />}
+        {!noSource && <HighlightedCode language='jsx' code={code} theme={theme} />}
       </section>
     );
   }
@@ -70,7 +90,7 @@ class ReactSpecimen extends Component {
 
 ReactSpecimen.propTypes = {
   theme: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   noSource: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
@@ -78,4 +98,10 @@ ReactSpecimen.propTypes = {
   frame: PropTypes.bool
 };
 
-export default Specimen()(Radium(ReactSpecimen));
+ReactSpecimen.contextTypes = {
+  page: CatalogPropTypes.page.isRequired
+};
+
+const mapBodyToProps = (parsed, raw) => ({children: raw});
+
+export default Specimen(mapBodyToProps)(Radium(ReactSpecimen));

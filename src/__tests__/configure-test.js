@@ -23,6 +23,7 @@ test('Configuration with default theme and specimens', (t) => {
       {
         id: 1,
         index: 0,
+        imports: {},
         path: '/',
         title: 'Overview',
         superTitle: 'Catalog',
@@ -35,6 +36,7 @@ test('Configuration with default theme and specimens', (t) => {
     pageTree: [
       {
         id: 1,
+        imports: {},
         path: '/',
         title: 'Overview',
         superTitle: 'Catalog',
@@ -78,6 +80,7 @@ test('Configuration with nested pages', (t) => {
       {
         id: 2,
         index: 0,
+        imports: {},
         path: '/foo',
         title: 'Foo',
         superTitle: 'Overview',
@@ -89,6 +92,7 @@ test('Configuration with nested pages', (t) => {
       {
         id: 3,
         index: 1,
+        imports: {},
         path: '/bar',
         title: 'Bar',
         superTitle: 'Overview',
@@ -101,12 +105,14 @@ test('Configuration with nested pages', (t) => {
     pageTree: [
       {
         id: 1,
+        imports: {},
         path: '/',
         title: 'Overview',
         superTitle: 'Catalog',
         pages: [
           {
             id: 2,
+            imports: {},
             path: '/foo',
             title: 'Foo',
             superTitle: 'Overview',
@@ -117,6 +123,7 @@ test('Configuration with nested pages', (t) => {
           },
           {
             id: 3,
+            imports: {},
             path: '/bar',
             title: 'Bar',
             superTitle: 'Overview',
@@ -131,5 +138,24 @@ test('Configuration with nested pages', (t) => {
       }
     ]
   });
+  t.end();
+});
+
+test('Imports are merged on pages', (t) => {
+  const config = configure({
+    title: 'Catalog',
+    imports: {Foo: 'Foo'},
+    pages: [
+      {
+        path: '/',
+        title: 'Overview',
+        imports: {Bar: 'Bar'},
+        src: 'overview.md'
+      }
+    ]
+  });
+
+  t.deepEqual(config.pages[0].imports, {Foo: 'Foo', Bar: 'Bar'});
+
   t.end();
 });

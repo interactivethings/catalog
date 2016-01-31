@@ -8,7 +8,8 @@ const page = PropTypes.shape({
   src: PropTypes.string,
   pages: PropTypes.array, // should be arrayOf(page) but that doesn't work
   styles: PropTypes.array.isRequired,
-  scripts: PropTypes.array.isRequired
+  scripts: PropTypes.array.isRequired,
+  imports: PropTypes.object.isRequired
 });
 
 const pages = PropTypes.arrayOf(page);

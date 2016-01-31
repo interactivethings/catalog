@@ -8,6 +8,7 @@ import Image from './specimens/Image';
 import Type from './specimens/Type';
 import Download from './specimens/Download';
 import Video from './specimens/Video';
+import ReactSpecimen from './specimens/ReactSpecimen/ReactSpecimen';
 
 export default {
   audio: Audio,
@@ -19,5 +20,6 @@ export default {
   image: Image,
   type: Type,
   download: Download,
-  video: Video
+  video: Video,
+  react: ReactSpecimen
 };
