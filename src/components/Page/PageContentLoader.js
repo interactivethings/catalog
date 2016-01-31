@@ -16,31 +16,31 @@ class PageContentLoader extends Component {
   }
 
   componentWillMount() {
-    if (process.env.NODE_ENV === 'catalog-hot-development') {
-      if (module.hot) {
-        let ctx = getDocContext();
-        this.setState({content: ctx(docSrc(this.context.page.src))});
+    // if (process.env.NODE_ENV === 'catalog-hot-development') {
+    //   if (module.hot) {
+    //     let ctx = getDocContext();
+    //     this.setState({content: ctx(docSrc(this.context.page.src))});
 
-        module.hot.accept(ctx.id, () => {
-          ctx = getDocContext();
-          this.setState({content: ctx(docSrc(this.context.page.src))});
-        });
-        return;
-      }
-    }
+    //     module.hot.accept(ctx.id, () => {
+    //       ctx = getDocContext();
+    //       this.setState({content: ctx(docSrc(this.context.page.src))});
+    //     });
+    //     return;
+    //   }
+    // }
 
     this.fetchPageData(this.context.page.src);
   }
 
   componentWillReceiveProps(_, nextContext) {
     if (nextContext.page.src !== this.context.page.src) {
-      if (process.env.NODE_ENV === 'catalog-hot-development') {
-        if (module.hot) {
-          const ctx = getDocContext();
-          this.setState({content: ctx(docSrc(nextContext.page.src))});
-          return;
-        }
-      }
+      // if (process.env.NODE_ENV === 'catalog-hot-development') {
+      //   if (module.hot) {
+      //     const ctx = getDocContext();
+      //     this.setState({content: ctx(docSrc(nextContext.page.src))});
+      //     return;
+      //   }
+      // }
       
       this.setState({content: null});
       this.fetchPageData(nextContext.page.src);
