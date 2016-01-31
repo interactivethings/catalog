@@ -2,7 +2,6 @@ import test from 'tape';
 import configure from '../configure';
 
 import DefaultTheme from '../DefaultTheme';
-import DefaultSpecimens from '../DefaultSpecimens';
 
 test('Configuration with default theme and specimens', (t) => {
   t.deepEqual(configure({
@@ -17,7 +16,7 @@ test('Configuration with default theme and specimens', (t) => {
   }), {
     __catalogConfig: true,
     title: 'Catalog',
-    specimens: DefaultSpecimens,
+    specimens: {},
     theme: DefaultTheme,
     pages: [
       {
@@ -74,7 +73,7 @@ test('Configuration with nested pages', (t) => {
   }), {
     __catalogConfig: true,
     title: 'Catalog',
-    specimens: DefaultSpecimens,
+    specimens: {},
     theme: DefaultTheme,
     pages: [
       {

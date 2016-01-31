@@ -1,6 +1,5 @@
 import warning from './utils/warning';
 import DefaultTheme from './DefaultTheme';
-import DefaultSpecimens from './DefaultSpecimens';
 
 // Removes potential multiple slashes from concatenating paths
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
@@ -65,7 +64,7 @@ export default (config) => {
     // Used to check in configureRoutes() if input is already configured
     __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
-    specimens: {...DefaultSpecimens, ...config.specimens},
+    specimens: {...config.specimens},
     pages,
     pageTree
   };

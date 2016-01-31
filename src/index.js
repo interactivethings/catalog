@@ -1,8 +1,24 @@
+const mergeSpecimens = (config, specimens) => ({...config, specimens: {...specimens, ...config.specimens}});
+
 // Configuration
-export {default as render} from './render';
-export {default as configure} from './configure';
-export {default as configureRoutes} from './configureRoutes';
-export {configureJSXRoutes} from './configureRoutes';
+import specimens from './specimens';
+import {default as _render} from './render';
+import {default as _configure} from './configure';
+import {default as _configureRoutes} from './configureRoutes';
+import {configureJSXRoutes as _configureJSXRoutes} from './configureRoutes';
+
+export const render = (config, element) => {
+  _render(mergeSpecimens(config, specimens), element);
+};
+export const configure = (config) => {
+  _configure(mergeSpecimens(config, specimens));
+};
+export const configureRoutes = (config) => {
+  _configureRoutes(mergeSpecimens(config, specimens));
+};
+export const configureJSXRoutes = (config) => {
+  _configureJSXRoutes(mergeSpecimens(config, specimens));
+};
 
 // Components
 export {default as Card} from './components/Card/Card';
