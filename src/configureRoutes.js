@@ -4,19 +4,13 @@ import configure from './configure';
 import warning from './utils/warning';
 import CatalogContext from './components/CatalogContext';
 import PageContentLoader from './components/Page/PageContentLoader';
-import PageRenderer from './components/Page/PageRenderer';
-
-const wrapComponent = (Component) => {
-  const WrappedComponent = () => <PageRenderer content={<Component />} />;
-  return WrappedComponent;
-};
 
 const pageToRoute = ({path, component}) => ({
-  component: component ? wrapComponent(component) : PageContentLoader,
+  component: component ? component : PageContentLoader,
   path
 });
 
-const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? wrapComponent(component) : PageContentLoader} />;
+const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? component : PageContentLoader} />;
 
 const autoConfigure = (config) => {
   warning(
