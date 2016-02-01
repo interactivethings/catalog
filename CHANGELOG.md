@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.1.0 (prerelease)
+
+- Add `ReactSpecimen` to Markdown pages (only when Catalog is used as node module)
+- Add webpack loader which transforms Catalog-style documents into hot-reloadable Catalog pages
+
 ## 2.0.1
 
 - Fixed `frame` mode for components which use webpack's style-loader
