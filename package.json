@@ -16,6 +16,12 @@
   "engines": {
     "npm": ">=2.14.12"
   },
+  "files": [
+    "lib",
+    "docs",
+    "catalog.js",
+    "catalog.min.js"
+  ],
   "scripts": {},
   "dependencies": {
     "babel-standalone": "^6.4.4",
