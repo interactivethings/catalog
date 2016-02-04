@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Foo = ({children}) => (
-  <div>
-    {children}
+const Foo = ({name, children, ...rest}) => (
+  <div {...rest} >
+    <strong>{name}</strong>
+    <div>{children}</div>
   </div>
 );
 

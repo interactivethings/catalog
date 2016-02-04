@@ -6,7 +6,12 @@
 - This is awesome
 
 ```react
-<Foo>bar</Foo>
+state:
+  counter: 0
+---
+<Foo name={counter}>
+  <button onClick={() => setState(({counter}) => ({counter: counter + 1}))}>+ 1</button>
+</Foo>
 ```
 
 ### What is `Foo`?

@@ -47,7 +47,14 @@ function getStyle(theme) {
   };
 }
 
+
 class ReactSpecimen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      elementState: null
+    };
+  }
   render() {
     const {theme, children, noSource, frame, ...options} = this.props;
     const {page: {imports}} = this.context;
@@ -66,8 +73,27 @@ class ReactSpecimen extends Component {
     let error = null;
     let code = '';
 
+    console.log(this.state)
+
     if (jsx) {
-      const transformed = transformJSX(children, imports);
+      console.time('jsx')
+      const transformed = transformJSX(children, {
+        ...imports,
+        state: this.state.elementState,
+        setInitialState: (initialState) => {
+          if (this.state.elementState === null) {
+            this.setState(() => ({elementState: initialState}));
+          }
+        },
+        setState: (newElementState) => {
+          if (typeof newElementState === 'function') {
+            this.setState(({elementState}) => ({elementState: newElementState(elementState)}));
+          } else {
+            this.setState({elementState: newElementState});
+          }
+        }
+      });
+      console.timeEnd('jsx')
       element = transformed.element;
       error = transformed.error ? <Hint warning text={`Couldn't render specimen: ${transformed.error}`} /> : null;
       code = children;
