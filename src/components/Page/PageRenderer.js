@@ -35,6 +35,10 @@ class PageRenderer extends Component {
   componentDidMount() {
     this.context.page.scripts.forEach(runscript);
   }
+
+  componentDidUpdate() {
+    this.context.page.scripts.forEach(runscript);
+  }
   
   render() {
     const {content} = this.props;
