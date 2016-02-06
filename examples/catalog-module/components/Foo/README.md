@@ -6,7 +6,7 @@
 - This is awesome
 
 ```react
-initialState:
+state:
   a: 0
   b: 10
 ---

@@ -52,7 +52,7 @@ class ReactSpecimen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      elementState: props.initialState
+      elementState: props.state
     };
     this.setElementState = this.setElementState.bind(this);
   }
@@ -117,7 +117,7 @@ ReactSpecimen.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
   frame: PropTypes.bool,
-  initialState: PropTypes.object
+  state: PropTypes.object
 };
 
 ReactSpecimen.contextTypes = {
