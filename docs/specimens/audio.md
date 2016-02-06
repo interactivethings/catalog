@@ -16,8 +16,8 @@
 src: "docs/assets/sound.mp3"
 ```
 
-```code
-'''audio|span-3
+````code
+```audio|span-3
 src: "docs/assets/sound.mp3"
-'''
 ```
+````

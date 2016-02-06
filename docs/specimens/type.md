@@ -35,15 +35,15 @@ The most obvious use case is to represent the ratio and hierarchy of headings.
 }
 ```
 
-```code|lang-javascript
-'''type
+````code|lang-javascript
+```type
 {
   "headings": [98,28,21,16,14,12],
   "font": "sans-serif",
   "color": "#00263e"
 }
-'''
 ```
+````
 
 ### Example: Paragraph only
 
@@ -58,15 +58,15 @@ Another use case is to document the ratio between the font size and the line hei
 ```
 
 
-```code|lang-javascript
-'''type
+````code|lang-javascript
+```type
 {
   "paragraphs": ["18/28"],
   "font": "sans-serif",
   "color": "#00263e"
 }
-'''
 ```
+````
 
 
 ### Example: Combining different styles
@@ -82,8 +82,8 @@ Another use case is to document the ratio between the font size and the line hei
 }
 ```
 
-```code|lang-javascript,span-3
-'''type|span-3,kern,smoothen,single
+````code|lang-javascript,span-3
+```type|span-3,kern,smoothen,single
 {
     "headings": [42],
     "background": "#ff5555",
@@ -92,8 +92,8 @@ Another use case is to document the ratio between the font size and the line hei
     "weight": 600,
     "tracking": -3
 }
-'''
 ```
+````
 
 ```type|span-3,kern,smoothen,single
 {
@@ -104,16 +104,16 @@ Another use case is to document the ratio between the font size and the line hei
 }
 ```
 
-```code|lang-javascript,span-3
-'''type|span-3,kern,smoothen,single
+````code|lang-javascript,span-3
+```type|span-3,kern,smoothen,single
 {
     "paragraphs": ["14/24"],
     "image": "docs/assets/gradient.png",
     "color": "#fff",
     "font": "sans-serif"
 }
-'''
 ```
+````
 
 ```type|span-3,kern,smoothen,single
 {
@@ -126,8 +126,8 @@ Another use case is to document the ratio between the font size and the line hei
 }
 ```
 
-```code|lang-javascript,span-3
-'''type|span-3,kern,smoothen,single
+````code|lang-javascript,span-3
+```type|span-3,kern,smoothen,single
 {
     "headings": [42],
     "background": "#00263e",
@@ -136,8 +136,8 @@ Another use case is to document the ratio between the font size and the line hei
     "tracking": 10,
     "weight": 100
 }
-'''
 ```
+````
 
 
 ### Example: Specifying contrasts
@@ -189,8 +189,8 @@ Passes Level **AAA** even for small text
 ```
 
 
-```code|lang-javascript,collapsed
-'''type|span-4,kern,smoothen
+````code|lang-javascript,collapsed
+```type|span-4,kern,smoothen
 [
     {
         "headings": [42],
@@ -235,6 +235,6 @@ Passes Level **AA** for large text
 
 '''hint|span-2,directive
 Passes Level **AAA** even for small text
-'''
 ```
+````
 

@@ -6,11 +6,11 @@
 
 Specimens are defined as Markdown code blocks with an option string.
 
-```code
-'''html|dark
+````code
+```html|dark
 Content goes here...
-'''
 ```
+````
 
 The format of the code block option string is as follows: `specimen-type|option1,option2`. 
 _Note that no spaces are allowed._
@@ -31,11 +31,11 @@ The first part – the one before the `|`-character – is the specimen __type_
 
 For example:
 
-```code
-'''image
+````code
+```image
 ...
-'''
 ```
+````
 
 ### Specimen Options
 
@@ -43,10 +43,11 @@ The second part after the `|` is a list of comma-separated __options__ for the s
 
 For example:
 
-```code
-'''code|lang-jsx,span-3
+````code
+```code|lang-jsx,span-3
 ...
-'''
+```
+````
 ```
 
 ### Specimen Content
@@ -59,11 +60,11 @@ The [HTML](#/html), [Code](#/code), and [Hint](#/hint) specimens take a simple s
 
 For example:
 
-```code
-'''html
+````code
+```html
 <p>Some HTML</p>
-'''
 ```
+````
 
 #### Properties
 
@@ -71,11 +72,10 @@ Other specimens (like [Color](#/color)) take structured content as input which i
 
 For example:
 
-```code
-'''color
+````code
+```color
 name: Red
 value: #f00
-'''
 ```
 
 #### Documentation conventions

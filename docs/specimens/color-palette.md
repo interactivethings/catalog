@@ -26,15 +26,15 @@ colors:
   - {name: "400", value: "#80a8c6"}
 ```
 
-```code|lang-javascript
-'''color-palette
+````code|lang-javascript
+```color-palette
 colors:
   - {name: "100", value: "#e3f1fc"}
   - {name: "200", value: "#c2d8ea"}
   - {name: "300", value: "#a1c0d8"}
   - {name: "400", value: "#80a8c6"}
-'''
 ```
+````
 
 #### Horizontal color palette
 
@@ -55,8 +55,8 @@ colors:
    - {value: "#003c30"}
 ```
 
-```code|lang-javascript
-'''color-palette|horizontal
+````code|lang-javascript
+```color-palette|horizontal
 colors:
    - {value: "#543005"}
    - {value: "#8c510a"}
@@ -68,8 +68,8 @@ colors:
    - {value: "#35978f"}
    - {value: "#01665e"}
    - {value: "#003c30"}
-'''
 ```
+````
 
 
 #### Multiple columns
@@ -109,8 +109,8 @@ colors:
   - {value: "#eeffff"}
 ```
 
-```code|collapsed,lang-javascript
-'''color-palette|span-2
+````code|collapsed,lang-javascript
+```color-palette|span-2
 colors:
   - {value: "#ffff00"}
   - {value: "#ffff22"}
@@ -142,5 +142,5 @@ colors:
   - {value: "#aaffff"}
   - {value: "#ccffff"}
   - {value: "#eeffff"}
-'''
 ```
+````

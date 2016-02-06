@@ -24,10 +24,10 @@ It can be used to document design specifications that are done in an animation p
 ```
 
 
-```code|lang-javascript
-'''video
+````code|lang-javascript
+```video
 {
     "src": "docs/assets/video.m4v"
 }
-'''
 ```
+````

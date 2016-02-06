@@ -15,11 +15,11 @@
 <div>Hello, Code Specimen</div>
 ```
 
-```code|lang-markdown
-'''code
+````code
+```code
 <div>Hello, Code Specimen</div>
-'''
 ```
+````
 
 #### Syntax highlighting
 
@@ -34,8 +34,8 @@ class ExampleComponent extends React.Component {
 
 ```
 
-```code|lang-markdown
-'''code|lang-jsx
+````code|lang-markdown
+```code|lang-jsx
 import React from 'react';
 
 class ExampleComponent extends React.Component {
@@ -43,8 +43,8 @@ class ExampleComponent extends React.Component {
     return <div>...</div>;
   }
 }
-'''
 ```
+````
 
 #### Collapsed Code Block
 
@@ -52,8 +52,8 @@ class ExampleComponent extends React.Component {
 <div>Hello, collapsed Code Specimen</div>
 ```
 
-```code|lang-markdown
-'''code|collapsed
+````code|lang-markdown
+```code|collapsed
 <div>Hello, collapsed Code Specimen</div>
-'''
 ```
+````

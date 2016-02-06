@@ -19,13 +19,13 @@ subtitle: 8 KB
 url: docs/assets/catalog_logo.svg
 ```
 
-```code
-'''download
+````code
+```download
 title: Catalog Logo (.svg)
 subtitle: 8 KB
 url: docs/assets/catalog_logo.svg
-'''
 ```
+````
 
 #### Different widths
 
@@ -79,8 +79,8 @@ url: docs/assets/catalog_logo.svg
 ```
 
 
-```code|collapsed
-'''download|span-6
+````code|collapsed
+```download|span-6
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
@@ -127,6 +127,6 @@ url: docs/assets/catalog_logo.svg
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
 ```
+````
 

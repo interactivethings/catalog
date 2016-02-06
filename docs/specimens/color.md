@@ -31,8 +31,8 @@ name: "Bright Red"
 value: "#ff5555"
 ```
 
-```code|lang-javascript
-'''color|span-3
+````code|lang-javascript
+```color|span-3
 name: "Light Blue"
 value: "#b0f6ff"
 '''
@@ -45,8 +45,8 @@ value: "#2666a4"
 '''color|span-1
 name: "Bright Red"
 value: "#ff5555"
-'''
 ```
+````
 
 
 ### Color palette
