@@ -128,6 +128,4 @@ ReactSpecimen.contextTypes = {
   page: CatalogPropTypes.page.isRequired
 };
 
-const mapBodyToProps = (parsed, raw) => ({children: raw});
-
-export default Specimen(mapBodyToProps)(Radium(ReactSpecimen));
+export default Specimen()(Radium(ReactSpecimen));

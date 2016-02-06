@@ -36,7 +36,7 @@ function getStyle(theme) {
 
 class Hint extends React.Component {
   render() {
-    const {theme, text, warning, neutral, directive} = this.props;
+    const {theme, children, warning, neutral, directive} = this.props;
     const styles = getStyle(theme);
 
     const warningStyle = warning ? styles.warning : null;
@@ -57,18 +57,18 @@ class Hint extends React.Component {
               whiteSpace: 'pre-wrap'
             }
           }}/>
-          <div>{renderMarkdown({text})}</div>
+          <div>{renderMarkdown({text: children})}</div>
         </section>
       );
   }
 }
 
 Hint.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
   warning: PropTypes.bool,
   neutral: PropTypes.bool,
   directive: PropTypes.bool
 };
 
-export default Specimen((_, raw) => ({text: raw}))(Hint);
+export default Specimen()(Hint);

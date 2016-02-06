@@ -53,7 +53,7 @@ class Code extends React.Component {
       : null;
 
     let content = this.state.viewSource
-      ? <HighlightedCode language={lang} code={children.replace(/'''/g, '```')} theme={theme} />
+      ? <HighlightedCode language={lang} code={children} theme={theme} />
       : null;
 
     return (
@@ -74,6 +74,4 @@ Code.propTypes = {
 
 const mapOptionsToProps = mapSpecimenOption(/^lang-(\w+)$/, (lang) => ({lang}));
 
-const mapBodyToProps = (parsed, raw) => ({children: raw});
-
-export default Specimen(mapBodyToProps, mapOptionsToProps)(Radium(Code));
+export default Specimen(undefined, mapOptionsToProps)(Radium(Code));

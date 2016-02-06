@@ -17,7 +17,7 @@ _Note that no spaces are allowed._
 
 #### React
 
-When you use Catalog in React, specimen options are simply passed as properties to the specimen component.
+When you use Catalog in React, specimen options are simply passed as props to the specimen component.
 
 ```code|lang-jsx
 <HtmlSpecimen dark>
@@ -48,6 +48,9 @@ For example:
 ...
 ```
 ````
+
+```hint
+Specimen options may be removed from future versions of Catalog. We recommend that you use __props__ instead because they allow much more flexibility (see following section).
 ```
 
 ### Specimen Content
@@ -66,9 +69,9 @@ For example:
 ```
 ````
 
-#### Properties
+#### Props
 
-Other specimens (like [Color](#/color)) take structured content as input which is defined by __properties__. This content can be written in YAML or JSON syntax.
+Other specimens (like [Color](#/color)) take structured content as input which is defined by __props__. This content can be written in YAML or JSON syntax.
 
 For example:
 
@@ -77,6 +80,29 @@ For example:
 name: Red
 value: #f00
 ```
+````
+
+#### Props and Content
+
+To specify __props__ and __content__ together, separate them with `---` followed by a newline.
+
+For example:
+
+````code
+```code
+span: 2
+---
+<div>Hello</div>
+```
+````
+
+````code
+```code
+span: 2
+---
+<div>Hello</div>
+```
+````
 
 #### Documentation conventions
 
