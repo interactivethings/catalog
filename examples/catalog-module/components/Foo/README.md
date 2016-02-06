@@ -6,11 +6,13 @@
 - This is awesome
 
 ```react
-state:
-  counter: 0
+initialState:
+  a: 0
+  b: 10
 ---
-<Foo name={counter}>
-  <button onClick={() => setState(({counter}) => ({counter: counter + 1}))}>+ 1</button>
+<Foo name={`${state.a} – ${state.b}`}>
+  <button onClick={() => setState(({a}) => ({a: state.a + 1}))}>a + 1</button>
+  <button onClick={() => setState(({b}) => ({b: state.b + 1}))}>b + 1</button>
 </Foo>
 ```
 

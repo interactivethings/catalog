@@ -49,12 +49,22 @@ function getStyle(theme) {
 
 
 class ReactSpecimen extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      elementState: null
+      elementState: props.initialState
     };
+    this.setElementState = this.setElementState.bind(this);
   }
+
+  setElementState(nextState) {
+    if (typeof nextState === 'function') {
+      this.setState(({elementState}) => ({elementState: {...elementState, ...nextState(elementState)}}));
+    } else {
+      this.setState({elementState: {...this.state.elementState, ...nextState}});
+    }
+  }
+
   render() {
     const {theme, children, noSource, frame, ...options} = this.props;
     const {page: {imports}} = this.context;
@@ -73,29 +83,14 @@ class ReactSpecimen extends Component {
     let error = null;
     let code = '';
 
-    console.log(this.state)
-
     if (jsx) {
-      console.time('jsx')
       const transformed = transformJSX(children, {
         ...imports,
         state: this.state.elementState,
-        setInitialState: (initialState) => {
-          if (this.state.elementState === null) {
-            this.setState(() => ({elementState: initialState}));
-          }
-        },
-        setState: (newElementState) => {
-          if (typeof newElementState === 'function') {
-            this.setState(({elementState}) => ({elementState: newElementState(elementState)}));
-          } else {
-            this.setState({elementState: newElementState});
-          }
-        }
+        setState: this.setElementState
       });
-      console.timeEnd('jsx')
       element = transformed.element;
-      error = transformed.error ? <Hint warning text={`Couldn't render specimen: ${transformed.error}`} /> : null;
+      error = transformed.error ? <Hint warning>{`Couldn't render specimen: ${transformed.error}`}</Hint> : null;
       code = children;
     } else {
       element = children;
@@ -121,7 +116,8 @@ ReactSpecimen.propTypes = {
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
-  frame: PropTypes.bool
+  frame: PropTypes.bool,
+  initialState: PropTypes.object
 };
 
 ReactSpecimen.contextTypes = {
