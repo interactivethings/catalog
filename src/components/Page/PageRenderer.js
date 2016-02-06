@@ -6,8 +6,6 @@ import runscript from '../../utils/runscript';
 import renderMarkdown from '../../utils/renderMarkdown';
 import seqKey from '../../utils/seqKey';
 
-const getSeqKey = seqKey('cg-Page');
-
 const renderStyles = (styles) => {
   return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
 };
@@ -16,6 +14,8 @@ const renderContent = (content) => {
   if (React.isValidElement(content)) {
     return React.Children.only(content);
   }
+
+  const getSeqKey = seqKey('Specimen');
 
   return (
     <Page>
