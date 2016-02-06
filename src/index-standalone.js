@@ -43,3 +43,8 @@ export {default as ImageSpecimen} from './specimens/Image';
 export {default as TypeSpecimen} from './specimens/Type';
 export {default as DownloadSpecimen} from './specimens/Download';
 export {default as VideoSpecimen} from './specimens/Video';
+
+// Shared dependencies for custom specimens
+export {default as React} from 'react';
+export {default as Radium} from 'radium';
+export {default as R} from 'ramda';

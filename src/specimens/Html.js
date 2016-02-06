@@ -3,6 +3,7 @@ import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
 import Specimen from '../components/Specimen/Specimen';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
+import runscript from '../utils/runscript';
 
 const PADDING = 3;
 const SIZE = 20;
@@ -79,6 +80,14 @@ class Html extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const {runScript} = this.props;
+    if (runScript) {
+      Array.from(this.refs.specimen.querySelectorAll('script'))
+        .forEach(runscript);
+    }
+  }
+
   render() {
     const {theme, children, frame, ...options} = this.props;
     const styles = getStyle(theme);
@@ -101,7 +110,7 @@ class Html extends React.Component {
     const content = <div dangerouslySetInnerHTML={{__html: children}} />;
 
     return (
-      <div style={styles.container} className='cg-Specimen-Html'>
+      <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
         {toggle}
         <div style={{...styles.content, ...exampleStyles}}>
           {frame ? <Frame>{content}</Frame> : content }
@@ -119,6 +128,7 @@ class Html extends React.Component {
 Html.propTypes = {
   children: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
+  runScript: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
