@@ -35,6 +35,18 @@ export default (config) => {
     );
 
     warning(
+      !page.src || typeof page.src === 'string',
+      'The page configuration property `src` must be a string.',
+      page
+    );
+
+    warning(
+      !page.component || typeof page.component === 'function',
+      'The page configuration property `component` must be a React component.',
+      page
+    );
+
+    warning(
       (page.src && !page.component && !page.pages) || (!page.src && page.component && !page.pages) || (!page.src && !page.component && page.pages),
       'The page configuration should (only) have one of these properties: `src`, `component` or `pages`.',
       page
