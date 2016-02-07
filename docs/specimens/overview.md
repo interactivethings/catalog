@@ -96,14 +96,6 @@ span: 2
 ```
 ````
 
-````code
-```code
-span: 2
----
-<div>Hello</div>
-```
-````
-
 #### Documentation conventions
 
 The documentation displays options in a list, using the following pattern:
