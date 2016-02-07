@@ -3,6 +3,8 @@
 To use Catalog, all you need is a HTML document which looks like this:
 
 ```code
+lang: html
+---
 <!doctype html>
 <html>
 <head>
@@ -45,7 +47,9 @@ Catalog lets you write documentation in [Markdown](http://daringfireball.net/pro
 
 In addition to regular Markdown, Catalog provides [**Specimens**](#/specimens) to embed rich examples like colors, rendered HTML content, typography definitions, videos, etc.
 
-```code|lang-markdown
+````code|lang-markdown
+# Page Title
+
 > Some lead text (a blockquote, optional)
 
 Introductory text (optional)
@@ -72,5 +76,5 @@ And some more text.
 src: img/cat.jpg
 ```
 
-```
+````
 
