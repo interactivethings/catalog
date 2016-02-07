@@ -101,9 +101,9 @@ By adding attributes it is possible to specify implementation details.
 {
     "src": "docs/assets/catalog_logo.png",
 }
-'''
+```
 
-'''image|span-1
+```image|span-1
 {
     "src": "docs/assets/catalog_logo.png",
 }

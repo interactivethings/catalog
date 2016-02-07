@@ -120,8 +120,8 @@ colors:
   - {value: "#ffffaa"}
   - {value: "#ffffcc"}
   - {value: "#ffffee"}
-'''
-'''color-palette|span-2
+```
+```color-palette|span-2
 colors:
   - {value: "#ff00ff"}
   - {value: "#ff22ff"}
@@ -131,8 +131,8 @@ colors:
   - {value: "#ffaaff"}
   - {value: "#ffccff"}
   - {value: "#ffeeff"}
-'''
-'''color-palette|span-2
+```
+```color-palette|span-2
 colors:
   - {value: "#00ffff"}
   - {value: "#22ffff"}

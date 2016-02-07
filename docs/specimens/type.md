@@ -199,13 +199,13 @@ Passes Level **AAA** even for small text
         "font": "sans-serif"
     }
 ]
-'''
+```
 
-'''hint|span-2,warning
+```hint|span-2,warning
 Does not pass any tests.
-'''
+```
 
-'''type|span-4,kern,smoothen
+```type|span-4,kern,smoothen
 [
     {
         "headings": [42],
@@ -214,14 +214,14 @@ Does not pass any tests.
         "font": "sans-serif"
     }
 ]
-'''
+```
 
-'''hint|span-2,directive
+```hint|span-2,directive
 Passes Level **AA** for large text
-'''
+```
 
 
-'''type|span-4,kern,smoothen,shorter
+```type|span-4,kern,smoothen,shorter
 [
     {
         "headings": [42],
@@ -231,9 +231,9 @@ Passes Level **AA** for large text
         "font": "sans-serif"
     }
 ]
-'''
+```
 
-'''hint|span-2,directive
+```hint|span-2,directive
 Passes Level **AAA** even for small text
 ```
 ````

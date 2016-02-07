@@ -58,19 +58,19 @@ Some description.
 
 This is a code specimen:
 
-'''code
+```code
 function identity(x) {
   return x;
 }
-'''
+```
 
 ## Another Title
 
 And some more text.
 
-'''image
+```image
 src: img/cat.jpg
-'''
+```
 
 ```
 

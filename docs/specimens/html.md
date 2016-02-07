@@ -95,21 +95,21 @@ html|span-3,no-source,plain
 ````code|collapsed
 ```html|span-3,no-source
 html|span-3,no-source
-'''
+```
 
-'''html|span-3,no-source,plain,light
+```html|span-3,no-source,plain,light
 html|span-3,no-source,plain,light
-'''
+```
 
-'''html|span-3,no-source,dark
+```html|span-3,no-source,dark
 <span style="color:white">html|span-3,no-source,dark</span>
-'''
+```
 
-'''html|span-3,no-source,plain,dark
+```html|span-3,no-source,plain,dark
 <span style="color:white">html|span-3,no-source,plain,dark</span>
-'''
+```
 
-'''html|span-3,no-source,plain
+```html|span-3,no-source,plain
 html|span-3,no-source,plain
 ```
 ````

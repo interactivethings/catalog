@@ -87,40 +87,40 @@ url: docs/assets/catalog_logo.svg
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-3
+```
+```download|span-3
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-3
+```
+```download|span-3
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-2
+```
+```download|span-2
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-2
+```
+```download|span-2
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-2
+```
+```download|span-2
 {
     "title": "Catalog Logo with a veeerrryy long title (.svg)",
     "filename": "catalog-logo",
