@@ -10,11 +10,6 @@ render({
       path: '/',
       title: 'Foo',
       component: require('./components/Foo/README.md')
-    },
-    {
-      path: '/bar',
-      title: 'FooBar',
-      src: './components/Foo/README.md'
     }
   ]
 }, document.getElementById('app'));
