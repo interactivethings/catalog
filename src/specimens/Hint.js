@@ -7,18 +7,19 @@ import {text} from '../styles/typography';
 function getStyle(theme) {
   return {
     container: {
+      flexBasis: '100%'
+    },
+    hint: {
       ...text(theme),
-      fontFamily: theme.fontFamily,
       background: '#fff6dd',
-      color: '#ffb400',
-      flexBasis: '100%',
       border: '1px solid #ffefaa',
-      padding: '10px 20px 8px',
-      borderRadius: '2px'
+      borderRadius: '2px',
+      color: '#ffb400',
+      padding: '20px'
     },
     neutral: {
       background: '#f9f9f9',
-      color: '#999',
+      color: '#666666',
       border: '1px solid #eee'
     },
     warning: {
@@ -44,21 +45,29 @@ class Hint extends React.Component {
     const neutralStyle = neutral ? styles.neutral : null;
 
     return (
-      <section style={{...styles.container, ...warningStyle, ...directiveStyle, ...neutralStyle}} className='cg-Hint'>
-        <Style
-          scopeSelector='.cg-Hint'
-          rules={{
-            code: {
-              display: 'inline',
-              borderRadius: '2px',
-              background: 'rgba(0,0,0,.03)',
-              fontFamily: theme.fontMono,
-              padding: '4px 5px',
-              whiteSpace: 'pre-wrap'
-            }
-          }}/>
-          <div>{renderMarkdown({text: children})}</div>
-        </section>
+      <div style={styles.container}>
+        <section style={{...styles.hint, ...warningStyle, ...directiveStyle, ...neutralStyle}} className='cg-Hint'>
+          <Style
+            scopeSelector='.cg-Hint'
+            rules={{
+              code: {
+                display: 'inline',
+                borderRadius: '2px',
+                background: 'rgba(0,0,0,.03)',
+                fontFamily: theme.fontMono,
+                padding: '4px 5px',
+                whiteSpace: 'pre-wrap'
+              },
+              ':first-child': {
+                marginTop: 0
+              },
+              ':last-child': {
+                marginBottom: 0
+              }
+            }}/>
+            <div>{renderMarkdown({text: children})}</div>
+          </section>
+      </div>
       );
   }
 }
