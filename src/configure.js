@@ -5,6 +5,13 @@ import DefaultTheme from './DefaultTheme';
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
 const stripTrailingSlashes = (path) => path.replace(/\/+$/, '');
 
+const has = (key) => (o) => o.hasOwnProperty(key);
+const hasName = has('name');
+const hasTitle = has('title');
+const hasSrc = has('src');
+const hasPages = has('pages');
+const hasComponent = has('component');
+
 const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
@@ -23,31 +30,31 @@ export default (config) => {
     const basePath = config.basePath || '/';
 
     warning(
-      !page.name,
+      !hasName(page),
       'The page configuration property `name` is deprecated; use `path` instead.',
       page
     );
 
     warning(
-      page.title,
+      hasTitle(page),
       'The page configuration property `title` is missing.',
       page
     );
 
     warning(
-      !page.src || typeof page.src === 'string',
+      !hasSrc(page) || typeof page.src === 'string',
       'The page configuration property `src` must be a string.',
       page
     );
 
     warning(
-      !page.component || typeof page.component === 'function',
+      !hasComponent(page) || typeof page.component === 'function',
       'The page configuration property `component` must be a React component.',
       page
     );
 
     warning(
-      (page.src && !page.component && !page.pages) || (!page.src && page.component && !page.pages) || (!page.src && !page.component && page.pages),
+      (hasSrc(page) && !hasComponent(page) && !hasPages(page)) || (!hasSrc(page) && hasComponent(page) && !hasPages(page)) || (!hasSrc(page) && !hasComponent(page) && hasPages(page)),
       'The page configuration should (only) have one of these properties: `src`, `component` or `pages`.',
       page
     );
