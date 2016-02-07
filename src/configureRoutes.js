@@ -2,15 +2,16 @@ import React from 'react';
 import {Route} from 'react-router';
 import configure from './configure';
 import warning from './utils/warning';
+import requireModuleDefault from './utils/requireModuleDefault';
 import CatalogContext from './components/CatalogContext';
 import PageContentLoader from './components/Page/PageContentLoader';
 
 const pageToRoute = ({path, component}) => ({
-  component: component ? component : PageContentLoader,
+  component: component ? requireModuleDefault(component) : PageContentLoader,
   path
 });
 
-const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? component : PageContentLoader} />;
+const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : PageContentLoader} />;
 
 const autoConfigure = (config) => {
   warning(

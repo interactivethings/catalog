@@ -1,5 +1,6 @@
 import React from 'react';
 import {transform} from 'babel-standalone';
+import requireModuleDefault from './requireModuleDefault';
 
 const presets = ['es2015-loose', 'react', 'stage-2'];
 
@@ -15,8 +16,8 @@ const cachedTransform = (jsx) => {
 
 export default (jsx, imports) => {
   try {
-    const importKeys = Object.keys(imports);
-    const importModules = importKeys.map((k) => imports[k]);
+    const importKeys = Object.keys(imports).filter((k) => imports[k]);
+    const importModules = importKeys.map((k) => requireModuleDefault(imports[k]));
     const transformed = cachedTransform(jsx);
     const code = transformed.replace(/React\.createElement/, ';return React.createElement');
     const element = (new Function('React', ...importKeys, code))(React, ...importModules); // eslint-disable-line no-new-func
