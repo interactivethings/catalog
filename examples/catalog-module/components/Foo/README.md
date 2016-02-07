@@ -11,8 +11,8 @@ state:
   b: 10
 ---
 <Foo name={`${state.a} – ${state.b}`}>
-  <button onClick={() => setState(({a}) => ({a: state.a + 1}))}>a + 1</button>
-  <button onClick={() => setState(({b}) => ({b: state.b + 1}))}>b + 1</button>
+  <button onClick={() => setState(({a}) => ({a: a + 1}))}>a + 1</button>
+  <button onClick={() => setState(({b}) => ({b: b + 1}))}>b + 1</button>
 </Foo>
 ```
 
