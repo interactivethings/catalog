@@ -14,7 +14,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
       const {rawOptions, rawBody} = props;
       const optionProps = parseOptions(rawOptions);
       const bodyProps = parseBody(rawBody);
-      const span = props.span || optionProps.span;
+      const span = props.span || bodyProps.span || optionProps.span;
 
       if (Array.isArray(bodyProps)) {
         return (
