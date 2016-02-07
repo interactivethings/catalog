@@ -36,7 +36,6 @@ var webpackConfig = {
     devtool: '#eval-source-map',
     plugins: [
       new webpack.DefinePlugin({
-       '__DEV__': JSON.stringify(true),
        'process.env.NODE_ENV': JSON.stringify('catalog-hot-development')
       }),
       new webpack.HotModuleReplacementPlugin(),
