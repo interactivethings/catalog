@@ -11,7 +11,7 @@ const getStyle = (theme) => {
       background: '#fff',
       border: 'none',
       boxSizing: 'border-box',
-      color: theme.textColor,
+      color: theme.codeColor,
       display: 'block',
       height: 'auto',
       margin: 0,
@@ -48,12 +48,12 @@ export default class HighlightedCode extends Component {
   render() {
     const {language, theme, code} = this.props;
     const styles = getStyle(theme);
-    const lang = Prism.languages.hasOwnProperty(language) ? language : 'markup';
+    const lang = Prism.languages.hasOwnProperty(language) ? language : null;
 
     return (
       <pre style={styles.pre}>
         <code style={styles.code}>
-          {renderPrismTokens(Prism.tokenize(code, Prism.languages[lang], lang), theme.codeStyles)}
+          {lang ? renderPrismTokens(Prism.tokenize(code, Prism.languages[lang], lang), theme.codeStyles) : code}
         </code>
       </pre>
     );
@@ -61,12 +61,8 @@ export default class HighlightedCode extends Component {
 }
 
 HighlightedCode.propTypes = {
-  language: PropTypes.string.isRequired,
+  language: PropTypes.string,
   theme: PropTypes.object.isRequired,
   code: PropTypes.string.isRequired
-};
-
-HighlightedCode.defaultProps = {
-  language: 'markup'
 };
 

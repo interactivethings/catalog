@@ -14,6 +14,7 @@ export default {
   sidebarColorLine: '#EBEBEB',
   sidebarColorHeading: '#003B5C',
   textColor: '#333333',
+  codeColor: '#00263E',
   linkColor: '#FF5555',
   textMedium: '#003B5C',
   bgLight: '#F2F2F2',
