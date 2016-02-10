@@ -3,8 +3,7 @@ import Radium from 'radium';
 import CatalogPropTypes from '../../CatalogPropTypes';
 import Link from '../Link/Link';
 
-function getStyles(theme, isMobileLayout) {
-  let navPadding = isMobileLayout ? theme.sizeL : theme.sizeL * 2;
+function getStyles(theme) {
   return {
     navbar: {
       width: '100%',
@@ -21,13 +20,19 @@ function getStyles(theme, isMobileLayout) {
       }
     },
     leftNavLink: {
-      padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${navPadding}px`,
-      textAlign: 'left'
+      padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL}px`,
+      textAlign: 'left',
+      '@media (min-width: 1000px)': {
+        padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL * 2}px`,
+      }
     },
     rightNavLink: {
-      padding: `${theme.sizeXl}px ${navPadding}px ${theme.sizeXl}px 0`,
+      padding: `${theme.sizeXl}px ${theme.sizeL}px ${theme.sizeXl}px 0`,
       textAlign: 'right',
-      borderLeft: `1px solid ${theme.background}`
+      borderLeft: `1px solid ${theme.background}`,
+      '@media (min-width: 1000px)': {
+        padding: `${theme.sizeXl}px ${theme.sizeL * 2}px ${theme.sizeXl}px 0`,
+      }
     },
     link: {
       color: theme.brandColor,
@@ -36,20 +41,31 @@ function getStyles(theme, isMobileLayout) {
       textDecoration: 'none'
     },
     leftLinkIcon: {
+      display: 'none',
       margin: '0 24px 0 0',
-      verticalAlign: 'middle'
+      verticalAlign: 'middle',
+      '@media (min-width: 1000px)': {
+        display: 'inline'
+      }
     },
     rightLinkIcon: {
+      display: 'none',
       margin: '0 0 0 24px',
-      verticalAlign: 'middle'
+      verticalAlign: 'middle',
+      '@media (min-width: 1000px)': {
+        display: 'inline'
+      }
     },
     linkIconPath: {
       stroke: 'none',
       fill: theme.brandColor
     },
     linklabels: {
-      display: isMobileLayout ? 'block' : 'inline-block',
-      verticalAlign: 'middle'
+      display: 'block',
+      verticalAlign: 'middle',
+      '@media (min-width: 1000px)': {
+        display: 'inline-block'
+      }
     },
     linkSuperTitle: {
       fontSize: theme.fontM,
@@ -67,9 +83,9 @@ function getStyles(theme, isMobileLayout) {
 class NavigationBar extends React.Component {
 
   render() {
-    let {isMobileLayout, nextPage, previousPage, theme} = this.props;
+    let {nextPage, previousPage, theme} = this.props;
 
-    let styles = getStyles(theme, isMobileLayout);
+    let styles = getStyles(theme);
 
     let leftIcon = (
       <svg style={styles.leftLinkIcon} width='37px' height='26px' viewBox='0 0 37 26'>
@@ -87,7 +103,7 @@ class NavigationBar extends React.Component {
         <div style={styles.navlink} key='left'>{
           previousPage &&
           <Link to={previousPage.path} style={{...styles.link, ...styles.leftNavLink}}>
-            { !isMobileLayout && leftIcon }
+            { leftIcon }
             <div style={styles.linklabels}>
               <h4 style={styles.linkSuperTitle}>{ previousPage.superTitle }</h4>
               <h3 style={styles.linkTitle}>{ previousPage.title }</h3>
@@ -101,7 +117,7 @@ class NavigationBar extends React.Component {
               <h4 style={styles.linkSuperTitle}>{ nextPage.superTitle }</h4>
               <h3 style={styles.linkTitle}>{ nextPage.title }</h3>
             </div>
-            { !isMobileLayout && rightIcon}
+            { rightIcon }
           </Link>
         }</div>
       </div>
@@ -110,7 +126,6 @@ class NavigationBar extends React.Component {
 }
 
 NavigationBar.propTypes = {
-  isMobileLayout: PropTypes.bool,
   theme: PropTypes.object.isRequired,
   nextPage: CatalogPropTypes.page,
   previousPage: CatalogPropTypes.page

@@ -1,37 +1,28 @@
-## Code
+
+> The Code Specimen displays a piece of code.
 
 ### Options
 
 - `collapsed` useful for longer or redundant code that still needs to be accessible
-- `lang-{language}` sets the syntax for the code
+- `lang-{language}` defines the language for code highlighting
 - `span-[1-6]` defines the width of the code specimen
 
 ### Examples
 
+#### Basic
 
-Simple example
 ```code
-codeception
+<div>Hello, Code Specimen</div>
 ```
 
-Simple example markup
-```code|collapsed
-'''code
-codeception
-'''
-```
-
-Simple example markup markup
+````code
 ```code
-'''code|collapsed
-  '''code
-  codeception
-  '''
-'''
+<div>Hello, Code Specimen</div>
 ```
+````
 
+#### Syntax highlighting
 
-Syntax highlighting
 ```code|lang-jsx
 import React from 'react';
 
@@ -43,8 +34,8 @@ class ExampleComponent extends React.Component {
 
 ```
 
-```code|collapsed,lang-markdown
-'''code|lang-jsx
+````code|lang-markdown
+```code|lang-jsx
 import React from 'react';
 
 class ExampleComponent extends React.Component {
@@ -52,5 +43,17 @@ class ExampleComponent extends React.Component {
     return <div>...</div>;
   }
 }
-'''
 ```
+````
+
+#### Collapsed Code Block
+
+```code|collapsed
+<div>Hello, collapsed Code Specimen</div>
+```
+
+````code|lang-markdown
+```code|collapsed
+<div>Hello, collapsed Code Specimen</div>
+```
+````

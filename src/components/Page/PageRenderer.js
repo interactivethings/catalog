@@ -4,8 +4,7 @@ import Page from './Page';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 import runscript from '../../utils/runscript';
 import renderMarkdown from '../../utils/renderMarkdown';
-
-const seqKey = require('../../utils/seqKey')('cg-Page');
+import seqKey from '../../utils/seqKey';
 
 const renderStyles = (styles) => {
   return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
@@ -16,13 +15,15 @@ const renderContent = (content) => {
     return React.Children.only(content);
   }
 
+  const getSeqKey = seqKey('Specimen');
+
   return (
     <Page>
       {renderMarkdown({
         text: content,
         renderer: {
           code: (body, options) => {
-            return <MarkdownSpecimen key={seqKey()} body={body} options={options || ''} />;
+            return <MarkdownSpecimen key={getSeqKey()} body={body} options={options || ''} />;
           }
         }
       })}
@@ -32,6 +33,10 @@ const renderContent = (content) => {
 
 class PageRenderer extends Component {
   componentDidMount() {
+    this.context.page.scripts.forEach(runscript);
+  }
+
+  componentDidUpdate() {
     this.context.page.scripts.forEach(runscript);
   }
   

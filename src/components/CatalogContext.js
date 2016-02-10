@@ -1,5 +1,5 @@
 import React, {Component, PropTypes, Children} from 'react';
-import ContextApp from './App/ContextApp';
+import App from './App/App';
 import CatalogPropTypes from '../CatalogPropTypes';
 
 class CatalogContext extends Component {
@@ -46,7 +46,7 @@ CatalogContext.childContextTypes = {
 export default function createCatalogContext(config) {
   const ConfiguredCatalogContext = ({children}) => (
     <CatalogContext configuration={config}>
-      <ContextApp>{children}</ContextApp>
+      <App>{children}</App>
     </CatalogContext>
   );
 

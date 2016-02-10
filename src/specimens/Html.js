@@ -3,6 +3,7 @@ import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
 import Specimen from '../components/Specimen/Specimen';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
+import runscript from '../utils/runscript';
 
 const PADDING = 3;
 const SIZE = 20;
@@ -24,7 +25,7 @@ function getStyle(theme) {
       fontFamily: theme.fontMono,
       fontSize: '16px',
       fontStyle: 'normal',
-      fontWeight: 600,
+      fontWeight: 700,
       height: SIZE + 'px',
       lineHeight: SIZE + 'px',
       padding: PADDING + 'px',
@@ -79,8 +80,16 @@ class Html extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const {runScript} = this.props;
+    if (runScript) {
+      Array.from(this.refs.specimen.querySelectorAll('script'))
+        .forEach(runscript);
+    }
+  }
+
   render() {
-    const {theme, text, frame, ...options} = this.props;
+    const {theme, children, frame, ...options} = this.props;
     const styles = getStyle(theme);
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
@@ -91,17 +100,17 @@ class Html extends React.Component {
     };
 
     let source = this.state.viewSource
-      ? <div style={styles.source} ><HighlightedCode language='markup' code={text} theme={theme} /></div>
+      ? <div style={styles.source} ><HighlightedCode language='markup' code={children} theme={theme} /></div>
       : null;
 
     let toggle = !options.noSource
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
       : null;
 
-    const content = <div dangerouslySetInnerHTML={{__html: text}} />;
+    const content = <div dangerouslySetInnerHTML={{__html: children}} />;
 
     return (
-      <div style={styles.container} className='cg-Specimen-Html'>
+      <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
         {toggle}
         <div style={{...styles.content, ...exampleStyles}}>
           {frame ? <Frame>{content}</Frame> : content }
@@ -117,8 +126,9 @@ class Html extends React.Component {
 }
 
 Html.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
+  runScript: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
@@ -127,4 +137,4 @@ Html.propTypes = {
 };
 
 
-export default Specimen((_, raw) => ({text: raw}))(Radium(Html));
+export default Specimen()(Radium(Html));

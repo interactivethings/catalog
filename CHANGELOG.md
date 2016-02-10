@@ -1,7 +1,49 @@
 # Change Log
-All notable changes to Catalog will be documented in this file.
 
-# 1.1.11 - 2015-03-23
+## 2.1.0 (prerelease)
+
+- Add `ReactSpecimen` to Markdown pages (only when Catalog is used as node module)
+- Add webpack loader which transforms Catalog-style documents into hot-reloadable Catalog pages
+
+## 2.0.1
+
+- Fixed `frame` mode for components which use webpack's style-loader
+
+## 2.0.0
+
+The great update to Catalog! 2.0.0 features a new visual appearance (and a logo!) and a major rewrite under the hood. There are many breaking changes, so you need to spend some time updating your documentation when migrating from 1.x.
+
+:rocket: The biggest new thing is that **Catalog is now available as a npm module and can be integrated directly into a React application** to document components and styles. :rocket:
+
+The standalone version still works the same way (with some small changes to the API and the configuration).
+
+### Notable Changes
+
+- The standalone version now is called with `Catalog.render(config, element)`
+- All specimens now share a common configuration option `span-[1-6]` which allows them to be laid out in a grid
+- React app integration
+- Streamlined page configuration with helpful warnings in development mode
+- Themable (experimental, API subject to change)
+
+### New Specimens
+
+- ColorPalette
+- Image
+- Video
+- Audio
+- Type
+- Hint
+- Download
+- ReactSpecimen
+
+### Removed Specimens
+
+- HTML Project (no replacment yet)
+- UISpec (replaced by Image, Video, Audio)
+- Icon (replaced by Image)
+
+
+## 1.1.11 - 2015-03-23
 
 - Added initial draft of UISpec speciment
 

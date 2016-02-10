@@ -1,9 +1,10 @@
 import React, {Component, PropTypes} from 'react';
+import Radium from 'radium';
 import {heading} from '../../styles/typography';
 
-export default class PageHeader extends Component {
+class PageHeader extends Component {
   render() {
-    const {theme, margin, title, superTitle} = this.props;
+    const {theme, title, superTitle} = this.props;
 
     return (
       <div style={{
@@ -15,7 +16,10 @@ export default class PageHeader extends Component {
         <div style={{
           position: 'absolute',
           bottom: theme.sizeL,
-          left: margin
+          left: theme.sizeL,
+          '@media (min-width: 1000px)': {
+            left: theme.sizeL * 2
+          }
         }} >
           <h2 style={{
             ...heading(theme, 1),
@@ -40,7 +44,9 @@ export default class PageHeader extends Component {
 
 PageHeader.propTypes = {
   theme: PropTypes.object.isRequired,
-  margin: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   superTitle: PropTypes.string.isRequired
 };
+
+export default Radium(PageHeader);
+

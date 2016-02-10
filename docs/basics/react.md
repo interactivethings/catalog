@@ -1,7 +1,9 @@
+> The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
+
 ## Installation
 
 ```
-npm install catalog@next --save
+npm install catalog --save
 ```
 
 ```hint
@@ -43,12 +45,12 @@ render({
 Instead of directly rendering, Catalog can provide its routes to mix them with your existing ones.
 
 ```code|lang-jsx
-import {configure, configureRoutes} from 'catalog';
+import {configureRoutes} from 'catalog';
 import Intro from './docs/Intro';
 import ButtonDocs from './docs/Buttons';
 import GridDocs from './docs/Grids';
 
-const config = configure({
+const catalogRoutes = configureRoutes({
   title: 'My Styleguide',
   basePath: '/catalog',
   pages: [
@@ -68,7 +70,7 @@ const config = configure({
 });
 
 const routes = [
-  configureRoutes(config),
+  catalogRoutes,
   // other routes ...
 ];
 

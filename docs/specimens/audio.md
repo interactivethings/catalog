@@ -1,8 +1,6 @@
-## Audio
+> The Audio Specimen can be used to document the audible aspects, for example background music, sound effects or jingles in the browser-provided interface.
 
-The audio specimen can be used to document the audible aspects, for example background music, sound effects or jingles in the browser-provided interface.
-
-### Keys
+### Properties
 
 - __`src: string`__ the url pointing to the source file
 - `title: string` a title for the audio clip, otherwise the filename is used
@@ -15,15 +13,11 @@ The audio specimen can be used to document the audible aspects, for example back
 ### Example
 
 ```audio|span-3
-{
-  "src": "docs/assets/sound.mp3"
-}
+src: "docs/assets/sound.mp3"
 ```
 
-```code|lang-javascript
-'''audio|span-3
-{
-  "src": "docs/assets/sound.mp3"
-}
-'''
+````code
+```audio|span-3
+src: "docs/assets/sound.mp3"
 ```
+````

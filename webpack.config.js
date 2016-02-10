@@ -36,7 +36,6 @@ var webpackConfig = {
     devtool: '#eval-source-map',
     plugins: [
       new webpack.DefinePlugin({
-       '__DEV__': JSON.stringify(true),
        'process.env.NODE_ENV': JSON.stringify('catalog-hot-development')
       }),
       new webpack.HotModuleReplacementPlugin(),
@@ -44,41 +43,43 @@ var webpackConfig = {
     ]
   },
 
-  // Used for unminified development build
-  development: {
-    plugins: [
-      new webpack.DefinePlugin({
-       '__DEV__': JSON.stringify(true),
-       'process.env.NODE_ENV': JSON.stringify('development')
-      }),
-      new webpack.optimize.OccurenceOrderPlugin(),
-      bannerPlugin
-    ]
-  },
+  // The standalone builds are now built with Rollup because the resulting files are around 13–21% smaller
 
-  // Minified production build
-  production: {
-    resolve: {
-      alias: {
-        // Shaves off 70 kB from minified build!
-        'js-yaml': 'js-yaml/dist/js-yaml.min.js'
-      }
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        '__DEV__': JSON.stringify(false),
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
-      }),
-      bannerPlugin
-    ]
-  }
+  // // Used for unminified development build
+  // development: {
+  //   plugins: [
+  //     new webpack.DefinePlugin({
+  //      '__DEV__': JSON.stringify(true),
+  //      'process.env.NODE_ENV': JSON.stringify('development')
+  //     }),
+  //     new webpack.optimize.OccurenceOrderPlugin(),
+  //     bannerPlugin
+  //   ]
+  // },
+
+  // // Minified production build
+  // production: {
+  //   resolve: {
+  //     alias: {
+  //       // Shaves off 70 kB from minified build!
+  //       'js-yaml': 'js-yaml/dist/js-yaml.min.js'
+  //     }
+  //   },
+  //   plugins: [
+  //     new webpack.DefinePlugin({
+  //       '__DEV__': JSON.stringify(false),
+  //       'process.env.NODE_ENV': JSON.stringify('production')
+  //     }),
+  //     new webpack.optimize.DedupePlugin(),
+  //     new webpack.optimize.OccurenceOrderPlugin(),
+  //     new webpack.optimize.UglifyJsPlugin({
+  //       compress: {
+  //         warnings: false
+  //       }
+  //     }),
+  //     bannerPlugin
+  //   ]
+  // }
 };
 
 module.exports = assignDeep({}, baseConfig, webpackConfig[env]);

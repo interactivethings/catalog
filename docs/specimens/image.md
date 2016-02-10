@@ -29,13 +29,13 @@ By using a plain background and no title you can place a simple image.
 
 _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 
-```code|lang-javascript
-'''image|plain
+````code|lang-javascript
+```image|plain
 {
     "src": "docs/assets/image_bw.jpg"
 }
-'''
 ```
+````
 
 
 ### Example: Overlay image
@@ -49,14 +49,14 @@ The overlay image is useful to document layout measurements for implementation.
 }
 ```
 
-```code|lang-javascript
-'''image
+````code|lang-javascript
+```image
 {   
     "src": "docs/assets/catalog_logo.png",
     "overlay": "docs/assets/catalog_logo-overlay.png"
 }
-'''
 ```
+````
 
 
 
@@ -72,15 +72,15 @@ By adding attributes it is possible to specify implementation details.
 }
 ```
 
-```code|lang-javascript
-'''image|dark
+````code|lang-javascript
+```image|dark
 {
     "src": "docs/assets/catalog_logo.png",
     "description": "alt text: catalog logo, add .2s fade in animation",
     "title": "Catalog Logo"
 }
-'''
 ```
+````
 
 ### Multiple images
 
@@ -96,16 +96,16 @@ By adding attributes it is possible to specify implementation details.
 }
 ```
 
-```code|lang-javascript
-'''image|span-5
+````code|lang-javascript
+```image|span-5
 {
     "src": "docs/assets/catalog_logo.png",
 }
-'''
-
-'''image|span-1
-{
-    "src": "docs/assets/catalog_logo.png",
-}
-'''
 ```
+
+```image|span-1
+{
+    "src": "docs/assets/catalog_logo.png",
+}
+```
+````

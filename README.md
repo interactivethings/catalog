@@ -1,3 +1,5 @@
+![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
+
 # Catalog
 
 Catalog lets you create beautiful living style guides quickly and easily.
@@ -6,18 +8,16 @@ Content is written in Markdown so you can focus on documenting your components.
 
 The [standalone version](http://interactivethings.github.io/catalog/#/usage) is completely dependency free, making it trivial to integrate Catalog into your application.
 
-Catalog can also be [directly integrated into a React app](http://interactivethings.github.io/catalog/#/react) to document components directly.
+Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react) to document components directly.
 
-[Read Catalog's documentation](http://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
+[Read Catalog's documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
 
 ## Installation
 
 #### Standalone Builds
 
-_Will be available once v2.0.0 is released. In the meanwhile you can use the prerelease builds._
-
 - Production: https://npmcdn.com/catalog/catalog.min.js
-- Development: https://npmcdn.com/catalog/catalog.js
+- Development (with helpful warnings): https://npmcdn.com/catalog/catalog.js
 
 #### Prerelease Builds
 
@@ -27,7 +27,7 @@ _Will be available once v2.0.0 is released. In the meanwhile you can use the pre
 #### npm
 
 ```
-npm install catalog@next --save
+npm install catalog --save
 ```
 
 The `react`, `react-dom`, `react-router`, and `history` modules are peerDependencies, so you need to install them separately.
@@ -74,4 +74,4 @@ builds and publishes Catalog's documentation to GitHub Pages
 
 ## Credits
 
-Catalog is developed by [many people](https://github.com/interactivethings/catalog/blob/master/AUTHORS) at [Interactive Things](http://www.interactivethings.com/), a User Experience and Data Visualization Studio based in Zürich.
+Catalog is developed by [many people](https://github.com/interactivethings/catalog/blob/master/AUTHORS) at [Interactive Things](https://www.interactivethings.com/), a User Experience and Data Visualization Studio based in Zürich.

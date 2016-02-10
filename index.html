@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="docs/assets/cat_favicon-32.png" />
   <title>Catalog</title>
   <script>
     if (location.hostname !== 'localhost') {
@@ -29,7 +30,10 @@
       },
       pages: [
         {path: '/', title: "Introduction", src: "docs/intro.md"},
-        {path: 'usage', title: "Usage", src: "docs/usage.md"},
+        {title: "Basics", pages: [
+          {path: 'basics/getting-started', title: 'Getting Started', src: "docs/basics/getting-started.md"},
+          {path: 'basics/react', title: 'React Integration', src: "docs/basics/react.md"}
+        ]},
         {
           path: 'specimens-group',
           title: "Specimens",
@@ -37,71 +41,65 @@
             {
               path: 'specimens',
               title: "Overview",
-              src: "docs/specimens.md"
+              src: "docs/specimens/overview.md"
             },
             {
-              path: 'audio',
+              path: 'specimens/audio',
               title: "Audio",
               src: "docs/specimens/audio.md"
             },
             {
-              path: 'code',
+              path: 'specimens/code',
               title: "Code",
               src: "docs/specimens/code.md"
             },
             {
-              path: 'color',
+              path: 'specimens/color',
               title: "Color",
               src: "docs/specimens/color.md"
             },
             {
-              path: 'color-palette',
+              path: 'specimens/color-palette',
               title: "Color Palette",
               src: "docs/specimens/color-palette.md"
             },
             {
-              path: 'download',
+              path: 'specimens/download',
               title: "Download",
               src: "docs/specimens/download.md"
             },
             {
-              path: 'hint',
+              path: 'specimens/hint',
               title: "Hint",
               src: "docs/specimens/hint.md"
             },
             {
-              path: 'html',
+              path: 'specimens/html',
               title: "HTML",
               src: "docs/specimens/html.md",
               styles: ['docs/example-style.css']
             },
             {
-              path: 'image',
+              path: 'specimens/image',
               title: "Image",
               src: "docs/specimens/image.md"
             },
             {
-              path: 'type',
+              path: 'specimens/type',
               title: "Type",
               src: "docs/specimens/type.md"
             },
             {
-              path: 'video',
+              path: 'specimens/video',
               title: "Video",
               src: "docs/specimens/video.md"
             }
           ]
         },
-        {
-          title: 'React',
-          pages: [
-            {
-              title: 'Overview',
-              path: 'react',
-              src: 'docs/react/overview.md'
-            }
-          ]
-        },
+        {title: 'Advanced', pages: [
+          {path: 'advanced/configuration', title: 'Configuration', src: 'docs/coming-soon.md'},
+          {path: 'advanced/extending', title: 'Writing Specimens', src: 'docs/coming-soon.md'},
+        ]},
         {
           path: 'test',
           title: "Style Test",

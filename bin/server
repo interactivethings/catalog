@@ -10,7 +10,7 @@ var hotMiddleware = require('webpack-hot-middleware');
 var historyApiFallback = require('connect-history-api-fallback');
 var portfinder = require('portfinder');
 var clc = require('cli-color');
-var webpackConfig = require('../webpack.config');
+var webpackConfig = require(path.resolve(process.cwd(), 'webpack.config'));
 
 var banner = [
   "         __                       ",

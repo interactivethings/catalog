@@ -1,18 +1,36 @@
+import 'babel-polyfill';
 import 'isomorphic-fetch';
 
+const mergeSpecimens = (config, specimens) => ({...config, specimens: {...specimens, ...config.specimens}});
+
 // Configuration
-export {default as render} from './render';
-export {default as configure} from './configure';
-export {default as configureRoutes} from './configureRoutes';
-export {configureJSXRoutes} from './configureRoutes';
+import specimens from './specimens-standalone';
+import {default as _render} from './render';
+import {default as _configure} from './configure';
+import {default as _configureRoutes} from './configureRoutes';
+import {configureJSXRoutes as _configureJSXRoutes} from './configureRoutes';
+
+export const render = (config, element) => {
+  _render(mergeSpecimens(config, specimens), element);
+};
+export const configure = (config) => {
+  _configure(mergeSpecimens(config, specimens));
+};
+export const configureRoutes = (config) => {
+  _configureRoutes(mergeSpecimens(config, specimens));
+};
+export const configureJSXRoutes = (config) => {
+  _configureJSXRoutes(mergeSpecimens(config, specimens));
+};
 
 // Components
-export {default as Card} from './components/Page/Page';
+export {default as Card} from './components/Card/Card';
 export {default as Page} from './components/Page/Page';
 export {default as Span} from './components/Specimen/Span';
 
 // Higher-order component for creating specimens
 export {default as Specimen} from './components/Specimen/Specimen';
+export {default as mapSpecimenOption} from './utils/mapSpecimenOption'; 
 
 // Specimens
 export {default as AudioSpecimen} from './specimens/Audio';
@@ -25,3 +43,8 @@ export {default as ImageSpecimen} from './specimens/Image';
 export {default as TypeSpecimen} from './specimens/Type';
 export {default as DownloadSpecimen} from './specimens/Download';
 export {default as VideoSpecimen} from './specimens/Video';
+
+// Shared dependencies for custom specimens
+export {default as React} from 'react';
+export {default as Radium} from 'radium';
+export {default as R} from 'ramda';

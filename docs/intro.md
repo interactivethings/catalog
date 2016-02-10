@@ -1,4 +1,4 @@
-> Catalog lets you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your project with clarity. It is completely dependency free, making it trivial to integrate into any application.
+> Catalog lets you create beautiful living style guides quickly and easily. Content is written in Markdown so you can focus on documenting your project with clarity. The standalone version is completely dependency free, making it trivial to integrate into any application.
 
 That last bit is where Catalog really shines. There are many great tools out there to build living style guides, but most of them depend on a build step, which is in turn dependent on a specific technology. We like to use the right tool for the job: in some cases that might be React, Rails, Node.js, PHP or just plain HTML. Catalog works effortlessly with all of these technologies.
 
@@ -10,13 +10,17 @@ Download one of the following versions of Catalog, and then read [how to get sta
 
 ### Standalone Downloads
 
-#### Catalog %VERSION% (production)
+#### Production
 
-Compressed, production-ready version of Catalog: https://npmcdn.com/catalog@%VERSION%/catalog.min.js
+https://npmcdn.com/catalog/catalog.min.js
 
-#### Catalog %VERSION% (development)
+Compressed, production-ready version of Catalog: 
 
-Uncompressed, development version of Catalog with debug information enabled: https://npmcdn.com/catalog@%VERSION%/catalog.js
+#### Development
+
+https://npmcdn.com/catalog/catalog.js
+
+Uncompressed, development version of Catalog with debug information enabled: 
 
 ### npm
 

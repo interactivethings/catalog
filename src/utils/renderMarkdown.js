@@ -8,7 +8,7 @@ let MARKDOWN_CONFIG = {
   smartypants: true
 };
 
-module.exports = ({text, renderer}) => {
+export default ({text, renderer}) => {
   return marked(
     text, 
     {

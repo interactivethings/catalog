@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
+import Radium from 'radium';
 import CatalogPropTypes from '../../CatalogPropTypes';
 import NavigationBar from './NavigationBar';
 import PageHeader from '../Page/PageHeader';
 
-const SIDE_WIDTH = 251;
+const SIDEBAR_WIDTH = 251;
+const SIDEBAR_ANIMATION_DURATION = 0.25;
 
 const globalStyle = `
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,600);
-@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
 
 body {
   margin: 0;
@@ -25,142 +27,96 @@ const MenuIcon = (props) => (
   </svg>
 );
 
-function style(
-  theme,
-  {
-    sideBarOffset,
-    sideWidth,
-    contentWidth,
-    contentOffset,
-    sideBarAnimDur,
-    bgVisible
-  }
-) {
-  return {
-    container: {
-      background: theme.background,
-      margin: 0,
-      padding: 0,
-      width: '100%',
-      height: '100%',
-      position: 'relative'
-    },
-    menuIcon: {
-      cursor: 'pointer',
-      height: 30,
-      left: 20,
-      position: 'absolute',
-      top: 20,
-      width: 30
-    },
-    sideNav: {
-      background: theme.sidebarColor,
-      color: '#fff',
-      overflowY: 'auto',
-      position: 'fixed',
-      height: '100vh',
-      width: sideWidth,
-      top: 0,
-      borderRight: `1px solid ${theme.sidebarColorLine}`,
-      transform: `translateX(${sideBarOffset}px)`,
-      transition: `transform ${sideBarAnimDur}s`,
-      WebkitOverflowScrolling: 'touch'
-    },
-    navBackground: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: 'rgba(0, 0, 0, 0.2)',
-      opacity: bgVisible ? 1 : 0,
-      visibility: bgVisible ? 'visible' : 'hidden',
-      transition: `opacity ${sideBarAnimDur}s, visibility ${sideBarAnimDur}s`
-    },
-    content: {
-      boxSizing: 'border-box',
-      display: 'flex',
-      minHeight: '100vh',
-      flexDirection: 'column',
-      position: 'relative',
-      width: contentWidth,
-      transform: `translateX(${contentOffset}px)`,
-      transition: `transform ${sideBarAnimDur}s`
+const getStyles = (theme, sidebarVisible) => ({
+  container: {
+    background: theme.background,
+    margin: 0,
+    padding: 0,
+    width: '100%',
+    height: '100%',
+    position: 'relative'
+  },
+  menuIcon: {
+    cursor: 'pointer',
+    height: 30,
+    left: 20,
+    position: 'absolute',
+    top: 20,
+    width: 30
+  },
+  sideNav: {
+    background: theme.sidebarColor,
+    color: '#fff',
+    overflowY: 'auto',
+    position: 'fixed',
+    height: '100vh',
+    width: SIDEBAR_WIDTH - 1,
+    top: 0,
+    borderRight: `1px solid ${theme.sidebarColorLine}`,
+    transform: `translateX(${sidebarVisible ? 0 : -SIDEBAR_WIDTH}px)`,
+    transition: `transform ${SIDEBAR_ANIMATION_DURATION}s ease-in-out`,
+    WebkitOverflowScrolling: 'touch',
+    '@media (min-width: 1000px)': {
+      transform: `translateX(0px)`
     }
-  };
-}
+  },
+  navBackground: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    opacity: sidebarVisible ? 1 : 0,
+    visibility: sidebarVisible ? 'visible' : 'hidden',
+    transition: `opacity ${SIDEBAR_ANIMATION_DURATION}s, visibility ${SIDEBAR_ANIMATION_DURATION}s`,
+    '@media (min-width: 1000px)': {
+      display: 'none'
+    }
+  },
+  content: {
+    boxSizing: 'border-box',
+    display: 'flex',
+    minHeight: '100vh',
+    flexDirection: 'column',
+    position: 'relative',
+    '@media (min-width: 1000px)': {
+      marginLeft: SIDEBAR_WIDTH
+    }
+  }
+});
 
 class AppLayout extends React.Component {
-
   constructor() {
     super();
-    this.onResize = this.onResize.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.state = {
-      viewportWidth: window.innerWidth,
       sidebarVisible: false
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.onResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
-  }
-
-  onResize() {
-    this.setState({
-      viewportWidth: window.innerWidth
-    });
-  }
-
   render() {
     const {theme, pages, page} = this.props;
-    const { sidebarVisible, viewportWidth } = this.state;
+    const {sidebarVisible} = this.state;
 
-    const isMobileLayout = viewportWidth < 1000;
-    const sideWidth = SIDE_WIDTH - 1;
-    let sideBarOffset;
-    let contentWidth;
-    if (isMobileLayout) {
-      sideBarOffset = sidebarVisible ? 0 : -SIDE_WIDTH;
-      contentWidth = viewportWidth;
-    } else {
-      sideBarOffset = 0;
-      contentWidth = viewportWidth - SIDE_WIDTH;
-    }
-    const contentOffset = isMobileLayout ? 0 : SIDE_WIDTH;
-    const sideBarAnimDur = 0.3;
-    const bgVisible = isMobileLayout && sidebarVisible;
-
-    let currentStyle = style(this.props.theme, {
-      isMobileLayout,
-      sideBarOffset,
-      sideWidth,
-      sideBarAnimDur,
-      bgVisible,
-      contentWidth,
-      contentOffset
-    });
+    let styles = getStyles(this.props.theme, sidebarVisible);
 
     const nextPage = pages[page.index + 1];
     const previousPage = pages[page.index - 1];
 
     return (
-      <div style={currentStyle.container}>
+      <div style={styles.container}>
         <style>{globalStyle}</style>
-        <div style={currentStyle.content}>
-          <PageHeader theme={theme} margin={isMobileLayout ? theme.sizeL : theme.sizeL * 2} title={page.title} superTitle={page.superTitle} />
+        <div style={styles.content}>
+          <PageHeader theme={theme} title={page.title} superTitle={page.superTitle} />
           <div style={{flex: 1}}>
             { this.props.children }
           </div>
-          <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} isMobileLayout={isMobileLayout} />
+          <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} />
         </div>
-        <MenuIcon style={currentStyle.menuIcon} onClick={this.toggleSidebar} onTouchStart={this.toggleSidebar} />
-        <div style={currentStyle.navBackground} onClick={this.toggleSidebar} onTouchStart={this.toggleSidebar} />
-        <div style={currentStyle.sideNav}>
+        <MenuIcon style={styles.menuIcon} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
+        <div style={styles.navBackground} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
+        <div style={styles.sideNav}>
           { this.props.sideNav }
         </div>
       </div>
@@ -183,4 +139,4 @@ AppLayout.propTypes = {
   pages: CatalogPropTypes.pages.isRequired
 };
 
-export default AppLayout;
+export default Radium(AppLayout);

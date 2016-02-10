@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
-const DownloadIcon = ({style, fill}) => (
+const DownloadIcon = Radium(({style, fill}) => (
   <svg style={style} viewBox='0 0 120 120'>
     <g fill='none' fill-rule='evenodd'>
       <rect width='120' height='120' fill='#EEEEEE' rx='2'/>
@@ -12,7 +12,7 @@ const DownloadIcon = ({style, fill}) => (
       </g>
     </g>
   </svg>
-);
+));
 
 function getStyle(theme) {
   return {
@@ -33,7 +33,11 @@ function getStyle(theme) {
     },
     img: {
       width: 80,
-      height: 80
+      height: 80,
+      display: 'none',
+      '@media (min-width: 630px)': {
+        display: 'block'
+      }
     },
     titleblock: {
       fontFamily: theme.fontFamily,
@@ -50,7 +54,7 @@ function getStyle(theme) {
     title: {
       color: theme.brandColor,
       fontSize: theme.fontS,
-      fontWeight: 600,
+      fontWeight: 700,
       margin: 0
     },
     subtitle: {
@@ -70,7 +74,7 @@ class DownloadSpecimen extends React.Component {
     const textColor = isHovered ? {color: theme.linkColor} : {};
     const arrowFill = isHovered ? theme.linkColor : theme.brandColor;
 
-    const image = this.props.span !== 1 || window.innerWidth < 630 ? <DownloadIcon style={styles.img} fill={arrowFill} /> : null;
+    const image = this.props.span !== 1 ? <DownloadIcon style={styles.img} fill={arrowFill} /> : null;
 
     return (
       <div style={styles.container} >

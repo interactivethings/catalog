@@ -1,6 +1,6 @@
 ## Download
 
-### Keys
+### Properties
 - __`url: string`__ The URL pointing to the file
 - __`title: string`__ The title for the button
 - `filename: string` Changes the file name under which it will be saved
@@ -19,13 +19,13 @@ subtitle: 8 KB
 url: docs/assets/catalog_logo.svg
 ```
 
-```code
-'''download
+````code
+```download
 title: Catalog Logo (.svg)
 subtitle: 8 KB
 url: docs/assets/catalog_logo.svg
-'''
 ```
+````
 
 #### Different widths
 
@@ -79,54 +79,54 @@ url: docs/assets/catalog_logo.svg
 ```
 
 
-```code|collapsed
-'''download|span-6
+````code|collapsed
+```download|span-6
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-3
+```
+```download|span-3
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-3
+```
+```download|span-3
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-2
+```
+```download|span-2
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-2
+```
+```download|span-2
 {
     "title": "Catalog Logo (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
-'''download|span-2
+```
+```download|span-2
 {
     "title": "Catalog Logo with a veeerrryy long title (.svg)",
     "filename": "catalog-logo",
     "subtitle": "8 KB",
     "url": "docs/assets/catalog_logo.svg"
 }
-'''
 ```
+````
 

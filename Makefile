@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PROJECT_NAME    = Catalog
 PROJECT_URL     = http://interactivethings.github.io/catalog/
 CURRENT_VERSION = $(shell ./bin/version)
-PUBLIC_LIB_URL = https://npmcdn.com/catalog@$(CURRENT_VERSION)/catalog.min.js
+PUBLIC_LIB_URL = https://npmcdn.com/catalog/catalog.min.js
 
 UMD_BUILD_TARGETS = \
 	catalog.js \
@@ -41,13 +41,16 @@ test:
 build: node_modules clean test lib $(UMD_BUILD_TARGETS)
 
 lib:
-	$$(npm bin)/babel src --ignore __tests__ --out-dir $@
+	@$$(npm bin)/babel src --ignore __tests__ --out-dir $@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.js:
-	@NODE_ENV=development $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
+	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.min.js:
-	@NODE_ENV=production $$(npm bin)/webpack ./src/index-standalone ./$@ --colors --progress --hide-modules
+	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 
 ### DOCUMENTATION AND DEPLOYMENT

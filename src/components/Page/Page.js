@@ -1,25 +1,30 @@
 import React, {Component, PropTypes} from 'react';
-import {Style} from 'radium';
+import Radium, {Style} from 'radium';
 import { headingBlock, textBlock, blockquote, unorderedList, orderedList } from '../../styles/typography';
 
-export default class Page extends Component {
+class Page extends Component {
   render() {
     const {children} = this.props;
     const {theme} = this.context;
 
-    const margin = window.innerWidth > 640 ? 20 * 2 : 20;
-
     const pageStyle = {
       boxSizing: 'border-box',
-      margin: `0 ${Math.max(0, margin - 10)}px 0 ${margin}px`,
+      margin: `0 20px 0 20px`,
       maxWidth: '64em',
       display: 'flex',
       flexFlow: 'row wrap',
-      padding: `24px 0 48px 0`
+      padding: `48px 0`,
+      '@media (min-width: 640px)': {
+        margin: `0 10px 0 20px`
+      },
+      '@media (min-width: 1000px)': {
+        margin: `0 30px 0 40px`
+      }
     };
 
     return (
       <div className='cg-Page' style={pageStyle}>
+        {children}
         <Style scopeSelector='.cg-Page >' rules={{
           // Text styles
           ...headingBlock(theme, 'h1', 4),
@@ -48,11 +53,12 @@ export default class Page extends Component {
           ...headingBlock(theme, 'blockquote > h6', 1),
           ...textBlock(theme, 'blockquote > p', 1),
           ...unorderedList(theme, 'blockquote > ul', 1),
-          ...orderedList(theme, 'blockquote > ol', 1)
+          ...orderedList(theme, 'blockquote > ol', 1),
 
+          ':first-child': {
+            marginTop: 0
+          }
         }} />
-
-        {children}
       </div>
     );
   }
@@ -65,4 +71,6 @@ Page.propTypes = {
 Page.contextTypes = {
   theme: PropTypes.object.isRequired
 };
+
+export default Radium(Page);
 
