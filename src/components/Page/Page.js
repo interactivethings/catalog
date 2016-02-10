@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import Radium, {Style} from 'radium';
 import { headingBlock, textBlock, blockquote, unorderedList, orderedList } from '../../styles/typography';
+import renderMarkdown from '../../utils/renderMarkdown';
+import seqKey from '../../utils/seqKey';
+import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 
 class Page extends Component {
   render() {
@@ -22,9 +25,21 @@ class Page extends Component {
       }
     };
 
+    const getSpecimenKey = seqKey('Specimen');
+
     return (
       <div className='cg-Page' style={pageStyle}>
-        {children}
+        {React.Children.map(children, (child) => {
+          return typeof child === 'string' ?
+            renderMarkdown({
+              text: child,
+              renderer: {
+                code: (body, options) => {
+                  return <MarkdownSpecimen key={getSpecimenKey()} body={body} options={options || ''} />;
+                }
+              }
+            }) : child;
+        })}
         <Style scopeSelector='.cg-Page >' rules={{
           // Text styles
           ...headingBlock(theme, 'h1', 4),

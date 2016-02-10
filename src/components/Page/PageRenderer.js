@@ -1,35 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
 import Page from './Page';
-import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 import runscript from '../../utils/runscript';
-import renderMarkdown from '../../utils/renderMarkdown';
-import seqKey from '../../utils/seqKey';
 
 const renderStyles = (styles) => {
   return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
 };
 
-const renderContent = (content) => {
-  if (React.isValidElement(content)) {
-    return React.Children.only(content);
-  }
-
-  const getSeqKey = seqKey('Specimen');
-
-  return (
-    <Page>
-      {renderMarkdown({
-        text: content,
-        renderer: {
-          code: (body, options) => {
-            return <MarkdownSpecimen key={getSeqKey()} body={body} options={options || ''} />;
-          }
-        }
-      })}
-    </Page>
-  );
-};
+const renderContent = (content) => React.isValidElement(content) && content.type === Page ? content : <Page>{content}</Page>;
 
 class PageRenderer extends Component {
   componentDidMount() {
