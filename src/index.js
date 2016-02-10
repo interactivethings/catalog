@@ -7,18 +7,10 @@ import {default as _configure} from './configure';
 import {default as _configureRoutes} from './configureRoutes';
 import {configureJSXRoutes as _configureJSXRoutes} from './configureRoutes';
 
-export const render = (config, element) => {
-  _render(mergeSpecimens(config, specimens), element);
-};
-export const configure = (config) => {
-  _configure(mergeSpecimens(config, specimens));
-};
-export const configureRoutes = (config) => {
-  _configureRoutes(mergeSpecimens(config, specimens));
-};
-export const configureJSXRoutes = (config) => {
-  _configureJSXRoutes(mergeSpecimens(config, specimens));
-};
+export const render = (config, element) => _render(mergeSpecimens(config, specimens), element);
+export const configure = (config) => _configure(mergeSpecimens(config, specimens));
+export const configureRoutes = (config) => _configureRoutes(mergeSpecimens(config, specimens));
+export const configureJSXRoutes = (config) => _configureJSXRoutes(mergeSpecimens(config, specimens));
 
 // Components
 export {default as Card} from './components/Card/Card';
