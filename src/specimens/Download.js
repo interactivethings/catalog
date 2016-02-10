@@ -54,7 +54,7 @@ function getStyle(theme) {
     title: {
       color: theme.brandColor,
       fontSize: theme.fontS,
-      fontWeight: 600,
+      fontWeight: 700,
       margin: 0
     },
     subtitle: {

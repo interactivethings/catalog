@@ -26,7 +26,7 @@ const inlineElements = (theme, selector = '') => {
       fontStyle: 'italic'
     },
     [`${selector} b, strong`]: {
-      fontWeight: 600
+      fontWeight: 700
     },
     [`${selector} a`]: {
       color: theme.linkColor,

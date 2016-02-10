@@ -8,8 +8,8 @@ const SIDEBAR_WIDTH = 251;
 const SIDEBAR_ANIMATION_DURATION = 0.25;
 
 const globalStyle = `
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,600);
-@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
 
 body {
   margin: 0;

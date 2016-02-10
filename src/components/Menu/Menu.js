@@ -17,7 +17,7 @@ export function style(theme) {
       ...heading(theme, 1),
       boxSizing: 'border-box',
       color: theme.sidebarColorHeading,
-      fontWeight: 600,
+      fontWeight: 700,
       margin: 0,
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
       height: theme.pageHeadingHeight,

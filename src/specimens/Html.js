@@ -25,7 +25,7 @@ function getStyle(theme) {
       fontFamily: theme.fontMono,
       fontSize: '16px',
       fontStyle: 'normal',
-      fontWeight: 600,
+      fontWeight: 700,
       height: SIZE + 'px',
       lineHeight: SIZE + 'px',
       padding: PADDING + 'px',
