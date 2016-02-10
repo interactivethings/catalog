@@ -4,8 +4,8 @@
 
 - Add `ReactSpecimen` to Markdown pages (only when Catalog is used as node module)
 - Add webpack loader which transforms Catalog-style documents into hot-reloadable Catalog pages
-- The `Page` component now also renders Catalog-style Markdown strings, so you can mix and match Markdown and other React elements on a page (1bac253)
-- Upgrade to react-router@2. _Make sure you update your app too_, it should work fine because v1 API is still supported
+- The `Page` component now also renders Catalog-style Markdown strings, so you can mix and match Markdown and other React elements on a page 1bac2537907adc440caed3e7e1edcb5fee19a33b
+- Upgrade to react-router v2. _Make sure you update your app too_, it should work fine because v1 API is still supported
 - More helpful warnings when configuration is incorrect
 - Miscellaneous fixes and style tweaks
 
