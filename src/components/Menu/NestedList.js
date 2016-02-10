@@ -13,10 +13,13 @@ const NestedList = React.createClass({
     theme: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
   },
+  contextTypes: {
+    router: PropTypes.object.isRequired
+  },
   render() {
     const { theme, pages, title, history } = this.props;
     const collapsed = !pages
-      .map((d) => d.path && this.props.history.isActive(d.path))
+      .map((d) => d.path && this.context.router.isActive(d.path))
       .filter(Boolean)
       .length;
 
