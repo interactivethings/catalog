@@ -44,7 +44,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const {theme, children, collapsed, lang} = this.props;
+    const {theme, children, rawBody, collapsed, lang, raw} = this.props;
     const {viewSource} = this.state;
     let styles = getStyle(theme);
 
@@ -53,7 +53,7 @@ class Code extends React.Component {
       : null;
 
     let content = this.state.viewSource
-      ? <HighlightedCode language={lang} code={children} theme={theme} />
+      ? <HighlightedCode language={lang} code={raw ? rawBody : children} theme={theme} />
       : null;
 
     return (
@@ -67,11 +67,15 @@ class Code extends React.Component {
 
 Code.propTypes = {
   children: PropTypes.string.isRequired,
+  rawBody: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
   collapsed: PropTypes.bool,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  raw: PropTypes.bool
 };
 
 const mapOptionsToProps = mapSpecimenOption(/^lang-(\w+)$/, (lang) => ({lang}));
 
-export default Specimen(undefined, mapOptionsToProps)(Radium(Code));
+const mapBodyToProps = (parsed, rawBody) => ({...parsed, rawBody});
+
+export default Specimen(mapBodyToProps, mapOptionsToProps)(Radium(Code));

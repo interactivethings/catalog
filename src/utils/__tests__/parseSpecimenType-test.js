@@ -1,8 +1,8 @@
 import test from 'tape';
 import parseSpecimenType from '../parseSpecimenType';
 
-test('Default specimen type is `code`', (t) => {
-  t.equal(parseSpecimenType(), 'code');
+test('Default specimen type is `raw-code`', (t) => {
+  t.equal(parseSpecimenType(), 'raw-code');
   t.end();
 });
 
