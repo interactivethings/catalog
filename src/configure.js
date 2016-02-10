@@ -1,5 +1,6 @@
 import warning from './utils/warning';
 import DefaultTheme from './DefaultTheme';
+import requireModuleDefault from './utils/requireModuleDefault';
 
 // Removes potential multiple slashes from concatenating paths
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
@@ -48,7 +49,7 @@ export default (config) => {
     );
 
     warning(
-      !hasComponent(page) || typeof page.component === 'function',
+      !hasComponent(page) || typeof requireModuleDefault(page.component) === 'function',
       'The page configuration property `component` must be a React component.',
       page
     );
