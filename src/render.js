@@ -7,13 +7,13 @@ import seqKey from './utils/seqKey';
 
 import configureRoutes from './configureRoutes';
 
-const history = useScroll(createHashHistory)({queryKey: false});
+const history = useRouterHistory(useScroll(createHashHistory))({queryKey: false});
 
 const getKey = seqKey('CatalogRouter');
 
 export default (config, element) => {
   ReactDOM.render(
-    <Router key={getKey()} history={useRouterHistory(history)} routes={configureRoutes(config)} />,
+    <Router key={getKey()} history={history} routes={configureRoutes(config)} />,
     element
   );
 };
