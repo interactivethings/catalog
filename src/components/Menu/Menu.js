@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import CatalogPropTypes from '../../CatalogPropTypes';
-import { heading, text } from '../../styles/typography';
+import { heading, text, getFontSize } from '../../styles/typography';
 import Link from '../Link/Link';
 
 import ListItem from './ListItem';
@@ -26,10 +26,9 @@ export function style(theme) {
       justifyContent: 'flex-end'
     },
     logo: {
-      display: 'inline-block',
-      width: '100%',
+      maxWidth: '100%',
       alignSelf: 'flex-end',
-      paddingBottom: '45px'
+      marginBottom: getFontSize(theme, 5)
     },
     list: {
       borderBottom: `1px solid ${theme.sidebarColorLine}`,

@@ -30,7 +30,7 @@ class PageHeader extends Component {
             {superTitle}
           </h2>
           <h1 style={{
-            ...heading(theme, 3),
+            ...heading(theme, 4),
             color: theme.pageHeadingTextColor,
             margin: 0
           }}>

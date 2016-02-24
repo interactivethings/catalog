@@ -3,7 +3,6 @@
 const baseTextStyle = {
   fontStyle: 'normal',
   fontWeight: 400,
-  lineHeight: 1.5,
   textRendering: 'optimizeLegibility',
   WebkitFontSmoothing: 'antialiased',
   MozOsxFontSmoothing: 'grayscale'
@@ -18,7 +17,7 @@ const baseListStyle = {
 // Helpers
 
 // Modular scale font size helper; level can be negative (for smaller font sizes) and positive (for larger font sizes) integers; level 0 === baseFontSize
-const getFontSize = ({baseFontSize, msRatio}, level = 0) => `${baseFontSize * Math.pow(msRatio, level)}px`;
+export const getFontSize = ({baseFontSize, msRatio}, level = 0) => `${baseFontSize * Math.pow(msRatio, level)}px`;
 
 const inlineElements = (theme, selector = '') => {
   return {
@@ -42,7 +41,7 @@ const inlineElements = (theme, selector = '') => {
       display: 'inline-block',
       fontFamily: theme.fontMono,
       lineHeight: 1,
-      padding: '0.2em 0.2em',
+      padding: '0.12em 0.2em',
       textIndent: 0
     },
     [`${selector} img`]: {
@@ -62,7 +61,8 @@ export const text = (theme, level = 0) => ({
   ...baseTextStyle,
   color: theme.textColor,
   fontFamily: theme.fontFamily,
-  fontSize: getFontSize(theme, level)
+  fontSize: getFontSize(theme, level),
+  lineHeight: theme.msRatio * theme.msRatio
 });
 
 // Heading font style
@@ -71,7 +71,7 @@ export const heading = (theme, level = 0) => ({
   color: theme.brandColor,
   fontFamily: theme.fontHeading,
   fontSize: getFontSize(theme, level),
-  lineHeight: 1.2
+  lineHeight: theme.msRatio
 });
 
 // Block element styles
