@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
-const Foo = ({name, children, ...rest}) => (
-  <div {...rest} >
-    <strong>{name}</strong>
-    <div>{children}</div>
-  </div>
-);
+export default class Foo extends Component {
+  render() {
+    return (
+      <div style={{fontFamily: 'Helvetica'}} {...this.props}>
+        <strong>{this.props.name}</strong>
+        <div>{this.props.children}</div>
+      </div>
+    );
+  }
+}
 
-export default Foo;
+Foo.propTypes = {
+  name: PropTypes.string,
+  children: PropTypes.node
+};

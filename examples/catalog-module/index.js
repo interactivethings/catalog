@@ -1,15 +1,13 @@
 import {render} from '../../src/index';
 
-import Foo from './components/Foo/Foo';
-
 render({
   title: 'My Components',
-  imports: {Foo},
   pages: [
     {
       path: '/',
       title: 'Foo',
-      component: require('./components/Foo/README.md')
+      imports: {Foo: require('./components/Foo/Foo')},
+      component: require('./components/Foo/Foo.docs.md')
     }
   ]
 }, document.getElementById('app'));
