@@ -23,11 +23,9 @@ export function style(theme) {
       height: theme.pageHeadingHeight,
       display: 'flex',
       alignItems: 'flex-end',
-      justifyContent: 'flex-end'
     },
     logo: {
       maxWidth: '100%',
-      alignSelf: 'flex-end',
       marginBottom: getFontSize(theme, 5)
     },
     list: {
