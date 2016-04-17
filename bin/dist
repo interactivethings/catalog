@@ -1,15 +1,21 @@
 #!/bin/bash
+set -e
 
 CLI_SUCCESS="\033[1;32m✔"
 CLI_ERROR="\033[1;31m✘"
 CLI_QUERY="\033[1;36m→"
 CLI_RESET="\033[0m"
 
-read -p "Enter a new version (current: $(./bin/version)): " version
+read -p "Enter a new version (current: $(node -p 'require("./package.json").version')): " new_version
 
-npm version "$version" 
+if [ -n "$new_version" ]
+then
+  npm version "$new_version"
 
-read -p 'Is this a prerelase version? [yN] ' prerelease
+  echo -e "$CLI_SUCCESS Bumped version to \"$(node -p 'require("./package.json").version')\"$CLI_RESET"
+fi
+
+version=$(node -p 'require("./package.json").version')
 
 read -p "Publish to npm? [Yn] " publish_npm
 
@@ -17,7 +23,7 @@ if [ "$publish_npm" != 'n' ] && [ "$publish_npm" != 'N' ]
 then
   make build
   
-  if [ "$prerelease" == 'y' ] || [ "$prerelease" == 'Y' ]
+  if [[ "$version" == *"-"* ]]
   then
     npm publish --tag next
   else
@@ -27,17 +33,20 @@ then
   echo -e "$CLI_SUCCESS Published version \"$version\" to npm$CLI_RESET"
 fi
 
-# read -p "Publish to gh-pages? [Yn] " publish_gh
+read -p "Publish to gh-pages? [Yn] " publish_gh
 
-# if [ "$publish_gh" != 'n' ] && [ "$publish_gh" != 'N' ]
-# then
-#   make docs
-  
-#   git subtree split --prefix site --branch gh-pages && \
-#   git push --force origin gh-pages:gh-pages && \
-#   git branch -D gh-pages
+if [ "$publish_gh" != 'n' ] && [ "$publish_gh" != 'N' ]
+then
+  if [[ "$version" == *"-"* ]]
+  then
+    make site-next
+  else
+    make site
+  fi
 
-#   echo -e "$CLI_SUCCESS Published version \"$version\" to gh-pages$CLI_RESET"
-# fi
+  make gh-pages
+
+  echo -e "$CLI_SUCCESS Published version \"$version\" to gh-pages$CLI_RESET"
+fi
 
 exit 0

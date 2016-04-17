@@ -16,13 +16,13 @@ Catalog can also be [directly integrated into a React app](https://interactiveth
 
 #### Standalone Builds
 
-- Production: https://npmcdn.com/catalog/catalog.min.js
-- Development (with helpful warnings): https://npmcdn.com/catalog/catalog.js
+- Production: https://interactivethings.github.io/catalog/catalog.min.js
+- Development (with helpful warnings): https://interactivethings.github.io/catalog/catalog.js
 
 #### Prerelease Builds
 
-- Production: https://npmcdn.com/catalog@next/catalog.min.js
-- Development: https://npmcdn.com/catalog@next/catalog.js
+- Production: https://interactivethings.github.io/catalog/next/catalog.min.js
+- Development: https://interactivethings.github.io/catalog/next/catalog.js
 
 #### npm
 
@@ -64,13 +64,7 @@ runs tests
 make dist
 ```
 
-prompts for a new version number and publishes to npm. _Don't edit package.json manually._
-
-```
-make gh-pages
-```
-
-builds and publishes Catalog's documentation to GitHub Pages
+prompts for a new version number and publishes to npm and gh-pages. _Don't edit package.json manually._
 
 ## Credits
 
