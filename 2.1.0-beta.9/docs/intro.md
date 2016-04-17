@@ -42,4 +42,4 @@ Catalog is developed by [many people](https://github.com/interactivethings/catal
 
 #### Version
 
-These is the documentation vor Catalog version %VERSION%.
+These is the documentation vor Catalog version 2.1.0-beta.9.
