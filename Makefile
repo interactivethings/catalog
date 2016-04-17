@@ -84,11 +84,11 @@ $(SITE_DIR)/$(CURRENT_VERSION)/%: %
 		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
 		@cp $< $@)
 
-$(SITE_DIR)/%: %
+$(SITE_DIR)/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
 	@mkdir -p $(dir $@)
 	@cp -R $< $@
 
-$(SITE_DIR)/next/%: %
+$(SITE_DIR)/next/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
 	@mkdir -p $(dir $@)
 	@cp -R $< $@
 
