@@ -14,7 +14,7 @@ lang: html
 </head>
 <body>
   <div id="catalog" />
-  <script src="https://npmcdn.com/catalog/catalog.js"></script>
+  <script src="https://interactivethings.github.io/catalog/catalog.js"></script>
   <script>
     Catalog.render({
       title: 'Catalog',
