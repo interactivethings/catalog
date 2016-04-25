@@ -18,7 +18,7 @@ let plugins = [
       // relative to the current directory, or the name
       // of a module in node_modules
       'node_modules/radium/lib/index.js': [ 'Style', 'StyleRoot' ],
-      'node_modules/react/react.js': [ 'Component', 'PropTypes', 'Children' ],
+      'node_modules/react/react.js': [ 'Component', 'PropTypes', 'Children', 'createElement' ],
       'node_modules/js-yaml/dist/js-yaml.min.js': [ 'CORE_SCHEMA' ]
     }
   }),
