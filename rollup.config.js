@@ -1,12 +1,12 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
-import npm from 'rollup-plugin-npm';
+import nodeResolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import replace from 'rollup-plugin-replace';
 let version = require('./package.json').version;
 
 let plugins = [
-  npm({
+  nodeResolve({
     jsnext: true,
     main: true,
     browser: true
