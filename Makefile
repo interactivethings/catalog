@@ -19,7 +19,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib gh-pages clean-site site site-next dist deploy clean clobber lint test
+.PHONY: server build watch-lib gh-pages clean-site site site-next publish clean clobber lint test
 
 all: server
 
@@ -58,8 +58,8 @@ gh-pages:
 	@$$(npm bin)/gh-pages -d $(SITE_DIR) --add
 	@rm -rf $(SITE_DIR)
 
-dist:
-	@bin/dist
+publish:
+	@bin/publish
 
 clean-site:
 	@rm -rf $(SITE_DIR)

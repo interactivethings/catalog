@@ -1,5 +1,7 @@
 ![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
 
+[ ![Codeship Status for interactivethings/catalog](https://codeship.com/projects/b9c8e9b0-ed46-0133-8707-0260d23e53ee/status?branch=master)](https://codeship.com/projects/148435)
+
 # Catalog
 
 Catalog lets you create beautiful living style guides quickly and easily.
@@ -61,10 +63,16 @@ runs tests
 ## Releasing
 
 ```
-make dist
+make version
 ```
 
-prompts for a new version number and publishes to npm and gh-pages. _Don't edit package.json manually._
+prompts for a new version number.
+
+```
+make publish
+```
+
+publishes to npm and gh-pages if an unpublished version number is detected. Usually will run automatically via CI.
 
 ## Credits
 

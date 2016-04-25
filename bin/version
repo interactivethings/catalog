@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+CLI_SUCCESS="\033[1;32m✔"
+CLI_ERROR="\033[1;31m✘"
+CLI_QUERY="\033[1;36m→"
+CLI_RESET="\033[0m"
+
+read -p "Enter a new version (current: $(node -p 'require("./package.json").version')): " new_version
+
+if [ -n "$new_version" ]
+then
+  npm version "$new_version"
+
+  echo -e "$CLI_SUCCESS Bumped version to \"$(node -p 'require("./package.json").version')\"$CLI_RESET"
+fi
