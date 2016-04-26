@@ -8,11 +8,11 @@ CLI_RESET="\033[0m"
 
 version=$(node -p 'require("./package.json").version')
 
-if [[ $(npm view catalog@$version name) == "catalog" ]]
-then
-  echo -e "$CLI_SUCCESS Version \"$version\" is already published. Aborting.$CLI_RESET"
-  exit 0
-fi
+# if [[ $(npm view catalog@$version name) == "catalog" ]]
+# then
+#   echo -e "$CLI_SUCCESS Version \"$version\" is already published. Aborting.$CLI_RESET"
+#   exit 0
+# fi
 
 make build
 
@@ -23,9 +23,9 @@ else
   tag="latest"
 fi
 
-npm publish --tag $tag
+# npm publish --tag $tag
 
-echo -e "$CLI_SUCCESS Published version \"$version\" with tag \"$tag\" to npm$CLI_RESET"
+# echo -e "$CLI_SUCCESS Published version \"$version\" with tag \"$tag\" to npm$CLI_RESET"
 
 if [[ "$tag" == "next" ]]
 then
