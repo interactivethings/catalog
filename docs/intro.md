@@ -12,15 +12,15 @@ Download one of the following versions of Catalog, and then read [how to get sta
 
 #### Production
 
-https://npmcdn.com/catalog/catalog.min.js
-
 Compressed, production-ready version of Catalog: 
+
+https://interactivethings.github.io/catalog/catalog.min.js
 
 #### Development
 
-https://npmcdn.com/catalog/catalog.js
-
 Uncompressed, development version of Catalog with debug information enabled: 
+
+https://interactivethings.github.io/catalog/catalog.js
 
 ### npm
 
@@ -39,3 +39,7 @@ Catalog is Open Source and on [GitHub](https://github.com/interactivethings/cata
 ### Credits
 
 Catalog is developed by [many people](https://github.com/interactivethings/catalog/blob/master/AUTHORS) at [Interactive Things](http://www.interactivethings.com/), a User Experience and Data Visualization Studio based in Zürich.
+
+#### Version
+
+These is the documentation vor Catalog version %VERSION%.

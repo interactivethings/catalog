@@ -1,5 +1,7 @@
 ![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
 
+[ ![Codeship Status for interactivethings/catalog](https://codeship.com/projects/b9c8e9b0-ed46-0133-8707-0260d23e53ee/status?branch=master)](https://codeship.com/projects/148435)
+
 # Catalog
 
 Catalog lets you create beautiful living style guides quickly and easily.
@@ -16,13 +18,13 @@ Catalog can also be [directly integrated into a React app](https://interactiveth
 
 #### Standalone Builds
 
-- Production: https://npmcdn.com/catalog/catalog.min.js
-- Development (with helpful warnings): https://npmcdn.com/catalog/catalog.js
+- Production: https://interactivethings.github.io/catalog/catalog.min.js
+- Development (with helpful warnings): https://interactivethings.github.io/catalog/catalog.js
 
 #### Prerelease Builds
 
-- Production: https://npmcdn.com/catalog@next/catalog.min.js
-- Development: https://npmcdn.com/catalog@next/catalog.js
+- Production: https://interactivethings.github.io/catalog/next/catalog.min.js
+- Development: https://interactivethings.github.io/catalog/next/catalog.js
 
 #### npm
 
@@ -61,16 +63,16 @@ runs tests
 ## Releasing
 
 ```
-make dist
+make version
 ```
 
-prompts for a new version number and publishes to npm. _Don't edit package.json manually._
+prompts for a new version number.
 
 ```
-make gh-pages
+make publish
 ```
 
-builds and publishes Catalog's documentation to GitHub Pages
+publishes to npm and gh-pages if an unpublished version number is detected. Usually will run automatically via CI.
 
 ## Credits
 

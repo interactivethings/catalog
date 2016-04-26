@@ -1,26 +1,25 @@
 SHELL := /bin/bash
 
-PROJECT_NAME    = Catalog
-PROJECT_URL     = http://interactivethings.github.io/catalog/
-CURRENT_VERSION = $(shell ./bin/version)
-PUBLIC_LIB_URL = https://npmcdn.com/catalog/catalog.min.js
+CURRENT_VERSION = $(shell node -p 'require("./package.json").version')
 
-UMD_BUILD_TARGETS = \
+UMD_BUILD_FILES = \
 	catalog.js \
 	catalog.min.js
 
-DOC_SOURCES = \
-	$(shell find docs -type f \( ! -iname ".*" \))
+DOC_FILES = $(shell find docs -type f \( ! -iname ".*" \))
 
-SITE_DIR        = site
-DOC_TARGETS     = $(addprefix $(SITE_DIR)/, $(DOC_SOURCES))
+SITE_DIR = site
+SITE_FILES = index.html catalog.js catalog.min.js $(DOC_FILES)
+SITE_VERSION_FILES = $(addprefix $(SITE_DIR)/$(CURRENT_VERSION)/, $(SITE_FILES))
+SITE_LATEST_FILES = $(addprefix $(SITE_DIR)/, $(SITE_FILES))
+SITE_NEXT_FILES = $(addprefix $(SITE_DIR)/next/, $(SITE_FILES))
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib gh-pages dist deploy clean clobber lint test
+.PHONY: server build watch-lib gh-pages clean-site site site-next version publish clean clobber lint test
 
 all: server
 
@@ -38,7 +37,7 @@ test:
 
 ### BUILDS
 
-build: node_modules clean test lib $(UMD_BUILD_TARGETS)
+build: node_modules clean test lib $(UMD_BUILD_FILES)
 
 lib:
 	@$$(npm bin)/babel src --ignore __tests__ --out-dir $@
@@ -55,18 +54,51 @@ catalog.min.js:
 
 ### DOCUMENTATION AND DEPLOYMENT
 
-gh-pages: $(SITE_DIR)/index.html $(DOC_TARGETS)
-	@$$(npm bin)/gh-pages -d $(SITE_DIR) --add
+version:
+	@bin/version
+
+publish:
+	@bin/publish
+
+gh-pages:
+	@$$(npm bin)/gh-pages -d $(SITE_DIR) --add --message '[skip ci] Update docs' --repo 'git@github.com:interactivethings/catalog.git'
 	@rm -rf $(SITE_DIR)
-	@echo -e "$(CLI_SUCCESS) Published version \"$(CURRENT_VERSION)\" to gh-pages$(CLI_RESET)"
 
-dist:
-	@bin/dist
+clean-site:
+	@rm -rf $(SITE_DIR)
 
-### CLEAN
+site: clean-site $(SITE_VERSION_FILES) $(SITE_LATEST_FILES)
+
+site-next: clean-site $(SITE_VERSION_FILES) $(SITE_NEXT_FILES)
+
+$(SITE_DIR)/$(CURRENT_VERSION)/index.html: index.html
+	@mkdir -p $(dir $@)
+	@sed -e 's#catalog.js#catalog.min.js#g' $< > $@
+
+$(SITE_DIR)/$(CURRENT_VERSION)/%: %
+	@mkdir -p $(dir $@)
+	@cp -R $< $@
+# Replace the string %VERSION% in supported files with the current version,
+# otherwise just copy the file to the destination
+	$(if $(or \
+			$(findstring .md,   $(suffix $<)), \
+			$(findstring .txt,  $(suffix $<)), \
+		), \
+		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
+		@cp $< $@)
+
+$(SITE_DIR)/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
+	@mkdir -p $(dir $@)
+	@cp -R $< $@
+
+$(SITE_DIR)/next/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
+	@mkdir -p $(dir $@)
+	@cp -R $< $@
+
+### OTHER
 
 clean:
-	@rm -rf -- lib $(UMD_BUILD_TARGETS)
+	@rm -rf -- lib $(UMD_BUILD_FILES)
 
 clobber: clean
 	@rm -rf node_modules
@@ -75,32 +107,9 @@ lint:
 	$$(npm bin)/eslint src
 
 #
-# Targets
-#
-
-$(SITE_DIR)/index.html: index.html package.json
-	@mkdir -p $(dir $@)
-	@sed -e 's#catalog.js#$(PUBLIC_LIB_URL)#g' \
-			$< > $@
-
-$(DOC_TARGETS): $(SITE_DIR)/%: % package.json
-	@mkdir -p $(dir $@)
-# Replace the string %VERSION% in supported files with the current version,
-# otherwise just copy the file to the destination
-	$(if $(or \
-			$(findstring .md,   $(suffix $<)), \
-			$(findstring .txt,  $(suffix $<)), \
-		), \
-		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' \
-			$< > $@, \
-		@cp $< $@)
-	@echo $@
-
-#
 # Dependencies
 #
 
 node_modules: package.json
 	@npm install --ignore-scripts
 	@/usr/bin/touch $@
-
