@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.1.0 (prerelease)
+## 2.1.0
 
 - Add `ReactSpecimen` to Markdown pages (only when Catalog is used as node module)
 - Add webpack loader which transforms Catalog-style documents into hot-reloadable Catalog pages
@@ -9,6 +9,8 @@
 - Upgrade to react v15. Should still work with v0.14 though.
 - More helpful warnings when configuration is incorrect
 - Miscellaneous fixes and style tweaks
+- Publishing builds to gh-pages again
+- CI with Codeship
 
 ## 2.0.3
 
