@@ -61,7 +61,7 @@ publish:
 	@bin/publish
 
 gh-pages:
-	@$$(npm bin)/gh-pages -d $(SITE_DIR) --add --message '[skip ci] Update docs'
+	@$$(npm bin)/gh-pages -d $(SITE_DIR) --add --message '[skip ci] Update docs' --repo 'git@github.com:interactivethings/catalog.git'
 	@rm -rf $(SITE_DIR)
 
 clean-site:
