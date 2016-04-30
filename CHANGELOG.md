@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.1.1
+
+- Make Catalog webpack loader cacheable
+- Bump rollup
+
 ## 2.1.0
 
 - Add `ReactSpecimen` to Markdown pages (only when Catalog is used as node module)
