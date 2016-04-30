@@ -4,6 +4,7 @@ const loaderUtils = require('loader-utils');
 module.exports = function loader() {};
 module.exports.pitch = function pitch(remainingRequest) {
   const resource = loaderUtils.stringifyRequest(this, `!!${remainingRequest}`);
+  this.cacheable && this.cacheable();
 
   const output = `
     var React = require('react');
