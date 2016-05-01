@@ -33,6 +33,9 @@ var webpackConfig = {
       filename: 'catalog.js',
       pathinfo: true
     },
+    externals: {
+      'babel-standalone': 'Babel'
+    },
     devtool: '#eval-source-map',
     plugins: [
       new webpack.DefinePlugin({

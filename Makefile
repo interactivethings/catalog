@@ -25,7 +25,7 @@ all: server
 
 ### DEVELOPMENT
 
-server: node_modules
+server: node_modules babel.min.js
 	@NODE_ENV=hot $$(npm bin)/nodemon -q -w webpack.config.js -w bin --exec bin/server
 
 watch-lib: node_modules
