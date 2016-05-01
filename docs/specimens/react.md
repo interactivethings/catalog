@@ -3,7 +3,7 @@
 
 ## Plain
 
-Just write JSX code in the specimen body.
+Just write JSX code in the specimen content.
 
 ````
 ```react
