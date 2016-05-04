@@ -25,7 +25,7 @@ all: server
 
 ### DEVELOPMENT
 
-server: node_modules
+server: node_modules babel.min.js
 	@NODE_ENV=hot $$(npm bin)/nodemon -q -w webpack.config.js -w bin --exec bin/server
 
 watch-lib: node_modules
@@ -37,7 +37,7 @@ test:
 
 ### BUILDS
 
-build: node_modules clean test lib $(UMD_BUILD_FILES)
+build: node_modules clean test lib $(UMD_BUILD_FILES) babel.min.js
 
 lib:
 	@$$(npm bin)/babel src --ignore __tests__ --out-dir $@
@@ -51,6 +51,8 @@ catalog.min.js:
 	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
+babel.min.js: node_modules/babel-standalone/babel.min.js
+	@cp $< $@
 
 ### DOCUMENTATION AND DEPLOYMENT
 

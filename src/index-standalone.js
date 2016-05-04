@@ -4,7 +4,7 @@ import 'isomorphic-fetch';
 const mergeSpecimens = (config, specimens) => ({...config, specimens: {...specimens, ...config.specimens}});
 
 // Configuration
-import specimens from './specimens-standalone';
+import specimens from './specimens';
 import {default as _render} from './render';
 import {default as _configure} from './configure';
 import {default as _configureRoutes} from './configureRoutes';
@@ -34,6 +34,7 @@ export {default as HintSpecimen} from './specimens/Hint';
 export {default as ImageSpecimen} from './specimens/Image';
 export {default as TypeSpecimen} from './specimens/Type';
 export {default as DownloadSpecimen} from './specimens/Download';
+export {default as ReactSpecimen} from './specimens/ReactSpecimen/ReactSpecimen';
 export {default as VideoSpecimen} from './specimens/Video';
 
 // Shared dependencies for custom specimens
