@@ -116,3 +116,22 @@ export default () => (
   </Page>
 );
 ```
+
+## Webpack Loader
+
+Catalog provides a loader which allows you to import hot-reloadable Markdown files.
+
+```code|lang-javascript
+{
+  // Other webpack config ...
+  module: {
+    loaders: [
+      {
+        test: /\.md$/,
+        loaders: ['catalog/lib/loader', 'raw']
+      }
+    ]
+  }
+};
+
+```

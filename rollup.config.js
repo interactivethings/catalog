@@ -9,7 +9,10 @@ let plugins = [
   nodeResolve({
     jsnext: true,
     main: true,
-    browser: true
+    browser: true,
+    skip: [
+      'babel-standalone'
+    ]
   }),
   commonjs({
     include: 'node_modules/**',
@@ -38,5 +41,8 @@ export default {
   format: 'umd',
   moduleName: 'Catalog',
   plugins: plugins,
+  globals: {
+    'babel-standalone': 'Babel'
+  },
   banner: '/*! Catalog ' + version + ' http://interactivethings.github.io/catalog/ */'
 };
