@@ -57,8 +57,9 @@ catalog.min.js:
 version:
 	@bin/version
 
-publish:
+publish: .npmrc
 	@bin/publish
+	@rm -f $<
 
 gh-pages:
 	@$$(npm bin)/gh-pages -d $(SITE_DIR) --add --message '[skip ci] Update docs' --repo 'git@github.com:interactivethings/catalog.git'
@@ -70,6 +71,9 @@ clean-site:
 site: clean-site $(SITE_VERSION_FILES) $(SITE_LATEST_FILES)
 
 site-next: clean-site $(SITE_VERSION_FILES) $(SITE_NEXT_FILES)
+
+.npmrc: .npmrc-template
+	@cp $< $@
 
 $(SITE_DIR)/$(CURRENT_VERSION)/index.html: index.html
 	@mkdir -p $(dir $@)
