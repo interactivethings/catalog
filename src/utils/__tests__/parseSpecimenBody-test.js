@@ -2,7 +2,7 @@ import test from 'tape';
 import {parseSpecimenBody, parseSpecimenYamlBody} from '../parseSpecimenBody';
 
 test('Default String body', (t) => {
-  t.deepEqual(parseSpecimenYamlBody()('foo'), {children: 'foo'});
+  t.deepEqual(parseSpecimenBody()('foo'), {children: 'foo'});
   t.end();
 });
 
@@ -47,7 +47,7 @@ test('body with separator and empty props', (t) => {
 });
 
 test('body with separator and invalid props', (t) => {
-  t.deepEqual(parseSpecimenBody()('foo\n---\nbar'), {children: 'foo\n---\nbar'});
+  t.deepEqual(parseSpecimenBody()('foo\n---\nbar'), {children: 'bar'});
   t.end();
 });
 

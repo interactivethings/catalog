@@ -13,11 +13,13 @@ const splitText = (text) => {
 };
 
 const parseYaml = (str) => {
+  let parsed;
   try {
-    return yaml.safeLoad(str, yamlOptions);
+    parsed = yaml.safeLoad(str, yamlOptions);
   } catch (e) {
-    return null;
+    parsed = void 0;
   }
+  return typeof parsed === 'string' ? void 0 : parsed;
 };
 
 export const parseSpecimenYamlBody = (_mapBodyToProps: ?Function) => (body = '') => {
@@ -29,10 +31,5 @@ export const parseSpecimenBody = (_mapBodyToProps: ?Function) => (body = '') => 
   const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
   const splitBody = splitText(body);
   const [props, children] = splitBody;
-  const parsed = parseYaml(props);
-  return typeof parsed === 'string' || parsed === null ? mapBodyToProps({children: body}, body) :
-    mapBodyToProps({...parsed, children}, body);
+  return mapBodyToProps({...parseYaml(props), children}, body);
 };
-
-
-// export default parseSpecimenBody;
