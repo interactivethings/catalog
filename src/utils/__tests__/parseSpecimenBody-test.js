@@ -1,28 +1,28 @@
 import test from 'tape';
-import parseSpecimenBody from '../parseSpecimenBody';
+import {parseSpecimenBody, parseSpecimenYamlBody} from '../parseSpecimenBody';
 
 test('Default String body', (t) => {
-  t.deepEqual(parseSpecimenBody()('foo'), {children: 'foo'});
+  t.deepEqual(parseSpecimenYamlBody()('foo'), {children: 'foo'});
   t.end();
 });
 
 test('Default JSON body', (t) => {
-  t.deepEqual(parseSpecimenBody()('{"foo": "bar", "baz": 12.3, "nothing": null, "really": true}'), {foo: 'bar', baz: 12.3, nothing: null, really: true});
+  t.deepEqual(parseSpecimenYamlBody()('{"foo": "bar", "baz": 12.3, "nothing": null, "really": true}'), {foo: 'bar', baz: 12.3, nothing: null, really: true});
   t.end();
 });
 
 test('Default YAML body', (t) => {
-  t.deepEqual(parseSpecimenBody()('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), {foo: 'bar', baz: 12.3, nothing: null, really: true});
+  t.deepEqual(parseSpecimenYamlBody()('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), {foo: 'bar', baz: 12.3, nothing: null, really: true});
   t.end();
 });
 
 test('Mapped raw YAML body', (t) => {
-  t.deepEqual(parseSpecimenBody((_, raw) => raw)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), 'foo: bar\nbaz: 12.3\nnothing: null\nreally: true');
+  t.deepEqual(parseSpecimenYamlBody((_, raw) => raw)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), 'foo: bar\nbaz: 12.3\nnothing: null\nreally: true');
   t.end();
 });
 
 test('Mapped YAML body', (t) => {
-  t.deepEqual(parseSpecimenBody((props) => props.foo)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), 'bar');
+  t.deepEqual(parseSpecimenYamlBody((props) => props.foo)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), 'bar');
   t.end();
 });
 
@@ -53,6 +53,11 @@ test('body with separator and invalid props', (t) => {
 
 test('body with multiple separators', (t) => {
   t.deepEqual(parseSpecimenBody()('foo: true\n---\nbar\n---\nbaz'), {foo: true, children: 'bar\n---\nbaz'});
+  t.end();
+});
+
+test('body with children but valid yaml', (t) => {
+  t.deepEqual(parseSpecimenBody()('foo: true'), {children: 'foo: true'});
   t.end();
 });
 

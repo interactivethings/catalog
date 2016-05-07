@@ -4,39 +4,35 @@ const yamlOptions = {schema: CORE_SCHEMA};
 
 const defaultMapBodyToProps = (parsedBody, rawBody) => parsedBody || rawBody;
 
-const isUndefined = (d) => d === void 0;
-
-const C_DASH = '-';
-const C_NEWLINE = '\n';
-
-const split = (text) => {
-  let i = -1;
-  while (++i < text.length) {
-    if (
-      text.charAt(i) === C_DASH &&
-      text.charAt(i + 1) === C_DASH &&
-      text.charAt(i + 2) === C_DASH &&
-      text.charAt(i + 3) === C_NEWLINE
-    ) {
-      return [text.slice(0, i), text.slice(i + 4)];
-    }
-  }
-  return [text];
+const SPLITTER = '---\n';
+const splitText = (text) => {
+  const i = text.indexOf(SPLITTER);
+  return i > -1 ?
+    [text.slice(0, i), text.slice(i + 4)] :
+    [(void 0), text];
 };
 
-const parseSpecimenBody = (_mapBodyToProps: ?Function) => (body = '') => {
-  const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
-  const [props, children] = split(body);
-  let parsed;
+const parseYaml = (str) => {
   try {
-    parsed = yaml.safeLoad(props, yamlOptions);
+    return yaml.safeLoad(str, yamlOptions);
   } catch (e) {
-    parsed = body;
+    return null;
   }
-
-  return typeof parsed === 'string' ? mapBodyToProps({children: body}, body) : 
-    Array.isArray(parsed) ? parsed.map((p) => mapBodyToProps(isUndefined(children) ? p : {...p, children}, body)) :
-    mapBodyToProps(isUndefined(children) ? parsed : {...parsed, children}, body);
 };
 
-export default parseSpecimenBody;
+export const parseSpecimenYamlBody = (_mapBodyToProps: ?Function) => (body = '') => {
+  const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
+  return mapBodyToProps(parseYaml(body), body);
+};
+
+export const parseSpecimenBody = (_mapBodyToProps: ?Function) => (body = '') => {
+  const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
+  const splitBody = splitText(body);
+  const [props, children] = splitBody;
+  const parsed = parseYaml(props);
+  return typeof parsed === 'string' || parsed === null ? mapBodyToProps({children: body}, body) :
+    mapBodyToProps({...parsed, children}, body);
+};
+
+
+// export default parseSpecimenBody;

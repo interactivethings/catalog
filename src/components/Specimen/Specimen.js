@@ -3,11 +3,11 @@
 import React, {PropTypes} from 'react';
 import Span from './Span';
 import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
-import parseSpecimenBody from '../../utils/parseSpecimenBody';
+import {parseSpecimenBody, parseSpecimenYamlBody} from '../../utils/parseSpecimenBody';
 
-export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Function) {
+export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Function, options = {}) {
   const parseOptions = parseSpecimenOptions(mapOptionsToProps);
-  const parseBody = parseSpecimenBody(mapBodyToProps);
+  const parseBody = options.withChildren ? parseSpecimenBody(mapBodyToProps) : parseSpecimenYamlBody(mapBodyToProps);
 
   return (WrappedSpecimen) => {
     const SpecimenContainer = (props, {theme}) => {

@@ -78,4 +78,4 @@ const mapOptionsToProps = mapSpecimenOption(/^lang-(\w+)$/, (lang) => ({lang}));
 
 const mapBodyToProps = (parsed, rawBody) => ({...parsed, rawBody});
 
-export default Specimen(mapBodyToProps, mapOptionsToProps)(Radium(Code));
+export default Specimen(mapBodyToProps, mapOptionsToProps, {withChildren: true})(Radium(Code));
