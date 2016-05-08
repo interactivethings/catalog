@@ -16,18 +16,6 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
       const bodyProps = parseBody(rawBody);
       const span = props.span || bodyProps.span || optionProps.span;
 
-      if (Array.isArray(bodyProps)) {
-        return (
-          <Span span={span}>
-            {bodyProps.map((specimenProps, i) => (
-              <Span key={i} span={specimenProps.span}>
-                <WrappedSpecimen {...optionProps} {...specimenProps} {...props}  theme={theme} />
-              </Span>
-            ))}
-          </Span>
-        );
-      }
-
       return (
         <Span span={span}>
           <WrappedSpecimen {...optionProps} {...bodyProps} {...props} theme={theme} />
