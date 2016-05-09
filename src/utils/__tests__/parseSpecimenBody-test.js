@@ -56,6 +56,11 @@ test('body with multiple separators', (t) => {
   t.end();
 });
 
+test('body with trailing separator', (t) => {
+  t.deepEqual(parseSpecimenBody()('foo---\nbar'), {children: 'foo---\nbar'});
+  t.end();
+});
+
 test('body with children but valid yaml', (t) => {
   t.deepEqual(parseSpecimenBody()('foo: true'), {children: 'foo: true'});
   t.end();

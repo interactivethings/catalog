@@ -4,12 +4,16 @@ const yamlOptions = {schema: CORE_SCHEMA};
 
 const defaultMapBodyToProps = (parsedBody, rawBody) => parsedBody || rawBody;
 
-const SPLITTER = '---\n';
+const INITIAL_SEPARATOR = '---\n';
+const SEPARATOR = '\n---\n';
 const splitText = (text) => {
-  const i = text.indexOf(SPLITTER);
+  if (text.indexOf(INITIAL_SEPARATOR) === 0) {
+    return [void 0, text.slice(4)];
+  }
+  const i = text.indexOf(SEPARATOR);
   return i > -1 ?
-    [text.slice(0, i), text.slice(i + 4)] :
-    [(void 0), text];
+    [text.slice(0, i), text.slice(i + 5)] :
+    [void 0, text];
 };
 
 const parseYaml = (str) => {
