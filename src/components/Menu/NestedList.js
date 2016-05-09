@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {pagesShape} from '../../CatalogPropTypes';
 
 import Link from '../Link/Link';
 import ListItem, { style as listItemStyle } from './ListItem';
@@ -8,7 +8,7 @@ import Radium from 'radium';
 
 const NestedList = React.createClass({
   propTypes: {
-    pages: CatalogPropTypes.pages.isRequired,
+    pages: pagesShape.isRequired,
     title: PropTypes.string.isRequired,
     theme: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired

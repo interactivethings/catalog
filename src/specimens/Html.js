@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
 import Specimen from '../components/Specimen/Specimen';
@@ -89,7 +90,7 @@ class Html extends React.Component {
   }
 
   render() {
-    const {theme, children, frame, ...options} = this.props;
+    const {catalog: {theme}, children, frame, ...options} = this.props;
     const styles = getStyle(theme);
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
@@ -127,7 +128,7 @@ class Html extends React.Component {
 
 Html.propTypes = {
   children: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   runScript: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,

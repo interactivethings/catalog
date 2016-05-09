@@ -1,17 +1,18 @@
 import React, { PropTypes, Children } from 'react';
 import {StyleRoot} from 'radium';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {catalogShape} from '../../CatalogPropTypes';
 
 import AppLayout from './AppLayout';
 import Menu from '../Menu/Menu';
 
 class App extends React.Component {
   render() {
+    const {catalog, history, location} = this.context;
     return (
       <StyleRoot>
         <AppLayout
-          {...this.context}
-          sideNav={<Menu {...this.context} />}
+          {...catalog}
+          sideNav={<Menu {...catalog} history={history} />}
         >
           {
            Children.only(this.props.children)
@@ -23,14 +24,9 @@ class App extends React.Component {
 }
 
 App.contextTypes = {
-  title: PropTypes.string.isRequired,
-  page: CatalogPropTypes.page.isRequired,
-  pages: CatalogPropTypes.pages.isRequired,
-  pageTree: CatalogPropTypes.pages.isRequired,
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   history: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  logoSrc: PropTypes.string
+  location: PropTypes.object.isRequired
 };
 
 App.propTypes = {

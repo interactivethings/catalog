@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {pageShape} from '../../CatalogPropTypes';
 
 import Link from '../Link/Link';
 import NestedList from './NestedList';
@@ -78,7 +78,7 @@ class ListItem extends React.Component {
 }
 
 ListItem.propTypes = {
-  page: CatalogPropTypes.page.isRequired,
+  page: pageShape.isRequired,
   theme: PropTypes.object.isRequired,
   nested: PropTypes.bool,
   history: PropTypes.object.isRequired

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {pageShape, pagesShape} from '../../CatalogPropTypes';
 import NavigationBar from './NavigationBar';
 import PageHeader from '../Page/PageHeader';
 
@@ -135,8 +135,8 @@ AppLayout.propTypes = {
   sideNav: PropTypes.node,
   children: PropTypes.node,
   theme: PropTypes.object.isRequired,
-  page: CatalogPropTypes.page.isRequired,
-  pages: CatalogPropTypes.pages.isRequired
+  page: pageShape.isRequired,
+  pages: pagesShape.isRequired
 };
 
 export default Radium(AppLayout);

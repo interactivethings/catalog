@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import renderMarkdown from '../utils/renderMarkdown';
@@ -7,7 +8,7 @@ import {text, heading} from '../styles/typography';
 
 class Image extends React.Component {
   render() {
-    const {theme, src, title, overlay, description, ...options} = this.props;
+    const {catalog: {theme}, src, title, overlay, description, ...options} = this.props;
 
     let styles = {
       container: {
@@ -86,7 +87,7 @@ class Image extends React.Component {
 }
 
 Image.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   src: PropTypes.string.isRequired,
   title: PropTypes.string,
   overlay: PropTypes.string,

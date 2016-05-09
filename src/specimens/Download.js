@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
@@ -68,7 +69,7 @@ function getStyle(theme) {
 
 class DownloadSpecimen extends React.Component {
   render() {
-    const {theme, title, subtitle, url, filename} = this.props;
+    const {catalog: {theme}, title, subtitle, url, filename} = this.props;
     const styles = getStyle(theme);
     const isHovered = Radium.getState(this.state, null, ':hover');
     const textColor = isHovered ? {color: theme.linkColor} : {};
@@ -97,7 +98,7 @@ DownloadSpecimen.defaultProps = {
 };
 
 DownloadSpecimen.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   span: PropTypes.number,
   title: PropTypes.string,
   subtitle: PropTypes.string,

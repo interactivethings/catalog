@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
@@ -12,7 +13,7 @@ const ColorPaletteItem = ({name, value, styles}) => (
 
 class ColorPalette extends React.Component {
   render() {
-    const {theme, colors, horizontal} = this.props;
+    const {catalog: {theme}, colors, horizontal} = this.props;
     let styles = {
       container: {
         display: 'flex',
@@ -84,7 +85,7 @@ class ColorPalette extends React.Component {
 }
 
 ColorPalette.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   colors: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     value: PropTypes.string.isRequired

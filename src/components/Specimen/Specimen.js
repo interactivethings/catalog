@@ -1,6 +1,7 @@
 // Higher-order Specimen which provides theme
 
 import React, {PropTypes} from 'react';
+import {catalogShape} from '../../CatalogPropTypes';
 import Span from './Span';
 import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
 import parseSpecimenBody from '../../utils/parseSpecimenBody';
@@ -10,7 +11,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
   const parseBody = parseSpecimenBody(mapBodyToProps);
 
   return (WrappedSpecimen) => {
-    const SpecimenContainer = (props, {theme}) => {
+    const SpecimenContainer = (props, {catalog}) => {
       const {rawOptions, rawBody} = props;
       const optionProps = parseOptions(rawOptions);
       const bodyProps = parseBody(rawBody);
@@ -21,7 +22,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
           <Span span={span}>
             {bodyProps.map((specimenProps, i) => (
               <Span key={i} span={specimenProps.span}>
-                <WrappedSpecimen {...optionProps} {...specimenProps} {...props}  theme={theme} />
+                <WrappedSpecimen {...optionProps} {...specimenProps} {...props} catalog={catalog} />
               </Span>
             ))}
           </Span>
@@ -30,7 +31,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
 
       return (
         <Span span={span}>
-          <WrappedSpecimen {...optionProps} {...bodyProps} {...props} theme={theme} />
+          <WrappedSpecimen {...optionProps} {...bodyProps} {...props} catalog={catalog} />
         </Span>
       );
     };
@@ -42,7 +43,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
     };
 
     SpecimenContainer.contextTypes = {
-      theme: PropTypes.object.isRequired
+      catalog: catalogShape.isRequired
     };
 
     return SpecimenContainer;

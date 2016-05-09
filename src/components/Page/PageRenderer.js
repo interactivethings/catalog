@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {catalogShape} from '../../CatalogPropTypes';
 import Page from './Page';
 import runscript from '../../utils/runscript';
 
@@ -11,16 +11,16 @@ const renderContent = (content) => React.isValidElement(content) && content.type
 
 class PageRenderer extends Component {
   componentDidMount() {
-    this.context.page.scripts.forEach(runscript);
+    this.context.catalog.page.scripts.forEach(runscript);
   }
 
   componentDidUpdate() {
-    this.context.page.scripts.forEach(runscript);
+    this.context.catalog.page.scripts.forEach(runscript);
   }
-  
+
   render() {
     const {content} = this.props;
-    const {page: {styles}} = this.context;
+    const {catalog: {page: {styles}}} = this.context;
     return (
       <div>
         {renderStyles(styles)}
@@ -38,7 +38,7 @@ PageRenderer.propTypes = {
 };
 
 PageRenderer.contextTypes = {
-  page: CatalogPropTypes.page.isRequired
+  catalog: catalogShape.isRequired
 };
 
 export default PageRenderer;

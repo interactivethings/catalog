@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import Span from '../components/Specimen/Span';
@@ -7,7 +8,7 @@ import {heading} from '../styles/typography';
 
 class Audio extends React.Component {
   render() {
-    const {src, title, loop, autoplay, span, theme} = this.props;
+    const {src, title, loop, autoplay, span, catalog: {theme}} = this.props;
 
     let styles = {
       section: {
@@ -39,7 +40,7 @@ class Audio extends React.Component {
 }
 
 Audio.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   src: PropTypes.string.isRequired,
   title: PropTypes.string,
   loop: PropTypes.bool,

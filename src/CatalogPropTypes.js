@@ -1,6 +1,6 @@
 import {PropTypes} from 'react';
 
-const page = PropTypes.shape({
+export const pageShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   index: PropTypes.number,
@@ -12,9 +12,14 @@ const page = PropTypes.shape({
   imports: PropTypes.object.isRequired
 });
 
-const pages = PropTypes.arrayOf(page);
+export const pagesShape = PropTypes.arrayOf(pageShape);
 
-export default {
-  page,
-  pages
-};
+export const catalogShape = PropTypes.shape({
+  page: pageShape.isRequired,
+  getSpecimen: PropTypes.func.isRequired,
+  theme: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  pages: pagesShape.isRequired,
+  pageTree: pagesShape.isRequired,
+  logoSrc: PropTypes.string
+});

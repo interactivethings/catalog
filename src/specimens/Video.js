@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
@@ -6,7 +7,7 @@ import {heading} from '../styles/typography';
 
 class Video extends React.Component {
   render() {
-    const {src, title, muted, loop, autoplay, theme} = this.props;
+    const {src, title, muted, loop, autoplay, catalog: {theme}} = this.props;
 
     let styles = {
       section: {
@@ -45,7 +46,7 @@ class Video extends React.Component {
 }
 
 Video.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   src: PropTypes.string.isRequired,
   title: PropTypes.string,
   muted: PropTypes.bool,

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Specimen from '../components/Specimen/Specimen';
 
 function getStyle(theme) {
@@ -47,7 +48,7 @@ const kafka = `One morning, when Gregor Samsa woke from troubled dreams, he foun
 
 class Type extends React.Component {
   render() {
-    const {theme, ...options} = this.props;
+    const {catalog: {theme}, ...options} = this.props;
     let styles = getStyle(theme);
 
     // check if a shorter paragraph should is demanded
@@ -138,7 +139,7 @@ Type.propTypes = {
   image: PropTypes.string,
   headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  theme: PropTypes.object.isRequired
+  catalog: catalogShape.isRequired
 };
 
 export default Specimen()(Type);

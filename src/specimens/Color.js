@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
 class Color extends React.Component {
   render() {
-    const {theme, value, name} = this.props;
+    const {catalog: {theme}, value, name} = this.props;
     let styles = {
       text: {
         fontFamily: theme.fontFamily,
@@ -27,7 +28,7 @@ class Color extends React.Component {
 }
 
 Color.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string
 };

@@ -1,19 +1,21 @@
 import React, {Component, PropTypes, Children} from 'react';
 import App from './App/App';
-import CatalogPropTypes from '../CatalogPropTypes';
+import {catalogShape} from '../CatalogPropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {
     const {title, theme, logoSrc, pages, pageTree, specimens} = this.props.configuration;
     const {router} = this.context;
     return {
-      page: pages.find((p) => router.isActive(p.path)),
-      getSpecimen: (specimen) => specimens[specimen],
-      theme,
-      title,
-      pages,
-      pageTree,
-      logoSrc
+      catalog: {
+        page: pages.find((p) => router.isActive(p.path)),
+        getSpecimen: (specimen) => specimens[specimen],
+        theme,
+        title,
+        pages,
+        pageTree,
+        logoSrc
+      }
     };
   }
 
@@ -34,13 +36,7 @@ CatalogContext.contextTypes = {
 };
 
 CatalogContext.childContextTypes = {
-  title: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired,
-  pages: CatalogPropTypes.pages.isRequired,
-  pageTree: CatalogPropTypes.pages.isRequired,
-  page: CatalogPropTypes.page.isRequired,
-  logoSrc: PropTypes.string,
-  getSpecimen: PropTypes.func.isRequired
+  catalog: catalogShape.isRequired
 };
 
 export default function createCatalogContext(config) {
