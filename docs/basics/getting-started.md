@@ -1,4 +1,6 @@
-> The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
+## Standalone
+
+The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
 
 ```code
 lang: html
@@ -38,4 +40,51 @@ If you don't have an existing server for your project, use something simple like
 
 ```code
 python -m SimpleHTTPServer
+```
+
+## npm
+
+The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
+
+### Installation
+
+```
+npm install catalog react react-dom --save
+```
+
+### Usage
+
+```code|lang-jsx
+import {render} from 'catalog';
+
+render({
+  title: 'My Catalog',
+  pages: [
+    {
+      path: '/',                               // The path where the page can be accessed
+      title: 'Introduction',                   // The page title
+      component: require('docs/intro.md')   // Path to the Markdown document
+    },
+    // Other pages …
+  ]
+}, document.getElementById('app'));
+```
+
+### Webpack Loader
+
+Catalog provides a loader which allows you to import hot-reloadable Markdown files.
+
+```code|lang-javascript
+{
+  // Other webpack config ...
+  module: {
+    loaders: [
+      {
+        test: /\.md$/,
+        loaders: ['catalog/lib/loader', 'raw']
+      }
+    ]
+  }
+};
+
 ```
