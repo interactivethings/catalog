@@ -1,4 +1,4 @@
-/*! Catalog 2.2.0 http://interactivethings.github.io/catalog/ */
+/*! Catalog 2.1.1 http://interactivethings.github.io/catalog/ */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('babel-standalone')) :
     typeof define === 'function' && define.amd ? define(['exports', 'babel-standalone'], factory) :
@@ -156,11 +156,11 @@
     babelHelpers;
 
     var _core = __commonjs(function (module) {
-    var core = module.exports = {version: '2.3.0'};
+    var core = module.exports = {version: '2.2.2'};
     if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
     });
 
-    var require$$1 = (_core && typeof _core === 'object' && 'default' in _core ? _core['default'] : _core);
+    var require$$26 = (_core && typeof _core === 'object' && 'default' in _core ? _core['default'] : _core);
 
     var _replacer = __commonjs(function (module) {
     module.exports = function(regExp, replace){
@@ -217,7 +217,7 @@
     };
     });
 
-    var require$$20 = (_uid && typeof _uid === 'object' && 'default' in _uid ? _uid['default'] : _uid);
+    var require$$17 = (_uid && typeof _uid === 'object' && 'default' in _uid ? _uid['default'] : _uid);
 
     var _has = __commonjs(function (module) {
     var hasOwnProperty = {}.hasOwnProperty;
@@ -226,7 +226,7 @@
     };
     });
 
-    var require$$28 = (_has && typeof _has === 'object' && 'default' in _has ? _has['default'] : _has);
+    var require$$25 = (_has && typeof _has === 'object' && 'default' in _has ? _has['default'] : _has);
 
     var _fails = __commonjs(function (module) {
     module.exports = function(exec){
@@ -238,16 +238,16 @@
     };
     });
 
-    var require$$23 = (_fails && typeof _fails === 'object' && 'default' in _fails ? _fails['default'] : _fails);
+    var require$$20 = (_fails && typeof _fails === 'object' && 'default' in _fails ? _fails['default'] : _fails);
 
     var _descriptors = __commonjs(function (module) {
     // Thank's IE8 for his funny defineProperty
-    module.exports = !require$$23(function(){
+    module.exports = !require$$20(function(){
       return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
     });
     });
 
-    var require$$27 = (_descriptors && typeof _descriptors === 'object' && 'default' in _descriptors ? _descriptors['default'] : _descriptors);
+    var require$$24 = (_descriptors && typeof _descriptors === 'object' && 'default' in _descriptors ? _descriptors['default'] : _descriptors);
 
     var _propertyDesc = __commonjs(function (module) {
     module.exports = function(bitmap, value){
@@ -260,7 +260,7 @@
     };
     });
 
-    var require$$10 = (_propertyDesc && typeof _propertyDesc === 'object' && 'default' in _propertyDesc ? _propertyDesc['default'] : _propertyDesc);
+    var require$$9 = (_propertyDesc && typeof _propertyDesc === 'object' && 'default' in _propertyDesc ? _propertyDesc['default'] : _propertyDesc);
 
     var _isObject = __commonjs(function (module) {
     module.exports = function(it){
@@ -285,7 +285,7 @@
     };
     });
 
-    var require$$11 = (_toPrimitive && typeof _toPrimitive === 'object' && 'default' in _toPrimitive ? _toPrimitive['default'] : _toPrimitive);
+    var require$$10 = (_toPrimitive && typeof _toPrimitive === 'object' && 'default' in _toPrimitive ? _toPrimitive['default'] : _toPrimitive);
 
     var _global = __commonjs(function (module) {
     // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -294,11 +294,11 @@
     if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
     });
 
-    var require$$29 = (_global && typeof _global === 'object' && 'default' in _global ? _global['default'] : _global);
+    var require$$27 = (_global && typeof _global === 'object' && 'default' in _global ? _global['default'] : _global);
 
     var _domCreate = __commonjs(function (module) {
     var isObject = require$$2
-      , document = require$$29.document
+      , document = require$$27.document
       // in old IE typeof document.createElement is 'object'
       , is = isObject(document) && isObject(document.createElement);
     module.exports = function(it){
@@ -309,12 +309,12 @@
     var require$$2$1 = (_domCreate && typeof _domCreate === 'object' && 'default' in _domCreate ? _domCreate['default'] : _domCreate);
 
     var _ie8DomDefine = __commonjs(function (module) {
-    module.exports = !require$$27 && !require$$23(function(){
+    module.exports = !require$$24 && !require$$20(function(){
       return Object.defineProperty(require$$2$1('div'), 'a', {get: function(){ return 7; }}).a != 7;
     });
     });
 
-    var require$$1$1 = (_ie8DomDefine && typeof _ie8DomDefine === 'object' && 'default' in _ie8DomDefine ? _ie8DomDefine['default'] : _ie8DomDefine);
+    var require$$1 = (_ie8DomDefine && typeof _ie8DomDefine === 'object' && 'default' in _ie8DomDefine ? _ie8DomDefine['default'] : _ie8DomDefine);
 
     var _anObject = __commonjs(function (module) {
     var isObject = require$$2;
@@ -324,15 +324,15 @@
     };
     });
 
-    var require$$13 = (_anObject && typeof _anObject === 'object' && 'default' in _anObject ? _anObject['default'] : _anObject);
+    var require$$12 = (_anObject && typeof _anObject === 'object' && 'default' in _anObject ? _anObject['default'] : _anObject);
 
     var _objectDp = __commonjs(function (module, exports) {
-    var anObject       = require$$13
-      , IE8_DOM_DEFINE = require$$1$1
-      , toPrimitive    = require$$11
+    var anObject       = require$$12
+      , IE8_DOM_DEFINE = require$$1
+      , toPrimitive    = require$$10
       , dP             = Object.defineProperty;
 
-    exports.f = require$$27 ? Object.defineProperty : function defineProperty(O, P, Attributes){
+    exports.f = require$$24 ? Object.defineProperty : function defineProperty(O, P, Attributes){
       anObject(O);
       P = toPrimitive(P, true);
       anObject(Attributes);
@@ -345,12 +345,12 @@
     };
     });
 
-    var require$$6 = (_objectDp && typeof _objectDp === 'object' && 'default' in _objectDp ? _objectDp['default'] : _objectDp);
+    var require$$5 = (_objectDp && typeof _objectDp === 'object' && 'default' in _objectDp ? _objectDp['default'] : _objectDp);
 
     var _hide = __commonjs(function (module) {
-    var dP         = require$$6
-      , createDesc = require$$10;
-    module.exports = require$$27 ? function(object, key, value){
+    var dP         = require$$5
+      , createDesc = require$$9;
+    module.exports = require$$24 ? function(object, key, value){
       return dP.f(object, key, createDesc(1, value));
     } : function(object, key, value){
       object[key] = value;
@@ -361,15 +361,15 @@
     var require$$0$1 = (_hide && typeof _hide === 'object' && 'default' in _hide ? _hide['default'] : _hide);
 
     var _redefine = __commonjs(function (module) {
-    var global    = require$$29
+    var global    = require$$27
       , hide      = require$$0$1
-      , has       = require$$28
-      , SRC       = require$$20('src')
+      , has       = require$$25
+      , SRC       = require$$17('src')
       , TO_STRING = 'toString'
       , $toString = Function[TO_STRING]
       , TPL       = ('' + $toString).split(TO_STRING);
 
-    require$$1.inspectSource = function(it){
+    require$$26.inspectSource = function(it){
       return $toString.call(it);
     };
 
@@ -395,13 +395,13 @@
     });
     });
 
-    var require$$25 = (_redefine && typeof _redefine === 'object' && 'default' in _redefine ? _redefine['default'] : _redefine);
+    var require$$22 = (_redefine && typeof _redefine === 'object' && 'default' in _redefine ? _redefine['default'] : _redefine);
 
     var _export = __commonjs(function (module, exports) {
-    var global    = require$$29
-      , core      = require$$1
+    var global    = require$$27
+      , core      = require$$26
       , hide      = require$$0$1
-      , redefine  = require$$25
+      , redefine  = require$$22
       , ctx       = require$$8
       , PROTOTYPE = 'prototype';
 
@@ -443,18 +443,18 @@
     module.exports = $export;
     });
 
-    var require$$26 = (_export && typeof _export === 'object' && 'default' in _export ? _export['default'] : _export);
+    var require$$23 = (_export && typeof _export === 'object' && 'default' in _export ? _export['default'] : _export);
 
     var core_regexp_escape = __commonjs(function (module) {
     // https://github.com/benjamingr/RexExp.escape
-    var $export = require$$26
+    var $export = require$$23
       , $re     = require$$0(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
     $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
     });
 
     var _escape = __commonjs(function (module) {
-    module.exports = require$$1.RegExp.escape;
+    module.exports = require$$26.RegExp.escape;
     });
 
     var runtime = __commonjs(function (module, exports, global) {
@@ -1118,7 +1118,7 @@
     });
 
     var _shared = __commonjs(function (module) {
-    var global = require$$29
+    var global = require$$27
       , SHARED = '__core-js_shared__'
       , store  = global[SHARED] || (global[SHARED] = {});
     module.exports = function(key){
@@ -1126,33 +1126,30 @@
     };
     });
 
-    var require$$22 = (_shared && typeof _shared === 'object' && 'default' in _shared ? _shared['default'] : _shared);
+    var require$$19 = (_shared && typeof _shared === 'object' && 'default' in _shared ? _shared['default'] : _shared);
 
     var _wks = __commonjs(function (module) {
-    var store      = require$$22('wks')
-      , uid        = require$$20
-      , Symbol     = require$$29.Symbol
+    var store      = require$$19('wks')
+      , uid        = require$$17
+      , Symbol     = require$$27.Symbol
       , USE_SYMBOL = typeof Symbol == 'function';
-
-    var $exports = module.exports = function(name){
+    module.exports = function(name){
       return store[name] || (store[name] =
         USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
     };
-
-    $exports.store = store;
     });
 
-    var require$$19 = (_wks && typeof _wks === 'object' && 'default' in _wks ? _wks['default'] : _wks);
+    var require$$16 = (_wks && typeof _wks === 'object' && 'default' in _wks ? _wks['default'] : _wks);
 
     var _iterators = __commonjs(function (module) {
     module.exports = {};
     });
 
-    var require$$1$2 = (_iterators && typeof _iterators === 'object' && 'default' in _iterators ? _iterators['default'] : _iterators);
+    var require$$1$1 = (_iterators && typeof _iterators === 'object' && 'default' in _iterators ? _iterators['default'] : _iterators);
 
     var _sharedKey = __commonjs(function (module) {
-    var shared = require$$22('keys')
-      , uid    = require$$20;
+    var shared = require$$19('keys')
+      , uid    = require$$17;
     module.exports = function(key){
       return shared[key] || (shared[key] = uid(key));
     };
@@ -1182,7 +1179,7 @@
 
     var _objectGpo = __commonjs(function (module) {
     // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-    var has         = require$$28
+    var has         = require$$25
       , toObject    = require$$2$2
       , IE_PROTO    = require$$0$3('IE_PROTO')
       , ObjectProto = Object.prototype;
@@ -1196,22 +1193,22 @@
     };
     });
 
-    var require$$1$3 = (_objectGpo && typeof _objectGpo === 'object' && 'default' in _objectGpo ? _objectGpo['default'] : _objectGpo);
+    var require$$1$2 = (_objectGpo && typeof _objectGpo === 'object' && 'default' in _objectGpo ? _objectGpo['default'] : _objectGpo);
 
     var _setToStringTag = __commonjs(function (module) {
-    var def = require$$6.f
-      , has = require$$28
-      , TAG = require$$19('toStringTag');
+    var def = require$$5.f
+      , has = require$$25
+      , TAG = require$$16('toStringTag');
 
     module.exports = function(it, tag, stat){
       if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
     };
     });
 
-    var require$$21 = (_setToStringTag && typeof _setToStringTag === 'object' && 'default' in _setToStringTag ? _setToStringTag['default'] : _setToStringTag);
+    var require$$18 = (_setToStringTag && typeof _setToStringTag === 'object' && 'default' in _setToStringTag ? _setToStringTag['default'] : _setToStringTag);
 
     var _html = __commonjs(function (module) {
-    module.exports = require$$29.document && document.documentElement;
+    module.exports = require$$27.document && document.documentElement;
     });
 
     var require$$4 = (_html && typeof _html === 'object' && 'default' in _html ? _html['default'] : _html);
@@ -1277,11 +1274,11 @@
     };
     });
 
-    var require$$1$7 = (_iobject && typeof _iobject === 'object' && 'default' in _iobject ? _iobject['default'] : _iobject);
+    var require$$1$6 = (_iobject && typeof _iobject === 'object' && 'default' in _iobject ? _iobject['default'] : _iobject);
 
     var _toIobject = __commonjs(function (module) {
     // to indexed object, toObject with fallback for non-array-like ES3 strings
-    var IObject = require$$1$7
+    var IObject = require$$1$6
       , defined = require$$0$4;
     module.exports = function(it){
       return IObject(defined(it));
@@ -1314,12 +1311,12 @@
     };
     });
 
-    var require$$1$6 = (_arrayIncludes && typeof _arrayIncludes === 'object' && 'default' in _arrayIncludes ? _arrayIncludes['default'] : _arrayIncludes);
+    var require$$1$5 = (_arrayIncludes && typeof _arrayIncludes === 'object' && 'default' in _arrayIncludes ? _arrayIncludes['default'] : _arrayIncludes);
 
     var _objectKeysInternal = __commonjs(function (module) {
-    var has          = require$$28
+    var has          = require$$25
       , toIObject    = require$$0$10
-      , arrayIndexOf = require$$1$6(false)
+      , arrayIndexOf = require$$1$5(false)
       , IE_PROTO     = require$$0$3('IE_PROTO');
 
     module.exports = function(object, names){
@@ -1336,11 +1333,11 @@
     };
     });
 
-    var require$$1$5 = (_objectKeysInternal && typeof _objectKeysInternal === 'object' && 'default' in _objectKeysInternal ? _objectKeysInternal['default'] : _objectKeysInternal);
+    var require$$1$4 = (_objectKeysInternal && typeof _objectKeysInternal === 'object' && 'default' in _objectKeysInternal ? _objectKeysInternal['default'] : _objectKeysInternal);
 
     var _objectKeys = __commonjs(function (module) {
     // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-    var $keys       = require$$1$5
+    var $keys       = require$$1$4
       , enumBugKeys = require$$0$6;
 
     module.exports = Object.keys || function keys(O){
@@ -1348,14 +1345,14 @@
     };
     });
 
-    var require$$1$4 = (_objectKeys && typeof _objectKeys === 'object' && 'default' in _objectKeys ? _objectKeys['default'] : _objectKeys);
+    var require$$1$3 = (_objectKeys && typeof _objectKeys === 'object' && 'default' in _objectKeys ? _objectKeys['default'] : _objectKeys);
 
     var _objectDps = __commonjs(function (module) {
-    var dP       = require$$6
-      , anObject = require$$13
-      , getKeys  = require$$1$4;
+    var dP       = require$$5
+      , anObject = require$$12
+      , getKeys  = require$$1$3;
 
-    module.exports = require$$27 ? Object.defineProperties : function defineProperties(O, Properties){
+    module.exports = require$$24 ? Object.defineProperties : function defineProperties(O, Properties){
       anObject(O);
       var keys   = getKeys(Properties)
         , length = keys.length
@@ -1370,7 +1367,7 @@
 
     var _objectCreate = __commonjs(function (module) {
     // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-    var anObject    = require$$13
+    var anObject    = require$$12
       , dPs         = require$$0$7
       , enumBugKeys = require$$0$6
       , IE_PROTO    = require$$0$3('IE_PROTO')
@@ -1411,17 +1408,17 @@
     };
     });
 
-    var require$$9 = (_objectCreate && typeof _objectCreate === 'object' && 'default' in _objectCreate ? _objectCreate['default'] : _objectCreate);
+    var require$$8$1 = (_objectCreate && typeof _objectCreate === 'object' && 'default' in _objectCreate ? _objectCreate['default'] : _objectCreate);
 
     var _iterCreate = __commonjs(function (module) {
     'use strict';
-    var create         = require$$9
-      , descriptor     = require$$10
-      , setToStringTag = require$$21
+    var create         = require$$8$1
+      , descriptor     = require$$9
+      , setToStringTag = require$$18
       , IteratorPrototype = {};
 
     // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-    require$$0$1(IteratorPrototype, require$$19('iterator'), function(){ return this; });
+    require$$0$1(IteratorPrototype, require$$16('iterator'), function(){ return this; });
 
     module.exports = function(Constructor, NAME, next){
       Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -1435,20 +1432,20 @@
     module.exports = false;
     });
 
-    var require$$1$8 = (_library && typeof _library === 'object' && 'default' in _library ? _library['default'] : _library);
+    var require$$1$7 = (_library && typeof _library === 'object' && 'default' in _library ? _library['default'] : _library);
 
     var _iterDefine = __commonjs(function (module) {
     'use strict';
-    var LIBRARY        = require$$1$8
-      , $export        = require$$26
-      , redefine       = require$$25
+    var LIBRARY        = require$$1$7
+      , $export        = require$$23
+      , redefine       = require$$22
       , hide           = require$$0$1
-      , has            = require$$28
-      , Iterators      = require$$1$2
+      , has            = require$$25
+      , Iterators      = require$$1$1
       , $iterCreate    = require$$0$5
-      , setToStringTag = require$$21
-      , getPrototypeOf = require$$1$3
-      , ITERATOR       = require$$19('iterator')
+      , setToStringTag = require$$18
+      , getPrototypeOf = require$$1$2
+      , ITERATOR       = require$$16('iterator')
       , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
       , FF_ITERATOR    = '@@iterator'
       , KEYS           = 'keys'
@@ -1522,7 +1519,7 @@
 
     var _addToUnscopables = __commonjs(function (module) {
     // 22.1.3.31 Array.prototype[@@unscopables]
-    var UNSCOPABLES = require$$19('unscopables')
+    var UNSCOPABLES = require$$16('unscopables')
       , ArrayProto  = Array.prototype;
     if(ArrayProto[UNSCOPABLES] == undefined)require$$0$1(ArrayProto, UNSCOPABLES, {});
     module.exports = function(key){
@@ -1536,7 +1533,7 @@
     'use strict';
     var addToUnscopables = require$$0$11
       , step             = require$$3$2
-      , Iterators        = require$$1$2
+      , Iterators        = require$$1$1
       , toIObject        = require$$0$10;
 
     // 22.1.3.4 Array.prototype.entries()
@@ -1573,11 +1570,11 @@
 
     var web_dom_iterable = __commonjs(function (module, exports, global) {
     var $iterators    = require$$7
-      , redefine      = require$$25
-      , global        = require$$29
+      , redefine      = require$$22
+      , global        = require$$27
       , hide          = require$$0$1
-      , Iterators     = require$$1$2
-      , wks           = require$$19
+      , Iterators     = require$$1$1
+      , wks           = require$$16
       , ITERATOR      = wks('iterator')
       , TO_STRING_TAG = wks('toStringTag')
       , ArrayValues   = Iterators.Array;
@@ -1622,7 +1619,7 @@
       , invoke             = require$$0$12
       , html               = require$$4
       , cel                = require$$2$1
-      , global             = require$$29
+      , global             = require$$27
       , process            = global.process
       , setTask            = global.setImmediate
       , clearTask          = global.clearImmediate
@@ -1695,11 +1692,11 @@
     };
     });
 
-    var require$$7$1 = (_task && typeof _task === 'object' && 'default' in _task ? _task['default'] : _task);
+    var require$$1$8 = (_task && typeof _task === 'object' && 'default' in _task ? _task['default'] : _task);
 
     var web_immediate = __commonjs(function (module) {
-    var $export = require$$26
-      , $task   = require$$7$1;
+    var $export = require$$23
+      , $task   = require$$1$8;
     $export($export.G + $export.B, {
       setImmediate:   $task.set,
       clearImmediate: $task.clear
@@ -1707,7 +1704,7 @@
     });
 
     var _path = __commonjs(function (module) {
-    module.exports = require$$29;
+    module.exports = require$$27;
     });
 
     var require$$2$3 = (_path && typeof _path === 'object' && 'default' in _path ? _path['default'] : _path);
@@ -1742,8 +1739,8 @@
 
     var web_timers = __commonjs(function (module) {
     // ie9- setTimeout & setInterval additional parameters fix
-    var global     = require$$29
-      , $export    = require$$26
+    var global     = require$$27
+      , $export    = require$$23
       , invoke     = require$$0$12
       , partial    = require$$0$13
       , navigator  = global.navigator
@@ -1763,94 +1760,6 @@
     });
     });
 
-    var _microtask = __commonjs(function (module) {
-    var global    = require$$29
-      , macrotask = require$$7$1.set
-      , Observer  = global.MutationObserver || global.WebKitMutationObserver
-      , process   = global.process
-      , Promise   = global.Promise
-      , isNode    = require$$10$1(process) == 'process';
-
-    module.exports = function(){
-      var head, last, notify;
-
-      var flush = function(){
-        var parent, fn;
-        if(isNode && (parent = process.domain))parent.exit();
-        while(head){
-          fn   = head.fn;
-          head = head.next;
-          try {
-            fn();
-          } catch(e){
-            if(head)notify();
-            else last = undefined;
-            throw e;
-          }
-        } last = undefined;
-        if(parent)parent.enter();
-      };
-
-      // Node.js
-      if(isNode){
-        notify = function(){
-          process.nextTick(flush);
-        };
-      // browsers with MutationObserver
-      } else if(Observer){
-        var toggle = true
-          , node   = document.createTextNode('');
-        new Observer(flush).observe(node, {characterData: true}); // eslint-disable-line no-new
-        notify = function(){
-          node.data = toggle = !toggle;
-        };
-      // environments with maybe non-completely correct, but existent Promise
-      } else if(Promise && Promise.resolve){
-        var promise = Promise.resolve();
-        notify = function(){
-          promise.then(flush);
-        };
-      // for other environments - macrotask based on:
-      // - setImmediate
-      // - MessageChannel
-      // - window.postMessag
-      // - onreadystatechange
-      // - setTimeout
-      } else {
-        notify = function(){
-          // strange IE + webpack dev server bug - use .call(global)
-          macrotask.call(global, flush);
-        };
-      }
-
-      return function(fn){
-        var task = {fn: fn, next: undefined};
-        if(last)last.next = task;
-        if(!head){
-          head = task;
-          notify();
-        } last = task;
-      };
-    };
-    });
-
-    var require$$6$1 = (_microtask && typeof _microtask === 'object' && 'default' in _microtask ? _microtask['default'] : _microtask);
-
-    var es7_asap = __commonjs(function (module) {
-    // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
-    var $export   = require$$26
-      , microtask = require$$6$1()
-      , process   = require$$29.process
-      , isNode    = require$$10$1(process) == 'process';
-
-    $export($export.G, {
-      asap: function asap(fn){
-        var domain = isNode && process.domain;
-        microtask(domain ? domain.bind(fn) : fn);
-      }
-    });
-    });
-
     var _objectPie = __commonjs(function (module, exports) {
     exports.f = {}.propertyIsEnumerable;
     });
@@ -1859,14 +1768,14 @@
 
     var _objectGopd = __commonjs(function (module, exports) {
     var pIE            = require$$0$17
-      , createDesc     = require$$10
+      , createDesc     = require$$9
       , toIObject      = require$$0$10
-      , toPrimitive    = require$$11
-      , has            = require$$28
-      , IE8_DOM_DEFINE = require$$1$1
+      , toPrimitive    = require$$10
+      , has            = require$$25
+      , IE8_DOM_DEFINE = require$$1
       , gOPD           = Object.getOwnPropertyDescriptor;
 
-    exports.f = require$$27 ? gOPD : function getOwnPropertyDescriptor(O, P){
+    exports.f = require$$24 ? gOPD : function getOwnPropertyDescriptor(O, P){
       O = toIObject(O);
       P = toPrimitive(P, true);
       if(IE8_DOM_DEFINE)try {
@@ -1876,13 +1785,13 @@
     };
     });
 
-    var require$$7$2 = (_objectGopd && typeof _objectGopd === 'object' && 'default' in _objectGopd ? _objectGopd['default'] : _objectGopd);
+    var require$$6 = (_objectGopd && typeof _objectGopd === 'object' && 'default' in _objectGopd ? _objectGopd['default'] : _objectGopd);
 
     var _setProto = __commonjs(function (module) {
     // Works with __proto__ only. Old v8 can't work with null proto objects.
     /* eslint-disable no-proto */
     var isObject = require$$2
-      , anObject = require$$13;
+      , anObject = require$$12;
     var check = function(O, proto){
       anObject(O);
       if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
@@ -1891,7 +1800,7 @@
       set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
         function(test, buggy, set){
           try {
-            set = require$$8(Function.call, require$$7$2.f(Object.prototype, '__proto__').set, 2);
+            set = require$$8(Function.call, require$$6.f(Object.prototype, '__proto__').set, 2);
             set(test, []);
             buggy = !(test instanceof Array);
           } catch(e){ buggy = true; }
@@ -1922,7 +1831,7 @@
     var require$$9$1 = (_inheritIfRequired && typeof _inheritIfRequired === 'object' && 'default' in _inheritIfRequired ? _inheritIfRequired['default'] : _inheritIfRequired);
 
     var _iterDetect = __commonjs(function (module) {
-    var ITERATOR     = require$$19('iterator')
+    var ITERATOR     = require$$16('iterator')
       , SAFE_CLOSING = false;
 
     try {
@@ -1960,7 +1869,7 @@
     var _classof = __commonjs(function (module) {
     // getting tag from 19.1.3.6 Object.prototype.toString()
     var cof = require$$10$1
-      , TAG = require$$19('toStringTag')
+      , TAG = require$$16('toStringTag')
       // ES3 wrong here
       , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 
@@ -1987,9 +1896,9 @@
 
     var core_getIteratorMethod = __commonjs(function (module) {
     var classof   = require$$2$4
-      , ITERATOR  = require$$19('iterator')
-      , Iterators = require$$1$2;
-    module.exports = require$$1.getIteratorMethod = function(it){
+      , ITERATOR  = require$$16('iterator')
+      , Iterators = require$$1$1;
+    module.exports = require$$26.getIteratorMethod = function(it){
       if(it != undefined)return it[ITERATOR]
         || it['@@iterator']
         || Iterators[classof(it)];
@@ -2000,8 +1909,8 @@
 
     var _isArrayIter = __commonjs(function (module) {
     // check on default Array iterator
-    var Iterators  = require$$1$2
-      , ITERATOR   = require$$19('iterator')
+    var Iterators  = require$$1$1
+      , ITERATOR   = require$$16('iterator')
       , ArrayProto = Array.prototype;
 
     module.exports = function(it){
@@ -2013,7 +1922,7 @@
 
     var _iterCall = __commonjs(function (module) {
     // call something on iterator step with safe closing on error
-    var anObject = require$$13;
+    var anObject = require$$12;
     module.exports = function(iterator, fn, value, entries){
       try {
         return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -2026,13 +1935,13 @@
     };
     });
 
-    var require$$5 = (_iterCall && typeof _iterCall === 'object' && 'default' in _iterCall ? _iterCall['default'] : _iterCall);
+    var require$$5$1 = (_iterCall && typeof _iterCall === 'object' && 'default' in _iterCall ? _iterCall['default'] : _iterCall);
 
     var _forOf = __commonjs(function (module) {
     var ctx         = require$$8
-      , call        = require$$5
+      , call        = require$$5$1
       , isArrayIter = require$$4$2
-      , anObject    = require$$13
+      , anObject    = require$$12
       , toLength    = require$$0$9
       , getIterFn   = require$$1$10;
     module.exports = function(iterable, entries, fn, that, ITERATOR){
@@ -2053,15 +1962,15 @@
     var require$$10$2 = (_forOf && typeof _forOf === 'object' && 'default' in _forOf ? _forOf['default'] : _forOf);
 
     var _meta = __commonjs(function (module) {
-    var META     = require$$20('meta')
+    var META     = require$$17('meta')
       , isObject = require$$2
-      , has      = require$$28
-      , setDesc  = require$$6.f
+      , has      = require$$25
+      , setDesc  = require$$5.f
       , id       = 0;
     var isExtensible = Object.isExtensible || function(){
       return true;
     };
-    var FREEZE = !require$$23(function(){
+    var FREEZE = !require$$20(function(){
       return isExtensible(Object.preventExtensions({}));
     });
     var setMeta = function(it){
@@ -2108,10 +2017,10 @@
     };
     });
 
-    var require$$24 = (_meta && typeof _meta === 'object' && 'default' in _meta ? _meta['default'] : _meta);
+    var require$$21 = (_meta && typeof _meta === 'object' && 'default' in _meta ? _meta['default'] : _meta);
 
     var _redefineAll = __commonjs(function (module) {
-    var redefine = require$$25;
+    var redefine = require$$22;
     module.exports = function(target, src, safe){
       for(var key in src)redefine(target, key, src[key], safe);
       return target;
@@ -2122,17 +2031,17 @@
 
     var _collection = __commonjs(function (module) {
     'use strict';
-    var global            = require$$29
-      , $export           = require$$26
-      , redefine          = require$$25
+    var global            = require$$27
+      , $export           = require$$23
+      , redefine          = require$$22
       , redefineAll       = require$$4$3
-      , meta              = require$$24
+      , meta              = require$$21
       , forOf             = require$$10$2
       , anInstance        = require$$4$1
       , isObject          = require$$2
-      , fails             = require$$23
+      , fails             = require$$20
       , $iterDetect       = require$$0$18
-      , setToStringTag    = require$$21
+      , setToStringTag    = require$$18
       , inheritIfRequired = require$$9$1;
 
     module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
@@ -2218,14 +2127,14 @@
     };
     });
 
-    var require$$14 = (_isArray && typeof _isArray === 'object' && 'default' in _isArray ? _isArray['default'] : _isArray);
+    var require$$13 = (_isArray && typeof _isArray === 'object' && 'default' in _isArray ? _isArray['default'] : _isArray);
 
-    var _arraySpeciesConstructor = __commonjs(function (module) {
+    var _arraySpeciesCreate = __commonjs(function (module) {
+    // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
     var isObject = require$$2
-      , isArray  = require$$14
-      , SPECIES  = require$$19('species');
-
-    module.exports = function(original){
+      , isArray  = require$$13
+      , SPECIES  = require$$16('species');
+    module.exports = function(original, length){
       var C;
       if(isArray(original)){
         C = original.constructor;
@@ -2235,18 +2144,7 @@
           C = C[SPECIES];
           if(C === null)C = undefined;
         }
-      } return C === undefined ? Array : C;
-    };
-    });
-
-    var require$$0$20 = (_arraySpeciesConstructor && typeof _arraySpeciesConstructor === 'object' && 'default' in _arraySpeciesConstructor ? _arraySpeciesConstructor['default'] : _arraySpeciesConstructor);
-
-    var _arraySpeciesCreate = __commonjs(function (module) {
-    // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-    var speciesConstructor = require$$0$20;
-
-    module.exports = function(original, length){
-      return new (speciesConstructor(original))(length);
+      } return new (C === undefined ? Array : C)(length);
     };
     });
 
@@ -2261,7 +2159,7 @@
     // 5 -> Array#find
     // 6 -> Array#findIndex
     var ctx      = require$$8
-      , IObject  = require$$1$7
+      , IObject  = require$$1$6
       , toObject = require$$2$2
       , toLength = require$$0$9
       , asc      = require$$0$19;
@@ -2304,13 +2202,13 @@
     var _collectionWeak = __commonjs(function (module) {
     'use strict';
     var redefineAll       = require$$4$3
-      , getWeak           = require$$24.getWeak
-      , anObject          = require$$13
+      , getWeak           = require$$21.getWeak
+      , anObject          = require$$12
       , isObject          = require$$2
       , anInstance        = require$$4$1
       , forOf             = require$$10$2
       , createArrayMethod = require$$1$12
-      , $has              = require$$28
+      , $has              = require$$25
       , arrayFind         = createArrayMethod(5)
       , arrayFindIndex    = createArrayMethod(6)
       , id                = 0;
@@ -2398,15 +2296,15 @@
     var _objectAssign = __commonjs(function (module) {
     'use strict';
     // 19.1.2.1 Object.assign(target, source, ...)
-    var getKeys  = require$$1$4
+    var getKeys  = require$$1$3
       , gOPS     = require$$1$13
       , pIE      = require$$0$17
       , toObject = require$$2$2
-      , IObject  = require$$1$7
+      , IObject  = require$$1$6
       , $assign  = Object.assign;
 
     // should work with symbols and should have deterministic property order (V8 bug)
-    module.exports = !$assign || require$$23(function(){
+    module.exports = !$assign || require$$20(function(){
       var A = {}
         , B = {}
         , S = Symbol()
@@ -2431,17 +2329,17 @@
     } : $assign;
     });
 
-    var require$$0$21 = (_objectAssign && typeof _objectAssign === 'object' && 'default' in _objectAssign ? _objectAssign['default'] : _objectAssign);
+    var require$$0$20 = (_objectAssign && typeof _objectAssign === 'object' && 'default' in _objectAssign ? _objectAssign['default'] : _objectAssign);
 
     var es6_weakMap = __commonjs(function (module) {
     'use strict';
     var each         = require$$1$12(0)
-      , redefine     = require$$25
-      , meta         = require$$24
-      , assign       = require$$0$21
+      , redefine     = require$$22
+      , meta         = require$$21
+      , assign       = require$$0$20
       , weak         = require$$1$11
       , isObject     = require$$2
-      , has          = require$$28
+      , has          = require$$25
       , getWeak      = meta.getWeak
       , isExtensible = Object.isExtensible
       , uncaughtFrozenStore = weak.ufstore
@@ -2497,10 +2395,10 @@
 
     var _setSpecies = __commonjs(function (module) {
     'use strict';
-    var global      = require$$29
-      , dP          = require$$6
-      , DESCRIPTORS = require$$27
-      , SPECIES     = require$$19('species');
+    var global      = require$$27
+      , dP          = require$$5
+      , DESCRIPTORS = require$$24
+      , SPECIES     = require$$16('species');
 
     module.exports = function(KEY){
       var C = global[KEY];
@@ -2511,12 +2409,12 @@
     };
     });
 
-    var require$$0$22 = (_setSpecies && typeof _setSpecies === 'object' && 'default' in _setSpecies ? _setSpecies['default'] : _setSpecies);
+    var require$$0$21 = (_setSpecies && typeof _setSpecies === 'object' && 'default' in _setSpecies ? _setSpecies['default'] : _setSpecies);
 
     var _collectionStrong = __commonjs(function (module) {
     'use strict';
-    var dP          = require$$6.f
-      , create      = require$$9
+    var dP          = require$$5.f
+      , create      = require$$8$1
       , hide        = require$$0$1
       , redefineAll = require$$4$3
       , ctx         = require$$8
@@ -2525,9 +2423,9 @@
       , forOf       = require$$10$2
       , $iterDefine = require$$0$2
       , step        = require$$3$2
-      , setSpecies  = require$$0$22
-      , DESCRIPTORS = require$$27
-      , fastKey     = require$$24.fastKey
+      , setSpecies  = require$$0$21
+      , DESCRIPTORS = require$$24
+      , fastKey     = require$$21.fastKey
       , SIZE        = DESCRIPTORS ? '_s' : 'size';
 
     var getEntry = function(that, key){
@@ -2685,8 +2583,8 @@
 
     var _metadata = __commonjs(function (module) {
     var Map     = require$$3$3
-      , $export = require$$26
-      , shared  = require$$22('metadata')
+      , $export = require$$23
+      , shared  = require$$19('metadata')
       , store   = shared.store || (shared.store = new (require$$0$14));
 
     var getOrCreateMetadataMap = function(target, targetKey, create){
@@ -2741,7 +2639,7 @@
 
     var es7_reflect_metadata = __commonjs(function (module) {
     var metadata                  = require$$1$9
-      , anObject                  = require$$13
+      , anObject                  = require$$12
       , aFunction                 = require$$3
       , toMetaKey                 = metadata.key
       , ordinaryDefineOwnMetadata = metadata.set;
@@ -2759,7 +2657,7 @@
 
     var es7_reflect_hasOwnMetadata = __commonjs(function (module) {
     var metadata               = require$$1$9
-      , anObject               = require$$13
+      , anObject               = require$$12
       , ordinaryHasOwnMetadata = metadata.has
       , toMetaKey              = metadata.key;
 
@@ -2771,8 +2669,8 @@
 
     var es7_reflect_hasMetadata = __commonjs(function (module) {
     var metadata               = require$$1$9
-      , anObject               = require$$13
-      , getPrototypeOf         = require$$1$3
+      , anObject               = require$$12
+      , getPrototypeOf         = require$$1$2
       , ordinaryHasOwnMetadata = metadata.has
       , toMetaKey              = metadata.key;
 
@@ -2790,7 +2688,7 @@
 
     var es7_reflect_getOwnMetadataKeys = __commonjs(function (module) {
     var metadata                = require$$1$9
-      , anObject                = require$$13
+      , anObject                = require$$12
       , ordinaryOwnMetadataKeys = metadata.keys
       , toMetaKey               = metadata.key;
 
@@ -2801,7 +2699,7 @@
 
     var es7_reflect_getOwnMetadata = __commonjs(function (module) {
     var metadata               = require$$1$9
-      , anObject               = require$$13
+      , anObject               = require$$12
       , ordinaryGetOwnMetadata = metadata.get
       , toMetaKey              = metadata.key;
 
@@ -2821,7 +2719,7 @@
     };
     });
 
-    var require$$0$23 = (_arrayFromIterable && typeof _arrayFromIterable === 'object' && 'default' in _arrayFromIterable ? _arrayFromIterable['default'] : _arrayFromIterable);
+    var require$$0$22 = (_arrayFromIterable && typeof _arrayFromIterable === 'object' && 'default' in _arrayFromIterable ? _arrayFromIterable['default'] : _arrayFromIterable);
 
     var es6_set = __commonjs(function (module) {
     'use strict';
@@ -2842,10 +2740,10 @@
 
     var es7_reflect_getMetadataKeys = __commonjs(function (module) {
     var Set                     = require$$4$4
-      , from                    = require$$0$23
+      , from                    = require$$0$22
       , metadata                = require$$1$9
-      , anObject                = require$$13
-      , getPrototypeOf          = require$$1$3
+      , anObject                = require$$12
+      , getPrototypeOf          = require$$1$2
       , ordinaryOwnMetadataKeys = metadata.keys
       , toMetaKey               = metadata.key;
 
@@ -2864,8 +2762,8 @@
 
     var es7_reflect_getMetadata = __commonjs(function (module) {
     var metadata               = require$$1$9
-      , anObject               = require$$13
-      , getPrototypeOf         = require$$1$3
+      , anObject               = require$$12
+      , getPrototypeOf         = require$$1$2
       , ordinaryHasOwnMetadata = metadata.has
       , ordinaryGetOwnMetadata = metadata.get
       , toMetaKey              = metadata.key;
@@ -2884,7 +2782,7 @@
 
     var es7_reflect_deleteMetadata = __commonjs(function (module) {
     var metadata               = require$$1$9
-      , anObject               = require$$13
+      , anObject               = require$$12
       , toMetaKey              = metadata.key
       , getOrCreateMetadataMap = metadata.map
       , store                  = metadata.store;
@@ -2902,7 +2800,7 @@
 
     var es7_reflect_defineMetadata = __commonjs(function (module) {
     var metadata                  = require$$1$9
-      , anObject                  = require$$13
+      , anObject                  = require$$12
       , toMetaKey                 = metadata.key
       , ordinaryDefineOwnMetadata = metadata.set;
 
@@ -2913,7 +2811,7 @@
 
     var es7_math_umulh = __commonjs(function (module) {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       umulh: function umulh(u, v){
@@ -2932,7 +2830,7 @@
 
     var es7_math_imulh = __commonjs(function (module) {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       imulh: function imulh(u, v){
@@ -2951,7 +2849,7 @@
 
     var es7_math_isubh = __commonjs(function (module) {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       isubh: function isubh(x0, x1, y0, y1){
@@ -2965,7 +2863,7 @@
 
     var es7_math_iaddh = __commonjs(function (module) {
     // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       iaddh: function iaddh(x0, x1, y0, y1){
@@ -2979,7 +2877,7 @@
 
     var es7_error_isError = __commonjs(function (module) {
     // https://github.com/ljharb/proposal-is-error
-    var $export = require$$26
+    var $export = require$$23
       , cof     = require$$10$1;
 
     $export($export.S, 'Error', {
@@ -2991,15 +2889,15 @@
 
     var es7_system_global = __commonjs(function (module) {
     // https://github.com/ljharb/proposal-global
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S, 'System', {global: require$$29});
+    $export($export.S, 'System', {global: require$$27});
     });
 
     var _collectionToJson = __commonjs(function (module) {
     // https://github.com/DavidBruant/Map-Set.prototype.toJSON
     var classof = require$$2$4
-      , from    = require$$0$23;
+      , from    = require$$0$22;
     module.exports = function(NAME){
       return function toJSON(){
         if(classof(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
@@ -3008,44 +2906,44 @@
     };
     });
 
-    var require$$0$24 = (_collectionToJson && typeof _collectionToJson === 'object' && 'default' in _collectionToJson ? _collectionToJson['default'] : _collectionToJson);
+    var require$$0$23 = (_collectionToJson && typeof _collectionToJson === 'object' && 'default' in _collectionToJson ? _collectionToJson['default'] : _collectionToJson);
 
     var es7_set_toJson = __commonjs(function (module) {
     // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-    var $export  = require$$26;
+    var $export  = require$$23;
 
-    $export($export.P + $export.R, 'Set', {toJSON: require$$0$24('Set')});
+    $export($export.P + $export.R, 'Set', {toJSON: require$$0$23('Set')});
     });
 
     var es7_map_toJson = __commonjs(function (module) {
     // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-    var $export  = require$$26;
+    var $export  = require$$23;
 
-    $export($export.P + $export.R, 'Map', {toJSON: require$$0$24('Map')});
+    $export($export.P + $export.R, 'Map', {toJSON: require$$0$23('Map')});
     });
 
     var _objectForcedPam = __commonjs(function (module) {
     // Forced replacement prototype accessors methods
-    module.exports = require$$1$8|| !require$$23(function(){
+    module.exports = require$$1$7|| !require$$20(function(){
       var K = Math.random();
       // In FF throws only define methods
       __defineSetter__.call(null, K, function(){ /* empty */});
-      delete require$$29[K];
+      delete require$$27[K];
     });
     });
 
-    var require$$0$25 = (_objectForcedPam && typeof _objectForcedPam === 'object' && 'default' in _objectForcedPam ? _objectForcedPam['default'] : _objectForcedPam);
+    var require$$0$24 = (_objectForcedPam && typeof _objectForcedPam === 'object' && 'default' in _objectForcedPam ? _objectForcedPam['default'] : _objectForcedPam);
 
     var es7_object_lookupSetter = __commonjs(function (module) {
     'use strict';
-    var $export                  = require$$26
+    var $export                  = require$$23
       , toObject                 = require$$2$2
-      , toPrimitive              = require$$11
-      , getPrototypeOf           = require$$1$3
-      , getOwnPropertyDescriptor = require$$7$2.f;
+      , toPrimitive              = require$$10
+      , getPrototypeOf           = require$$1$2
+      , getOwnPropertyDescriptor = require$$6.f;
 
     // B.2.2.5 Object.prototype.__lookupSetter__(P)
-    require$$27 && $export($export.P + require$$0$25, 'Object', {
+    require$$24 && $export($export.P + require$$0$24, 'Object', {
       __lookupSetter__: function __lookupSetter__(P){
         var O = toObject(this)
           , K = toPrimitive(P, true)
@@ -3059,14 +2957,14 @@
 
     var es7_object_lookupGetter = __commonjs(function (module) {
     'use strict';
-    var $export                  = require$$26
+    var $export                  = require$$23
       , toObject                 = require$$2$2
-      , toPrimitive              = require$$11
-      , getPrototypeOf           = require$$1$3
-      , getOwnPropertyDescriptor = require$$7$2.f;
+      , toPrimitive              = require$$10
+      , getPrototypeOf           = require$$1$2
+      , getOwnPropertyDescriptor = require$$6.f;
 
     // B.2.2.4 Object.prototype.__lookupGetter__(P)
-    require$$27 && $export($export.P + require$$0$25, 'Object', {
+    require$$24 && $export($export.P + require$$0$24, 'Object', {
       __lookupGetter__: function __lookupGetter__(P){
         var O = toObject(this)
           , K = toPrimitive(P, true)
@@ -3080,13 +2978,13 @@
 
     var es7_object_defineSetter = __commonjs(function (module) {
     'use strict';
-    var $export         = require$$26
+    var $export         = require$$23
       , toObject        = require$$2$2
       , aFunction       = require$$3
-      , $defineProperty = require$$6;
+      , $defineProperty = require$$5;
 
     // B.2.2.3 Object.prototype.__defineSetter__(P, setter)
-    require$$27 && $export($export.P + require$$0$25, 'Object', {
+    require$$24 && $export($export.P + require$$0$24, 'Object', {
       __defineSetter__: function __defineSetter__(P, setter){
         $defineProperty.f(toObject(this), P, {set: aFunction(setter), enumerable: true, configurable: true});
       }
@@ -3095,13 +2993,13 @@
 
     var es7_object_defineGetter = __commonjs(function (module) {
     'use strict';
-    var $export         = require$$26
+    var $export         = require$$23
       , toObject        = require$$2$2
       , aFunction       = require$$3
-      , $defineProperty = require$$6;
+      , $defineProperty = require$$5;
 
     // B.2.2.2 Object.prototype.__defineGetter__(P, getter)
-    require$$27 && $export($export.P + require$$0$25, 'Object', {
+    require$$24 && $export($export.P + require$$0$24, 'Object', {
       __defineGetter__: function __defineGetter__(P, getter){
         $defineProperty.f(toObject(this), P, {get: aFunction(getter), enumerable: true, configurable: true});
       }
@@ -3109,7 +3007,7 @@
     });
 
     var _objectToArray = __commonjs(function (module) {
-    var getKeys   = require$$1$4
+    var getKeys   = require$$1$3
       , toIObject = require$$0$10
       , isEnum    = require$$0$17.f;
     module.exports = function(isEntries){
@@ -3127,12 +3025,12 @@
     };
     });
 
-    var require$$0$26 = (_objectToArray && typeof _objectToArray === 'object' && 'default' in _objectToArray ? _objectToArray['default'] : _objectToArray);
+    var require$$0$25 = (_objectToArray && typeof _objectToArray === 'object' && 'default' in _objectToArray ? _objectToArray['default'] : _objectToArray);
 
     var es7_object_entries = __commonjs(function (module) {
     // https://github.com/tc39/proposal-object-values-entries
-    var $export  = require$$26
-      , $entries = require$$0$26(true);
+    var $export  = require$$23
+      , $entries = require$$0$25(true);
 
     $export($export.S, 'Object', {
       entries: function entries(it){
@@ -3143,8 +3041,8 @@
 
     var es7_object_values = __commonjs(function (module) {
     // https://github.com/tc39/proposal-object-values-entries
-    var $export = require$$26
-      , $values = require$$0$26(false);
+    var $export = require$$23
+      , $values = require$$0$25(false);
 
     $export($export.S, 'Object', {
       values: function values(it){
@@ -3155,8 +3053,8 @@
 
     var _createProperty = __commonjs(function (module) {
     'use strict';
-    var $defineProperty = require$$6
-      , createDesc      = require$$10;
+    var $defineProperty = require$$5
+      , createDesc      = require$$9;
 
     module.exports = function(object, index, value){
       if(index in object)$defineProperty.f(object, index, createDesc(0, value));
@@ -3168,7 +3066,7 @@
 
     var _objectGopn = __commonjs(function (module, exports) {
     // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-    var $keys      = require$$1$5
+    var $keys      = require$$1$4
       , hiddenKeys = require$$0$6.concat('length', 'prototype');
 
     exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
@@ -3182,8 +3080,8 @@
     // all object keys, includes non-enumerable and symbols
     var gOPN     = require$$4$5
       , gOPS     = require$$1$13
-      , anObject = require$$13
-      , Reflect  = require$$29.Reflect;
+      , anObject = require$$12
+      , Reflect  = require$$27.Reflect;
     module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
       var keys       = gOPN.f(anObject(it))
         , getSymbols = gOPS.f;
@@ -3191,14 +3089,14 @@
     };
     });
 
-    var require$$0$27 = (_ownKeys && typeof _ownKeys === 'object' && 'default' in _ownKeys ? _ownKeys['default'] : _ownKeys);
+    var require$$0$26 = (_ownKeys && typeof _ownKeys === 'object' && 'default' in _ownKeys ? _ownKeys['default'] : _ownKeys);
 
     var es7_object_getOwnPropertyDescriptors = __commonjs(function (module) {
     // https://github.com/tc39/proposal-object-getownpropertydescriptors
-    var $export        = require$$26
-      , ownKeys        = require$$0$27
+    var $export        = require$$23
+      , ownKeys        = require$$0$26
       , toIObject      = require$$0$10
-      , gOPD           = require$$7$2
+      , gOPD           = require$$6
       , createProperty = require$$2$5;
 
     $export($export.S, 'Object', {
@@ -3215,38 +3113,10 @@
     });
     });
 
-    var _wksExt = __commonjs(function (module, exports) {
-    exports.f = require$$19;
-    });
-
-    var require$$18 = (_wksExt && typeof _wksExt === 'object' && 'default' in _wksExt ? _wksExt['default'] : _wksExt);
-
-    var _wksDefine = __commonjs(function (module) {
-    var global         = require$$29
-      , core           = require$$1
-      , LIBRARY        = require$$1$8
-      , wksExt         = require$$18
-      , defineProperty = require$$6.f;
-    module.exports = function(name){
-      var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
-      if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
-    };
-    });
-
-    var require$$17 = (_wksDefine && typeof _wksDefine === 'object' && 'default' in _wksDefine ? _wksDefine['default'] : _wksDefine);
-
-    var es7_symbol_observable = __commonjs(function (module) {
-    require$$17('observable');
-    });
-
-    var es7_symbol_asyncIterator = __commonjs(function (module) {
-    require$$17('asyncIterator');
-    });
-
     var _flags = __commonjs(function (module) {
     'use strict';
     // 21.2.5.3 get RegExp.prototype.flags
-    var anObject = require$$13;
+    var anObject = require$$12;
     module.exports = function(){
       var that   = anObject(this)
         , result = '';
@@ -3259,13 +3129,13 @@
     };
     });
 
-    var require$$5$1 = (_flags && typeof _flags === 'object' && 'default' in _flags ? _flags['default'] : _flags);
+    var require$$5$2 = (_flags && typeof _flags === 'object' && 'default' in _flags ? _flags['default'] : _flags);
 
     var _isRegexp = __commonjs(function (module) {
     // 7.2.8 IsRegExp(argument)
     var isObject = require$$2
       , cof      = require$$10$1
-      , MATCH    = require$$19('match');
+      , MATCH    = require$$16('match');
     module.exports = function(it){
       var isRegExp;
       return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
@@ -3277,11 +3147,11 @@
     var es7_string_matchAll = __commonjs(function (module) {
     'use strict';
     // https://tc39.github.io/String.prototype.matchAll/
-    var $export     = require$$26
+    var $export     = require$$23
       , defined     = require$$0$4
       , toLength    = require$$0$9
       , isRegExp    = require$$1$15
-      , getFlags    = require$$5$1
+      , getFlags    = require$$5$2
       , RegExpProto = RegExp.prototype;
 
     var $RegExpStringIterator = function(regexp, string){
@@ -3312,13 +3182,13 @@
       '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
     });
 
-    var require$$0$28 = (_stringWs && typeof _stringWs === 'object' && 'default' in _stringWs ? _stringWs['default'] : _stringWs);
+    var require$$0$27 = (_stringWs && typeof _stringWs === 'object' && 'default' in _stringWs ? _stringWs['default'] : _stringWs);
 
     var _stringTrim = __commonjs(function (module) {
-    var $export = require$$26
+    var $export = require$$23
       , defined = require$$0$4
-      , fails   = require$$23
-      , spaces  = require$$0$28
+      , fails   = require$$20
+      , spaces  = require$$0$27
       , space   = '[' + spaces + ']'
       , non     = '\u200b\u0085'
       , ltrim   = RegExp('^' + space + space + '*')
@@ -3397,7 +3267,8 @@
         , stringLength = S.length
         , fillStr      = fillString === undefined ? ' ' : String(fillString)
         , intMaxLength = toLength(maxLength);
-      if(intMaxLength <= stringLength || fillStr == '')return S;
+      if(intMaxLength <= stringLength)return S;
+      if(fillStr == '')fillStr = ' ';
       var fillLen = intMaxLength - stringLength
         , stringFiller = repeat.call(fillStr, Math.ceil(fillLen / fillStr.length));
       if(stringFiller.length > fillLen)stringFiller = stringFiller.slice(0, fillLen);
@@ -3405,13 +3276,13 @@
     };
     });
 
-    var require$$0$29 = (_stringPad && typeof _stringPad === 'object' && 'default' in _stringPad ? _stringPad['default'] : _stringPad);
+    var require$$0$28 = (_stringPad && typeof _stringPad === 'object' && 'default' in _stringPad ? _stringPad['default'] : _stringPad);
 
     var es7_string_padEnd = __commonjs(function (module) {
     'use strict';
     // https://github.com/tc39/proposal-string-pad-start-end
-    var $export = require$$26
-      , $pad    = require$$0$29;
+    var $export = require$$23
+      , $pad    = require$$0$28;
 
     $export($export.P, 'String', {
       padEnd: function padEnd(maxLength /*, fillString = ' ' */){
@@ -3423,8 +3294,8 @@
     var es7_string_padStart = __commonjs(function (module) {
     'use strict';
     // https://github.com/tc39/proposal-string-pad-start-end
-    var $export = require$$26
-      , $pad    = require$$0$29;
+    var $export = require$$23
+      , $pad    = require$$0$28;
 
     $export($export.P, 'String', {
       padStart: function padStart(maxLength /*, fillString = ' ' */){
@@ -3458,7 +3329,7 @@
     var es7_string_at = __commonjs(function (module) {
     'use strict';
     // https://github.com/mathiasbynens/String.prototype.at
-    var $export = require$$26
+    var $export = require$$23
       , $at     = require$$1$17(true);
 
     $export($export.P, 'String', {
@@ -3471,8 +3342,8 @@
     var es7_array_includes = __commonjs(function (module) {
     'use strict';
     // https://github.com/tc39/Array.prototype.includes
-    var $export   = require$$26
-      , $includes = require$$1$6(true);
+    var $export   = require$$23
+      , $includes = require$$1$5(true);
 
     $export($export.P, 'Array', {
       includes: function includes(el /*, fromIndex = 0 */){
@@ -3485,7 +3356,7 @@
 
     var es6_reflect_setPrototypeOf = __commonjs(function (module) {
     // 26.1.14 Reflect.setPrototypeOf(target, proto)
-    var $export  = require$$26
+    var $export  = require$$23
       , setProto = require$$0$16;
 
     if(setProto)$export($export.S, 'Reflect', {
@@ -3503,13 +3374,13 @@
 
     var es6_reflect_set = __commonjs(function (module) {
     // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
-    var dP             = require$$6
-      , gOPD           = require$$7$2
-      , getPrototypeOf = require$$1$3
-      , has            = require$$28
-      , $export        = require$$26
-      , createDesc     = require$$10
-      , anObject       = require$$13
+    var dP             = require$$5
+      , gOPD           = require$$6
+      , getPrototypeOf = require$$1$2
+      , has            = require$$25
+      , $export        = require$$23
+      , createDesc     = require$$9
+      , anObject       = require$$12
       , isObject       = require$$2;
 
     function set(target, propertyKey, V/*, receiver*/){
@@ -3537,8 +3408,8 @@
 
     var es6_reflect_preventExtensions = __commonjs(function (module) {
     // 26.1.12 Reflect.preventExtensions(target)
-    var $export            = require$$26
-      , anObject           = require$$13
+    var $export            = require$$23
+      , anObject           = require$$12
       , $preventExtensions = Object.preventExtensions;
 
     $export($export.S, 'Reflect', {
@@ -3556,15 +3427,15 @@
 
     var es6_reflect_ownKeys = __commonjs(function (module) {
     // 26.1.11 Reflect.ownKeys(target)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S, 'Reflect', {ownKeys: require$$0$27});
+    $export($export.S, 'Reflect', {ownKeys: require$$0$26});
     });
 
     var es6_reflect_isExtensible = __commonjs(function (module) {
     // 26.1.10 Reflect.isExtensible(target)
-    var $export       = require$$26
-      , anObject      = require$$13
+    var $export       = require$$23
+      , anObject      = require$$12
       , $isExtensible = Object.isExtensible;
 
     $export($export.S, 'Reflect', {
@@ -3577,7 +3448,7 @@
 
     var es6_reflect_has = __commonjs(function (module) {
     // 26.1.9 Reflect.has(target, propertyKey)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Reflect', {
       has: function has(target, propertyKey){
@@ -3588,9 +3459,9 @@
 
     var es6_reflect_getPrototypeOf = __commonjs(function (module) {
     // 26.1.8 Reflect.getPrototypeOf(target)
-    var $export  = require$$26
-      , getProto = require$$1$3
-      , anObject = require$$13;
+    var $export  = require$$23
+      , getProto = require$$1$2
+      , anObject = require$$12;
 
     $export($export.S, 'Reflect', {
       getPrototypeOf: function getPrototypeOf(target){
@@ -3601,9 +3472,9 @@
 
     var es6_reflect_getOwnPropertyDescriptor = __commonjs(function (module) {
     // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
-    var gOPD     = require$$7$2
-      , $export  = require$$26
-      , anObject = require$$13;
+    var gOPD     = require$$6
+      , $export  = require$$23
+      , anObject = require$$12;
 
     $export($export.S, 'Reflect', {
       getOwnPropertyDescriptor: function getOwnPropertyDescriptor(target, propertyKey){
@@ -3614,12 +3485,12 @@
 
     var es6_reflect_get = __commonjs(function (module) {
     // 26.1.6 Reflect.get(target, propertyKey [, receiver])
-    var gOPD           = require$$7$2
-      , getPrototypeOf = require$$1$3
-      , has            = require$$28
-      , $export        = require$$26
+    var gOPD           = require$$6
+      , getPrototypeOf = require$$1$2
+      , has            = require$$25
+      , $export        = require$$23
       , isObject       = require$$2
-      , anObject       = require$$13;
+      , anObject       = require$$12;
 
     function get(target, propertyKey/*, receiver*/){
       var receiver = arguments.length < 3 ? target : arguments[2]
@@ -3639,8 +3510,8 @@
     var es6_reflect_enumerate = __commonjs(function (module) {
     'use strict';
     // 26.1.5 Reflect.enumerate(target)
-    var $export  = require$$26
-      , anObject = require$$13;
+    var $export  = require$$23
+      , anObject = require$$12;
     var Enumerate = function(iterated){
       this._t = anObject(iterated); // target
       this._i = 0;                  // next index
@@ -3667,9 +3538,9 @@
 
     var es6_reflect_deleteProperty = __commonjs(function (module) {
     // 26.1.4 Reflect.deleteProperty(target, propertyKey)
-    var $export  = require$$26
-      , gOPD     = require$$7$2.f
-      , anObject = require$$13;
+    var $export  = require$$23
+      , gOPD     = require$$6.f
+      , anObject = require$$12;
 
     $export($export.S, 'Reflect', {
       deleteProperty: function deleteProperty(target, propertyKey){
@@ -3681,13 +3552,13 @@
 
     var es6_reflect_defineProperty = __commonjs(function (module) {
     // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
-    var dP          = require$$6
-      , $export     = require$$26
-      , anObject    = require$$13
-      , toPrimitive = require$$11;
+    var dP          = require$$5
+      , $export     = require$$23
+      , anObject    = require$$12
+      , toPrimitive = require$$10;
 
     // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
-    $export($export.S + $export.F * require$$23(function(){
+    $export($export.S + $export.F * require$$20(function(){
       Reflect.defineProperty(dP.f({}, 1, {value: 1}), 1, {value: 2});
     }), 'Reflect', {
       defineProperty: function defineProperty(target, propertyKey, attributes){
@@ -3731,20 +3602,20 @@
     };
     });
 
-    var require$$0$30 = (_bind && typeof _bind === 'object' && 'default' in _bind ? _bind['default'] : _bind);
+    var require$$0$29 = (_bind && typeof _bind === 'object' && 'default' in _bind ? _bind['default'] : _bind);
 
     var es6_reflect_construct = __commonjs(function (module) {
     // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
-    var $export   = require$$26
-      , create    = require$$9
+    var $export   = require$$23
+      , create    = require$$8$1
       , aFunction = require$$3
-      , anObject  = require$$13
+      , anObject  = require$$12
       , isObject  = require$$2
-      , bind      = require$$0$30;
+      , bind      = require$$0$29;
 
     // MS Edge supports only 2 arguments
     // FF Nightly sets third argument as `new.target`, but does not create `this` from it
-    $export($export.S + $export.F * require$$23(function(){
+    $export($export.S + $export.F * require$$20(function(){
       function F(){}
       return !(Reflect.construct(function(){}, [], F) instanceof F);
     }), 'Reflect', {
@@ -3776,7 +3647,7 @@
 
     var es6_reflect_apply = __commonjs(function (module) {
     // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
-    var $export = require$$26
+    var $export = require$$23
       , _apply  = Function.apply;
 
     $export($export.S, 'Reflect', {
@@ -3839,22 +3710,22 @@
 
     var _speciesConstructor = __commonjs(function (module) {
     // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-    var anObject  = require$$13
+    var anObject  = require$$12
       , aFunction = require$$3
-      , SPECIES   = require$$19('species');
+      , SPECIES   = require$$16('species');
     module.exports = function(O, D){
       var C = anObject(O).constructor, S;
       return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
     };
     });
 
-    var require$$8$1 = (_speciesConstructor && typeof _speciesConstructor === 'object' && 'default' in _speciesConstructor ? _speciesConstructor['default'] : _speciesConstructor);
+    var require$$8$2 = (_speciesConstructor && typeof _speciesConstructor === 'object' && 'default' in _speciesConstructor ? _speciesConstructor['default'] : _speciesConstructor);
 
     var core_isIterable = __commonjs(function (module) {
     var classof   = require$$2$4
-      , ITERATOR  = require$$19('iterator')
-      , Iterators = require$$1$2;
-    module.exports = require$$1.isIterable = function(it){
+      , ITERATOR  = require$$16('iterator')
+      , Iterators = require$$1$1;
+    module.exports = require$$26.isIterable = function(it){
       var O = Object(it);
       return O[ITERATOR] !== undefined
         || '@@iterator' in O
@@ -3862,7 +3733,7 @@
     };
     });
 
-    var require$$14$1 = (core_isIterable && typeof core_isIterable === 'object' && 'default' in core_isIterable ? core_isIterable['default'] : core_isIterable);
+    var require$$14 = (core_isIterable && typeof core_isIterable === 'object' && 'default' in core_isIterable ? core_isIterable['default'] : core_isIterable);
 
     var _sameValue = __commonjs(function (module) {
     // 7.2.9 SameValue(x, y)
@@ -3871,7 +3742,7 @@
     };
     });
 
-    var require$$0$32 = (_sameValue && typeof _sameValue === 'object' && 'default' in _sameValue ? _sameValue['default'] : _sameValue);
+    var require$$0$31 = (_sameValue && typeof _sameValue === 'object' && 'default' in _sameValue ? _sameValue['default'] : _sameValue);
 
     var _isInteger = __commonjs(function (module) {
     // 20.1.2.3 Number.isInteger(number)
@@ -3882,12 +3753,12 @@
     };
     });
 
-    var require$$0$33 = (_isInteger && typeof _isInteger === 'object' && 'default' in _isInteger ? _isInteger['default'] : _isInteger);
+    var require$$0$32 = (_isInteger && typeof _isInteger === 'object' && 'default' in _isInteger ? _isInteger['default'] : _isInteger);
 
     var _typed = __commonjs(function (module) {
-    var global = require$$29
+    var global = require$$27
       , hide   = require$$0$1
-      , uid    = require$$20
+      , uid    = require$$17
       , TYPED  = uid('typed_array')
       , VIEW   = uid('view')
       , ABV    = !!(global.ArrayBuffer && global.DataView)
@@ -3917,20 +3788,20 @@
 
     var _typedBuffer = __commonjs(function (module, exports) {
     'use strict';
-    var global         = require$$29
-      , DESCRIPTORS    = require$$27
-      , LIBRARY        = require$$1$8
+    var global         = require$$27
+      , DESCRIPTORS    = require$$24
+      , LIBRARY        = require$$1$7
       , $typed         = require$$10$3
       , hide           = require$$0$1
       , redefineAll    = require$$4$3
-      , fails          = require$$23
+      , fails          = require$$20
       , anInstance     = require$$4$1
       , toInteger      = require$$3$1
       , toLength       = require$$0$9
       , gOPN           = require$$4$5.f
-      , dP             = require$$6.f
+      , dP             = require$$5.f
       , arrayFill      = require$$1$19
-      , setToStringTag = require$$21
+      , setToStringTag = require$$18
       , ARRAY_BUFFER   = 'ArrayBuffer'
       , DATA_VIEW      = 'DataView'
       , PROTOTYPE      = 'prototype'
@@ -4197,47 +4068,47 @@
 
     var _typedArray = __commonjs(function (module, exports, global) {
     'use strict';
-    if(require$$27){
-      var LIBRARY             = require$$1$8
-        , global              = require$$29
-        , fails               = require$$23
-        , $export             = require$$26
+    if(require$$24){
+      var LIBRARY             = require$$1$7
+        , global              = require$$27
+        , fails               = require$$20
+        , $export             = require$$23
         , $typed              = require$$10$3
         , $buffer             = require$$9$2
         , ctx                 = require$$8
         , anInstance          = require$$4$1
-        , propertyDesc        = require$$10
+        , propertyDesc        = require$$9
         , hide                = require$$0$1
         , redefineAll         = require$$4$3
-        , isInteger           = require$$0$33
+        , isInteger           = require$$0$32
         , toInteger           = require$$3$1
         , toLength            = require$$0$9
         , toIndex             = require$$0$8
-        , toPrimitive         = require$$11
-        , has                 = require$$28
-        , same                = require$$0$32
+        , toPrimitive         = require$$10
+        , has                 = require$$25
+        , same                = require$$0$31
         , classof             = require$$2$4
         , isObject            = require$$2
         , toObject            = require$$2$2
         , isArrayIter         = require$$4$2
-        , create              = require$$9
-        , getPrototypeOf      = require$$1$3
+        , create              = require$$8$1
+        , getPrototypeOf      = require$$1$2
         , gOPN                = require$$4$5.f
-        , isIterable          = require$$14$1
+        , isIterable          = require$$14
         , getIterFn           = require$$1$10
-        , uid                 = require$$20
-        , wks                 = require$$19
+        , uid                 = require$$17
+        , wks                 = require$$16
         , createArrayMethod   = require$$1$12
-        , createArrayIncludes = require$$1$6
-        , speciesConstructor  = require$$8$1
+        , createArrayIncludes = require$$1$5
+        , speciesConstructor  = require$$8$2
         , ArrayIterators      = require$$7
-        , Iterators           = require$$1$2
+        , Iterators           = require$$1$1
         , $iterDetect         = require$$0$18
-        , setSpecies          = require$$0$22
+        , setSpecies          = require$$0$21
         , arrayFill           = require$$1$19
         , arrayCopyWithin     = require$$1$18
-        , $DP                 = require$$6
-        , $GOPD               = require$$7$2
+        , $DP                 = require$$5
+        , $GOPD               = require$$6
         , dP                  = $DP.f
         , gOPD                = $GOPD.f
         , RangeError          = global.RangeError
@@ -4679,10 +4550,10 @@
     } else module.exports = function(){ /* empty */ };
     });
 
-    var require$$0$31 = (_typedArray && typeof _typedArray === 'object' && 'default' in _typedArray ? _typedArray['default'] : _typedArray);
+    var require$$0$30 = (_typedArray && typeof _typedArray === 'object' && 'default' in _typedArray ? _typedArray['default'] : _typedArray);
 
     var es6_typed_float64Array = __commonjs(function (module) {
-    require$$0$31('Float64', 8, function(init){
+    require$$0$30('Float64', 8, function(init){
       return function Float64Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4690,7 +4561,7 @@
     });
 
     var es6_typed_float32Array = __commonjs(function (module) {
-    require$$0$31('Float32', 4, function(init){
+    require$$0$30('Float32', 4, function(init){
       return function Float32Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4698,7 +4569,7 @@
     });
 
     var es6_typed_uint32Array = __commonjs(function (module) {
-    require$$0$31('Uint32', 4, function(init){
+    require$$0$30('Uint32', 4, function(init){
       return function Uint32Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4706,7 +4577,7 @@
     });
 
     var es6_typed_int32Array = __commonjs(function (module) {
-    require$$0$31('Int32', 4, function(init){
+    require$$0$30('Int32', 4, function(init){
       return function Int32Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4714,7 +4585,7 @@
     });
 
     var es6_typed_uint16Array = __commonjs(function (module) {
-    require$$0$31('Uint16', 2, function(init){
+    require$$0$30('Uint16', 2, function(init){
       return function Uint16Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4722,7 +4593,7 @@
     });
 
     var es6_typed_int16Array = __commonjs(function (module) {
-    require$$0$31('Int16', 2, function(init){
+    require$$0$30('Int16', 2, function(init){
       return function Int16Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4730,7 +4601,7 @@
     });
 
     var es6_typed_uint8ClampedArray = __commonjs(function (module) {
-    require$$0$31('Uint8', 1, function(init){
+    require$$0$30('Uint8', 1, function(init){
       return function Uint8ClampedArray(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4738,7 +4609,7 @@
     });
 
     var es6_typed_uint8Array = __commonjs(function (module) {
-    require$$0$31('Uint8', 1, function(init){
+    require$$0$30('Uint8', 1, function(init){
       return function Uint8Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4746,7 +4617,7 @@
     });
 
     var es6_typed_int8Array = __commonjs(function (module) {
-    require$$0$31('Int8', 1, function(init){
+    require$$0$30('Int8', 1, function(init){
       return function Int8Array(data, byteOffset, length){
         return init(this, data, byteOffset, length);
       };
@@ -4754,7 +4625,7 @@
     });
 
     var es6_typed_dataView = __commonjs(function (module) {
-    var $export = require$$26;
+    var $export = require$$23;
     $export($export.G + $export.W + $export.F * !require$$10$3.ABV, {
       DataView: require$$9$2.DataView
     });
@@ -4762,16 +4633,16 @@
 
     var es6_typed_arrayBuffer = __commonjs(function (module) {
     'use strict';
-    var $export      = require$$26
+    var $export      = require$$23
       , $typed       = require$$10$3
       , buffer       = require$$9$2
-      , anObject     = require$$13
+      , anObject     = require$$12
       , toIndex      = require$$0$8
       , toLength     = require$$0$9
       , isObject     = require$$2
-      , TYPED_ARRAY  = require$$19('typed_array')
-      , ArrayBuffer  = require$$29.ArrayBuffer
-      , speciesConstructor = require$$8$1
+      , TYPED_ARRAY  = require$$16('typed_array')
+      , ArrayBuffer  = require$$27.ArrayBuffer
+      , speciesConstructor = require$$8$2
       , $ArrayBuffer = buffer.ArrayBuffer
       , $DataView    = buffer.DataView
       , $isView      = $typed.ABV && ArrayBuffer.isView
@@ -4788,7 +4659,7 @@
       }
     });
 
-    $export($export.P + $export.U + $export.F * require$$23(function(){
+    $export($export.P + $export.U + $export.F * require$$20(function(){
       return !new $ArrayBuffer(2).slice(1, undefined).byteLength;
     }), ARRAY_BUFFER, {
       // 24.1.4.3 ArrayBuffer.prototype.slice(start, end)
@@ -4807,7 +4678,7 @@
       }
     });
 
-    require$$0$22(ARRAY_BUFFER);
+    require$$0$21(ARRAY_BUFFER);
     });
 
     var es6_weakSet = __commonjs(function (module) {
@@ -4825,22 +4696,85 @@
     }, weak, false, true);
     });
 
+    var _microtask = __commonjs(function (module) {
+    var global    = require$$27
+      , macrotask = require$$1$8.set
+      , Observer  = global.MutationObserver || global.WebKitMutationObserver
+      , process   = global.process
+      , Promise   = global.Promise
+      , isNode    = require$$10$1(process) == 'process'
+      , head, last, notify;
+
+    var flush = function(){
+      var parent, fn;
+      if(isNode && (parent = process.domain))parent.exit();
+      while(head){
+        fn = head.fn;
+        fn(); // <- currently we use it only for Promise - try / catch not required
+        head = head.next;
+      } last = undefined;
+      if(parent)parent.enter();
+    };
+
+    // Node.js
+    if(isNode){
+      notify = function(){
+        process.nextTick(flush);
+      };
+    // browsers with MutationObserver
+    } else if(Observer){
+      var toggle = true
+        , node   = document.createTextNode('');
+      new Observer(flush).observe(node, {characterData: true}); // eslint-disable-line no-new
+      notify = function(){
+        node.data = toggle = !toggle;
+      };
+    // environments with maybe non-completely correct, but existent Promise
+    } else if(Promise && Promise.resolve){
+      notify = function(){
+        Promise.resolve().then(flush);
+      };
+    // for other environments - macrotask based on:
+    // - setImmediate
+    // - MessageChannel
+    // - window.postMessag
+    // - onreadystatechange
+    // - setTimeout
+    } else {
+      notify = function(){
+        // strange IE + webpack dev server bug - use .call(global)
+        macrotask.call(global, flush);
+      };
+    }
+
+    module.exports = function(fn){
+      var task = {fn: fn, next: undefined};
+      if(last)last.next = task;
+      if(!head){
+        head = task;
+        notify();
+      } last = task;
+    };
+    });
+
+    var require$$6$1 = (_microtask && typeof _microtask === 'object' && 'default' in _microtask ? _microtask['default'] : _microtask);
+
     var es6_promise = __commonjs(function (module, exports, global) {
     'use strict';
-    var LIBRARY            = require$$1$8
-      , global             = require$$29
+    var LIBRARY            = require$$1$7
+      , global             = require$$27
       , ctx                = require$$8
       , classof            = require$$2$4
-      , $export            = require$$26
+      , $export            = require$$23
       , isObject           = require$$2
-      , anObject           = require$$13
+      , anObject           = require$$12
       , aFunction          = require$$3
       , anInstance         = require$$4$1
       , forOf              = require$$10$2
       , setProto           = require$$0$16.set
-      , speciesConstructor = require$$8$1
-      , task               = require$$7$1.set
-      , microtask          = require$$6$1()
+      , speciesConstructor = require$$8$2
+      , task               = require$$1$8.set
+      , microtask          = require$$6$1
       , PROMISE            = 'Promise'
       , TypeError          = global.TypeError
       , process            = global.process
@@ -4854,7 +4788,7 @@
       try {
         // correct subclassing with @@species support
         var promise     = $Promise.resolve(1)
-          , FakePromise = (promise.constructor = {})[require$$19('species')] = function(exec){ exec(empty, empty); };
+          , FakePromise = (promise.constructor = {})[require$$16('species')] = function(exec){ exec(empty, empty); };
         // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
         return (isNode || typeof PromiseRejectionEvent == 'function') && promise.then(empty) instanceof FakePromise;
       } catch(e){ /* empty */ }
@@ -5058,9 +4992,9 @@
     }
 
     $export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
-    require$$21($Promise, PROMISE);
-    require$$0$22(PROMISE);
-    Wrapper = require$$1[PROMISE];
+    require$$18($Promise, PROMISE);
+    require$$0$21(PROMISE);
+    Wrapper = require$$26[PROMISE];
 
     // statics
     $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -5132,10 +5066,10 @@
     var _fixReWks = __commonjs(function (module) {
     'use strict';
     var hide     = require$$0$1
-      , redefine = require$$25
-      , fails    = require$$23
+      , redefine = require$$22
+      , fails    = require$$20
       , defined  = require$$0$4
-      , wks      = require$$19;
+      , wks      = require$$16;
 
     module.exports = function(KEY, length, exec){
       var SYMBOL   = wks(KEY)
@@ -5160,11 +5094,11 @@
     };
     });
 
-    var require$$0$34 = (_fixReWks && typeof _fixReWks === 'object' && 'default' in _fixReWks ? _fixReWks['default'] : _fixReWks);
+    var require$$0$33 = (_fixReWks && typeof _fixReWks === 'object' && 'default' in _fixReWks ? _fixReWks['default'] : _fixReWks);
 
     var es6_regexp_split = __commonjs(function (module) {
     // @@split logic
-    require$$0$34('split', 2, function(defined, SPLIT, $split){
+    require$$0$33('split', 2, function(defined, SPLIT, $split){
       'use strict';
       var isRegExp   = require$$1$15
         , _split     = $split
@@ -5237,7 +5171,7 @@
 
     var es6_regexp_search = __commonjs(function (module) {
     // @@search logic
-    require$$0$34('search', 1, function(defined, SEARCH, $search){
+    require$$0$33('search', 1, function(defined, SEARCH, $search){
       // 21.1.3.15 String.prototype.search(regexp)
       return [function search(regexp){
         'use strict';
@@ -5250,7 +5184,7 @@
 
     var es6_regexp_replace = __commonjs(function (module) {
     // @@replace logic
-    require$$0$34('replace', 2, function(defined, REPLACE, $replace){
+    require$$0$33('replace', 2, function(defined, REPLACE, $replace){
       // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
       return [function replace(searchValue, replaceValue){
         'use strict';
@@ -5265,7 +5199,7 @@
 
     var es6_regexp_match = __commonjs(function (module) {
     // @@match logic
-    require$$0$34('match', 1, function(defined, MATCH, $match){
+    require$$0$33('match', 1, function(defined, MATCH, $match){
       // 21.1.3.11 String.prototype.match(regexp)
       return [function match(regexp){
         'use strict';
@@ -5278,27 +5212,27 @@
 
     var es6_regexp_flags = __commonjs(function (module) {
     // 21.2.5.3 get RegExp.prototype.flags()
-    if(require$$27 && /./g.flags != 'g')require$$6.f(RegExp.prototype, 'flags', {
+    if(require$$24 && /./g.flags != 'g')require$$5.f(RegExp.prototype, 'flags', {
       configurable: true,
-      get: require$$5$1
+      get: require$$5$2
     });
     });
 
     var es6_regexp_toString = __commonjs(function (module) {
     'use strict';
 
-    var anObject    = require$$13
-      , $flags      = require$$5$1
-      , DESCRIPTORS = require$$27
+    var anObject    = require$$12
+      , $flags      = require$$5$2
+      , DESCRIPTORS = require$$24
       , TO_STRING   = 'toString'
       , $toString   = /./[TO_STRING];
 
     var define = function(fn){
-      require$$25(RegExp.prototype, TO_STRING, fn, true);
+      require$$22(RegExp.prototype, TO_STRING, fn, true);
     };
 
     // 21.2.5.14 RegExp.prototype.toString()
-    if(require$$23(function(){ return $toString.call({source: 'a', flags: 'b'}) != '/a/b'; })){
+    if(require$$20(function(){ return $toString.call({source: 'a', flags: 'b'}) != '/a/b'; })){
       define(function toString(){
         var R = anObject(this);
         return '/'.concat(R.source, '/',
@@ -5313,12 +5247,12 @@
     });
 
     var es6_regexp_constructor = __commonjs(function (module) {
-    var global            = require$$29
+    var global            = require$$27
       , inheritIfRequired = require$$9$1
-      , dP                = require$$6.f
+      , dP                = require$$5.f
       , gOPN              = require$$4$5.f
       , isRegExp          = require$$1$15
-      , $flags            = require$$5$1
+      , $flags            = require$$5$2
       , $RegExp           = global.RegExp
       , Base              = $RegExp
       , proto             = $RegExp.prototype
@@ -5327,8 +5261,8 @@
       // "new" creates a new object, old webkit buggy here
       , CORRECT_NEW       = new $RegExp(re1) !== re1;
 
-    if(require$$27 && (!CORRECT_NEW || require$$23(function(){
-      re2[require$$19('match')] = false;
+    if(require$$24 && (!CORRECT_NEW || require$$20(function(){
+      re2[require$$16('match')] = false;
       // RegExp constructor can alter flags and IsRegExp works correct with @@match
       return $RegExp(re1) != re1 || $RegExp(re2) == re2 || $RegExp(re1, 'i') != '/a/i';
     }))){
@@ -5352,20 +5286,20 @@
       for(var keys = gOPN(Base), i = 0; keys.length > i; )proxy(keys[i++]);
       proto.constructor = $RegExp;
       $RegExp.prototype = proto;
-      require$$25(global, 'RegExp', $RegExp);
+      require$$22(global, 'RegExp', $RegExp);
     }
 
-    require$$0$22('RegExp');
+    require$$0$21('RegExp');
     });
 
     var es6_array_species = __commonjs(function (module) {
-    require$$0$22('Array');
+    require$$0$21('Array');
     });
 
     var es6_array_findIndex = __commonjs(function (module) {
     'use strict';
     // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
-    var $export = require$$26
+    var $export = require$$23
       , $find   = require$$1$12(6)
       , KEY     = 'findIndex'
       , forced  = true;
@@ -5382,7 +5316,7 @@
     var es6_array_find = __commonjs(function (module) {
     'use strict';
     // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
-    var $export = require$$26
+    var $export = require$$23
       , $find   = require$$1$12(5)
       , KEY     = 'find'
       , forced  = true;
@@ -5398,7 +5332,7 @@
 
     var es6_array_fill = __commonjs(function (module) {
     // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.P, 'Array', {fill: require$$1$19});
 
@@ -5407,7 +5341,7 @@
 
     var es6_array_copyWithin = __commonjs(function (module) {
     // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.P, 'Array', {copyWithin: require$$1$18});
 
@@ -5415,7 +5349,7 @@
     });
 
     var _strictMethod = __commonjs(function (module) {
-    var fails = require$$23;
+    var fails = require$$20;
 
     module.exports = function(method, arg){
       return !!method && fails(function(){
@@ -5424,18 +5358,18 @@
     };
     });
 
-    var require$$0$35 = (_strictMethod && typeof _strictMethod === 'object' && 'default' in _strictMethod ? _strictMethod['default'] : _strictMethod);
+    var require$$0$34 = (_strictMethod && typeof _strictMethod === 'object' && 'default' in _strictMethod ? _strictMethod['default'] : _strictMethod);
 
     var es6_array_lastIndexOf = __commonjs(function (module) {
     'use strict';
-    var $export       = require$$26
+    var $export       = require$$23
       , toIObject     = require$$0$10
       , toInteger     = require$$3$1
       , toLength      = require$$0$9
       , $native       = [].lastIndexOf
       , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
 
-    $export($export.P + $export.F * (NEGATIVE_ZERO || !require$$0$35($native)), 'Array', {
+    $export($export.P + $export.F * (NEGATIVE_ZERO || !require$$0$34($native)), 'Array', {
       // 22.1.3.14 / 15.4.4.15 Array.prototype.lastIndexOf(searchElement [, fromIndex])
       lastIndexOf: function lastIndexOf(searchElement /*, fromIndex = @[*-1] */){
         // convert -0 to +0
@@ -5453,12 +5387,12 @@
 
     var es6_array_indexOf = __commonjs(function (module) {
     'use strict';
-    var $export       = require$$26
-      , $indexOf      = require$$1$6(false)
+    var $export       = require$$23
+      , $indexOf      = require$$1$5(false)
       , $native       = [].indexOf
       , NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
-    $export($export.P + $export.F * (NEGATIVE_ZERO || !require$$0$35($native)), 'Array', {
+    $export($export.P + $export.F * (NEGATIVE_ZERO || !require$$0$34($native)), 'Array', {
       // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
       indexOf: function indexOf(searchElement /*, fromIndex = 0 */){
         return NEGATIVE_ZERO
@@ -5472,7 +5406,7 @@
     var _arrayReduce = __commonjs(function (module) {
     var aFunction = require$$3
       , toObject  = require$$2$2
-      , IObject   = require$$1$7
+      , IObject   = require$$1$6
       , toLength  = require$$0$9;
 
     module.exports = function(that, callbackfn, aLen, memo, isRight){
@@ -5504,10 +5438,10 @@
 
     var es6_array_reduceRight = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $reduce = require$$1$20;
 
-    $export($export.P + $export.F * !require$$0$35([].reduceRight, true), 'Array', {
+    $export($export.P + $export.F * !require$$0$34([].reduceRight, true), 'Array', {
       // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
       reduceRight: function reduceRight(callbackfn /* , initialValue */){
         return $reduce(this, callbackfn, arguments.length, arguments[1], true);
@@ -5517,10 +5451,10 @@
 
     var es6_array_reduce = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $reduce = require$$1$20;
 
-    $export($export.P + $export.F * !require$$0$35([].reduce, true), 'Array', {
+    $export($export.P + $export.F * !require$$0$34([].reduce, true), 'Array', {
       // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
       reduce: function reduce(callbackfn /* , initialValue */){
         return $reduce(this, callbackfn, arguments.length, arguments[1], false);
@@ -5530,10 +5464,10 @@
 
     var es6_array_every = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $every  = require$$1$12(4);
 
-    $export($export.P + $export.F * !require$$0$35([].every, true), 'Array', {
+    $export($export.P + $export.F * !require$$0$34([].every, true), 'Array', {
       // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
       every: function every(callbackfn /* , thisArg */){
         return $every(this, callbackfn, arguments[1]);
@@ -5543,10 +5477,10 @@
 
     var es6_array_some = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $some   = require$$1$12(3);
 
-    $export($export.P + $export.F * !require$$0$35([].some, true), 'Array', {
+    $export($export.P + $export.F * !require$$0$34([].some, true), 'Array', {
       // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
       some: function some(callbackfn /* , thisArg */){
         return $some(this, callbackfn, arguments[1]);
@@ -5556,10 +5490,10 @@
 
     var es6_array_filter = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $filter = require$$1$12(2);
 
-    $export($export.P + $export.F * !require$$0$35([].filter, true), 'Array', {
+    $export($export.P + $export.F * !require$$0$34([].filter, true), 'Array', {
       // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
       filter: function filter(callbackfn /* , thisArg */){
         return $filter(this, callbackfn, arguments[1]);
@@ -5569,10 +5503,10 @@
 
     var es6_array_map = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $map    = require$$1$12(1);
 
-    $export($export.P + $export.F * !require$$0$35([].map, true), 'Array', {
+    $export($export.P + $export.F * !require$$0$34([].map, true), 'Array', {
       // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
       map: function map(callbackfn /* , thisArg */){
         return $map(this, callbackfn, arguments[1]);
@@ -5582,9 +5516,9 @@
 
     var es6_array_forEach = __commonjs(function (module) {
     'use strict';
-    var $export  = require$$26
+    var $export  = require$$23
       , $forEach = require$$1$12(0)
-      , STRICT   = require$$0$35([].forEach, true);
+      , STRICT   = require$$0$34([].forEach, true);
 
     $export($export.P + $export.F * !STRICT, 'Array', {
       // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
@@ -5596,10 +5530,10 @@
 
     var es6_array_sort = __commonjs(function (module) {
     'use strict';
-    var $export   = require$$26
+    var $export   = require$$23
       , aFunction = require$$3
       , toObject  = require$$2$2
-      , fails     = require$$23
+      , fails     = require$$20
       , $sort     = [].sort
       , test      = [1, 2, 3];
 
@@ -5610,7 +5544,7 @@
       // V8 bug
       test.sort(null);
       // Old WebKit
-    }) || !require$$0$35($sort)), 'Array', {
+    }) || !require$$0$34($sort)), 'Array', {
       // 22.1.3.25 Array.prototype.sort(comparefn)
       sort: function sort(comparefn){
         return comparefn === undefined
@@ -5622,7 +5556,7 @@
 
     var es6_array_slice = __commonjs(function (module) {
     'use strict';
-    var $export    = require$$26
+    var $export    = require$$23
       , html       = require$$4
       , cof        = require$$10$1
       , toIndex    = require$$0$8
@@ -5630,7 +5564,7 @@
       , arraySlice = [].slice;
 
     // fallback for not array-like ES3 strings and DOM objects
-    $export($export.P + $export.F * require$$23(function(){
+    $export($export.P + $export.F * require$$20(function(){
       if(html)arraySlice.call(html);
     }), 'Array', {
       slice: function slice(begin, end){
@@ -5654,12 +5588,12 @@
     var es6_array_join = __commonjs(function (module) {
     'use strict';
     // 22.1.3.13 Array.prototype.join(separator)
-    var $export   = require$$26
+    var $export   = require$$23
       , toIObject = require$$0$10
       , arrayJoin = [].join;
 
     // fallback for not array-like strings
-    $export($export.P + $export.F * (require$$1$7 != Object || !require$$0$35(arrayJoin)), 'Array', {
+    $export($export.P + $export.F * (require$$1$6 != Object || !require$$0$34(arrayJoin)), 'Array', {
       join: function join(separator){
         return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
       }
@@ -5668,11 +5602,11 @@
 
     var es6_array_of = __commonjs(function (module) {
     'use strict';
-    var $export        = require$$26
+    var $export        = require$$23
       , createProperty = require$$2$5;
 
     // WebKit Array.of isn't generic
-    $export($export.S + $export.F * require$$23(function(){
+    $export($export.S + $export.F * require$$20(function(){
       function F(){}
       return !(Array.of.call(F) instanceof F);
     }), 'Array', {
@@ -5691,9 +5625,9 @@
     var es6_array_from = __commonjs(function (module) {
     'use strict';
     var ctx            = require$$8
-      , $export        = require$$26
+      , $export        = require$$23
       , toObject       = require$$2$2
-      , call           = require$$5
+      , call           = require$$5$1
       , isArrayIter    = require$$4$2
       , toLength       = require$$0$9
       , createProperty = require$$2$5
@@ -5730,15 +5664,15 @@
 
     var es6_array_isArray = __commonjs(function (module) {
     // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S, 'Array', {isArray: require$$14});
+    $export($export.S, 'Array', {isArray: require$$13});
     });
 
     var _dateToPrimitive = __commonjs(function (module) {
     'use strict';
-    var anObject    = require$$13
-      , toPrimitive = require$$11
+    var anObject    = require$$12
+      , toPrimitive = require$$10
       , NUMBER      = 'number';
 
     module.exports = function(hint){
@@ -5747,13 +5681,13 @@
     };
     });
 
-    var require$$0$36 = (_dateToPrimitive && typeof _dateToPrimitive === 'object' && 'default' in _dateToPrimitive ? _dateToPrimitive['default'] : _dateToPrimitive);
+    var require$$0$35 = (_dateToPrimitive && typeof _dateToPrimitive === 'object' && 'default' in _dateToPrimitive ? _dateToPrimitive['default'] : _dateToPrimitive);
 
     var es6_date_toPrimitive = __commonjs(function (module) {
-    var TO_PRIMITIVE = require$$19('toPrimitive')
+    var TO_PRIMITIVE = require$$16('toPrimitive')
       , proto        = Date.prototype;
 
-    if(!(TO_PRIMITIVE in proto))require$$0$1(proto, TO_PRIMITIVE, require$$0$36);
+    if(!(TO_PRIMITIVE in proto))require$$0$1(proto, TO_PRIMITIVE, require$$0$35);
     });
 
     var es6_date_toString = __commonjs(function (module) {
@@ -5763,7 +5697,7 @@
       , $toString    = DateProto[TO_STRING]
       , getTime      = DateProto.getTime;
     if(new Date(NaN) + '' != INVALID_DATE){
-      require$$25(DateProto, TO_STRING, function toString(){
+      require$$22(DateProto, TO_STRING, function toString(){
         var value = getTime.call(this);
         return value === value ? $toString.call(this) : INVALID_DATE;
       });
@@ -5773,8 +5707,8 @@
     var es6_date_toIsoString = __commonjs(function (module) {
     'use strict';
     // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
-    var $export = require$$26
-      , fails   = require$$23
+    var $export = require$$23
+      , fails   = require$$20
       , getTime = Date.prototype.getTime;
 
     var lz = function(num){
@@ -5803,11 +5737,11 @@
 
     var es6_date_toJson = __commonjs(function (module) {
     'use strict';
-    var $export     = require$$26
+    var $export     = require$$23
       , toObject    = require$$2$2
-      , toPrimitive = require$$11;
+      , toPrimitive = require$$10;
 
-    $export($export.P + $export.F * require$$23(function(){
+    $export($export.P + $export.F * require$$20(function(){
       return new Date(NaN).toJSON() !== null || Date.prototype.toJSON.call({toISOString: function(){ return 1; }}) !== 1;
     }), 'Date', {
       toJSON: function toJSON(key){
@@ -5820,14 +5754,14 @@
 
     var es6_date_now = __commonjs(function (module) {
     // 20.3.3.1 / 15.9.4.4 Date.now()
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
     });
 
     var _stringHtml = __commonjs(function (module) {
-    var $export = require$$26
-      , fails   = require$$23
+    var $export = require$$23
+      , fails   = require$$20
       , defined = require$$0$4
       , quot    = /"/g;
     // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
@@ -5847,12 +5781,12 @@
     };
     });
 
-    var require$$0$37 = (_stringHtml && typeof _stringHtml === 'object' && 'default' in _stringHtml ? _stringHtml['default'] : _stringHtml);
+    var require$$0$36 = (_stringHtml && typeof _stringHtml === 'object' && 'default' in _stringHtml ? _stringHtml['default'] : _stringHtml);
 
     var es6_string_sup = __commonjs(function (module) {
     'use strict';
     // B.2.3.14 String.prototype.sup()
-    require$$0$37('sup', function(createHTML){
+    require$$0$36('sup', function(createHTML){
       return function sup(){
         return createHTML(this, 'sup', '', '');
       }
@@ -5862,7 +5796,7 @@
     var es6_string_sub = __commonjs(function (module) {
     'use strict';
     // B.2.3.13 String.prototype.sub()
-    require$$0$37('sub', function(createHTML){
+    require$$0$36('sub', function(createHTML){
       return function sub(){
         return createHTML(this, 'sub', '', '');
       }
@@ -5872,7 +5806,7 @@
     var es6_string_strike = __commonjs(function (module) {
     'use strict';
     // B.2.3.12 String.prototype.strike()
-    require$$0$37('strike', function(createHTML){
+    require$$0$36('strike', function(createHTML){
       return function strike(){
         return createHTML(this, 'strike', '', '');
       }
@@ -5882,7 +5816,7 @@
     var es6_string_small = __commonjs(function (module) {
     'use strict';
     // B.2.3.11 String.prototype.small()
-    require$$0$37('small', function(createHTML){
+    require$$0$36('small', function(createHTML){
       return function small(){
         return createHTML(this, 'small', '', '');
       }
@@ -5892,7 +5826,7 @@
     var es6_string_link = __commonjs(function (module) {
     'use strict';
     // B.2.3.10 String.prototype.link(url)
-    require$$0$37('link', function(createHTML){
+    require$$0$36('link', function(createHTML){
       return function link(url){
         return createHTML(this, 'a', 'href', url);
       }
@@ -5902,7 +5836,7 @@
     var es6_string_italics = __commonjs(function (module) {
     'use strict';
     // B.2.3.9 String.prototype.italics()
-    require$$0$37('italics', function(createHTML){
+    require$$0$36('italics', function(createHTML){
       return function italics(){
         return createHTML(this, 'i', '', '');
       }
@@ -5912,7 +5846,7 @@
     var es6_string_fontsize = __commonjs(function (module) {
     'use strict';
     // B.2.3.8 String.prototype.fontsize(size)
-    require$$0$37('fontsize', function(createHTML){
+    require$$0$36('fontsize', function(createHTML){
       return function fontsize(size){
         return createHTML(this, 'font', 'size', size);
       }
@@ -5922,7 +5856,7 @@
     var es6_string_fontcolor = __commonjs(function (module) {
     'use strict';
     // B.2.3.7 String.prototype.fontcolor(color)
-    require$$0$37('fontcolor', function(createHTML){
+    require$$0$36('fontcolor', function(createHTML){
       return function fontcolor(color){
         return createHTML(this, 'font', 'color', color);
       }
@@ -5932,7 +5866,7 @@
     var es6_string_fixed = __commonjs(function (module) {
     'use strict';
     // B.2.3.6 String.prototype.fixed()
-    require$$0$37('fixed', function(createHTML){
+    require$$0$36('fixed', function(createHTML){
       return function fixed(){
         return createHTML(this, 'tt', '', '');
       }
@@ -5942,7 +5876,7 @@
     var es6_string_bold = __commonjs(function (module) {
     'use strict';
     // B.2.3.5 String.prototype.bold()
-    require$$0$37('bold', function(createHTML){
+    require$$0$36('bold', function(createHTML){
       return function bold(){
         return createHTML(this, 'b', '', '');
       }
@@ -5952,7 +5886,7 @@
     var es6_string_blink = __commonjs(function (module) {
     'use strict';
     // B.2.3.4 String.prototype.blink()
-    require$$0$37('blink', function(createHTML){
+    require$$0$36('blink', function(createHTML){
       return function blink(){
         return createHTML(this, 'blink', '', '');
       }
@@ -5962,7 +5896,7 @@
     var es6_string_big = __commonjs(function (module) {
     'use strict';
     // B.2.3.3 String.prototype.big()
-    require$$0$37('big', function(createHTML){
+    require$$0$36('big', function(createHTML){
       return function big(){
         return createHTML(this, 'big', '', '');
       }
@@ -5972,7 +5906,7 @@
     var es6_string_anchor = __commonjs(function (module) {
     'use strict';
     // B.2.3.2 String.prototype.anchor(name)
-    require$$0$37('anchor', function(createHTML){
+    require$$0$36('anchor', function(createHTML){
       return function anchor(name){
         return createHTML(this, 'a', 'name', name);
       }
@@ -5980,7 +5914,7 @@
     });
 
     var _failsIsRegexp = __commonjs(function (module) {
-    var MATCH = require$$19('match');
+    var MATCH = require$$16('match');
     module.exports = function(KEY){
       var re = /./;
       try {
@@ -5994,7 +5928,7 @@
     };
     });
 
-    var require$$0$38 = (_failsIsRegexp && typeof _failsIsRegexp === 'object' && 'default' in _failsIsRegexp ? _failsIsRegexp['default'] : _failsIsRegexp);
+    var require$$0$37 = (_failsIsRegexp && typeof _failsIsRegexp === 'object' && 'default' in _failsIsRegexp ? _failsIsRegexp['default'] : _failsIsRegexp);
 
     var _stringContext = __commonjs(function (module) {
     // helper for String#{startsWith, endsWith, includes}
@@ -6012,13 +5946,13 @@
     var es6_string_startsWith = __commonjs(function (module) {
     // 21.1.3.18 String.prototype.startsWith(searchString [, position ])
     'use strict';
-    var $export     = require$$26
+    var $export     = require$$23
       , toLength    = require$$0$9
       , context     = require$$1$21
       , STARTS_WITH = 'startsWith'
       , $startsWith = ''[STARTS_WITH];
 
-    $export($export.P + $export.F * require$$0$38(STARTS_WITH), 'String', {
+    $export($export.P + $export.F * require$$0$37(STARTS_WITH), 'String', {
       startsWith: function startsWith(searchString /*, position = 0 */){
         var that   = context(this, searchString, STARTS_WITH)
           , index  = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length))
@@ -6031,7 +5965,7 @@
     });
 
     var es6_string_repeat = __commonjs(function (module) {
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.P, 'String', {
       // 21.1.3.13 String.prototype.repeat(count)
@@ -6042,11 +5976,11 @@
     var es6_string_includes = __commonjs(function (module) {
     // 21.1.3.7 String.prototype.includes(searchString, position = 0)
     'use strict';
-    var $export  = require$$26
+    var $export  = require$$23
       , context  = require$$1$21
       , INCLUDES = 'includes';
 
-    $export($export.P + $export.F * require$$0$38(INCLUDES), 'String', {
+    $export($export.P + $export.F * require$$0$37(INCLUDES), 'String', {
       includes: function includes(searchString /*, position = 0 */){
         return !!~context(this, searchString, INCLUDES)
           .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
@@ -6057,13 +5991,13 @@
     var es6_string_endsWith = __commonjs(function (module) {
     // 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
     'use strict';
-    var $export   = require$$26
+    var $export   = require$$23
       , toLength  = require$$0$9
       , context   = require$$1$21
       , ENDS_WITH = 'endsWith'
       , $endsWith = ''[ENDS_WITH];
 
-    $export($export.P + $export.F * require$$0$38(ENDS_WITH), 'String', {
+    $export($export.P + $export.F * require$$0$37(ENDS_WITH), 'String', {
       endsWith: function endsWith(searchString /*, endPosition = @length */){
         var that = context(this, searchString, ENDS_WITH)
           , endPosition = arguments.length > 1 ? arguments[1] : undefined
@@ -6079,7 +6013,7 @@
 
     var es6_string_codePointAt = __commonjs(function (module) {
     'use strict';
-    var $export = require$$26
+    var $export = require$$23
       , $at     = require$$1$17(false);
     $export($export.P, 'String', {
       // 21.1.3.3 String.prototype.codePointAt(pos)
@@ -6120,7 +6054,7 @@
     });
 
     var es6_string_raw = __commonjs(function (module) {
-    var $export   = require$$26
+    var $export   = require$$23
       , toIObject = require$$0$10
       , toLength  = require$$0$9;
 
@@ -6141,7 +6075,7 @@
     });
 
     var es6_string_fromCodePoint = __commonjs(function (module) {
-    var $export        = require$$26
+    var $export        = require$$23
       , toIndex        = require$$0$8
       , fromCharCode   = String.fromCharCode
       , $fromCodePoint = String.fromCodePoint;
@@ -6168,7 +6102,7 @@
 
     var es6_math_trunc = __commonjs(function (module) {
     // 20.2.2.34 Math.trunc(x)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       trunc: function trunc(it){
@@ -6190,12 +6124,12 @@
     } : $expm1;
     });
 
-    var require$$0$39 = (_mathExpm1 && typeof _mathExpm1 === 'object' && 'default' in _mathExpm1 ? _mathExpm1['default'] : _mathExpm1);
+    var require$$0$38 = (_mathExpm1 && typeof _mathExpm1 === 'object' && 'default' in _mathExpm1 ? _mathExpm1['default'] : _mathExpm1);
 
     var es6_math_tanh = __commonjs(function (module) {
     // 20.2.2.33 Math.tanh(x)
-    var $export = require$$26
-      , expm1   = require$$0$39
+    var $export = require$$23
+      , expm1   = require$$0$38
       , exp     = Math.exp;
 
     $export($export.S, 'Math', {
@@ -6209,12 +6143,12 @@
 
     var es6_math_sinh = __commonjs(function (module) {
     // 20.2.2.30 Math.sinh(x)
-    var $export = require$$26
-      , expm1   = require$$0$39
+    var $export = require$$23
+      , expm1   = require$$0$38
       , exp     = Math.exp;
 
     // V8 near Chromium 38 has a problem with very small numbers
-    $export($export.S + $export.F * require$$23(function(){
+    $export($export.S + $export.F * require$$20(function(){
       return !Math.sinh(-2e-17) != -2e-17;
     }), 'Math', {
       sinh: function sinh(x){
@@ -6232,18 +6166,18 @@
     };
     });
 
-    var require$$0$40 = (_mathSign && typeof _mathSign === 'object' && 'default' in _mathSign ? _mathSign['default'] : _mathSign);
+    var require$$0$39 = (_mathSign && typeof _mathSign === 'object' && 'default' in _mathSign ? _mathSign['default'] : _mathSign);
 
     var es6_math_sign = __commonjs(function (module) {
     // 20.2.2.28 Math.sign(x)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S, 'Math', {sign: require$$0$40});
+    $export($export.S, 'Math', {sign: require$$0$39});
     });
 
     var es6_math_log2 = __commonjs(function (module) {
     // 20.2.2.22 Math.log2(x)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       log2: function log2(x){
@@ -6259,18 +6193,18 @@
     };
     });
 
-    var require$$0$41 = (_mathLog1p && typeof _mathLog1p === 'object' && 'default' in _mathLog1p ? _mathLog1p['default'] : _mathLog1p);
+    var require$$0$40 = (_mathLog1p && typeof _mathLog1p === 'object' && 'default' in _mathLog1p ? _mathLog1p['default'] : _mathLog1p);
 
     var es6_math_log1p = __commonjs(function (module) {
     // 20.2.2.20 Math.log1p(x)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S, 'Math', {log1p: require$$0$41});
+    $export($export.S, 'Math', {log1p: require$$0$40});
     });
 
     var es6_math_log10 = __commonjs(function (module) {
     // 20.2.2.21 Math.log10(x)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       log10: function log10(x){
@@ -6281,11 +6215,11 @@
 
     var es6_math_imul = __commonjs(function (module) {
     // 20.2.2.18 Math.imul(x, y)
-    var $export = require$$26
+    var $export = require$$23
       , $imul   = Math.imul;
 
     // some WebKit versions fails with big numbers, some has wrong arity
-    $export($export.S + $export.F * require$$23(function(){
+    $export($export.S + $export.F * require$$20(function(){
       return $imul(0xffffffff, 5) != -5 || $imul.length != 2;
     }), 'Math', {
       imul: function imul(x, y){
@@ -6301,7 +6235,7 @@
 
     var es6_math_hypot = __commonjs(function (module) {
     // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
-    var $export = require$$26
+    var $export = require$$23
       , abs     = Math.abs;
 
     $export($export.S, 'Math', {
@@ -6329,8 +6263,8 @@
 
     var es6_math_fround = __commonjs(function (module) {
     // 20.2.2.16 Math.fround(x)
-    var $export   = require$$26
-      , sign      = require$$0$40
+    var $export   = require$$23
+      , sign      = require$$0$39
       , pow       = Math.pow
       , EPSILON   = pow(2, -52)
       , EPSILON32 = pow(2, -23)
@@ -6358,15 +6292,15 @@
 
     var es6_math_expm1 = __commonjs(function (module) {
     // 20.2.2.14 Math.expm1(x)
-    var $export = require$$26
-      , $expm1  = require$$0$39;
+    var $export = require$$23
+      , $expm1  = require$$0$38;
 
     $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
     });
 
     var es6_math_cosh = __commonjs(function (module) {
     // 20.2.2.12 Math.cosh(x)
-    var $export = require$$26
+    var $export = require$$23
       , exp     = Math.exp;
 
     $export($export.S, 'Math', {
@@ -6378,7 +6312,7 @@
 
     var es6_math_clz32 = __commonjs(function (module) {
     // 20.2.2.11 Math.clz32(x)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Math', {
       clz32: function clz32(x){
@@ -6389,8 +6323,8 @@
 
     var es6_math_cbrt = __commonjs(function (module) {
     // 20.2.2.9 Math.cbrt(x)
-    var $export = require$$26
-      , sign    = require$$0$40;
+    var $export = require$$23
+      , sign    = require$$0$39;
 
     $export($export.S, 'Math', {
       cbrt: function cbrt(x){
@@ -6401,7 +6335,7 @@
 
     var es6_math_atanh = __commonjs(function (module) {
     // 20.2.2.7 Math.atanh(x)
-    var $export = require$$26
+    var $export = require$$23
       , $atanh  = Math.atanh;
 
     // Tor Browser bug: Math.atanh(-0) -> 0 
@@ -6414,7 +6348,7 @@
 
     var es6_math_asinh = __commonjs(function (module) {
     // 20.2.2.5 Math.asinh(x)
-    var $export = require$$26
+    var $export = require$$23
       , $asinh  = Math.asinh;
 
     function asinh(x){
@@ -6427,8 +6361,8 @@
 
     var es6_math_acosh = __commonjs(function (module) {
     // 20.2.2.3 Math.acosh(x)
-    var $export = require$$26
-      , log1p   = require$$0$41
+    var $export = require$$23
+      , log1p   = require$$0$40
       , sqrt    = Math.sqrt
       , $acosh  = Math.acosh;
 
@@ -6447,9 +6381,9 @@
     });
 
     var _parseInt = __commonjs(function (module) {
-    var $parseInt = require$$29.parseInt
+    var $parseInt = require$$27.parseInt
       , $trim     = require$$3$4.trim
-      , ws        = require$$0$28
+      , ws        = require$$0$27
       , hex       = /^[\-+]?0[xX]/;
 
     module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix){
@@ -6458,53 +6392,53 @@
     } : $parseInt;
     });
 
-    var require$$0$42 = (_parseInt && typeof _parseInt === 'object' && 'default' in _parseInt ? _parseInt['default'] : _parseInt);
+    var require$$0$41 = (_parseInt && typeof _parseInt === 'object' && 'default' in _parseInt ? _parseInt['default'] : _parseInt);
 
     var es6_number_parseInt = __commonjs(function (module) {
-    var $export   = require$$26
-      , $parseInt = require$$0$42;
+    var $export   = require$$23
+      , $parseInt = require$$0$41;
     // 20.1.2.13 Number.parseInt(string, radix)
     $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
     });
 
     var _parseFloat = __commonjs(function (module) {
-    var $parseFloat = require$$29.parseFloat
+    var $parseFloat = require$$27.parseFloat
       , $trim       = require$$3$4.trim;
 
-    module.exports = 1 / $parseFloat(require$$0$28 + '-0') !== -Infinity ? function parseFloat(str){
+    module.exports = 1 / $parseFloat(require$$0$27 + '-0') !== -Infinity ? function parseFloat(str){
       var string = $trim(String(str), 3)
         , result = $parseFloat(string);
       return result === 0 && string.charAt(0) == '-' ? -0 : result;
     } : $parseFloat;
     });
 
-    var require$$0$43 = (_parseFloat && typeof _parseFloat === 'object' && 'default' in _parseFloat ? _parseFloat['default'] : _parseFloat);
+    var require$$0$42 = (_parseFloat && typeof _parseFloat === 'object' && 'default' in _parseFloat ? _parseFloat['default'] : _parseFloat);
 
     var es6_number_parseFloat = __commonjs(function (module) {
-    var $export     = require$$26
-      , $parseFloat = require$$0$43;
+    var $export     = require$$23
+      , $parseFloat = require$$0$42;
     // 20.1.2.12 Number.parseFloat(string)
     $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
     });
 
     var es6_number_minSafeInteger = __commonjs(function (module) {
     // 20.1.2.10 Number.MIN_SAFE_INTEGER
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
     });
 
     var es6_number_maxSafeInteger = __commonjs(function (module) {
     // 20.1.2.6 Number.MAX_SAFE_INTEGER
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
     });
 
     var es6_number_isSafeInteger = __commonjs(function (module) {
     // 20.1.2.5 Number.isSafeInteger(number)
-    var $export   = require$$26
-      , isInteger = require$$0$33
+    var $export   = require$$23
+      , isInteger = require$$0$32
       , abs       = Math.abs;
 
     $export($export.S, 'Number', {
@@ -6516,7 +6450,7 @@
 
     var es6_number_isNan = __commonjs(function (module) {
     // 20.1.2.4 Number.isNaN(number)
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Number', {
       isNaN: function isNaN(number){
@@ -6527,15 +6461,15 @@
 
     var es6_number_isInteger = __commonjs(function (module) {
     // 20.1.2.3 Number.isInteger(number)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S, 'Number', {isInteger: require$$0$33});
+    $export($export.S, 'Number', {isInteger: require$$0$32});
     });
 
     var es6_number_isFinite = __commonjs(function (module) {
     // 20.1.2.2 Number.isFinite(number)
-    var $export   = require$$26
-      , _isFinite = require$$29.isFinite;
+    var $export   = require$$23
+      , _isFinite = require$$27.isFinite;
 
     $export($export.S, 'Number', {
       isFinite: function isFinite(it){
@@ -6546,7 +6480,7 @@
 
     var es6_number_epsilon = __commonjs(function (module) {
     // 20.1.2.1 Number.EPSILON
-    var $export = require$$26;
+    var $export = require$$23;
 
     $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
     });
@@ -6563,8 +6497,8 @@
 
     var es6_number_toPrecision = __commonjs(function (module) {
     'use strict';
-    var $export      = require$$26
-      , $fails       = require$$23
+    var $export      = require$$23
+      , $fails       = require$$20
       , aNumberValue = require$$2$6
       , $toPrecision = 1..toPrecision;
 
@@ -6584,7 +6518,7 @@
 
     var es6_number_toFixed = __commonjs(function (module) {
     'use strict';
-    var $export      = require$$26
+    var $export      = require$$23
       , anInstance   = require$$4$1
       , toInteger    = require$$3$1
       , aNumberValue = require$$2$6
@@ -6644,7 +6578,7 @@
       0.9.toFixed(0) !== '1' ||
       1.255.toFixed(2) !== '1.25' ||
       1000000000000000128..toFixed(0) !== '1000000000000000128'
-    ) || !require$$23(function(){
+    ) || !require$$20(function(){
       // V8 ~ Android 4.3-
       $toFixed.call({});
     })), 'Number', {
@@ -6701,22 +6635,22 @@
 
     var es6_number_constructor = __commonjs(function (module) {
     'use strict';
-    var global            = require$$29
-      , has               = require$$28
+    var global            = require$$27
+      , has               = require$$25
       , cof               = require$$10$1
       , inheritIfRequired = require$$9$1
-      , toPrimitive       = require$$11
-      , fails             = require$$23
+      , toPrimitive       = require$$10
+      , fails             = require$$20
       , gOPN              = require$$4$5.f
-      , gOPD              = require$$7$2.f
-      , dP                = require$$6.f
+      , gOPD              = require$$6.f
+      , dP                = require$$5.f
       , $trim             = require$$3$4.trim
       , NUMBER            = 'Number'
       , $Number           = global[NUMBER]
       , Base              = $Number
       , proto             = $Number.prototype
       // Opera ~12 has broken Object#toString
-      , BROKEN_COF        = cof(require$$9(proto)) == NUMBER
+      , BROKEN_COF        = cof(require$$8$1(proto)) == NUMBER
       , TRIM              = 'trim' in String.prototype;
 
     // 7.1.3 ToNumber(argument)
@@ -6754,7 +6688,7 @@
           && (BROKEN_COF ? fails(function(){ proto.valueOf.call(that); }) : cof(that) != NUMBER)
             ? inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
       };
-      for(var keys = require$$27 ? gOPN(Base) : (
+      for(var keys = require$$24 ? gOPN(Base) : (
         // ES3:
         'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
         // ES6 (in case, if modules with ES6 Number statics required before):
@@ -6767,20 +6701,20 @@
       }
       $Number.prototype = proto;
       proto.constructor = $Number;
-      require$$25(global, NUMBER, $Number);
+      require$$22(global, NUMBER, $Number);
     }
     });
 
     var es6_parseFloat = __commonjs(function (module) {
-    var $export     = require$$26
-      , $parseFloat = require$$0$43;
+    var $export     = require$$23
+      , $parseFloat = require$$0$42;
     // 18.2.4 parseFloat(string)
     $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
     });
 
     var es6_parseInt = __commonjs(function (module) {
-    var $export   = require$$26
-      , $parseInt = require$$0$42;
+    var $export   = require$$23
+      , $parseInt = require$$0$41;
     // 18.2.5 parseInt(string, radix)
     $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
     });
@@ -6788,11 +6722,11 @@
     var es6_function_hasInstance = __commonjs(function (module) {
     'use strict';
     var isObject       = require$$2
-      , getPrototypeOf = require$$1$3
-      , HAS_INSTANCE   = require$$19('hasInstance')
+      , getPrototypeOf = require$$1$2
+      , HAS_INSTANCE   = require$$16('hasInstance')
       , FunctionProto  = Function.prototype;
     // 19.2.3.6 Function.prototype[@@hasInstance](V)
-    if(!(HAS_INSTANCE in FunctionProto))require$$6.f(FunctionProto, HAS_INSTANCE, {value: function(O){
+    if(!(HAS_INSTANCE in FunctionProto))require$$5.f(FunctionProto, HAS_INSTANCE, {value: function(O){
       if(typeof this != 'function' || !isObject(O))return false;
       if(!isObject(this.prototype))return O instanceof this;
       // for environment w/o native `@@hasInstance` logic enough `instanceof`, but add this:
@@ -6802,38 +6736,29 @@
     });
 
     var es6_function_name = __commonjs(function (module) {
-    var dP         = require$$6.f
-      , createDesc = require$$10
-      , has        = require$$28
+    var dP         = require$$5.f
+      , createDesc = require$$9
+      , has        = require$$25
       , FProto     = Function.prototype
       , nameRE     = /^\s*function ([^ (]*)/
       , NAME       = 'name';
-
-    var isExtensible = Object.isExtensible || function(){
-      return true;
-    };
-
     // 19.2.4.2 name
-    NAME in FProto || require$$27 && dP(FProto, NAME, {
+    NAME in FProto || require$$24 && dP(FProto, NAME, {
       configurable: true,
       get: function(){
-        try {
-          var that = this
-            , name = ('' + that).match(nameRE)[1];
-          has(that, NAME) || !isExtensible(that) || dP(that, NAME, createDesc(5, name));
-          return name;
-        } catch(e){
-          return '';
-        }
+        var match = ('' + this).match(nameRE)
+          , name  = match ? match[1] : '';
+        has(this, NAME) || dP(this, NAME, createDesc(5, name));
+        return name;
       }
     });
     });
 
     var es6_function_bind = __commonjs(function (module) {
     // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.P, 'Function', {bind: require$$0$30});
+    $export($export.P, 'Function', {bind: require$$0$29});
     });
 
     var es6_object_toString = __commonjs(function (module) {
@@ -6841,9 +6766,9 @@
     // 19.1.3.6 Object.prototype.toString()
     var classof = require$$2$4
       , test    = {};
-    test[require$$19('toStringTag')] = 'z';
+    test[require$$16('toStringTag')] = 'z';
     if(test + '' != '[object z]'){
-      require$$25(Object.prototype, 'toString', function toString(){
+      require$$22(Object.prototype, 'toString', function toString(){
         return '[object ' + classof(this) + ']';
       }, true);
     }
@@ -6851,28 +6776,28 @@
 
     var es6_object_setPrototypeOf = __commonjs(function (module) {
     // 19.1.3.19 Object.setPrototypeOf(O, proto)
-    var $export = require$$26;
+    var $export = require$$23;
     $export($export.S, 'Object', {setPrototypeOf: require$$0$16.set});
     });
 
     var es6_object_is = __commonjs(function (module) {
     // 19.1.3.10 Object.is(value1, value2)
-    var $export = require$$26;
-    $export($export.S, 'Object', {is: require$$0$32});
+    var $export = require$$23;
+    $export($export.S, 'Object', {is: require$$0$31});
     });
 
     var es6_object_assign = __commonjs(function (module) {
     // 19.1.3.1 Object.assign(target, source)
-    var $export = require$$26;
+    var $export = require$$23;
 
-    $export($export.S + $export.F, 'Object', {assign: require$$0$21});
+    $export($export.S + $export.F, 'Object', {assign: require$$0$20});
     });
 
     var _objectSap = __commonjs(function (module) {
     // most Object methods by ES6 should accept primitives
-    var $export = require$$26
-      , core    = require$$1
-      , fails   = require$$23;
+    var $export = require$$23
+      , core    = require$$26
+      , fails   = require$$20;
     module.exports = function(KEY, exec){
       var fn  = (core.Object || {})[KEY] || Object[KEY]
         , exp = {};
@@ -6881,13 +6806,13 @@
     };
     });
 
-    var require$$0$44 = (_objectSap && typeof _objectSap === 'object' && 'default' in _objectSap ? _objectSap['default'] : _objectSap);
+    var require$$0$43 = (_objectSap && typeof _objectSap === 'object' && 'default' in _objectSap ? _objectSap['default'] : _objectSap);
 
     var es6_object_isExtensible = __commonjs(function (module) {
     // 19.1.2.11 Object.isExtensible(O)
     var isObject = require$$2;
 
-    require$$0$44('isExtensible', function($isExtensible){
+    require$$0$43('isExtensible', function($isExtensible){
       return function isExtensible(it){
         return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
       };
@@ -6898,7 +6823,7 @@
     // 19.1.2.13 Object.isSealed(O)
     var isObject = require$$2;
 
-    require$$0$44('isSealed', function($isSealed){
+    require$$0$43('isSealed', function($isSealed){
       return function isSealed(it){
         return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
       };
@@ -6909,7 +6834,7 @@
     // 19.1.2.12 Object.isFrozen(O)
     var isObject = require$$2;
 
-    require$$0$44('isFrozen', function($isFrozen){
+    require$$0$43('isFrozen', function($isFrozen){
       return function isFrozen(it){
         return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
       };
@@ -6919,9 +6844,9 @@
     var es6_object_preventExtensions = __commonjs(function (module) {
     // 19.1.2.15 Object.preventExtensions(O)
     var isObject = require$$2
-      , meta     = require$$24.onFreeze;
+      , meta     = require$$21.onFreeze;
 
-    require$$0$44('preventExtensions', function($preventExtensions){
+    require$$0$43('preventExtensions', function($preventExtensions){
       return function preventExtensions(it){
         return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
       };
@@ -6931,9 +6856,9 @@
     var es6_object_seal = __commonjs(function (module) {
     // 19.1.2.17 Object.seal(O)
     var isObject = require$$2
-      , meta     = require$$24.onFreeze;
+      , meta     = require$$21.onFreeze;
 
-    require$$0$44('seal', function($seal){
+    require$$0$43('seal', function($seal){
       return function seal(it){
         return $seal && isObject(it) ? $seal(meta(it)) : it;
       };
@@ -6943,9 +6868,9 @@
     var es6_object_freeze = __commonjs(function (module) {
     // 19.1.2.5 Object.freeze(O)
     var isObject = require$$2
-      , meta     = require$$24.onFreeze;
+      , meta     = require$$21.onFreeze;
 
-    require$$0$44('freeze', function($freeze){
+    require$$0$43('freeze', function($freeze){
       return function freeze(it){
         return $freeze && isObject(it) ? $freeze(meta(it)) : it;
       };
@@ -6974,21 +6899,21 @@
     };
     });
 
-    var require$$8$2 = (_objectGopnExt && typeof _objectGopnExt === 'object' && 'default' in _objectGopnExt ? _objectGopnExt['default'] : _objectGopnExt);
+    var require$$7$1 = (_objectGopnExt && typeof _objectGopnExt === 'object' && 'default' in _objectGopnExt ? _objectGopnExt['default'] : _objectGopnExt);
 
     var es6_object_getOwnPropertyNames = __commonjs(function (module) {
     // 19.1.2.7 Object.getOwnPropertyNames(O)
-    require$$0$44('getOwnPropertyNames', function(){
-      return require$$8$2.f;
+    require$$0$43('getOwnPropertyNames', function(){
+      return require$$7$1.f;
     });
     });
 
     var es6_object_keys = __commonjs(function (module) {
     // 19.1.2.14 Object.keys(O)
     var toObject = require$$2$2
-      , $keys    = require$$1$4;
+      , $keys    = require$$1$3;
 
-    require$$0$44('keys', function(){
+    require$$0$43('keys', function(){
       return function keys(it){
         return $keys(toObject(it));
       };
@@ -6998,9 +6923,9 @@
     var es6_object_getPrototypeOf = __commonjs(function (module) {
     // 19.1.2.9 Object.getPrototypeOf(O)
     var toObject        = require$$2$2
-      , $getPrototypeOf = require$$1$3;
+      , $getPrototypeOf = require$$1$2;
 
-    require$$0$44('getPrototypeOf', function(){
+    require$$0$43('getPrototypeOf', function(){
       return function getPrototypeOf(it){
         return $getPrototypeOf(toObject(it));
       };
@@ -7010,9 +6935,9 @@
     var es6_object_getOwnPropertyDescriptor = __commonjs(function (module) {
     // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
     var toIObject                 = require$$0$10
-      , $getOwnPropertyDescriptor = require$$7$2.f;
+      , $getOwnPropertyDescriptor = require$$6.f;
 
-    require$$0$44('getOwnPropertyDescriptor', function(){
+    require$$0$43('getOwnPropertyDescriptor', function(){
       return function getOwnPropertyDescriptor(it, key){
         return $getOwnPropertyDescriptor(toIObject(it), key);
       };
@@ -7020,26 +6945,26 @@
     });
 
     var es6_object_defineProperties = __commonjs(function (module) {
-    var $export = require$$26;
+    var $export = require$$23;
     // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-    $export($export.S + $export.F * !require$$27, 'Object', {defineProperties: require$$0$7});
+    $export($export.S + $export.F * !require$$24, 'Object', {defineProperties: require$$0$7});
     });
 
     var es6_object_defineProperty = __commonjs(function (module) {
-    var $export = require$$26;
+    var $export = require$$23;
     // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-    $export($export.S + $export.F * !require$$27, 'Object', {defineProperty: require$$6.f});
+    $export($export.S + $export.F * !require$$24, 'Object', {defineProperty: require$$5.f});
     });
 
     var es6_object_create = __commonjs(function (module) {
-    var $export = require$$26
+    var $export = require$$23
     // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-    $export($export.S, 'Object', {create: require$$9});
+    $export($export.S, 'Object', {create: require$$8$1});
     });
 
     var _enumKeys = __commonjs(function (module) {
     // all enumerable object keys, includes symbols
-    var getKeys = require$$1$4
+    var getKeys = require$$1$3
       , gOPS    = require$$1$13
       , pIE     = require$$0$17;
     module.exports = function(it){
@@ -7055,10 +6980,10 @@
     };
     });
 
-    var require$$15 = (_enumKeys && typeof _enumKeys === 'object' && 'default' in _enumKeys ? _enumKeys['default'] : _enumKeys);
+    var require$$14$1 = (_enumKeys && typeof _enumKeys === 'object' && 'default' in _enumKeys ? _enumKeys['default'] : _enumKeys);
 
     var _keyof = __commonjs(function (module) {
-    var getKeys   = require$$1$4
+    var getKeys   = require$$1$3
       , toIObject = require$$0$10;
     module.exports = function(object, el){
       var O      = toIObject(object)
@@ -7070,42 +6995,41 @@
     };
     });
 
-    var require$$16 = (_keyof && typeof _keyof === 'object' && 'default' in _keyof ? _keyof['default'] : _keyof);
+    var require$$15 = (_keyof && typeof _keyof === 'object' && 'default' in _keyof ? _keyof['default'] : _keyof);
 
     var es6_symbol = __commonjs(function (module) {
     'use strict';
     // ECMAScript 6 symbols shim
-    var global         = require$$29
-      , has            = require$$28
-      , DESCRIPTORS    = require$$27
-      , $export        = require$$26
-      , redefine       = require$$25
-      , META           = require$$24.KEY
-      , $fails         = require$$23
-      , shared         = require$$22
-      , setToStringTag = require$$21
-      , uid            = require$$20
-      , wks            = require$$19
-      , wksExt         = require$$18
-      , wksDefine      = require$$17
-      , keyOf          = require$$16
-      , enumKeys       = require$$15
-      , isArray        = require$$14
-      , anObject       = require$$13
+    var global         = require$$27
+      , core           = require$$26
+      , has            = require$$25
+      , DESCRIPTORS    = require$$24
+      , $export        = require$$23
+      , redefine       = require$$22
+      , META           = require$$21.KEY
+      , $fails         = require$$20
+      , shared         = require$$19
+      , setToStringTag = require$$18
+      , uid            = require$$17
+      , wks            = require$$16
+      , keyOf          = require$$15
+      , enumKeys       = require$$14$1
+      , isArray        = require$$13
+      , anObject       = require$$12
       , toIObject      = require$$0$10
-      , toPrimitive    = require$$11
-      , createDesc     = require$$10
-      , _create        = require$$9
-      , gOPNExt        = require$$8$2
-      , $GOPD          = require$$7$2
-      , $DP            = require$$6
-      , $keys          = require$$1$4
+      , toPrimitive    = require$$10
+      , createDesc     = require$$9
+      , _create        = require$$8$1
+      , gOPNExt        = require$$7$1
+      , $GOPD          = require$$6
+      , $DP            = require$$5
       , gOPD           = $GOPD.f
       , dP             = $DP.f
       , gOPN           = gOPNExt.f
       , $Symbol        = global.Symbol
       , $JSON          = global.JSON
       , _stringify     = $JSON && $JSON.stringify
+      , setter         = false
       , PROTOTYPE      = 'prototype'
       , HIDDEN         = wks('_hidden')
       , TO_PRIMITIVE   = wks('toPrimitive')
@@ -7115,8 +7039,6 @@
       , ObjectProto    = Object[PROTOTYPE]
       , USE_NATIVE     = typeof $Symbol == 'function'
       , QObject        = global.QObject;
-    // Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
-    var setter = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
 
     // fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
     var setSymbolDesc = DESCRIPTORS && $fails(function(){
@@ -7133,6 +7055,13 @@
     var wrap = function(tag){
       var sym = AllSymbols[tag] = _create($Symbol[PROTOTYPE]);
       sym._k = tag;
+      DESCRIPTORS && setter && setSymbolDesc(ObjectProto, tag, {
+        configurable: true,
+        set: function(value){
+          if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
+          setSymbolDesc(this, tag, createDesc(1, value));
+        }
+      });
       return sym;
     };
 
@@ -7193,20 +7122,34 @@
       while(names.length > i)if(has(AllSymbols, key = names[i++]))result.push(AllSymbols[key]);
       return result;
     };
+    var $stringify = function stringify(it){
+      if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
+      var args = [it]
+        , i    = 1
+        , replacer, $replacer;
+      while(arguments.length > i)args.push(arguments[i++]);
+      replacer = args[1];
+      if(typeof replacer == 'function')$replacer = replacer;
+      if($replacer || !isArray(replacer))replacer = function(key, value){
+        if($replacer)value = $replacer.call(this, key, value);
+        if(!isSymbol(value))return value;
+      };
+      args[1] = replacer;
+      return _stringify.apply($JSON, args);
+    };
+    var BUGGY_JSON = $fails(function(){
+      var S = $Symbol();
+      // MS Edge converts symbol values to JSON as {}
+      // WebKit converts symbol values to JSON as null
+      // V8 throws on boxed symbols
+      return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
+    });
 
     // 19.4.1.1 Symbol([description])
     if(!USE_NATIVE){
       $Symbol = function Symbol(){
         if(this instanceof $Symbol)throw TypeError('Symbol is not a constructor!');
-        var tag = uid(arguments.length > 0 ? arguments[0] : undefined);
-        DESCRIPTORS && setter && setSymbolDesc(ObjectProto, tag, {
-          configurable: true,
-          set: function(value){
-            if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
-            setSymbolDesc(this, tag, createDesc(1, value));
-          }
-        });
-        return wrap(tag);
+        return wrap(uid(arguments.length > 0 ? arguments[0] : undefined));
       };
       redefine($Symbol[PROTOTYPE], 'toString', function toString(){
         return this._k;
@@ -7215,26 +7158,38 @@
       $GOPD.f = $getOwnPropertyDescriptor;
       $DP.f   = $defineProperty;
       require$$4$5.f = gOPNExt.f = $getOwnPropertyNames;
-      require$$0$17.f  = $propertyIsEnumerable;
+      require$$0$17.f  = $propertyIsEnumerable
       require$$1$13.f = $getOwnPropertySymbols;
 
-      if(DESCRIPTORS && !require$$1$8){
+      if(DESCRIPTORS && !require$$1$7){
         redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
-      }
-
-      wksExt.f = function(name){
-        return wrap(wks(name));
       }
     }
 
     $export($export.G + $export.W + $export.F * !USE_NATIVE, {Symbol: $Symbol});
 
+    // 19.4.2.2 Symbol.hasInstance
+    // 19.4.2.3 Symbol.isConcatSpreadable
+    // 19.4.2.4 Symbol.iterator
+    // 19.4.2.6 Symbol.match
+    // 19.4.2.8 Symbol.replace
+    // 19.4.2.9 Symbol.search
+    // 19.4.2.10 Symbol.species
+    // 19.4.2.11 Symbol.split
+    // 19.4.2.12 Symbol.toPrimitive
+    // 19.4.2.13 Symbol.toStringTag
+    // 19.4.2.14 Symbol.unscopables
     for(var symbols = (
-      // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
       'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
-    ).split(','), i = 0; symbols.length > i; )wks(symbols[i++]);
+    ).split(','), i = 0; symbols.length > i; ){
+      var key     = symbols[i++]
+        , Wrapper = core.Symbol
+        , sym     = wks(key);
+      if(!(key in Wrapper))dP(Wrapper, key, {value: USE_NATIVE ? sym : wrap(sym)});
+    };
 
-    for(var symbols = $keys(wks.store), i = 0; symbols.length > i; )wksDefine(symbols[i++]);
+    // Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
+    if(!QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild)setter = true;
 
     $export($export.S + $export.F * !USE_NATIVE, 'Symbol', {
       // 19.4.2.1 Symbol.for(key)
@@ -7268,29 +7223,7 @@
     });
 
     // 24.3.2 JSON.stringify(value [, replacer [, space]])
-    $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
-      var S = $Symbol();
-      // MS Edge converts symbol values to JSON as {}
-      // WebKit converts symbol values to JSON as null
-      // V8 throws on boxed symbols
-      return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
-    })), 'JSON', {
-      stringify: function stringify(it){
-        if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
-        var args = [it]
-          , i    = 1
-          , replacer, $replacer;
-        while(arguments.length > i)args.push(arguments[i++]);
-        replacer = args[1];
-        if(typeof replacer == 'function')$replacer = replacer;
-        if($replacer || !isArray(replacer))replacer = function(key, value){
-          if($replacer)value = $replacer.call(this, key, value);
-          if(!isSymbol(value))return value;
-        };
-        args[1] = replacer;
-        return _stringify.apply($JSON, args);
-      }
-    });
+    $JSON && $export($export.S + $export.F * (!USE_NATIVE || BUGGY_JSON), 'JSON', {stringify: $stringify});
 
     // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
     $Symbol[PROTOTYPE][TO_PRIMITIVE] || require$$0$1($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
@@ -7303,7 +7236,7 @@
     });
 
     var shim = __commonjs(function (module) {
-    module.exports = require$$1;
+    module.exports = require$$26;
     });
 
     var index = __commonjs(function (module, exports, global) {
@@ -7841,7 +7774,7 @@
     module.exports = warning;
     });
 
-    var require$$0$46 = (warning && typeof warning === 'object' && 'default' in warning ? warning['default'] : warning);
+    var require$$0$45 = (warning && typeof warning === 'object' && 'default' in warning ? warning['default'] : warning);
 
     var invariant = __commonjs(function (module) {
     /**
@@ -8024,7 +7957,7 @@
 
     var ReactCurrentOwner = require$$4$6;
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
     var canDefineProperty = require$$3$5;
 
     // The Symbol used to tag the ReactElement type. If there is no native Symbol
@@ -8320,7 +8253,7 @@
      * of children.
      *
      * @param {?object} children Child collection structure.
-     * @return {ReactComponent} The first and only `ReactComponent` contained in the
+     * @return {ReactElement} The first and only `ReactElement` contained in the
      * structure.
      */
     function onlyChild(children) {
@@ -8347,10 +8280,10 @@
 
     'use strict';
 
-    module.exports = '15.0.1';
+    module.exports = '15.0.2';
     });
 
-    var require$$5$2 = (ReactVersion && typeof ReactVersion === 'object' && 'default' in ReactVersion ? ReactVersion['default'] : ReactVersion);
+    var require$$5$3 = (ReactVersion && typeof ReactVersion === 'object' && 'default' in ReactVersion ? ReactVersion['default'] : ReactVersion);
 
     var getIteratorFn = __commonjs(function (module) {
     /**
@@ -8395,7 +8328,7 @@
     module.exports = getIteratorFn;
     });
 
-    var require$$2$9 = (getIteratorFn && typeof getIteratorFn === 'object' && 'default' in getIteratorFn ? getIteratorFn['default'] : getIteratorFn);
+    var require$$3$7 = (getIteratorFn && typeof getIteratorFn === 'object' && 'default' in getIteratorFn ? getIteratorFn['default'] : getIteratorFn);
 
     var ReactPropTypeLocationNames = __commonjs(function (module) {
     /**
@@ -8444,7 +8377,7 @@
     var ReactPropTypeLocationNames = require$$6$2;
 
     var emptyFunction = require$$2$7;
-    var getIteratorFn = require$$2$9;
+    var getIteratorFn = require$$3$7;
 
     /**
      * Collection of methods that allow declaration and validation of props that are
@@ -8861,7 +8794,7 @@
     module.exports = keyMirror;
     });
 
-    var require$$0$47 = (keyMirror && typeof keyMirror === 'object' && 'default' in keyMirror ? keyMirror['default'] : keyMirror);
+    var require$$0$46 = (keyMirror && typeof keyMirror === 'object' && 'default' in keyMirror ? keyMirror['default'] : keyMirror);
 
     var ReactPropTypeLocations = __commonjs(function (module) {
     /**
@@ -8877,7 +8810,7 @@
 
     'use strict';
 
-    var keyMirror = require$$0$47;
+    var keyMirror = require$$0$46;
 
     var ReactPropTypeLocations = keyMirror({
       prop: null,
@@ -8888,7 +8821,7 @@
     module.exports = ReactPropTypeLocations;
     });
 
-    var require$$2$10 = (ReactPropTypeLocations && typeof ReactPropTypeLocations === 'object' && 'default' in ReactPropTypeLocations ? ReactPropTypeLocations['default'] : ReactPropTypeLocations);
+    var require$$2$9 = (ReactPropTypeLocations && typeof ReactPropTypeLocations === 'object' && 'default' in ReactPropTypeLocations ? ReactPropTypeLocations['default'] : ReactPropTypeLocations);
 
     var ReactElementValidator = __commonjs(function (module) {
     /**
@@ -8912,14 +8845,14 @@
     'use strict';
 
     var ReactElement = require$$1$24;
-    var ReactPropTypeLocations = require$$2$10;
+    var ReactPropTypeLocations = require$$2$9;
     var ReactPropTypeLocationNames = require$$6$2;
     var ReactCurrentOwner = require$$4$6;
 
     var canDefineProperty = require$$3$5;
-    var getIteratorFn = require$$2$9;
+    var getIteratorFn = require$$3$7;
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     function getDeclarationErrorAddendum() {
       if (ReactCurrentOwner.current) {
@@ -9229,7 +9162,7 @@
     module.exports = mapObject;
     });
 
-    var require$$0$48 = (mapObject && typeof mapObject === 'object' && 'default' in mapObject ? mapObject['default'] : mapObject);
+    var require$$0$47 = (mapObject && typeof mapObject === 'object' && 'default' in mapObject ? mapObject['default'] : mapObject);
 
     var ReactDOMFactories = __commonjs(function (module) {
     /**
@@ -9248,7 +9181,7 @@
     var ReactElement = require$$1$24;
     var ReactElementValidator = require$$1$25;
 
-    var mapObject = require$$0$48;
+    var mapObject = require$$0$47;
 
     /**
      * Create a factory that creates HTML tag elements.
@@ -9449,7 +9382,7 @@
     module.exports = keyOf;
     });
 
-    var require$$0$49 = (keyOf && typeof keyOf === 'object' && 'default' in keyOf ? keyOf['default'] : keyOf);
+    var require$$0$48 = (keyOf && typeof keyOf === 'object' && 'default' in keyOf ? keyOf['default'] : keyOf);
 
     var emptyObject = __commonjs(function (module) {
     /**
@@ -9473,7 +9406,7 @@
     module.exports = emptyObject;
     });
 
-    var require$$3$7 = (emptyObject && typeof emptyObject === 'object' && 'default' in emptyObject ? emptyObject['default'] : emptyObject);
+    var require$$3$8 = (emptyObject && typeof emptyObject === 'object' && 'default' in emptyObject ? emptyObject['default'] : emptyObject);
 
     var ReactNoopUpdateQueue = __commonjs(function (module) {
     /**
@@ -9489,7 +9422,7 @@
 
     'use strict';
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     function warnTDZ(publicInstance, callerName) {
       if ("development" !== 'production') {
@@ -9573,7 +9506,7 @@
     module.exports = ReactNoopUpdateQueue;
     });
 
-    var require$$5$4 = (ReactNoopUpdateQueue && typeof ReactNoopUpdateQueue === 'object' && 'default' in ReactNoopUpdateQueue ? ReactNoopUpdateQueue['default'] : ReactNoopUpdateQueue);
+    var require$$5$5 = (ReactNoopUpdateQueue && typeof ReactNoopUpdateQueue === 'object' && 'default' in ReactNoopUpdateQueue ? ReactNoopUpdateQueue['default'] : ReactNoopUpdateQueue);
 
     var ReactInvalidSetStateWarningDevTool = __commonjs(function (module) {
     /**
@@ -9589,7 +9522,7 @@
 
     'use strict';
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     if ("development" !== 'production') {
       var processingChildContext = false;
@@ -9631,7 +9564,7 @@
     'use strict';
 
     var ReactInvalidSetStateWarningDevTool = require$$1$26;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var eventHandlers = [];
     var handlerDoesThrowForEvent = {};
@@ -9691,7 +9624,7 @@
     module.exports = ReactDebugTool;
     });
 
-    var require$$0$51 = (ReactDebugTool && typeof ReactDebugTool === 'object' && 'default' in ReactDebugTool ? ReactDebugTool['default'] : ReactDebugTool);
+    var require$$0$50 = (ReactDebugTool && typeof ReactDebugTool === 'object' && 'default' in ReactDebugTool ? ReactDebugTool['default'] : ReactDebugTool);
 
     var ReactInstrumentation = __commonjs(function (module) {
     /**
@@ -9707,12 +9640,12 @@
 
     'use strict';
 
-    var ReactDebugTool = require$$0$51;
+    var ReactDebugTool = require$$0$50;
 
     module.exports = { debugTool: ReactDebugTool };
     });
 
-    var require$$0$50 = (ReactInstrumentation && typeof ReactInstrumentation === 'object' && 'default' in ReactInstrumentation ? ReactInstrumentation['default'] : ReactInstrumentation);
+    var require$$0$49 = (ReactInstrumentation && typeof ReactInstrumentation === 'object' && 'default' in ReactInstrumentation ? ReactInstrumentation['default'] : ReactInstrumentation);
 
     var ReactComponent = __commonjs(function (module) {
     /**
@@ -9728,13 +9661,13 @@
 
     'use strict';
 
-    var ReactNoopUpdateQueue = require$$5$4;
-    var ReactInstrumentation = require$$0$50;
+    var ReactNoopUpdateQueue = require$$5$5;
+    var ReactInstrumentation = require$$0$49;
 
     var canDefineProperty = require$$3$5;
-    var emptyObject = require$$3$7;
+    var emptyObject = require$$3$8;
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     /**
      * Base class helpers for the updating state of a component.
@@ -9858,15 +9791,15 @@
 
     var ReactComponent = require$$9$3;
     var ReactElement = require$$1$24;
-    var ReactPropTypeLocations = require$$2$10;
+    var ReactPropTypeLocations = require$$2$9;
     var ReactPropTypeLocationNames = require$$6$2;
-    var ReactNoopUpdateQueue = require$$5$4;
+    var ReactNoopUpdateQueue = require$$5$5;
 
-    var emptyObject = require$$3$7;
+    var emptyObject = require$$3$8;
     var invariant = require$$1$23;
-    var keyMirror = require$$0$47;
-    var keyOf = require$$0$49;
-    var warning = require$$0$46;
+    var keyMirror = require$$0$46;
+    var keyOf = require$$0$48;
+    var warning = require$$0$45;
 
     var MIXINS_KEY = keyOf({ mixins: null });
 
@@ -10566,7 +10499,70 @@
     module.exports = ReactClass;
     });
 
-    var require$$5$3 = (ReactClass && typeof ReactClass === 'object' && 'default' in ReactClass ? ReactClass['default'] : ReactClass);
+    var require$$5$4 = (ReactClass && typeof ReactClass === 'object' && 'default' in ReactClass ? ReactClass['default'] : ReactClass);
+
+    var KeyEscapeUtils = __commonjs(function (module) {
+    /**
+     * Copyright 2013-present, Facebook, Inc.
+     * All rights reserved.
+     *
+     * This source code is licensed under the BSD-style license found in the
+     * LICENSE file in the root directory of this source tree. An additional grant
+     * of patent rights can be found in the PATENTS file in the same directory.
+     *
+     * @providesModule KeyEscapeUtils
+     */
+
+    'use strict';
+
+    /**
+     * Escape and wrap key so it is safe to use as a reactid
+     *
+     * @param {*} key to be escaped.
+     * @return {string} the escaped key.
+     */
+
+    function escape(key) {
+      var escapeRegex = /[=:]/g;
+      var escaperLookup = {
+        '=': '=0',
+        ':': '=2'
+      };
+      var escapedString = ('' + key).replace(escapeRegex, function (match) {
+        return escaperLookup[match];
+      });
+
+      return '$' + escapedString;
+    }
+
+    /**
+     * Unescape and unwrap key for human-readable display
+     *
+     * @param {string} key to unescape.
+     * @return {string} the unescaped key.
+     */
+    function unescape(key) {
+      var unescapeRegex = /(=0|=2)/g;
+      var unescaperLookup = {
+        '=0': '=',
+        '=2': ':'
+      };
+      var keySubstring = key[0] === '.' && key[1] === '$' ? key.substring(2) : key.substring(1);
+
+      return ('' + keySubstring).replace(unescapeRegex, function (match) {
+        return unescaperLookup[match];
+      });
+    }
+
+    var KeyEscapeUtils = {
+      escape: escape,
+      unescape: unescape
+    };
+
+    module.exports = KeyEscapeUtils;
+    });
+
+    var require$$3$10 = (KeyEscapeUtils && typeof KeyEscapeUtils === 'object' && 'default' in KeyEscapeUtils ? KeyEscapeUtils['default'] : KeyEscapeUtils);
 
     var traverseAllChildren = __commonjs(function (module) {
     /**
@@ -10585,9 +10581,10 @@
     var ReactCurrentOwner = require$$4$6;
     var ReactElement = require$$1$24;
 
-    var getIteratorFn = require$$2$9;
+    var getIteratorFn = require$$3$7;
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var KeyEscapeUtils = require$$3$10;
+    var warning = require$$0$45;
 
     var SEPARATOR = '.';
     var SUBSEPARATOR = ':';
@@ -10597,18 +10594,7 @@
      * pattern.
      */
 
-    var userProvidedKeyEscaperLookup = {
-      '=': '=0',
-      ':': '=2'
-    };
-
-    var userProvidedKeyEscapeRegex = /[=:]/g;
-
     var didWarnAboutMaps = false;
-
-    function userProvidedKeyEscaper(match) {
-      return userProvidedKeyEscaperLookup[match];
-    }
 
     /**
      * Generate a key string that identifies a component within a set.
@@ -10622,31 +10608,10 @@
       // that we don't block potential future ES APIs.
       if (component && typeof component === 'object' && component.key != null) {
         // Explicit key
-        return wrapUserProvidedKey(component.key);
+        return KeyEscapeUtils.escape(component.key);
       }
       // Implicit key determined by the index in the set
       return index.toString(36);
-    }
-
-    /**
-     * Escape a component key so that it is safe to use in a reactid.
-     *
-     * @param {*} text Component key to be escaped.
-     * @return {string} An escaped string.
-     */
-    function escapeUserProvidedKey(text) {
-      return ('' + text).replace(userProvidedKeyEscapeRegex, userProvidedKeyEscaper);
-    }
-
-    /**
-     * Wrap a `key` value explicitly provided by the user to distinguish it from
-     * implicitly-generated keys generated by a component's index in its parent.
-     *
-     * @param {string} key Value of a user-provided `key` attribute
-     * @return {string}
-     */
-    function wrapUserProvidedKey(key) {
-      return '$' + escapeUserProvidedKey(key);
     }
 
     /**
@@ -10706,7 +10671,7 @@
               var entry = step.value;
               if (entry) {
                 child = entry[1];
-                nextName = nextNamePrefix + wrapUserProvidedKey(entry[0]) + SUBSEPARATOR + getComponentKey(child, 0);
+                nextName = nextNamePrefix + KeyEscapeUtils.escape(entry[0]) + SUBSEPARATOR + getComponentKey(child, 0);
                 subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
               }
             }
@@ -11019,7 +10984,7 @@
     /**
      * Maps children that are typically specified as `props.children`.
      *
-     * The provided mapFunction(child, key, index) will be called for each
+     * The provided mapFunction(child, index) will be called for each
      * leaf child.
      *
      * @param {?*} children Children tree container.
@@ -11072,7 +11037,7 @@
     module.exports = ReactChildren;
     });
 
-    var require$$3$8 = (ReactChildren && typeof ReactChildren === 'object' && 'default' in ReactChildren ? ReactChildren['default'] : ReactChildren);
+    var require$$3$9 = (ReactChildren && typeof ReactChildren === 'object' && 'default' in ReactChildren ? ReactChildren['default'] : ReactChildren);
 
     var React$1 = __commonjs(function (module) {
     /**
@@ -11090,17 +11055,17 @@
 
     var _assign = require$$2$8;
 
-    var ReactChildren = require$$3$8;
+    var ReactChildren = require$$3$9;
     var ReactComponent = require$$9$3;
-    var ReactClass = require$$5$3;
+    var ReactClass = require$$5$4;
     var ReactDOMFactories = require$$6$3;
     var ReactElement = require$$1$24;
     var ReactElementValidator = require$$1$25;
     var ReactPropTypes = require$$3$6;
-    var ReactVersion = require$$5$2;
+    var ReactVersion = require$$5$3;
 
     var onlyChild = require$$1$22;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var createElement = ReactElement.createElement;
     var createFactory = ReactElement.createFactory;
@@ -11164,42 +11129,18 @@
     module.exports = React;
     });
 
-    var require$$0$45 = (React$1 && typeof React$1 === 'object' && 'default' in React$1 ? React$1['default'] : React$1);
+    var require$$0$44 = (React$1 && typeof React$1 === 'object' && 'default' in React$1 ? React$1['default'] : React$1);
 
     var react = __commonjs(function (module) {
     'use strict';
 
-    module.exports = require$$0$45;
+    module.exports = require$$0$44;
     });
 
     var React = (react && typeof react === 'object' && 'default' in react ? react['default'] : react);
     var Component = react.Component;
     var PropTypes = react.PropTypes;
     var Children = react.Children;
-
-    var pageShape = PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-      index: PropTypes.number,
-      path: PropTypes.string,
-      src: PropTypes.string,
-      pages: PropTypes.array, // should be arrayOf(page) but that doesn't work
-      styles: PropTypes.array.isRequired,
-      scripts: PropTypes.array.isRequired,
-      imports: PropTypes.object.isRequired
-    });
-
-    var pagesShape = PropTypes.arrayOf(pageShape);
-
-    var catalogShape = PropTypes.shape({
-      page: pageShape.isRequired,
-      getSpecimen: PropTypes.func.isRequired,
-      theme: PropTypes.object.isRequired,
-      title: PropTypes.string.isRequired,
-      pages: pagesShape.isRequired,
-      pageTree: pagesShape.isRequired,
-      logoSrc: PropTypes.string
-    });
 
     // Base styles
 
@@ -11444,7 +11385,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$53 = (visitedPlugin && typeof visitedPlugin === 'object' && 'default' in visitedPlugin ? visitedPlugin['default'] : visitedPlugin);
+    var require$$0$52 = (visitedPlugin && typeof visitedPlugin === 'object' && 'default' in visitedPlugin ? visitedPlugin['default'] : visitedPlugin);
 
     var resolveMediaQueriesPlugin = __commonjs(function (module, exports) {
     'use strict';
@@ -11674,7 +11615,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$54 = (mouseUpListener && typeof mouseUpListener === 'object' && 'default' in mouseUpListener ? mouseUpListener['default'] : mouseUpListener);
+    var require$$0$53 = (mouseUpListener && typeof mouseUpListener === 'object' && 'default' in mouseUpListener ? mouseUpListener['default'] : mouseUpListener);
 
     var resolveInteractionStylesPlugin = __commonjs(function (module, exports) {
     'use strict';
@@ -11683,7 +11624,7 @@
       value: true
     });
 
-    var _mouseUpListener = require$$0$54;
+    var _mouseUpListener = require$$0$53;
 
     var _mouseUpListener2 = _interopRequireDefault(_mouseUpListener);
 
@@ -11807,7 +11748,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$12 = (resolveInteractionStylesPlugin && typeof resolveInteractionStylesPlugin === 'object' && 'default' in resolveInteractionStylesPlugin ? resolveInteractionStylesPlugin['default'] : resolveInteractionStylesPlugin);
+    var require$$2$11 = (resolveInteractionStylesPlugin && typeof resolveInteractionStylesPlugin === 'object' && 'default' in resolveInteractionStylesPlugin ? resolveInteractionStylesPlugin['default'] : resolveInteractionStylesPlugin);
 
     var camelToDashCase = __commonjs(function (module, exports) {
     /**
@@ -11829,7 +11770,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$58 = (camelToDashCase && typeof camelToDashCase === 'object' && 'default' in camelToDashCase ? camelToDashCase['default'] : camelToDashCase);
+    var require$$0$57 = (camelToDashCase && typeof camelToDashCase === 'object' && 'default' in camelToDashCase ? camelToDashCase['default'] : camelToDashCase);
 
     var flexboxOld = __commonjs(function (module, exports) {
     'use strict';
@@ -11843,7 +11784,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -11905,7 +11846,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$57 = (flexboxOld && typeof flexboxOld === 'object' && 'default' in flexboxOld ? flexboxOld['default'] : flexboxOld);
+    var require$$0$56 = (flexboxOld && typeof flexboxOld === 'object' && 'default' in flexboxOld ? flexboxOld['default'] : flexboxOld);
 
     var flexboxIE = __commonjs(function (module, exports) {
     'use strict';
@@ -11919,7 +11860,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -11992,7 +11933,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$59 = (unprefixProperty && typeof unprefixProperty === 'object' && 'default' in unprefixProperty ? unprefixProperty['default'] : unprefixProperty);
+    var require$$0$58 = (unprefixProperty && typeof unprefixProperty === 'object' && 'default' in unprefixProperty ? unprefixProperty['default'] : unprefixProperty);
 
     var capitalizeString = __commonjs(function (module, exports) {
     // helper to capitalize strings
@@ -12023,7 +11964,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12031,7 +11972,7 @@
 
     var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 
-    var _utilsUnprefixProperty = require$$0$59;
+    var _utilsUnprefixProperty = require$$0$58;
 
     var _utilsUnprefixProperty2 = _interopRequireDefault(_utilsUnprefixProperty);
 
@@ -12078,7 +12019,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$13 = (transition && typeof transition === 'object' && 'default' in transition ? transition['default'] : transition);
+    var require$$2$12 = (transition && typeof transition === 'object' && 'default' in transition ? transition['default'] : transition);
 
     var gradient = __commonjs(function (module, exports) {
     'use strict';
@@ -12092,7 +12033,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12115,7 +12056,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$3$10 = (gradient && typeof gradient === 'object' && 'default' in gradient ? gradient['default'] : gradient);
+    var require$$3$12 = (gradient && typeof gradient === 'object' && 'default' in gradient ? gradient['default'] : gradient);
 
     var sizing = __commonjs(function (module, exports) {
     'use strict';
@@ -12129,7 +12070,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12178,7 +12119,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12206,7 +12147,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$5$5 = (flex && typeof flex === 'object' && 'default' in flex ? flex['default'] : flex);
+    var require$$5$6 = (flex && typeof flex === 'object' && 'default' in flex ? flex['default'] : flex);
 
     var cursor = __commonjs(function (module, exports) {
     'use strict';
@@ -12218,7 +12159,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12262,7 +12203,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$58;
+    var _utilsCamelToDashCase = require$$0$57;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12283,7 +12224,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$7$3 = (calc && typeof calc === 'object' && 'default' in calc ? calc['default'] : calc);
+    var require$$7$2 = (calc && typeof calc === 'object' && 'default' in calc ? calc['default'] : calc);
 
     var prefixProps = __commonjs(function (module, exports) {
     "use strict";
@@ -12342,7 +12283,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$11$1 = (getPrefixedKeyframes$1 && typeof getPrefixedKeyframes$1 === 'object' && 'default' in getPrefixedKeyframes$1 ? getPrefixedKeyframes$1['default'] : getPrefixedKeyframes$1);
+    var require$$11 = (getPrefixedKeyframes$1 && typeof getPrefixedKeyframes$1 === 'object' && 'default' in getPrefixedKeyframes$1 ? getPrefixedKeyframes$1['default'] : getPrefixedKeyframes$1);
 
     var bowser = __commonjs(function (module) {
     /*!
@@ -12638,7 +12579,7 @@
     });
     });
 
-    var require$$0$60 = (bowser && typeof bowser === 'object' && 'default' in bowser ? bowser['default'] : bowser);
+    var require$$0$59 = (bowser && typeof bowser === 'object' && 'default' in bowser ? bowser['default'] : bowser);
 
     var getBrowserInformation = __commonjs(function (module, exports) {
     'use strict';
@@ -12649,7 +12590,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _bowser = require$$0$60;
+    var _bowser = require$$0$59;
 
     var _bowser2 = _interopRequireDefault(_bowser);
 
@@ -12736,7 +12677,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$12 = (getBrowserInformation && typeof getBrowserInformation === 'object' && 'default' in getBrowserInformation ? getBrowserInformation['default'] : getBrowserInformation);
+    var require$$12$1 = (getBrowserInformation && typeof getBrowserInformation === 'object' && 'default' in getBrowserInformation ? getBrowserInformation['default'] : getBrowserInformation);
 
     var camelToDashCase$1 = __commonjs(function (module, exports) {
     /**
@@ -12758,7 +12699,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$62 = (camelToDashCase$1 && typeof camelToDashCase$1 === 'object' && 'default' in camelToDashCase$1 ? camelToDashCase$1['default'] : camelToDashCase$1);
+    var require$$0$61 = (camelToDashCase$1 && typeof camelToDashCase$1 === 'object' && 'default' in camelToDashCase$1 ? camelToDashCase$1['default'] : camelToDashCase$1);
 
     var flexboxOld$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -12772,7 +12713,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$62;
+    var _utilsCamelToDashCase = require$$0$61;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -12806,7 +12747,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$61 = (flexboxOld$1 && typeof flexboxOld$1 === 'object' && 'default' in flexboxOld$1 ? flexboxOld$1['default'] : flexboxOld$1);
+    var require$$0$60 = (flexboxOld$1 && typeof flexboxOld$1 === 'object' && 'default' in flexboxOld$1 ? flexboxOld$1['default'] : flexboxOld$1);
 
     var flexboxIE$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -12856,7 +12797,7 @@
     module.exports = exports["default"];
     });
 
-    var require$$0$63 = (prefixProps$1 && typeof prefixProps$1 === 'object' && 'default' in prefixProps$1 ? prefixProps$1['default'] : prefixProps$1);
+    var require$$0$62 = (prefixProps$1 && typeof prefixProps$1 === 'object' && 'default' in prefixProps$1 ? prefixProps$1['default'] : prefixProps$1);
 
     var unprefixProperty$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -12890,7 +12831,7 @@
     module.exports = exports["default"];
     });
 
-    var require$$2$15 = (capitalizeString$1 && typeof capitalizeString$1 === 'object' && 'default' in capitalizeString$1 ? capitalizeString$1['default'] : capitalizeString$1);
+    var require$$2$14 = (capitalizeString$1 && typeof capitalizeString$1 === 'object' && 'default' in capitalizeString$1 ? capitalizeString$1['default'] : capitalizeString$1);
 
     var transition$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -12904,11 +12845,11 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _utilsCamelToDashCase = require$$0$62;
+    var _utilsCamelToDashCase = require$$0$61;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
-    var _utilsCapitalizeString = require$$2$15;
+    var _utilsCapitalizeString = require$$2$14;
 
     var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 
@@ -12916,7 +12857,7 @@
 
     var _utilsUnprefixProperty2 = _interopRequireDefault(_utilsUnprefixProperty);
 
-    var _prefixProps = require$$0$63;
+    var _prefixProps = require$$0$62;
 
     var _prefixProps2 = _interopRequireDefault(_prefixProps);
 
@@ -12971,7 +12912,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$14 = (transition$1 && typeof transition$1 === 'object' && 'default' in transition$1 ? transition$1['default'] : transition$1);
+    var require$$2$13 = (transition$1 && typeof transition$1 === 'object' && 'default' in transition$1 ? transition$1['default'] : transition$1);
 
     var joinPrefixedRules = __commonjs(function (module, exports) {
     'use strict';
@@ -12984,7 +12925,7 @@
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    var _camelToDashCase = require$$0$62;
+    var _camelToDashCase = require$$0$61;
 
     var _camelToDashCase2 = _interopRequireDefault(_camelToDashCase);
 
@@ -13004,7 +12945,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$64 = (joinPrefixedRules && typeof joinPrefixedRules === 'object' && 'default' in joinPrefixedRules ? joinPrefixedRules['default'] : joinPrefixedRules);
+    var require$$0$63 = (joinPrefixedRules && typeof joinPrefixedRules === 'object' && 'default' in joinPrefixedRules ? joinPrefixedRules['default'] : joinPrefixedRules);
 
     var gradient$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -13016,7 +12957,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsJoinPrefixedRules = require$$0$64;
+    var _utilsJoinPrefixedRules = require$$0$63;
 
     var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 
@@ -13031,7 +12972,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$3$11 = (gradient$1 && typeof gradient$1 === 'object' && 'default' in gradient$1 ? gradient$1['default'] : gradient$1);
+    var require$$3$13 = (gradient$1 && typeof gradient$1 === 'object' && 'default' in gradient$1 ? gradient$1['default'] : gradient$1);
 
     var sizing$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -13043,7 +12984,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsJoinPrefixedRules = require$$0$64;
+    var _utilsJoinPrefixedRules = require$$0$63;
 
     var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 
@@ -13085,7 +13026,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsCamelToDashCase = require$$0$62;
+    var _utilsCamelToDashCase = require$$0$61;
 
     var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 
@@ -13105,7 +13046,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$5$6 = (flex$1 && typeof flex$1 === 'object' && 'default' in flex$1 ? flex$1['default'] : flex$1);
+    var require$$5$7 = (flex$1 && typeof flex$1 === 'object' && 'default' in flex$1 ? flex$1['default'] : flex$1);
 
     var cursor$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -13117,7 +13058,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsJoinPrefixedRules = require$$0$64;
+    var _utilsJoinPrefixedRules = require$$0$63;
 
     var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 
@@ -13149,7 +13090,7 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _utilsJoinPrefixedRules = require$$0$64;
+    var _utilsJoinPrefixedRules = require$$0$63;
 
     var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 
@@ -13164,7 +13105,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$7$4 = (calc$1 && typeof calc$1 === 'object' && 'default' in calc$1 ? calc$1['default'] : calc$1);
+    var require$$7$3 = (calc$1 && typeof calc$1 === 'object' && 'default' in calc$1 ? calc$1['default'] : calc$1);
 
     var assign$1 = __commonjs(function (module, exports) {
     // leight polyfill for Object.assign
@@ -13197,11 +13138,11 @@
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-    var _prefixProps = require$$0$63;
+    var _prefixProps = require$$0$62;
 
     var _prefixProps2 = _interopRequireDefault(_prefixProps);
 
-    var _utilsCapitalizeString = require$$2$15;
+    var _utilsCapitalizeString = require$$2$14;
 
     var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 
@@ -13209,7 +13150,7 @@
 
     var _utilsAssign2 = _interopRequireDefault(_utilsAssign);
 
-    var _pluginsCalc = require$$7$4;
+    var _pluginsCalc = require$$7$3;
 
     var _pluginsCalc2 = _interopRequireDefault(_pluginsCalc);
 
@@ -13217,7 +13158,7 @@
 
     var _pluginsCursor2 = _interopRequireDefault(_pluginsCursor);
 
-    var _pluginsFlex = require$$5$6;
+    var _pluginsFlex = require$$5$7;
 
     var _pluginsFlex2 = _interopRequireDefault(_pluginsFlex);
 
@@ -13225,11 +13166,11 @@
 
     var _pluginsSizing2 = _interopRequireDefault(_pluginsSizing);
 
-    var _pluginsGradient = require$$3$11;
+    var _pluginsGradient = require$$3$13;
 
     var _pluginsGradient2 = _interopRequireDefault(_pluginsGradient);
 
-    var _pluginsTransition = require$$2$14;
+    var _pluginsTransition = require$$2$13;
 
     var _pluginsTransition2 = _interopRequireDefault(_pluginsTransition);
 
@@ -13239,7 +13180,7 @@
 
     var _pluginsFlexboxIE2 = _interopRequireDefault(_pluginsFlexboxIE);
 
-    var _pluginsFlexboxOld = require$$0$61;
+    var _pluginsFlexboxOld = require$$0$60;
 
     var _pluginsFlexboxOld2 = _interopRequireDefault(_pluginsFlexboxOld);
 
@@ -13298,11 +13239,11 @@
 
     var _inlineStylePrefixAll2 = _interopRequireDefault(_inlineStylePrefixAll);
 
-    var _utilsGetBrowserInformation = require$$12;
+    var _utilsGetBrowserInformation = require$$12$1;
 
     var _utilsGetBrowserInformation2 = _interopRequireDefault(_utilsGetBrowserInformation);
 
-    var _utilsGetPrefixedKeyframes = require$$11$1;
+    var _utilsGetPrefixedKeyframes = require$$11;
 
     var _utilsGetPrefixedKeyframes2 = _interopRequireDefault(_utilsGetPrefixedKeyframes);
 
@@ -13318,7 +13259,7 @@
 
     var _prefixProps2 = _interopRequireDefault(_prefixProps);
 
-    var _pluginsCalc = require$$7$3;
+    var _pluginsCalc = require$$7$2;
 
     var _pluginsCalc2 = _interopRequireDefault(_pluginsCalc);
 
@@ -13326,7 +13267,7 @@
 
     var _pluginsCursor2 = _interopRequireDefault(_pluginsCursor);
 
-    var _pluginsFlex = require$$5$5;
+    var _pluginsFlex = require$$5$6;
 
     var _pluginsFlex2 = _interopRequireDefault(_pluginsFlex);
 
@@ -13334,11 +13275,11 @@
 
     var _pluginsSizing2 = _interopRequireDefault(_pluginsSizing);
 
-    var _pluginsGradient = require$$3$10;
+    var _pluginsGradient = require$$3$12;
 
     var _pluginsGradient2 = _interopRequireDefault(_pluginsGradient);
 
-    var _pluginsTransition = require$$2$13;
+    var _pluginsTransition = require$$2$12;
 
     var _pluginsTransition2 = _interopRequireDefault(_pluginsTransition);
 
@@ -13348,7 +13289,7 @@
 
     var _pluginsFlexboxIE2 = _interopRequireDefault(_pluginsFlexboxIE);
 
-    var _pluginsFlexboxOld = require$$0$57;
+    var _pluginsFlexboxOld = require$$0$56;
 
     var _pluginsFlexboxOld2 = _interopRequireDefault(_pluginsFlexboxOld);
 
@@ -13482,7 +13423,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$56 = (Prefixer && typeof Prefixer === 'object' && 'default' in Prefixer ? Prefixer['default'] : Prefixer);
+    var require$$0$55 = (Prefixer && typeof Prefixer === 'object' && 'default' in Prefixer ? Prefixer['default'] : Prefixer);
 
     var prefixer = __commonjs(function (module, exports, global) {
     'use strict';
@@ -13501,7 +13442,7 @@
     exports.getPrefixedKeyframes = getPrefixedKeyframes;
     exports.getPrefixedStyle = getPrefixedStyle;
 
-    var _inlineStylePrefixer = require$$0$56;
+    var _inlineStylePrefixer = require$$0$55;
 
     var _inlineStylePrefixer2 = _interopRequireDefault(_inlineStylePrefixer);
 
@@ -13565,7 +13506,7 @@
     }
     });
 
-    var require$$0$55 = (prefixer && typeof prefixer === 'object' && 'default' in prefixer ? prefixer['default'] : prefixer);
+    var require$$0$54 = (prefixer && typeof prefixer === 'object' && 'default' in prefixer ? prefixer['default'] : prefixer);
 
     var prefixPlugin = __commonjs(function (module, exports) {
     'use strict';
@@ -13575,7 +13516,7 @@
     });
     exports.default = prefixPlugin;
 
-    var _prefixer = require$$0$55;
+    var _prefixer = require$$0$54;
 
     function prefixPlugin(_ref // eslint-disable-line no-shadow
     ) {
@@ -13588,7 +13529,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$3$9 = (prefixPlugin && typeof prefixPlugin === 'object' && 'default' in prefixPlugin ? prefixPlugin['default'] : prefixPlugin);
+    var require$$3$11 = (prefixPlugin && typeof prefixPlugin === 'object' && 'default' in prefixPlugin ? prefixPlugin['default'] : prefixPlugin);
 
     var mergeStyleArrayPlugin = __commonjs(function (module, exports) {
     'use strict';
@@ -13649,7 +13590,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$5$7 = (keyframesPlugin && typeof keyframesPlugin === 'object' && 'default' in keyframesPlugin ? keyframesPlugin['default'] : keyframesPlugin);
+    var require$$5$8 = (keyframesPlugin && typeof keyframesPlugin === 'object' && 'default' in keyframesPlugin ? keyframesPlugin['default'] : keyframesPlugin);
 
     var checkPropsPlugin = __commonjs(function (module, exports) {
     'use strict';
@@ -13728,7 +13669,7 @@
 
     var _checkPropsPlugin2 = _interopRequireDefault(_checkPropsPlugin);
 
-    var _keyframesPlugin = require$$5$7;
+    var _keyframesPlugin = require$$5$8;
 
     var _keyframesPlugin2 = _interopRequireDefault(_keyframesPlugin);
 
@@ -13736,11 +13677,11 @@
 
     var _mergeStyleArrayPlugin2 = _interopRequireDefault(_mergeStyleArrayPlugin);
 
-    var _prefixPlugin = require$$3$9;
+    var _prefixPlugin = require$$3$11;
 
     var _prefixPlugin2 = _interopRequireDefault(_prefixPlugin);
 
-    var _resolveInteractionStylesPlugin = require$$2$12;
+    var _resolveInteractionStylesPlugin = require$$2$11;
 
     var _resolveInteractionStylesPlugin2 = _interopRequireDefault(_resolveInteractionStylesPlugin);
 
@@ -13748,7 +13689,7 @@
 
     var _resolveMediaQueriesPlugin2 = _interopRequireDefault(_resolveMediaQueriesPlugin);
 
-    var _visitedPlugin = require$$0$53;
+    var _visitedPlugin = require$$0$52;
 
     var _visitedPlugin2 = _interopRequireDefault(_visitedPlugin);
 
@@ -13768,7 +13709,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$11 = (index$5 && typeof index$5 === 'object' && 'default' in index$5 ? index$5['default'] : index$5);
+    var require$$2$10 = (index$5 && typeof index$5 === 'object' && 'default' in index$5 ? index$5['default'] : index$5);
 
     var mergeStyles = __commonjs(function (module, exports) {
     'use strict';
@@ -13832,7 +13773,7 @@
     }
     });
 
-    var require$$3$12 = (mergeStyles && typeof mergeStyles === 'object' && 'default' in mergeStyles ? mergeStyles['default'] : mergeStyles);
+    var require$$3$14 = (mergeStyles && typeof mergeStyles === 'object' && 'default' in mergeStyles ? mergeStyles['default'] : mergeStyles);
     var mergeStyles = mergeStyles.mergeStyles;
 
     var hash = __commonjs(function (module, exports) {
@@ -13883,7 +13824,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$65 = (getStateKey && typeof getStateKey === 'object' && 'default' in getStateKey ? getStateKey['default'] : getStateKey);
+    var require$$0$64 = (getStateKey && typeof getStateKey === 'object' && 'default' in getStateKey ? getStateKey['default'] : getStateKey);
 
     var getState = __commonjs(function (module, exports) {
     'use strict';
@@ -13892,7 +13833,7 @@
       value: true
     });
 
-    var _getStateKey = require$$0$65;
+    var _getStateKey = require$$0$64;
 
     var _getStateKey2 = _interopRequireDefault(_getStateKey);
 
@@ -13926,7 +13867,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$66 = (mapObject$1 && typeof mapObject$1 === 'object' && 'default' in mapObject$1 ? mapObject$1['default'] : mapObject$1);
+    var require$$0$65 = (mapObject$1 && typeof mapObject$1 === 'object' && 'default' in mapObject$1 ? mapObject$1['default'] : mapObject$1);
 
     var camelCasePropsToDashCase = __commonjs(function (module, exports) {
     'use strict';
@@ -13966,7 +13907,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$16 = (camelCasePropsToDashCase && typeof camelCasePropsToDashCase === 'object' && 'default' in camelCasePropsToDashCase ? camelCasePropsToDashCase['default'] : camelCasePropsToDashCase);
+    var require$$2$15 = (camelCasePropsToDashCase && typeof camelCasePropsToDashCase === 'object' && 'default' in camelCasePropsToDashCase ? camelCasePropsToDashCase['default'] : camelCasePropsToDashCase);
 
     var appendPxIfNeeded = __commonjs(function (module, exports) {
     'use strict';
@@ -14034,15 +13975,15 @@
 
     var _appendPxIfNeeded2 = _interopRequireDefault(_appendPxIfNeeded);
 
-    var _camelCasePropsToDashCase = require$$2$16;
+    var _camelCasePropsToDashCase = require$$2$15;
 
     var _camelCasePropsToDashCase2 = _interopRequireDefault(_camelCasePropsToDashCase);
 
-    var _mapObject = require$$0$66;
+    var _mapObject = require$$0$65;
 
     var _mapObject2 = _interopRequireDefault(_mapObject);
 
-    var _prefixer = require$$0$55;
+    var _prefixer = require$$0$54;
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14083,7 +14024,7 @@
 
     var _appendPxIfNeeded2 = _interopRequireDefault(_appendPxIfNeeded);
 
-    var _mapObject = require$$0$66;
+    var _mapObject = require$$0$65;
 
     var _mapObject2 = _interopRequireDefault(_mapObject);
 
@@ -14122,7 +14063,7 @@
 
     var _getState2 = _interopRequireDefault(_getState);
 
-    var _getStateKey = require$$0$65;
+    var _getStateKey = require$$0$64;
 
     var _getStateKey2 = _interopRequireDefault(_getStateKey);
 
@@ -14130,9 +14071,9 @@
 
     var _hash2 = _interopRequireDefault(_hash);
 
-    var _mergeStyles = require$$3$12;
+    var _mergeStyles = require$$3$14;
 
-    var _plugins = require$$2$11;
+    var _plugins = require$$2$10;
 
     var _plugins2 = _interopRequireDefault(_plugins);
 
@@ -14459,7 +14400,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$52 = (resolveStyles && typeof resolveStyles === 'object' && 'default' in resolveStyles ? resolveStyles['default'] : resolveStyles);
+    var require$$0$51 = (resolveStyles && typeof resolveStyles === 'object' && 'default' in resolveStyles ? resolveStyles['default'] : resolveStyles);
 
     var keyframes = __commonjs(function (module, exports) {
     'use strict';
@@ -14477,7 +14418,7 @@
 
     var _hash2 = _interopRequireDefault(_hash);
 
-    var _prefixer = require$$0$55;
+    var _prefixer = require$$0$54;
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14649,7 +14590,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$0$67 = (styleSheet && typeof styleSheet === 'object' && 'default' in styleSheet ? styleSheet['default'] : styleSheet);
+    var require$$0$66 = (styleSheet && typeof styleSheet === 'object' && 'default' in styleSheet ? styleSheet['default'] : styleSheet);
 
     var enhancer = __commonjs(function (module, exports) {
     'use strict';
@@ -14670,7 +14611,7 @@
 
     var _styleKeeper2 = _interopRequireDefault(_styleKeeper);
 
-    var _resolveStyles = require$$0$52;
+    var _resolveStyles = require$$0$51;
 
     var _resolveStyles2 = _interopRequireDefault(_resolveStyles);
 
@@ -14833,7 +14774,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$17 = (enhancer && typeof enhancer === 'object' && 'default' in enhancer ? enhancer['default'] : enhancer);
+    var require$$2$16 = (enhancer && typeof enhancer === 'object' && 'default' in enhancer ? enhancer['default'] : enhancer);
 
     var styleRoot = __commonjs(function (module, exports) {
     'use strict';
@@ -14846,7 +14787,7 @@
 
     var _react2 = _interopRequireDefault(_react);
 
-    var _enhancer = require$$2$17;
+    var _enhancer = require$$2$16;
 
     var _enhancer2 = _interopRequireDefault(_enhancer);
 
@@ -14854,7 +14795,7 @@
 
     var _styleKeeper2 = _interopRequireDefault(_styleKeeper);
 
-    var _styleSheet = require$$0$67;
+    var _styleSheet = require$$0$66;
 
     var _styleSheet2 = _interopRequireDefault(_styleSheet);
 
@@ -14918,7 +14859,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$3$13 = (styleRoot && typeof styleRoot === 'object' && 'default' in styleRoot ? styleRoot['default'] : styleRoot);
+    var require$$3$15 = (styleRoot && typeof styleRoot === 'object' && 'default' in styleRoot ? styleRoot['default'] : styleRoot);
 
     var style = __commonjs(function (module, exports) {
     'use strict';
@@ -15024,11 +14965,11 @@
       value: true
     });
 
-    var _enhancer = require$$2$17;
+    var _enhancer = require$$2$16;
 
     var _enhancer2 = _interopRequireDefault(_enhancer);
 
-    var _plugins = require$$2$11;
+    var _plugins = require$$2$10;
 
     var _plugins2 = _interopRequireDefault(_plugins);
 
@@ -15036,7 +14977,7 @@
 
     var _style2 = _interopRequireDefault(_style);
 
-    var _styleRoot = require$$3$13;
+    var _styleRoot = require$$3$15;
 
     var _styleRoot2 = _interopRequireDefault(_styleRoot);
 
@@ -15048,7 +14989,7 @@
 
     var _keyframes2 = _interopRequireDefault(_keyframes);
 
-    var _resolveStyles = require$$0$52;
+    var _resolveStyles = require$$0$51;
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24005,33 +23946,21 @@
       return parsedBody || rawBody;
     };
 
-    var INITIAL_SEPARATOR = '---\n';
-    var SEPARATOR = '\n---\n';
-    var splitText = function splitText(text) {
-      if (text.indexOf(INITIAL_SEPARATOR) === 0) {
-        return [void 0, text.slice(4)];
-      }
-      var i = text.indexOf(SEPARATOR);
-      return i > -1 ? [text.slice(0, i), text.slice(i + 5)] : [void 0, text];
+    var isUndefined = function isUndefined(d) {
+      return d === void 0;
     };
 
-    var parseYaml = function parseYaml(str) {
-      var parsed = void 0;
-      try {
-        parsed = yaml.safeLoad(str, yamlOptions);
-      } catch (e) {
-        parsed = void 0;
+    var C_DASH = '-';
+    var C_NEWLINE = '\n';
+
+    var split = function split(text) {
+      var i = -1;
+      while (++i < text.length) {
+        if (text.charAt(i) === C_DASH && text.charAt(i + 1) === C_DASH && text.charAt(i + 2) === C_DASH && text.charAt(i + 3) === C_NEWLINE) {
+          return [text.slice(0, i), text.slice(i + 4)];
+        }
       }
-      return typeof parsed === 'string' ? void 0 : parsed;
-    };
-
-    var parseSpecimenYamlBody = function parseSpecimenYamlBody(_mapBodyToProps) {
-      return function () {
-        var body = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-
-        var mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
-        return mapBodyToProps(parseYaml(body), body);
-      };
+      return [text];
     };
 
     var parseSpecimenBody = function parseSpecimenBody(_mapBodyToProps) {
@@ -24039,26 +23968,34 @@
         var body = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
 
         var mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
-        var splitBody = splitText(body);
 
-        var _splitBody = babelHelpers.slicedToArray(splitBody, 2);
+        var _split = split(body);
 
-        var props = _splitBody[0];
-        var children = _splitBody[1];
+        var _split2 = babelHelpers.slicedToArray(_split, 2);
 
-        return mapBodyToProps(babelHelpers.extends({}, parseYaml(props), { children: children }), body);
+        var props = _split2[0];
+        var children = _split2[1];
+
+        var parsed = void 0;
+        try {
+          parsed = yaml.safeLoad(props, yamlOptions);
+        } catch (e) {
+          parsed = body;
+        }
+
+        return typeof parsed === 'string' ? mapBodyToProps({ children: body }, body) : Array.isArray(parsed) ? parsed.map(function (p) {
+          return mapBodyToProps(isUndefined(children) ? p : babelHelpers.extends({}, p, { children: children }), body);
+        }) : mapBodyToProps(isUndefined(children) ? parsed : babelHelpers.extends({}, parsed, { children: children }), body);
       };
     };
 
     function Specimen(mapBodyToProps, mapOptionsToProps) {
-      var options = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
-
       var parseOptions = parseSpecimenOptions(mapOptionsToProps);
-      var parseBody = options.withChildren ? parseSpecimenBody(mapBodyToProps) : parseSpecimenYamlBody(mapBodyToProps);
+      var parseBody = parseSpecimenBody(mapBodyToProps);
 
       return function (WrappedSpecimen) {
         var SpecimenContainer = function SpecimenContainer(props, _ref) {
-          var catalog = _ref.catalog;
+          var theme = _ref.theme;
           var rawOptions = props.rawOptions;
           var rawBody = props.rawBody;
 
@@ -24066,10 +24003,24 @@
           var bodyProps = parseBody(rawBody);
           var span = props.span || bodyProps.span || optionProps.span;
 
+          if (Array.isArray(bodyProps)) {
+            return React.createElement(
+              Span$1,
+              { span: span },
+              bodyProps.map(function (specimenProps, i) {
+                return React.createElement(
+                  Span$1,
+                  { key: i, span: specimenProps.span },
+                  React.createElement(WrappedSpecimen, babelHelpers.extends({}, optionProps, specimenProps, props, { theme: theme }))
+                );
+              })
+            );
+          }
+
           return React.createElement(
             Span$1,
             { span: span },
-            React.createElement(WrappedSpecimen, babelHelpers.extends({}, optionProps, bodyProps, props, { catalog: catalog }))
+            React.createElement(WrappedSpecimen, babelHelpers.extends({}, optionProps, bodyProps, props, { theme: theme }))
           );
         };
 
@@ -24080,7 +24031,7 @@
         };
 
         SpecimenContainer.contextTypes = {
-          catalog: catalogShape.isRequired
+          theme: PropTypes.object.isRequired
         };
 
         return SpecimenContainer;
@@ -25092,7 +25043,7 @@
           var _this2 = this;
 
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var children = _props.children;
           var rawBody = _props.rawBody;
           var collapsed = _props.collapsed;
@@ -25126,7 +25077,7 @@
     Code.propTypes = {
       children: PropTypes.string.isRequired,
       rawBody: PropTypes.string.isRequired,
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       collapsed: PropTypes.bool,
       lang: PropTypes.string,
       raw: PropTypes.bool
@@ -25140,7 +25091,7 @@
       return babelHelpers.extends({}, parsed, { rawBody: rawBody });
     };
 
-    var Code$1 = Specimen(mapBodyToProps, mapOptionsToProps, { withChildren: true })(Radium(Code));
+    var Code$1 = Specimen(mapBodyToProps, mapOptionsToProps)(Radium(Code));
 
     var RawCode = function RawCode(props) {
       return React.createElement(Code$1, babelHelpers.extends({}, props, { raw: true }));
@@ -25163,7 +25114,7 @@
           var loop = _props.loop;
           var autoplay = _props.autoplay;
           var span = _props.span;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
 
 
           var styles = {
@@ -25199,7 +25150,7 @@
     }(React.Component);
 
     Audio.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       src: PropTypes.string.isRequired,
       title: PropTypes.string,
       loop: PropTypes.bool,
@@ -25225,7 +25176,7 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var value = _props.value;
           var name = _props.name;
 
@@ -25261,7 +25212,7 @@
     }(React.Component);
 
     Color.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       value: PropTypes.string.isRequired,
       name: PropTypes.string
     };
@@ -25301,7 +25252,7 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var colors = _props.colors;
           var horizontal = _props.horizontal;
 
@@ -25380,7 +25331,7 @@
     }(React.Component);
 
     ColorPalette.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       colors: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
         value: PropTypes.string.isRequired
@@ -25479,7 +25430,7 @@
     module.exports = shouldUpdateReactComponent;
     });
 
-    var require$$2$19 = (shouldUpdateReactComponent && typeof shouldUpdateReactComponent === 'object' && 'default' in shouldUpdateReactComponent ? shouldUpdateReactComponent['default'] : shouldUpdateReactComponent);
+    var require$$2$18 = (shouldUpdateReactComponent && typeof shouldUpdateReactComponent === 'object' && 'default' in shouldUpdateReactComponent ? shouldUpdateReactComponent['default'] : shouldUpdateReactComponent);
 
     var createMicrosoftUnsafeLocalFunction = __commonjs(function (module) {
     /**
@@ -25516,7 +25467,7 @@
     module.exports = createMicrosoftUnsafeLocalFunction;
     });
 
-    var require$$2$20 = (createMicrosoftUnsafeLocalFunction && typeof createMicrosoftUnsafeLocalFunction === 'object' && 'default' in createMicrosoftUnsafeLocalFunction ? createMicrosoftUnsafeLocalFunction['default'] : createMicrosoftUnsafeLocalFunction);
+    var require$$2$19 = (createMicrosoftUnsafeLocalFunction && typeof createMicrosoftUnsafeLocalFunction === 'object' && 'default' in createMicrosoftUnsafeLocalFunction ? createMicrosoftUnsafeLocalFunction['default'] : createMicrosoftUnsafeLocalFunction);
 
     var setInnerHTML = __commonjs(function (module) {
     /**
@@ -25537,7 +25488,7 @@
     var WHITESPACE_TEST = /^[ \r\n\t\f]/;
     var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 
-    var createMicrosoftUnsafeLocalFunction = require$$2$20;
+    var createMicrosoftUnsafeLocalFunction = require$$2$19;
 
     /**
      * Set the innerHTML property of a node, ensuring that whitespace is preserved
@@ -25703,7 +25654,7 @@
     module.exports = ReactNativeComponent;
     });
 
-    var require$$2$21 = (ReactNativeComponent && typeof ReactNativeComponent === 'object' && 'default' in ReactNativeComponent ? ReactNativeComponent['default'] : ReactNativeComponent);
+    var require$$2$20 = (ReactNativeComponent && typeof ReactNativeComponent === 'object' && 'default' in ReactNativeComponent ? ReactNativeComponent['default'] : ReactNativeComponent);
 
     var ReactEmptyComponent = __commonjs(function (module) {
     /**
@@ -25738,7 +25689,7 @@
     module.exports = ReactEmptyComponent;
     });
 
-    var require$$4$12 = (ReactEmptyComponent && typeof ReactEmptyComponent === 'object' && 'default' in ReactEmptyComponent ? ReactEmptyComponent['default'] : ReactEmptyComponent);
+    var require$$4$13 = (ReactEmptyComponent && typeof ReactEmptyComponent === 'object' && 'default' in ReactEmptyComponent ? ReactEmptyComponent['default'] : ReactEmptyComponent);
 
     var Transaction = __commonjs(function (module) {
     /**
@@ -26071,7 +26022,7 @@
     module.exports = ReactOwner;
     });
 
-    var require$$0$69 = (ReactOwner && typeof ReactOwner === 'object' && 'default' in ReactOwner ? ReactOwner['default'] : ReactOwner);
+    var require$$0$68 = (ReactOwner && typeof ReactOwner === 'object' && 'default' in ReactOwner ? ReactOwner['default'] : ReactOwner);
 
     var ReactRef = __commonjs(function (module) {
     /**
@@ -26087,7 +26038,7 @@
 
     'use strict';
 
-    var ReactOwner = require$$0$69;
+    var ReactOwner = require$$0$68;
 
     var ReactRef = {};
 
@@ -26171,7 +26122,7 @@
     'use strict';
 
     var ReactRef = require$$1$42;
-    var ReactInstrumentation = require$$0$50;
+    var ReactInstrumentation = require$$0$49;
 
     /**
      * Helper to call ReactRef.attachRefs with this composite component, split out
@@ -26289,7 +26240,7 @@
     module.exports = ReactReconciler;
     });
 
-    var require$$4$15 = (ReactReconciler && typeof ReactReconciler === 'object' && 'default' in ReactReconciler ? ReactReconciler['default'] : ReactReconciler);
+    var require$$5$10 = (ReactReconciler && typeof ReactReconciler === 'object' && 'default' in ReactReconciler ? ReactReconciler['default'] : ReactReconciler);
 
     var ReactPerf = __commonjs(function (module) {
     /**
@@ -26390,7 +26341,7 @@
     module.exports = ReactPerf;
     });
 
-    var require$$5$9 = (ReactPerf && typeof ReactPerf === 'object' && 'default' in ReactPerf ? ReactPerf['default'] : ReactPerf);
+    var require$$5$11 = (ReactPerf && typeof ReactPerf === 'object' && 'default' in ReactPerf ? ReactPerf['default'] : ReactPerf);
 
     var ReactFeatureFlags = __commonjs(function (module) {
     /**
@@ -26547,8 +26498,8 @@
     var CallbackQueue = require$$4$17;
     var PooledClass = require$$1$28;
     var ReactFeatureFlags = require$$4$16;
-    var ReactPerf = require$$5$9;
-    var ReactReconciler = require$$4$15;
+    var ReactPerf = require$$5$11;
+    var ReactReconciler = require$$5$10;
     var Transaction = require$$1$41;
 
     var invariant = require$$1$23;
@@ -26772,7 +26723,7 @@
     module.exports = ReactUpdates;
     });
 
-    var require$$5$8 = (ReactUpdates && typeof ReactUpdates === 'object' && 'default' in ReactUpdates ? ReactUpdates['default'] : ReactUpdates);
+    var require$$5$9 = (ReactUpdates && typeof ReactUpdates === 'object' && 'default' in ReactUpdates ? ReactUpdates['default'] : ReactUpdates);
 
     var ReactInstanceMap = __commonjs(function (module) {
     /**
@@ -26825,7 +26776,7 @@
     module.exports = ReactInstanceMap;
     });
 
-    var require$$3$16 = (ReactInstanceMap && typeof ReactInstanceMap === 'object' && 'default' in ReactInstanceMap ? ReactInstanceMap['default'] : ReactInstanceMap);
+    var require$$3$17 = (ReactInstanceMap && typeof ReactInstanceMap === 'object' && 'default' in ReactInstanceMap ? ReactInstanceMap['default'] : ReactInstanceMap);
 
     var ReactUpdateQueue = __commonjs(function (module) {
     /**
@@ -26842,11 +26793,11 @@
     'use strict';
 
     var ReactCurrentOwner = require$$4$6;
-    var ReactInstanceMap = require$$3$16;
-    var ReactUpdates = require$$5$8;
+    var ReactInstanceMap = require$$3$17;
+    var ReactUpdates = require$$5$9;
 
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     function enqueueUpdate(internalInstance) {
       ReactUpdates.enqueueUpdate(internalInstance);
@@ -27045,7 +26996,7 @@
     module.exports = ReactUpdateQueue;
     });
 
-    var require$$4$14 = (ReactUpdateQueue && typeof ReactUpdateQueue === 'object' && 'default' in ReactUpdateQueue ? ReactUpdateQueue['default'] : ReactUpdateQueue);
+    var require$$4$15 = (ReactUpdateQueue && typeof ReactUpdateQueue === 'object' && 'default' in ReactUpdateQueue ? ReactUpdateQueue['default'] : ReactUpdateQueue);
 
     var ReactNodeTypes = __commonjs(function (module) {
     /**
@@ -27087,7 +27038,7 @@
     module.exports = ReactNodeTypes;
     });
 
-    var require$$0$70 = (ReactNodeTypes && typeof ReactNodeTypes === 'object' && 'default' in ReactNodeTypes ? ReactNodeTypes['default'] : ReactNodeTypes);
+    var require$$0$69 = (ReactNodeTypes && typeof ReactNodeTypes === 'object' && 'default' in ReactNodeTypes ? ReactNodeTypes['default'] : ReactNodeTypes);
 
     var ReactErrorUtils = __commonjs(function (module) {
     /**
@@ -27168,7 +27119,7 @@
     module.exports = ReactErrorUtils;
     });
 
-    var require$$2$22 = (ReactErrorUtils && typeof ReactErrorUtils === 'object' && 'default' in ReactErrorUtils ? ReactErrorUtils['default'] : ReactErrorUtils);
+    var require$$2$21 = (ReactErrorUtils && typeof ReactErrorUtils === 'object' && 'default' in ReactErrorUtils ? ReactErrorUtils['default'] : ReactErrorUtils);
 
     var ReactComponentEnvironment = __commonjs(function (module) {
     /**
@@ -27245,20 +27196,20 @@
     var ReactComponentEnvironment = require$$6$8;
     var ReactCurrentOwner = require$$4$6;
     var ReactElement = require$$1$24;
-    var ReactErrorUtils = require$$2$22;
-    var ReactInstanceMap = require$$3$16;
-    var ReactInstrumentation = require$$0$50;
-    var ReactNodeTypes = require$$0$70;
-    var ReactPerf = require$$5$9;
-    var ReactPropTypeLocations = require$$2$10;
+    var ReactErrorUtils = require$$2$21;
+    var ReactInstanceMap = require$$3$17;
+    var ReactInstrumentation = require$$0$49;
+    var ReactNodeTypes = require$$0$69;
+    var ReactPerf = require$$5$11;
+    var ReactPropTypeLocations = require$$2$9;
     var ReactPropTypeLocationNames = require$$6$2;
-    var ReactReconciler = require$$4$15;
-    var ReactUpdateQueue = require$$4$14;
+    var ReactReconciler = require$$5$10;
+    var ReactUpdateQueue = require$$4$15;
 
-    var emptyObject = require$$3$7;
+    var emptyObject = require$$3$8;
     var invariant = require$$1$23;
-    var shouldUpdateReactComponent = require$$2$19;
-    var warning = require$$0$46;
+    var shouldUpdateReactComponent = require$$2$18;
+    var warning = require$$0$45;
 
     function getDeclarationErrorAddendum(component) {
       var owner = component._currentElement._owner || null;
@@ -27283,6 +27234,10 @@
       if ("development" !== 'production') {
         warning(element === null || element === false || ReactElement.isValidElement(element), '%s(...): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component');
       }
+    }
+
+    function shouldConstruct(Component) {
+      return Component.prototype && Component.prototype.isReactComponent;
     }
 
     /**
@@ -27353,6 +27308,9 @@
 
         // See ReactUpdates and ReactUpdateQueue.
         this._pendingCallbacks = null;
+
+        // ComponentWillUnmount shall only be called once
+        this._calledComponentWillUnmount = false;
       },
 
       /**
@@ -27378,33 +27336,15 @@
         var Component = this._currentElement.type;
 
         // Initialize the public class
-        var inst;
+        var inst = this._constructComponent(publicProps, publicContext);
         var renderedElement;
 
-        if (Component.prototype && Component.prototype.isReactComponent) {
-          if ("development" !== 'production') {
-            ReactCurrentOwner.current = this;
-            try {
-              inst = new Component(publicProps, publicContext, ReactUpdateQueue);
-            } finally {
-              ReactCurrentOwner.current = null;
-            }
-          } else {}
-        } else {
-          if ("development" !== 'production') {
-            ReactCurrentOwner.current = this;
-            try {
-              inst = Component(publicProps, publicContext, ReactUpdateQueue);
-            } finally {
-              ReactCurrentOwner.current = null;
-            }
-          } else {}
-          if (inst == null || inst.render == null) {
-            renderedElement = inst;
-            warnIfInvalidElement(Component, renderedElement);
-            !(inst === null || inst === false || ReactElement.isValidElement(inst)) ? invariant(false, '%s(...): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component') : void 0;
-            inst = new StatelessComponent(Component);
-          }
+        // Support functional components
+        if (!shouldConstruct(Component) && (inst == null || inst.render == null)) {
+          renderedElement = inst;
+          warnIfInvalidElement(Component, renderedElement);
+          !(inst === null || inst === false || ReactElement.isValidElement(inst)) ? invariant(false, '%s(...): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component') : void 0;
+          inst = new StatelessComponent(Component);
         }
 
         if ("development" !== 'production') {
@@ -27467,6 +27407,26 @@
         }
 
         return markup;
+      },
+
+      _constructComponent: function (publicProps, publicContext) {
+        if ("development" !== 'production') {
+          ReactCurrentOwner.current = this;
+          try {
+            return this._constructComponentWithoutOwner(publicProps, publicContext);
+          } finally {
+            ReactCurrentOwner.current = null;
+          }
+        } else {}
+      },
+
+      _constructComponentWithoutOwner: function (publicProps, publicContext) {
+        var Component = this._currentElement.type;
+        if (shouldConstruct(Component)) {
+          return new Component(publicProps, publicContext, ReactUpdateQueue);
+        } else {
+          return Component(publicProps, publicContext, ReactUpdateQueue);
+        }
       },
 
       performInitialMountWithErrorHandling: function (renderedElement, nativeParent, nativeContainerInfo, transaction, context) {
@@ -27533,7 +27493,8 @@
         }
         var inst = this._instance;
 
-        if (inst.componentWillUnmount) {
+        if (inst.componentWillUnmount && !inst._calledComponentWillUnmount) {
+          inst._calledComponentWillUnmount = true;
           if (safely) {
             var name = this.getName() + '.componentWillUnmount()';
             ReactErrorUtils.invokeGuardedCallback(name, inst.componentWillUnmount.bind(inst));
@@ -28011,7 +27972,7 @@
     module.exports = ReactCompositeComponent;
     });
 
-    var require$$4$13 = (ReactCompositeComponent && typeof ReactCompositeComponent === 'object' && 'default' in ReactCompositeComponent ? ReactCompositeComponent['default'] : ReactCompositeComponent);
+    var require$$4$14 = (ReactCompositeComponent && typeof ReactCompositeComponent === 'object' && 'default' in ReactCompositeComponent ? ReactCompositeComponent['default'] : ReactCompositeComponent);
 
     var instantiateReactComponent = __commonjs(function (module) {
     /**
@@ -28029,12 +27990,12 @@
 
     var _assign = require$$2$8;
 
-    var ReactCompositeComponent = require$$4$13;
-    var ReactEmptyComponent = require$$4$12;
-    var ReactNativeComponent = require$$2$21;
+    var ReactCompositeComponent = require$$4$14;
+    var ReactEmptyComponent = require$$4$13;
+    var ReactNativeComponent = require$$2$20;
 
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     // To avoid a cyclic dependency, we create the final class in this module
     var ReactCompositeComponentWrapper = function (element) {
@@ -28127,7 +28088,7 @@
     module.exports = instantiateReactComponent;
     });
 
-    var require$$3$15 = (instantiateReactComponent && typeof instantiateReactComponent === 'object' && 'default' in instantiateReactComponent ? instantiateReactComponent['default'] : instantiateReactComponent);
+    var require$$4$12 = (instantiateReactComponent && typeof instantiateReactComponent === 'object' && 'default' in instantiateReactComponent ? instantiateReactComponent['default'] : instantiateReactComponent);
 
     var adler32 = __commonjs(function (module) {
     /**
@@ -28175,7 +28136,7 @@
     module.exports = adler32;
     });
 
-    var require$$0$71 = (adler32 && typeof adler32 === 'object' && 'default' in adler32 ? adler32['default'] : adler32);
+    var require$$0$70 = (adler32 && typeof adler32 === 'object' && 'default' in adler32 ? adler32['default'] : adler32);
 
     var ReactMarkupChecksum = __commonjs(function (module) {
     /**
@@ -28191,7 +28152,7 @@
 
     'use strict';
 
-    var adler32 = require$$0$71;
+    var adler32 = require$$0$70;
 
     var TAG_END = /\/?>/;
     var COMMENT_START = /^<\!\-\-/;
@@ -28272,7 +28233,7 @@
     var _assign = require$$2$8;
 
     var emptyFunction = require$$2$7;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var validateDOMNesting = emptyFunction;
 
@@ -28431,6 +28392,7 @@
           case 'rt':
             return impliedEndTags.indexOf(parentTag) === -1;
 
+          case 'body':
           case 'caption':
           case 'col':
           case 'colgroup':
@@ -28651,6 +28613,7 @@
         _topLevelWrapper: topLevelWrapper,
         _idCounter: 1,
         _ownerDocument: node ? node.nodeType === DOC_NODE_TYPE ? node : node.ownerDocument : null,
+        _node: node,
         _tag: node ? node.nodeName.toLowerCase() : null,
         _namespaceURI: node ? node.namespaceURI : null
       };
@@ -28904,7 +28867,7 @@
     module.exports = DOMProperty;
     });
 
-    var require$$0$72 = (DOMProperty && typeof DOMProperty === 'object' && 'default' in DOMProperty ? DOMProperty['default'] : DOMProperty);
+    var require$$0$71 = (DOMProperty && typeof DOMProperty === 'object' && 'default' in DOMProperty ? DOMProperty['default'] : DOMProperty);
 
     var ReactDOMComponentTree = __commonjs(function (module) {
     /**
@@ -28920,7 +28883,7 @@
 
     'use strict';
 
-    var DOMProperty = require$$0$72;
+    var DOMProperty = require$$0$71;
     var ReactDOMComponentFlags = require$$14$3;
 
     var invariant = require$$1$23;
@@ -29160,7 +29123,7 @@
     module.exports = isEventSupported;
     });
 
-    var require$$2$23 = (isEventSupported && typeof isEventSupported === 'object' && 'default' in isEventSupported ? isEventSupported['default'] : isEventSupported);
+    var require$$2$22 = (isEventSupported && typeof isEventSupported === 'object' && 'default' in isEventSupported ? isEventSupported['default'] : isEventSupported);
 
     var getVendorPrefixedEventName = __commonjs(function (module) {
     /**
@@ -29397,7 +29360,7 @@
     module.exports = accumulateInto;
     });
 
-    var require$$2$24 = (accumulateInto && typeof accumulateInto === 'object' && 'default' in accumulateInto ? accumulateInto['default'] : accumulateInto);
+    var require$$2$23 = (accumulateInto && typeof accumulateInto === 'object' && 'default' in accumulateInto ? accumulateInto['default'] : accumulateInto);
 
     var EventConstants = __commonjs(function (module) {
     /**
@@ -29413,7 +29376,7 @@
 
     'use strict';
 
-    var keyMirror = require$$0$47;
+    var keyMirror = require$$0$46;
 
     var PropagationPhases = keyMirror({ bubbled: null, captured: null });
 
@@ -29516,10 +29479,10 @@
     'use strict';
 
     var EventConstants = require$$6$10;
-    var ReactErrorUtils = require$$2$22;
+    var ReactErrorUtils = require$$2$21;
 
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     /**
      * Injected dependencies:
@@ -29674,7 +29637,7 @@
       var dispatchListener = event._dispatchListeners;
       var dispatchInstance = event._dispatchInstances;
       !!Array.isArray(dispatchListener) ? invariant(false, 'executeDirectDispatch(...): Invalid `event`.') : void 0;
-      event.currentTarget = EventPluginUtils.getNodeFromInstance(dispatchInstance);
+      event.currentTarget = dispatchListener ? EventPluginUtils.getNodeFromInstance(dispatchInstance) : null;
       var res = dispatchListener ? dispatchListener(event) : null;
       event.currentTarget = null;
       event._dispatchListeners = null;
@@ -29731,7 +29694,7 @@
     module.exports = EventPluginUtils;
     });
 
-    var require$$7$5 = (EventPluginUtils && typeof EventPluginUtils === 'object' && 'default' in EventPluginUtils ? EventPluginUtils['default'] : EventPluginUtils);
+    var require$$7$4 = (EventPluginUtils && typeof EventPluginUtils === 'object' && 'default' in EventPluginUtils ? EventPluginUtils['default'] : EventPluginUtils);
 
     var EventPluginRegistry = __commonjs(function (module) {
     /**
@@ -29994,10 +29957,10 @@
     'use strict';
 
     var EventPluginRegistry = require$$1$47;
-    var EventPluginUtils = require$$7$5;
-    var ReactErrorUtils = require$$2$22;
+    var EventPluginUtils = require$$7$4;
+    var ReactErrorUtils = require$$2$21;
 
-    var accumulateInto = require$$2$24;
+    var accumulateInto = require$$2$23;
     var forEachAccumulated = require$$1$46;
     var invariant = require$$1$23;
 
@@ -30255,7 +30218,7 @@
     module.exports = ReactEventEmitterMixin;
     });
 
-    var require$$3$17 = (ReactEventEmitterMixin && typeof ReactEventEmitterMixin === 'object' && 'default' in ReactEventEmitterMixin ? ReactEventEmitterMixin['default'] : ReactEventEmitterMixin);
+    var require$$3$18 = (ReactEventEmitterMixin && typeof ReactEventEmitterMixin === 'object' && 'default' in ReactEventEmitterMixin ? ReactEventEmitterMixin['default'] : ReactEventEmitterMixin);
 
     var ReactBrowserEventEmitter = __commonjs(function (module) {
     /**
@@ -30275,11 +30238,11 @@
 
     var EventConstants = require$$6$10;
     var EventPluginRegistry = require$$1$47;
-    var ReactEventEmitterMixin = require$$3$17;
+    var ReactEventEmitterMixin = require$$3$18;
     var ViewportMetrics = require$$1$45;
 
     var getVendorPrefixedEventName = require$$1$44;
-    var isEventSupported = require$$2$23;
+    var isEventSupported = require$$2$22;
 
     /**
      * Summary of `ReactBrowserEventEmitter` event handling:
@@ -30620,7 +30583,7 @@
     module.exports = escapeTextContentForBrowser;
     });
 
-    var require$$0$74 = (escapeTextContentForBrowser && typeof escapeTextContentForBrowser === 'object' && 'default' in escapeTextContentForBrowser ? escapeTextContentForBrowser['default'] : escapeTextContentForBrowser);
+    var require$$0$73 = (escapeTextContentForBrowser && typeof escapeTextContentForBrowser === 'object' && 'default' in escapeTextContentForBrowser ? escapeTextContentForBrowser['default'] : escapeTextContentForBrowser);
 
     var setTextContent = __commonjs(function (module) {
     /**
@@ -30637,7 +30600,7 @@
     'use strict';
 
     var ExecutionEnvironment = require$$4$11;
-    var escapeTextContentForBrowser = require$$0$74;
+    var escapeTextContentForBrowser = require$$0$73;
     var setInnerHTML = require$$1$40;
 
     /**
@@ -30665,7 +30628,7 @@
     module.exports = setTextContent;
     });
 
-    var require$$0$73 = (setTextContent && typeof setTextContent === 'object' && 'default' in setTextContent ? setTextContent['default'] : setTextContent);
+    var require$$0$72 = (setTextContent && typeof setTextContent === 'object' && 'default' in setTextContent ? setTextContent['default'] : setTextContent);
 
     var DOMLazyTree = __commonjs(function (module) {
     /**
@@ -30681,8 +30644,8 @@
 
     'use strict';
 
-    var createMicrosoftUnsafeLocalFunction = require$$2$20;
-    var setTextContent = require$$0$73;
+    var createMicrosoftUnsafeLocalFunction = require$$2$19;
+    var setTextContent = require$$0$72;
 
     /**
      * In IE (8-11) and Edge, appending nodes with no children is dramatically
@@ -30792,7 +30755,7 @@
     'use strict';
 
     var DOMLazyTree = require$$24$1;
-    var DOMProperty = require$$0$72;
+    var DOMProperty = require$$0$71;
     var ReactBrowserEventEmitter = require$$17$1;
     var ReactCurrentOwner = require$$4$6;
     var ReactDOMComponentTree = require$$6$9;
@@ -30800,19 +30763,19 @@
     var ReactDOMFeatureFlags = require$$14$2;
     var ReactElement = require$$1$24;
     var ReactFeatureFlags = require$$4$16;
-    var ReactInstrumentation = require$$0$50;
+    var ReactInstrumentation = require$$0$49;
     var ReactMarkupChecksum = require$$10$4;
-    var ReactPerf = require$$5$9;
-    var ReactReconciler = require$$4$15;
-    var ReactUpdateQueue = require$$4$14;
-    var ReactUpdates = require$$5$8;
+    var ReactPerf = require$$5$11;
+    var ReactReconciler = require$$5$10;
+    var ReactUpdateQueue = require$$4$15;
+    var ReactUpdates = require$$5$9;
 
-    var emptyObject = require$$3$7;
-    var instantiateReactComponent = require$$3$15;
+    var emptyObject = require$$3$8;
+    var instantiateReactComponent = require$$4$12;
     var invariant = require$$1$23;
     var setInnerHTML = require$$1$40;
-    var shouldUpdateReactComponent = require$$2$19;
-    var warning = require$$0$46;
+    var shouldUpdateReactComponent = require$$2$18;
+    var warning = require$$0$45;
 
     var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
     var ROOT_ATTR_NAME = DOMProperty.ROOT_ATTRIBUTE_NAME;
@@ -31258,7 +31221,7 @@
     module.exports = ReactMount;
     });
 
-    var require$$3$14 = (ReactMount && typeof ReactMount === 'object' && 'default' in ReactMount ? ReactMount['default'] : ReactMount);
+    var require$$3$16 = (ReactMount && typeof ReactMount === 'object' && 'default' in ReactMount ? ReactMount['default'] : ReactMount);
 
     var renderSubtreeIntoContainer = __commonjs(function (module) {
     /**
@@ -31274,12 +31237,12 @@
 
     'use strict';
 
-    var ReactMount = require$$3$14;
+    var ReactMount = require$$3$16;
 
     module.exports = ReactMount.renderSubtreeIntoContainer;
     });
 
-    var require$$2$18 = (renderSubtreeIntoContainer && typeof renderSubtreeIntoContainer === 'object' && 'default' in renderSubtreeIntoContainer ? renderSubtreeIntoContainer['default'] : renderSubtreeIntoContainer);
+    var require$$2$17 = (renderSubtreeIntoContainer && typeof renderSubtreeIntoContainer === 'object' && 'default' in renderSubtreeIntoContainer ? renderSubtreeIntoContainer['default'] : renderSubtreeIntoContainer);
 
     var getNativeComponentFromComposite = __commonjs(function (module) {
     /**
@@ -31295,7 +31258,7 @@
 
     'use strict';
 
-    var ReactNodeTypes = require$$0$70;
+    var ReactNodeTypes = require$$0$69;
 
     function getNativeComponentFromComposite(inst) {
       var type;
@@ -31314,7 +31277,7 @@
     module.exports = getNativeComponentFromComposite;
     });
 
-    var require$$2$25 = (getNativeComponentFromComposite && typeof getNativeComponentFromComposite === 'object' && 'default' in getNativeComponentFromComposite ? getNativeComponentFromComposite['default'] : getNativeComponentFromComposite);
+    var require$$2$24 = (getNativeComponentFromComposite && typeof getNativeComponentFromComposite === 'object' && 'default' in getNativeComponentFromComposite ? getNativeComponentFromComposite['default'] : getNativeComponentFromComposite);
 
     var findDOMNode = __commonjs(function (module) {
     /**
@@ -31332,11 +31295,11 @@
 
     var ReactCurrentOwner = require$$4$6;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactInstanceMap = require$$3$16;
+    var ReactInstanceMap = require$$3$17;
 
-    var getNativeComponentFromComposite = require$$2$25;
+    var getNativeComponentFromComposite = require$$2$24;
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     /**
      * Returns the DOM node rendered by this element.
@@ -31402,7 +31365,7 @@
     module.exports = performance || {};
     });
 
-    var require$$0$76 = (performance$1 && typeof performance$1 === 'object' && 'default' in performance$1 ? performance$1['default'] : performance$1);
+    var require$$0$75 = (performance$1 && typeof performance$1 === 'object' && 'default' in performance$1 ? performance$1['default'] : performance$1);
 
     var performanceNow = __commonjs(function (module) {
     'use strict';
@@ -31418,7 +31381,7 @@
      * @typechecks
      */
 
-    var performance = require$$0$76;
+    var performance = require$$0$75;
 
     var performanceNow;
 
@@ -31614,12 +31577,13 @@
       // the amount of time it took to render the entire subtree.
       var cleanComponents = {};
       var writes = measurement.writes;
+      var hierarchy = measurement.hierarchy;
       var dirtyComposites = {};
       Object.keys(writes).forEach(function (id) {
         writes[id].forEach(function (write) {
           // Root mounting (innerHTML set) is recorded with an ID of ''
-          if (id !== '') {
-            measurement.hierarchy[id].forEach(function (c) {
+          if (id !== '' && hierarchy.hasOwnProperty(id)) {
+            hierarchy[id].forEach(function (c) {
               return dirtyComposites[c] = true;
             });
           }
@@ -31670,14 +31634,14 @@
 
     'use strict';
 
-    var DOMProperty = require$$0$72;
+    var DOMProperty = require$$0$71;
     var ReactDOMComponentTree = require$$6$9;
     var ReactDefaultPerfAnalysis = require$$4$19;
-    var ReactMount = require$$3$14;
-    var ReactPerf = require$$5$9;
+    var ReactMount = require$$3$16;
+    var ReactPerf = require$$5$11;
 
     var performanceNow = require$$1$48;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     function roundFloat(val) {
       return Math.floor(val * 100) / 100;
@@ -31975,7 +31939,7 @@
     module.exports = ReactDefaultPerf;
     });
 
-    var require$$0$75 = (ReactDefaultPerf && typeof ReactDefaultPerf === 'object' && 'default' in ReactDefaultPerf ? ReactDefaultPerf['default'] : ReactDefaultPerf);
+    var require$$0$74 = (ReactDefaultPerf && typeof ReactDefaultPerf === 'object' && 'default' in ReactDefaultPerf ? ReactDefaultPerf['default'] : ReactDefaultPerf);
 
     var getEventCharCode = __commonjs(function (module) {
     /**
@@ -32030,7 +31994,7 @@
     module.exports = getEventCharCode;
     });
 
-    var require$$0$77 = (getEventCharCode && typeof getEventCharCode === 'object' && 'default' in getEventCharCode ? getEventCharCode['default'] : getEventCharCode);
+    var require$$0$76 = (getEventCharCode && typeof getEventCharCode === 'object' && 'default' in getEventCharCode ? getEventCharCode['default'] : getEventCharCode);
 
     var getEventModifierState = __commonjs(function (module) {
     /**
@@ -32078,7 +32042,7 @@
     module.exports = getEventModifierState;
     });
 
-    var require$$0$78 = (getEventModifierState && typeof getEventModifierState === 'object' && 'default' in getEventModifierState ? getEventModifierState['default'] : getEventModifierState);
+    var require$$0$77 = (getEventModifierState && typeof getEventModifierState === 'object' && 'default' in getEventModifierState ? getEventModifierState['default'] : getEventModifierState);
 
     var getEventTarget = __commonjs(function (module) {
     /**
@@ -32118,7 +32082,7 @@
     module.exports = getEventTarget;
     });
 
-    var require$$3$18 = (getEventTarget && typeof getEventTarget === 'object' && 'default' in getEventTarget ? getEventTarget['default'] : getEventTarget);
+    var require$$3$19 = (getEventTarget && typeof getEventTarget === 'object' && 'default' in getEventTarget ? getEventTarget['default'] : getEventTarget);
 
     var SyntheticEvent = __commonjs(function (module) {
     /**
@@ -32139,7 +32103,7 @@
     var PooledClass = require$$1$28;
 
     var emptyFunction = require$$2$7;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var didWarnForAddedNewProperty = false;
     var isProxySupported = typeof Proxy === 'function';
@@ -32382,7 +32346,7 @@
     }
     });
 
-    var require$$0$80 = (SyntheticEvent && typeof SyntheticEvent === 'object' && 'default' in SyntheticEvent ? SyntheticEvent['default'] : SyntheticEvent);
+    var require$$0$79 = (SyntheticEvent && typeof SyntheticEvent === 'object' && 'default' in SyntheticEvent ? SyntheticEvent['default'] : SyntheticEvent);
 
     var SyntheticUIEvent = __commonjs(function (module) {
     /**
@@ -32398,9 +32362,9 @@
 
     'use strict';
 
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
-    var getEventTarget = require$$3$18;
+    var getEventTarget = require$$3$19;
 
     /**
      * @interface UIEvent
@@ -32446,7 +32410,7 @@
     module.exports = SyntheticUIEvent;
     });
 
-    var require$$0$79 = (SyntheticUIEvent && typeof SyntheticUIEvent === 'object' && 'default' in SyntheticUIEvent ? SyntheticUIEvent['default'] : SyntheticUIEvent);
+    var require$$0$78 = (SyntheticUIEvent && typeof SyntheticUIEvent === 'object' && 'default' in SyntheticUIEvent ? SyntheticUIEvent['default'] : SyntheticUIEvent);
 
     var SyntheticMouseEvent = __commonjs(function (module) {
     /**
@@ -32462,10 +32426,10 @@
 
     'use strict';
 
-    var SyntheticUIEvent = require$$0$79;
+    var SyntheticUIEvent = require$$0$78;
     var ViewportMetrics = require$$1$45;
 
-    var getEventModifierState = require$$0$78;
+    var getEventModifierState = require$$0$77;
 
     /**
      * @interface MouseEvent
@@ -32598,7 +32562,7 @@
 
     'use strict';
 
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
     /**
      * @interface Event
@@ -32642,9 +32606,9 @@
 
     'use strict';
 
-    var SyntheticUIEvent = require$$0$79;
+    var SyntheticUIEvent = require$$0$78;
 
-    var getEventModifierState = require$$0$78;
+    var getEventModifierState = require$$0$77;
 
     /**
      * @interface TouchEvent
@@ -32676,7 +32640,7 @@
     module.exports = SyntheticTouchEvent;
     });
 
-    var require$$7$6 = (SyntheticTouchEvent && typeof SyntheticTouchEvent === 'object' && 'default' in SyntheticTouchEvent ? SyntheticTouchEvent['default'] : SyntheticTouchEvent);
+    var require$$7$5 = (SyntheticTouchEvent && typeof SyntheticTouchEvent === 'object' && 'default' in SyntheticTouchEvent ? SyntheticTouchEvent['default'] : SyntheticTouchEvent);
 
     var SyntheticDragEvent = __commonjs(function (module) {
     /**
@@ -32733,7 +32697,7 @@
 
     'use strict';
 
-    var getEventCharCode = require$$0$77;
+    var getEventCharCode = require$$0$76;
 
     /**
      * Normalization of deprecated HTML5 `key` values
@@ -32840,11 +32804,11 @@
 
     'use strict';
 
-    var SyntheticUIEvent = require$$0$79;
+    var SyntheticUIEvent = require$$0$78;
 
-    var getEventCharCode = require$$0$77;
+    var getEventCharCode = require$$0$76;
     var getEventKey = require$$1$51;
-    var getEventModifierState = require$$0$78;
+    var getEventModifierState = require$$0$77;
 
     /**
      * @interface KeyboardEvent
@@ -32929,7 +32893,7 @@
 
     'use strict';
 
-    var SyntheticUIEvent = require$$0$79;
+    var SyntheticUIEvent = require$$0$78;
 
     /**
      * @interface FocusEvent
@@ -32954,7 +32918,7 @@
     module.exports = SyntheticFocusEvent;
     });
 
-    var require$$11$2 = (SyntheticFocusEvent && typeof SyntheticFocusEvent === 'object' && 'default' in SyntheticFocusEvent ? SyntheticFocusEvent['default'] : SyntheticFocusEvent);
+    var require$$11$1 = (SyntheticFocusEvent && typeof SyntheticFocusEvent === 'object' && 'default' in SyntheticFocusEvent ? SyntheticFocusEvent['default'] : SyntheticFocusEvent);
 
     var SyntheticClipboardEvent = __commonjs(function (module) {
     /**
@@ -32970,7 +32934,7 @@
 
     'use strict';
 
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
     /**
      * @interface Event
@@ -33013,7 +32977,7 @@
 
     'use strict';
 
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
     /**
      * @interface Event
@@ -33059,11 +33023,11 @@
 
     var EventConstants = require$$6$10;
     var EventPluginHub = require$$9$5;
-    var EventPluginUtils = require$$7$5;
+    var EventPluginUtils = require$$7$4;
 
-    var accumulateInto = require$$2$24;
+    var accumulateInto = require$$2$23;
     var forEachAccumulated = require$$1$46;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var PropagationPhases = EventConstants.PropagationPhases;
     var getListener = EventPluginHub.getListener;
@@ -33183,7 +33147,7 @@
     module.exports = EventPropagators;
     });
 
-    var require$$5$10 = (EventPropagators && typeof EventPropagators === 'object' && 'default' in EventPropagators ? EventPropagators['default'] : EventPropagators);
+    var require$$5$12 = (EventPropagators && typeof EventPropagators === 'object' && 'default' in EventPropagators ? EventPropagators['default'] : EventPropagators);
 
     var EventListener = __commonjs(function (module) {
     'use strict';
@@ -33289,24 +33253,24 @@
 
     var EventConstants = require$$6$10;
     var EventListener = require$$6$12;
-    var EventPropagators = require$$5$10;
+    var EventPropagators = require$$5$12;
     var ReactDOMComponentTree = require$$6$9;
     var SyntheticAnimationEvent = require$$14$4;
     var SyntheticClipboardEvent = require$$13$2;
-    var SyntheticEvent = require$$0$80;
-    var SyntheticFocusEvent = require$$11$2;
+    var SyntheticEvent = require$$0$79;
+    var SyntheticFocusEvent = require$$11$1;
     var SyntheticKeyboardEvent = require$$10$6;
     var SyntheticMouseEvent = require$$1$50;
     var SyntheticDragEvent = require$$8$6;
-    var SyntheticTouchEvent = require$$7$6;
+    var SyntheticTouchEvent = require$$7$5;
     var SyntheticTransitionEvent = require$$6$11;
-    var SyntheticUIEvent = require$$0$79;
+    var SyntheticUIEvent = require$$0$78;
     var SyntheticWheelEvent = require$$4$20;
 
     var emptyFunction = require$$2$7;
-    var getEventCharCode = require$$0$77;
+    var getEventCharCode = require$$0$76;
     var invariant = require$$1$23;
-    var keyOf = require$$0$49;
+    var keyOf = require$$0$48;
 
     var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -33974,7 +33938,7 @@
     module.exports = shallowEqual;
     });
 
-    var require$$2$27 = (shallowEqual && typeof shallowEqual === 'object' && 'default' in shallowEqual ? shallowEqual['default'] : shallowEqual);
+    var require$$2$26 = (shallowEqual && typeof shallowEqual === 'object' && 'default' in shallowEqual ? shallowEqual['default'] : shallowEqual);
 
     var isTextInputElement = __commonjs(function (module) {
     /**
@@ -34059,7 +34023,7 @@
     module.exports = getActiveElement;
     });
 
-    var require$$0$81 = (getActiveElement && typeof getActiveElement === 'object' && 'default' in getActiveElement ? getActiveElement['default'] : getActiveElement);
+    var require$$0$80 = (getActiveElement && typeof getActiveElement === 'object' && 'default' in getActiveElement ? getActiveElement['default'] : getActiveElement);
 
     var focusNode = __commonjs(function (module) {
     /**
@@ -34090,7 +34054,7 @@
     module.exports = focusNode;
     });
 
-    var require$$0$82 = (focusNode && typeof focusNode === 'object' && 'default' in focusNode ? focusNode['default'] : focusNode);
+    var require$$0$81 = (focusNode && typeof focusNode === 'object' && 'default' in focusNode ? focusNode['default'] : focusNode);
 
     var isNode = __commonjs(function (module) {
     'use strict';
@@ -34117,7 +34081,7 @@
     module.exports = isNode;
     });
 
-    var require$$0$84 = (isNode && typeof isNode === 'object' && 'default' in isNode ? isNode['default'] : isNode);
+    var require$$0$83 = (isNode && typeof isNode === 'object' && 'default' in isNode ? isNode['default'] : isNode);
 
     var isTextNode = __commonjs(function (module) {
     'use strict';
@@ -34133,7 +34097,7 @@
      * @typechecks
      */
 
-    var isNode = require$$0$84;
+    var isNode = require$$0$83;
 
     /**
      * @param {*} object The object to check.
@@ -34146,7 +34110,7 @@
     module.exports = isTextNode;
     });
 
-    var require$$0$83 = (isTextNode && typeof isTextNode === 'object' && 'default' in isTextNode ? isTextNode['default'] : isTextNode);
+    var require$$0$82 = (isTextNode && typeof isTextNode === 'object' && 'default' in isTextNode ? isTextNode['default'] : isTextNode);
 
     var containsNode = __commonjs(function (module) {
     'use strict';
@@ -34162,7 +34126,7 @@
      * @typechecks
      */
 
-    var isTextNode = require$$0$83;
+    var isTextNode = require$$0$82;
 
     /*eslint-disable no-bitwise */
 
@@ -34194,7 +34158,7 @@
     module.exports = containsNode;
     });
 
-    var require$$2$28 = (containsNode && typeof containsNode === 'object' && 'default' in containsNode ? containsNode['default'] : containsNode);
+    var require$$2$27 = (containsNode && typeof containsNode === 'object' && 'default' in containsNode ? containsNode['default'] : containsNode);
 
     var getTextContentAccessor = __commonjs(function (module) {
     /**
@@ -34232,7 +34196,7 @@
     module.exports = getTextContentAccessor;
     });
 
-    var require$$0$85 = (getTextContentAccessor && typeof getTextContentAccessor === 'object' && 'default' in getTextContentAccessor ? getTextContentAccessor['default'] : getTextContentAccessor);
+    var require$$0$84 = (getTextContentAccessor && typeof getTextContentAccessor === 'object' && 'default' in getTextContentAccessor ? getTextContentAccessor['default'] : getTextContentAccessor);
 
     var getNodeForCharacterOffset = __commonjs(function (module) {
     /**
@@ -34330,7 +34294,7 @@
     var ExecutionEnvironment = require$$4$11;
 
     var getNodeForCharacterOffset = require$$1$54;
-    var getTextContentAccessor = require$$0$85;
+    var getTextContentAccessor = require$$0$84;
 
     /**
      * While `isCollapsed` is available on the Selection object and `collapsed`
@@ -34528,7 +34492,7 @@
     module.exports = ReactDOMSelection;
     });
 
-    var require$$3$19 = (ReactDOMSelection && typeof ReactDOMSelection === 'object' && 'default' in ReactDOMSelection ? ReactDOMSelection['default'] : ReactDOMSelection);
+    var require$$3$20 = (ReactDOMSelection && typeof ReactDOMSelection === 'object' && 'default' in ReactDOMSelection ? ReactDOMSelection['default'] : ReactDOMSelection);
 
     var ReactInputSelection = __commonjs(function (module) {
     /**
@@ -34544,11 +34508,11 @@
 
     'use strict';
 
-    var ReactDOMSelection = require$$3$19;
+    var ReactDOMSelection = require$$3$20;
 
-    var containsNode = require$$2$28;
-    var focusNode = require$$0$82;
-    var getActiveElement = require$$0$81;
+    var containsNode = require$$2$27;
+    var focusNode = require$$0$81;
+    var getActiveElement = require$$0$80;
 
     function isInDocument(node) {
       return containsNode(document.documentElement, node);
@@ -34674,16 +34638,16 @@
     'use strict';
 
     var EventConstants = require$$6$10;
-    var EventPropagators = require$$5$10;
+    var EventPropagators = require$$5$12;
     var ExecutionEnvironment = require$$4$11;
     var ReactDOMComponentTree = require$$6$9;
     var ReactInputSelection = require$$1$53;
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
-    var getActiveElement = require$$0$81;
+    var getActiveElement = require$$0$80;
     var isTextInputElement = require$$1$52;
-    var keyOf = require$$0$49;
-    var shallowEqual = require$$2$27;
+    var keyOf = require$$0$48;
+    var shallowEqual = require$$2$26;
 
     var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -34858,7 +34822,7 @@
     module.exports = SelectEventPlugin;
     });
 
-    var require$$2$26 = (SelectEventPlugin && typeof SelectEventPlugin === 'object' && 'default' in SelectEventPlugin ? SelectEventPlugin['default'] : SelectEventPlugin);
+    var require$$2$25 = (SelectEventPlugin && typeof SelectEventPlugin === 'object' && 'default' in SelectEventPlugin ? SelectEventPlugin['default'] : SelectEventPlugin);
 
     var SVGDOMPropertyConfig = __commonjs(function (module) {
     /**
@@ -35153,7 +35117,7 @@
       DOMAttributeNames: {}
     };
 
-    Object.keys(ATTRS).map(function (key) {
+    Object.keys(ATTRS).forEach(function (key) {
       SVGDOMPropertyConfig.Properties[key] = 0;
       if (ATTRS[key]) {
         SVGDOMPropertyConfig.DOMAttributeNames[key] = ATTRS[key];
@@ -35163,7 +35127,7 @@
     module.exports = SVGDOMPropertyConfig;
     });
 
-    var require$$3$20 = (SVGDOMPropertyConfig && typeof SVGDOMPropertyConfig === 'object' && 'default' in SVGDOMPropertyConfig ? SVGDOMPropertyConfig['default'] : SVGDOMPropertyConfig);
+    var require$$3$21 = (SVGDOMPropertyConfig && typeof SVGDOMPropertyConfig === 'object' && 'default' in SVGDOMPropertyConfig ? SVGDOMPropertyConfig['default'] : SVGDOMPropertyConfig);
 
     var ReactReconcileTransaction = __commonjs(function (module) {
     /**
@@ -35346,16 +35310,16 @@
 
     'use strict';
 
-    var DOMProperty = require$$0$72;
+    var DOMProperty = require$$0$71;
     var EventPluginHub = require$$9$5;
-    var EventPluginUtils = require$$7$5;
+    var EventPluginUtils = require$$7$4;
     var ReactComponentEnvironment = require$$6$8;
-    var ReactClass = require$$5$3;
-    var ReactEmptyComponent = require$$4$12;
+    var ReactClass = require$$5$4;
+    var ReactEmptyComponent = require$$4$13;
     var ReactBrowserEventEmitter = require$$17$1;
-    var ReactNativeComponent = require$$2$21;
-    var ReactPerf = require$$5$9;
-    var ReactUpdates = require$$5$8;
+    var ReactNativeComponent = require$$2$20;
+    var ReactPerf = require$$5$11;
+    var ReactUpdates = require$$5$9;
 
     var ReactInjection = {
       Component: ReactComponentEnvironment.injection,
@@ -35373,7 +35337,7 @@
     module.exports = ReactInjection;
     });
 
-    var require$$5$11 = (ReactInjection && typeof ReactInjection === 'object' && 'default' in ReactInjection ? ReactInjection['default'] : ReactInjection);
+    var require$$5$13 = (ReactInjection && typeof ReactInjection === 'object' && 'default' in ReactInjection ? ReactInjection['default'] : ReactInjection);
 
     var getUnboundedScrollPosition = __commonjs(function (module) {
     /**
@@ -35416,7 +35380,7 @@
     module.exports = getUnboundedScrollPosition;
     });
 
-    var require$$0$86 = (getUnboundedScrollPosition && typeof getUnboundedScrollPosition === 'object' && 'default' in getUnboundedScrollPosition ? getUnboundedScrollPosition['default'] : getUnboundedScrollPosition);
+    var require$$0$85 = (getUnboundedScrollPosition && typeof getUnboundedScrollPosition === 'object' && 'default' in getUnboundedScrollPosition ? getUnboundedScrollPosition['default'] : getUnboundedScrollPosition);
 
     var ReactEventListener = __commonjs(function (module) {
     /**
@@ -35438,10 +35402,10 @@
     var ExecutionEnvironment = require$$4$11;
     var PooledClass = require$$1$28;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactUpdates = require$$5$8;
+    var ReactUpdates = require$$5$9;
 
-    var getEventTarget = require$$3$18;
-    var getUnboundedScrollPosition = require$$0$86;
+    var getEventTarget = require$$3$19;
+    var getUnboundedScrollPosition = require$$0$85;
 
     /**
      * Find the deepest React component completely containing the root of the
@@ -35596,7 +35560,7 @@
 
     var _assign = require$$2$8;
 
-    var ReactUpdates = require$$5$8;
+    var ReactUpdates = require$$5$9;
     var Transaction = require$$1$41;
 
     var emptyFunction = require$$2$7;
@@ -35651,7 +35615,7 @@
     module.exports = ReactDefaultBatchingStrategy;
     });
 
-    var require$$7$7 = (ReactDefaultBatchingStrategy && typeof ReactDefaultBatchingStrategy === 'object' && 'default' in ReactDefaultBatchingStrategy ? ReactDefaultBatchingStrategy['default'] : ReactDefaultBatchingStrategy);
+    var require$$7$6 = (ReactDefaultBatchingStrategy && typeof ReactDefaultBatchingStrategy === 'object' && 'default' in ReactDefaultBatchingStrategy ? ReactDefaultBatchingStrategy['default'] : ReactDefaultBatchingStrategy);
 
     var ReactMultiChildUpdateTypes = __commonjs(function (module) {
     /**
@@ -35667,7 +35631,7 @@
 
     'use strict';
 
-    var keyMirror = require$$0$47;
+    var keyMirror = require$$0$46;
 
     /**
      * When a component's children are updated, a series of update configuration
@@ -35688,7 +35652,7 @@
     module.exports = ReactMultiChildUpdateTypes;
     });
 
-    var require$$5$12 = (ReactMultiChildUpdateTypes && typeof ReactMultiChildUpdateTypes === 'object' && 'default' in ReactMultiChildUpdateTypes ? ReactMultiChildUpdateTypes['default'] : ReactMultiChildUpdateTypes);
+    var require$$5$14 = (ReactMultiChildUpdateTypes && typeof ReactMultiChildUpdateTypes === 'object' && 'default' in ReactMultiChildUpdateTypes ? ReactMultiChildUpdateTypes['default'] : ReactMultiChildUpdateTypes);
 
     var getMarkupWrap = __commonjs(function (module) {
     'use strict';
@@ -35918,7 +35882,7 @@
     module.exports = createArrayFromMixed;
     });
 
-    var require$$2$30 = (createArrayFromMixed && typeof createArrayFromMixed === 'object' && 'default' in createArrayFromMixed ? createArrayFromMixed['default'] : createArrayFromMixed);
+    var require$$2$29 = (createArrayFromMixed && typeof createArrayFromMixed === 'object' && 'default' in createArrayFromMixed ? createArrayFromMixed['default'] : createArrayFromMixed);
 
     var createNodesFromMarkup = __commonjs(function (module) {
     'use strict';
@@ -35938,7 +35902,7 @@
 
     var ExecutionEnvironment = require$$4$11;
 
-    var createArrayFromMixed = require$$2$30;
+    var createArrayFromMixed = require$$2$29;
     var getMarkupWrap = require$$1$55;
     var invariant = require$$1$23;
 
@@ -36006,7 +35970,7 @@
     module.exports = createNodesFromMarkup;
     });
 
-    var require$$3$21 = (createNodesFromMarkup && typeof createNodesFromMarkup === 'object' && 'default' in createNodesFromMarkup ? createNodesFromMarkup['default'] : createNodesFromMarkup);
+    var require$$3$22 = (createNodesFromMarkup && typeof createNodesFromMarkup === 'object' && 'default' in createNodesFromMarkup ? createNodesFromMarkup['default'] : createNodesFromMarkup);
 
     var Danger = __commonjs(function (module) {
     /**
@@ -36025,7 +35989,7 @@
     var DOMLazyTree = require$$24$1;
     var ExecutionEnvironment = require$$4$11;
 
-    var createNodesFromMarkup = require$$3$21;
+    var createNodesFromMarkup = require$$3$22;
     var emptyFunction = require$$2$7;
     var getMarkupWrap = require$$1$55;
     var invariant = require$$1$23;
@@ -36155,7 +36119,7 @@
     module.exports = Danger;
     });
 
-    var require$$5$13 = (Danger && typeof Danger === 'object' && 'default' in Danger ? Danger['default'] : Danger);
+    var require$$5$15 = (Danger && typeof Danger === 'object' && 'default' in Danger ? Danger['default'] : Danger);
 
     var DOMChildrenOperations = __commonjs(function (module) {
     /**
@@ -36172,13 +36136,13 @@
     'use strict';
 
     var DOMLazyTree = require$$24$1;
-    var Danger = require$$5$13;
-    var ReactMultiChildUpdateTypes = require$$5$12;
-    var ReactPerf = require$$5$9;
+    var Danger = require$$5$15;
+    var ReactMultiChildUpdateTypes = require$$5$14;
+    var ReactPerf = require$$5$11;
 
-    var createMicrosoftUnsafeLocalFunction = require$$2$20;
+    var createMicrosoftUnsafeLocalFunction = require$$2$19;
     var setInnerHTML = require$$1$40;
-    var setTextContent = require$$0$73;
+    var setTextContent = require$$0$72;
 
     function getNodeAfter(parentNode, node) {
       // Special case for text components, which return [open, close] comments
@@ -36319,7 +36283,7 @@
     module.exports = DOMChildrenOperations;
     });
 
-    var require$$2$29 = (DOMChildrenOperations && typeof DOMChildrenOperations === 'object' && 'default' in DOMChildrenOperations ? DOMChildrenOperations['default'] : DOMChildrenOperations);
+    var require$$2$28 = (DOMChildrenOperations && typeof DOMChildrenOperations === 'object' && 'default' in DOMChildrenOperations ? DOMChildrenOperations['default'] : DOMChildrenOperations);
 
     var ReactDOMTextComponent = __commonjs(function (module) {
     /**
@@ -36337,12 +36301,12 @@
 
     var _assign = require$$2$8;
 
-    var DOMChildrenOperations = require$$2$29;
+    var DOMChildrenOperations = require$$2$28;
     var DOMLazyTree = require$$24$1;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactPerf = require$$5$9;
+    var ReactPerf = require$$5$11;
 
-    var escapeTextContentForBrowser = require$$0$74;
+    var escapeTextContentForBrowser = require$$0$73;
     var invariant = require$$1$23;
     var validateDOMNesting = require$$1$43;
 
@@ -36713,8 +36677,9 @@
 
     'use strict';
 
+    var KeyEscapeUtils = require$$3$10;
     var traverseAllChildren = require$$1$27;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     /**
      * @param {function} traverseContext Context passed through traversal.
@@ -36726,7 +36691,7 @@
       var result = traverseContext;
       var keyUnique = result[name] === undefined;
       if ("development" !== 'production') {
-        warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.', name);
+        warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.', KeyEscapeUtils.unescape(name));
       }
       if (keyUnique && child != null) {
         result[name] = child;
@@ -36766,18 +36731,19 @@
 
     'use strict';
 
-    var ReactReconciler = require$$4$15;
+    var ReactReconciler = require$$5$10;
 
-    var instantiateReactComponent = require$$3$15;
-    var shouldUpdateReactComponent = require$$2$19;
+    var instantiateReactComponent = require$$4$12;
+    var KeyEscapeUtils = require$$3$10;
+    var shouldUpdateReactComponent = require$$2$18;
     var traverseAllChildren = require$$1$27;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     function instantiateChild(childInstances, child, name) {
       // We found a component instance.
       var keyUnique = childInstances[name] === undefined;
       if ("development" !== 'production') {
-        warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.', name);
+        warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.', KeyEscapeUtils.unescape(name));
       }
       if (child != null && keyUnique) {
         childInstances[name] = instantiateReactComponent(child);
@@ -36879,7 +36845,7 @@
     module.exports = ReactChildReconciler;
     });
 
-    var require$$2$31 = (ReactChildReconciler && typeof ReactChildReconciler === 'object' && 'default' in ReactChildReconciler ? ReactChildReconciler['default'] : ReactChildReconciler);
+    var require$$2$30 = (ReactChildReconciler && typeof ReactChildReconciler === 'object' && 'default' in ReactChildReconciler ? ReactChildReconciler['default'] : ReactChildReconciler);
 
     var ReactMultiChild = __commonjs(function (module) {
     /**
@@ -36896,11 +36862,11 @@
     'use strict';
 
     var ReactComponentEnvironment = require$$6$8;
-    var ReactMultiChildUpdateTypes = require$$5$12;
+    var ReactMultiChildUpdateTypes = require$$5$14;
 
     var ReactCurrentOwner = require$$4$6;
-    var ReactReconciler = require$$4$15;
-    var ReactChildReconciler = require$$2$31;
+    var ReactReconciler = require$$5$10;
+    var ReactChildReconciler = require$$2$30;
 
     var flattenChildren = require$$1$56;
     var invariant = require$$1$23;
@@ -37303,10 +37269,10 @@
     'use strict';
 
     var ReactPropTypes = require$$3$6;
-    var ReactPropTypeLocations = require$$2$10;
+    var ReactPropTypeLocations = require$$2$9;
 
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var hasReadOnlyValue = {
       'button': true,
@@ -37440,7 +37406,7 @@
 
     'use strict';
 
-    var escapeTextContentForBrowser = require$$0$74;
+    var escapeTextContentForBrowser = require$$0$73;
 
     /**
      * Escapes attribute value to prevent scripting attacks.
@@ -37471,10 +37437,10 @@
 
     'use strict';
 
-    var DOMProperty = require$$0$72;
+    var DOMProperty = require$$0$71;
     var EventPluginRegistry = require$$1$47;
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     if ("development" !== 'production') {
       var reactProps = {
@@ -37542,7 +37508,7 @@
 
     var ReactDOMUnknownPropertyDevtool = require$$1$58;
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var eventHandlers = [];
     var handlerDoesThrowForEvent = {};
@@ -37590,7 +37556,7 @@
     module.exports = ReactDOMDebugTool;
     });
 
-    var require$$0$87 = (ReactDOMDebugTool && typeof ReactDOMDebugTool === 'object' && 'default' in ReactDOMDebugTool ? ReactDOMDebugTool['default'] : ReactDOMDebugTool);
+    var require$$0$86 = (ReactDOMDebugTool && typeof ReactDOMDebugTool === 'object' && 'default' in ReactDOMDebugTool ? ReactDOMDebugTool['default'] : ReactDOMDebugTool);
 
     var ReactDOMInstrumentation = __commonjs(function (module) {
     /**
@@ -37606,12 +37572,12 @@
 
     'use strict';
 
-    var ReactDOMDebugTool = require$$0$87;
+    var ReactDOMDebugTool = require$$0$86;
 
     module.exports = { debugTool: ReactDOMDebugTool };
     });
 
-    var require$$3$22 = (ReactDOMInstrumentation && typeof ReactDOMInstrumentation === 'object' && 'default' in ReactDOMInstrumentation ? ReactDOMInstrumentation['default'] : ReactDOMInstrumentation);
+    var require$$3$23 = (ReactDOMInstrumentation && typeof ReactDOMInstrumentation === 'object' && 'default' in ReactDOMInstrumentation ? ReactDOMInstrumentation['default'] : ReactDOMInstrumentation);
 
     var DOMPropertyOperations = __commonjs(function (module) {
     /**
@@ -37627,12 +37593,12 @@
 
     'use strict';
 
-    var DOMProperty = require$$0$72;
-    var ReactDOMInstrumentation = require$$3$22;
-    var ReactPerf = require$$5$9;
+    var DOMProperty = require$$0$71;
+    var ReactDOMInstrumentation = require$$3$23;
+    var ReactPerf = require$$5$11;
 
     var quoteAttributeValueForBrowser = require$$1$57;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + DOMProperty.ATTRIBUTE_NAME_START_CHAR + '][' + DOMProperty.ATTRIBUTE_NAME_CHAR + ']*$');
     var illegalAttributeNameCache = {};
@@ -37829,7 +37795,62 @@
     module.exports = DOMPropertyOperations;
     });
 
-    var require$$5$14 = (DOMPropertyOperations && typeof DOMPropertyOperations === 'object' && 'default' in DOMPropertyOperations ? DOMPropertyOperations['default'] : DOMPropertyOperations);
+    var require$$5$16 = (DOMPropertyOperations && typeof DOMPropertyOperations === 'object' && 'default' in DOMPropertyOperations ? DOMPropertyOperations['default'] : DOMPropertyOperations);
+
+    var DisabledInputUtils = __commonjs(function (module) {
+    /**
+     * Copyright 2013-present, Facebook, Inc.
+     * All rights reserved.
+     *
+     * This source code is licensed under the BSD-style license found in the
+     * LICENSE file in the root directory of this source tree. An additional grant
+     * of patent rights can be found in the PATENTS file in the same directory.
+     *
+     * @providesModule DisabledInputUtils
+     */
+
+    'use strict';
+
+    var disableableMouseListenerNames = {
+      onClick: true,
+      onDoubleClick: true,
+      onMouseDown: true,
+      onMouseMove: true,
+      onMouseUp: true,
+
+      onClickCapture: true,
+      onDoubleClickCapture: true,
+      onMouseDownCapture: true,
+      onMouseMoveCapture: true,
+      onMouseUpCapture: true
+    };
+
+    /**
+     * Implements a native component that does not receive mouse events
+     * when `disabled` is set.
+     */
+    var DisabledInputUtils = {
+      getNativeProps: function (inst, props) {
+        if (!props.disabled) {
+          return props;
+        }
+
+        // Copy the props, except the mouse listeners
+        var nativeProps = {};
+        for (var key in props) {
+          if (!disableableMouseListenerNames[key] && props.hasOwnProperty(key)) {
+            nativeProps[key] = props[key];
+          }
+        }
+
+        return nativeProps;
+      }
+    };
+
+    module.exports = DisabledInputUtils;
+    });
+
+    var require$$0$87 = (DisabledInputUtils && typeof DisabledInputUtils === 'object' && 'default' in DisabledInputUtils ? DisabledInputUtils['default'] : DisabledInputUtils);
 
     var ReactDOMTextarea = __commonjs(function (module) {
     /**
@@ -37847,13 +37868,14 @@
 
     var _assign = require$$2$8;
 
-    var DOMPropertyOperations = require$$5$14;
+    var DisabledInputUtils = require$$0$87;
+    var DOMPropertyOperations = require$$5$16;
     var LinkedValueUtils = require$$4$22;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactUpdates = require$$5$8;
+    var ReactUpdates = require$$5$9;
 
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var didWarnValueLink = false;
     var didWarnValueNull = false;
@@ -37895,7 +37917,7 @@
 
         // Always set children to the same thing. In IE9, the selection range will
         // get reset if `textContent` is mutated.
-        var nativeProps = _assign({}, props, {
+        var nativeProps = _assign({}, DisabledInputUtils.getNativeProps(inst, props), {
           defaultValue: undefined,
           value: undefined,
           children: inst._wrapperState.initialValue,
@@ -37993,11 +38015,12 @@
 
     var _assign = require$$2$8;
 
+    var DisabledInputUtils = require$$0$87;
     var LinkedValueUtils = require$$4$22;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactUpdates = require$$5$8;
+    var ReactUpdates = require$$5$9;
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var didWarnValueLink = false;
     var didWarnValueNull = false;
@@ -38116,7 +38139,7 @@
      */
     var ReactDOMSelect = {
       getNativeProps: function (inst, props) {
-        return _assign({}, props, {
+        return _assign({}, DisabledInputUtils.getNativeProps(inst, props), {
           onChange: inst._wrapperState.onChange,
           value: undefined
         });
@@ -38210,11 +38233,11 @@
 
     var _assign = require$$2$8;
 
-    var ReactChildren = require$$3$8;
+    var ReactChildren = require$$3$9;
     var ReactDOMComponentTree = require$$6$9;
     var ReactDOMSelect = require$$1$59;
 
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     /**
      * Implements an <option> native component that warns when `selected` is set.
@@ -38228,8 +38251,16 @@
 
         // Look up whether this option is 'selected'
         var selectValue = null;
-        if (nativeParent != null && nativeParent._tag === 'select') {
-          selectValue = ReactDOMSelect.getSelectValueContext(nativeParent);
+        if (nativeParent != null) {
+          var selectParent = nativeParent;
+
+          if (selectParent._tag === 'optgroup') {
+            selectParent = selectParent._nativeParent;
+          }
+
+          if (selectParent != null && selectParent._tag === 'select') {
+            selectValue = ReactDOMSelect.getSelectValueContext(selectParent);
+          }
         }
 
         // If the value is null (e.g., no specified value or after initial mount)
@@ -38298,7 +38329,7 @@
     module.exports = ReactDOMOption;
     });
 
-    var require$$11$3 = (ReactDOMOption && typeof ReactDOMOption === 'object' && 'default' in ReactDOMOption ? ReactDOMOption['default'] : ReactDOMOption);
+    var require$$11$2 = (ReactDOMOption && typeof ReactDOMOption === 'object' && 'default' in ReactDOMOption ? ReactDOMOption['default'] : ReactDOMOption);
 
     var ReactDOMInput = __commonjs(function (module) {
     /**
@@ -38316,13 +38347,14 @@
 
     var _assign = require$$2$8;
 
-    var DOMPropertyOperations = require$$5$14;
+    var DisabledInputUtils = require$$0$87;
+    var DOMPropertyOperations = require$$5$16;
     var LinkedValueUtils = require$$4$22;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactUpdates = require$$5$8;
+    var ReactUpdates = require$$5$9;
 
     var invariant = require$$1$23;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var didWarnValueLink = false;
     var didWarnCheckedLink = false;
@@ -38372,7 +38404,7 @@
           // Make sure we set .type before any other properties (setting .value
           // before .type means .value is lost in IE11 and below)
           type: undefined
-        }, props, {
+        }, DisabledInputUtils.getNativeProps(inst, props), {
           defaultChecked: undefined,
           defaultValue: undefined,
           value: value != null ? value : inst._wrapperState.initialValue,
@@ -38506,7 +38538,7 @@
     module.exports = ReactDOMInput;
     });
 
-    var require$$12$2 = (ReactDOMInput && typeof ReactDOMInput === 'object' && 'default' in ReactDOMInput ? ReactDOMInput['default'] : ReactDOMInput);
+    var require$$12$3 = (ReactDOMInput && typeof ReactDOMInput === 'object' && 'default' in ReactDOMInput ? ReactDOMInput['default'] : ReactDOMInput);
 
     var ReactDOMButton = __commonjs(function (module) {
     /**
@@ -38522,40 +38554,14 @@
 
     'use strict';
 
-    var mouseListenerNames = {
-      onClick: true,
-      onDoubleClick: true,
-      onMouseDown: true,
-      onMouseMove: true,
-      onMouseUp: true,
-
-      onClickCapture: true,
-      onDoubleClickCapture: true,
-      onMouseDownCapture: true,
-      onMouseMoveCapture: true,
-      onMouseUpCapture: true
-    };
+    var DisabledInputUtils = require$$0$87;
 
     /**
      * Implements a <button> native component that does not receive mouse events
      * when `disabled` is set.
      */
     var ReactDOMButton = {
-      getNativeProps: function (inst, props) {
-        if (!props.disabled) {
-          return props;
-        }
-
-        // Copy the props, except the mouse listeners
-        var nativeProps = {};
-        for (var key in props) {
-          if (props.hasOwnProperty(key) && !mouseListenerNames[key]) {
-            nativeProps[key] = props[key];
-          }
-        }
-
-        return nativeProps;
-      }
+      getNativeProps: DisabledInputUtils.getNativeProps
     };
 
     module.exports = ReactDOMButton;
@@ -38577,9 +38583,9 @@
 
     'use strict';
 
-    var DOMChildrenOperations = require$$2$29;
+    var DOMChildrenOperations = require$$2$28;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactPerf = require$$5$9;
+    var ReactPerf = require$$5$11;
 
     /**
      * Operations used to process updates to DOM nodes.
@@ -38621,9 +38627,9 @@
 
     'use strict';
 
-    var DOMChildrenOperations = require$$2$29;
+    var DOMChildrenOperations = require$$2$28;
     var ReactDOMIDOperations = require$$1$60;
-    var ReactPerf = require$$5$9;
+    var ReactPerf = require$$5$11;
 
     /**
      * Abstracts away all functionality of the reconciler that requires knowledge of
@@ -38795,7 +38801,7 @@
     module.exports = hyphenateStyleName;
     });
 
-    var require$$2$32 = (hyphenateStyleName && typeof hyphenateStyleName === 'object' && 'default' in hyphenateStyleName ? hyphenateStyleName['default'] : hyphenateStyleName);
+    var require$$2$31 = (hyphenateStyleName && typeof hyphenateStyleName === 'object' && 'default' in hyphenateStyleName ? hyphenateStyleName['default'] : hyphenateStyleName);
 
     var CSSProperty = __commonjs(function (module) {
     /**
@@ -38965,7 +38971,7 @@
     'use strict';
 
     var CSSProperty = require$$1$62;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var isUnitlessNumber = CSSProperty.isUnitlessNumber;
     var styleWarnings = {};
@@ -39030,7 +39036,7 @@
     module.exports = dangerousStyleValue;
     });
 
-    var require$$3$23 = (dangerousStyleValue && typeof dangerousStyleValue === 'object' && 'default' in dangerousStyleValue ? dangerousStyleValue['default'] : dangerousStyleValue);
+    var require$$3$24 = (dangerousStyleValue && typeof dangerousStyleValue === 'object' && 'default' in dangerousStyleValue ? dangerousStyleValue['default'] : dangerousStyleValue);
 
     var camelize$1 = __commonjs(function (module) {
     "use strict";
@@ -39128,13 +39134,13 @@
 
     var CSSProperty = require$$1$62;
     var ExecutionEnvironment = require$$4$11;
-    var ReactPerf = require$$5$9;
+    var ReactPerf = require$$5$11;
 
     var camelizeStyleName = require$$4$23;
-    var dangerousStyleValue = require$$3$23;
-    var hyphenateStyleName = require$$2$32;
+    var dangerousStyleValue = require$$3$24;
+    var hyphenateStyleName = require$$2$31;
     var memoizeStringOnly = require$$1$61;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var processStyleName = memoizeStringOnly(function (styleName) {
       return hyphenateStyleName(styleName);
@@ -39338,7 +39344,7 @@
 
     var ReactDOMComponentTree = require$$6$9;
 
-    var focusNode = require$$0$82;
+    var focusNode = require$$0$81;
 
     var AutoFocusUtils = {
       focusDOMComponent: function () {
@@ -39373,8 +39379,8 @@
     var CSSPropertyOperations = require$$25$1;
     var DOMLazyTree = require$$24$1;
     var DOMNamespaces = require$$23$1;
-    var DOMProperty = require$$0$72;
-    var DOMPropertyOperations = require$$5$14;
+    var DOMProperty = require$$0$71;
+    var DOMPropertyOperations = require$$5$16;
     var EventConstants = require$$6$10;
     var EventPluginHub = require$$9$5;
     var EventPluginRegistry = require$$1$47;
@@ -39383,20 +39389,20 @@
     var ReactDOMButton = require$$15$2;
     var ReactDOMComponentFlags = require$$14$3;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactDOMInput = require$$12$2;
-    var ReactDOMOption = require$$11$3;
+    var ReactDOMInput = require$$12$3;
+    var ReactDOMOption = require$$11$2;
     var ReactDOMSelect = require$$1$59;
     var ReactDOMTextarea = require$$9$7;
     var ReactMultiChild = require$$8$8;
-    var ReactPerf = require$$5$9;
+    var ReactPerf = require$$5$11;
 
-    var escapeTextContentForBrowser = require$$0$74;
+    var escapeTextContentForBrowser = require$$0$73;
     var invariant = require$$1$23;
-    var isEventSupported = require$$2$23;
-    var keyOf = require$$0$49;
-    var shallowEqual = require$$2$27;
+    var isEventSupported = require$$2$22;
+    var keyOf = require$$0$48;
+    var shallowEqual = require$$2$26;
     var validateDOMNesting = require$$1$43;
-    var warning = require$$0$46;
+    var warning = require$$0$45;
 
     var Flags = ReactDOMComponentFlags;
     var deleteListener = EventPluginHub.deleteListener;
@@ -39414,6 +39420,9 @@
       dangerouslySetInnerHTML: null,
       suppressContentEditableWarning: null
     };
+
+    // Node type for document fragments (Node.DOCUMENT_FRAGMENT_NODE).
+    var DOC_FRAGMENT_TYPE = 11;
 
     function getDeclarationErrorAddendum(internalInstance) {
       if (internalInstance) {
@@ -39511,7 +39520,8 @@
         warning(registrationName !== 'onScroll' || isEventSupported('scroll', true), 'This browser doesn\'t support the `onScroll` event');
       }
       var containerInfo = inst._nativeContainerInfo;
-      var doc = containerInfo._ownerDocument;
+      var isDocumentFragment = containerInfo._node && containerInfo._node.nodeType === DOC_FRAGMENT_TYPE;
+      var doc = isDocumentFragment ? containerInfo._node : containerInfo._ownerDocument;
       if (!doc) {
         // Server rendering.
         return;
@@ -40259,7 +40269,7 @@
     module.exports = ReactDOMComponent;
     });
 
-    var require$$12$1 = (ReactDOMComponent && typeof ReactDOMComponent === 'object' && 'default' in ReactDOMComponent ? ReactDOMComponent['default'] : ReactDOMComponent);
+    var require$$12$2 = (ReactDOMComponent && typeof ReactDOMComponent === 'object' && 'default' in ReactDOMComponent ? ReactDOMComponent['default'] : ReactDOMComponent);
 
     var HTMLDOMPropertyConfig = __commonjs(function (module) {
     /**
@@ -40275,7 +40285,7 @@
 
     'use strict';
 
-    var DOMProperty = require$$0$72;
+    var DOMProperty = require$$0$71;
 
     var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
     var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -40490,11 +40500,11 @@
     'use strict';
 
     var EventConstants = require$$6$10;
-    var EventPropagators = require$$5$10;
+    var EventPropagators = require$$5$12;
     var ReactDOMComponentTree = require$$6$9;
     var SyntheticMouseEvent = require$$1$50;
 
-    var keyOf = require$$0$49;
+    var keyOf = require$$0$48;
 
     var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -40599,7 +40609,7 @@
 
     'use strict';
 
-    var keyOf = require$$0$49;
+    var keyOf = require$$0$48;
 
     /**
      * Module that is injectable into `EventPluginHub`, that specifies a
@@ -40633,16 +40643,16 @@
 
     var EventConstants = require$$6$10;
     var EventPluginHub = require$$9$5;
-    var EventPropagators = require$$5$10;
+    var EventPropagators = require$$5$12;
     var ExecutionEnvironment = require$$4$11;
     var ReactDOMComponentTree = require$$6$9;
-    var ReactUpdates = require$$5$8;
-    var SyntheticEvent = require$$0$80;
+    var ReactUpdates = require$$5$9;
+    var SyntheticEvent = require$$0$79;
 
-    var getEventTarget = require$$3$18;
-    var isEventSupported = require$$2$23;
+    var getEventTarget = require$$3$19;
+    var isEventSupported = require$$2$22;
     var isTextInputElement = require$$1$52;
-    var keyOf = require$$0$49;
+    var keyOf = require$$0$48;
 
     var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -40961,7 +40971,7 @@
 
     'use strict';
 
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
     /**
      * @interface Event
@@ -41003,7 +41013,7 @@
 
     'use strict';
 
-    var SyntheticEvent = require$$0$80;
+    var SyntheticEvent = require$$0$79;
 
     /**
      * @interface Event
@@ -41028,7 +41038,7 @@
     module.exports = SyntheticCompositionEvent;
     });
 
-    var require$$2$33 = (SyntheticCompositionEvent && typeof SyntheticCompositionEvent === 'object' && 'default' in SyntheticCompositionEvent ? SyntheticCompositionEvent['default'] : SyntheticCompositionEvent);
+    var require$$2$32 = (SyntheticCompositionEvent && typeof SyntheticCompositionEvent === 'object' && 'default' in SyntheticCompositionEvent ? SyntheticCompositionEvent['default'] : SyntheticCompositionEvent);
 
     var FallbackCompositionState = __commonjs(function (module) {
     /**
@@ -41048,7 +41058,7 @@
 
     var PooledClass = require$$1$28;
 
-    var getTextContentAccessor = require$$0$85;
+    var getTextContentAccessor = require$$0$84;
 
     /**
      * This helper class stores information about text content of a target node,
@@ -41128,7 +41138,7 @@
     module.exports = FallbackCompositionState;
     });
 
-    var require$$3$24 = (FallbackCompositionState && typeof FallbackCompositionState === 'object' && 'default' in FallbackCompositionState ? FallbackCompositionState['default'] : FallbackCompositionState);
+    var require$$3$25 = (FallbackCompositionState && typeof FallbackCompositionState === 'object' && 'default' in FallbackCompositionState ? FallbackCompositionState['default'] : FallbackCompositionState);
 
     var BeforeInputEventPlugin = __commonjs(function (module) {
     /**
@@ -41145,13 +41155,13 @@
     'use strict';
 
     var EventConstants = require$$6$10;
-    var EventPropagators = require$$5$10;
+    var EventPropagators = require$$5$12;
     var ExecutionEnvironment = require$$4$11;
-    var FallbackCompositionState = require$$3$24;
-    var SyntheticCompositionEvent = require$$2$33;
+    var FallbackCompositionState = require$$3$25;
+    var SyntheticCompositionEvent = require$$2$32;
     var SyntheticInputEvent = require$$1$63;
 
-    var keyOf = require$$0$49;
+    var keyOf = require$$0$48;
 
     var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
     var START_KEYCODE = 229;
@@ -41544,17 +41554,17 @@
     var ExecutionEnvironment = require$$4$11;
     var HTMLDOMPropertyConfig = require$$14$5;
     var ReactComponentBrowserEnvironment = require$$16$1;
-    var ReactDOMComponent = require$$12$1;
+    var ReactDOMComponent = require$$12$2;
     var ReactDOMComponentTree = require$$6$9;
     var ReactDOMEmptyComponent = require$$10$7;
     var ReactDOMTreeTraversal = require$$9$6;
     var ReactDOMTextComponent = require$$8$7;
-    var ReactDefaultBatchingStrategy = require$$7$7;
+    var ReactDefaultBatchingStrategy = require$$7$6;
     var ReactEventListener = require$$6$13;
-    var ReactInjection = require$$5$11;
+    var ReactInjection = require$$5$13;
     var ReactReconcileTransaction = require$$4$21;
-    var SVGDOMPropertyConfig = require$$3$20;
-    var SelectEventPlugin = require$$2$26;
+    var SVGDOMPropertyConfig = require$$3$21;
+    var SelectEventPlugin = require$$2$25;
     var SimpleEventPlugin = require$$1$49;
 
     var alreadyInjected = false;
@@ -41608,7 +41618,7 @@
       if ("development" !== 'production') {
         var url = ExecutionEnvironment.canUseDOM && window.location.href || '';
         if (/[?&]react_perf\b/.test(url)) {
-          var ReactDefaultPerf = require$$0$75;
+          var ReactDefaultPerf = require$$0$74;
           ReactDefaultPerf.start();
         }
       }
@@ -41639,16 +41649,16 @@
 
     var ReactDOMComponentTree = require$$6$9;
     var ReactDefaultInjection = require$$10$5;
-    var ReactMount = require$$3$14;
-    var ReactPerf = require$$5$9;
-    var ReactReconciler = require$$4$15;
-    var ReactUpdates = require$$5$8;
-    var ReactVersion = require$$5$2;
+    var ReactMount = require$$3$16;
+    var ReactPerf = require$$5$11;
+    var ReactReconciler = require$$5$10;
+    var ReactUpdates = require$$5$9;
+    var ReactVersion = require$$5$3;
 
     var findDOMNode = require$$4$18;
-    var getNativeComponentFromComposite = require$$2$25;
-    var renderSubtreeIntoContainer = require$$2$18;
-    var warning = require$$0$46;
+    var getNativeComponentFromComposite = require$$2$24;
+    var renderSubtreeIntoContainer = require$$2$17;
+    var warning = require$$0$45;
 
     ReactDefaultInjection.inject();
 
@@ -41728,12 +41738,12 @@
     module.exports = React;
     });
 
-    var require$$0$68 = (ReactDOM$1 && typeof ReactDOM$1 === 'object' && 'default' in ReactDOM$1 ? ReactDOM$1['default'] : ReactDOM$1);
+    var require$$0$67 = (ReactDOM$1 && typeof ReactDOM$1 === 'object' && 'default' in ReactDOM$1 ? ReactDOM$1['default'] : ReactDOM$1);
 
     var index$6 = __commonjs(function (module) {
     'use strict';
 
-    module.exports = require$$0$68;
+    module.exports = require$$0$67;
     });
 
     var ReactDOM = (index$6 && typeof index$6 === 'object' && 'default' in index$6 ? index$6['default'] : index$6);
@@ -42152,10 +42162,10 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var children = _props.children;
           var frame = _props.frame;
-          var options = babelHelpers.objectWithoutProperties(_props, ['catalog', 'children', 'frame']);
+          var options = babelHelpers.objectWithoutProperties(_props, ['theme', 'children', 'frame']);
 
           var styles = getStyle$2(theme);
           var exampleStyles = babelHelpers.extends({}, options.plain ? styles.plain : null, options.light ? styles.light : null, options.dark ? styles.dark : null, options.plain && options.light ? styles.plain_light : null, options.plain && options.dark ? styles.plain_dark : null);
@@ -42201,7 +42211,7 @@
 
     Html.propTypes = {
       children: PropTypes.string.isRequired,
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       runScript: PropTypes.bool,
       plain: PropTypes.bool,
       light: PropTypes.bool,
@@ -42210,7 +42220,7 @@
       frame: PropTypes.bool
     };
 
-    var Html$1 = Specimen(undefined, undefined, { withChildren: true })(Radium(Html));
+    var Html$1 = Specimen()(Radium(Html));
 
     var marked = __commonjs(function (module, exports, global) {
     /**
@@ -43924,7 +43934,7 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var children = _props.children;
           var warning = _props.warning;
           var neutral = _props.neutral;
@@ -43974,13 +43984,13 @@
 
     Hint.propTypes = {
       children: PropTypes.string.isRequired,
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       warning: PropTypes.bool,
       neutral: PropTypes.bool,
       directive: PropTypes.bool
     };
 
-    var Hint$1 = Specimen(undefined, undefined, { withChildren: true })(Hint);
+    var Hint$1 = Specimen()(Hint);
 
     var Image = function (_React$Component) {
       babelHelpers.inherits(Image, _React$Component);
@@ -43994,12 +44004,12 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var src = _props.src;
           var title = _props.title;
           var overlay = _props.overlay;
           var description = _props.description;
-          var options = babelHelpers.objectWithoutProperties(_props, ['catalog', 'src', 'title', 'overlay', 'description']);
+          var options = babelHelpers.objectWithoutProperties(_props, ['theme', 'src', 'title', 'overlay', 'description']);
 
 
           var styles = {
@@ -44081,7 +44091,7 @@
     }(React.Component);
 
     Image.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       src: PropTypes.string.isRequired,
       title: PropTypes.string,
       overlay: PropTypes.string,
@@ -44149,8 +44159,8 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
-          var options = babelHelpers.objectWithoutProperties(_props, ['catalog']);
+          var theme = _props.theme;
+          var options = babelHelpers.objectWithoutProperties(_props, ['theme']);
 
           var styles = getStyle$4(theme);
 
@@ -44285,7 +44295,7 @@
       image: PropTypes.string,
       headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
       paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-      catalog: catalogShape.isRequired
+      theme: PropTypes.object.isRequired
     };
 
     var Type$1 = Specimen()(Type);
@@ -44374,7 +44384,7 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
           var title = _props.title;
           var subtitle = _props.subtitle;
           var url = _props.url;
@@ -44422,7 +44432,7 @@
     };
 
     DownloadSpecimen.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       span: PropTypes.number,
       title: PropTypes.string,
       subtitle: PropTypes.string,
@@ -44449,7 +44459,7 @@
           var muted = _props.muted;
           var loop = _props.loop;
           var autoplay = _props.autoplay;
-          var theme = _props.catalog.theme;
+          var theme = _props.theme;
 
 
           var styles = {
@@ -44502,7 +44512,7 @@
     }(React.Component);
 
     Video.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       src: PropTypes.string.isRequired,
       title: PropTypes.string,
       muted: PropTypes.bool,
@@ -44511,6 +44521,25 @@
     };
 
     var Video$1 = Specimen()(Radium(Video));
+
+    var page = PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      index: PropTypes.number,
+      path: PropTypes.string,
+      src: PropTypes.string,
+      pages: PropTypes.array, // should be arrayOf(page) but that doesn't work
+      styles: PropTypes.array.isRequired,
+      scripts: PropTypes.array.isRequired,
+      imports: PropTypes.object.isRequired
+    });
+
+    var pages = PropTypes.arrayOf(page);
+
+    var CatalogPropTypes = {
+      page: page,
+      pages: pages
+    };
 
     /*
 
@@ -44693,13 +44722,12 @@
         key: 'render',
         value: function render() {
           var _props = this.props;
-          var _props$catalog = _props.catalog;
-          var imports = _props$catalog.page.imports;
-          var theme = _props$catalog.theme;
+          var theme = _props.theme;
           var children = _props.children;
           var noSource = _props.noSource;
           var frame = _props.frame;
-          var options = babelHelpers.objectWithoutProperties(_props, ['catalog', 'children', 'noSource', 'frame']);
+          var options = babelHelpers.objectWithoutProperties(_props, ['theme', 'children', 'noSource', 'frame']);
+          var imports = this.context.page.imports;
 
           var styles = getStyle$6(theme);
 
@@ -44748,7 +44776,7 @@
     }(Component);
 
     ReactSpecimen.propTypes = {
-      catalog: catalogShape.isRequired,
+      theme: PropTypes.object.isRequired,
       children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
       noSource: PropTypes.bool,
       plain: PropTypes.bool,
@@ -44758,7 +44786,11 @@
       state: PropTypes.object
     };
 
-    var ReactSpecimen$1 = Specimen(undefined, undefined, { withChildren: true })(Radium(ReactSpecimen));
+    ReactSpecimen.contextTypes = {
+      page: CatalogPropTypes.page.isRequired
+    };
+
+    var ReactSpecimen$1 = Specimen()(Radium(ReactSpecimen));
 
     var specimens = {
       'raw-code': RawCode,
@@ -45036,7 +45068,7 @@
     module.exports = exports['default'];
     });
 
-    var require$$2$34 = (createLocation && typeof createLocation === 'object' && 'default' in createLocation ? createLocation['default'] : createLocation);
+    var require$$2$33 = (createLocation && typeof createLocation === 'object' && 'default' in createLocation ? createLocation['default'] : createLocation);
 
     var AsyncUtils = __commonjs(function (module, exports) {
     "use strict";
@@ -45262,7 +45294,7 @@
 
     var _Actions = require$$1$65;
 
-    var _createLocation2 = require$$2$34;
+    var _createLocation2 = require$$2$33;
 
     var _createLocation3 = _interopRequireDefault(_createLocation2);
 
@@ -45610,7 +45642,7 @@
     }
     });
 
-    var require$$2$35 = (DOMUtils && typeof DOMUtils === 'object' && 'default' in DOMUtils ? DOMUtils['default'] : DOMUtils);
+    var require$$2$34 = (DOMUtils && typeof DOMUtils === 'object' && 'default' in DOMUtils ? DOMUtils['default'] : DOMUtils);
 
     var ExecutionEnvironment$1 = __commonjs(function (module, exports) {
     'use strict';
@@ -45620,7 +45652,7 @@
     exports.canUseDOM = canUseDOM;
     });
 
-    var require$$3$25 = (ExecutionEnvironment$1 && typeof ExecutionEnvironment$1 === 'object' && 'default' in ExecutionEnvironment$1 ? ExecutionEnvironment$1['default'] : ExecutionEnvironment$1);
+    var require$$3$26 = (ExecutionEnvironment$1 && typeof ExecutionEnvironment$1 === 'object' && 'default' in ExecutionEnvironment$1 ? ExecutionEnvironment$1['default'] : ExecutionEnvironment$1);
 
     var browser$1 = __commonjs(function (module) {
     /**
@@ -45691,9 +45723,9 @@
 
     var _invariant2 = _interopRequireDefault(_invariant);
 
-    var _ExecutionEnvironment = require$$3$25;
+    var _ExecutionEnvironment = require$$3$26;
 
-    var _DOMUtils = require$$2$35;
+    var _DOMUtils = require$$2$34;
 
     var _createHistory = require$$0$92;
 
@@ -45822,9 +45854,9 @@
 
     var _PathUtils = require$$4$24;
 
-    var _ExecutionEnvironment = require$$3$25;
+    var _ExecutionEnvironment = require$$3$26;
 
-    var _DOMUtils = require$$2$35;
+    var _DOMUtils = require$$2$34;
 
     var _DOMStateStorage = require$$1$67;
 
@@ -46132,7 +46164,7 @@
     };
     });
 
-    var require$$3$26 = (index$9 && typeof index$9 === 'object' && 'default' in index$9 ? index$9['default'] : index$9);
+    var require$$3$27 = (index$9 && typeof index$9 === 'object' && 'default' in index$9 ? index$9['default'] : index$9);
 
     var useQueries = __commonjs(function (module, exports) {
     'use strict';
@@ -46147,7 +46179,7 @@
 
     var _warning2 = _interopRequireDefault(_warning);
 
-    var _queryString = require$$3$26;
+    var _queryString = require$$3$27;
 
     var _runTransitionHook = require$$1$64;
 
@@ -48585,7 +48617,7 @@
 
     var _warning2 = _interopRequireDefault(_warning);
 
-    var _ExecutionEnvironment = require$$3$25;
+    var _ExecutionEnvironment = require$$3$26;
 
     var _PathUtils = require$$4$24;
 
@@ -48605,19 +48637,32 @@
 
         var basename = options.basename;
 
-        // Automatically use the value of <base href> in HTML
-        // documents as basename if it's not explicitly given.
-        if (basename == null && _ExecutionEnvironment.canUseDOM) {
-          var base = document.getElementsByTagName('base')[0];
+        var checkedBaseHref = false;
 
-          if (base) {
-            _warning2['default'](false, 'Automatically setting basename using <base href> is deprecated and will ' + 'be removed in the next major release. The semantics of <base href> are ' + 'subtly different from basename. Please pass the basename explicitly in ' + 'the options to createHistory');
-
-            basename = base.getAttribute('href');
+        function checkBaseHref() {
+          if (checkedBaseHref) {
+            return;
           }
+
+          // Automatically use the value of <base href> in HTML
+          // documents as basename if it's not explicitly given.
+          if (basename == null && _ExecutionEnvironment.canUseDOM) {
+            var base = document.getElementsByTagName('base')[0];
+            var baseHref = base && base.getAttribute('href');
+
+            if (baseHref != null) {
+              basename = baseHref;
+
+              _warning2['default'](false, 'Automatically setting basename using <base href> is deprecated and will ' + 'be removed in the next major release. The semantics of <base href> are ' + 'subtly different from basename. Please pass the basename explicitly in ' + 'the options to createHistory');
+            }
+          }
+
+          checkedBaseHref = true;
         }
 
         function addBasename(location) {
+          checkBaseHref();
+
           if (basename && location.basename == null) {
             if (location.pathname.indexOf(basename) === 0) {
               location.pathname = location.pathname.substring(basename.length);
@@ -48633,6 +48678,8 @@
         }
 
         function prependBasename(location) {
+          checkBaseHref();
+
           if (!basename) return location;
 
           if (typeof location === 'string') location = _PathUtils.parsePath(location);
@@ -48902,9 +48949,9 @@
 
     var _PathUtils = require$$4$24;
 
-    var _ExecutionEnvironment = require$$3$25;
+    var _ExecutionEnvironment = require$$3$26;
 
-    var _DOMUtils = require$$2$35;
+    var _DOMUtils = require$$2$34;
 
     var _DOMStateStorage = require$$1$67;
 
@@ -49933,7 +49980,7 @@
     };
     });
 
-    var require$$2$36 = (scrollLeft && typeof scrollLeft === 'object' && 'default' in scrollLeft ? scrollLeft['default'] : scrollLeft);
+    var require$$2$35 = (scrollLeft && typeof scrollLeft === 'object' && 'default' in scrollLeft ? scrollLeft['default'] : scrollLeft);
 
     var on = __commonjs(function (module) {
     'use strict';
@@ -49954,7 +50001,7 @@
     module.exports = on;
     });
 
-    var require$$3$27 = (on && typeof on === 'object' && 'default' in on ? on['default'] : on);
+    var require$$3$28 = (on && typeof on === 'object' && 'default' in on ? on['default'] : on);
 
     var off = __commonjs(function (module) {
     'use strict';
@@ -49995,11 +50042,11 @@
 
     var _domHelpersEventsOff2 = _interopRequireDefault(_domHelpersEventsOff);
 
-    var _domHelpersEventsOn = require$$3$27;
+    var _domHelpersEventsOn = require$$3$28;
 
     var _domHelpersEventsOn2 = _interopRequireDefault(_domHelpersEventsOn);
 
-    var _domHelpersQueryScrollLeft = require$$2$36;
+    var _domHelpersQueryScrollLeft = require$$2$35;
 
     var _domHelpersQueryScrollLeft2 = _interopRequireDefault(_domHelpersQueryScrollLeft);
 
@@ -50599,8 +50646,8 @@
 
     NavigationBar.propTypes = {
       theme: PropTypes.object.isRequired,
-      nextPage: pageShape,
-      previousPage: pageShape
+      nextPage: CatalogPropTypes.page,
+      previousPage: CatalogPropTypes.page
     };
 
     var NavigationBar$1 = Radium(NavigationBar);
@@ -50826,8 +50873,8 @@
       sideNav: PropTypes.node,
       children: PropTypes.node,
       theme: PropTypes.object.isRequired,
-      page: pageShape.isRequired,
-      pages: pagesShape.isRequired
+      page: CatalogPropTypes.page.isRequired,
+      pages: CatalogPropTypes.pages.isRequired
     };
 
     var AppLayout$1 = Radium(AppLayout);
@@ -50836,7 +50883,7 @@
       displayName: 'NestedList',
 
       propTypes: {
-        pages: pagesShape.isRequired,
+        pages: CatalogPropTypes.pages.isRequired,
         title: PropTypes.string.isRequired,
         theme: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired
@@ -50967,7 +51014,7 @@
     }(React.Component);
 
     ListItem.propTypes = {
-      page: pageShape.isRequired,
+      page: CatalogPropTypes.page.isRequired,
       theme: PropTypes.object.isRequired,
       nested: PropTypes.bool,
       history: PropTypes.object.isRequired
@@ -51083,7 +51130,7 @@
     }(React.Component);
 
     Menu.propTypes = {
-      pageTree: pagesShape.isRequired,
+      pageTree: CatalogPropTypes.pages.isRequired,
       theme: PropTypes.object.isRequired,
       logoSrc: PropTypes.string,
       history: PropTypes.object.isRequired,
@@ -51106,18 +51153,13 @@
       babelHelpers.createClass(App, [{
         key: 'render',
         value: function render() {
-          var _context = this.context;
-          var catalog = _context.catalog;
-          var history = _context.history;
-          var location = _context.location;
-
           return React.createElement(
             StyleRoot,
             null,
             React.createElement(
               AppLayout$1,
-              babelHelpers.extends({}, catalog, {
-                sideNav: React.createElement(Menu, babelHelpers.extends({}, catalog, { history: history }))
+              babelHelpers.extends({}, this.context, {
+                sideNav: React.createElement(Menu, this.context)
               }),
               Children.only(this.props.children)
             )
@@ -51128,9 +51170,14 @@
     }(React.Component);
 
     App.contextTypes = {
-      catalog: catalogShape.isRequired,
+      title: PropTypes.string.isRequired,
+      page: CatalogPropTypes.page.isRequired,
+      pages: CatalogPropTypes.pages.isRequired,
+      pageTree: CatalogPropTypes.pages.isRequired,
+      theme: PropTypes.object.isRequired,
       history: PropTypes.object.isRequired,
-      location: PropTypes.object.isRequired
+      location: PropTypes.object.isRequired,
+      logoSrc: PropTypes.string
     };
 
     App.propTypes = {
@@ -51158,19 +51205,17 @@
           var router = this.context.router;
 
           return {
-            catalog: {
-              page: pages.find(function (p) {
-                return router.isActive(p.path);
-              }),
-              getSpecimen: function getSpecimen(specimen) {
-                return specimens[specimen];
-              },
-              theme: theme,
-              title: title,
-              pages: pages,
-              pageTree: pageTree,
-              logoSrc: logoSrc
-            }
+            page: pages.find(function (p) {
+              return router.isActive(p.path);
+            }),
+            getSpecimen: function getSpecimen(specimen) {
+              return specimens[specimen];
+            },
+            theme: theme,
+            title: title,
+            pages: pages,
+            pageTree: pageTree,
+            logoSrc: logoSrc
           };
         }
       }, {
@@ -51195,7 +51240,13 @@
     };
 
     CatalogContext.childContextTypes = {
-      catalog: catalogShape.isRequired
+      title: PropTypes.string.isRequired,
+      theme: PropTypes.object.isRequired,
+      pages: CatalogPropTypes.pages.isRequired,
+      pageTree: CatalogPropTypes.pages.isRequired,
+      page: CatalogPropTypes.page.isRequired,
+      logoSrc: PropTypes.string,
+      getSpecimen: PropTypes.func.isRequired
     };
 
     function createCatalogContext(config) {
@@ -51313,7 +51364,7 @@
           var _props = this.props;
           var options = _props.options;
           var body = _props.body;
-          var getSpecimen = _props.getSpecimen;
+          var getSpecimen = this.context.getSpecimen;
 
           var specimenType = parseSpecimenType(options);
           var Specimen = getSpecimen(specimenType) || getUnknownSpecimen(specimenType);
@@ -51326,7 +51377,10 @@
 
     MarkdownSpecimen.propTypes = {
       body: PropTypes.string.isRequired,
-      options: PropTypes.string.isRequired,
+      options: PropTypes.string.isRequired
+    };
+
+    MarkdownSpecimen.contextTypes = {
       getSpecimen: PropTypes.func.isRequired
     };
 
@@ -51342,9 +51396,7 @@
         key: 'render',
         value: function render() {
           var children = this.props.children;
-          var _context$catalog = this.context.catalog;
-          var theme = _context$catalog.theme;
-          var getSpecimen = _context$catalog.getSpecimen;
+          var theme = this.context.theme;
 
 
           var pageStyle = {
@@ -51372,7 +51424,7 @@
                 text: child,
                 renderer: {
                   code: function code(body, options) {
-                    return React.createElement(MarkdownSpecimen, { key: getSpecimenKey(), body: body, options: options || '', getSpecimen: getSpecimen });
+                    return React.createElement(MarkdownSpecimen, { key: getSpecimenKey(), body: body, options: options || '' });
                   }
                 }
               }) : child;
@@ -51402,7 +51454,7 @@
     };
 
     Page.contextTypes = {
-      catalog: catalogShape.isRequired
+      theme: PropTypes.object.isRequired
     };
 
     var Page$1 = Radium(Page);
@@ -51432,18 +51484,18 @@
       babelHelpers.createClass(PageRenderer, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-          this.context.catalog.page.scripts.forEach(runscript);
+          this.context.page.scripts.forEach(runscript);
         }
       }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-          this.context.catalog.page.scripts.forEach(runscript);
+          this.context.page.scripts.forEach(runscript);
         }
       }, {
         key: 'render',
         value: function render() {
           var content = this.props.content;
-          var styles = this.context.catalog.page.styles;
+          var styles = this.context.page.styles;
 
           return React.createElement(
             'div',
@@ -51461,7 +51513,7 @@
     };
 
     PageRenderer.contextTypes = {
-      catalog: catalogShape.isRequired
+      page: CatalogPropTypes.page.isRequired
     };
 
     var PageContentLoader = function (_Component) {
@@ -51481,14 +51533,14 @@
       babelHelpers.createClass(PageContentLoader, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-          this.fetchPageData(this.context.catalog.page.src);
+          this.fetchPageData(this.context.page.src);
         }
       }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(_, nextContext) {
-          if (nextContext.catalog.page.src !== this.context.catalog.page.src) {
+          if (nextContext.page.src !== this.context.page.src) {
             this.setState({ content: null });
-            this.fetchPageData(nextContext.catalog.page.src);
+            this.fetchPageData(nextContext.page.src);
           }
         }
       }, {
@@ -51517,7 +51569,7 @@
     }(Component);
 
     PageContentLoader.contextTypes = {
-      catalog: catalogShape.isRequired
+      page: CatalogPropTypes.page.isRequired
     };
 
     var pageToRoute = function pageToRoute(_ref) {
