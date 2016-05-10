@@ -137,4 +137,4 @@ Html.propTypes = {
 };
 
 
-export default Specimen()(Radium(Html));
+export default Specimen(undefined, undefined, {withChildren: true})(Radium(Html));

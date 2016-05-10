@@ -124,4 +124,4 @@ ReactSpecimen.contextTypes = {
   page: CatalogPropTypes.page.isRequired
 };
 
-export default Specimen()(Radium(ReactSpecimen));
+export default Specimen(undefined, undefined, {withChildren: true})(Radium(ReactSpecimen));
