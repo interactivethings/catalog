@@ -1,7 +1,8 @@
 # Change Log
 
-## 2.1.2
+## 2.2.0
 
+- Include React Specimen in standalone version too (make sure to include `babel-standalone` on the page if you want to use it)
 - Fix specimen body parsing ([#96](https://github.com/interactivethings/catalog/pull/96))
 - Internal refactoring of `context` use ([#97](https://github.com/interactivethings/catalog/pull/97))
 
