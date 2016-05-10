@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.1.2
+
+- Fix specimen body parsing ([#96](https://github.com/interactivethings/catalog/pull/96))
+- Internal refactoring of `context` use ([#97](https://github.com/interactivethings/catalog/pull/97))
+
 ## 2.1.1
 
 - Make Catalog webpack loader cacheable
