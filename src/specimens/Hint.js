@@ -80,4 +80,4 @@ Hint.propTypes = {
   directive: PropTypes.bool
 };
 
-export default Specimen()(Hint);
+export default Specimen(undefined, undefined, {withChildren: true})(Hint);

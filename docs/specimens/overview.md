@@ -6,7 +6,7 @@
 
 Specimens are defined as Markdown code blocks with an option string.
 
-````code
+````
 ```html|dark
 Content goes here...
 ```
@@ -31,7 +31,7 @@ The first part – the one before the `|`-character – is the specimen __type_
 
 For example:
 
-````code
+````
 ```image
 ...
 ```
@@ -43,7 +43,7 @@ The second part after the `|` is a list of comma-separated __options__ for the s
 
 For example:
 
-````code
+````
 ```code|lang-jsx,span-3
 ...
 ```
@@ -63,7 +63,7 @@ The [HTML](#/html), [Code](#/code), and [Hint](#/hint) specimens take a simple s
 
 For example:
 
-````code
+````
 ```html
 <p>Some HTML</p>
 ```
@@ -75,7 +75,7 @@ Other specimens (like [Color](#/color)) take structured content as input which i
 
 For example:
 
-````code
+````
 ```color
 name: Red
 value: #f00
@@ -88,7 +88,7 @@ To specify __props__ and __content__ together, separate them with `---` followed
 
 For example:
 
-````code
+````
 ```code
 span: 2
 ---
