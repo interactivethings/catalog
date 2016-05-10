@@ -1,6 +1,7 @@
 // Higher-order Specimen which provides theme
 
 import React, {PropTypes} from 'react';
+import {catalogShape} from '../../CatalogPropTypes';
 import Span from './Span';
 import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
 import {parseSpecimenBody, parseSpecimenYamlBody} from '../../utils/parseSpecimenBody';
@@ -10,7 +11,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
   const parseBody = options.withChildren ? parseSpecimenBody(mapBodyToProps) : parseSpecimenYamlBody(mapBodyToProps);
 
   return (WrappedSpecimen) => {
-    const SpecimenContainer = (props, {theme}) => {
+    const SpecimenContainer = (props, {catalog}) => {
       const {rawOptions, rawBody} = props;
       const optionProps = parseOptions(rawOptions);
       const bodyProps = parseBody(rawBody);
@@ -18,7 +19,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
 
       return (
         <Span span={span}>
-          <WrappedSpecimen {...optionProps} {...bodyProps} {...props} theme={theme} />
+          <WrappedSpecimen {...optionProps} {...bodyProps} {...props} catalog={catalog} />
         </Span>
       );
     };
@@ -30,7 +31,7 @@ export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Fu
     };
 
     SpecimenContainer.contextTypes = {
-      theme: PropTypes.object.isRequired
+      catalog: catalogShape.isRequired
     };
 
     return SpecimenContainer;

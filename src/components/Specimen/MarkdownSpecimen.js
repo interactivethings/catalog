@@ -6,8 +6,7 @@ const getUnknownSpecimen = (specimenType) => () => <Hint warning>{`Unknown Speci
 
 export default class MarkdownSpecimen extends Component {
   render() {
-    const {options, body} = this.props;
-    const {getSpecimen} = this.context;
+    const {options, body, getSpecimen} = this.props;
     const specimenType = parseSpecimenType(options);
     const Specimen = getSpecimen(specimenType) || getUnknownSpecimen(specimenType);
 
@@ -17,9 +16,6 @@ export default class MarkdownSpecimen extends Component {
 
 MarkdownSpecimen.propTypes = {
   body: PropTypes.string.isRequired,
-  options: PropTypes.string.isRequired
-};
-
-MarkdownSpecimen.contextTypes = {
+  options: PropTypes.string.isRequired,
   getSpecimen: PropTypes.func.isRequired
 };

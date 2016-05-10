@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import {Style} from 'radium';
 import renderMarkdown from '../utils/renderMarkdown';
 import Specimen from '../components/Specimen/Specimen';
@@ -37,7 +38,7 @@ function getStyle(theme) {
 
 class Hint extends React.Component {
   render() {
-    const {theme, children, warning, neutral, directive} = this.props;
+    const {catalog: {theme}, children, warning, neutral, directive} = this.props;
     const styles = getStyle(theme);
 
     const warningStyle = warning ? styles.warning : null;
@@ -74,7 +75,7 @@ class Hint extends React.Component {
 
 Hint.propTypes = {
   children: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   warning: PropTypes.bool,
   neutral: PropTypes.bool,
   directive: PropTypes.bool

@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {catalogShape} from '../../CatalogPropTypes';
 import Radium from 'radium';
 import Frame from '../../components/Frame/Frame';
 import Specimen from '../../components/Specimen/Specimen';
@@ -66,8 +66,7 @@ class ReactSpecimen extends Component {
   }
 
   render() {
-    const {theme, children, noSource, frame, ...options} = this.props;
-    const {page: {imports}} = this.context;
+    const {catalog: {page: {imports}, theme}, children, noSource, frame, ...options} = this.props;
     const styles = getStyle(theme);
 
     const exampleStyles = {
@@ -110,7 +109,7 @@ class ReactSpecimen extends Component {
 }
 
 ReactSpecimen.propTypes = {
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   noSource: PropTypes.bool,
   plain: PropTypes.bool,
@@ -118,10 +117,6 @@ ReactSpecimen.propTypes = {
   dark: PropTypes.bool,
   frame: PropTypes.bool,
   state: PropTypes.object
-};
-
-ReactSpecimen.contextTypes = {
-  page: CatalogPropTypes.page.isRequired
 };
 
 export default Specimen(undefined, undefined, {withChildren: true})(Radium(ReactSpecimen));

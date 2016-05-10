@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {pagesShape} from '../../CatalogPropTypes';
 import { heading, text, getFontSize } from '../../styles/typography';
 import Link from '../Link/Link';
 
@@ -77,7 +77,7 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  pageTree: CatalogPropTypes.pages.isRequired,
+  pageTree: pagesShape.isRequired,
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   history: PropTypes.object.isRequired,

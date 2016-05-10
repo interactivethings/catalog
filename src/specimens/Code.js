@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {catalogShape} from '../CatalogPropTypes';
 import {text} from '../styles/typography';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
@@ -44,7 +45,7 @@ class Code extends React.Component {
   }
 
   render() {
-    const {theme, children, rawBody, collapsed, lang, raw} = this.props;
+    const {catalog: {theme}, children, rawBody, collapsed, lang, raw} = this.props;
     const {viewSource} = this.state;
     let styles = getStyle(theme);
 
@@ -68,7 +69,7 @@ class Code extends React.Component {
 Code.propTypes = {
   children: PropTypes.string.isRequired,
   rawBody: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired,
+  catalog: catalogShape.isRequired,
   collapsed: PropTypes.bool,
   lang: PropTypes.string,
   raw: PropTypes.bool

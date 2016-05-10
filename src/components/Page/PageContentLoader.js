@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {catalogShape} from '../../CatalogPropTypes';
 
 import Loader from './Loader';
 import PageRenderer from './PageRenderer';
@@ -13,13 +13,13 @@ class PageContentLoader extends Component {
   }
 
   componentWillMount() {
-    this.fetchPageData(this.context.page.src);
+    this.fetchPageData(this.context.catalog.page.src);
   }
 
   componentWillReceiveProps(_, nextContext) {
-    if (nextContext.page.src !== this.context.page.src) {
+    if (nextContext.catalog.page.src !== this.context.catalog.page.src) {
       this.setState({content: null});
-      this.fetchPageData(nextContext.page.src);
+      this.fetchPageData(nextContext.catalog.page.src);
     }
   }
 
@@ -41,7 +41,7 @@ class PageContentLoader extends Component {
 }
 
 PageContentLoader.contextTypes = {
-  page: CatalogPropTypes.page.isRequired
+  catalog: catalogShape.isRequired
 };
 
 export default PageContentLoader;

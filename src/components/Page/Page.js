@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {catalogShape} from '../../CatalogPropTypes';
 import Radium, {Style} from 'radium';
 import { headingBlock, textBlock, blockquote, unorderedList, orderedList } from '../../styles/typography';
 import renderMarkdown from '../../utils/renderMarkdown';
@@ -8,7 +9,7 @@ import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 class Page extends Component {
   render() {
     const {children} = this.props;
-    const {theme} = this.context;
+    const {catalog: {theme, getSpecimen}} = this.context;
 
     const pageStyle = {
       boxSizing: 'border-box',
@@ -35,7 +36,7 @@ class Page extends Component {
               text: child,
               renderer: {
                 code: (body, options) => {
-                  return <MarkdownSpecimen key={getSpecimenKey()} body={body} options={options || ''} />;
+                  return <MarkdownSpecimen key={getSpecimenKey()} body={body} options={options || ''} getSpecimen={getSpecimen} />;
                 }
               }
             }) : child;
@@ -84,7 +85,7 @@ Page.propTypes = {
 };
 
 Page.contextTypes = {
-  theme: PropTypes.object.isRequired
+  catalog: catalogShape.isRequired
 };
 
 export default Radium(Page);

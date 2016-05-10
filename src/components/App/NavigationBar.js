@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import CatalogPropTypes from '../../CatalogPropTypes';
+import {pageShape} from '../../CatalogPropTypes';
 import Link from '../Link/Link';
 
 function getStyles(theme) {
@@ -127,8 +127,8 @@ class NavigationBar extends React.Component {
 
 NavigationBar.propTypes = {
   theme: PropTypes.object.isRequired,
-  nextPage: CatalogPropTypes.page,
-  previousPage: CatalogPropTypes.page
+  nextPage: pageShape,
+  previousPage: pageShape
 };
 
 export default Radium(NavigationBar);
