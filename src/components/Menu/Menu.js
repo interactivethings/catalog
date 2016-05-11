@@ -52,7 +52,7 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const { theme, pageTree, logoSrc, title, history } = this.props;
+    const { theme, pageTree, logoSrc, title, history, basePath } = this.props;
 
     let currentStyle = style(theme);
 
@@ -61,7 +61,7 @@ class Menu extends React.Component {
     return (
       <div style={currentStyle.bar} >
         <div style={{flex: 1}}>
-          <Link to='/' style={{textDecoration: 'none'}}>
+          <Link to={basePath ? basePath : '/'} style={{textDecoration: 'none'}}>
             <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
           </Link>
           <ul style={currentStyle.list}>
@@ -81,6 +81,7 @@ Menu.propTypes = {
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   history: PropTypes.object.isRequired,
+  basePath: PropTypes.string,
   title: PropTypes.string
 };
 
