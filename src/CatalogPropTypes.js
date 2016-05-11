@@ -9,7 +9,8 @@ export const pageShape = PropTypes.shape({
   pages: PropTypes.array, // should be arrayOf(page) but that doesn't work
   styles: PropTypes.array.isRequired,
   scripts: PropTypes.array.isRequired,
-  imports: PropTypes.object.isRequired
+  imports: PropTypes.object.isRequired,
+  basePath: PropTypes.string
 });
 
 export const pagesShape = PropTypes.arrayOf(pageShape);
@@ -21,5 +22,6 @@ export const catalogShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   pages: pagesShape.isRequired,
   pageTree: pagesShape.isRequired,
-  logoSrc: PropTypes.string
+  logoSrc: PropTypes.string,
+  basePath: PropTypes.string
 });
