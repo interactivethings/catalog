@@ -1,3 +1,5 @@
+To get started with Catalog, you can either use the standalone version
+
 ## Standalone
 
 The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
