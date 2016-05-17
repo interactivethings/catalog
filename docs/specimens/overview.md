@@ -1,107 +1,134 @@
-> Specimens are the core of Catalog: they help you present your content.
+> Specimens are the core of Catalog. They help you present your style guide content.
 
-### Using Specimens
+## Using Specimens
 
-#### Markdown
+Specimens are defined as Markdown code blocks, denoted with the **specimen type**.
 
-Specimens are defined as Markdown code blocks with an option string.
-
-````
-```html|dark
-Content goes here...
-```
-````
-
-The format of the code block option string is as follows: `specimen-type|option1,option2`. 
-_Note that no spaces are allowed._
-
-#### React
-
-When you use Catalog in React, specimen options are simply passed as props to the specimen component.
-
-```code|lang-jsx
-<HtmlSpecimen dark>
-  Content goes here...
-</HtmlSpecimen>
-```
-
-### Specimen Type
-
-The first part – the one before the `|`-character – is the specimen __type__. The available types are described below.
-
-For example:
-
-````
-```image
-...
-```
-````
-
-### Specimen Options
-
-The second part after the `|` is a list of comma-separated __options__ for the specimen. This second part is optional, so both of the following are valid option strings: `html` and `html|dark`.
-
-For example:
-
-````
-```code|lang-jsx,span-3
-...
-```
-````
-
-```hint
-Specimen options may be removed from future versions of Catalog. We recommend that you use __props__ instead because they allow much more flexibility (see following section).
-```
-
-### Specimen Content
-
-The content is what is written between the opening and closing triple-backticks ` ``` `. There are two types of content:
-
-#### Strings
-
-The [HTML](#/html), [Code](#/code), and [Hint](#/hint) specimens take a simple string as content which will be rendered according to the specimen type.
-
-For example:
-
-````
-```html
-<p>Some HTML</p>
-```
-````
-
-#### Props
-
-Other specimens (like [Color](#/color)) take structured content as input which is defined by __props__. This content can be written in YAML or JSON syntax.
+The content of the code block contains the specimen configuration (**props**) in YAML or JSON format.
 
 For example:
 
 ````
 ```color
-name: Red
-value: #f00
+value: '#f55'
+name: 'Red'
 ```
 ````
 
-#### Props and Content
+Here, `color` is the specimen **type**, `value` and `name` are **props** of the Color specimen.
 
-To specify __props__ and __content__ together, separate them with `---` followed by a newline.
+### Content
 
-For example:
+Some specimens accept **content** in addition to props.
 
-````
+For example, you can embed code snippets with the Code Specimen:
+
 ```code
 span: 2
 ---
-<div>Hello</div>
+function foo() {
+  return 'bar';
+};
+```
+
+````code
+span: 4
+---
+```code
+function foo() {
+  return 'bar';
+};
 ```
 ````
 
-#### Documentation conventions
+#### Combining Props and Content
 
-The documentation displays options in a list, using the following pattern:
+To combine props and content, separate them with `---` on a separate line (props go first).
 
-- __`option: type`__ Option is the name, and type defines the expected type.
-- __`src: string`__ Bold options/properties indicate that they are required to be defined
-- `loop: boolean` while regular ones are always optional.
+```code
+span: 2
+lang: js
+---
+function foo() {
+  return 'bar';
+};
+```
+
+````code
+span: 4
+---
+```code
+lang: js
+---
+function foo() {
+  return 'bar';
+};
+```
+````
 
 
+### Specimen Layout
+
+All specimens accept a `span` prop, which you can use to lay them out in a six-column grid layout. Span values range from 1 – 6.
+
+For example, setting `span: 2` scales the specimen to one third of the full width:
+
+```color
+value: '#003B5C'
+name: 'Blue'
+span: 2
+```
+
+````code
+span: 4
+---
+```color
+value: '#003B5C'
+name: 'Blue'
+span: 2
+```
+````
+
+### Bonus 1: The Option String
+
+Specimen can also configured with an **option string** which is kind of a shorthand notation for certain props.
+
+The option string directly follows the **type** from which it is separated with a `|` (pipe) character. Multiple options are separated with a comma. For example: `code|span-2,lang-js`.
+
+For example:
+
+```code|lang-jsx,span-2
+<MyCoolComponent />
+```
+
+````code
+span: 4
+---
+```code|lang-jsx,span-2
+<MyCoolComponent />
+```
+````
+
+```hint
+Not all props are supported in the option string. Refer to the individual specimens to see which are.
+```
+
+```hint
+The specimen option string may be removed from future versions of Catalog. We recommend that you use **props** instead because they are more flexible.
+```
+
+### Bonus 2: Specimens as React Components
+
+In a React app, you can directly import Catalog's components and use them directly (only for the adventurous types). Props map to the specimen's … props.
+
+```code|lang-jsx
+import {Page, HtmlSpecimen} from 'catalog';
+
+export default () => (
+  <Page>
+    <HtmlSpecimen dark>
+      Content goes here...
+    </HtmlSpecimen>
+  </Page>
+);
+```
