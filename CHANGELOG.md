@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.1
+
+- Link menu title/logo to `basePath` instead of `/`
+
 ## 2.2.0
 
 - Include React Specimen in standalone version too (make sure to include `babel-standalone` on the page if you want to use it)
