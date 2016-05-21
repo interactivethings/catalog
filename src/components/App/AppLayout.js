@@ -34,7 +34,12 @@ const getStyles = (theme, sidebarVisible) => ({
     padding: 0,
     width: '100%',
     height: '100%',
-    position: 'relative'
+    position: 'relative',
+    // Prevent flash of un-media-queried content by Radium
+    display: 'none',
+    '@media (min-width: 0px)': {
+      display: 'block'
+    }
   },
   menuIcon: {
     cursor: 'pointer',
@@ -57,7 +62,8 @@ const getStyles = (theme, sidebarVisible) => ({
     transition: `transform ${SIDEBAR_ANIMATION_DURATION}s ease-in-out`,
     WebkitOverflowScrolling: 'touch',
     '@media (min-width: 1000px)': {
-      transform: `translateX(0px)`
+      transform: `translateX(0px)`,
+      transition: 'none'
     }
   },
   navBackground: {
