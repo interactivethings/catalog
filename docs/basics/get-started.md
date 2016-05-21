@@ -1,4 +1,4 @@
-To get started with Catalog, you can either use the **standalone version** or the **npm module**.
+> To get started with Catalog, you can either use the **standalone version** or the **npm module**.
 
 ## Standalone
 
