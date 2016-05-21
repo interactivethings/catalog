@@ -69,12 +69,12 @@ function getStyles(theme) {
     },
     linkSuperTitle: {
       fontSize: theme.fontM,
-      margin: '0',
+      margin: 0,
       fontWeight: 400
     },
     linkTitle: {
       fontSize: theme.fontL,
-      margin: '0',
+      margin: 0,
       fontWeight: 400
     }
   };

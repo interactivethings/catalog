@@ -60,7 +60,7 @@ function getStyle(theme) {
     },
     plain: {
       background: 'transparent',
-      padding: '0'
+      padding: 0
     },
     plain_light: {
       background: theme.bgLight,
