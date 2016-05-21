@@ -1,15 +1,5 @@
 > The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
 
-## Installation
-
-```
-npm install catalog --save
-```
-
-```hint
-Please make sure that you're using npm `>= 2.14.12` (npm 3 is recommended). Older versions have a bug which prevents the catalog module from being installed properly. To upgrade, use `npm install npm@2 -g` (omit the `@2` if you want to upgrade to npm 3).
-```
-
 ## Usage
 
 ### Standalone
