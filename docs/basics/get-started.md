@@ -1,8 +1,8 @@
-To get started with Catalog, you can either use the standalone version
+To get started with Catalog, you can either use the **standalone version** or the **npm module**.
 
 ## Standalone
 
-The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
+> The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
 
 ```code
 lang: html
@@ -46,7 +46,7 @@ python -m SimpleHTTPServer
 
 ## npm
 
-The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
+> The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
 
 ### Installation
 

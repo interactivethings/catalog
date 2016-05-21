@@ -126,4 +126,6 @@ Page groups can only contain pages but not other page groups.
 
 ## Styles, Scripts, Imports
 
-You can inject custom stylesheets and scripts on pages and
+```hint|neutral
+TK: Importing styles, scripts and code on pages
+```
