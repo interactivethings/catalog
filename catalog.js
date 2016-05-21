@@ -11471,6 +11471,7 @@
     var Component = react.Component;
     var PropTypes = react.PropTypes;
     var Children = react.Children;
+    var createElement = react.createElement;
 
     var pageShape = PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -46153,7 +46154,7 @@
     }
     });
 
-    var require$$1$67 = (DOMStateStorage && typeof DOMStateStorage === 'object' && 'default' in DOMStateStorage ? DOMStateStorage['default'] : DOMStateStorage);
+    var require$$0$96 = (DOMStateStorage && typeof DOMStateStorage === 'object' && 'default' in DOMStateStorage ? DOMStateStorage['default'] : DOMStateStorage);
 
     var createHashHistory = __commonjs(function (module, exports) {
     'use strict';
@@ -46180,7 +46181,7 @@
 
     var _DOMUtils = require$$2$34;
 
-    var _DOMStateStorage = require$$1$67;
+    var _DOMStateStorage = require$$0$96;
 
     var _createDOMHistory = require$$0$92;
 
@@ -46415,11 +46416,11 @@
     };
     });
 
-    var require$$0$96 = (index$10 && typeof index$10 === 'object' && 'default' in index$10 ? index$10['default'] : index$10);
+    var require$$0$97 = (index$10 && typeof index$10 === 'object' && 'default' in index$10 ? index$10['default'] : index$10);
 
     var index$9 = __commonjs(function (module, exports) {
     'use strict';
-    var strictUriEncode = require$$0$96;
+    var strictUriEncode = require$$0$97;
 
     exports.extract = function (str) {
     	return str.split('?')[1] || '';
@@ -49254,6 +49255,41 @@
       };
     }
 
+    var _extends$12 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+    var applyRouterMiddleware = (function () {
+      for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
+        middlewares[_key] = arguments[_key];
+      }
+
+      var withContext = middlewares.map(function (m) {
+        return m.renderRouterContext;
+      }).filter(function (f) {
+        return f;
+      });
+      var withComponent = middlewares.map(function (m) {
+        return m.renderRouteComponent;
+      }).filter(function (f) {
+        return f;
+      });
+      var makeCreateElement = function makeCreateElement() {
+        var baseCreateElement = arguments.length <= 0 || arguments[0] === undefined ? createElement : arguments[0];
+        return function (Component, props) {
+          return withComponent.reduceRight(function (previous, renderRouteComponent) {
+            return renderRouteComponent(previous, props);
+          }, baseCreateElement(Component, props));
+        };
+      };
+
+      return function (renderProps) {
+        return withContext.reduceRight(function (previous, renderRouterContext) {
+          return renderRouterContext(previous, renderProps);
+        }, React.createElement(RouterContext, _extends$12({}, renderProps, {
+          createElement: makeCreateElement(renderProps.createElement)
+        })));
+      };
+    })
+
     var createBrowserHistory = __commonjs(function (module, exports) {
     'use strict';
 
@@ -49275,7 +49311,7 @@
 
     var _DOMUtils = require$$2$34;
 
-    var _DOMStateStorage = require$$1$67;
+    var _DOMStateStorage = require$$0$96;
 
     var _createDOMHistory = require$$0$92;
 
@@ -50211,12 +50247,12 @@
     module.exports = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
     });
 
-    var require$$0$99 = (inDOM && typeof inDOM === 'object' && 'default' in inDOM ? inDOM['default'] : inDOM);
+    var require$$0$100 = (inDOM && typeof inDOM === 'object' && 'default' in inDOM ? inDOM['default'] : inDOM);
 
     var requestAnimationFrame = __commonjs(function (module) {
     'use strict';
 
-    var canUseDOM = require$$0$99;
+    var canUseDOM = require$$0$100;
 
     var vendors = ['', 'webkit', 'moz', 'o', 'ms'],
         cancel = 'clearTimeout',
@@ -50262,7 +50298,7 @@
     module.exports = compatRaf;
     });
 
-    var require$$0$98 = (requestAnimationFrame && typeof requestAnimationFrame === 'object' && 'default' in requestAnimationFrame ? requestAnimationFrame['default'] : requestAnimationFrame);
+    var require$$2$35 = (requestAnimationFrame && typeof requestAnimationFrame === 'object' && 'default' in requestAnimationFrame ? requestAnimationFrame['default'] : requestAnimationFrame);
 
     var isWindow = __commonjs(function (module) {
     'use strict';
@@ -50272,11 +50308,11 @@
     };
     });
 
-    var require$$0$100 = (isWindow && typeof isWindow === 'object' && 'default' in isWindow ? isWindow['default'] : isWindow);
+    var require$$0$101 = (isWindow && typeof isWindow === 'object' && 'default' in isWindow ? isWindow['default'] : isWindow);
 
     var scrollTop = __commonjs(function (module) {
     'use strict';
-    var getWindow = require$$0$100;
+    var getWindow = require$$0$101;
 
     module.exports = function scrollTop(node, val) {
       var win = getWindow(node);
@@ -50287,11 +50323,11 @@
     };
     });
 
-    var require$$1$68 = (scrollTop && typeof scrollTop === 'object' && 'default' in scrollTop ? scrollTop['default'] : scrollTop);
+    var require$$3$28 = (scrollTop && typeof scrollTop === 'object' && 'default' in scrollTop ? scrollTop['default'] : scrollTop);
 
     var scrollLeft = __commonjs(function (module) {
     'use strict';
-    var getWindow = require$$0$100;
+    var getWindow = require$$0$101;
 
     module.exports = function scrollTop(node, val) {
       var win = getWindow(node);
@@ -50302,11 +50338,11 @@
     };
     });
 
-    var require$$2$35 = (scrollLeft && typeof scrollLeft === 'object' && 'default' in scrollLeft ? scrollLeft['default'] : scrollLeft);
+    var require$$4$26 = (scrollLeft && typeof scrollLeft === 'object' && 'default' in scrollLeft ? scrollLeft['default'] : scrollLeft);
 
     var on = __commonjs(function (module) {
     'use strict';
-    var canUseDOM = require$$0$99;
+    var canUseDOM = require$$0$100;
     var on = function on() {};
 
     if (canUseDOM) {
@@ -50323,11 +50359,11 @@
     module.exports = on;
     });
 
-    var require$$3$28 = (on && typeof on === 'object' && 'default' in on ? on['default'] : on);
+    var require$$5$16 = (on && typeof on === 'object' && 'default' in on ? on['default'] : on);
 
     var off = __commonjs(function (module) {
     'use strict';
-    var canUseDOM = require$$0$99;
+    var canUseDOM = require$$0$100;
     var off = function off() {};
 
     if (canUseDOM) {
@@ -50345,283 +50381,353 @@
     module.exports = off;
     });
 
-    var require$$4$26 = (off && typeof off === 'object' && 'default' in off ? off['default'] : off);
+    var require$$6$14 = (off && typeof off === 'object' && 'default' in off ? off['default'] : off);
 
-    var createUseScroll = __commonjs(function (module, exports) {
+    var ScrollBehavior = __commonjs(function (module, exports) {
     'use strict';
 
     exports.__esModule = true;
 
-    var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+    var _off = require$$6$14;
 
-    exports['default'] = createUseScroll;
+    var _off2 = _interopRequireDefault(_off);
 
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+    var _on = require$$5$16;
 
-    function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+    var _on2 = _interopRequireDefault(_on);
 
-    var _domHelpersEventsOff = require$$4$26;
+    var _scrollLeft = require$$4$26;
 
-    var _domHelpersEventsOff2 = _interopRequireDefault(_domHelpersEventsOff);
+    var _scrollLeft2 = _interopRequireDefault(_scrollLeft);
 
-    var _domHelpersEventsOn = require$$3$28;
+    var _scrollTop = require$$3$28;
 
-    var _domHelpersEventsOn2 = _interopRequireDefault(_domHelpersEventsOn);
+    var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
-    var _domHelpersQueryScrollLeft = require$$2$35;
+    var _requestAnimationFrame = require$$2$35;
 
-    var _domHelpersQueryScrollLeft2 = _interopRequireDefault(_domHelpersQueryScrollLeft);
+    var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
 
-    var _domHelpersQueryScrollTop = require$$1$68;
+    var _Actions = require$$1$65;
 
-    var _domHelpersQueryScrollTop2 = _interopRequireDefault(_domHelpersQueryScrollTop);
+    var _DOMStateStorage = require$$0$96;
 
-    var _domHelpersUtilRequestAnimationFrame = require$$0$98;
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    var _domHelpersUtilRequestAnimationFrame2 = _interopRequireDefault(_domHelpersUtilRequestAnimationFrame);
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* eslint-disable no-underscore-dangle */
+
+    // FIXME: Stop using this gross hack. This won't collide with any actual
+    // history location keys, but it's dirty to sneakily use the same storage here.
+    var KEY_PREFIX = 's/';
 
     // Try at most this many times to scroll, to avoid getting stuck.
     var MAX_SCROLL_ATTEMPTS = 2;
 
-    function createUseScroll(getScrollPosition, start, stop, updateLocation) {
-      return function (createHistory) {
-        return function () {
-          var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-          var shouldUpdateScroll = options.shouldUpdateScroll;
+    var ScrollBehavior = function () {
+      function ScrollBehavior(history, getCurrentLocation) {
+        var _this = this;
 
-          var historyOptions = _objectWithoutProperties(options, ['shouldUpdateScroll']);
+        _classCallCheck(this, ScrollBehavior);
 
-          var history = createHistory(historyOptions);
-
-          var scrollTarget = undefined;
-          var numScrollAttempts = undefined;
-          var checkScrollHandle = undefined;
-
-          function cancelCheckScroll() {
-            if (checkScrollHandle !== null) {
-              _domHelpersUtilRequestAnimationFrame2['default'].cancel(checkScrollHandle);
-              checkScrollHandle = null;
-            }
+        this._onScroll = function () {
+          // It's possible that this scroll operation was triggered by what will be a
+          // `POP` transition. Instead of updating the saved location immediately, we
+          // have to enqueue the update, then potentially cancel it if we observe a
+          // location update.
+          if (_this._savePositionHandle === null) {
+            _this._savePositionHandle = (0, _requestAnimationFrame2.default)(_this._savePosition);
           }
 
-          function onScroll() {
-            if (!scrollTarget) {
-              return;
-            }
-
-            var _scrollTarget = scrollTarget;
+          if (_this._scrollTarget) {
+            var _scrollTarget = _this._scrollTarget;
             var xTarget = _scrollTarget[0];
             var yTarget = _scrollTarget[1];
 
-            var x = _domHelpersQueryScrollLeft2['default'](window);
-            var y = _domHelpersQueryScrollTop2['default'](window);
+            var x = (0, _scrollLeft2.default)(window);
+            var y = (0, _scrollTop2.default)(window);
 
             if (x === xTarget && y === yTarget) {
-              scrollTarget = null;
-              cancelCheckScroll();
+              _this._scrollTarget = null;
+              _this._cancelCheckScroll();
             }
           }
-
-          // FIXME: This is not the right way to track whether there are listeners.
-          var numListeners = 0;
-
-          function checkStart() {
-            if (numListeners === 0) {
-              if (start) {
-                start(history);
-              }
-
-              scrollTarget = null;
-              numScrollAttempts = 0;
-              checkScrollHandle = null;
-
-              _domHelpersEventsOn2['default'](window, 'scroll', onScroll);
-            }
-
-            ++numListeners;
-          }
-
-          function checkStop() {
-            --numListeners;
-
-            if (numListeners === 0) {
-              if (stop) {
-                stop();
-              }
-
-              _domHelpersEventsOff2['default'](window, 'scroll', onScroll);
-
-              cancelCheckScroll();
-            }
-          }
-
-          function listenBefore(hook) {
-            checkStart();
-            var unlisten = history.listenBefore(hook);
-
-            return function () {
-              unlisten();
-              checkStop();
-            };
-          }
-
-          function checkScrollPosition() {
-            checkScrollHandle = null;
-
-            // We can only get here if scrollTarget is set. Every code path that
-            // unsets scroll target also cancels the handle to avoid calling this
-            // handler. Still, check anyway just in case.
-            /* istanbul ignore if: paranoid guard */
-            if (!scrollTarget) {
-              return;
-            }
-
-            var _scrollTarget2 = scrollTarget;
-            var x = _scrollTarget2[0];
-            var y = _scrollTarget2[1];
-
-            window.scrollTo(x, y);
-
-            ++numScrollAttempts;
-
-            /* istanbul ignore if: paranoid guard */
-            if (numScrollAttempts >= MAX_SCROLL_ATTEMPTS) {
-              scrollTarget = null;
-              return;
-            }
-
-            checkScrollHandle = _domHelpersUtilRequestAnimationFrame2['default'](checkScrollPosition);
-          }
-
-          var oldLocation = undefined;
-          var listeners = [],
-              currentLocation = undefined,
-              unlisten = undefined;
-
-          function onChange(location) {
-            oldLocation = currentLocation;
-            currentLocation = location;
-
-            listeners.forEach(function (listener) {
-              return listener(location);
-            });
-
-            // Whatever we were doing before isn't relevant any more.
-            cancelCheckScroll();
-
-            // useStandardScroll needs the new location even when not updating the
-            // scroll position, to update the current key.
-            if (updateLocation) {
-              updateLocation(location);
-            }
-
-            var scrollPosition = undefined;
-            if (shouldUpdateScroll) {
-              scrollPosition = shouldUpdateScroll(oldLocation, currentLocation);
-            } else {
-              scrollPosition = true;
-            }
-
-            if (scrollPosition && !Array.isArray(scrollPosition)) {
-              scrollPosition = getScrollPosition(currentLocation);
-            }
-
-            scrollTarget = scrollPosition;
-
-            // Check the scroll position to see if we even need to scroll.
-            onScroll();
-            if (!scrollTarget) {
-              return;
-            }
-
-            numScrollAttempts = 0;
-            checkScrollPosition();
-          }
-
-          function listen(listener) {
-            checkStart();
-
-            if (listeners.length === 0) {
-              unlisten = history.listen(onChange);
-            }
-
-            // Add the listener to the list afterward so we can manage calling it
-            // initially with the current location.
-            listeners.push(listener);
-            listener(currentLocation);
-
-            return function () {
-              listeners = listeners.filter(function (item) {
-                return item !== listener;
-              });
-              if (listeners.length === 0) {
-                unlisten();
-              }
-
-              checkStop();
-            };
-          }
-
-          return _extends({}, history, {
-            listenBefore: listenBefore,
-            listen: listen
-          });
         };
-      };
-    }
 
-    module.exports = exports['default'];
-    });
+        this._savePosition = function () {
+          _this._savePositionHandle = null;
 
-    var require$$0$97 = (createUseScroll && typeof createUseScroll === 'object' && 'default' in createUseScroll ? createUseScroll['default'] : createUseScroll);
+          // We have to directly update `DOMStateStorage`, because actually updating
+          // the location could cause e.g. React Router to re-render the entire page,
+          // which would lead to observably bad scroll performance.
+          (0, _DOMStateStorage.saveState)(_this._getKey(_this._getCurrentLocation()), [(0, _scrollLeft2.default)(window), (0, _scrollTop2.default)(window)]);
+        };
 
-    var useSimpleScroll = __commonjs(function (module, exports) {
-    'use strict';
+        this._checkScrollPosition = function () {
+          _this._checkScrollHandle = null;
 
-    exports.__esModule = true;
-    exports['default'] = useSimpleScroll;
+          // We can only get here if scrollTarget is set. Every code path that unsets
+          // scroll target also cancels the handle to avoid calling this handler.
+          // Still, check anyway just in case.
+          /* istanbul ignore if: paranoid guard */
+          if (!_this._scrollTarget) {
+            return;
+          }
 
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+          var _scrollTarget2 = _this._scrollTarget;
+          var x = _scrollTarget2[0];
+          var y = _scrollTarget2[1];
 
-    var _historyLibActions = require$$1$65;
+          window.scrollTo(x, y);
 
-    var _utilsCreateUseScroll = require$$0$97;
+          ++_this._numScrollAttempts;
 
-    var _utilsCreateUseScroll2 = _interopRequireDefault(_utilsCreateUseScroll);
+          /* istanbul ignore if: paranoid guard */
+          if (_this._numScrollAttempts >= MAX_SCROLL_ATTEMPTS) {
+            _this._scrollTarget = null;
+            return;
+          }
 
-    /**
-     * `useSimpleScroll` scrolls to the top of the page on `PUSH` and `REPLACE`
-     * transitions, while allowing the browser to manage scroll position for `POP`
-     * transitions.
-     *
-     * This can give pretty good results with synchronous transitions on browsers
-     * like Chrome that don't update the scroll position until after they've
-     * notified `history` of the location change. It will not work as well when
-     * using asynchronous transitions or with browsers like Firefox that update
-     * the scroll position before emitting the location change.
-     */
+          _this._checkScrollHandle = (0, _requestAnimationFrame2.default)(_this._checkScrollPosition);
+        };
 
-    function useSimpleScroll(createHistory) {
-      // Don't override the browser's scroll behavior here - we actively want the
-      // the browser to take care of scrolling on `POP` transitions.
+        this._history = history;
+        this._getCurrentLocation = getCurrentLocation;
 
-      function getScrollPosition(_ref) {
-        var action = _ref.action;
-
-        if (action === _historyLibActions.POP) {
-          return null;
+        // This helps avoid some jankiness in fighting against the browser's
+        // default scroll behavior on `POP` transitions.
+        /* istanbul ignore if: not supported by any browsers on Travis */
+        if ('scrollRestoration' in window.history) {
+          this._oldScrollRestoration = window.history.scrollRestoration;
+          window.history.scrollRestoration = 'manual';
+        } else {
+          this._oldScrollRestoration = null;
         }
 
-        return [0, 0];
+        this._savePositionHandle = null;
+        this._checkScrollHandle = null;
+        this._scrollTarget = null;
+        this._numScrollAttempts = 0;
+
+        // We have to listen to each scroll update rather than to just location
+        // updates, because some browsers will update scroll position before
+        // emitting the location change.
+        (0, _on2.default)(window, 'scroll', this._onScroll);
+
+        this._unlistenBefore = history.listenBefore(function () {
+          if (_this._savePositionHandle !== null) {
+            _requestAnimationFrame2.default.cancel(_this._savePositionHandle);
+            _this._savePositionHandle = null;
+          }
+        });
       }
 
-      return _utilsCreateUseScroll2['default'](getScrollPosition)(createHistory);
-    }
+      ScrollBehavior.prototype.stop = function stop() {
+        /* istanbul ignore if: not supported by any browsers on Travis */
+        if (this._oldScrollRestoration) {
+          window.history.scrollRestoration = this._oldScrollRestoration;
+        }
 
+        (0, _off2.default)(window, 'scroll', this._onScroll);
+        this._cancelCheckScroll();
+
+        this._unlistenBefore();
+      };
+
+      ScrollBehavior.prototype.updateScroll = function updateScroll(scrollPosition) {
+        // Whatever we were doing before isn't relevant any more.
+        this._cancelCheckScroll();
+
+        if (scrollPosition && !Array.isArray(scrollPosition)) {
+          this._scrollTarget = this._getDefaultScrollTarget();
+        } else {
+          this._scrollTarget = scrollPosition;
+        }
+
+        // Check the scroll position to see if we even need to scroll.
+        this._onScroll();
+
+        if (!this._scrollTarget) {
+          return;
+        }
+
+        this._numScrollAttempts = 0;
+        this._checkScrollPosition();
+      };
+
+      ScrollBehavior.prototype.readPosition = function readPosition(location) {
+        return (0, _DOMStateStorage.readState)(this._getKey(location));
+      };
+
+      ScrollBehavior.prototype._getKey = function _getKey(location) {
+        // Use fallback key when actual key is unavailable.
+        var key = location.key || this._history.createPath(location);
+
+        return '' + KEY_PREFIX + key;
+      };
+
+      ScrollBehavior.prototype._cancelCheckScroll = function _cancelCheckScroll() {
+        if (this._checkScrollHandle !== null) {
+          _requestAnimationFrame2.default.cancel(this._checkScrollHandle);
+          this._checkScrollHandle = null;
+        }
+      };
+
+      ScrollBehavior.prototype._getDefaultScrollTarget = function _getDefaultScrollTarget() {
+        var location = this._getCurrentLocation();
+        if (location.action === _Actions.PUSH) {
+          return [0, 0];
+        }
+
+        return this.readPosition(location) || [0, 0];
+      };
+
+      return ScrollBehavior;
+    }();
+
+    exports.default = ScrollBehavior;
     module.exports = exports['default'];
     });
 
-    var useScroll = (useSimpleScroll && typeof useSimpleScroll === 'object' && 'default' in useSimpleScroll ? useSimpleScroll['default'] : useSimpleScroll);
+    var require$$0$99 = (ScrollBehavior && typeof ScrollBehavior === 'object' && 'default' in ScrollBehavior ? ScrollBehavior['default'] : ScrollBehavior);
+
+    var ScrollBehaviorContainer = __commonjs(function (module, exports) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _react = React;
+
+    var _react2 = _interopRequireDefault(_react);
+
+    var _ScrollBehavior = require$$0$99;
+
+    var _ScrollBehavior2 = _interopRequireDefault(_ScrollBehavior);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var ScrollBehaviorContainer = function (_React$Component) {
+      _inherits(ScrollBehaviorContainer, _React$Component);
+
+      function ScrollBehaviorContainer() {
+        _classCallCheck(this, ScrollBehaviorContainer);
+
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(ScrollBehaviorContainer).apply(this, arguments));
+      }
+
+      _createClass(ScrollBehaviorContainer, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+          var _this2 = this;
+
+          var routerProps = this.props.routerProps;
+
+
+          this.scrollBehavior = new _ScrollBehavior2.default(routerProps.router, function () {
+            return _this2.props.routerProps.location;
+          });
+
+          this.onUpdate(null, routerProps);
+        }
+      }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps) {
+          var routerProps = this.props.routerProps;
+
+          var prevRouterProps = prevProps.routerProps;
+
+          if (routerProps.location === prevRouterProps.location) {
+            return;
+          }
+
+          this.onUpdate(prevRouterProps, routerProps);
+        }
+      }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+          this.scrollBehavior.stop();
+        }
+      }, {
+        key: 'onUpdate',
+        value: function onUpdate(prevRouterProps, routerProps) {
+          var shouldUpdateScroll = this.props.shouldUpdateScroll;
+
+
+          var scrollPosition = void 0;
+          if (!shouldUpdateScroll) {
+            scrollPosition = true;
+          } else {
+            scrollPosition = shouldUpdateScroll.call(this.scrollBehavior, prevRouterProps, routerProps);
+          }
+
+          this.scrollBehavior.updateScroll(scrollPosition);
+        }
+      }, {
+        key: 'render',
+        value: function render() {
+          return this.props.children;
+        }
+      }]);
+
+      return ScrollBehaviorContainer;
+    }(_react2.default.Component);
+
+    ScrollBehaviorContainer.propTypes = {
+      shouldUpdateScroll: _react2.default.PropTypes.func,
+      routerProps: _react2.default.PropTypes.object.isRequired,
+      children: _react2.default.PropTypes.node.isRequired
+    };
+    exports.default = ScrollBehaviorContainer;
+    module.exports = exports['default'];
+    });
+
+    var require$$0$98 = (ScrollBehaviorContainer && typeof ScrollBehaviorContainer === 'object' && 'default' in ScrollBehaviorContainer ? ScrollBehaviorContainer['default'] : ScrollBehaviorContainer);
+
+    var index$12 = __commonjs(function (module, exports) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = useScroll;
+
+    var _react = React;
+
+    var _react2 = _interopRequireDefault(_react);
+
+    var _ScrollBehaviorContainer = require$$0$98;
+
+    var _ScrollBehaviorContainer2 = _interopRequireDefault(_ScrollBehaviorContainer);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function useScroll(shouldUpdateScroll) {
+      return {
+        renderRouterContext: function renderRouterContext(child, props) {
+          return _react2.default.createElement(
+            _ScrollBehaviorContainer2.default,
+            {
+              shouldUpdateScroll: shouldUpdateScroll,
+              routerProps: props
+            },
+            child
+          );
+        }
+      };
+    }
+    module.exports = exports['default'];
+    });
+
+    var useScroll = (index$12 && typeof index$12 === 'object' && 'default' in index$12 ? index$12['default'] : index$12);
 
     var seqKey = (function (namespace) {
       var counter = void 0;
@@ -51833,15 +51939,6 @@
       catalog: catalogShape.isRequired
     };
 
-    var fs = require('fs');
-
-    var _require = require('electron');
-
-    var remote = _require.remote;
-
-
-    var content = remote.getCurrentWebContents();
-
     var PageContentLoader = function (_Component) {
       babelHelpers.inherits(PageContentLoader, _Component);
 
@@ -51870,34 +51967,18 @@
           }
         }
       }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-          remote.getCurrentWebContents().printToPDF({ printBackground: true, pageSize: 'A4' }, function (error, data) {
-            if (error) throw error;
-            fs.writeFile('./print.pdf', data, function (error) {
-              if (error) throw error;
-              console.log('Write PDF successfully.');
-            });
-          });
-        }
-      }, {
         key: 'fetchPageData',
         value: function fetchPageData(url) {
           var _this2 = this;
 
-          // fetch(url, {credentials: 'same-origin'})
-          //   .then((response) => response.text())
-          //   .then((text) => this.setState({content: text}))
-          //   .catch((error) => {
-          //     return this.setState({
-          //       content: error
-          //     });
-          //   });
-
-          fs.readFile(url, 'utf8', function (err, content) {
-            if (err) {
-              return _this2.setState({ content: err });
-            }_this2.setState({ content: content });
+          fetch(url, { credentials: 'same-origin' }).then(function (response) {
+            return response.text();
+          }).then(function (text) {
+            return _this2.setState({ content: text });
+          }).catch(function (error) {
+            return _this2.setState({
+              content: error
+            });
           });
         }
       }, {
@@ -51952,12 +52033,12 @@
       );
     };
 
-    var history = useRouterHistory(useScroll(createHashHistory$2))({ queryKey: false });
+    var history = useRouterHistory(createHashHistory$2)({ queryKey: false });
 
     var getKey = seqKey('CatalogRouter');
 
     var _render = (function (config, element) {
-      ReactDOM.render(React.createElement(Router, { key: getKey(), history: history, routes: configureRoutes$1(config) }), element);
+      ReactDOM.render(React.createElement(Router, { key: getKey(), history: history, routes: configureRoutes$1(config), render: applyRouterMiddleware(useScroll()) }), element);
     })
 
     var Card = function Card(props) {
