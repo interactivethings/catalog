@@ -22,13 +22,13 @@ const flattenPageTree = (pageTree) => {
 
 export default (config) => {
   let pageId = 0;
+  const basePath = config.basePath || '/';
 
   const pageReducer = (pages, page) => {
     const configStyles = config.styles || [];
     const pageStyles = page.styles || [];
     const configScripts = config.scripts || [];
     const pageScripts = page.scripts || [];
-    const basePath = config.basePath || '/';
 
     warning(
       !hasName(page),
@@ -85,6 +85,7 @@ export default (config) => {
     __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
     specimens: {...config.specimens},
+    basePath,
     pages,
     pageTree
   };

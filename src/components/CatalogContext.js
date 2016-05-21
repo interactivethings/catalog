@@ -4,7 +4,7 @@ import {catalogShape} from '../CatalogPropTypes';
 
 class CatalogContext extends Component {
   getChildContext() {
-    const {title, theme, logoSrc, pages, pageTree, specimens} = this.props.configuration;
+    const {title, theme, logoSrc, pages, pageTree, specimens, basePath} = this.props.configuration;
     const {router} = this.context;
     return {
       catalog: {
@@ -14,6 +14,7 @@ class CatalogContext extends Component {
         title,
         pages,
         pageTree,
+        basePath,
         logoSrc
       }
     };

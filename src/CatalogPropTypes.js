@@ -15,6 +15,7 @@ export const pageShape = PropTypes.shape({
 export const pagesShape = PropTypes.arrayOf(pageShape);
 
 export const catalogShape = PropTypes.shape({
+  basePath: PropTypes.string.isRequired,
   page: pageShape.isRequired,
   getSpecimen: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,

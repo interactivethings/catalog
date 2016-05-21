@@ -15,6 +15,7 @@ test('Configuration with default theme and specimens', (t) => {
     ]
   }), {
     __catalogConfig: true,
+    basePath: '/',
     title: 'Catalog',
     specimens: {},
     theme: DefaultTheme,
@@ -72,6 +73,7 @@ test('Configuration with nested pages', (t) => {
     ]
   }), {
     __catalogConfig: true,
+    basePath: '/',
     title: 'Catalog',
     specimens: {},
     theme: DefaultTheme,
