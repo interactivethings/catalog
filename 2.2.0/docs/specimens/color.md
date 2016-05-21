@@ -1,14 +1,10 @@
 > The Color Specimen is used to document colors.
 
-### Properties
+### Props
 
 - __`value: string`__ defines the color
 - `name: string` defines the color name
-
-### Options
-
-- `span-[1-6]` defines the width of the palette
-
+- `span: number[1–6]` width of the specimen
 
 ### Examples
 

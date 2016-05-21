@@ -1,21 +1,19 @@
-## Image
+> Images can be used as graphical elements, to document implemtation details with static images or behavioral aspects when animated gifs are used.
 
-Images can be used as graphical elements, to document implemtation details with static images or behavioral aspects when animated gifs are used. The src and overlay keys accept the `srcSet` notation, which allows the usage of responsive images.
+### Props
 
-### Keys
 - `src: string` image to display (gets scaled if it extends the container) 
 - `overlay: string` image for mouseover, useful to describe proportions
 - `title: string` the title 
 - `description: string` Markdown-formatted text description
+- `light: boolean` a light checkered background (default)
+- `dark: boolean` a dark checkered background
+- `plain: boolean` a transparent background without any padding.
+- `span: number[1–6]` width of the specimen
 
-#### Visual
-* `light` a light checkered background (default)
-* `dark` a dark checkered background
-* `plain` a transparent background without any padding.
-* `plain,dark` a solid, dark background without the checkered pattern
-* `plain,light` a solid, light background without the checkered pattern
-* `span-[1-6]` defines the width
-
+```hint|directive
+The `src` and `overlay` keys accept the `srcSet` notation, which allows the usage of responsive images.
+```
 
 ### Example: Hero Image
 

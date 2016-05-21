@@ -1,23 +1,15 @@
-## HTML
+> The HTML specimen allows the documentation of HTML as well as JavaScript and CSS based views.
 
-
-The HTML specimen allows the documentation of HTML as well as JavaScript and CSS based views.
 Per default, a code toggle button allows easy access to the source without having to write a separate code specimen. It is also possible to access external files that are defined in the catalog configuration. This makes it possible to add quite complex structures like a form with minimal additional specification in the markdown file. 
 
-It is also the fallback if no specimen is specified.
+### Props
 
-### Options
-#### Functional
-* `no-source` Removes the source code toggle button
-* `frame` Wraps output in an `<iframe>` (to prevent style collisions and allow for viewport-relative styling (e.g. using `vw` or `position: fixed`))
-
-#### Visual
-* `light` a light checkered background (default)
-* `dark` a dark checkered background
-* `plain` a transparent background without any padding.
-* `plain,dark` a solid, dark background without the checkered pattern
-* `plain,light` a solid, light background without the checkered pattern
-* `span-[1-6]` defines the width
+- `noSource: boolean` Removes the source code toggle button
+- `frame: boolean` Wraps output in an `<iframe>` (to prevent style collisions and allow for viewport-relative styling (e.g. using `vw` or `position: fixed`))
+- `light: boolean` a light checkered background (default)
+- `dark: boolean` a dark checkered background
+- `plain: boolean` a transparent background without any padding
+- `span: number[1–6]` width of the specimen
 
 
 ### Basic example
@@ -40,7 +32,7 @@ This is example uses the configured stylesheet.
 
 ### Framed example
 
-The `frame` option dynamically wraps the content in an `<iframe>`. This is useful to encapsulate styles and for viewport-oriented layout (such as using `vw` or `position: fixed`)
+The `frame` prop dynamically wraps the content in an `<iframe>`. This is useful to encapsulate styles and for viewport-oriented layout (such as using `vw` or `position: fixed`)
 
 ```html
 frame: true

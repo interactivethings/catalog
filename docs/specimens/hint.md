@@ -1,12 +1,11 @@
-## Hint
+> The Hint Specimen highlights important aspects.
 
-Can be used to highlight important aspects.
+### Props
 
-### Options
-
-- `directive` good for _dos_
-- `warning` good for _don'ts_
-- `neutral` a neutral style
+- `directive: boolean` good for _dos_
+- `warning: boolean` good for _don'ts_
+- `neutral: boolean` a neutral style
+- `span: number[1–6]` width of the specimen
 
 ### Examples
 

@@ -1,9 +1,6 @@
+> The type specimen can be used to reflect various elements concerning typography. The values can be assigned with mixed units — if none is specified, `px` is used.
 
-## Type
-
-The type specimen can be used to reflect various elements concerning typography. The values can be assigned with mixed units — if none is specified, `px` is used.
-
-### Keys
+### Props
 
 - `headings: array` takes an array and generates a list headings
 - `paragraph: array` builds a paragraph and takes [font size, line height]
@@ -13,14 +10,11 @@ The type specimen can be used to reflect various elements concerning typography.
 - `tracking: integer` defines tracking respectively letter-spacing
 - `style: string` can be italic or oblique, default is "normal" 
 - `weight: integer` defines the font weight
-
-### Options
-
-- `kern` activates browser kerning and ligature use
-- `smoothing` applies browser text antialising
-- `kafka` Mighty morphin' Samsa fill text
-- `single` Uses a single word for headline
-
+- `kern: boolean` activates browser kerning and ligature use
+- `smoothing: boolean` applies browser text antialising
+- `kafka: boolean` Mighty morphin' Samsa fill text
+- `single: boolean` Uses a single word for headline
+- `span: number[1–6]` width of the specimen
 
 
 ### Example: Headings only

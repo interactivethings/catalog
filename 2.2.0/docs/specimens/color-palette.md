@@ -1,16 +1,12 @@
 > A Color Palette groups a sequence of colors into a block. Ideal for color scales.
 
-### Properties
+### Props
 
 - __`colors: array`__ colors of the palette
     - __`value: string`__ defines the color value
     - `name: string` defines the color name
-
-### Options
-
-- `horizontal` generates a horizontal list
-- `span-[1-6]` defines the width of the palette
-
+- `horizontal: boolean` generates a horizontal list
+- `span: number[1–6]` width of the specimen
 
 ### Examples
 
