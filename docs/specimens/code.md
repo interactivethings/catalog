@@ -1,11 +1,11 @@
 
 > The Code Specimen displays a piece of code.
 
-### Options
+### Props
 
-- `collapsed` useful for longer or redundant code that still needs to be accessible
-- `lang-{language}` defines the language for code highlighting
-- `span-[1-6]` defines the width of the code specimen
+- `collapsed: boolean` useful for longer or redundant code that still needs to be accessible
+- `lang: string` defines the language for code highlighting
+- `span: number[1–6]` width of the specimen
 
 ### Examples
 
@@ -23,7 +23,9 @@
 
 #### Syntax highlighting
 
-```code|lang-jsx
+```code
+lang: jsx
+---
 import React from 'react';
 
 class ExampleComponent extends React.Component {
@@ -31,11 +33,12 @@ class ExampleComponent extends React.Component {
     return <div>...</div>;
   }
 }
-
 ```
 
 ````code|lang-markdown
-```code|lang-jsx
+```code
+lang: jsx
+---
 import React from 'react';
 
 class ExampleComponent extends React.Component {
@@ -48,12 +51,16 @@ class ExampleComponent extends React.Component {
 
 #### Collapsed Code Block
 
-```code|collapsed
+```code
+collapsed: true
+---
 <div>Hello, collapsed Code Specimen</div>
 ```
 
-````code|lang-markdown
-```code|collapsed
+````
+```code
+collapsed: true
+---
 <div>Hello, collapsed Code Specimen</div>
 ```
 ````

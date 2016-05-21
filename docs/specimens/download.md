@@ -1,13 +1,11 @@
-## Download
+> To link downloadable style guide resources, use the Download Specimen
 
-### Properties
+### Props
 - __`url: string`__ The URL pointing to the file
 - __`title: string`__ The title for the button
 - `filename: string` Changes the file name under which it will be saved
 - `subtitle: string` For example the file size
-
-### Options
-- `span-[1-6]` defines the download specimen width
+- `span: number[1–6]` width of the specimen
 
 ### Examples
 

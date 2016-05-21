@@ -89,7 +89,9 @@ span: 2
 ```
 ````
 
-### Bonus 1: The Option String
+### Extras
+
+#### The Option String
 
 Specimen can also configured with an **option string** which is kind of a shorthand notation for certain props.
 
@@ -117,7 +119,7 @@ Not all props are supported in the option string. Refer to the individual specim
 The specimen option string may be removed from future versions of Catalog. We recommend that you use **props** instead because they are more flexible.
 ```
 
-### Bonus 2: Specimens as React Components
+#### Specimens as React Components
 
 In a React app, you can directly import Catalog's components and use them directly (only for the adventurous types). Props map to the specimen's … props.
 
