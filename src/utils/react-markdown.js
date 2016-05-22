@@ -1,5 +1,6 @@
 import marked from 'marked';
 import React from 'react';
+import Link from '../components/Link/Link';
 
 function extend(o1, o2) {
   Object.keys(o2).forEach(function (key) {
@@ -64,7 +65,7 @@ extend(ReactRenderer.prototype, {
     return React.DOM.del( {key:itemsRenderedCount++}, content);
   },
   link: function(href, title, text) {
-    return React.DOM.a( {href:href, title:title, key:itemsRenderedCount++}, text);
+    return <Link to={href} title={title} key={itemsRenderedCount++}>{text}</Link>;
   },
   image: function(href, title, text) {
     function done(e) { e.preventDefault(); console.log(itemsRenderedCount); return false; }
