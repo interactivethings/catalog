@@ -4,13 +4,11 @@
 
 # Catalog
 
-Catalog lets you create beautiful living style guides quickly and easily.
-
-Content is written in Markdown so you can focus on documenting your components.
+Catalog lets you create beautiful living style guides with Markdown.
 
 The [standalone version](http://interactivethings.github.io/catalog/#/usage) is completely dependency free, making it trivial to integrate Catalog into your application.
 
-Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react) to document components directly.
+Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react) to develop and document components.
 
 [Read Catalog's documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
 
@@ -32,7 +30,7 @@ Catalog can also be [directly integrated into a React app](https://interactiveth
 npm install catalog --save
 ```
 
-The `react`, `react-dom`, `react-router`, and `history` modules are peerDependencies, so you need to install them separately.
+`react` and `react-dom` are peerDependencies, so you need to install them separately.
 
 ## Development
 
