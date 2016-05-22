@@ -6,7 +6,7 @@ Use Catalog to document HTML and CSS, colors, typography, and even interactive c
 
 ## Getting started
 
-Download one of the following versions of Catalog, and then read [how to get started](#/basics/get-started).
+Download one of the following versions of Catalog, and then read [how to get started](/get-started).
 
 ### Standalone Downloads
 
@@ -24,7 +24,7 @@ https://interactivethings.github.io/catalog/catalog.js
 
 ### npm
 
-Use the npm module if you want to integrate Catalog to document React components. For details, see the [React documentation](#/react).
+Use the npm module if you want to integrate Catalog to document React components. For details, see the [React documentation](/react-integration).
 
 ```
 npm install catalog --save

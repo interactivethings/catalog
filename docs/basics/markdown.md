@@ -24,7 +24,7 @@ name: 'Red'
 span: 2
 ```
 
-Catalog provides many specimen types, from images, hints, code snippets to fully interactive HTML and React component specimens. For a full list of all specimens and their features, go to the [Specimen documentation](#/specimens)
+Catalog provides many specimen types, from images, hints, code snippets to fully interactive HTML and React component specimens. For a full list of all specimens and their features, go to the [Specimen documentation](/specimens)
 
 ## Example Page
 

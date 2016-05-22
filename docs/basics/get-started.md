@@ -2,7 +2,7 @@
 
 ## Standalone
 
-> The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
+The standalone version of Catalog is completely free from dependencies. All you need to get started is a single HTML document.
 
 ```code
 lang: html
@@ -34,7 +34,7 @@ lang: html
 </html>
 ```
 
-### Running Catalog on your local machine
+#### Running Catalog on your local machine
 
 Catalog doesn't need anything besides a single Javascript file. However, to run Catalog on your local machine, you will have to use some kind of server due to browser security restrictions (the browser won't be able to load the Markdown files from your local file system).
 
@@ -46,30 +46,30 @@ python -m SimpleHTTPServer
 
 ## npm
 
-> The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
+The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
 
-### Installation
+Install the `catalog` npm package.
 
 ```
 npm install catalog react react-dom --save
 ```
 
-### Usage
+Import Catalog, and render it.
 
-```code|lang-jsx
+```code|lang-js
 import {render} from 'catalog';
 
 render({
   title: 'My Catalog',
   pages: [
     {
-      path: '/',                               // The path where the page can be accessed
-      title: 'Introduction',                   // The page title
-      component: require('Intro')     // The documenation component
+      path: '/',                     // The path where the page can be accessed
+      title: 'Introduction',         // The page title
+      component: require('Intro')    // The documenation component
     },
     // Other pages …
   ]
 }, document.getElementById('app'));
 ```
 
-See the [React Integration](#/basics/react) guide for more details.
+See the [React Integration](/react-integration) guide for more details.

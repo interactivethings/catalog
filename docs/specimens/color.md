@@ -53,4 +53,4 @@ value: "#ff5555"
 
 ### Color palette
 
-Catalog also has a [Color Palette Specimen](#/specimens/color-palette).
+Catalog also has a [Color Palette Specimen](/specimens/color-palette).

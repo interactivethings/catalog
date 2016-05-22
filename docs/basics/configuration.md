@@ -1,12 +1,14 @@
-To get Catalog running, you need to configure a `title` and some `pages`.
+To get Catalog running, you need to pass a configuration to `Catalog.render()` with a `title` and some `pages`.
 
-```
-{
+```code
+lang: js
+---
+Catalog.render({
   title: 'My Catalog',
   pages: [
     // An array of page configuration objects
   ]
-}
+}, element);
 ```
 
 ## Pages
