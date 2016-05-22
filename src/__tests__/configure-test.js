@@ -2,6 +2,7 @@ import test from 'tape';
 import configure from '../configure';
 
 import DefaultTheme from '../DefaultTheme';
+import NotFound from '../components/Page/NotFound';
 
 test('Configuration with default theme and specimens', (t) => {
   t.deepEqual(configure({
@@ -31,6 +32,17 @@ test('Configuration with default theme and specimens', (t) => {
         src: 'overview.md',
         scripts: [],
         styles: []
+      },
+      {
+        path: '*',
+        id: 2,
+        component: NotFound,
+        title: 'Page Not Found',
+        superTitle: 'Catalog',
+        scripts: [],
+        styles: [],
+        imports: {},
+        hideFromMenu: true
       }
     ],
     pageTree: [
@@ -44,6 +56,17 @@ test('Configuration with default theme and specimens', (t) => {
         src: 'overview.md',
         scripts: [],
         styles: []
+      },
+      {
+        path: '*',
+        id: 2,
+        component: NotFound,
+        title: 'Page Not Found',
+        superTitle: 'Catalog',
+        scripts: [],
+        styles: [],
+        imports: {},
+        hideFromMenu: true
       }
     ]
   });
@@ -101,6 +124,17 @@ test('Configuration with nested pages', (t) => {
         src: 'bar.md',
         scripts: [],
         styles: []
+      },
+      {
+        path: '*',
+        id: 4,
+        component: NotFound,
+        title: 'Page Not Found',
+        superTitle: 'Catalog',
+        scripts: [],
+        styles: [],
+        imports: {},
+        hideFromMenu: true
       }
     ],
     pageTree: [
@@ -136,6 +170,17 @@ test('Configuration with nested pages', (t) => {
         ],
         scripts: [],
         styles: []
+      },
+      {
+        path: '*',
+        id: 4,
+        component: NotFound,
+        title: 'Page Not Found',
+        superTitle: 'Catalog',
+        scripts: [],
+        styles: [],
+        imports: {},
+        hideFromMenu: true
       }
     ]
   });

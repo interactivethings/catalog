@@ -8,11 +8,11 @@ class CatalogContext extends Component {
     const {router} = this.context;
     return {
       catalog: {
-        page: pages.find((p) => router.isActive(p.path)),
+        page: pages.find((p) => router.isActive(p.path) || p.path === '*'),
         getSpecimen: (specimen) => specimens[specimen],
         theme,
         title,
-        pages,
+        pages: pages.filter((p) => !p.hideFromMenu),
         pageTree,
         basePath,
         logoSrc

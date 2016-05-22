@@ -118,7 +118,7 @@ class AppLayout extends React.Component {
           <div style={{flex: 1}}>
             { this.props.children }
           </div>
-          <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} />
+          {!page.hideFromMenu && <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} />}
         </div>
         <MenuIcon style={styles.menuIcon} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
         <div style={styles.navBackground} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />

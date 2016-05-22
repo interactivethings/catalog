@@ -9,7 +9,8 @@ export const pageShape = PropTypes.shape({
   pages: PropTypes.array, // should be arrayOf(page) but that doesn't work
   styles: PropTypes.array.isRequired,
   scripts: PropTypes.array.isRequired,
-  imports: PropTypes.object.isRequired
+  imports: PropTypes.object.isRequired,
+  hideFromMenu: PropTypes.boolean
 });
 
 export const pagesShape = PropTypes.arrayOf(pageShape);

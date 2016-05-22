@@ -65,7 +65,7 @@ class Menu extends React.Component {
             <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
           </Link>
           <ul style={currentStyle.list}>
-            { pageTree.map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
+            { pageTree.filter((page) => !page.hideFromMenu).map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
           </ul>
         </div>
         <div style={currentStyle.info}>

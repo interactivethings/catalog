@@ -25,7 +25,7 @@ test('Pre-Configuration', (t) => {
     ]
   }));
 
-  t.equal(routes.childRoutes.length, 2);
+  t.equal(routes.childRoutes.length, 3);
   t.equal(routes.childRoutes[0].path, '/foo');
   t.end();
 });
@@ -53,7 +53,7 @@ test('Auto-Configuration', (t) => {
     ]
   });
 
-  t.equal(routes.childRoutes.length, 2);
+  t.equal(routes.childRoutes.length, 3);
   t.equal(routes.childRoutes[0].path, '/foo');
   t.end();
 });

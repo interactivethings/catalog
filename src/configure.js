@@ -1,6 +1,7 @@
 import warning from './utils/warning';
 import DefaultTheme from './DefaultTheme';
 import requireModuleDefault from './utils/requireModuleDefault';
+import NotFound from './components/Page/NotFound';
 
 // Removes potential multiple slashes from concatenating paths
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
@@ -17,7 +18,7 @@ const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
     .filter((page) => page.src || page.component)
-    .map((page, index) => ({...page, index}));
+    .map((page, index) => ({...page, ...(page.hideFromMenu ? undefined : {index})}));
 };
 
 export default (config) => {
@@ -76,7 +77,18 @@ export default (config) => {
     ];
   };
 
-  const pageTree = config.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: config.title}));
+  const pageTree = config.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: config.title}))
+    .concat({
+      path: '*',
+      id: ++pageId,
+      component: NotFound,
+      title: 'Page Not Found',
+      superTitle: config.title,
+      scripts: [],
+      styles: [],
+      imports: {},
+      hideFromMenu: true
+    });
   const pages = flattenPageTree(pageTree);
 
   return {
