@@ -3,6 +3,10 @@
 ## 2.2.1
 
 - Link menu title/logo to `basePath` instead of `/`
+- Add a "not found" page
+- Minor style fixes (no more flash of mobile layout on large viewports)
+- Fixes a React warning
+- Documentation updates
 
 ## 2.2.0
 
