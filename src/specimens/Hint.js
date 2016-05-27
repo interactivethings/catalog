@@ -66,7 +66,13 @@ class Hint extends React.Component {
                 marginBottom: 0
               }
             }}/>
-            <div>{renderMarkdown({text: children})}</div>
+            <div>
+              {
+                typeof children === 'string'
+                ? renderMarkdown({text: children})
+                : children
+              }
+            </div>
           </section>
       </div>
       );
@@ -74,7 +80,7 @@ class Hint extends React.Component {
 }
 
 Hint.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   catalog: catalogShape.isRequired,
   warning: PropTypes.bool,
   neutral: PropTypes.bool,
