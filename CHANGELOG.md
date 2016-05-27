@@ -1,6 +1,13 @@
 # Change Log
 
-## 2.2.1
+## 2.2.3
+
+- Better contrast for color palette labels ([#101](https://github.com/interactivethings/catalog/pull/101))
+- Allow React elements in Hint Specimen ([#102](https://github.com/interactivethings/catalog/pull/102))
+
+Thanks @bldng!
+
+## 2.2.1 / 2.2.2
 
 - Link menu title/logo to `basePath` instead of `/`
 - Add a "not found" page
