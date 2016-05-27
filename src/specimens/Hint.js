@@ -80,10 +80,7 @@ class Hint extends React.Component {
 }
 
 Hint.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   catalog: catalogShape.isRequired,
   warning: PropTypes.bool,
   neutral: PropTypes.bool,
