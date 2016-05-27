@@ -25,6 +25,7 @@
   "scripts": {},
   "dependencies": {
     "babel-standalone": "^6.7.4",
+    "d3-color": "^0.4.2",
     "history": "^2.0.0",
     "isomorphic-fetch": "^2.2.0",
     "js-yaml": "^3.4.3",

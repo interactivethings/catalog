@@ -2,14 +2,16 @@ import React, { PropTypes } from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import {hcl} from 'd3-color';
 
-const ColorPaletteItem = ({name, value, styles}) => (
-  <div style={{ ...styles.paletteItem,  backgroundColor: value}}>
-    <div style={{...styles.textPalette, color: value}}>
+const ColorPaletteItem = ({name, value, styles}) => {
+  let contrastingValue = hcl(value).l < 55 ? '#fff' : '#000';
+  return (<div style={{ ...styles.paletteItem,  backgroundColor: value}}>
+    <div style={{...styles.textPalette, color: contrastingValue}}>
       {name} <div style={styles.mono}>{value}</div>
     </div>
-  </div>
-);
+  </div>);
+};
 
 class ColorPalette extends React.Component {
   render() {
@@ -57,12 +59,10 @@ class ColorPalette extends React.Component {
       textPalette: {
         fontFamily: theme.fontFamily,
         color: theme.textColor,
-        filter: 'invert(60%) hue-rotate(0deg)',
-        mixBlendMode: 'difference',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        opacity: 0.5,
+        opacity: 0.55,
         ':hover': {
           opacity: 1
         }
