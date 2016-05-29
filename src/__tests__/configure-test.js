@@ -2,6 +2,7 @@ import test from 'tape';
 import configure from '../configure';
 
 import DefaultTheme from '../DefaultTheme';
+import specimens from '../specimens';
 import NotFound from '../components/Page/NotFound';
 
 test('Configuration with default theme and specimens', (t) => {
@@ -18,7 +19,7 @@ test('Configuration with default theme and specimens', (t) => {
     __catalogConfig: true,
     basePath: '/',
     title: 'Catalog',
-    specimens: {},
+    specimens: specimens,
     theme: DefaultTheme,
     pages: [
       {
@@ -98,7 +99,7 @@ test('Configuration with nested pages', (t) => {
     __catalogConfig: true,
     basePath: '/',
     title: 'Catalog',
-    specimens: {},
+    specimens: specimens,
     theme: DefaultTheme,
     pages: [
       {
