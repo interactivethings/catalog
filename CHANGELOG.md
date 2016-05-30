@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.4
+
+- Set base href inside framed components. Fixes an issue where web fonts didn't get loaded in the iframe.
+
 ## 2.2.3
 
 - Better contrast for color palette labels ([#101](https://github.com/interactivethings/catalog/pull/101))
