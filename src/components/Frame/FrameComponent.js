@@ -56,6 +56,7 @@ var Frame = React.createClass({
       // React warns when you render directly into the body since browser
       // extensions also inject into the body and can mess up React.
       doc.body.innerHTML = '<div></div>';
+      doc.head.innerHTML = '';
 
       const base = doc.createElement('base');
       base.setAttribute('href', window.location.href);
