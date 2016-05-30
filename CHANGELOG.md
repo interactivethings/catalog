@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.2.5
+
+- Make sure iframe `head` is cleared before adding styles
+- Scope fallback route to `basePath`
+
 ## 2.2.4
 
 - Set base href inside framed components. Fixes an issue where web fonts didn't get loaded in the iframe.
