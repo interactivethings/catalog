@@ -35,7 +35,7 @@ test('Configuration with default theme and specimens', (t) => {
         styles: []
       },
       {
-        path: '*',
+        path: '/*',
         id: 2,
         component: NotFound,
         title: 'Page Not Found',
@@ -59,7 +59,7 @@ test('Configuration with default theme and specimens', (t) => {
         styles: []
       },
       {
-        path: '*',
+        path: '/*',
         id: 2,
         component: NotFound,
         title: 'Page Not Found',
@@ -127,7 +127,7 @@ test('Configuration with nested pages', (t) => {
         styles: []
       },
       {
-        path: '*',
+        path: '/*',
         id: 4,
         component: NotFound,
         title: 'Page Not Found',
@@ -173,7 +173,7 @@ test('Configuration with nested pages', (t) => {
         styles: []
       },
       {
-        path: '*',
+        path: '/*',
         id: 4,
         component: NotFound,
         title: 'Page Not Found',
@@ -203,6 +203,26 @@ test('Imports are merged on pages', (t) => {
   });
 
   t.deepEqual(config.pages[0].imports, {Foo: 'Foo', Bar: 'Bar'});
+
+  t.end();
+});
+
+test('basePath support', (t) => {
+  const config = configure({
+    title: 'Catalog',
+    basePath: 'catalog',
+    pages: [
+      {
+        path: '/',
+        title: 'Overview',
+        src: 'overview.md'
+      }
+    ]
+  });
+
+  t.equal(config.pages[0].path, '/catalog');
+  // Fallback page
+  t.equal(config.pages[1].path, '/catalog/*');
 
   t.end();
 });
