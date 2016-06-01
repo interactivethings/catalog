@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.6
+
+- Pass React context to framed specimens ([#122](https://github.com/interactivethings/catalog/pull/122))
+
 ## 2.2.5
 
 - Make sure iframe `head` is cleared before adding styles
