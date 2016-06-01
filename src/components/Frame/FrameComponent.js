@@ -5,52 +5,61 @@ Original https://github.com/ryanseddon/react-frame-component/
 
 */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import assign from 'object-assign';
+import React, {Component, PropTypes} from 'react';
+import {unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer, unmountComponentAtNode} from 'react-dom'; // eslint-disable-line camelcase
 import raf from 'raf';
 
-var hasConsole = typeof window !== 'undefined' && window.console;
-var noop = function() {}
-var swallowInvalidHeadWarning = noop;
-var resetWarnings = noop;
+const hasConsole = typeof window !== 'undefined' && window.console;
+const noop = () => {};
+let swallowInvalidHeadWarning = noop;
+let resetWarnings = noop;
 
-if(hasConsole) {
-  var originalError = console.error;
+if (hasConsole) {
+  const originalError = console.error; // eslint-disable-line no-console
   // Rendering a <head> into a body is technically invalid although it
   // works. We swallow React's validateDOMNesting warning if that is the
   // message to avoid confusion
-  swallowInvalidHeadWarning = function() {
-    console.error = function(msg) {
+  swallowInvalidHeadWarning = () => {
+    console.error = (msg) => { // eslint-disable-line no-console
       if (/<head>/.test(msg)) return;
       originalError.call(console, msg);
     };
   };
-  resetWarnings = function() {
-    console.error = originalError;
+  resetWarnings = () => {
+    console.error = originalError; // eslint-disable-line no-console
   };
 }
 
-var Frame = React.createClass({
-  propTypes: {
-    style: React.PropTypes.object,
-    head:  React.PropTypes.node,
-    onRender: React.PropTypes.func
-  },
-  render: function() {
-    // The iframe isn't ready so we drop children from props here. #12, #17
-    return React.createElement('iframe', assign({}, this.props, {children: undefined}));
-  },
-  componentDidMount: function() {
+class FrameComponent extends Component {
+  constructor() {
+    super();
+    this.renderFrameContents = this.renderFrameContents.bind(this);
+  }
+
+  componentDidMount() {
     this.renderFrameContents();
-  },
-  renderFrameContents: function() {
-    var doc = ReactDOM.findDOMNode(this).contentDocument;
-    if(doc && doc.readyState === 'complete') {
-      var contents = React.createElement('div',
-        undefined,
-        this.props.head,
-        this.props.children
+  }
+
+  componentDidUpdate() {
+    this.renderFrameContents();
+  }
+
+  componentWillUnmount() {
+    const doc = this.iframe.contentDocument;
+    if (doc) {
+      unmountComponentAtNode(doc.body);
+    }
+  }
+
+  renderFrameContents() {
+    const doc = this.iframe.contentDocument;
+
+    if (doc && doc.readyState === 'complete') {
+      const contents = (
+        <div>
+          {this.props.head}
+          {this.props.children}
+        </div>
       );
 
       // React warns when you render directly into the body since browser
@@ -64,29 +73,36 @@ var Frame = React.createClass({
 
       // Clone styles from parent document head into the iframe, so components which use webpack's style-loader get rendered correctly.
       // This doesn't clone any Catalog styles because they are either inline styles or part of the body.
-      var pageStyles = Array.from(document.querySelectorAll('head > style'));
-      pageStyles.forEach((s) => {doc.head.appendChild(s.cloneNode(true))});
+      const pageStyles = Array.from(document.querySelectorAll('head > style'));
+      pageStyles.forEach((s) => {
+        doc.head.appendChild(s.cloneNode(true));
+      });
 
       swallowInvalidHeadWarning();
-      ReactDOM.render(contents, doc.body.firstChild, () => {
+      renderSubtreeIntoContainer(this, contents, doc.body.firstChild, () => {
         if (this.props.onRender) {
-          raf(() => {this.props.onRender(doc.body.firstChild)});
+          raf(() => {
+            this.props.onRender(doc.body.firstChild);
+          });
         }
       });
       resetWarnings();
     } else {
       setTimeout(this.renderFrameContents, 0);
     }
-  },
-  componentDidUpdate: function() {
-    this.renderFrameContents();
-  },
-  componentWillUnmount: function() {
-    var doc = ReactDOM.findDOMNode(this).contentDocument;
-    if (doc) {
-      ReactDOM.unmountComponentAtNode(doc.body);
-    }
   }
-});
 
-export default Frame;
+  render() {
+    // The iframe isn't ready so we drop children from props here. #12, #17
+    return <iframe ref={(el) => { this.iframe = el; }} {...{...this.props, children: undefined}}/>;
+  }
+}
+
+FrameComponent.propTypes = {
+  style: PropTypes.object,
+  head: PropTypes.node,
+  onRender: PropTypes.func,
+  children: PropTypes.node
+};
+
+export default FrameComponent;
