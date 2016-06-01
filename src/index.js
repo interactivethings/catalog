@@ -21,6 +21,7 @@ export {default as ColorPaletteSpecimen} from './specimens/ColorPalette';
 export {default as HtmlSpecimen} from './specimens/Html';
 export {default as HintSpecimen} from './specimens/Hint';
 export {default as ImageSpecimen} from './specimens/Image';
+export {default as TableSpecimen} from './specimens/Table';
 export {default as TypeSpecimen} from './specimens/Type';
 export {default as DownloadSpecimen} from './specimens/Download';
 export {default as ReactSpecimen} from './specimens/ReactSpecimen/ReactSpecimen';
