@@ -43,7 +43,7 @@ extend(ReactRenderer.prototype, {
   },
   table: function (header, body) {
     return (
-      React.DOM.table( {key:itemsRenderedCount++}, 
+      React.DOM.table( {key:itemsRenderedCount++},
         React.DOM.thead(null, header),
         React.DOM.tbody(null, body)
       )
@@ -51,6 +51,9 @@ extend(ReactRenderer.prototype, {
   },
   tablerow: function (content) {
     return React.DOM.tr( {key:itemsRenderedCount++}, content);
+  },
+  tablecell: function (content) {
+    return React.DOM.td( {key:itemsRenderedCount++}, content);
   },
   strong: function (content) {
     return React.DOM.strong( {key:itemsRenderedCount++}, content);
