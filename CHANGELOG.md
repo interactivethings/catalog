@@ -1,6 +1,10 @@
 # Change Log
 
-## 2.2.6
+## 2.2.8
+
+- Update document title based on active page ([#124](https://github.com/interactivethings/catalog/pull/124))
+
+## 2.2.6 / 2.2.7
 
 - Pass React context to framed specimens ([#122](https://github.com/interactivethings/catalog/pull/122))
 
