@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {Router, useRouterHistory, applyRouterMiddleware} from 'react-router';
 import {createHashHistory} from 'history';
 import useScroll from 'react-router-scroll';
@@ -22,14 +22,10 @@ export default class Catalog extends Component {
     });
   }
   render() {
-    const {configuration} = this.props;
+    const configuration = this.props;
     const {routerKey} = this.state;
     return (
       <Router key={routerKey} history={history} routes={configureRoutes(configuration)} render={applyRouterMiddleware(useScroll())} />
     );
   }
 }
-
-Catalog.propTypes = {
-  configuration: PropTypes.object.isRequired
-};

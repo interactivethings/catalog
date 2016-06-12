@@ -4,7 +4,7 @@ import Catalog from './components/Catalog';
 
 export default (configuration, element) => {
   ReactDOM.render(
-    <Catalog configuration={configuration} />,
+    <Catalog {...configuration} />,
     element
   );
 };
