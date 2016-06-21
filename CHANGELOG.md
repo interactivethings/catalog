@@ -1,6 +1,30 @@
 # Change Log
 
-## 2.2.1
+## 2.2.8
+
+- Update document title based on active page ([#124](https://github.com/interactivethings/catalog/pull/124))
+
+## 2.2.6 / 2.2.7
+
+- Pass React context to framed specimens ([#122](https://github.com/interactivethings/catalog/pull/122))
+
+## 2.2.5
+
+- Make sure iframe `head` is cleared before adding styles
+- Scope fallback route to `basePath`
+
+## 2.2.4
+
+- Set base href inside framed components. Fixes an issue where web fonts didn't get loaded in the iframe.
+
+## 2.2.3
+
+- Better contrast for color palette labels ([#101](https://github.com/interactivethings/catalog/pull/101))
+- Allow React elements in Hint Specimen ([#102](https://github.com/interactivethings/catalog/pull/102))
+
+Thanks @bldng!
+
+## 2.2.1 / 2.2.2
 
 - Link menu title/logo to `basePath` instead of `/`
 - Add a "not found" page

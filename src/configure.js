@@ -1,5 +1,6 @@
 import warning from './utils/warning';
 import DefaultTheme from './DefaultTheme';
+import specimens from './specimens';
 import requireModuleDefault from './utils/requireModuleDefault';
 import NotFound from './components/Page/NotFound';
 
@@ -79,7 +80,7 @@ export default (config) => {
 
   const pageTree = config.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: config.title}))
     .concat({
-      path: '*',
+      path: removeMultiSlashes('/' + stripTrailingSlashes([basePath, '*'].join('/'))),
       id: ++pageId,
       component: NotFound,
       title: 'Page Not Found',
@@ -96,7 +97,7 @@ export default (config) => {
     // Used to check in configureRoutes() if input is already configured
     __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
-    specimens: {...config.specimens},
+    specimens: {...specimens, ...config.specimens},
     basePath,
     pages,
     pageTree
