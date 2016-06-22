@@ -44,11 +44,11 @@ lib:
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.js:
-	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
+	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup src/index-standalone --config=rollup.config.js --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.min.js:
-	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
+	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup src/index-standalone --config=rollup.config.js --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 babel.min.js: node_modules/babel-standalone/babel.min.js

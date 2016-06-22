@@ -1,6 +1,6 @@
 {
   "name": "catalog",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
@@ -25,7 +25,7 @@
   "scripts": {},
   "dependencies": {
     "babel-standalone": "^6.7.4",
-    "d3-color": "^0.4.2",
+    "d3-color": "^1.0.0",
     "history": "^2.0.0",
     "isomorphic-fetch": "^2.2.0",
     "js-yaml": "^3.4.3",
@@ -74,14 +74,13 @@
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
-    "rollup": "^0.26.1",
-    "rollup-plugin-babel": "^2.3.5",
+    "rollup": "^0.32.0",
+    "rollup-plugin-babel": "2.4.0",
     "rollup-plugin-commonjs": "^2.1.0",
-    "rollup-plugin-node-resolve": "^1.5.0",
+    "rollup-plugin-node-resolve": "^1.7.0",
     "rollup-plugin-replace": "^1.1.0",
-    "rollup-plugin-uglify": "^0.3.1",
-    "tape": "^4.2.2",
-    "uglify-js": "^2.6.1",
+    "rollup-plugin-uglify": "^1.0.0",
+    "tape": "^4.6.0",
     "webpack": "^1.8.9",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1"
