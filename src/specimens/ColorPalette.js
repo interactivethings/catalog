@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
@@ -6,11 +6,17 @@ import {hcl} from 'd3-color';
 
 const ColorPaletteItem = ({name, value, styles}) => {
   let contrastingValue = hcl(value).l < 55 ? '#fff' : '#000';
-  return (<div style={{ ...styles.paletteItem,  backgroundColor: value}}>
+  return (<div style={{...styles.paletteItem,  backgroundColor: value}}>
     <div style={{...styles.textPalette, color: contrastingValue}}>
       {name} <div style={styles.mono}>{value}</div>
     </div>
   </div>);
+};
+
+ColorPaletteItem.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  styles: PropTypes.object
 };
 
 class ColorPalette extends React.Component {

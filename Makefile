@@ -31,9 +31,11 @@ server: node_modules babel.min.js
 watch-lib: node_modules
 	$$(npm bin)/babel src --watch --ignore __tests__ --out-dir lib
 
-test:
+test: lint
 	@$$(npm bin)/babel-tape-runner "src/**/__tests__/*.js" | $$(npm bin)/faucet
 
+lint:
+	@$$(npm bin)/eslint src
 
 ### BUILDS
 
@@ -44,11 +46,11 @@ lib:
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.js:
-	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
+	@NODE_ENV=development BABEL_ENV=rollup $$(npm bin)/rollup src/index-standalone --config=rollup.config.js --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.min.js:
-	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup ./src/index-standalone --config=./rollup.config.js --output=./$@
+	@NODE_ENV=production BABEL_ENV=rollup $$(npm bin)/rollup src/index-standalone --config=rollup.config.js --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 babel.min.js: node_modules/babel-standalone/babel.min.js
@@ -108,9 +110,6 @@ clean:
 
 clobber: clean
 	@rm -rf node_modules
-
-lint:
-	$$(npm bin)/eslint src
 
 #
 # Dependencies

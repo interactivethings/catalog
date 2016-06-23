@@ -28,7 +28,9 @@ You should at least have a page with path `'/'` (which is the first page shown)
 
 #### Page Example
 
-```
+```code
+lang: js
+---
 {
   title: 'My Catalog',
   pages: [
@@ -44,7 +46,7 @@ You should at least have a page with path `'/'` (which is the first page shown)
 
 ### React Component Pages
 
-When integrating Catalog in a React project, you can directly use components as page content. This leads to better performance (the content doesn't have to be loaded and transformed first) and better integration with your development setup. For example, if you have configured hot reloading with webpack, you can edit your documentation and see changes immediately without having to reload your browser.
+When [integrating Catalog in a React project](/react-integration), you can directly use components as page content. This leads to better performance (the content doesn't have to be loaded and transformed first) and better integration with your development setup. For example, if you have configured hot reloading with webpack, you can edit your documentation and see changes immediately without having to reload your browser.
 
 #### Component Page Properties
 
@@ -54,34 +56,16 @@ When integrating Catalog in a React project, you can directly use components as 
 
 #### Component Page Example
 
-```
+```code
+lang: js
+---
 {
   title: 'My Catalog',
   pages: [
     {
       path: '/',
       title: 'Introduction',
-      component: require('Intro') // `Intro` is a module which exports a React component
-    },
-    // Other pages …
-  ]
-}
-```
-
-#### Component Page Example (with Webpack Loader)
-
-```hint|directive
-Catalog includes a **webpack loader** which transforms Markdown files into hot-reloadable page components.
-```
-
-```
-{
-  title: 'My Catalog',
-  pages: [
-    {
-      path: '/',
-      title: 'Introduction',
-      component: require('catalog/lib/loader!raw!intro.md') // `intro.md` is a regular Markdown file
+      component: Introduction // `Introduction` is a module which exports a React component
     },
     // Other pages …
   ]

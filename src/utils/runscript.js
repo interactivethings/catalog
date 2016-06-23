@@ -8,11 +8,12 @@ let current = null;
 let queue = [];
 let dequeue = (handler) => {
   current = handler();
-  current.then( () => {
+  current.then(() => {
     current = null;
     if (queue.length > 0) {
       return dequeue(queue.shift());
     }
+    return void 0;
   });
   return current.catch( () => {
     throw new Error('Error loading script');
@@ -60,5 +61,6 @@ export default (srcOrEl) => {
   if (srcOrEl.textContent && !R.isEmpty(srcOrEl.textContent.trim())) {
     return enqueue(execInline(srcOrEl.textContent));
   }
+  return void 0;
 };
 

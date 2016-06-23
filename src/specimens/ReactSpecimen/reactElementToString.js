@@ -41,10 +41,15 @@ const reactElementToString = (el, indent = '') => {
   }
 
   const formatProp = (k, v) => {
-    return v === true ? k :
-      typeof v === 'string' ? `${k}='${v}'` :
-      React.isValidElement(v) ? `${k}={${reactElementToString(v)}}` :
-      `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
+    if (v === true) {
+      return k;
+    }
+    if (typeof v === 'string') {
+      return `${k}='${v}'`;
+    }
+    return React.isValidElement(v)
+      ? `${k}={${reactElementToString(v)}}`
+      : `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
   };
 
   const propKeys = Object.keys(props)
@@ -54,9 +59,11 @@ const reactElementToString = (el, indent = '') => {
 
   const propString = propKeys.map((k) => formatProp(k, props[k])).join(`\n${indent}  `);
 
-  const whitespaceBeforeProps = propKeys.length > 1 ? `\n${indent}  ` :
-    propKeys.length === 1 ? ' ' :
-    '';
+  const whitespaceBeforeProps = propKeys.length > 1 // eslint-disable-line no-nested-ternary
+    ? `\n${indent}  `
+    : propKeys.length === 1
+      ? ' '
+      : '';
   const whitespaceAfterProps = propKeys.length > 1 ? `\n${indent}` : '';
 
   return props.children ?

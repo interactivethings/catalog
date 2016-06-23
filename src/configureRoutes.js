@@ -11,7 +11,7 @@ const pageToRoute = ({path, component}) => ({
   path
 });
 
-const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : PageContentLoader} />;
+const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : PageContentLoader} />; // eslint-disable-line react/prop-types
 
 const autoConfigure = (config) => {
   warning(

@@ -4,9 +4,9 @@ import Radium from 'radium';
 const SHOW_AFTER_MS = 500;
 
 const loaderKeyframes = Radium.keyframes({
-  '0%': {transform: 'rotate(0deg)' },
-  '50%': {transform: 'rotate(180deg)' },
-  '100%': {transform: 'rotate(360deg)' }
+  '0%': {transform: 'rotate(0deg)'},
+  '50%': {transform: 'rotate(180deg)'},
+  '100%': {transform: 'rotate(360deg)'}
 }, 'Loader');
 
 const styles = {

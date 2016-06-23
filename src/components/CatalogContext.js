@@ -2,13 +2,15 @@ import React, {Component, PropTypes, Children} from 'react';
 import App from './App/App';
 import {catalogShape} from '../CatalogPropTypes';
 
+const fallbackPathRe = /\*$/;
+
 class CatalogContext extends Component {
   getChildContext() {
     const {title, theme, logoSrc, pages, pageTree, specimens, basePath} = this.props.configuration;
     const {router} = this.context;
     return {
       catalog: {
-        page: pages.find((p) => router.isActive(p.path) || p.path === '*'),
+        page: pages.find((p) => router.isActive(p.path) || fallbackPathRe.test(p.path)),
         getSpecimen: (specimen) => specimens[specimen],
         theme,
         title,
@@ -46,6 +48,10 @@ export default function createCatalogContext(config) {
       <App>{children}</App>
     </CatalogContext>
   );
+
+  ConfiguredCatalogContext.propTypes = {
+    children: PropTypes.element.isRequired
+  };
 
   return ConfiguredCatalogContext;
 }

@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
     }
 
     if (typeof console !== 'undefined') {
-      console.error(`Catalog warning: ${message}`, ...args);
+      console.error(`Catalog warning: ${message}`, ...args); // eslint-disable-line no-console
     }
   };
 }

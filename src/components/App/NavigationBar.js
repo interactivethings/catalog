@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import Radium from 'radium';
 import {pageShape} from '../../CatalogPropTypes';
 import Link from '../Link/Link';
@@ -23,7 +23,7 @@ function getStyles(theme) {
       padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL}px`,
       textAlign: 'left',
       '@media (min-width: 1000px)': {
-        padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL * 2}px`,
+        padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL * 2}px`
       }
     },
     rightNavLink: {
@@ -31,7 +31,7 @@ function getStyles(theme) {
       textAlign: 'right',
       borderLeft: `1px solid ${theme.background}`,
       '@media (min-width: 1000px)': {
-        padding: `${theme.sizeXl}px ${theme.sizeL * 2}px ${theme.sizeXl}px 0`,
+        padding: `${theme.sizeXl}px ${theme.sizeL * 2}px ${theme.sizeXl}px 0`
       }
     },
     link: {

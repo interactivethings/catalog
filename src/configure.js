@@ -80,7 +80,7 @@ export default (config) => {
 
   const pageTree = config.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: config.title}))
     .concat({
-      path: '*',
+      path: removeMultiSlashes('/' + stripTrailingSlashes([basePath, '*'].join('/'))),
       id: ++pageId,
       component: NotFound,
       title: 'Page Not Found',

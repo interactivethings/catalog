@@ -5,6 +5,7 @@ export {default as configureRoutes} from './configureRoutes';
 export {configureJSXRoutes as configureJSXRoutes} from './configureRoutes';
 
 // Components
+export {default as Catalog} from './components/Catalog';
 export {default as Card} from './components/Card/Card';
 export {default as Page} from './components/Page/Page';
 export {default as Span} from './components/Specimen/Span';

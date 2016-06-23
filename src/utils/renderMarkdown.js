@@ -10,7 +10,7 @@ let MARKDOWN_CONFIG = {
 
 export default ({text, renderer}) => {
   return marked(
-    text, 
+    text,
     {
       ...MARKDOWN_CONFIG,
       renderer: Object.assign(new marked.Renderer(), renderer)

@@ -22,6 +22,7 @@ let plugins = [
       // of a module in node_modules
       'node_modules/radium/lib/index.js': [ 'Style', 'StyleRoot' ],
       'node_modules/react/react.js': [ 'Component', 'PropTypes', 'Children', 'createElement' ],
+      'node_modules/react-dom/index.js': [ 'unstable_renderSubtreeIntoContainer', 'unmountComponentAtNode' ],
       'node_modules/js-yaml/dist/js-yaml.min.js': [ 'CORE_SCHEMA' ]
     }
   }),
