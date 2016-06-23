@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {pageShape} from '../../CatalogPropTypes';
 
 import Link from '../Link/Link';
 import NestedList from './NestedList';
-import { text } from '../../styles/typography';
+import {text} from '../../styles/typography';
 
 export function style(theme) {
   let pseudo = {
@@ -47,8 +47,8 @@ export function style(theme) {
 
 class ListItem extends React.Component {
   render() {
-    const { page, theme, nested } = this.props;
-    const { path, pages, title, menuTitle } = page;
+    const {page, theme, nested} = this.props;
+    const {path, pages, title, menuTitle} = page;
     let currentStyle = style(theme);
     let defaultStyle = {
       ...currentStyle.link

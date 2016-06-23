@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import Radium from 'radium';
 import {pageShape, pagesShape} from '../../CatalogPropTypes';
 import NavigationBar from './NavigationBar';

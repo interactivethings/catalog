@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
@@ -33,7 +33,7 @@ class Audio extends React.Component {
     return (
         <div style={styles.container}>
           <div style={styles.title}>{audioTitle}</div>
-          <audio style={{ width: '100%'}} src={src} autoPlay={autoplay} loop={loop} controls />
+          <audio style={{width: '100%'}} src={src} autoPlay={autoplay} loop={loop} controls />
         </div>
     );
   }
