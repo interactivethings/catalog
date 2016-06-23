@@ -26,12 +26,12 @@ const parseYaml = (str) => {
   return typeof parsed === 'string' ? void 0 : parsed;
 };
 
-export const parseSpecimenYamlBody = (_mapBodyToProps: ?Function) => (body = '') => {
+export const parseSpecimenYamlBody = (_mapBodyToProps) => (body = '') => {
   const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
   return mapBodyToProps(parseYaml(body), body);
 };
 
-export const parseSpecimenBody = (_mapBodyToProps: ?Function) => (body = '') => {
+export const parseSpecimenBody = (_mapBodyToProps) => (body = '') => {
   const mapBodyToProps = _mapBodyToProps || defaultMapBodyToProps;
   const splitBody = splitText(body);
   const [props, children] = splitBody;

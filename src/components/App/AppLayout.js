@@ -101,6 +101,13 @@ class AppLayout extends React.Component {
     };
   }
 
+  toggleSidebar(e) {
+    e.preventDefault();
+    this.setState({
+      sidebarVisible: !this.state.sidebarVisible
+    });
+  }
+
   render() {
     const {theme, pages, page} = this.props;
     const {sidebarVisible} = this.state;
@@ -127,13 +134,6 @@ class AppLayout extends React.Component {
         </div>
       </div>
     );
-  }
-
-  toggleSidebar(e) {
-    e.preventDefault();
-    this.setState({
-      sidebarVisible: !this.state.sidebarVisible
-    });
   }
 }
 

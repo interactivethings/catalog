@@ -2,13 +2,12 @@ import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import Span from '../components/Specimen/Span';
 
 import {heading} from '../styles/typography';
 
 class Audio extends React.Component {
   render() {
-    const {src, title, loop, autoplay, span, catalog: {theme}} = this.props;
+    const {src, title, loop, autoplay, catalog: {theme}} = this.props;
 
     let styles = {
       section: {

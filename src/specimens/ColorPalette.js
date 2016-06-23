@@ -13,6 +13,12 @@ const ColorPaletteItem = ({name, value, styles}) => {
   </div>);
 };
 
+ColorPaletteItem.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  styles: PropTypes.object
+};
+
 class ColorPalette extends React.Component {
   render() {
     const {catalog: {theme}, colors, horizontal} = this.props;

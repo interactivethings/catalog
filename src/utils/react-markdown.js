@@ -2,6 +2,8 @@ import marked from 'marked';
 import React from 'react';
 import Link from '../components/Link/Link';
 
+/* eslint-disable */
+
 function extend(o1, o2) {
   Object.keys(o2).forEach(function(key) {
     o1[key] = o2[key];

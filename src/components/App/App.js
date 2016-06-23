@@ -12,7 +12,7 @@ const getDocumentTitle = ({title, page}) => title === page.superTitle ?
 
 class App extends React.Component {
   render() {
-    const {catalog, history, location} = this.context;
+    const {catalog, history} = this.context;
     return (
       <StyleRoot>
         <DocumentTitle
