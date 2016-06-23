@@ -1,5 +1,9 @@
 > With Catalog you can develop React components directly in your style guide, enable hot-reloading documentation writing, and integrate Catalog in an existing application.
 
+```hint
+This section assumes that you have a working development setup with npm, webpack and a ES2015 transpiler (for example Babel).
+```
+
 ## Catalog React Component
 
 Catalog exports a `Catalog` React component. You can render it as the root element or compose it in other components.
@@ -51,7 +55,7 @@ The Catalog webpack loader turns Markdown files into React components. Use `comp
 ```
 
 ```code|lang-jsx
-const Introduction = require('catalog/lib/loader!raw!./Introduction.md')
+import Introduction from 'catalog/lib/loader!raw!./Introduction.md';
 
 <Catalog
   title='My Styleguide'

@@ -44,7 +44,7 @@ If you don't have an existing server for your project, use something simple like
 python -m SimpleHTTPServer
 ```
 
-## npm
+## npm Module
 
 The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
 
