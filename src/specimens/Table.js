@@ -1,12 +1,9 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import Span from '../components/Specimen/Span';
 import {text} from '../styles/typography';
 import renderMarkdown from '../utils/renderMarkdown';
-
-import {heading} from '../styles/typography';
 
 function getStyle(theme) {
   return {
@@ -19,7 +16,7 @@ function getStyle(theme) {
     table: {
       width: '100%',
       borderCollapse: 'collapse',
-      border: `1px solid ${theme.sidebarColorLine}`,
+      border: `1px solid ${theme.sidebarColorLine}`
     },
     head: {
       background: theme.sidebarColorLine,
@@ -41,7 +38,7 @@ const Cell = (val) => typeof val === 'string'
 
 class Table extends React.Component {
   render() {
-    const {columns, rows, span, catalog: {theme}} = this.props;
+    const {columns, rows, catalog: {theme}} = this.props;
     const styles = getStyle(theme);
     const tableKeys = columns ? columns : rows.reduce( (index, row) => index
       .concat(Object.keys(row)), [])
