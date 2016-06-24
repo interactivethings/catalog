@@ -7,52 +7,64 @@ import renderMarkdown from '../utils/renderMarkdown';
 
 function getStyle(theme) {
   return {
-    section: {
-      ...text(theme),
-      display: 'flex',
-      flexFlow: 'row wrap',
-      minWidth: 'calc(100% + 10px)'
+    container: {
+
+      flexBasis: '100%',
+      overflow: 'scroll',
+      paddingBottom: '10px'
     },
     table: {
-      width: '100%',
+      ...text(theme),
+      background: 'white',
+      boxShadow: '0px 10px 20px -15px rgba(0,0,0,0.75)',
       borderCollapse: 'collapse',
-      border: `1px solid ${theme.sidebarColorLine}`
+      lineHeight: 'auto',
+      width: '100%'
     },
     head: {
       background: theme.sidebarColorLine,
-      color: theme.sidebarColorHeading,
       border: 'none',
+      color: theme.sidebarColorHeading,
       fontWeigth: 'bold'
     },
+    rowEven: {
+      padding: 'none'
+    },
+    rowOdd: {
+      background: 'rgba(0,0,0,0.012)'
+    },
     cell: {
-      padding: '0px 25px',
-      textAlign: 'left',
-      border: `1px solid ${theme.sidebarColorLine}`
+      padding: '0px 20px',
+      textAlign: 'left'
     }
   };
 }
 
-const Cell = (val) => typeof val === 'string'
-  ? renderMarkdown({text: val})
-  : val || <p style={{opacity: 0.2}}>—</p>;
+const Cell = (value, id, style, heading) => {
+  const content = typeof value === 'string'
+    ? renderMarkdown({text: value})
+    : value || <p style={{opacity: 0.2}}>—</p>;
+  return heading
+    ? <th key={id} style={style}>{content}</th>
+    : <td key={id} style={style}>{content}</td>;
+};
 
 class Table extends React.Component {
   render() {
     const {columns, rows, catalog: {theme}} = this.props;
-    const styles = getStyle(theme);
+    const {cell, container, table, head, rowEven, rowOdd} = getStyle(theme);
     const tableKeys = columns ? columns : rows.reduce( (index, row) => index
       .concat(Object.keys(row)), [])
       .filter((value, i, self) => self.indexOf(value) === i);
-
     return (
-      <section style={styles.section}>
-        <table style={styles.table}>
-          <thead style={styles.head}>
-            <tr>{tableKeys.map((key, i) => <th style={styles.cell} key={i}>{Cell(key)}</th>)}</tr>
+      <section style={container}>
+        <table style={table}>
+          <thead style={head}>
+            <tr>{tableKeys.map((key, i) => Cell(key, i, cell, true))}</tr>
           </thead>
           <tbody>
-            {rows.map((row, i)=><tr key={i}>
-              {tableKeys.map((key, k) => <td style={styles.cell} key={k}>{Cell(row[key])}</td>)}
+            {rows.map((row, i)=><tr style={ i % 2 === 0 ? rowEven : rowOdd} key={i}>
+              {tableKeys.map((key, k) => Cell(row[key], k, cell))}
             </tr>)}
           </tbody>
         </table>
@@ -63,7 +75,7 @@ class Table extends React.Component {
 
 Table.propTypes = {
   catalog: catalogShape.isRequired,
-  rows: PropTypes.array.isRequired,
+  rows: PropTypes.arrayOf(PropTypes.object).isRequired,
   columns: PropTypes.array
 };
 
