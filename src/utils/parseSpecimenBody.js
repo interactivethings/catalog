@@ -1,4 +1,4 @@
-import yaml, {CORE_SCHEMA} from 'js-yaml/dist/js-yaml.min.js';
+import {safeLoad, CORE_SCHEMA} from 'js-yaml';
 
 const yamlOptions = {schema: CORE_SCHEMA};
 
@@ -19,7 +19,7 @@ const splitText = (text) => {
 const parseYaml = (str) => {
   let parsed;
   try {
-    parsed = yaml.safeLoad(str, yamlOptions);
+    parsed = safeLoad(str, yamlOptions);
   } catch (e) {
     parsed = void 0;
   }
