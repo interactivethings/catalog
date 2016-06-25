@@ -25,8 +25,8 @@
   "scripts": {},
   "dependencies": {
     "babel-standalone": "^6.7.4",
+    "buble": "^0.12.3",
     "d3-color": "^1.0.0",
-    "buble": "^0.10.2",
     "history": "^2.0.0",
     "isomorphic-fetch": "^2.2.0",
     "js-yaml": "^3.4.3",
