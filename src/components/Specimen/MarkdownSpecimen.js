@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, {PropTypes, Component} from 'react';
 import Hint from '../../specimens/Hint';
 import parseSpecimenType from '../../utils/parseSpecimenType';
 

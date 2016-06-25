@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
@@ -89,6 +89,10 @@ class Html extends React.Component {
     }
   }
 
+  toggleSource() {
+    this.setState({viewSource: !this.state.viewSource});
+  }
+
   render() {
     const {catalog: {theme}, children, frame, ...options} = this.props;
     const styles = getStyle(theme);
@@ -108,7 +112,7 @@ class Html extends React.Component {
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
       : null;
 
-    const content = <div dangerouslySetInnerHTML={{__html: children}} />;
+    const content = <div dangerouslySetInnerHTML={{__html: children}} />; // eslint-disable-line react/no-danger
 
     return (
       <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
@@ -119,10 +123,6 @@ class Html extends React.Component {
         {source}
       </div>
     );
-  }
-
-  toggleSource() {
-    this.setState({viewSource: !this.state.viewSource});
   }
 }
 

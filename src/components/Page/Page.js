@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
 import Radium, {Style} from 'radium';
-import { headingBlock, textBlock, blockquote, unorderedList, orderedList } from '../../styles/typography';
+import {headingBlock, textBlock, blockquote, unorderedList, orderedList} from '../../styles/typography';
 import renderMarkdown from '../../utils/renderMarkdown';
 import seqKey from '../../utils/seqKey';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';

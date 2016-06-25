@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {pagesShape} from '../../CatalogPropTypes';
-import { heading, text, getFontSize } from '../../styles/typography';
+import {heading, text, getFontSize} from '../../styles/typography';
 import Link from '../Link/Link';
 
 import ListItem from './ListItem';
@@ -22,7 +22,7 @@ export function style(theme) {
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
       height: theme.pageHeadingHeight,
       display: 'flex',
-      alignItems: 'flex-end',
+      alignItems: 'flex-end'
     },
     logo: {
       maxWidth: '100%',
@@ -52,7 +52,7 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const { theme, pageTree, logoSrc, title, history, basePath } = this.props;
+    const {theme, pageTree, logoSrc, title, history, basePath} = this.props;
 
     let currentStyle = style(theme);
 

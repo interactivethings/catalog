@@ -6,7 +6,7 @@ import Span from './Span';
 import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
 import {parseSpecimenBody, parseSpecimenYamlBody} from '../../utils/parseSpecimenBody';
 
-export default function Specimen(mapBodyToProps: Function, mapOptionsToProps: Function, options = {}) {
+export default function Specimen(mapBodyToProps, mapOptionsToProps, options = {}) {
   const parseOptions = parseSpecimenOptions(mapOptionsToProps);
   const parseBody = options.withChildren ? parseSpecimenBody(mapBodyToProps) : parseSpecimenYamlBody(mapBodyToProps);
 

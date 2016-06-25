@@ -1,22 +1,53 @@
-To get Catalog running, you need to pass a configuration to `Catalog.render()` with a `title` and some `pages`.
+To get Catalog running, you need to configure it with a `title` and some `pages`.
+
+Either provide the configuration to `Catalog.render()` or to the `Catalog` React component.
 
 ```code
+span: 3
 lang: js
 ---
-Catalog.render({
-  title: 'My Catalog',
-  pages: [
-    // An array of page configuration objects
-  ]
-}, element);
+// In any script:
+
+Catalog.render(
+  {
+    title: 'My Style Guide',
+    pages: [
+      // …
+    ]
+  },
+  element
+);
 ```
 
-## Pages
+```code
+span: 3
+lang: jsx
+---
+// With React:
+
+ReactDOM.render(
+  <Catalog
+    title='My Style Guide',
+    pages={[
+      // …
+    ]}
+  />,
+  element
+);
+```
+
+## Essentials
+
+### `title`
+
+The title of your Catalog
+
+### `pages`
 
 Catalog pages need at least three properties:
 
 
-#### Page Properties
+##### Page Properties
 
 - `path : String`: The path where the page is accessible
 - `title : String`: The title of the page (also shows up in the navigation)
@@ -26,9 +57,11 @@ Catalog pages need at least three properties:
 You should at least have a page with path `'/'` (which is the first page shown)
 ```
 
-#### Page Example
+##### Page Example
 
-```
+```code
+lang: js
+---
 {
   title: 'My Catalog',
   pages: [
@@ -42,57 +75,11 @@ You should at least have a page with path `'/'` (which is the first page shown)
 }
 ```
 
-### React Component Pages
-
-When integrating Catalog in a React project, you can directly use components as page content. This leads to better performance (the content doesn't have to be loaded and transformed first) and better integration with your development setup. For example, if you have configured hot reloading with webpack, you can edit your documentation and see changes immediately without having to reload your browser.
-
-#### Component Page Properties
-
-- `path : String`: The path where the page is accessible
-- `title : String`: The title of the page (also shows up in the navigation)
-- `component : Component`: A valid React component
-
-#### Component Page Example
-
-```
-{
-  title: 'My Catalog',
-  pages: [
-    {
-      path: '/',
-      title: 'Introduction',
-      component: require('Intro') // `Intro` is a module which exports a React component
-    },
-    // Other pages …
-  ]
-}
-```
-
-#### Component Page Example (with Webpack Loader)
-
-```hint|directive
-Catalog includes a **webpack loader** which transforms Markdown files into hot-reloadable page components.
-```
-
-```
-{
-  title: 'My Catalog',
-  pages: [
-    {
-      path: '/',
-      title: 'Introduction',
-      component: require('catalog/lib/loader!raw!intro.md') // `intro.md` is a regular Markdown file
-    },
-    // Other pages …
-  ]
-}
-```
-
-## Page Groups
+### Page Groups
 
 To create a page group, specify an object with a `title` and a `pages` property. The pages added to the group are grouped in the navigation.
 
-#### Page Group Properties
+##### Page Group Properties
 
 - `title : String`: The title of the page group
 - `pages : Array<Page>`: An array of sub-pages
@@ -126,8 +113,110 @@ Page groups can only contain pages but not other page groups.
 }
 ```
 
-## Styles, Scripts, Imports
+### React Component Pages
+
+When [integrating Catalog in a React project](/react-integration), you can directly use components as page content. This leads to better performance (the content doesn't have to be loaded and transformed first) and better integration with your development setup. For example, if you have configured hot reloading with webpack, you can edit your documentation and see changes immediately without having to reload your browser.
+
+##### Component Page Properties
+
+- `path : String`: The path where the page is accessible
+- `title : String`: The title of the page (also shows up in the navigation)
+- `component : Component`: A valid React component
+
+##### Component Page Example
+
+```code
+lang: js
+---
+{
+  title: 'My Catalog',
+  pages: [
+    {
+      path: '/',
+      title: 'Introduction',
+      component: Introduction // `Introduction` is a module which exports a React component
+    },
+    // Other pages …
+  ]
+}
+```
+
+## Including Code From Your Application
+
+To document your application properly, you need to include its styles and scripts. You have three options for doing that:
+
+```hint|directive
+You can either set these at the top level, or on each page. Styles, scripts, and imports defined at the top level will be available on each page.
+```
+
+### `styles`
+
+Catalog will include CSS files referenced in the `styles` option.
+
+##### Styles Example
+
+```code
+lang: js
+---
+{
+  styles: ['/foo.css', '/bar.css']
+  // Other options …
+  pages: [
+    {
+      styles: ['/foobar.css'],
+      // On this page, 'foo.css', 'bar.css', and 'foobar.css' will be included
+      // Other page options …
+    }
+  ]
+}
+```
+
+### `scripts`
+
+Catalog will inject JavaScript files referenced in the `scripts` option.
+
+##### Scripts Example
+
+```code
+lang: js
+---
+{
+  scripts: ['/foo.js', '/bar.js']
+  // Other options …
+  pages: [
+    {
+      scripts: ['/foobar.js'],
+      // On this page, 'foo.js', 'bar.js', and 'foobar.js' will be injected
+      // Other page options …
+    }
+  ]
+}
+```
+
+### `imports`
+
+To make components and other code available to your [React Specimens](/specimens/react), use the `imports` option.
+
+##### Scripts Example
+
+```code
+lang: js
+---
+{
+  imports: {Foo: require('Foo'), Bar: require('Bar')}
+  // Other options …
+  pages: [
+    {
+      imports: {FooBar: require('FooBar')},
+      // On this page, 'Foo', 'Bar', and 'FooBar' will be available to use in React Specimens
+      // Other page options …
+    }
+  ]
+}
+```
+
+## Theming Catalog
 
 ```hint|neutral
-TK: Importing styles, scripts and code on pages
+TK: Theming
 ```

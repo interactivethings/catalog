@@ -44,7 +44,7 @@ If you don't have an existing server for your project, use something simple like
 python -m SimpleHTTPServer
 ```
 
-## npm
+## npm Module
 
 The npm module of Catalog can be integrated into your React application, so you can develop your components directly in your styleguide.
 
@@ -57,19 +57,24 @@ npm install catalog react react-dom --save
 Import Catalog, and render it.
 
 ```code|lang-js
-import {render} from 'catalog';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Catalog} from 'catalog';
 
-render({
-  title: 'My Catalog',
-  pages: [
-    {
-      path: '/',                     // The path where the page can be accessed
-      title: 'Introduction',         // The page title
-      component: require('Intro')    // The documenation component
-    },
-    // Other pages …
-  ]
-}, document.getElementById('app'));
+ReactDOM.render(
+  <Catalog
+    title='My Catalog'
+    pages={[
+      {
+        path: '/',                     // The path where the page can be accessed
+        title: 'Introduction',         // The page title
+        component: require('Intro')    // The documenation component
+      },
+      // Other pages …
+    ]}
+  />,
+  document.getElementById('app')
+);
 ```
 
 See the [React Integration](/react-integration) guide for more details.

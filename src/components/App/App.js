@@ -1,4 +1,4 @@
-import React, { PropTypes, Children } from 'react';
+import React, {PropTypes, Children} from 'react';
 import {StyleRoot} from 'radium';
 import DocumentTitle from 'react-document-title';
 import {catalogShape} from '../../CatalogPropTypes';
@@ -12,7 +12,7 @@ const getDocumentTitle = ({title, page}) => title === page.superTitle ?
 
 class App extends React.Component {
   render() {
-    const {catalog, history, location} = this.context;
+    const {catalog, history} = this.context;
     return (
       <StyleRoot>
         <DocumentTitle

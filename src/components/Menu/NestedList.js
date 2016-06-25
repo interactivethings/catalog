@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {pagesShape} from '../../CatalogPropTypes';
 
 import Link from '../Link/Link';
-import ListItem, { style as listItemStyle } from './ListItem';
-import { style as menuStyle } from './Menu';
+import ListItem, {style as listItemStyle} from './ListItem';
+import {style as menuStyle} from './Menu';
 import Radium from 'radium';
 
 const NestedList = React.createClass({
@@ -17,7 +17,7 @@ const NestedList = React.createClass({
     router: PropTypes.object.isRequired
   },
   render() {
-    const { theme, pages, title, history } = this.props;
+    const {theme, pages, title, history} = this.props;
     const collapsed = !pages
       .map((d) => d.path && this.context.router.isActive(d.path))
       .filter(Boolean)

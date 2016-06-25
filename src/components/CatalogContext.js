@@ -49,5 +49,9 @@ export default function createCatalogContext(config) {
     </CatalogContext>
   );
 
+  ConfiguredCatalogContext.propTypes = {
+    children: PropTypes.element.isRequired
+  };
+
   return ConfiguredCatalogContext;
 }

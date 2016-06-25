@@ -7,11 +7,11 @@ const splitOptions = R.compose(removeEmpty, R.split(','));
 
 const camelize = (str) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
 
-const nothing: Function = () => null;
-const mapSpanToProp: Function = mapSpecimenOption(/^span-(\d)$/, (v) => ({span: +v}));
-const camelizeOption: Function = (option) => ({[camelize(option)]: true});
+const nothing = () => null;
+const mapSpanToProp = mapSpecimenOption(/^span-(\d)$/, (v) => ({span: +v}));
+const camelizeOption = (option) => ({[camelize(option)]: true});
 
-const optionToKeyValue = (mapOptionsToProps: Function) => (option: String) => {
+const optionToKeyValue = (mapOptionsToProps) => (option) => {
   for (let mapper of [mapOptionsToProps, mapSpanToProp]) {
     if (typeof mapper === 'function') {
       const prop = mapper(option);

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import {Style} from 'radium';
 import renderMarkdown from '../utils/renderMarkdown';

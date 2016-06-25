@@ -1,4 +1,4 @@
-const mapSpecimenOption = (test: RegExp, map: Function) => (option: String) => {
+const mapSpecimenOption = (test, map) => (option) => {
   const match = test.exec(option);
   if (match) {
     const [, value] = match;
