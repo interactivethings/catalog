@@ -23,7 +23,8 @@ extend(ReactRenderer.prototype, {
     return React.DOM.blockquote( {key: itemsRenderedCount++}, quote);
   },
   heading: function(text, level, raw) {
-    return React.DOM['h' + level]({key: itemsRenderedCount++}, text);
+    const id = raw.replace(/[^\w]+/g, '-').toLowerCase()
+    return React.DOM['h' + level]({key: itemsRenderedCount++, id}, text);
   },
   hr: function() {
     return React.DOM.hr( {key: itemsRenderedCount++} );

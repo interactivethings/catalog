@@ -7,6 +7,9 @@ import seqKey from '../../utils/seqKey';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 
 class Page extends Component {
+  componentDidMount() {
+    console.log(this.context.router)
+  }
   render() {
     const {children} = this.props;
     const {catalog: {theme, getSpecimen}} = this.context;
@@ -31,7 +34,7 @@ class Page extends Component {
     return (
       <div className='cg-Page' style={pageStyle}>
         {React.Children.map(children, (child) => {
-          return typeof child === 'string' ?
+          const md =  typeof child === 'string' ?
             renderMarkdown({
               text: child,
               renderer: {
@@ -40,6 +43,7 @@ class Page extends Component {
                 }
               }
             }) : child;
+          return md;
         })}
         <Style scopeSelector='.cg-Page >' rules={{
           // Text styles
@@ -85,7 +89,8 @@ Page.propTypes = {
 };
 
 Page.contextTypes = {
-  catalog: catalogShape.isRequired
+  catalog: catalogShape.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 export default Radium(Page);
