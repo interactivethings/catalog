@@ -46,6 +46,19 @@ The title of your Catalog
 
 Catalog pages need at least three properties:
 
+### Injecting
+
+To `inject` information for each page, configure as follows:
+
+```
+{
+  inject: () => <div>demo</div>,
+  title: 'My Catalog',
+  ...
+}
+```
+
+`inject` accepts something that React can render. The injected code will appear on every page of the catalog. This is handy for attaching GitHub fork widgets etc.
 
 ##### Page Properties
 
