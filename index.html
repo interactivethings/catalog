@@ -14,7 +14,7 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-53158985-1', 'auto');
-      ga('send', 'pageview');      
+      ga('send', 'pageview');
     }
   </script>
 </head>
@@ -24,6 +24,7 @@
   <script src="catalog.js"></script>
   <script>
     Catalog.render({
+      inject: function inject() { return React.createElement('div', {}, 'demo'); },
       title: "Catalog",
       logoSrc: "docs/assets/catalog_logo.svg",
       theme: {

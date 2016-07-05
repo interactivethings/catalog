@@ -15,7 +15,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js$/, include: resolveHere('src'), loader: 'babel'}
+      {test: /\.js$/, include: resolveHere('src'), loader: 'babel'},
+      {test: require.resolve('react'), loader: 'expose?React'}
     ],
     noParse: /\.min\.js$/
   },
