@@ -61,6 +61,7 @@
     "eslint": "^3.0.0",
     "eslint-config-interactivethings": "^3.0.0-beta.3",
     "eslint-plugin-react": "^5.1.1",
+    "expose-loader": "^0.7.1",
     "express": "^4.13.3",
     "faucet": "0.0.1",
     "gh-pages": "^0.11.0",
