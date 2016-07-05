@@ -23,6 +23,9 @@ class App extends React.Component {
           sideNav={<Menu {...catalog} history={history} />}
         >
           {
+           catalog.inject && catalog.inject()
+          }
+          {
            Children.only(this.props.children)
           }
         </AppLayout>
