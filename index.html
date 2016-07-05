@@ -24,7 +24,7 @@
   <script src="catalog.js"></script>
   <script>
     Catalog.render({
-      inject: function inject() { return React.createElement('div', {}, 'demo'); },
+      inject: function inject() { console.log('injecting'); return null; },
       title: "Catalog",
       logoSrc: "docs/assets/catalog_logo.svg",
       theme: {
