@@ -30,7 +30,7 @@
         // Uses default theme
       },
       pages: [
-        {path: '/', title: "Introduction", src: "docs/intro.md"},
+        {path: '/', title: "Introduction", src: "docs/intro.md", props: {style: {borderBottom: '2px solid #ddd'}}},
         {path: 'get-started', title: 'Get Started', src: 'docs/basics/get-started.md'},
         {path: 'write-documentation', title: 'Write Documentation', src: 'docs/basics/markdown.md'},
         {path: 'configuration', title: 'Configuration', src: 'docs/basics/configuration.md'},
@@ -44,6 +44,7 @@
         {
           path: 'specimens-group',
           title: 'Specimens',
+          props: {style: {borderTop: '2px solid #ddd'}},
           pages: [
             {
               path: 'specimens',

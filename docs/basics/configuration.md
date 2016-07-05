@@ -83,6 +83,7 @@ To create a page group, specify an object with a `title` and a `pages` property.
 
 - `title : String`: The title of the page group
 - `pages : Array<Page>`: An array of sub-pages
+- `props : Object`: An object of React props attached to the navigation link
 
 ```hint
 Page groups can only contain pages but not other page groups.
@@ -95,7 +96,12 @@ Page groups can only contain pages but not other page groups.
     {
       path: '/',
       title: 'Introduction',
-      src: 'intro.md'
+      src: 'intro.md',
+      props: {
+        style: {
+          borderBottom: '2px solid #ddd'
+        }
+      }
     },
     {
       title: 'Basics',
