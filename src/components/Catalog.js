@@ -28,12 +28,12 @@ export default class Catalog extends Component {
         return history;
       } else if (useBrowserHistory) {
         // DEPRECATED
+        // eslint-disable-next-line no-console
         console.warn('DEPRECATED: useBrowserHistory is no longer supported, pass in an history instance instead.');
         return browserHistory;
-      } else {
-        return hashHistory;
       }
-    }
+      return hashHistory;
+    };
 
     const {routerKey} = this.state;
     return (
