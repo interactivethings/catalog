@@ -2,7 +2,10 @@
 
 /*eslint-disable*/
 
+var fs = require('fs');
 var path = require('path');
+var http = require('http');
+var parallel = require('async/parallel');
 var express = require('express');
 var webpack = require('webpack');
 var devMiddleware = require('webpack-dev-middleware');
@@ -11,6 +14,7 @@ var historyApiFallback = require('connect-history-api-fallback');
 var portfinder = require('portfinder');
 var clc = require('cli-color');
 var webpackConfig = require(path.resolve(process.cwd(), 'webpack.config'));
+var dl = require('devlisten');
 
 var banner = [
   "         __                       ",
@@ -21,15 +25,16 @@ var banner = [
   "                        (_/       "
 ].join("\n");
 
-function server(options, config) {
+
+function createExpressApp() {
   var app = express();
 
   app.use(historyApiFallback());
 
-  var compiler = webpack(config);
+  var compiler = webpack(webpackConfig);
 
   app.use(devMiddleware(compiler, {
-    publicPath: config.output.publicPath,
+    publicPath: webpackConfig.output.publicPath,
     stats: {
       assets: true,
       chunkModules: false,
@@ -46,15 +51,17 @@ function server(options, config) {
 
   app.use(express.static('.'));
 
-  app.listen(options.port, options.host, function (err, result) {
-    if (err) { throw err };
-    console.log(clc.erase.screen);
-    console.log(clc.red(banner));
-    console.log(clc.red('\nCatalog server running at ' + clc.underline('http://' + options.host + ':' + options.port)) + '\n');
-  });
-};
+  return app;
+}
 
-portfinder.getPort({port: 8080, host: '0.0.0.0'}, function(err, port) {
-  if (err) { throw err; }
-  server({port: port, host: '0.0.0.0'}, webpackConfig);
+dl.devlisten('catalog', createExpressApp(), function(err, results) {
+  if (err) { throw err };
+
+  var urls = results
+    .map(function(x) { return clc.underline(x); })
+    .join(' and ');
+
+  console.log(clc.erase.screen);
+  console.log(clc.red(banner));
+  console.log(clc.red('\nCatalog server running at ' + urls) + '\n');
 });
