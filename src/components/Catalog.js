@@ -22,12 +22,24 @@ export default class Catalog extends Component {
     });
   }
   render() {
-    const {useBrowserHistory, ...configuration} = this.props;
+    const {useBrowserHistory, history, ...configuration} = this.props;
+    const createHistory = () => {
+      if (history) {
+        return history;
+      } else if (useBrowserHistory) {
+        // DEPRECATED
+        // eslint-disable-next-line no-console
+        console.warn('DEPRECATED: useBrowserHistory is no longer supported, pass in an history instance instead.');
+        return browserHistory;
+      }
+      return hashHistory;
+    };
+
     const {routerKey} = this.state;
     return (
       <Router
         key={routerKey}
-        history={useBrowserHistory ? browserHistory : hashHistory}
+        history={createHistory()}
         routes={configureRoutes(configuration)}
         render={applyRouterMiddleware(useScroll())}
       />
@@ -36,5 +48,6 @@ export default class Catalog extends Component {
 }
 
 Catalog.propTypes = {
-  useBrowserHistory: PropTypes.bool
+  history: PropTypes.object,
+  useBrowserHistory: PropTypes.bool // DEPRECATED
 };
