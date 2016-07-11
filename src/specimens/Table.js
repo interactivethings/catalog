@@ -70,7 +70,7 @@ class Table extends React.Component {
 Table.propTypes = {
   catalog: catalogShape.isRequired,
   rows: PropTypes.arrayOf(PropTypes.object).isRequired,
-  columns: PropTypes.array
+  columns: PropTypes.arrayOf(PropTypes.string)
 };
 
 Table.defaultProps = {
