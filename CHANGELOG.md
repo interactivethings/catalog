@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.0
+
+- :tada: Add [Table Specimen](https://interactivethings.github.io/catalog/#/specimens/table) ([#123](https://github.com/interactivethings/catalog/pull/123))
+
 ## 2.3.0
 
 - Add `Catalog` React component ([#125](https://github.com/interactivethings/catalog/pull/125))
