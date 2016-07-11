@@ -20,10 +20,10 @@ let plugins = [
       // left-hand side can be an absolute path, a path
       // relative to the current directory, or the name
       // of a module in node_modules
-      'node_modules/radium/lib/index.js': [ 'Style', 'StyleRoot' ],
-      'node_modules/react/react.js': [ 'Component', 'PropTypes', 'Children', 'createElement' ],
-      'node_modules/react-dom/index.js': [ 'unstable_renderSubtreeIntoContainer', 'unmountComponentAtNode' ],
-      'node_modules/js-yaml/dist/js-yaml.min.js': [ 'CORE_SCHEMA' ]
+      'radium': [ 'Style', 'StyleRoot' ],
+      'react': [ 'Component', 'PropTypes', 'Children', 'createElement' ],
+      'react-dom': [ 'unstable_renderSubtreeIntoContainer', 'unmountComponentAtNode' ],
+      'js-yaml': [ 'safeLoad', 'CORE_SCHEMA' ]
     }
   }),
   babel({
