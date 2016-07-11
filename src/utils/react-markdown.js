@@ -24,7 +24,7 @@ extend(ReactRenderer.prototype, {
   },
   heading: function(text, level, raw) {
     const id = raw.replace(/[^\w]+/g, '-').toLowerCase()
-    return React.DOM['h' + level]({key: itemsRenderedCount++, id}, text);
+    return <a href={`#${id}`}>{React.createElement('h' + level, {key: itemsRenderedCount++, id}, text)}</a>;
   },
   hr: function() {
     return React.DOM.hr( {key: itemsRenderedCount++} );
