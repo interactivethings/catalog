@@ -1,5 +1,15 @@
 # Change Log
 
+## 2.3.0
+
+- Add `Catalog` React component ([#125](https://github.com/interactivethings/catalog/pull/125))
+- Improve JSX transform of React Specimen ([#149](https://github.com/interactivethings/catalog/issues/149))
+- Lint all the things!
+
+## 2.2.9
+
+- Dependency updates
+
 ## 2.2.8
 
 - Update document title based on active page ([#124](https://github.com/interactivethings/catalog/pull/124))
