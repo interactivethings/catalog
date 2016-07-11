@@ -8,33 +8,28 @@ import renderMarkdown from '../utils/renderMarkdown';
 function getStyle(theme) {
   return {
     container: {
-
       flexBasis: '100%',
       overflow: 'scroll',
       paddingBottom: '10px'
     },
     table: {
       ...text(theme),
-      background: 'white',
-      boxShadow: '0px 10px 20px -15px rgba(0,0,0,0.75)',
       borderCollapse: 'collapse',
       lineHeight: 'auto',
-      width: '100%'
+      width: '100%',
+      borderBottom: `none`
+    },
+    tableRow: {
+      borderBottom: `1px solid ${theme.sidebarColorLine}`
     },
     head: {
-      background: theme.sidebarColorLine,
       border: 'none',
       color: theme.sidebarColorHeading,
-      fontWeigth: 'bold'
-    },
-    rowEven: {
-      padding: 'none'
-    },
-    rowOdd: {
-      background: 'rgba(0,0,0,0.012)'
+      fontWeigth: 'bold',
+      borderBottom: `2px solid ${theme.lightColor}`
     },
     cell: {
-      padding: '0px 20px',
+      padding: '0px 0px',
       textAlign: 'left'
     }
   };
@@ -52,7 +47,7 @@ const Cell = (value, id, style, heading) => {
 class Table extends React.Component {
   render() {
     const {columns, rows, catalog: {theme}} = this.props;
-    const {cell, container, table, head, rowEven, rowOdd} = getStyle(theme);
+    const {cell, container, table, head, tableRow} = getStyle(theme);
     const tableKeys = columns ? columns : rows.reduce( (index, row) => index
       .concat(Object.keys(row)), [])
       .filter((value, i, self) => self.indexOf(value) === i);
@@ -63,8 +58,8 @@ class Table extends React.Component {
             <tr>{tableKeys.map((key, i) => Cell(key, i, cell, true))}</tr>
           </thead>
           <tbody>
-            {rows.map((row, i)=><tr style={ i % 2 === 0 ? rowEven : rowOdd} key={i}>
-              {tableKeys.map((key, k) => Cell(row[key], k, cell))}
+            {rows.map((row, i)=><tr style={tableRow}  key={i}>
+              {tableKeys.map((key, k) => Cell(row[key], k, cell, false))}
             </tr>)}
           </tbody>
         </table>
