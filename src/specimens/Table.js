@@ -23,7 +23,6 @@ function getStyle(theme) {
       borderBottom: `1px solid ${theme.sidebarColorLine}`
     },
     head: {
-      border: 'none',
       color: theme.sidebarColorHeading,
       fontWeigth: 'bold',
       borderBottom: `2px solid ${theme.lightColor}`
