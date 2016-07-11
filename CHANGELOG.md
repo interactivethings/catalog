@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.1
+
+- Don't cut of square/tall logos ([#148](https://github.com/interactivethings/catalog/issues/148))
+
 ## 2.4.0
 
 - :tada: Add [Table Specimen](https://interactivethings.github.io/catalog/#/specimens/table) ([#123](https://github.com/interactivethings/catalog/pull/123))
