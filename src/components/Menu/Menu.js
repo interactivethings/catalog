@@ -26,6 +26,7 @@ export function style(theme) {
     },
     logo: {
       maxWidth: '100%',
+      maxHeight: `calc(100% - ${getFontSize(theme, 5)})`,
       marginBottom: getFontSize(theme, 5)
     },
     list: {
