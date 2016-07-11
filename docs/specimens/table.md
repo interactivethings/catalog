@@ -1,97 +1,96 @@
-The table specimen allows to generate tables easily.
+> Use the table specimen to generate simple tables.
 
+To make writing tabular content easy, tables can be defined using YAML or JSON syntax. Tables support Markdown formatted content.
 
-```table
-rows:
-  - Prop: __`rows`__
-    required: yes
-    Type: _array_
-    Description:  'An array containg the data key/value objects.'
+### Specimen Props
 
-  - Prop: '`columns`'
-    Type: _array_
-    Description:  'An array that allows ordering and filtering the columns.'
-
-```
-
+* **`rows: array`** An array of objects where the property name is the column name and the value is the cell's content
+* `columns: array` An array of column names. The order describes the column order from left to right. Columns can be hidden by omitting them from this array
 
 ### Basic example
 
-To generate a basic table, you can define `rows` using YAML and/or JSON. Additionaly, the values can be notated using Markdown syntax.
+This basic example uses Markdown to turn the "ID" column cells bold. Note that you have to use quotation marks around the cell's content for this to work.
 
 ```table
-span: 3
+span: 2
 rows:
-  - ID: __ID-1__
+  - ID: '**ID-1**'
     Value: '`100`'
-  - ID: __ID-2__
+  - ID: '**ID-2**'
     Value: '`200`'
 ```
 
 
-````code|span-3
+````code|span-2
+YAML definition:
+
 ```table
-span: 3
+span: 2
 rows:
-  - ID: __ID-1__
+  - ID: '**ID-1**'
     Value: '`100`'
-  - ID: __ID-2__
+  - ID: '**ID-2**'
     Value: '`200`'
 ```
+````
 
-// or 
+````code|span-2
+JSON definition:
 
 ```table
-span: 3
-rows: [{ ID: '__ID-1__', Value: 100 }, { ID: '__ID-2__', Value: 200 }]
+span: 2
+rows: [
+  {
+    ID: '**ID-1**',
+    Value: 100
+  },
+  {
+    ID: '**ID-2**',
+    Value: 200
+  }
+]
 ```
 ````
 
 
-### Missing data, ordering and filtering columns
+### Missing data, ordering and hiding columns
 
-If a key is not present in the other objects, the column gets added and the omitted cells are marked as empty.
-Note that the key order for each row is not important as they are sorted by occurence. So there is one thing less to worry about.
+In this example, several things happen:
 
-You however can change the order manually, with the optional `columns` array. 
-
-In the following example, the 'Status' column would be the first, which is probably not what you want.
-Also, the 'Notes' column does not contain any useful information.
-
-The `columns` array takes care of that through setting the order and filtering the relevant columns.
-
+* Not all rows have the column "Status" defined. This column is added anyway, but cells without data are marked as empty.
+* The `columns` property is used to specify the order of the columns. For this example, we want to display the "Status" column last because it can sometimes be empty.
+* By omitting the "ID" column name from the `columns` property we hide it.
 
 ```table
 span: 3
 columns:
-  - ID
+  - Name
   - Value
   - Status
 rows:
   - Status: 'running'
     ID: ID-1
     Value: 100
-    Notes: 
+    Name: A
   - ID: ID-2
     Value: 200
-    Notes:
+    Name: B
 ```
-
 
 ````code|span-3
 ```table
 span: 3
 columns:
-  - ID
+  - Name
   - Value
   - Status
 rows:
   - Status: 'running'
     ID: ID-1
     Value: 100
-    Notes: 
+    Name: A
   - ID: ID-2
     Value: 200
-    Notes:
+    Name: B
 ```
 ````
