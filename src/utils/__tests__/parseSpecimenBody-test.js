@@ -26,6 +26,11 @@ test('Mapped YAML body', (t) => {
   t.end();
 });
 
+test('YAML body with imports', (t) => {
+  t.deepEqual(parseSpecimenYamlBody()('foo: !import bar', {bar: 'bar'}), {foo: 'bar'});
+  t.end();
+});
+
 test('body with props and children', (t) => {
   t.deepEqual(parseSpecimenBody()('foo: bar\nbaz: 12.3\n---\nfoo'), {foo: 'bar', baz: 12.3, children: 'foo'});
   t.end();
@@ -66,3 +71,7 @@ test('body with children but valid yaml', (t) => {
   t.end();
 });
 
+test('body with imports in props', (t) => {
+  t.deepEqual(parseSpecimenBody()('foo: !import bar\n---\nbaz', {bar: 'bar'}), {foo: 'bar', children: 'baz'});
+  t.end();
+});
