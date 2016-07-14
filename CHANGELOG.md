@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.2
+
+- Hot fix for radium displaying "none" when `content: 'none'` is set ([#155](https://github.com/interactivethings/catalog/issues/148))
+
 ## 2.4.1
 
 - Don't cut of square/tall logos ([#148](https://github.com/interactivethings/catalog/issues/148))
