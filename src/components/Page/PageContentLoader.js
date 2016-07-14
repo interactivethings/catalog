@@ -23,19 +23,6 @@ class PageContentLoader extends Component {
     }
   }
 
-  componentDidMount() {
-    const {params, location: {query: {j}}} = this.props;
-    if (j) {
-      setTimeout(() => {
-        const el = document.getElementById(j);
-        if (el) {
-          console.log(el)
-          el.scrollIntoView();
-        }
-      }, 1000);
-    }
-  }
-
   fetchPageData(url) {
     fetch(url, {credentials: 'same-origin'})
       .then((response) => response.text())

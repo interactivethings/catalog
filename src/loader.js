@@ -28,7 +28,7 @@ module.exports.pitch = function pitch(remainingRequest) {
         }
       },
       render: function() {
-        return React.createElement(PageRenderer, {content: this.state.content});
+        return React.createElement(PageRenderer, Object.assign({}, this.props, {content: this.state.content}));
       }
     });
   `;

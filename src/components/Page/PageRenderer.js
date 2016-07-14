@@ -10,12 +10,29 @@ const renderStyles = (styles) => {
 const renderContent = (content) => React.isValidElement(content) && content.type === Page ? content : <Page>{content}</Page>;
 
 class PageRenderer extends Component {
+  constructor() {
+    super();
+    this.jump = this.jump.bind(this);
+  }
+
   componentDidMount() {
     this.context.catalog.page.scripts.forEach(runscript);
+    this.jump();
   }
 
   componentDidUpdate() {
     this.context.catalog.page.scripts.forEach(runscript);
+    this.jump();
+  }
+
+  jump() {
+    const {location: {query: {a}, hash}} = this.props;
+    const selector = hash || `#${a}`;
+    const el = document.querySelector(selector);
+    clearTimeout(this.jumpTimeout);
+    if (el) {
+      this.jumpTimeout = setTimeout(() => el.scrollIntoView(), 0);
+    }
   }
 
   render() {
@@ -34,7 +51,8 @@ PageRenderer.propTypes = {
   content: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
-  ]).isRequired
+  ]).isRequired,
+  location: PropTypes.object.isRequired
 };
 
 PageRenderer.contextTypes = {

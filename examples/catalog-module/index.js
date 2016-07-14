@@ -5,7 +5,7 @@ import {Catalog} from '../../src/index';
 ReactDOM.render(
   <Catalog
     title='My Components'
-    useBrowserHistory
+    useBrowserHistory={true}
     pages={[
       {
         path: '/',
