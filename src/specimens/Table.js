@@ -76,9 +76,11 @@ class Table extends React.Component {
             <tr>{tableKeys.map((key, k) => <Cell heading value={key} key={k} style={cellStyle(tableKeys.length, k)} />)}</tr>
           </thead>
           <tbody>
-            {rows.map((row, i)=><tr style={tableRow} key={i}>
-              {tableKeys.map((key, k) => <Cell value={row[key]} key={k} style={cellStyle(tableKeys.length, k)} />)}
-            </tr>)}
+            {rows.map((row, i) => (
+              <tr style={tableRow} key={i}>
+                {tableKeys.map((key, k) => <Cell value={row[key]} key={k} style={cellStyle(tableKeys.length, k)} />)}
+              </tr>
+            ))}
           </tbody>
         </table>
       </section>
