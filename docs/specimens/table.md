@@ -1,59 +1,68 @@
 > Use the table specimen to generate simple tables.
 
-To make writing tabular content easy, tables can be defined using YAML or JSON syntax. Tables support Markdown formatted content.
+This specimen provides an easy way to create tabular content. Table rows are defined using YAML arrays. Cell contents can be formatted using Markdown syntax.
 
-### Specimen Props
+### Props
 
 * **`rows: array`** An array of objects where the property name is the column name and the value is the cell's content
 * `columns: array` An array of column names. The order describes the column order from left to right. Columns can be hidden by omitting them from this array
 
-### Basic example
+### Examples
 
-This basic example uses Markdown to turn the "ID" column cells bold. Note that you have to use quotation marks around the cell's content for this to work.
+#### Basic example
 
 ```table
-span: 2
+span: 3
 rows:
-  - ID: '**ID-1**'
-    Value: '`100`'
-  - ID: '**ID-2**'
-    Value: '`200`'
+  - Name: Jemaine
+    Instrument: Bass among other things
+  - Name: Bret
+    Instrument: Guitar and piano
 ```
 
-
-````code|span-2
-YAML definition:
-
+````code|span-3
 ```table
-span: 2
+span: 3
 rows:
-  - ID: '**ID-1**'
-    Value: '`100`'
-  - ID: '**ID-2**'
-    Value: '`200`'
+  - Name: Jemaine
+    Instrument: Bass among other things
+  - Name: Bret
+    Instrument: Guitar and piano
 ```
 ````
 
-````code|span-2
-JSON definition:
+#### Markdown formatting
+
+This example uses [Markdown](https://daringfireball.net/projects/markdown/) to format the cell contents. Note that you have to use quotation marks around the cells for this to work.
 
 ```table
-span: 2
-rows: [
-  {
-    ID: '**ID-1**',
-    Value: 100
-  },
-  {
-    ID: '**ID-2**',
-    Value: 200
-  }
-]
+rows:
+  - Term: '**Catalog**'
+    Definition: '_n._ A list or itemized display, as of titles, course offerings, or articles for exhibition or sale, usually including descriptive information or illustrations.'
+  - Term: ''
+    Definition: '_n._ A publication, such as a book or pamphlet, containing such a list or display: a catalog of fall fashions; a seed catalog.'
+  - Term: '**Thing**'
+    Definition: '_n._ An entity, an idea, or a quality perceived, known, or thought to have its own existence.'
+  - Term: ''
+    Definition: '_n._ The real or concrete substance of an entity.'
+```
+
+````code
+```table
+rows:
+  - Term: '**Catalog**'
+    Definition: '_n._ A list or itemized display, …'
+  - Term: ''
+    Definition: '_n._ A publication, such as a book …'
+  - Term: '**Thing**'
+    Definition: '_n._ An entity, an idea, or a quality …'
+  - Term: ''
+    Definition: '_n._ The real or concrete substance of …'
 ```
 ````
 
 
-### Missing data, ordering and hiding columns
+#### Missing data, ordering and hiding columns
 
 In this example, several things happen:
 
