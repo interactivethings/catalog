@@ -40,13 +40,25 @@ function getStyle(theme) {
   };
 }
 
-const Cell = (value, id, style, heading) => {
-  const content = typeof value === 'string'
-    ? renderMarkdown({text: value})
-    : value || <p style={{opacity: 0.2}}>—</p>;
+const Cell = ({value, style, heading}) => {
+  let content;
+  if (typeof value === 'string') {
+    content = renderMarkdown({text: value.toString()});
+  } else if (value === void 0) {
+    content = <p style={{opacity: 0.2}}>—</p>;
+  } else {
+    content = <p>{value}</p>;
+  }
+
   return heading
-    ? <th key={id} style={style}>{content}</th>
-    : <td key={id} style={style}>{content}</td>;
+    ? <th style={style}>{content}</th>
+    : <td style={style}>{content}</td>;
+};
+
+Cell.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  style: PropTypes.object.isRequired,
+  heading: PropTypes.bool
 };
 
 class Table extends React.Component {
@@ -61,11 +73,11 @@ class Table extends React.Component {
       <section style={container}>
         <table style={table}>
           <thead style={head}>
-            <tr>{tableKeys.map((key, k) => Cell(key, k, cellStyle(tableKeys.length, k), true))}</tr>
+            <tr>{tableKeys.map((key, k) => <Cell heading value={key} key={k} style={cellStyle(tableKeys.length, k)} />)}</tr>
           </thead>
           <tbody>
-            {rows.map((row, i)=><tr style={tableRow}  key={i}>
-              {tableKeys.map((key, k) => Cell(row[key], k, cellStyle(tableKeys.length, k), false))}
+            {rows.map((row, i)=><tr style={tableRow} key={i}>
+              {tableKeys.map((key, k) => <Cell value={row[key]} key={k} style={cellStyle(tableKeys.length, k)} />)}
             </tr>)}
           </tbody>
         </table>
