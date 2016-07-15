@@ -12,7 +12,9 @@ Per default, a code toggle button allows easy access to the source without havin
 - `span: number[1–6]` width of the specimen
 
 
-### Basic example
+### Examples
+
+#### Basic example
 
 This is example uses the configured stylesheet.
 
@@ -30,7 +32,7 @@ This is example uses the configured stylesheet.
 ```
 ````
 
-### Framed example
+#### Framed example
 
 The `frame` prop dynamically wraps the content in an `<iframe>`. This is useful to encapsulate styles and for viewport-oriented layout (such as using `vw` or `position: fixed`)
 
@@ -56,7 +58,7 @@ frame: true
 ````
 
 
-### Visual examples
+#### Visual examples
 
 The different background colors:
 

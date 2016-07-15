@@ -15,7 +15,9 @@
 The `src` and `overlay` keys accept the `srcSet` notation, which allows the usage of responsive images.
 ```
 
-### Example: Hero Image
+### Examples
+
+#### Hero image
 
 By using a plain background and no title you can place a simple image.
 
@@ -36,7 +38,7 @@ _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 ````
 
 
-### Example: Overlay image
+#### Overlay image
 
 The overlay image is useful to document layout measurements for implementation.
 
@@ -58,7 +60,7 @@ The overlay image is useful to document layout measurements for implementation.
 
 
 
-### Example: Image with details
+#### Image with details
 
 By adding attributes it is possible to specify implementation details.
 
@@ -80,7 +82,7 @@ By adding attributes it is possible to specify implementation details.
 ```
 ````
 
-### Multiple images
+#### Multiple images
 
 ```image|span-5
 {
