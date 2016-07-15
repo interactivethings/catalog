@@ -28,8 +28,14 @@ function getStyle(theme) {
       borderBottom: `2px solid ${theme.lightColor}`
     },
     cell: {
-      padding: '0px 0px',
-      textAlign: 'left'
+      padding: '0 1em 0 0',
+      textAlign: 'left',
+      verticalAlign: 'top'
+    },
+    cellLast: {
+      padding: '0',
+      textAlign: 'left',
+      verticalAlign: 'top'
     }
   };
 }
@@ -46,7 +52,8 @@ const Cell = (value, id, style, heading) => {
 class Table extends React.Component {
   render() {
     const {columns, rows, catalog: {theme}} = this.props;
-    const {cell, container, table, head, tableRow} = getStyle(theme);
+    const {cell, cellLast, container, table, head, tableRow} = getStyle(theme);
+    const cellStyle = (totalCells, cellIndex) => cellIndex === totalCells - 1 ? cellLast : cell;
     const tableKeys = columns ? columns : rows.reduce( (index, row) => index
       .concat(Object.keys(row)), [])
       .filter((value, i, self) => self.indexOf(value) === i);
@@ -54,11 +61,11 @@ class Table extends React.Component {
       <section style={container}>
         <table style={table}>
           <thead style={head}>
-            <tr>{tableKeys.map((key, i) => Cell(key, i, cell, true))}</tr>
+            <tr>{tableKeys.map((key, k) => Cell(key, k, cellStyle(tableKeys.length, k), true))}</tr>
           </thead>
           <tbody>
             {rows.map((row, i)=><tr style={tableRow}  key={i}>
-              {tableKeys.map((key, k) => Cell(row[key], k, cell, false))}
+              {tableKeys.map((key, k) => Cell(row[key], k, cellStyle(tableKeys.length, k), false))}
             </tr>)}
           </tbody>
         </table>
