@@ -47,13 +47,13 @@ class Code extends React.Component {
   render() {
     const {catalog: {theme}, children, rawBody, collapsed, lang, raw} = this.props;
     const {viewSource} = this.state;
-    let styles = getStyle(theme);
+    const styles = getStyle(theme);
 
-    let toggle = collapsed
+    const toggle = collapsed
       ? <div style={styles.toggle} onClick={() => this.setState({viewSource: !viewSource})}>{viewSource ? 'close' : 'show example code' }</div>
       : null;
 
-    let content = this.state.viewSource
+    const content = viewSource
       ? <HighlightedCode language={lang} code={raw ? rawBody : children} theme={theme} />
       : null;
 

@@ -44,7 +44,7 @@ class Loader extends React.Component {
   }
 
   render() {
-    let loader = this.state.visible
+    const loader = this.state.visible
       ? styles.spinner
       : styles.hidden;
 
