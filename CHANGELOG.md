@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.3
+
+- Revert fix for radium bug, update radium to 0.18.0
+
 ## 2.4.2
 
 - Hot fix for radium displaying "none" when `content: 'none'` is set ([#155](https://github.com/interactivethings/catalog/issues/148))
