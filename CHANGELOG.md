@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.4.4
+
+- Table layout fixes ([#156](https://github.com/interactivethings/catalog/pull/156))
+- Code cleanup ([#158](https://github.com/interactivethings/catalog/pull/158), [#159](https://github.com/interactivethings/catalog/pull/159), [#160](https://github.com/interactivethings/catalog/pull/160), [#161](https://github.com/interactivethings/catalog/pull/161))
+
 ## 2.4.3
 
 - Revert fix for radium bug, update radium to 0.18.0
