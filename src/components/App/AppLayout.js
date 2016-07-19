@@ -109,10 +109,10 @@ class AppLayout extends React.Component {
   }
 
   render() {
-    const {theme, pages, page} = this.props;
+    const {sideNav, theme, pages, page} = this.props;
     const {sidebarVisible} = this.state;
 
-    let styles = getStyles(this.props.theme, sidebarVisible);
+    const styles = getStyles(theme, sidebarVisible);
 
     const nextPage = pages[page.index + 1];
     const previousPage = pages[page.index - 1];
@@ -130,7 +130,7 @@ class AppLayout extends React.Component {
         <MenuIcon style={styles.menuIcon} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
         <div style={styles.navBackground} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
         <div style={styles.sideNav}>
-          { this.props.sideNav }
+          { sideNav }
         </div>
       </div>
     );

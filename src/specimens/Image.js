@@ -10,7 +10,7 @@ class Image extends React.Component {
   render() {
     const {catalog: {theme}, src, title, overlay, description, ...options} = this.props;
 
-    let styles = {
+    const styles = {
       container: {
         boxSizing: 'border-box',
         padding: '20px',

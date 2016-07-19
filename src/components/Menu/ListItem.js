@@ -6,7 +6,7 @@ import NestedList from './NestedList';
 import {text} from '../../styles/typography';
 
 export function style(theme) {
-  let pseudo = {
+  const pseudo = {
     color: theme.sidebarColorTextActive,
     textDecoration: 'none',
     background: 'rgba(255,255,255,0.1)'
@@ -49,16 +49,13 @@ class ListItem extends React.Component {
   render() {
     const {page, theme, nested} = this.props;
     const {path, pages, title, menuTitle} = page;
-    let currentStyle = style(theme);
-    let defaultStyle = {
-      ...currentStyle.link
-    };
-    if (nested) {
-      defaultStyle = {
-        ...defaultStyle,
-        ...currentStyle.nestedLink
-      };
-    }
+
+    const currentStyle = style(theme);
+
+    const defaultStyle = nested
+      ? {...currentStyle.link, ...currentStyle.nestedLink}
+      : {...currentStyle.link};
+
     return (
       <li>
       { pages ?

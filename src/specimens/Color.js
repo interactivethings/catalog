@@ -6,7 +6,7 @@ import Specimen from '../components/Specimen/Specimen';
 class Color extends React.Component {
   render() {
     const {catalog: {theme}, value, name} = this.props;
-    let styles = {
+    const styles = {
       text: {
         fontFamily: theme.fontFamily,
         color: theme.textColor,

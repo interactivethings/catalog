@@ -95,6 +95,7 @@ class Html extends React.Component {
 
   render() {
     const {catalog: {theme}, children, frame, ...options} = this.props;
+    const {viewSource} = this.state;
     const styles = getStyle(theme);
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
@@ -104,11 +105,11 @@ class Html extends React.Component {
       ...(options.plain && options.dark ? styles.plain_dark : null)
     };
 
-    let source = this.state.viewSource
+    const source = viewSource
       ? <div style={styles.source} ><HighlightedCode language='markup' code={children} theme={theme} /></div>
       : null;
 
-    let toggle = !options.noSource
+    const toggle = !options.noSource
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
       : null;
 
