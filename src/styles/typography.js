@@ -142,8 +142,7 @@ export const blockquote = (theme) => {
       marginBottom: 0
     },
     'blockquote::before, blockquote::after': {
-      // content: 'none' <- doesn't work with radium@0.17.2
-      content: ''
+      content: 'none'
     }
   };
 };
