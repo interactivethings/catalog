@@ -7,9 +7,6 @@ import seqKey from '../../utils/seqKey';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 
 class Page extends Component {
-  componentDidMount() {
-    console.log(this.context.router)
-  }
   render() {
     const {children} = this.props;
     const {catalog: {theme, getSpecimen}} = this.context;
@@ -89,8 +86,7 @@ Page.propTypes = {
 };
 
 Page.contextTypes = {
-  catalog: catalogShape.isRequired,
-  router: PropTypes.object.isRequired
+  catalog: catalogShape.isRequired
 };
 
 export default Radium(Page);
