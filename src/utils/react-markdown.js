@@ -1,6 +1,8 @@
 import marked from 'marked';
 import React from 'react';
+import Slugger from 'github-slugger';
 import Link from '../components/Link/Link';
+import HeadingLink from '../components/Link/HeadingLink';
 
 /* eslint-disable */
 
@@ -12,7 +14,9 @@ function extend(o1, o2) {
 
 var itemsRenderedCount = 0;
 
-function ReactRenderer() {}
+function ReactRenderer() {
+  this.slugger = new Slugger();
+}
 
 extend(ReactRenderer.prototype, {
   code: function(code, lang, escaped) {
@@ -23,8 +27,8 @@ extend(ReactRenderer.prototype, {
     return React.DOM.blockquote( {key: itemsRenderedCount++}, quote);
   },
   heading: function(text, level, raw) {
-    const id = raw.replace(/[^\w]+/g, '-').toLowerCase()
-    return <a href={`#${id}`}>{React.createElement('h' + level, {key: itemsRenderedCount++, id}, text)}</a>;
+    const slug = this.slugger.slug(raw);
+    return React.createElement('h' + level, {key: itemsRenderedCount++, id: slug}, <HeadingLink slug={slug} />, text);
   },
   hr: function() {
     return React.DOM.hr( {key: itemsRenderedCount++} );

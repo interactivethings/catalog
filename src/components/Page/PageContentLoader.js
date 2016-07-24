@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PropTypes, Component} from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
 
 import Loader from './Loader';
@@ -36,7 +36,7 @@ class PageContentLoader extends Component {
 
   render() {
     const content = this.state.content || <Loader />;
-    return <PageRenderer content={content} />;
+    return <PageRenderer {...this.props} content={content} />;
   }
 }
 

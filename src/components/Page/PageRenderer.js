@@ -34,6 +34,7 @@ class PageRenderer extends Component {
     try {
       const el = document.querySelector(selector);
       if (el) {
+        // Defer scrolling by one tick (when the page has completely rendered)
         this.jumpTimeout = setTimeout(() => el.scrollIntoView(), 0);
       }
     } catch (e) {
