@@ -28,10 +28,16 @@ class PageRenderer extends Component {
   jump() {
     const {location: {query: {a}, hash}} = this.props;
     const selector = hash || `#${a}`;
-    const el = document.querySelector(selector);
     clearTimeout(this.jumpTimeout);
-    if (el) {
-      this.jumpTimeout = setTimeout(() => el.scrollIntoView(), 0);
+
+    // Don't freak out when hash is not a valid selector (e.g. #/foo)
+    try {
+      const el = document.querySelector(selector);
+      if (el) {
+        this.jumpTimeout = setTimeout(() => el.scrollIntoView(), 0);
+      }
+    } catch (e) {
+      // eslint-disable-line no-empty
     }
   }
 
