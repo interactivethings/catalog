@@ -6,9 +6,9 @@
 
 Catalog lets you create beautiful living style guides with Markdown.
 
-The [standalone version](http://interactivethings.github.io/catalog/#/usage) is completely dependency free, making it trivial to integrate Catalog into your application.
+The [standalone version](https://interactivethings.github.io/catalog/#/get-started) is completely dependency free, making it trivial to integrate Catalog into your application.
 
-Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react) to develop and document components.
+Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react-integration) to develop and document components.
 
 [Read Catalog's documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
 
