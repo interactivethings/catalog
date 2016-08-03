@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.5
+
+- Update babel-standalone to v6.12.0 ([#169](https://github.com/interactivethings/catalog/pull/169))
+
 ## 2.4.4
 
 - Table layout fixes ([#156](https://github.com/interactivethings/catalog/pull/156))
