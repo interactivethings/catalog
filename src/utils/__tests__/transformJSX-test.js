@@ -4,7 +4,8 @@ import transformJSX from '../transformJSX';
 test('Transforms a simple element', (t) => {
   t.equal(
     transformJSX('<div>foo</div>', {}).code,
-    `;return React.createElement(
+    `"use strict";
+;return React.createElement(
   "div",
   null,
   "foo"
@@ -16,7 +17,8 @@ test('Transforms a simple element', (t) => {
 test('Transforms a nested element', (t) => {
   t.equal(
     transformJSX('<div><p>foo</p></div>', {}).code,
-    `;return React.createElement(
+    `"use strict";
+;return React.createElement(
   "div",
   null,
   React.createElement(
@@ -32,7 +34,8 @@ test('Transforms a nested element', (t) => {
 test('Transforms a component', (t) => {
   t.equal(
     transformJSX('<Foo bar>baz</Foo>', {Foo: () => null}).code,
-    `;return React.createElement(
+    `"use strict";
+;return React.createElement(
   Foo,
   { bar: true },
   "baz"
@@ -45,7 +48,9 @@ test('Transforms a component which is defined inline', (t) => {
   t.equal(
     transformJSX(`const Foo = () => null;
 <Foo bar>baz</Foo>`, {}).code,
-    `var Foo = function Foo() {
+    `"use strict";
+
+var Foo = function Foo() {
   return null;
 };;return React.createElement(
   Foo,
