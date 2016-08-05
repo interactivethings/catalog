@@ -47,7 +47,7 @@
     "assign-deep": "^0.4.2",
     "babel": "^6.5.2",
     "babel-cli": "^6.7.5",
-    "babel-core": "^6.3.26",
+    "babel-core": "^6.13.1",
     "babel-loader": "^6.2.0",
     "babel-plugin-react-transform": "^2.0.0",
     "babel-polyfill": "^6.7.4",
