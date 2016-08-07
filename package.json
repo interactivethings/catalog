@@ -57,7 +57,7 @@
     "babel-preset-stage-2": "^6.3.13",
     "babel-tape-runner": "^2.0.0",
     "cli-color": "^1.1.0",
-    "connect-history-api-fallback": "^1.1.0",
+    "connect-history-api-fallback": "^1.3.0",
     "eslint": "^3.0.0",
     "eslint-config-interactivethings": "^3.0.0",
     "eslint-plugin-react": "^5.1.1",
