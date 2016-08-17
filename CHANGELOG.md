@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.6
+
+- Fix Windows escape char bug in the webpack loader ([#187](https://github.com/interactivethings/catalog/pull/187))
+
 ## 2.4.5
 
 - Update babel-standalone to v6.12.0 ([#169](https://github.com/interactivethings/catalog/pull/169))
