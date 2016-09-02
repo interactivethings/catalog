@@ -26,7 +26,7 @@
   "dependencies": {
     "babel-standalone": "6.12.0",
     "d3-color": "^1.0.0",
-    "history": "^2.0.0",
+    "history": "^3.2.0",
     "isomorphic-fetch": "^2.2.0",
     "js-yaml": "^3.4.3",
     "marked": "^0.3.2",
