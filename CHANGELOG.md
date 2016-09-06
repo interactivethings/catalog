@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.4.7
+
+- Updated some dependencies:
+  - ramda ([#184](https://github.com/interactivethings/catalog/pull/184))
+  - react-router-scroll ([#190](https://github.com/interactivethings/catalog/pull/190))
+  - babel-standalone ([#198](https://github.com/interactivethings/catalog/pull/198))
+  - rollup-plugin-commonjs ([#201](https://github.com/interactivethings/catalog/pull/201))
+
 ## 2.4.6
 
 - Fix Windows escape char bug in the webpack loader ([#187](https://github.com/interactivethings/catalog/pull/187))
