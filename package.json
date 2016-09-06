@@ -37,7 +37,7 @@
     "ramda": "^0.21.0",
     "react-document-title": "^2.0.1",
     "react-router": "^2.4.0",
-    "react-router-scroll": "^0.2.0"
+    "react-router-scroll": "^0.3.2"
   },
   "peerDependencies": {
     "react": ">=0.14.0",
