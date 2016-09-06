@@ -1,5 +1,52 @@
 # Change Log
 
+## 2.4.7
+
+- Updated some dependencies:
+  - ramda ([#184](https://github.com/interactivethings/catalog/pull/184))
+  - react-router-scroll ([#190](https://github.com/interactivethings/catalog/pull/190))
+  - babel-standalone ([#198](https://github.com/interactivethings/catalog/pull/198))
+  - rollup-plugin-commonjs ([#201](https://github.com/interactivethings/catalog/pull/201))
+
+## 2.4.6
+
+- Fix Windows escape char bug in the webpack loader ([#187](https://github.com/interactivethings/catalog/pull/187))
+
+## 2.4.5
+
+- Update babel-standalone to v6.12.0 ([#169](https://github.com/interactivethings/catalog/pull/169))
+
+## 2.4.4
+
+- Table layout fixes ([#156](https://github.com/interactivethings/catalog/pull/156))
+- Code cleanup ([#158](https://github.com/interactivethings/catalog/pull/158), [#159](https://github.com/interactivethings/catalog/pull/159), [#160](https://github.com/interactivethings/catalog/pull/160), [#161](https://github.com/interactivethings/catalog/pull/161))
+
+## 2.4.3
+
+- Revert fix for radium bug, update radium to 0.18.0
+
+## 2.4.2
+
+- Hot fix for radium displaying "none" when `content: 'none'` is set ([#155](https://github.com/interactivethings/catalog/issues/148))
+
+## 2.4.1
+
+- Don't cut of square/tall logos ([#148](https://github.com/interactivethings/catalog/issues/148))
+
+## 2.4.0
+
+- :tada: Add [Table Specimen](https://interactivethings.github.io/catalog/#/specimens/table) ([#123](https://github.com/interactivethings/catalog/pull/123))
+
+## 2.3.0
+
+- Add `Catalog` React component ([#125](https://github.com/interactivethings/catalog/pull/125))
+- Improve JSX transform of React Specimen ([#149](https://github.com/interactivethings/catalog/issues/149))
+- Lint all the things!
+
+## 2.2.9
+
+- Dependency updates
+
 ## 2.2.8
 
 - Update document title based on active page ([#124](https://github.com/interactivethings/catalog/pull/124))

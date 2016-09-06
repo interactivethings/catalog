@@ -141,6 +141,43 @@ lang: js
 }
 ```
 
+## Routes
+
+### `useBrowserHistory`
+
+To maximize compatibility, Catalog uses hash-based routing (e.g. `my-styleguide.com/#/about`) by default. If your web server is [configured properly](http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/), it can also use HTML5 pushstate-based routing, so you get "real" URLs (e.g. `my-styleguide.com/about`). Set `useBrowserHistory` to `true` to enable this.
+
+### `basePath`
+
+If you want Catalog to run under a certain base path, e.g. `my-styleguide.com/catalog/about`, set the `basePath` configuration option. The base path will be prefixed to all page paths.
+
+This works best together with `useBrowserHistory`. Otherwise the `basePath` defines the path prefix _after_ the URL hash, e.g. `#/catalog/about`.
+
+##### Route Settings Example
+
+```code
+lang: js
+---
+{
+  title: 'My Catalog',
+  basePath: '/catalog',
+  useBrowserHistory: true,
+  pages: [
+    {
+      path: '/',        // Page will be accessible at `/catalog/`
+      title: 'Introduction',
+      // …
+    },
+    {
+      path: '/about',   // Page will be accessible at `/catalog/about/`
+      title: 'About',
+      // …
+    },
+    // Other pages …
+  ]
+}
+```
+
 ## Including Code From Your Application
 
 To document your application properly, you need to include its styles and scripts. You have three options for doing that:
@@ -216,6 +253,12 @@ lang: js
 ```
 
 ## Theming Catalog
+
+### `logoSrc`
+
+Path to a logo image file which will be placed in the top-left corner.
+
+### `theme`
 
 ```hint|neutral
 TK: Theming

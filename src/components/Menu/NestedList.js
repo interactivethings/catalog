@@ -23,7 +23,7 @@ const NestedList = React.createClass({
       .filter(Boolean)
       .length;
 
-    let currentStyle = {
+    const currentStyle = {
       ...menuStyle(theme),
       ...listItemStyle(theme)
     };

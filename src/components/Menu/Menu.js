@@ -26,6 +26,7 @@ export function style(theme) {
     },
     logo: {
       maxWidth: '100%',
+      maxHeight: `calc(100% - ${getFontSize(theme, 5)})`,
       marginBottom: getFontSize(theme, 5)
     },
     list: {
@@ -54,9 +55,9 @@ class Menu extends React.Component {
   render() {
     const {theme, pageTree, logoSrc, title, history, basePath} = this.props;
 
-    let currentStyle = style(theme);
+    const currentStyle = style(theme);
 
-    let titleString = title ? title : '';
+    const titleString = title ? title : '';
 
     return (
       <div style={currentStyle.bar} >

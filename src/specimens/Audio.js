@@ -9,7 +9,7 @@ class Audio extends React.Component {
   render() {
     const {src, title, loop, autoplay, catalog: {theme}} = this.props;
 
-    let styles = {
+    const styles = {
       section: {
         display: 'flex',
         flexFlow: 'row wrap',
