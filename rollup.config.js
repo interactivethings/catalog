@@ -7,6 +7,7 @@ let version = require('./package.json').version;
 
 let plugins = [
   nodeResolve({
+    module: true,
     jsnext: true,
     main: true,
     browser: true,
@@ -16,6 +17,7 @@ let plugins = [
   }),
   commonjs({
     include: 'node_modules/**',
+    ignoreGlobal: true,
     namedExports: {
       // left-hand side can be an absolute path, a path
       // relative to the current directory, or the name
