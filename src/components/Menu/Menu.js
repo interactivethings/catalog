@@ -61,7 +61,7 @@ class Menu extends React.Component {
 
     return (
       <div style={currentStyle.bar} >
-        <div style={{flex: 1}}>
+        <div style={{flexGrow: 1}}>
           <Link to={basePath} style={{textDecoration: 'none'}}>
             <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
           </Link>

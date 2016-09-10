@@ -45,7 +45,7 @@ function getStyle(theme) {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      flex: 1,
+      flexGrow: 1,
       lineHeight: 1.33333,
       padding: '12px 0 12px 16px',
       textRendering: 'optimizeLegibility',

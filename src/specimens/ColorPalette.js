@@ -51,7 +51,7 @@ class ColorPalette extends React.Component {
       paletteItem: {
         padding: '20px 10px',
         flexBasis: 'calc(100%)',
-        flex: 1
+        flexGrow: 1
       },
       text: {
         fontFamily: theme.fontFamily,

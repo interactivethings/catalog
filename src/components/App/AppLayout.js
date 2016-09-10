@@ -122,7 +122,7 @@ class AppLayout extends React.Component {
         <style>{globalStyle}</style>
         <div style={styles.content}>
           <PageHeader theme={theme} title={page.title} superTitle={page.superTitle} />
-          <div style={{flex: 1}}>
+          <div style={{flexGrow: 1}}>
             { this.props.children }
           </div>
           {!page.hideFromMenu && <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} />}
