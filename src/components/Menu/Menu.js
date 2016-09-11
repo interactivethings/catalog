@@ -14,20 +14,37 @@ export function style(theme) {
       flexDirection: 'column'
     },
     h1: {
-      ...heading(theme, 1),
       boxSizing: 'border-box',
-      color: theme.sidebarColorHeading,
-      fontWeight: 700,
       margin: 0,
       padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
       height: theme.pageHeadingHeight,
       display: 'flex',
-      alignItems: 'flex-end'
+      justifyContent: 'flex-end',
+      flexDirection: 'column'
+    },
+    title: {
+      ...heading(theme, 1),
+      color: theme.sidebarColorHeading,
+      fontWeight: 700,
+      marginBottom: getFontSize(theme, 5),
+      marginTop: 0
     },
     logo: {
-      maxWidth: '100%',
-      maxHeight: `calc(100% - ${getFontSize(theme, 5)})`,
-      marginBottom: getFontSize(theme, 5)
+      width: '100%',
+      marginBottom: getFontSize(theme, 5),
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: '0 100%',
+      flexGrow: 1
+    },
+    // Make it accessible to screen readers, hide visually, see http://webaim.org/techniques/css/invisiblecontent/#absolutepositioning
+    logoTitle: {
+      position: 'absolute',
+      left: '-10000px',
+      top: 'auto',
+      width: '1px',
+      height: '1px',
+      overflow: 'hidden'
     },
     list: {
       borderBottom: `1px solid ${theme.sidebarColorLine}`,
@@ -63,7 +80,11 @@ class Menu extends React.Component {
       <div style={currentStyle.bar} >
         <div style={{flexGrow: 1}}>
           <Link to={basePath} style={{textDecoration: 'none'}}>
-            <h1 style={currentStyle.h1}>{logoSrc ? <img style={currentStyle.logo} src={logoSrc} /> : <div style={currentStyle.logo}>{titleString}</div> }</h1>
+            <h1 style={currentStyle.h1}>
+              {logoSrc
+                ? <div style={{...currentStyle.logo, backgroundImage: `url("${logoSrc}")`}}><span style={currentStyle.logoTitle}>{titleString}</span></div>
+                : <div style={currentStyle.title}>{titleString}</div> }
+            </h1>
           </Link>
           <ul style={currentStyle.list}>
             { pageTree.filter((page) => !page.hideFromMenu).map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
