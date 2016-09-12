@@ -18,6 +18,9 @@
     "development": {
       "presets": [["es2015", {"loose": true}], "react", "stage-2"]
     },
+    "test": {
+      "presets": [["es2015", {"loose": true}], "react", "stage-2"]
+    },
     "rollup": {
       "presets": [["es2015", {"loose": true, "modules": false}], "react", "stage-2"],
       "plugins": ["external-helpers"]

@@ -1,12 +1,11 @@
-import test from 'tape';
-import configure from '../configure';
+import configure from './configure';
 
-import DefaultTheme from '../DefaultTheme';
-import specimens from '../specimens';
-import NotFound from '../components/Page/NotFound';
+import DefaultTheme from './DefaultTheme';
+import specimens from './specimens';
+import NotFound from './components/Page/NotFound';
 
-test('Configuration with default theme and specimens', (t) => {
-  t.deepEqual(configure({
+test('Configuration with default theme and specimens', () => {
+  expect(configure({
     title: 'Catalog',
     pages: [
       {
@@ -15,7 +14,7 @@ test('Configuration with default theme and specimens', (t) => {
         src: 'overview.md'
       }
     ]
-  }), {
+  })).toEqual({
     __catalogConfig: true,
     basePath: '/',
     title: 'Catalog',
@@ -71,11 +70,10 @@ test('Configuration with default theme and specimens', (t) => {
       }
     ]
   });
-  t.end();
 });
 
-test('Configuration with nested pages', (t) => {
-  t.deepEqual(configure({
+test('Configuration with nested pages', () => {
+  expect(configure({
     title: 'Catalog',
     pages: [
       {
@@ -95,7 +93,7 @@ test('Configuration with nested pages', (t) => {
         ]
       }
     ]
-  }), {
+  })).toEqual({
     __catalogConfig: true,
     basePath: '/',
     title: 'Catalog',
@@ -185,10 +183,9 @@ test('Configuration with nested pages', (t) => {
       }
     ]
   });
-  t.end();
 });
 
-test('Imports are merged on pages', (t) => {
+test('Imports are merged on pages', () => {
   const config = configure({
     title: 'Catalog',
     imports: {Foo: 'Foo'},
@@ -202,12 +199,10 @@ test('Imports are merged on pages', (t) => {
     ]
   });
 
-  t.deepEqual(config.pages[0].imports, {Foo: 'Foo', Bar: 'Bar'});
-
-  t.end();
+  expect(config.pages[0].imports).toEqual({Foo: 'Foo', Bar: 'Bar'});
 });
 
-test('basePath support', (t) => {
+test('basePath support', () => {
   const config = configure({
     title: 'Catalog',
     basePath: 'catalog',
@@ -220,9 +215,7 @@ test('basePath support', (t) => {
     ]
   });
 
-  t.equal(config.pages[0].path, '/catalog');
+  expect(config.pages[0].path).toBe('/catalog');
   // Fallback page
-  t.equal(config.pages[1].path, '/catalog/*');
-
-  t.end();
+  expect(config.pages[1].path).toBe('/catalog/*');
 });

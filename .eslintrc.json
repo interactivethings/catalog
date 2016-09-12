@@ -1,3 +1,7 @@
 {
-  "extends": "interactivethings"
+  "extends": "interactivethings",
+  "globals": {
+    "expect": true,
+    "test": true
+  }
 }

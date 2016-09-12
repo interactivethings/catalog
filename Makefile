@@ -19,7 +19,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib gh-pages clean-site site site-next version publish clean clobber lint test
+.PHONY: server build watch-lib gh-pages clean-site site site-next version publish clean clobber lint test watch-test
 
 all: server
 
@@ -32,7 +32,10 @@ watch-lib: node_modules
 	$$(npm bin)/babel src --watch --ignore __tests__ --out-dir lib
 
 test: lint
-	@$$(npm bin)/babel-tape-runner "src/**/__tests__/*.js" | $$(npm bin)/faucet
+	@$$(npm bin)/jest
+
+watch-test:
+	@$$(npm bin)/jest --watch
 
 lint:
 	@$$(npm bin)/eslint src
