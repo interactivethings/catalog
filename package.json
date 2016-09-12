@@ -72,7 +72,7 @@
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
-    "rollup": "^0.34.0",
+    "rollup": "^0.35.2",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^4.1.0",
     "rollup-plugin-node-resolve": "^2.0.0",
