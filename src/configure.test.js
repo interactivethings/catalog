@@ -1,9 +1,5 @@
 import configure from './configure';
 
-import DefaultTheme from './DefaultTheme';
-import specimens from './specimens';
-import NotFound from './components/Page/NotFound';
-
 test('Configuration with default theme and specimens', () => {
   expect(configure({
     title: 'Catalog',
@@ -14,62 +10,7 @@ test('Configuration with default theme and specimens', () => {
         src: 'overview.md'
       }
     ]
-  })).toEqual({
-    __catalogConfig: true,
-    basePath: '/',
-    title: 'Catalog',
-    specimens: specimens,
-    theme: DefaultTheme,
-    pages: [
-      {
-        id: 1,
-        index: 0,
-        imports: {},
-        path: '/',
-        title: 'Overview',
-        superTitle: 'Catalog',
-        pages: null,
-        src: 'overview.md',
-        scripts: [],
-        styles: []
-      },
-      {
-        path: '/*',
-        id: 2,
-        component: NotFound,
-        title: 'Page Not Found',
-        superTitle: 'Catalog',
-        scripts: [],
-        styles: [],
-        imports: {},
-        hideFromMenu: true
-      }
-    ],
-    pageTree: [
-      {
-        id: 1,
-        imports: {},
-        path: '/',
-        title: 'Overview',
-        superTitle: 'Catalog',
-        pages: null,
-        src: 'overview.md',
-        scripts: [],
-        styles: []
-      },
-      {
-        path: '/*',
-        id: 2,
-        component: NotFound,
-        title: 'Page Not Found',
-        superTitle: 'Catalog',
-        scripts: [],
-        styles: [],
-        imports: {},
-        hideFromMenu: true
-      }
-    ]
-  });
+  })).toMatchSnapshot();
 });
 
 test('Configuration with nested pages', () => {
@@ -93,96 +34,7 @@ test('Configuration with nested pages', () => {
         ]
       }
     ]
-  })).toEqual({
-    __catalogConfig: true,
-    basePath: '/',
-    title: 'Catalog',
-    specimens: specimens,
-    theme: DefaultTheme,
-    pages: [
-      {
-        id: 2,
-        index: 0,
-        imports: {},
-        path: '/foo',
-        title: 'Foo',
-        superTitle: 'Overview',
-        pages: null,
-        src: 'foo.md',
-        scripts: [],
-        styles: []
-      },
-      {
-        id: 3,
-        index: 1,
-        imports: {},
-        path: '/bar',
-        title: 'Bar',
-        superTitle: 'Overview',
-        pages: null,
-        src: 'bar.md',
-        scripts: [],
-        styles: []
-      },
-      {
-        path: '/*',
-        id: 4,
-        component: NotFound,
-        title: 'Page Not Found',
-        superTitle: 'Catalog',
-        scripts: [],
-        styles: [],
-        imports: {},
-        hideFromMenu: true
-      }
-    ],
-    pageTree: [
-      {
-        id: 1,
-        imports: {},
-        path: '/',
-        title: 'Overview',
-        superTitle: 'Catalog',
-        pages: [
-          {
-            id: 2,
-            imports: {},
-            path: '/foo',
-            title: 'Foo',
-            superTitle: 'Overview',
-            pages: null,
-            src: 'foo.md',
-            scripts: [],
-            styles: []
-          },
-          {
-            id: 3,
-            imports: {},
-            path: '/bar',
-            title: 'Bar',
-            superTitle: 'Overview',
-            pages: null,
-            src: 'bar.md',
-            scripts: [],
-            styles: []
-          }
-        ],
-        scripts: [],
-        styles: []
-      },
-      {
-        path: '/*',
-        id: 4,
-        component: NotFound,
-        title: 'Page Not Found',
-        superTitle: 'Catalog',
-        scripts: [],
-        styles: [],
-        imports: {},
-        hideFromMenu: true
-      }
-    ]
-  });
+  })).toMatchSnapshot();
 });
 
 test('Imports are merged on pages', () => {
