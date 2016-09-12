@@ -61,7 +61,6 @@
     "eslint-config-interactivethings": "^3.0.0",
     "eslint-plugin-react": "^5.1.1",
     "express": "^4.13.3",
-    "faucet": "0.0.1",
     "gh-pages": "^0.11.0",
     "jest": "^15.1.1",
     "nodemon": "^1.8.1",
