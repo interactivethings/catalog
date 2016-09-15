@@ -1,6 +1,6 @@
 /* eslint-disable key-spacing */
 
-export default {
+export const DefaultTheme = {
   // Colors
   background: '#F9F9F9',
   pageHeadingBackground: '#003B5C',
@@ -69,3 +69,10 @@ export default {
   // Modular scale ratio that is used to figure out all the different font sizes
   msRatio: 1.2
 };
+
+export const DefaultDevices = [
+  {name: 'small', width: 360, height: 640},
+  {name: 'medium', width: 1024, height: 768},
+  {name: 'large', width: 1440, height: 900},
+  {name: 'xlarge', width: 1920, height: 1080}
+];

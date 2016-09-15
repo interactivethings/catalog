@@ -33,7 +33,7 @@ function getStyle(theme) {
       verticalAlign: 'top'
     },
     cellLast: {
-      padding: '0',
+      padding: '0px',
       textAlign: 'left',
       verticalAlign: 'top'
     }

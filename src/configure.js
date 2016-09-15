@@ -1,5 +1,5 @@
 import warning from './utils/warning';
-import DefaultTheme from './DefaultTheme';
+import {DefaultTheme, DefaultDevices} from './DefaultTheme';
 import specimens from './specimens';
 import requireModuleDefault from './utils/requireModuleDefault';
 import NotFound from './components/Page/NotFound';
@@ -97,6 +97,7 @@ export default (config) => {
     // Used to check in configureRoutes() if input is already configured
     __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
+    devices: config.devices || DefaultDevices,
     specimens: {...specimens, ...config.specimens},
     basePath,
     pages,
