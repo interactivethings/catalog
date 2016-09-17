@@ -74,7 +74,7 @@
     "redbox-react": "^1.1.1",
     "rollup": "^0.34.0",
     "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-commonjs": "^4.1.0",
+    "rollup-plugin-commonjs": "^5.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-replace": "^1.1.0",
     "rollup-plugin-uglify": "^1.0.0",
