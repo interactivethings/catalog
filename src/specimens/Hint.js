@@ -23,6 +23,11 @@ function getStyle(theme) {
       color: '#666666',
       border: '1px solid #eee'
     },
+    important: {
+      background: '#ffffff',
+      color: '#333333',
+      border: '1px solid #eee'
+    },
     warning: {
       background: '#fff5f5',
       border: '1px solid #ffdddd',
@@ -38,16 +43,17 @@ function getStyle(theme) {
 
 class Hint extends React.Component {
   render() {
-    const {catalog: {theme}, children, warning, neutral, directive} = this.props;
+    const {catalog: {theme}, children, warning, neutral, important, directive} = this.props;
     const styles = getStyle(theme);
 
     const warningStyle = warning ? styles.warning : null;
     const directiveStyle = directive ? styles.directive : null;
     const neutralStyle = neutral ? styles.neutral : null;
+    const importantStyle = important ? styles.important : null;
 
     return (
       <div style={styles.container}>
-        <section style={{...styles.hint, ...warningStyle, ...directiveStyle, ...neutralStyle}} className='cg-Hint'>
+        <section style={{...styles.hint, ...warningStyle, ...directiveStyle, ...neutralStyle, ...importantStyle}} className='cg-Hint'>
           <Style
             scopeSelector='.cg-Hint'
             rules={{
@@ -84,6 +90,7 @@ Hint.propTypes = {
   catalog: catalogShape.isRequired,
   warning: PropTypes.bool,
   neutral: PropTypes.bool,
+  important: PropTypes.bool,
   directive: PropTypes.bool
 };
 

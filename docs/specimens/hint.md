@@ -5,6 +5,7 @@
 - `directive: boolean` good for _dos_
 - `warning: boolean` good for _don'ts_
 - `neutral: boolean` a neutral style
+- `important: boolean` a neutral, but more important style
 - `span: number[1–6]` width of the specimen
 
 ### Examples
@@ -46,6 +47,16 @@ A neutral hint.
 ````code|span-2
 ```hint|neutral
 A neutral hint.
+```
+````
+
+```hint|important,span-4
+A neutral, but important hint.
+```
+
+````code|span-2
+```hint|important
+A neutral, but important hint.
 ```
 ````
 
