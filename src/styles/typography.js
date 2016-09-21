@@ -131,9 +131,7 @@ export const blockquote = (theme) => {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '48px 0 32px -20px',
-      padding: '0 0 0 20px',
-      borderLeft: `1px solid ${theme.lightColor}`
+      margin: '48px 0 32px 0',
     },
     'blockquote > :first-child': {
       marginTop: 0
