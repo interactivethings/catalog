@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Router, useRouterHistory, applyRouterMiddleware, browserHistory} from 'react-router';
 import {createHashHistory} from 'history';
-import useScroll from 'react-router-scroll';
+import {useScroll} from 'react-router-scroll';
 import seqKey from '../utils/seqKey';
 
 import configureRoutes from '../configureRoutes';

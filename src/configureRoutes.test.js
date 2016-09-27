@@ -1,8 +1,7 @@
-import test from 'tape';
-import configure from '../configure';
-import configureRoutes from '../configureRoutes';
+import configure from './configure';
+import configureRoutes from './configureRoutes';
 
-test('Pre-Configuration', (t) => {
+test('Pre-Configuration', () => {
   const routes = configureRoutes(configure({
     title: 'Catalog',
     pages: [
@@ -25,12 +24,11 @@ test('Pre-Configuration', (t) => {
     ]
   }));
 
-  t.equal(routes.childRoutes.length, 3);
-  t.equal(routes.childRoutes[0].path, '/foo');
-  t.end();
+  expect(routes.childRoutes.length).toBe(3);
+  expect(routes.childRoutes[0].path).toBe('/foo');
 });
 
-test('Auto-Configuration', (t) => {
+test('Auto-Configuration', () => {
   const routes = configureRoutes({
     title: 'Catalog',
     pages: [
@@ -53,23 +51,6 @@ test('Auto-Configuration', (t) => {
     ]
   });
 
-  t.equal(routes.childRoutes.length, 3);
-  t.equal(routes.childRoutes[0].path, '/foo');
-  t.end();
+  expect(routes.childRoutes.length).toBe(3);
+  expect(routes.childRoutes[0].path).toBe('/foo');
 });
-
-// test('String without options', (t) => {
-//   t.equal(parseSpecimenType('html'), 'html');
-//   t.end();
-// });
-
-// test('String before | is specimen type', (t) => {
-//   t.equal(parseSpecimenType('html|no-source'), 'html');
-//   t.end();
-// });
-
-// test('Specimen type is always lower-cased', (t) => {
-//   t.equal(parseSpecimenType('HtmL'), 'html');
-//   t.end();
-// });
-

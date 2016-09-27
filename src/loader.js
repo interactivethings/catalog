@@ -8,7 +8,7 @@ module.exports.pitch = function pitch(remainingRequest) {
 
   const output = `
     var React = require('react');
-    var PageRenderer = require('${path.resolve(__dirname, 'components/Page/PageRenderer')}');
+    var PageRenderer = require(${JSON.stringify(path.resolve(__dirname, 'components/Page/PageRenderer'))});
     if (PageRenderer.__esModule) {
       PageRenderer = PageRenderer.default;
     }
