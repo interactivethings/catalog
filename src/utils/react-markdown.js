@@ -28,7 +28,7 @@ extend(ReactRenderer.prototype, {
   },
   heading: function(text, level, raw) {
     const slug = this.slugger.slug(raw);
-    return React.createElement('h' + level, {key: itemsRenderedCount++, id: slug}, <HeadingLink slug={slug} />, text);
+    return React.createElement('h' + level, {key: itemsRenderedCount++, id: slug}, text, ' ', <HeadingLink slug={slug} />);
   },
   hr: function() {
     return React.DOM.hr( {key: itemsRenderedCount++} );
