@@ -1,7 +1,7 @@
 import {parsePath, isInternalPath} from './path';
 
 const mockCatalogConfig = {
-  basePath: '',
+  basePath: '/',
   useBrowserHistory: true,
   pagePaths: new Set(['/', '/foo/bar']),
   page: {
@@ -23,6 +23,10 @@ test('Parse path with hash', () => {
 
 test('Parse path with only hash (pathname is current page)', () => {
   expect(parsePath('#baz', mockCatalogConfig)).toEqual({pathname: '/foo/bar', hash: '#baz'});
+});
+
+test('Leave index path alone', () => {
+  expect(parsePath('/', mockCatalogConfig)).toEqual({pathname: '/', hash: ''});
 });
 
 const mockCatalogConfigWithHashHistory = {

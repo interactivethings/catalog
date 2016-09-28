@@ -1,10 +1,10 @@
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
 const stripTrailingSlashes = (path) => path.replace(/\/+$/, '');
 const addLeadingSlash = (path) => path.charAt(0) === '/' ? path : '/' + path;
-const stripPrefix = (path, prefix) => path.indexOf(prefix) === 0 ? path.substr(prefix.length) : path;
+const stripBasePath = (path, basePath) => basePath !== '/' && path.indexOf(basePath) === 0 ? path.substr(basePath.length) : path;
 
 export const parsePath = (path, options) => {
-  let pathname = stripPrefix(path, options.basePath);
+  let pathname = stripBasePath(path, options.basePath);
   let hash = '';
   let anchor = null;
 
@@ -17,7 +17,7 @@ export const parsePath = (path, options) => {
 
   if (pathname === '' && options.page) {
     // fall back to current page path (already contains basePath)
-    pathname = stripPrefix(options.page.path, options.basePath);
+    pathname = stripBasePath(options.page.path, options.basePath);
   }
 
   // join basePath
