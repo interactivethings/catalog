@@ -8,7 +8,7 @@ import PageContentLoader from './components/Page/PageContentLoader';
 
 const routeHandler = (Component) => (props) => {
   return <Component {...props} />;
-}
+};
 
 const pageToRoute = ({path, component}) => ({
   component: routeHandler(component ? requireModuleDefault(component) : PageContentLoader),
