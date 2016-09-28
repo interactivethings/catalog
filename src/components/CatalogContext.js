@@ -15,6 +15,7 @@ class CatalogContext extends Component {
         theme,
         title,
         pages: pages.filter((p) => !p.hideFromMenu),
+        pagePaths: new Set(pages.map((p) => p.path)),
         pageTree,
         basePath,
         logoSrc,

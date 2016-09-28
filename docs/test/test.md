@@ -19,6 +19,12 @@ Link [to a heading](#jump-to-me)
 
 Link [to another page section](/specimens#combining-props-and-content)
 
+Root-relative link [not handled by Catalog](/docs/assets/catalog_logo.svg)
+
+Mailto link [not handled by Catalog](mailto:foo@bar.com)
+
+External link [not handled by Catalog](https://www.interactivethings.com/)
+
 ---
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -169,4 +175,3 @@ Similar to button, but looks more important.
 ```
 <a class="important-button" href="#">Important Button</a>
 ```
-

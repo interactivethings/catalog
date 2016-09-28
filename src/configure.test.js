@@ -57,7 +57,7 @@ test('Imports are merged on pages', () => {
 test('basePath support', () => {
   const config = configure({
     title: 'Catalog',
-    basePath: 'catalog',
+    basePath: '/catalog',
     pages: [
       {
         path: '/',
