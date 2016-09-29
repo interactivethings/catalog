@@ -1,6 +1,6 @@
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
 const stripTrailingSlashes = (path) => path.replace(/\/+$/, '');
-const addLeadingSlash = (path) => path.charAt(0) === '/' ? path : '/' + path;
+export const addLeadingSlash = (path) => path.charAt(0) === '/' ? path : '/' + path;
 const stripBasePath = (path, basePath) => basePath !== '/' && path.indexOf(basePath) === 0 ? path.substr(basePath.length) : path;
 
 export const parsePath = (path, options) => {

@@ -1,5 +1,5 @@
 import warning from './utils/warning';
-import {parsePath} from './utils/path';
+import {parsePath, addLeadingSlash} from './utils/path';
 import DefaultTheme from './DefaultTheme';
 import specimens from './specimens';
 import requireModuleDefault from './utils/requireModuleDefault';
@@ -21,7 +21,7 @@ const flattenPageTree = (pageTree) => {
 
 export default (config) => {
   let pageId = 0;
-  const basePath = config.basePath || '/';
+  const basePath = addLeadingSlash(config.basePath || '/');
 
   const pageReducer = (pages, page) => {
     const configStyles = config.styles || [];

@@ -57,7 +57,7 @@ test('Imports are merged on pages', () => {
 test('basePath support', () => {
   const config = configure({
     title: 'Catalog',
-    basePath: '/catalog',
+    basePath: 'catalog',
     pages: [
       {
         path: '/',
@@ -67,6 +67,7 @@ test('basePath support', () => {
     ]
   });
 
+  expect(config.basePath).toBe('/catalog');
   expect(config.pages[0].path).toBe('/catalog');
   // Fallback page
   expect(config.pages[1].path).toBe('/catalog/*');
