@@ -12,10 +12,10 @@ Object {
       "src": "overview.md",
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Overview"
+      "title": "Overview",
     },
     Object {
-      "component": [Function NotFound],
+      "component": [Function],
       "hideFromMenu": true,
       "id": 2,
       "imports": Object {},
@@ -23,8 +23,8 @@ Object {
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Page Not Found"
-    }
+      "title": "Page Not Found",
+    },
   ],
   "pages": Array [
     Object {
@@ -37,10 +37,10 @@ Object {
       "src": "overview.md",
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Overview"
+      "title": "Overview",
     },
     Object {
-      "component": [Function NotFound],
+      "component": [Function],
       "hideFromMenu": true,
       "id": 2,
       "imports": Object {},
@@ -48,23 +48,23 @@ Object {
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Page Not Found"
-    }
+      "title": "Page Not Found",
+    },
   ],
   "specimens": Object {
-    "audio": [Function SpecimenContainer],
-    "code": [Function SpecimenContainer],
-    "color": [Function SpecimenContainer],
-    "color-palette": [Function SpecimenContainer],
-    "download": [Function SpecimenContainer],
-    "hint": [Function SpecimenContainer],
-    "html": [Function SpecimenContainer],
-    "image": [Function SpecimenContainer],
-    "raw-code": [Function RawCode],
-    "react": [Function SpecimenContainer],
-    "table": [Function SpecimenContainer],
-    "type": [Function SpecimenContainer],
-    "video": [Function SpecimenContainer]
+    "audio": [Function],
+    "code": [Function],
+    "color": [Function],
+    "color-palette": [Function],
+    "download": [Function],
+    "hint": [Function],
+    "html": [Function],
+    "image": [Function],
+    "raw-code": [Function],
+    "react": [Function],
+    "table": [Function],
+    "type": [Function],
+    "video": [Function],
   },
   "theme": Object {
     "background": "#F9F9F9",
@@ -79,29 +79,29 @@ Object {
     "codeColor": "#00263E",
     "codeStyles": Object {
       "function": Object {
-        "color": "#FF5555"
+        "color": "#FF5555",
       },
       "keyword": Object {
-        "color": "#3F7397"
+        "color": "#3F7397",
       },
       "punctuation": Object {
-        "color": "#535353"
+        "color": "#535353",
       },
       "script": Object {
-        "color": "#3F7397"
+        "color": "#3F7397",
       },
       "string": Object {
-        "color": "#00263E"
+        "color": "#00263E",
       },
       "tag": Object {
-        "color": "#FF5555"
-      }
+        "color": "#FF5555",
+      },
     },
-    "fontFamily": "'Roboto', sans-serif",
-    "fontHeading": "'Roboto', sans-serif",
+    "fontFamily": "\'Roboto\', sans-serif",
+    "fontHeading": "\'Roboto\', sans-serif",
     "fontL": 21,
     "fontM": 16,
-    "fontMono": "'Source Code Pro', monospace",
+    "fontMono": "\'Source Code Pro\', monospace",
     "fontS": 14,
     "fontXl": 28,
     "fontXs": 12,
@@ -124,9 +124,9 @@ Object {
     "sizeXl": 28,
     "sizeXxl": 38,
     "textColor": "#333333",
-    "textMedium": "#003B5C"
+    "textMedium": "#003B5C",
   },
-  "title": "Catalog"
+  "title": "Catalog",
 }
 `;
 
@@ -148,7 +148,7 @@ Object {
           "src": "foo.md",
           "styles": Array [],
           "superTitle": "Overview",
-          "title": "Foo"
+          "title": "Foo",
         },
         Object {
           "id": 3,
@@ -159,17 +159,17 @@ Object {
           "src": "bar.md",
           "styles": Array [],
           "superTitle": "Overview",
-          "title": "Bar"
-        }
+          "title": "Bar",
+        },
       ],
       "path": "/",
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Overview"
+      "title": "Overview",
     },
     Object {
-      "component": [Function NotFound],
+      "component": [Function],
       "hideFromMenu": true,
       "id": 4,
       "imports": Object {},
@@ -177,8 +177,8 @@ Object {
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Page Not Found"
-    }
+      "title": "Page Not Found",
+    },
   ],
   "pages": Array [
     Object {
@@ -191,7 +191,7 @@ Object {
       "src": "foo.md",
       "styles": Array [],
       "superTitle": "Overview",
-      "title": "Foo"
+      "title": "Foo",
     },
     Object {
       "id": 3,
@@ -203,10 +203,10 @@ Object {
       "src": "bar.md",
       "styles": Array [],
       "superTitle": "Overview",
-      "title": "Bar"
+      "title": "Bar",
     },
     Object {
-      "component": [Function NotFound],
+      "component": [Function],
       "hideFromMenu": true,
       "id": 4,
       "imports": Object {},
@@ -214,23 +214,23 @@ Object {
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
-      "title": "Page Not Found"
-    }
+      "title": "Page Not Found",
+    },
   ],
   "specimens": Object {
-    "audio": [Function SpecimenContainer],
-    "code": [Function SpecimenContainer],
-    "color": [Function SpecimenContainer],
-    "color-palette": [Function SpecimenContainer],
-    "download": [Function SpecimenContainer],
-    "hint": [Function SpecimenContainer],
-    "html": [Function SpecimenContainer],
-    "image": [Function SpecimenContainer],
-    "raw-code": [Function RawCode],
-    "react": [Function SpecimenContainer],
-    "table": [Function SpecimenContainer],
-    "type": [Function SpecimenContainer],
-    "video": [Function SpecimenContainer]
+    "audio": [Function],
+    "code": [Function],
+    "color": [Function],
+    "color-palette": [Function],
+    "download": [Function],
+    "hint": [Function],
+    "html": [Function],
+    "image": [Function],
+    "raw-code": [Function],
+    "react": [Function],
+    "table": [Function],
+    "type": [Function],
+    "video": [Function],
   },
   "theme": Object {
     "background": "#F9F9F9",
@@ -245,29 +245,29 @@ Object {
     "codeColor": "#00263E",
     "codeStyles": Object {
       "function": Object {
-        "color": "#FF5555"
+        "color": "#FF5555",
       },
       "keyword": Object {
-        "color": "#3F7397"
+        "color": "#3F7397",
       },
       "punctuation": Object {
-        "color": "#535353"
+        "color": "#535353",
       },
       "script": Object {
-        "color": "#3F7397"
+        "color": "#3F7397",
       },
       "string": Object {
-        "color": "#00263E"
+        "color": "#00263E",
       },
       "tag": Object {
-        "color": "#FF5555"
-      }
+        "color": "#FF5555",
+      },
     },
-    "fontFamily": "'Roboto', sans-serif",
-    "fontHeading": "'Roboto', sans-serif",
+    "fontFamily": "\'Roboto\', sans-serif",
+    "fontHeading": "\'Roboto\', sans-serif",
     "fontL": 21,
     "fontM": 16,
-    "fontMono": "'Source Code Pro', monospace",
+    "fontMono": "\'Source Code Pro\', monospace",
     "fontS": 14,
     "fontXl": 28,
     "fontXs": 12,
@@ -290,8 +290,8 @@ Object {
     "sizeXl": 28,
     "sizeXxl": 38,
     "textColor": "#333333",
-    "textMedium": "#003B5C"
+    "textMedium": "#003B5C",
   },
-  "title": "Catalog"
+  "title": "Catalog",
 }
 `;
