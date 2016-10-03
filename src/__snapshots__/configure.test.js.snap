@@ -97,11 +97,11 @@ Object {
         "color": "#FF5555"
       }
     },
-    "fontFamily": "\'Roboto\', sans-serif",
-    "fontHeading": "\'Roboto\', sans-serif",
+    "fontFamily": "'Roboto', sans-serif",
+    "fontHeading": "'Roboto', sans-serif",
     "fontL": 21,
     "fontM": 16,
-    "fontMono": "\'Source Code Pro\', monospace",
+    "fontMono": "'Source Code Pro', monospace",
     "fontS": 14,
     "fontXl": 28,
     "fontXs": 12,
@@ -263,11 +263,11 @@ Object {
         "color": "#FF5555"
       }
     },
-    "fontFamily": "\'Roboto\', sans-serif",
-    "fontHeading": "\'Roboto\', sans-serif",
+    "fontFamily": "'Roboto', sans-serif",
+    "fontHeading": "'Roboto', sans-serif",
     "fontL": 21,
     "fontM": 16,
-    "fontMono": "\'Source Code Pro\', monospace",
+    "fontMono": "'Source Code Pro', monospace",
     "fontS": 14,
     "fontXl": 28,
     "fontXs": 12,
