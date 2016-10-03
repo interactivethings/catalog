@@ -232,9 +232,9 @@ lang: js
 
 ### `imports`
 
-To make components and other code available to your [React Specimens](/specimens/react), use the `imports` option.
+To make components and other code available to your [Specimens](/specimens), use the `imports` option.
 
-##### Scripts Example
+##### Imports Example
 
 ```code
 lang: js
