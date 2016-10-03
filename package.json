@@ -62,7 +62,7 @@
     "eslint-plugin-react": "^5.1.1",
     "express": "^4.13.3",
     "gh-pages": "^0.11.0",
-    "jest": "^15.1.1",
+    "jest": "^16.0.0",
     "nodemon": "^1.8.1",
     "object-values": "^1.0.0",
     "portfinder": "^1.0.0",
