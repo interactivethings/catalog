@@ -17,7 +17,9 @@
 - `span: number[1–6]` width of the specimen
 
 
-### Example: Headings only
+### Examples
+
+#### Headings only
 
 The most obvious use case is to represent the ratio and hierarchy of headings.
 
@@ -39,7 +41,7 @@ The most obvious use case is to represent the ratio and hierarchy of headings.
 ```
 ````
 
-### Example: Paragraph only
+#### Paragraph only
 
 Another use case is to document the ratio between the font size and the line height for text bodies. 
 
@@ -63,7 +65,7 @@ Another use case is to document the ratio between the font size and the line hei
 ````
 
 
-### Example: Combining different styles
+#### Combining different styles
 
 ```type|span-3,kern,smoothen,single
 {
@@ -134,7 +136,7 @@ Another use case is to document the ratio between the font size and the line hei
 ````
 
 
-### Example: Specifying contrasts
+#### Specifying contrasts
 
 with the help of the [hint specimen](/#/hint).
 
@@ -231,4 +233,3 @@ Passes Level **AA** for large text
 Passes Level **AAA** even for small text
 ```
 ````
-

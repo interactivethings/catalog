@@ -49,29 +49,29 @@ const kafka = `One morning, when Gregor Samsa woke from troubled dreams, he foun
 class Type extends React.Component {
   render() {
     const {catalog: {theme}, ...options} = this.props;
-    let styles = getStyle(theme);
+    const styles = getStyle(theme);
 
     // check if a shorter paragraph should is demanded
-    let truncate = options.shorter ? 100 : null;
+    const truncate = options.shorter ? 100 : null;
     // check if alternate dummy text is set
-    let dummyText = options.kafka ? kafka : lorem;
+    const dummyText = options.kafka ? kafka : lorem;
     // check if the modifier demands kerning
-    let kerning = options.kern ? styles.kerning : null;
+    const kerning = options.kern ? styles.kerning : null;
     // check if the modifier demands font smoothing
-    let smoothing = options.smoothen ? styles.smoothing : null;
+    const smoothing = options.smoothen ? styles.smoothing : null;
     // Use single word or sentence for headlines
-    let headlineText = options.single ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
+    const headlineText = options.single ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
 
 
-    let fontColor = options.color ? {color: options.color} : null;
-    let isItalic = options.style ? options.style : 'normal';
-    let fontFamily = options.font ? options.font : 'inherit';
-    let backgroundColor = options.background ? {backgroundColor: options.background} : null;
-    let fontWeight = options.weight ? options.weight : 'normal';
-    let letterSpacing = options.tracking ? {letterSpacing: options.tracking} : null;
-    let backgroundImage = options.image ? {backgroundImage: `url(${options.image})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} : null;
+    const fontColor = options.color ? {color: options.color} : null;
+    const isItalic = options.style ? options.style : 'normal';
+    const fontFamily = options.font ? options.font : 'inherit';
+    const backgroundColor = options.background ? {backgroundColor: options.background} : null;
+    const fontWeight = options.weight ? options.weight : 'normal';
+    const letterSpacing = options.tracking ? {letterSpacing: options.tracking} : null;
+    const backgroundImage = options.image ? {backgroundImage: `url(${options.image})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} : null;
 
-    let description = (
+    const description = (
       <ul style={{...styles.title, ...styles.list, ...fontColor}}>
         {options.color ? <li style={styles.list}>color: {options.color + ';'}</li> : null}
         {options.background ? <li style={styles.list}>background-color: {options.background + ';'}</li> : null}
@@ -81,9 +81,9 @@ class Type extends React.Component {
       </ul>
       );
 
-    let headings = options.headings
+    const headings = options.headings
       ? options.headings.map( (heading, i) => {
-        let isPixel = typeof heading === 'number' ? 'px' : '';
+        const isPixel = typeof heading === 'number' ? 'px' : '';
         return (
           <div key={i}>
             <div style={{...styles.title, ...fontColor}}>h{i + 1} ({heading + isPixel})</div>
@@ -93,9 +93,9 @@ class Type extends React.Component {
       })
       : null;
 
-    let paragraphs = options.paragraphs
+    const paragraphs = options.paragraphs
       ? options.paragraphs.map( (paragraph, i) => {
-        let values = paragraph.split('/').map((item) => {
+        const values = paragraph.split('/').map((item) => {
           return /[a-z]/i.test(item) ? `${item}` : `${item}px`;
         }).join('/');
         return (

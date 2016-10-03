@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Router, useRouterHistory, applyRouterMiddleware, browserHistory} from 'react-router';
 import {createHashHistory} from 'history';
-import useScroll from 'react-router-scroll';
+import {useScroll} from 'react-router-scroll';
 import seqKey from '../utils/seqKey';
 
 import configureRoutes from '../configureRoutes';
@@ -22,12 +22,12 @@ export default class Catalog extends Component {
     });
   }
   render() {
-    const {useBrowserHistory, ...configuration} = this.props;
+    const configuration = this.props;
     const {routerKey} = this.state;
     return (
       <Router
         key={routerKey}
-        history={useBrowserHistory ? browserHistory : hashHistory}
+        history={configuration.useBrowserHistory ? browserHistory : hashHistory}
         routes={configureRoutes(configuration)}
         render={applyRouterMiddleware(useScroll())}
       />

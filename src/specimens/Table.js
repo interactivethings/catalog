@@ -28,25 +28,44 @@ function getStyle(theme) {
       borderBottom: `2px solid ${theme.lightColor}`
     },
     cell: {
-      padding: '0px 0px',
-      textAlign: 'left'
+      padding: '0 1em 0 0',
+      textAlign: 'left',
+      verticalAlign: 'top'
+    },
+    cellLast: {
+      padding: '0',
+      textAlign: 'left',
+      verticalAlign: 'top'
     }
   };
 }
 
-const Cell = (value, id, style, heading) => {
-  const content = typeof value === 'string'
-    ? renderMarkdown({text: value})
-    : value || <p style={{opacity: 0.2}}>—</p>;
+const Cell = ({value, style, heading}) => {
+  let content;
+  if (typeof value === 'string') {
+    content = renderMarkdown({text: value.toString()});
+  } else if (value === void 0) {
+    content = <p style={{opacity: 0.2}}>—</p>;
+  } else {
+    content = <p>{value}</p>;
+  }
+
   return heading
-    ? <th key={id} style={style}>{content}</th>
-    : <td key={id} style={style}>{content}</td>;
+    ? <th style={style}>{content}</th>
+    : <td style={style}>{content}</td>;
+};
+
+Cell.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  style: PropTypes.object.isRequired,
+  heading: PropTypes.bool
 };
 
 class Table extends React.Component {
   render() {
     const {columns, rows, catalog: {theme}} = this.props;
-    const {cell, container, table, head, tableRow} = getStyle(theme);
+    const {cell, cellLast, container, table, head, tableRow} = getStyle(theme);
+    const cellStyle = (totalCells, cellIndex) => cellIndex === totalCells - 1 ? cellLast : cell;
     const tableKeys = columns ? columns : rows.reduce( (index, row) => index
       .concat(Object.keys(row)), [])
       .filter((value, i, self) => self.indexOf(value) === i);
@@ -54,12 +73,14 @@ class Table extends React.Component {
       <section style={container}>
         <table style={table}>
           <thead style={head}>
-            <tr>{tableKeys.map((key, i) => Cell(key, i, cell, true))}</tr>
+            <tr>{tableKeys.map((key, k) => <Cell heading value={key} key={k} style={cellStyle(tableKeys.length, k)} />)}</tr>
           </thead>
           <tbody>
-            {rows.map((row, i)=><tr style={tableRow}  key={i}>
-              {tableKeys.map((key, k) => Cell(row[key], k, cell, false))}
-            </tr>)}
+            {rows.map((row, i) => (
+              <tr style={tableRow} key={i}>
+                {tableKeys.map((key, k) => <Cell value={row[key]} key={k} style={cellStyle(tableKeys.length, k)} />)}
+              </tr>
+            ))}
           </tbody>
         </table>
       </section>

@@ -5,7 +5,7 @@ import Specimen from '../components/Specimen/Specimen';
 
 const DownloadIcon = Radium(({style, fill}) => (
   <svg style={style} viewBox='0 0 120 120'>
-    <g fill='none' fill-rule='evenodd'>
+    <g fill='none' fillRule='evenodd'>
       <rect width='120' height='120' fill='#EEEEEE' rx='2'/>
       <g fill={fill}>
         <path d='M72.647 53.353c-.468-.47-1.226-.47-1.697 0L61 63.303V36.2c0-.662-.538-1.2-1.2-1.2-.662 0-1.2.538-1.2 1.2v27.103l-9.95-9.95c-.47-.47-1.23-.47-1.7 0-.468.468-.468 1.226 0 1.697l12 12c.236.232.543.35.85.35.307 0 .614-.118.85-.353l12-12c.468-.468.468-1.226-.003-1.694z'/>

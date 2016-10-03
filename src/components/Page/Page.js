@@ -31,7 +31,7 @@ class Page extends Component {
     return (
       <div className='cg-Page' style={pageStyle}>
         {React.Children.map(children, (child) => {
-          return typeof child === 'string' ?
+          const md =  typeof child === 'string' ?
             renderMarkdown({
               text: child,
               renderer: {
@@ -40,6 +40,7 @@ class Page extends Component {
                 }
               }
             }) : child;
+          return md;
         })}
         <Style scopeSelector='.cg-Page >' rules={{
           // Text styles

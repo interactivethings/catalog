@@ -15,6 +15,16 @@ tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `(...args) => {return args;}` text.
 
+Link [to a heading](#jump-to-me)
+
+Link [to another page section](/specimens#combining-props-and-content)
+
+Root-relative link [not handled by Catalog](/docs/assets/catalog_logo.svg)
+
+Mailto link [not handled by Catalog](mailto:foo@bar.com)
+
+External link [not handled by Catalog](https://www.interactivethings.com/)
+
 ---
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -52,6 +62,8 @@ Ordered lists work too:
     1. three levels deep
     1. three levels deep
 2. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
+
+## Jump to me!
 
 A final paragraph before we begin with the real thing: the Cards!
 
@@ -163,4 +175,3 @@ Similar to button, but looks more important.
 ```
 <a class="important-button" href="#">Important Button</a>
 ```
-

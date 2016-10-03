@@ -93,8 +93,15 @@ class FrameComponent extends Component {
   }
 
   render() {
-    // The iframe isn't ready so we drop children from props here. #12, #17
-    return <iframe ref={(el) => { this.iframe = el; }} {...{...this.props, children: undefined}}/>;
+    const {style, frameBorder, allowTransparency, scrolling} = this.props;
+    return (
+      <iframe
+        ref={(el) => { this.iframe = el; }}
+        style={style}
+        frameBorder={frameBorder}
+        allowTransparency={allowTransparency}
+        scrolling={scrolling} />
+    );
   }
 }
 
@@ -102,7 +109,12 @@ FrameComponent.propTypes = {
   style: PropTypes.object,
   head: PropTypes.node,
   onRender: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
+
+  // These props are passed through to the underlying <iframe>
+  frameBorder: PropTypes.string,
+  allowTransparency: PropTypes.string,
+  scrolling: PropTypes.string
 };
 
 export default FrameComponent;

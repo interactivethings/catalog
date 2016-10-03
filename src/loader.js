@@ -8,7 +8,7 @@ module.exports.pitch = function pitch(remainingRequest) {
 
   const output = `
     var React = require('react');
-    var PageRenderer = require('${path.resolve(__dirname, 'components/Page/PageRenderer')}');
+    var PageRenderer = require(${JSON.stringify(path.resolve(__dirname, 'components/Page/PageRenderer'))});
     if (PageRenderer.__esModule) {
       PageRenderer = PageRenderer.default;
     }
@@ -28,7 +28,7 @@ module.exports.pitch = function pitch(remainingRequest) {
         }
       },
       render: function() {
-        return React.createElement(PageRenderer, {content: this.state.content});
+        return React.createElement(PageRenderer, Object.assign({}, this.props, {content: this.state.content}));
       }
     });
   `;

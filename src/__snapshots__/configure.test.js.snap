@@ -1,0 +1,297 @@
+exports[`test Configuration with default theme and specimens 1`] = `
+Object {
+  "__catalogConfig": true,
+  "basePath": "/",
+  "pageTree": Array [
+    Object {
+      "id": 1,
+      "imports": Object {},
+      "pages": null,
+      "path": "/",
+      "scripts": Array [],
+      "src": "overview.md",
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Overview"
+    },
+    Object {
+      "component": [Function NotFound],
+      "hideFromMenu": true,
+      "id": 2,
+      "imports": Object {},
+      "path": "/*",
+      "scripts": Array [],
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Page Not Found"
+    }
+  ],
+  "pages": Array [
+    Object {
+      "id": 1,
+      "imports": Object {},
+      "index": 0,
+      "pages": null,
+      "path": "/",
+      "scripts": Array [],
+      "src": "overview.md",
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Overview"
+    },
+    Object {
+      "component": [Function NotFound],
+      "hideFromMenu": true,
+      "id": 2,
+      "imports": Object {},
+      "path": "/*",
+      "scripts": Array [],
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Page Not Found"
+    }
+  ],
+  "specimens": Object {
+    "audio": [Function SpecimenContainer],
+    "code": [Function SpecimenContainer],
+    "color": [Function SpecimenContainer],
+    "color-palette": [Function SpecimenContainer],
+    "download": [Function SpecimenContainer],
+    "hint": [Function SpecimenContainer],
+    "html": [Function SpecimenContainer],
+    "image": [Function SpecimenContainer],
+    "raw-code": [Function RawCode],
+    "react": [Function SpecimenContainer],
+    "table": [Function SpecimenContainer],
+    "type": [Function SpecimenContainer],
+    "video": [Function SpecimenContainer]
+  },
+  "theme": Object {
+    "background": "#F9F9F9",
+    "baseFontSize": 16,
+    "baseLineMulti": 10,
+    "baseVerticalUnit": 4,
+    "bgDark": "#333333",
+    "bgLight": "#F2F2F2",
+    "brandColor": "#003B5C",
+    "checkerboardPatternDark": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==",
+    "checkerboardPatternLight": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=",
+    "codeColor": "#00263E",
+    "codeStyles": Object {
+      "function": Object {
+        "color": "#FF5555"
+      },
+      "keyword": Object {
+        "color": "#3F7397"
+      },
+      "punctuation": Object {
+        "color": "#535353"
+      },
+      "script": Object {
+        "color": "#3F7397"
+      },
+      "string": Object {
+        "color": "#00263E"
+      },
+      "tag": Object {
+        "color": "#FF5555"
+      }
+    },
+    "fontFamily": "'Roboto', sans-serif",
+    "fontHeading": "'Roboto', sans-serif",
+    "fontL": 21,
+    "fontM": 16,
+    "fontMono": "'Source Code Pro', monospace",
+    "fontS": 14,
+    "fontXl": 28,
+    "fontXs": 12,
+    "fontXxl": 38,
+    "lightColor": "#D6D6D6",
+    "linkColor": "#FF5555",
+    "msRatio": 1.2,
+    "pageHeadingBackground": "#003B5C",
+    "pageHeadingHeight": 200,
+    "pageHeadingTextColor": "#fff",
+    "sidebarColor": "#FFFFFF",
+    "sidebarColorActive": "#D1312E",
+    "sidebarColorHeading": "#003B5C",
+    "sidebarColorLine": "#EBEBEB",
+    "sidebarColorText": "#003B5C",
+    "sidebarColorTextActive": "#FF5555",
+    "sizeL": 21,
+    "sizeM": 15,
+    "sizeS": 8,
+    "sizeXl": 28,
+    "sizeXxl": 38,
+    "textColor": "#333333",
+    "textMedium": "#003B5C"
+  },
+  "title": "Catalog"
+}
+`;
+
+exports[`test Configuration with nested pages 1`] = `
+Object {
+  "__catalogConfig": true,
+  "basePath": "/",
+  "pageTree": Array [
+    Object {
+      "id": 1,
+      "imports": Object {},
+      "pages": Array [
+        Object {
+          "id": 2,
+          "imports": Object {},
+          "pages": null,
+          "path": "/foo",
+          "scripts": Array [],
+          "src": "foo.md",
+          "styles": Array [],
+          "superTitle": "Overview",
+          "title": "Foo"
+        },
+        Object {
+          "id": 3,
+          "imports": Object {},
+          "pages": null,
+          "path": "/bar",
+          "scripts": Array [],
+          "src": "bar.md",
+          "styles": Array [],
+          "superTitle": "Overview",
+          "title": "Bar"
+        }
+      ],
+      "path": "/",
+      "scripts": Array [],
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Overview"
+    },
+    Object {
+      "component": [Function NotFound],
+      "hideFromMenu": true,
+      "id": 4,
+      "imports": Object {},
+      "path": "/*",
+      "scripts": Array [],
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Page Not Found"
+    }
+  ],
+  "pages": Array [
+    Object {
+      "id": 2,
+      "imports": Object {},
+      "index": 0,
+      "pages": null,
+      "path": "/foo",
+      "scripts": Array [],
+      "src": "foo.md",
+      "styles": Array [],
+      "superTitle": "Overview",
+      "title": "Foo"
+    },
+    Object {
+      "id": 3,
+      "imports": Object {},
+      "index": 1,
+      "pages": null,
+      "path": "/bar",
+      "scripts": Array [],
+      "src": "bar.md",
+      "styles": Array [],
+      "superTitle": "Overview",
+      "title": "Bar"
+    },
+    Object {
+      "component": [Function NotFound],
+      "hideFromMenu": true,
+      "id": 4,
+      "imports": Object {},
+      "path": "/*",
+      "scripts": Array [],
+      "styles": Array [],
+      "superTitle": "Catalog",
+      "title": "Page Not Found"
+    }
+  ],
+  "specimens": Object {
+    "audio": [Function SpecimenContainer],
+    "code": [Function SpecimenContainer],
+    "color": [Function SpecimenContainer],
+    "color-palette": [Function SpecimenContainer],
+    "download": [Function SpecimenContainer],
+    "hint": [Function SpecimenContainer],
+    "html": [Function SpecimenContainer],
+    "image": [Function SpecimenContainer],
+    "raw-code": [Function RawCode],
+    "react": [Function SpecimenContainer],
+    "table": [Function SpecimenContainer],
+    "type": [Function SpecimenContainer],
+    "video": [Function SpecimenContainer]
+  },
+  "theme": Object {
+    "background": "#F9F9F9",
+    "baseFontSize": 16,
+    "baseLineMulti": 10,
+    "baseVerticalUnit": 4,
+    "bgDark": "#333333",
+    "bgLight": "#F2F2F2",
+    "brandColor": "#003B5C",
+    "checkerboardPatternDark": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==",
+    "checkerboardPatternLight": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=",
+    "codeColor": "#00263E",
+    "codeStyles": Object {
+      "function": Object {
+        "color": "#FF5555"
+      },
+      "keyword": Object {
+        "color": "#3F7397"
+      },
+      "punctuation": Object {
+        "color": "#535353"
+      },
+      "script": Object {
+        "color": "#3F7397"
+      },
+      "string": Object {
+        "color": "#00263E"
+      },
+      "tag": Object {
+        "color": "#FF5555"
+      }
+    },
+    "fontFamily": "'Roboto', sans-serif",
+    "fontHeading": "'Roboto', sans-serif",
+    "fontL": 21,
+    "fontM": 16,
+    "fontMono": "'Source Code Pro', monospace",
+    "fontS": 14,
+    "fontXl": 28,
+    "fontXs": 12,
+    "fontXxl": 38,
+    "lightColor": "#D6D6D6",
+    "linkColor": "#FF5555",
+    "msRatio": 1.2,
+    "pageHeadingBackground": "#003B5C",
+    "pageHeadingHeight": 200,
+    "pageHeadingTextColor": "#fff",
+    "sidebarColor": "#FFFFFF",
+    "sidebarColorActive": "#D1312E",
+    "sidebarColorHeading": "#003B5C",
+    "sidebarColorLine": "#EBEBEB",
+    "sidebarColorText": "#003B5C",
+    "sidebarColorTextActive": "#FF5555",
+    "sizeL": 21,
+    "sizeM": 15,
+    "sizeS": 8,
+    "sizeXl": 28,
+    "sizeXxl": 38,
+    "textColor": "#333333",
+    "textMedium": "#003B5C"
+  },
+  "title": "Catalog"
+}
+`;

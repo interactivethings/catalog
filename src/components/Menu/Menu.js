@@ -55,9 +55,9 @@ class Menu extends React.Component {
   render() {
     const {theme, pageTree, logoSrc, title, history, basePath} = this.props;
 
-    let currentStyle = style(theme);
+    const currentStyle = style(theme);
 
-    let titleString = title ? title : '';
+    const titleString = title ? title : '';
 
     return (
       <div style={currentStyle.bar} >
