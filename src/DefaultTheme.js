@@ -37,7 +37,7 @@ export const DefaultTheme = {
   // Fonts
   fontFamily: "'Roboto', sans-serif",
   fontHeading: "'Roboto', sans-serif",
-  fontMono: "'Source Code Pro', monospace",
+  fontMono: "'Roboto Mono', monospace",
 
   fontXs:  12,
   fontS:   14,

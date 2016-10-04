@@ -40,6 +40,7 @@ const inlineElements = (theme, selector = '') => {
       borderRadius: 1,
       display: 'inline-block',
       fontFamily: theme.fontMono,
+      fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
       lineHeight: 1,
       padding: '0.12em 0.2em',
       textIndent: 0
