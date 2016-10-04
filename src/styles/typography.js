@@ -133,7 +133,7 @@ export const blockquote = (theme) => {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '48px 0 16px 0',
+      margin: '48px 0 32px 0',
     },
     'blockquote > :first-child': {
       marginTop: 0
