@@ -22,12 +22,12 @@ export default class Catalog extends Component {
     });
   }
   render() {
-    const {useBrowserHistory, ...configuration} = this.props;
+    const configuration = this.props;
     const {routerKey} = this.state;
     return (
       <Router
         key={routerKey}
-        history={useBrowserHistory ? browserHistory : hashHistory}
+        history={configuration.useBrowserHistory ? browserHistory : hashHistory}
         routes={configureRoutes(configuration)}
         render={applyRouterMiddleware(useScroll())}
       />

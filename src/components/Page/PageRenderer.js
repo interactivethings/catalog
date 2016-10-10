@@ -10,12 +10,36 @@ const renderStyles = (styles) => {
 const renderContent = (content) => React.isValidElement(content) && content.type === Page ? content : <Page>{content}</Page>;
 
 class PageRenderer extends Component {
+  constructor() {
+    super();
+    this.jump = this.jump.bind(this);
+  }
+
   componentDidMount() {
     this.context.catalog.page.scripts.forEach(runscript);
+    this.jump();
   }
 
   componentDidUpdate() {
     this.context.catalog.page.scripts.forEach(runscript);
+    this.jump();
+  }
+
+  jump() {
+    const {location: {query: {a}, hash}} = this.props;
+    const selector = hash || `#${a}`;
+    clearTimeout(this.jumpTimeout);
+
+    // Don't freak out when hash is not a valid selector (e.g. #/foo)
+    try {
+      const el = document.querySelector(selector);
+      if (el) {
+        // Defer scrolling by one tick (when the page has completely rendered)
+        this.jumpTimeout = setTimeout(() => el.scrollIntoView(), 0);
+      }
+    } catch (e) {
+      // eslint-disable-line no-empty
+    }
   }
 
   render() {
@@ -34,7 +58,8 @@ PageRenderer.propTypes = {
   content: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
-  ]).isRequired
+  ]).isRequired,
+  location: PropTypes.object.isRequired
 };
 
 PageRenderer.contextTypes = {
