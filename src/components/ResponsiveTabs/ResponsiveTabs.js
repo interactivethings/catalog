@@ -19,7 +19,7 @@ function getStyle(theme) {
       cursor: 'pointer',
       display: 'flex',
       flexGrow: 1,
-      opacity: 0.5,
+      opacity: 0.7,
       padding: '12px',
       transitionDuration: '.2s, .4s',
       transitionProperty: 'width, background-color, border, opacity'
