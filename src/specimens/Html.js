@@ -91,7 +91,7 @@ class Html extends React.Component {
     this.state = {
       viewSource: false,
       parentWidth: 0,
-      screenSize: validateSizes(props.responsive, props.catalog.devices)[0] || null
+      screenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
     };
     this.setSize = this.setSize.bind(this);
     this.updateParentWidth = this.updateParentWidth.bind(this);
@@ -137,10 +137,10 @@ class Html extends React.Component {
   }
 
   render() {
-    const {catalog: {theme, devices}, children, frame, ...options} = this.props;
+    const {catalog: {theme, responsiveSizes}, children, frame, ...options} = this.props;
     const {screenSize: device, parentWidth, viewSource} = this.state;
     const styles = getStyle(theme);
-    const validSizes = validateSizes(options.responsive, devices);
+    const validSizes = validateSizes(options.responsive, responsiveSizes);
 
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),

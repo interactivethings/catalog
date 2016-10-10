@@ -64,7 +64,7 @@ class ReactSpecimen extends Component {
     this.state = {
       elementState: props.state,
       parentWidth: null,
-      screenSize: validateSizes(props.responsive, props.catalog.devices)[0] || null
+      screenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
     };
     this.setElementState = this.setElementState.bind(this);
     this.setSize = this.setSize.bind(this);
@@ -104,10 +104,10 @@ class ReactSpecimen extends Component {
   }
 
   render() {
-    const {catalog: {page: {imports}, theme, devices}, children, noSource, frame, ...options} = this.props;
+    const {catalog: {page: {imports}, theme, responsiveSizes}, children, noSource, frame, ...options} = this.props;
     const {screenSize: device, parentWidth} = this.state;
     const styles = getStyle(theme);
-    const validSizes = validateSizes(options.responsive, devices);
+    const validSizes = validateSizes(options.responsive, responsiveSizes);
 
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
