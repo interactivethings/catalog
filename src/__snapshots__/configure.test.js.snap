@@ -51,6 +51,28 @@ Object {
       "title": "Page Not Found",
     },
   ],
+  "responsiveSizes": Array [
+    Object {
+      "height": 640,
+      "name": "small",
+      "width": 360,
+    },
+    Object {
+      "height": 768,
+      "name": "medium",
+      "width": 1024,
+    },
+    Object {
+      "height": 900,
+      "name": "large",
+      "width": 1440,
+    },
+    Object {
+      "height": 1080,
+      "name": "xlarge",
+      "width": 1920,
+    },
+  ],
   "specimens": Object {
     "audio": [Function],
     "code": [Function],
@@ -215,6 +237,28 @@ Object {
       "styles": Array [],
       "superTitle": "Catalog",
       "title": "Page Not Found",
+    },
+  ],
+  "responsiveSizes": Array [
+    Object {
+      "height": 640,
+      "name": "small",
+      "width": 360,
+    },
+    Object {
+      "height": 768,
+      "name": "medium",
+      "width": 1024,
+    },
+    Object {
+      "height": 900,
+      "name": "large",
+      "width": 1440,
+    },
+    Object {
+      "height": 1080,
+      "name": "xlarge",
+      "width": 1920,
     },
   ],
   "specimens": Object {
