@@ -1,12 +1,12 @@
 > The HTML specimen allows the documentation of HTML as well as JavaScript and CSS based views.
 
-Per default, a code toggle button allows easy access to the source without having to write a separate code specimen. It is also possible to access external files that are defined in the catalog configuration. This makes it possible to add quite complex structures like a form with minimal additional specification in the markdown file. 
+Per default, a code toggle button allows easy access to the source without having to write a separate code specimen. It is also possible to access external files that are defined in the catalog configuration. This makes it possible to add quite complex structures like a form with minimal additional specification in the markdown file.
 
 ### Props
 
 - `noSource: boolean` Removes the source code toggle button
-- `device: string` either `select` or a device name like 'small'
 - `frame: boolean` Wraps output in an `<iframe>` (to prevent style collisions and allow for viewport-relative styling (e.g. using `vw` or `position: fixed`))
+- `responsive: boolean | string | array` sets a fixed screensize or allows switching between multiple sizes
 - `light: boolean` a light checkered background (default)
 - `dark: boolean` a dark checkered background
 - `plain: boolean` a transparent background without any padding
@@ -58,9 +58,9 @@ frame: true
 
 
 
-### Responsive mode
+### Responsive Display
 
-The HTML Specimen supports the same responsive options as the React Specimen. To read more about the options and configuration, visit the [documentation](/specimens/react) page.
+The HTML Specimen supports the same responsive options as the React Specimen. To read more about the options and configuration, visit the [React Specimen](/specimens/react#responsive-display) page.
 
 ```html
 responsive: true
@@ -71,7 +71,7 @@ responsive: true
   background: black;
   width: 100vw;
   height: 100%;
-  padding:25px; 
+  padding:25px;
   box-sizing: border-box;
   color: white;
   text-align: center;
