@@ -75,7 +75,7 @@ function getStyle(theme) {
       background: theme.bgDark,
       padding: '20px'
     },
-    device: {
+    responsive: {
       background: `url(${theme.checkerboardPatternLight})`,
       boxSizing: 'border-box',
       overflow: 'hidden',
@@ -148,7 +148,7 @@ class Html extends React.Component {
       ...(options.dark ? styles.dark : null),
       ...(options.plain && options.light ? styles.plain_light : null),
       ...(options.plain && options.dark ? styles.plain_dark : null),
-      ...(options.responsive ? styles.device : null)
+      ...(options.responsive ? styles.responsive : null)
     };
 
     const source = viewSource
