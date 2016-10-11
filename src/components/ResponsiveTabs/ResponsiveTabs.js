@@ -40,28 +40,31 @@ function getStyle(theme) {
   };
 }
 
-const ResponsiveTabs = ( {deviceList, action, activeDevice, theme, parentWidth} ) => {
+const ResponsiveTabs = ( {sizes, action, activeSize, theme, parentWidth} ) => {
   const styles = getStyle(theme);
   return (<div style={styles.tabContainer}>
-    {deviceList.map((val, i)=>{
-      const isTabActive = activeDevice.name === val.name;
+    {sizes.map((val, i) => {
+      const isTabActive = activeSize.name === val.name;
       const activeStyles = isTabActive && styles.tabActive;
       return (<div key={i} style={{...styles.tab, ...activeStyles}} onClick={action.bind(this, val)}>
         <Preview proportion={val.width / val.height}/>
-        {val.name}{isTabActive &&
+        <div style={styles.description}>
+          {val.name}
           <div style={styles.tabDimension}>
-            {activeDevice.width}×{activeDevice.height}
-            {isTabActive && parentWidth <= val.width && ', scaled'}
-          </div>}
+            {val.width}×{val.height}
+            &thinsp;
+            {parentWidth <= val.width && '(scaled)'}
+          </div>
+        </div>
       </div>);
     })}
   </div>);
 };
 
 ResponsiveTabs.propTypes = {
-  deviceList: PropTypes.array,
+  sizes: PropTypes.array,
   action: PropTypes.func,
-  activeDevice: PropTypes.object,
+  activeSize: PropTypes.object,
   theme: PropTypes.object,
   parentWidth: PropTypes.number
 };

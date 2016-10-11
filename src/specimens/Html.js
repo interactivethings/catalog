@@ -91,7 +91,7 @@ class Html extends React.Component {
     this.state = {
       viewSource: false,
       parentWidth: 0,
-      screenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
+      activeScreenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
     };
     this.setSize = this.setSize.bind(this);
     this.updateParentWidth = this.updateParentWidth.bind(this);
@@ -101,14 +101,14 @@ class Html extends React.Component {
     const {runScript} = this.props;
     runScript && Array.from(this.refs.specimen.querySelectorAll('script')).forEach(runscript);
 
-    if (this.state.screenSize) {
+    if (this.state.activeScreenSize) {
       window.addEventListener('resize', this.updateParentWidth);
       setTimeout(this.updateParentWidth);
     }
   }
 
   componentWillUnmount() {
-    if (this.state.screenSize) {
+    if (this.state.activeScreenSize) {
       window.removeEventListener('resize', this.updateParentWidth);
     }
   }
@@ -128,8 +128,8 @@ class Html extends React.Component {
     }
   }
 
-  setSize(screenSize) {
-    this.setState({screenSize: screenSize});
+  setSize(activeScreenSize) {
+    this.setState({activeScreenSize: activeScreenSize});
   }
 
   toggleSource() {
@@ -138,7 +138,7 @@ class Html extends React.Component {
 
   render() {
     const {catalog: {theme, responsiveSizes}, children, frame, ...options} = this.props;
-    const {screenSize: device, parentWidth, viewSource} = this.state;
+    const {activeScreenSize, parentWidth, viewSource} = this.state;
     const styles = getStyle(theme);
     const validSizes = validateSizes(options.responsive, responsiveSizes);
 
@@ -169,12 +169,12 @@ class Html extends React.Component {
     return (
       <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
         {toggle}
-        {device &&
-          <ResponsiveTabs theme={theme} deviceList={validSizes} action={this.setSize} activeDevice={device} parentWidth={parentWidth}/>
+        {activeScreenSize &&
+          <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
         <div style={{...styles.content, ...exampleStyles}}>
-          {frame || device
-            ? <Frame width={device && device.width} parentWidth={parentWidth ? parentWidth : '100%'} height={device && device.height}>
+          {frame || activeScreenSize
+            ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
                 {content}
               </Frame>
             : content

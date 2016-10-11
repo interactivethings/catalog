@@ -64,7 +64,7 @@ class ReactSpecimen extends Component {
     this.state = {
       elementState: props.state,
       parentWidth: null,
-      screenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
+      activeScreenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
     };
     this.setElementState = this.setElementState.bind(this);
     this.setSize = this.setSize.bind(this);
@@ -72,14 +72,14 @@ class ReactSpecimen extends Component {
   }
 
   componentDidMount() {
-    if (this.state.screenSize) {
+    if (this.state.activeScreenSize) {
       window.addEventListener('resize', this.updateParentWidth);
       setTimeout(this.updateParentWidth);
     }
   }
 
   componentWillUnmount() {
-    if (this.state.screenSize) {
+    if (this.state.activeScreenSize) {
       window.removeEventListener('resize', this.updateParentWidth);
     }
   }
@@ -99,13 +99,13 @@ class ReactSpecimen extends Component {
     }
   }
 
-  setSize(screenSize) {
-    this.setState({screenSize: screenSize});
+  setSize(activeScreenSize) {
+    this.setState({activeScreenSize: activeScreenSize});
   }
 
   render() {
     const {catalog: {page: {imports}, theme, responsiveSizes}, children, noSource, frame, ...options} = this.props;
-    const {screenSize: device, parentWidth} = this.state;
+    const {activeScreenSize, parentWidth} = this.state;
     const styles = getStyle(theme);
     const validSizes = validateSizes(options.responsive, responsiveSizes);
 
@@ -130,7 +130,9 @@ class ReactSpecimen extends Component {
         setState: this.setElementState
       });
       element = transformed.element;
-      error = transformed.error ? <Hint warning>{`Couldn't render specimen: ${transformed.error}`}</Hint> : null;
+      error = transformed.error
+        ? <Hint warning>{`Couldn't render specimen: ${transformed.error}`}</Hint>
+        : null;
       code = children;
     } else {
       element = children;
@@ -145,12 +147,12 @@ class ReactSpecimen extends Component {
 
     return (
       <section style={styles.container} ref='specimen'>
-        {device &&
-          <ResponsiveTabs theme={theme} deviceList={validSizes} action={this.setSize} activeDevice={device} parentWidth={parentWidth}/>
+        {activeScreenSize &&
+          <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
         <div style={{...styles.content, ...exampleStyles}}>
-          {frame || device
-            ? <Frame width={device && device.width} parentWidth={parentWidth ? parentWidth : '100%'} height={device && device.height}>
+          {frame || activeScreenSize
+            ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
                 {element}
               </Frame>
             : element }
