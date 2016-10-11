@@ -12,30 +12,34 @@ function getStyle(theme) {
       width: '100%'
     },
     tab: {
-      boxSizing: 'border-box',
       alignItems: 'center',
       background: '#eee',
-      color: theme.bgDark,
+      boxSizing: 'border-box',
+      color: '#777',
       cursor: 'pointer',
       display: 'flex',
-      flexGrow: 1,
-      opacity: 0.7,
-      padding: '12px',
-      transitionDuration: '.2s, .4s',
-      transitionProperty: 'width, background-color, border, opacity'
+      flexBasis: '100%',
+      flexDirection: 'row',
+      padding: '10px',
+      transition: '.2s background-color, .4s color'
     },
     tabActive: {
       background: 'white',
-      color: theme.textColor,
-      cursor: 'auto',
-      opacity: 1
+      fontWeight: 'bold',
+      color: theme.brandColor,
+      cursor: 'auto'
+    },
+    description: {
+      paddingLeft: 5
     },
     tabDimension: {
-      color: theme.bgDark,
-      display: 'inline',
+      color: '#777',
+      display: 'block',
       fontFamily: theme.fontMono,
-      marginLeft: 5,
-      opacity: 0.3
+      fontSize: 'smaller',
+      fontWeight: 'normal',
+      marginTop: 2,
+      opacity: 0.6
     }
   };
 }
