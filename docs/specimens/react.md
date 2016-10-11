@@ -46,15 +46,14 @@ state: {foo: 0}
 
 By defining the 'responsiveSizes' option, you can display a component in various
 screen sizes. In order to use sizes other than `small, medium, large` and `xlarge`,
-please refer to the [responsive section](configuration#responsive-sizes) on the catalog
+please refer to the [responsive section](configuration#responsivesizes) on the catalog
 configuration page.
-dev
-#### Displaying all defined screen sizes
+
+#### Display all defined screen sizes
 
 Passing `true` for the responsive prop allows tabbing though all of them.
 
-
-#### Displaying only a subset of defined screen sizes
+#### Display only a subset of defined screen sizes
 
 Passing an array of strings limits the tabs to only those specified, eg. `['small','xlarge']`.
 

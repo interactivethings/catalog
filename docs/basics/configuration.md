@@ -253,11 +253,11 @@ lang: js
 ```
 
 
-### Responsive sizes
+### `responsiveSizes`
 
 To test or document responsive behavior of [React](/specimens/react#responsive-display) and [HTML](/specimens/html#responsive-display) components, Catalog provides some basic default screen sizes (`small, medium, large` and `xlarge`). Given that each project has different requirements, you can easily define new sizes.
 
-Let's assume you want to work with a smart watch, a tablet and Desktop, the Catalog configuration could look something like this:
+Let's assume you want to work with a smart watch, a tablet and Desktop, the Catalog configuration could look like this:
 
 ```code
 ...
