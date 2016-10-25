@@ -252,6 +252,7 @@ lang: js
 }
 ```
 
+## Responsive Specimens
 
 ### `responsiveSizes`
 
