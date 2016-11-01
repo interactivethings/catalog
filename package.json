@@ -47,7 +47,7 @@
   "devDependencies": {
     "assign-deep": "^0.4.2",
     "babel-cli": "^6.11.4",
-    "babel-core": "^6.13.2",
+    "babel-core": "^6.18.1",
     "babel-jest": "^16.0.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-external-helpers": "^6.8.0",
