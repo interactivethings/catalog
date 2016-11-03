@@ -121,6 +121,10 @@ test('Parse path with basePath set and only hash (pathname is current page)', ()
   expect(parsePath('#baz', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/foo/bar', hash: '#baz'});
 });
 
+test('Leave index path alone with basePath set', () => {
+  expect(parsePath('/lalala', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala', hash: ''});
+});
+
 // Internal paths
 
 test('Internal path basePath set', () => {
