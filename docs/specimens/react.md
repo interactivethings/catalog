@@ -4,7 +4,7 @@
 
 - `noSource: boolean` Removes the source code toggle button
 - `frame: boolean` Wraps output in an `<iframe>` (to prevent style collisions and allow for viewport-relative styling (e.g. using `vw` or `position: fixed`))
-- `responsive: boolean | string | array` sets a fixed screensize or allows switching between multiple sizes
+- `responsive: boolean | string | array` sets a fixed screen size or allows switching between multiple sizes
 - `light: boolean` a light checkered background (default)
 - `dark: boolean` a dark checkered background
 - `plain: boolean` a transparent background without any padding
