@@ -1,6 +1,6 @@
 import warning from './utils/warning';
 import {parsePath, addLeadingSlash} from './utils/path';
-import DefaultTheme from './DefaultTheme';
+import {DefaultTheme, DefaultResponsiveSizes} from './DefaultTheme';
 import specimens from './specimens';
 import requireModuleDefault from './utils/requireModuleDefault';
 import NotFound from './components/Page/NotFound';
@@ -94,6 +94,7 @@ export default (config) => {
     // Used to check in configureRoutes() if input is already configured
     __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
+    responsiveSizes: config.responsiveSizes || DefaultResponsiveSizes,
     specimens: {...specimens, ...config.specimens},
     basePath,
     pages,

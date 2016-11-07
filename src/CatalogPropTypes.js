@@ -20,6 +20,7 @@ export const catalogShape = PropTypes.shape({
   page: pageShape.isRequired,
   getSpecimen: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
+  responsiveSizes: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   pages: pagesShape.isRequired,
   pageTree: pagesShape.isRequired,
