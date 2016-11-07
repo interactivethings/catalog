@@ -50,17 +50,19 @@ const ResponsiveTabs = ( {sizes, action, activeSize, theme, parentWidth} ) => {
     {sizes.map((val, i) => {
       const isTabActive = activeSize.name === val.name;
       const activeStyles = isTabActive && styles.tabActive;
-      return (<div key={i} style={{...styles.tab, ...activeStyles}} onClick={action.bind(this, val)}>
-        <Preview proportion={val.width / val.height}/>
-        <div style={styles.description}>
-          {val.name}
-          <div style={styles.tabDimension}>
-            {val.width}×{val.height}
-            &thinsp;
-            {parentWidth <= val.width && '(scaled)'}
+      return (
+        <div key={i} style={{...styles.tab, ...activeStyles}} onClick={() => action(val)}>
+          <Preview proportion={val.width / val.height}/>
+          <div style={styles.description}>
+            {val.name}
+            <div style={styles.tabDimension}>
+              {val.width}×{val.height}
+              &thinsp;
+              {parentWidth <= val.width && '(scaled)'}
+            </div>
           </div>
         </div>
-      </div>);
+      );
     })}
   </div>);
 };
