@@ -38,7 +38,9 @@ const getStyles = (theme, sidebarVisible) => ({
     // Prevent flash of un-media-queried content by Radium
     display: 'none',
     '@media (min-width: 0px)': {
-      display: 'block'
+      // Use display: flex, so flexbox children aren't affected by IE's min-height bug
+      // See https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
+      display: 'flex'
     }
   },
   menuIcon: {
@@ -57,6 +59,7 @@ const getStyles = (theme, sidebarVisible) => ({
     height: '100vh',
     width: SIDEBAR_WIDTH - 1,
     top: 0,
+    left: 0,
     borderRight: `1px solid ${theme.sidebarColorLine}`,
     transform: `translateX(${sidebarVisible ? 0 : -SIDEBAR_WIDTH}px)`,
     transition: `transform ${SIDEBAR_ANIMATION_DURATION}s ease-in-out`,
@@ -84,6 +87,7 @@ const getStyles = (theme, sidebarVisible) => ({
     boxSizing: 'border-box',
     display: 'flex',
     minHeight: '100vh',
+    width: '100%',
     flexDirection: 'column',
     position: 'relative',
     '@media (min-width: 1000px)': {
