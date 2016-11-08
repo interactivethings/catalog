@@ -9,7 +9,7 @@ export function style(theme) {
   return {
     bar: {
       background: theme.sidebarColor,
-      minHeight: '100vh',
+      height: '100vh',
       display: 'flex',
       flexDirection: 'column'
     },
