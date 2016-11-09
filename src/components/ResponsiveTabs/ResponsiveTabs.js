@@ -8,7 +8,7 @@ function getStyle(theme) {
       background: 'white',
       borderBottom: `1px solid #eee`,
       display: 'flex',
-      overflowX: 'scroll',
+      overflowX: 'auto',
       width: '100%'
     },
     tab: {
