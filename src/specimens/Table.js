@@ -9,7 +9,7 @@ function getStyle(theme) {
   return {
     container: {
       flexBasis: '100%',
-      overflow: 'scroll',
+      overflow: 'auto',
       paddingBottom: '10px'
     },
     table: {
