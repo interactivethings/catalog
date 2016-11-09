@@ -77,8 +77,8 @@ class Image extends React.Component {
 
     return (
         <div style={{...styles.container, ...backgroundStyle}}>
-          <img style={styles.image} srcSet={src}/>
-          {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} />}
+          <img style={styles.image} srcSet={src} src={src}/>
+          {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} src={overlay} />}
           {title && <div style={styles.title}>{title}</div>}
           {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderMarkdown({text: description})}</div>}
         </div>
