@@ -16,7 +16,8 @@ const _ColorPaletteItem = ({name, value, styles, width}) => {
 _ColorPaletteItem.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  styles: PropTypes.object
+  styles: PropTypes.object,
+  width: PropTypes.string
 };
 
 const ColorPaletteItem = Radium(_ColorPaletteItem);
