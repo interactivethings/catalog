@@ -1,5 +1,10 @@
 import React, {Component, PropTypes} from 'react';
+import {catalogShape} from '../../CatalogPropTypes';
 import FrameComponent from './FrameComponent';
+
+const renderStyles = (styles) => {
+  return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
+};
 
 export default class Frame extends Component {
   constructor() {
@@ -9,8 +14,9 @@ export default class Frame extends Component {
 
   render() {
     const {children, width, parentWidth} = this.props;
+    const {catalog: {page: {styles}}} = this.context;
     const height = this.state.height || this.props.height;
-    const autoHeight = this.props.height === void 0;
+    const autoHeight = !this.props.height;
 
     const scaledHeight = this.props.height && width >= parentWidth ? height * (parentWidth / width) : 'auto';
 
@@ -33,7 +39,10 @@ export default class Frame extends Component {
           frameBorder='0'
           allowTransparency='true'
           scrolling='no'
-          head={<style>{'html,body{margin:0;padding:0}'}</style>}
+          head={[
+            <style key='stylereset'>{'html,body{margin:0;padding:0}'}</style>,
+            ...renderStyles(styles)
+          ]}
           onRender={autoHeight ? (content) => {
             const contentHeight = content.offsetHeight;
             if (contentHeight !== height) {
@@ -53,4 +62,8 @@ Frame.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   parentWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};
+
+Frame.contextTypes = {
+  catalog: catalogShape.isRequired
 };
