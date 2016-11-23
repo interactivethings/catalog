@@ -9,7 +9,7 @@ function getStyle(theme) {
   return {
     container: {
       flexBasis: '100%',
-      overflow: 'scroll',
+      overflow: 'auto',
       paddingBottom: '10px'
     },
     table: {
@@ -33,7 +33,7 @@ function getStyle(theme) {
       verticalAlign: 'top'
     },
     cellLast: {
-      padding: '0',
+      padding: '0px',
       textAlign: 'left',
       verticalAlign: 'top'
     }

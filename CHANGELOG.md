@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.5.0 (prerelease)
+
+- Add responsive mode for HTML and React Specimens ([#121](https://github.com/interactivethings/catalog/pull/121))
+- Add internal links, and links to page sections ([#165](https://github.com/interactivethings/catalog/pull/165))
+- Replaced tape with Jest tests ([#212](https://github.com/interactivethings/catalog/pull/212))
+- Make Catalog work in IE11 ([#252](https://github.com/interactivethings/catalog/pull/252))
+
 ## 2.4.7
 
 - Updated some dependencies:

@@ -36,7 +36,7 @@ class PageContentLoader extends Component {
 
   render() {
     const content = this.state.content || <Loader />;
-    return <PageRenderer content={content} />;
+    return <PageRenderer {...this.props} content={content} />;
   }
 }
 

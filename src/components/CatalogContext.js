@@ -6,18 +6,21 @@ const fallbackPathRe = /\*$/;
 
 class CatalogContext extends Component {
   getChildContext() {
-    const {title, theme, logoSrc, pages, pageTree, specimens, basePath} = this.props.configuration;
+    const {title, theme, responsiveSizes, logoSrc, pages, pageTree, specimens, basePath, useBrowserHistory} = this.props.configuration;
     const {router} = this.context;
     return {
       catalog: {
         page: pages.find((p) => router.isActive(p.path) || fallbackPathRe.test(p.path)),
         getSpecimen: (specimen) => specimens[specimen],
         theme,
+        responsiveSizes,
         title,
         pages: pages.filter((p) => !p.hideFromMenu),
+        pagePaths: new Set(pages.map((p) => p.path)), // Used for internal link lookup
         pageTree,
         basePath,
-        logoSrc
+        logoSrc,
+        useBrowserHistory
       }
     };
   }

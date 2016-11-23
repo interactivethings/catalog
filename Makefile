@@ -9,7 +9,7 @@ UMD_BUILD_FILES = \
 DOC_FILES = $(shell find docs -type f \( ! -iname ".*" \))
 
 SITE_DIR = site
-SITE_FILES = index.html catalog.js catalog.min.js $(DOC_FILES)
+SITE_FILES = index.html catalog.js catalog.min.js babel.min.js $(DOC_FILES)
 SITE_VERSION_FILES = $(addprefix $(SITE_DIR)/$(CURRENT_VERSION)/, $(SITE_FILES))
 SITE_LATEST_FILES = $(addprefix $(SITE_DIR)/, $(SITE_FILES))
 SITE_NEXT_FILES = $(addprefix $(SITE_DIR)/next/, $(SITE_FILES))

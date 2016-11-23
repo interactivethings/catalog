@@ -4,54 +4,43 @@ import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import {hcl} from 'd3-color';
 
-const ColorPaletteItem = ({name, value, styles}) => {
+const _ColorPaletteItem = ({name, value, styles, width}) => {
   const contrastingValue = hcl(value).l < 55 ? '#fff' : '#000';
-  return (<div style={{...styles.paletteItem,  backgroundColor: value}}>
+  return (<div style={{width, ...styles.paletteItem,  backgroundColor: value}}>
     <div style={{...styles.textPalette, color: contrastingValue}}>
       {name} <div style={styles.mono}>{value}</div>
     </div>
   </div>);
 };
 
-ColorPaletteItem.propTypes = {
+_ColorPaletteItem.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  styles: PropTypes.object
+  styles: PropTypes.object,
+  width: PropTypes.string
 };
+
+const ColorPaletteItem = Radium(_ColorPaletteItem);
 
 class ColorPalette extends React.Component {
   render() {
     const {catalog: {theme}, colors, horizontal} = this.props;
     const styles = {
       container: {
-        display: 'flex',
-        alignItems: 'stretch',
-        flexWrap: 'wrap',
-        justifyContent: 'flex-start',
-        overflow: 'auto',
-        flexBasis: '100%'
-      },
-      rows: {
-        flexDirection: 'row'
-      },
-      columns: {
-        flexDirection: 'column'
-      },
-      box: {
-        flexBasis: `calc(${ 1 / 6 * 100}%)`
-      },
-      well: {
-        alignSelf: 'stretch',
-        flex: '0 0 auto',
-        height: '111px'
+        width: '100%',
+        overflow: 'hidden'
       },
       mono: {
         fontFamily: theme.fontMono
       },
       paletteItem: {
+        float: 'left',
+        boxSizing: 'border-box',
         padding: '20px 10px',
-        flexBasis: 'calc(100%)',
-        flex: 1
+        '@media (max-width: 640px)': {
+          width: '100%',
+          float: 'none'
+        }
       },
       text: {
         fontFamily: theme.fontFamily,
@@ -80,10 +69,11 @@ class ColorPalette extends React.Component {
       }
     };
 
-    const paletteItems = colors.map((color, i) => <ColorPaletteItem key={i} {...color} styles={styles} />);
+    const width = `${horizontal ? 90 / colors.length : 100}%`;
+    const paletteItems = colors.map((color, i) => <ColorPaletteItem key={i} {...color} styles={styles} width={width} />);
 
     return (
-      <section style={{...styles.container, ...(horizontal ? styles.rows : styles.columns)}}>
+      <section style={styles.container}>
         {paletteItems}
       </section>
     );

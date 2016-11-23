@@ -75,10 +75,14 @@ class Image extends React.Component {
       ...(options.plain && options.dark ? styles.plain_dark : null)
     };
 
+    // Deconstruct srcset strings
+    const fallbackSrc = src.split(' ')[0];
+    const fallbackOverlay = overlay ? overlay.split(' ')[0] : undefined;
+
     return (
         <div style={{...styles.container, ...backgroundStyle}}>
-          <img style={styles.image} srcSet={src}/>
-          {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} />}
+          <img style={styles.image} srcSet={src} src={fallbackSrc}/>
+          {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} src={fallbackOverlay} />}
           {title && <div style={styles.title}>{title}</div>}
           {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderMarkdown({text: description})}</div>}
         </div>

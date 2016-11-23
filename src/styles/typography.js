@@ -71,7 +71,8 @@ export const heading = (theme, level = 0) => ({
   color: theme.brandColor,
   fontFamily: theme.fontHeading,
   fontSize: getFontSize(theme, level),
-  lineHeight: theme.msRatio
+  lineHeight: theme.msRatio,
+  position: 'relative'
 });
 
 // Block element styles

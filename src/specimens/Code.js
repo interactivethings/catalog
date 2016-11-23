@@ -62,7 +62,7 @@ class Code extends React.Component {
         {toggle}
         {content}
       </section>
-      );
+    );
   }
 }
 
