@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
-import Radium from 'radium';
+import Radium, {Style} from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import renderMarkdown from '../utils/renderMarkdown';
 
@@ -33,25 +33,19 @@ class Image extends React.Component {
         }
       },
       title: {
-        ...heading(theme, {level: 6}),
-        margin: 0
-      },
-      truncate: {
-        maxWidth: '100%',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden'
+        ...heading(theme, 0),
+        fontWeight: 700,
+        margin: `20px 0 0 0`
       },
       description: {
-        ...text(theme, {level: 2}),
-        marginTop: 5
+        ...text(theme, -1),
+        margin: `20px 0 0 0`
       },
       light: {
         background: `url(${theme.checkerboardPatternLight})`
       },
       dark: {
-        background: `url(${theme.checkerboardPatternDark})`,
-        color: '#fff'
+        background: `url(${theme.checkerboardPatternDark})`
       },
       plain: {
         background: 'transparent',
@@ -59,11 +53,11 @@ class Image extends React.Component {
       },
       plain_light: {
         background: theme.bgLight,
-        padding: `${theme.sizeL / 2}px`
+        padding: '20px'
       },
       plain_dark: {
         background: theme.bgDark,
-        padding: `${theme.sizeL / 2}px`
+        padding: '20px'
       }
     };
 
@@ -81,10 +75,20 @@ class Image extends React.Component {
 
     return (
         <div style={{...styles.container, ...backgroundStyle}}>
+          <Style
+            scopeSelector='.cg-ImageSpecimenDescription >'
+            rules={{
+              ':first-child': {
+                marginTop: 0
+              },
+              ':last-child': {
+                marginBottom: 0
+              }
+            }}/>
           <img style={styles.image} srcSet={src} src={fallbackSrc}/>
           {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} src={fallbackOverlay} />}
-          {title && <div style={styles.title}>{title}</div>}
-          {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderMarkdown({text: description})}</div>}
+          {title && <div style={{...styles.title, ...(options.dark ? {color: '#fff'} : null)}}>{title}</div>}
+          {description && <div className='cg-ImageSpecimenDescription' style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderMarkdown({text: description})}</div>}
         </div>
     );
   }
