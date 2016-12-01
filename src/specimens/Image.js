@@ -20,6 +20,7 @@ class Image extends React.Component {
         width: '100%'
       },
       image: {
+        display: 'block',
         maxWidth: '100%'
       },
       overlay: {
