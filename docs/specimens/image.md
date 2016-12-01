@@ -172,7 +172,7 @@ By using a plain background and no title you can place a simple image.
 ```image
 plain: true
 src: "docs/assets/image_bw.jpg"
-description: _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
+description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
 ```
 
 
@@ -181,6 +181,7 @@ description: _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgV
 ```image
 plain: true
 src: "docs/assets/image_bw.jpg"
+description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
 ```
 ````
 
