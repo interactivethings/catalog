@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
-import Radium from 'radium';
+import Radium, {Style} from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import renderMarkdown from '../utils/renderMarkdown';
 
@@ -12,14 +12,17 @@ class Image extends React.Component {
 
     const styles = {
       container: {
-        boxSizing: 'border-box',
-        padding: '20px',
         position: 'relative',
-        background: `url(${theme.checkerboardPatternLight})`,
-        color: theme.textColor,
         width: '100%'
       },
+      imageContainer: {
+        boxSizing: 'border-box',
+        padding: '20px',
+        background: `url(${theme.checkerboardPatternLight})`,
+        color: theme.textColor
+      },
       image: {
+        display: 'block',
         maxWidth: '100%'
       },
       overlay: {
@@ -32,26 +35,22 @@ class Image extends React.Component {
           opacity: 1
         }
       },
-      title: {
-        ...heading(theme, {level: 6}),
-        margin: 0
+      meta: {
+        margin: `20px 0 0 0`
       },
-      truncate: {
-        maxWidth: '100%',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden'
+      title: {
+        ...heading(theme, 0),
+        fontWeight: 700,
+        margin: `0 0 8px 0`
       },
       description: {
-        ...text(theme, {level: 2}),
-        marginTop: 5
+        ...text(theme, -1)
       },
       light: {
         background: `url(${theme.checkerboardPatternLight})`
       },
       dark: {
-        background: `url(${theme.checkerboardPatternDark})`,
-        color: '#fff'
+        background: `url(${theme.checkerboardPatternDark})`
       },
       plain: {
         background: 'transparent',
@@ -59,11 +58,11 @@ class Image extends React.Component {
       },
       plain_light: {
         background: theme.bgLight,
-        padding: `${theme.sizeL / 2}px`
+        padding: '20px'
       },
       plain_dark: {
         background: theme.bgDark,
-        padding: `${theme.sizeL / 2}px`
+        padding: '20px'
       }
     };
 
@@ -80,12 +79,26 @@ class Image extends React.Component {
     const fallbackOverlay = overlay ? overlay.split(' ')[0] : undefined;
 
     return (
-        <div style={{...styles.container, ...backgroundStyle}}>
+      <div style={styles.container}>
+        <div style={{...styles.imageContainer, ...backgroundStyle}}>
+          <Style
+            scopeSelector='.cg-ImageSpecimenDescription >'
+            rules={{
+              ':first-child': {
+                marginTop: 0
+              },
+              ':last-child': {
+                marginBottom: 0
+              }
+            }}/>
           <img style={styles.image} srcSet={src} src={fallbackSrc}/>
           {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} src={fallbackOverlay} />}
-          {title && <div style={styles.title}>{title}</div>}
-          {description && <div style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderMarkdown({text: description})}</div>}
         </div>
+        {(title || description) && <div style={styles.meta}>
+          {title && <div style={styles.title}>{title}</div>}
+          {description && <div className='cg-ImageSpecimenDescription' style={styles.description}>{renderMarkdown({text: description})}</div>}
+        </div>}
+      </div>
     );
   }
 }
