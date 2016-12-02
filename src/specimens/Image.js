@@ -12,12 +12,14 @@ class Image extends React.Component {
 
     const styles = {
       container: {
+        position: 'relative',
+        width: '100%'
+      },
+      imageContainer: {
         boxSizing: 'border-box',
         padding: '20px',
-        position: 'relative',
         background: `url(${theme.checkerboardPatternLight})`,
-        color: theme.textColor,
-        width: '100%'
+        color: theme.textColor
       },
       image: {
         display: 'block',
@@ -33,14 +35,16 @@ class Image extends React.Component {
           opacity: 1
         }
       },
+      meta: {
+        margin: `20px 0 0 0`
+      },
       title: {
         ...heading(theme, 0),
         fontWeight: 700,
-        margin: `20px 0 0 0`
+        margin: `0 0 8px 0`
       },
       description: {
-        ...text(theme, -1),
-        margin: `20px 0 0 0`
+        ...text(theme, -1)
       },
       light: {
         background: `url(${theme.checkerboardPatternLight})`
@@ -75,7 +79,8 @@ class Image extends React.Component {
     const fallbackOverlay = overlay ? overlay.split(' ')[0] : undefined;
 
     return (
-        <div style={{...styles.container, ...backgroundStyle}}>
+      <div style={styles.container}>
+        <div style={{...styles.imageContainer, ...backgroundStyle}}>
           <Style
             scopeSelector='.cg-ImageSpecimenDescription >'
             rules={{
@@ -88,9 +93,12 @@ class Image extends React.Component {
             }}/>
           <img style={styles.image} srcSet={src} src={fallbackSrc}/>
           {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} src={fallbackOverlay} />}
-          {title && <div style={{...styles.title, ...(options.dark ? {color: '#fff'} : null)}}>{title}</div>}
-          {description && <div className='cg-ImageSpecimenDescription' style={{...styles.description, ...(options.dark ? {color: '#fff'} : null)}}>{renderMarkdown({text: description})}</div>}
         </div>
+        {(title || description) && <div style={styles.meta}>
+          {title && <div style={styles.title}>{title}</div>}
+          {description && <div className='cg-ImageSpecimenDescription' style={styles.description}>{renderMarkdown({text: description})}</div>}
+        </div>}
+      </div>
     );
   }
 }
