@@ -204,5 +204,21 @@ overlay: "docs/assets/catalog_logo-overlay.png"
 
 
 
+```image
+plain: true
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
+```
+
+````code
+```image
+plain: true
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
+```
+````
+
+
+
 
 

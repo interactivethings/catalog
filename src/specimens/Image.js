@@ -26,11 +26,13 @@ class Image extends React.Component {
         maxWidth: '100%'
       },
       overlay: {
+        boxSizing: 'border-box',
         opacity: 0,
-        maxWidth: '100%',
+        width: '100%',
         position: 'absolute',
-        top: '20px',
-        left: '20px',
+        padding: 20,
+        top: 0,
+        left: 0,
         ':hover': {
           opacity: 1
         }
@@ -92,7 +94,9 @@ class Image extends React.Component {
               }
             }}/>
           <img style={styles.image} srcSet={src} src={fallbackSrc}/>
-          {overlay && <img style={{...styles.overlay, ...(options.plain ? {top: 0, left: 0, maxWidth: '100%'} : null)}} srcSet={overlay} src={fallbackOverlay} />}
+          {overlay && <div style={{...styles.overlay, ...(options.plain && !options.light && !options.dark ? {padding: 0} : null)}}>
+            <img style={styles.image} srcSet={overlay} src={fallbackOverlay} />
+          </div>}
         </div>
         {(title || description) && <div style={styles.meta}>
           {title && <div style={styles.title}>{title}</div>}
