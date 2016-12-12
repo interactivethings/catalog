@@ -42,6 +42,7 @@ class Image extends React.Component {
       },
       title: {
         ...heading(theme, 0),
+        color: theme.textColor,
         fontWeight: 700,
         margin: `0 0 8px 0`
       },
