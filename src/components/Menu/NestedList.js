@@ -10,14 +10,13 @@ const NestedList = React.createClass({
   propTypes: {
     pages: pagesShape.isRequired,
     title: PropTypes.string.isRequired,
-    theme: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    theme: PropTypes.object.isRequired
   },
   contextTypes: {
     router: PropTypes.object.isRequired
   },
   render() {
-    const {theme, pages, title, history} = this.props;
+    const {theme, pages, title} = this.props;
     const collapsed = !pages
       .map((d) => d.path && this.context.router.isActive(d.path))
       .filter(Boolean)
@@ -38,7 +37,7 @@ const NestedList = React.createClass({
         </Link>
         { !collapsed &&
           <ul style={{...currentStyle.list, ...currentStyle.listNested, padding: 0}}>
-            { pages.map(page => <ListItem history={history} key={page.id} page={page} nested theme={theme} />) }
+            { pages.map(page => <ListItem key={page.id} page={page} nested theme={theme} />) }
           </ul>
         }
       </div>

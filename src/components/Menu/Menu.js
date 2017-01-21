@@ -70,7 +70,7 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const {theme, pageTree, logoSrc, title, history, basePath} = this.props;
+    const {theme, pageTree, logoSrc, title, basePath} = this.props;
 
     const currentStyle = style(theme);
 
@@ -87,7 +87,7 @@ class Menu extends React.Component {
             </h1>
           </Link>
           <ul style={currentStyle.list}>
-            { pageTree.filter((page) => !page.hideFromMenu).map((page) => <ListItem key={page.id} page={page} theme={theme} history={history} />) }
+            { pageTree.filter((page) => !page.hideFromMenu).map((page) => <ListItem key={page.id} page={page} theme={theme} />) }
           </ul>
         </div>
         <div style={currentStyle.info}>
@@ -102,7 +102,6 @@ Menu.propTypes = {
   pageTree: pagesShape.isRequired,
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
-  history: PropTypes.object.isRequired,
   basePath: PropTypes.string,
   title: PropTypes.string
 };
