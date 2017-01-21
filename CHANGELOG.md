@@ -7,6 +7,7 @@
 - Replaced tape with Jest tests ([#212](https://github.com/interactivethings/catalog/pull/212))
 - Make Catalog work in IE11 ([#252](https://github.com/interactivethings/catalog/pull/252))
 - Improve styling of the Image Specimen ([#256](https://github.com/interactivethings/catalog/pull/256))
+- Add [yarn](https://yarnpkg.com) ([#263](https://github.com/interactivethings/catalog/pull/263))
 
 ## 2.4.7
 
