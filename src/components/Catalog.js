@@ -1,12 +1,9 @@
 import React, {Component, PropTypes} from 'react';
-import {Router, useRouterHistory, applyRouterMiddleware, browserHistory} from 'react-router';
-import {createHashHistory} from 'history';
+import {Router, applyRouterMiddleware, browserHistory, hashHistory} from 'react-router';
 import {useScroll} from 'react-router-scroll';
 import seqKey from '../utils/seqKey';
 
 import configureRoutes from '../configureRoutes';
-
-const hashHistory = useRouterHistory(createHashHistory)({queryKey: false});
 
 export default class Catalog extends Component {
   constructor() {
