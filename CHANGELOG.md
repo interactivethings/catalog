@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.5.1
+
+- Responsive mode layout fix ([#264](https://github.com/interactivethings/catalog/pull/264))
+
 ## 2.5.0
 
 - Add responsive mode for HTML and React Specimens ([#121](https://github.com/interactivethings/catalog/pull/121))
