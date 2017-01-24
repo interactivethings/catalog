@@ -91,7 +91,7 @@ const getStyles = (theme, sidebarVisible) => ({
     flexDirection: 'column',
     position: 'relative',
     '@media (min-width: 1000px)': {
-      marginLeft: SIDEBAR_WIDTH
+      paddingLeft: SIDEBAR_WIDTH
     }
   }
 });

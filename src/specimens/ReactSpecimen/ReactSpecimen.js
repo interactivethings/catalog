@@ -93,7 +93,7 @@ class ReactSpecimen extends Component {
   }
 
   updateParentWidth() {
-    const nextParentWidth = this.refs.specimen.getBoundingClientRect().width - 30;
+    const nextParentWidth = this.specimen.getBoundingClientRect().width - 30;
     if (nextParentWidth !== this.state.parentWidth) {
       this.setState({parentWidth: nextParentWidth});
     }
@@ -146,17 +146,19 @@ class ReactSpecimen extends Component {
     if (error) return error;
 
     return (
-      <section style={styles.container} ref='specimen'>
-        {activeScreenSize &&
+      <section style={styles.container} ref={el => {this.specimen = el;}}>
+        {parentWidth && activeScreenSize &&
           <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
-        <div style={{...styles.content, ...exampleStyles}}>
-          {frame || activeScreenSize
-            ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
-                {element}
-              </Frame>
-            : element }
-        </div>
+        {parentWidth &&
+          <div style={{...styles.content, ...exampleStyles}}>
+            {frame || activeScreenSize
+              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
+                  {element}
+                </Frame>
+              : element }
+          </div>
+        }
         {!noSource && <HighlightedCode language='jsx' code={code} theme={theme} />}
       </section>
     );
