@@ -1,0 +1,224 @@
+> Images can be used as graphical elements, to document implemtation details with static images or behavioral aspects when animated gifs are used.
+
+### Props
+
+- `src: string` image to display (gets scaled if it extends the container) 
+- `overlay: string` image for mouseover, useful to describe proportions
+- `title: string` the title 
+- `description: string` Markdown-formatted text description
+- `light: boolean` a light checkered background (default)
+- `dark: boolean` a dark checkered background
+- `plain: boolean` a transparent background without any padding.
+- `span: number[1–6]` width of the specimen
+
+```hint|directive
+The `src` and `overlay` keys accept the `srcSet` notation, which allows the usage of responsive images.
+```
+
+### Examples
+
+#### Styles
+
+```image
+light: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+
+````code|span-3
+```image
+light: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+````
+
+```image
+dark: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+
+````code|span-3
+```image
+dark: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+````
+
+```image
+plain: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+
+````code|span-3
+```image
+plain: true
+span: 2
+src: "docs/assets/catalog_logo.png"
+```
+````
+
+```image
+light: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+
+````code|span-3
+```image
+light: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+````
+
+```image
+dark: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+
+````code|span-3
+```image
+dark: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+````
+
+#### Title and description
+
+```image
+span: 3
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+
+````code|span-3
+```image
+span: 3
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+````
+
+```image
+span: 3
+dark: true
+src: "docs/assets/catalog_logo--white.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+
+````code|span-3
+```image
+span: 3
+dark: true
+src: "docs/assets/catalog_logo--white.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+````
+
+```image
+span: 3
+plain: true
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+
+````code|span-3
+```image
+span: 3
+plain: true
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+````
+
+#### Hero image
+
+By using a plain background and no title you can place a simple image.
+
+```image
+plain: true
+src: "docs/assets/image_bw.jpg"
+description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
+```
+
+
+
+````code
+```image
+plain: true
+src: "docs/assets/image_bw.jpg"
+description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
+```
+````
+
+
+#### Overlay image
+
+The overlay image is useful to document layout measurements for implementation.
+
+```image
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
+```
+
+````code
+```image
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
+```
+````
+
+
+
+```image
+plain: true
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
+```
+
+````code
+```image
+plain: true
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
+```
+````
+
+
+
+
+
