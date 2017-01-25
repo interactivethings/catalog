@@ -169,10 +169,10 @@ class Html extends React.Component {
     return (
       <div style={styles.container} className='cg-Specimen-Html' ref={el => {this.specimen = el;}}>
         {toggle}
-        {parentWidth && activeScreenSize &&
+        {options.responsive && parentWidth && activeScreenSize &&
           <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
-        {parentWidth &&
+        {(!options.responsive || parentWidth) &&
           <div style={{...styles.content, ...exampleStyles}}>
             {frame || activeScreenSize
               ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
