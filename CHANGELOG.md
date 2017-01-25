@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.5.2
+
+- Fix non-responsive specimens not showing any content ([f6dd53d](https://github.com/interactivethings/catalog/commit/f6dd53d3e25cf2aefb4241d365752efee6a445b6))
+
 ## 2.5.1
 
 - Responsive mode layout fix ([#264](https://github.com/interactivethings/catalog/pull/264))
