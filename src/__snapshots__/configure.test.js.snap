@@ -184,7 +184,7 @@ Object {
           "title": "Bar",
         },
       ],
-      "path": "/",
+      "path": null,
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
