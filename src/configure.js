@@ -66,7 +66,7 @@ export default (config) => {
         ...page,
         id: ++pageId,
         // Currently, catalog can't be nested inside other page routes, it messes up <Link> matching. Use `basePath`
-        path: parsePath(page.path || page.name, {basePath}).pathname,
+        path: page.pages ? null : parsePath(page.path || page.name, {basePath}).pathname,
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),
         scripts: Array.from(new Set([...configScripts, ...pageScripts])),
