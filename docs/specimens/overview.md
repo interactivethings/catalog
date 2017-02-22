@@ -89,6 +89,28 @@ span: 2
 ```
 ````
 
+### Specimen Imports
+
+Imports are useful if you want to generate content for specimens or when you use the [React Specimen](/specimens/react).
+
+Use the `!import` keyword for your props to reference any [imports that you have configured](/configuration#imports) or use anything you import directly in your React Specimens.
+
+````code
+span: 3
+---
+```color-palette
+colors: !import myBeautifulColors
+```
+````
+
+````code
+span: 3
+---
+```react
+<MyImportedComponent />
+```
+````
+
 ### Extras
 
 #### The Option String

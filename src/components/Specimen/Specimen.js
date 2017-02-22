@@ -14,7 +14,7 @@ export default function Specimen(mapBodyToProps, mapOptionsToProps, options = {}
     const SpecimenContainer = (props, {catalog}) => {
       const {rawOptions, rawBody} = props;
       const optionProps = parseOptions(rawOptions);
-      const bodyProps = parseBody(rawBody);
+      const bodyProps = parseBody(rawBody, catalog.page.imports);
       const span = props.span || bodyProps.span || optionProps.span;
 
       return (

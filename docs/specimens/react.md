@@ -10,6 +10,10 @@
 - `plain: boolean` a transparent background without any padding
 - `span: number[1–6]` width of the specimen
 
+```hint|directive
+To make your app's components available to the React Specimen, [import them in your configuration](/configuration#imports)
+```
+
 ### Plain
 
 Just write JSX code in the specimen content.

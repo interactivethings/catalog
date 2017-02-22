@@ -13,11 +13,15 @@ test('Default YAML body', () => {
 });
 
 test('Mapped raw YAML body', () => {
-  expect(parseSpecimenYamlBody((_, raw) => raw)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), 'foo: bar\nbaz: 12.3\nnothing: null\nreally: true');
+  expect(parseSpecimenYamlBody((_, raw) => raw)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true')).toBe('foo: bar\nbaz: 12.3\nnothing: null\nreally: true');
 });
 
 test('Mapped YAML body', () => {
-  expect(parseSpecimenYamlBody((props) => props.foo)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true'), 'bar');
+  expect(parseSpecimenYamlBody((props) => props.foo)('foo: bar\nbaz: 12.3\nnothing: null\nreally: true')).toBe('bar');
+});
+
+test('YAML body with imports', () => {
+  expect(parseSpecimenYamlBody()('foo: !import bar', {bar: 'bar'})).toEqual({foo: 'bar'});
 });
 
 test('body with props and children', () => {
@@ -50,4 +54,8 @@ test('body with trailing separator', () => {
 
 test('body with children but valid yaml', () => {
   expect(parseSpecimenBody()('foo: true')).toEqual({children: 'foo: true'});
+});
+
+test('body with imports in props', () => {
+  expect(parseSpecimenBody()('foo: !import bar\n---\nbaz', {bar: 'bar'})).toEqual({foo: 'bar', children: 'baz'});
 });

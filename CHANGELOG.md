@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Upgrade dependencies ([#267](https://github.com/interactivethings/catalog/pull/267))
+- Enable imports in all Specimens ([#154](https://github.com/interactivethings/catalog/pull/154))
 
 ## 2.5.3
 
