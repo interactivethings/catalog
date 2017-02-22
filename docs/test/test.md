@@ -120,7 +120,19 @@ Ordered lists work too:
 
 A very basic button.
 
+```html
+<a class="button" href="#">Button</a>
 ```
+
+### `.button` in a frame
+
+```html|frame
+<a class="button" href="#">Button</a>
+```
+
+### responsive `.button`
+
+```html|responsive
 <a class="button" href="#">Button</a>
 ```
 
@@ -128,7 +140,7 @@ A very basic button.
 
 This button can't be clicked. If you do something against clicking it, that is.
 
-```
+```html
 <a class="button button--disabled" href="#">Disabled</a>
 ```
 

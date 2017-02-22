@@ -77,8 +77,7 @@ class ListItem extends React.Component {
 ListItem.propTypes = {
   page: pageShape.isRequired,
   theme: PropTypes.object.isRequired,
-  nested: PropTypes.bool,
-  history: PropTypes.object.isRequired
+  nested: PropTypes.bool
 };
 
 export default ListItem;

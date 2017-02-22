@@ -45,5 +45,8 @@ export default {
   globals: {
     'babel-standalone': 'Babel'
   },
+  external: [
+    'babel-standalone'
+  ],
   banner: '/*! Catalog ' + version + ' http://interactivethings.github.io/catalog/ */'
 };

@@ -1,4 +1,6 @@
-exports[`test Configuration with default theme and specimens 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Configuration with default theme and specimens 1`] = `
 Object {
   "__catalogConfig": true,
   "basePath": "/",
@@ -51,6 +53,28 @@ Object {
       "title": "Page Not Found",
     },
   ],
+  "responsiveSizes": Array [
+    Object {
+      "height": 640,
+      "name": "small",
+      "width": 360,
+    },
+    Object {
+      "height": 768,
+      "name": "medium",
+      "width": 1024,
+    },
+    Object {
+      "height": 900,
+      "name": "large",
+      "width": 1440,
+    },
+    Object {
+      "height": 1080,
+      "name": "xlarge",
+      "width": 1920,
+    },
+  ],
   "specimens": Object {
     "audio": [Function],
     "code": [Function],
@@ -97,11 +121,11 @@ Object {
         "color": "#FF5555",
       },
     },
-    "fontFamily": "\'Roboto\', sans-serif",
-    "fontHeading": "\'Roboto\', sans-serif",
+    "fontFamily": "'Roboto', sans-serif",
+    "fontHeading": "'Roboto', sans-serif",
     "fontL": 21,
     "fontM": 16,
-    "fontMono": "\'Source Code Pro\', monospace",
+    "fontMono": "'Source Code Pro', monospace",
     "fontS": 14,
     "fontXl": 28,
     "fontXs": 12,
@@ -130,7 +154,7 @@ Object {
 }
 `;
 
-exports[`test Configuration with nested pages 1`] = `
+exports[`Configuration with nested pages 1`] = `
 Object {
   "__catalogConfig": true,
   "basePath": "/",
@@ -162,7 +186,7 @@ Object {
           "title": "Bar",
         },
       ],
-      "path": "/",
+      "path": null,
       "scripts": Array [],
       "styles": Array [],
       "superTitle": "Catalog",
@@ -217,6 +241,28 @@ Object {
       "title": "Page Not Found",
     },
   ],
+  "responsiveSizes": Array [
+    Object {
+      "height": 640,
+      "name": "small",
+      "width": 360,
+    },
+    Object {
+      "height": 768,
+      "name": "medium",
+      "width": 1024,
+    },
+    Object {
+      "height": 900,
+      "name": "large",
+      "width": 1440,
+    },
+    Object {
+      "height": 1080,
+      "name": "xlarge",
+      "width": 1920,
+    },
+  ],
   "specimens": Object {
     "audio": [Function],
     "code": [Function],
@@ -263,11 +309,11 @@ Object {
         "color": "#FF5555",
       },
     },
-    "fontFamily": "\'Roboto\', sans-serif",
-    "fontHeading": "\'Roboto\', sans-serif",
+    "fontFamily": "'Roboto', sans-serif",
+    "fontHeading": "'Roboto', sans-serif",
     "fontL": 21,
     "fontM": 16,
-    "fontMono": "\'Source Code Pro\', monospace",
+    "fontMono": "'Source Code Pro', monospace",
     "fontS": 14,
     "fontXl": 28,
     "fontXs": 12,

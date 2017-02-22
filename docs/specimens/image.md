@@ -17,23 +17,171 @@ The `src` and `overlay` keys accept the `srcSet` notation, which allows the usag
 
 ### Examples
 
+#### Styles
+
+```image
+light: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+
+````code|span-3
+```image
+light: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+````
+
+```image
+dark: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+
+````code|span-3
+```image
+dark: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+````
+
+```image
+plain: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+
+````code|span-3
+```image
+plain: true
+span: 2
+src: "docs/assets/catalog_logo.png"
+```
+````
+
+```image
+light: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+
+````code|span-3
+```image
+light: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo.png"
+```
+````
+
+```image
+dark: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+
+````code|span-3
+```image
+dark: true
+plain: true
+span: 3
+src: "docs/assets/catalog_logo--white.png"
+```
+````
+
+#### Title and description
+
+```image
+span: 3
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+
+````code|span-3
+```image
+span: 3
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+````
+
+```image
+span: 3
+dark: true
+src: "docs/assets/catalog_logo--white.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+
+````code|span-3
+```image
+span: 3
+dark: true
+src: "docs/assets/catalog_logo--white.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+````
+
+```image
+span: 3
+plain: true
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+
+````code|span-3
+```image
+span: 3
+plain: true
+src: "docs/assets/catalog_logo.png"
+title: "Catalog Logo"
+description: |
+  The quick brown fox
+  jumps over
+  multiple lines
+```
+````
+
 #### Hero image
 
 By using a plain background and no title you can place a simple image.
 
-```image|plain
-{
-    "src": "docs/assets/image_bw.jpg"
-}
+```image
+plain: true
+src: "docs/assets/image_bw.jpg"
+description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
 ```
 
-_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 
-````code|lang-javascript
-```image|plain
-{
-    "src": "docs/assets/image_bw.jpg"
-}
+
+````code
+```image
+plain: true
+src: "docs/assets/image_bw.jpg"
+description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
 ```
 ````
 
@@ -43,69 +191,34 @@ _Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._
 The overlay image is useful to document layout measurements for implementation.
 
 ```image
-{   
-    "src": "docs/assets/catalog_logo.png",
-    "overlay": "docs/assets/catalog_logo-overlay.png"
-}
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
 ```
 
-````code|lang-javascript
+````code
 ```image
-{   
-    "src": "docs/assets/catalog_logo.png",
-    "overlay": "docs/assets/catalog_logo-overlay.png"
-}
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
 ```
 ````
 
 
 
-#### Image with details
-
-By adding attributes it is possible to specify implementation details.
-
-```image|dark
-{
-    "src": "docs/assets/catalog_logo.png",
-    "description": "alt text: catalog logo, add .2s fade in animation",
-    "title": "Catalog Logo"
-}
+```image
+plain: true
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
 ```
 
-````code|lang-javascript
-```image|dark
-{
-    "src": "docs/assets/catalog_logo.png",
-    "description": "alt text: catalog logo, add .2s fade in animation",
-    "title": "Catalog Logo"
-}
+````code
+```image
+plain: true
+src: "docs/assets/catalog_logo.png"
+overlay: "docs/assets/catalog_logo-overlay.png"
 ```
 ````
 
-#### Multiple images
 
-```image|span-5
-{
-    "src": "docs/assets/catalog_logo.png",
-}
-```
 
-```image|span-1
-{
-    "src": "docs/assets/catalog_logo.png",
-}
-```
 
-````code|lang-javascript
-```image|span-5
-{
-    "src": "docs/assets/catalog_logo.png",
-}
-```
 
-```image|span-1
-{
-    "src": "docs/assets/catalog_logo.png",
-}
-```
-````

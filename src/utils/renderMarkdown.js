@@ -2,7 +2,7 @@ import marked from './react-markdown';
 
 let MARKDOWN_CONFIG = {
   gfm: true,
-  breaks: false,
+  breaks: true,
   sanitize: false,
   smartLists: true,
   smartypants: true

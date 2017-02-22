@@ -18,7 +18,6 @@ test('Configuration with nested pages', () => {
     title: 'Catalog',
     pages: [
       {
-        path: '/',
         title: 'Overview',
         pages: [
           {

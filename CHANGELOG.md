@@ -1,5 +1,30 @@
 # Change Log
 
+## [Unreleased]
+
+- Upgrade dependencies ([#267](https://github.com/interactivethings/catalog/pull/267))
+
+## 2.5.3
+
+- Fix regression in 2.5.0 where the configuration would blow up if the `path` property was missing on page groups. ([#266](https://github.com/interactivethings/catalog/pull/266))
+
+## 2.5.2
+
+- Fix non-responsive specimens not showing any content ([f6dd53d](https://github.com/interactivethings/catalog/commit/f6dd53d3e25cf2aefb4241d365752efee6a445b6))
+
+## 2.5.1
+
+- Responsive mode layout fix ([#264](https://github.com/interactivethings/catalog/pull/264))
+
+## 2.5.0
+
+- Add responsive mode for HTML and React Specimens ([#121](https://github.com/interactivethings/catalog/pull/121))
+- Add internal links, and links to page sections ([#165](https://github.com/interactivethings/catalog/pull/165))
+- Replaced tape with Jest tests ([#212](https://github.com/interactivethings/catalog/pull/212))
+- Make Catalog work in IE11 ([#252](https://github.com/interactivethings/catalog/pull/252))
+- Improve styling of the Image Specimen ([#256](https://github.com/interactivethings/catalog/pull/256))
+- Add [yarn](https://yarnpkg.com) ([#263](https://github.com/interactivethings/catalog/pull/263))
+
 ## 2.4.7
 
 - Updated some dependencies:

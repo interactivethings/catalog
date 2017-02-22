@@ -1,6 +1,6 @@
 import warning from './utils/warning';
 import {parsePath, addLeadingSlash} from './utils/path';
-import DefaultTheme from './DefaultTheme';
+import {DefaultTheme, DefaultResponsiveSizes} from './DefaultTheme';
 import specimens from './specimens';
 import requireModuleDefault from './utils/requireModuleDefault';
 import NotFound from './components/Page/NotFound';
@@ -66,7 +66,7 @@ export default (config) => {
         ...page,
         id: ++pageId,
         // Currently, catalog can't be nested inside other page routes, it messes up <Link> matching. Use `basePath`
-        path: parsePath(page.path || page.name, {basePath}).pathname,
+        path: page.pages ? null : parsePath(page.path || page.name, {basePath}).pathname,
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,
         styles: Array.from(new Set([...configStyles, ...pageStyles])),
         scripts: Array.from(new Set([...configScripts, ...pageScripts])),
@@ -94,6 +94,7 @@ export default (config) => {
     // Used to check in configureRoutes() if input is already configured
     __catalogConfig: true,
     theme: {...DefaultTheme, ...config.theme},
+    responsiveSizes: config.responsiveSizes || DefaultResponsiveSizes,
     specimens: {...specimens, ...config.specimens},
     basePath,
     pages,

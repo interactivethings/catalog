@@ -1,5 +1,19 @@
 import React, {Component, PropTypes} from 'react';
+import {catalogShape} from '../../CatalogPropTypes';
 import FrameComponent from './FrameComponent';
+
+const frameStyle = {
+  width: '100%',
+  height: '100%',
+  lineHeight: 0,
+  margin: 0,
+  padding: 0,
+  border: 'none'
+};
+
+const renderStyles = (styles) => {
+  return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
+};
 
 export default class Frame extends Component {
   constructor() {
@@ -8,36 +22,41 @@ export default class Frame extends Component {
   }
 
   render() {
-    const {children} = this.props;
-    const height = this.props.height || this.state.height;
-    const autoHeight = this.props.height === void 0;
-
-    const style = {
-      width: '100%',
-      lineHeight: 0,
-      margin: 0,
-      padding: 0,
-      border: 'none',
-      height
-    };
+    const {children, width, parentWidth} = this.props;
+    const {catalog: {page: {styles}}} = this.context;
+    const height = this.state.height || this.props.height;
+    const autoHeight = !this.props.height;
+    const scale = Math.min(1, parentWidth / width);
+    const scaledHeight = autoHeight ? height : height * scale;
 
     return (
-      <div style={{lineHeight: 0}}>
-        <FrameComponent
-          style={style}
-          frameBorder='0'
-          allowTransparency='true'
-          scrolling='no'
-          head={<style>{'html,body{margin:0;padding:0;}'}</style>}
-          onRender={autoHeight ? (content) => {
-            const contentHeight = content.offsetHeight;
-            if (contentHeight !== height) {
-              this.setState({height: contentHeight});
-            }
-          } : null}
-        >
-          {children}
-        </FrameComponent>
+      <div style={{lineHeight: 0, width: parentWidth, height: scaledHeight}}>
+        <div style={{
+          width: width,
+          height: height,
+          transformOrigin: '0% 0%',
+          transform: `scale( ${scale} )`,
+          overflow: 'hidden'
+        }}>
+          <FrameComponent
+            style={frameStyle}
+            frameBorder='0'
+            allowTransparency='true'
+            scrolling='no'
+            head={[
+              <style key='stylereset'>{'html,body{margin:0;padding:0}'}</style>,
+              ...renderStyles(styles)
+            ]}
+            onRender={autoHeight ? (content) => {
+              const contentHeight = content.offsetHeight;
+              if (contentHeight !== height) {
+                this.setState({height: contentHeight});
+              }
+            } : ()=>null}
+          >
+            {children}
+          </FrameComponent>
+        </div>
       </div>
     );
   }
@@ -45,5 +64,11 @@ export default class Frame extends Component {
 
 Frame.propTypes = {
   children: PropTypes.element,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  parentWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};
+
+Frame.contextTypes = {
+  catalog: catalogShape.isRequired
 };

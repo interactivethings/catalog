@@ -89,7 +89,7 @@ class Type extends React.Component {
             <div style={{...styles.title, ...fontColor}}>h{i + 1} ({heading + isPixel})</div>
             <div style={{...styles.heading, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${heading + isPixel} ${fontFamily}`}}>{headlineText}</div>
           </div>
-          );
+        );
       })
       : null;
 
@@ -107,7 +107,7 @@ class Type extends React.Component {
               {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
             </div>
           </div>
-          );
+        );
       })
       : null;
 
@@ -120,7 +120,7 @@ class Type extends React.Component {
             {description}
           </div>
         </section>
-      );
+    );
   }
 }
 

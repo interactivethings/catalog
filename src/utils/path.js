@@ -4,7 +4,7 @@ export const addLeadingSlash = (path) => path.charAt(0) === '/' ? path : '/' + p
 const stripBasePath = (path, basePath) => basePath !== '/' && path.indexOf(basePath) === 0 ? path.substr(basePath.length) : path;
 
 export const parsePath = (path, options) => {
-  let pathname = stripBasePath(path, options.basePath);
+  let pathname = path;
   let hash = '';
   let anchor = null;
 
@@ -21,7 +21,8 @@ export const parsePath = (path, options) => {
   }
 
   // join basePath
-  pathname = addLeadingSlash(stripTrailingSlashes(removeMultiSlashes(options.basePath + '/' + pathname)));
+  pathname = addLeadingSlash(stripTrailingSlashes(removeMultiSlashes(options.basePath + '/' + stripBasePath(pathname, options.basePath))));
+
 
   return options.useBrowserHistory
     ? {pathname, hash: hash === '#' ? '' : hash}

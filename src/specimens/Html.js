@@ -2,9 +2,12 @@ import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
+import Hint from '../specimens/Hint';
 import Specimen from '../components/Specimen/Specimen';
 import HighlightedCode from '../components/HighlightedCode/HighlightedCode';
+import ResponsiveTabs from '../components/ResponsiveTabs/ResponsiveTabs';
 import runscript from '../utils/runscript';
+import validateSizes from '../utils/validateSizes';
 
 const PADDING = 3;
 const SIZE = 20;
@@ -16,7 +19,9 @@ function getStyle(theme) {
       borderRadius: '2px',
       boxSizing: 'border-box',
       position: 'relative',
-      flexBasis: '100%'
+      flexBasis: '100%',
+      marginTop: '40px',
+      fontFamily: theme.fontFamily
     },
     toggle: {
       border: PADDING + 'px solid transparent',
@@ -69,40 +74,81 @@ function getStyle(theme) {
     plain_dark: {
       background: theme.bgDark,
       padding: '20px'
+    },
+    responsive: {
+      background: `url(${theme.checkerboardPatternLight})`,
+      boxSizing: 'border-box',
+      overflow: 'hidden',
+      padding: '15px',
+      textAlign: 'center'
     }
   };
 }
 
 class Html extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      viewSource: false
+      viewSource: false,
+      parentWidth: 0,
+      activeScreenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
     };
+    this.setSize = this.setSize.bind(this);
+    this.updateParentWidth = this.updateParentWidth.bind(this);
   }
 
   componentDidMount() {
     const {runScript} = this.props;
-    if (runScript) {
-      Array.from(this.refs.specimen.querySelectorAll('script'))
-        .forEach(runscript);
+    runScript && Array.from(this.specimen.querySelectorAll('script')).forEach(runscript);
+
+    if (this.state.activeScreenSize) {
+      window.addEventListener('resize', this.updateParentWidth);
+      setTimeout(this.updateParentWidth);
     }
   }
 
+  componentWillUnmount() {
+    if (this.state.activeScreenSize) {
+      window.removeEventListener('resize', this.updateParentWidth);
+    }
+  }
+
+  setElementState(nextState) {
+    if (typeof nextState === 'function') {
+      this.setState(({elementState}) => ({elementState: {...elementState, ...nextState(elementState)}}));
+    } else {
+      this.setState({elementState: {...this.state.elementState, ...nextState}});
+    }
+  }
+
+  updateParentWidth() {
+    const nextParentWidth = this.specimen.getBoundingClientRect().width - 30;
+    if (nextParentWidth !== this.state.parentWidth) {
+      this.setState({parentWidth: nextParentWidth});
+    }
+  }
+
+  setSize(activeScreenSize) {
+    this.setState({activeScreenSize: activeScreenSize});
+  }
+
   toggleSource() {
-    this.setState({viewSource: !this.state.viewSource});
+    this.setState(({viewSource}) => ({viewSource: !viewSource}));
   }
 
   render() {
-    const {catalog: {theme}, children, frame, ...options} = this.props;
-    const {viewSource} = this.state;
+    const {catalog: {theme, responsiveSizes}, children, frame, ...options} = this.props;
+    const {activeScreenSize, parentWidth, viewSource} = this.state;
     const styles = getStyle(theme);
+    const validSizes = validateSizes(options.responsive, responsiveSizes);
+
     const exampleStyles = {
       ...(options.plain ? styles.plain : null),
       ...(options.light ? styles.light : null),
       ...(options.dark ? styles.dark : null),
       ...(options.plain && options.light ? styles.plain_light : null),
-      ...(options.plain && options.dark ? styles.plain_dark : null)
+      ...(options.plain && options.dark ? styles.plain_dark : null),
+      ...(options.responsive ? styles.responsive : null)
     };
 
     const source = viewSource
@@ -113,14 +159,29 @@ class Html extends React.Component {
       ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
       : null;
 
-    const content = <div dangerouslySetInnerHTML={{__html: children}} />; // eslint-disable-line react/no-danger
+    // eslint-disable-next-line
+    const content = <div dangerouslySetInnerHTML={{__html: children}} />;
+
+    if (options.responsive && !validSizes) {
+      return <Hint warning>Please check that the responsive parameters match an existing entry.</Hint>;
+    }
 
     return (
-      <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
+      <div style={styles.container} className='cg-Specimen-Html' ref={el => {this.specimen = el;}}>
         {toggle}
-        <div style={{...styles.content, ...exampleStyles}}>
-          {frame ? <Frame>{content}</Frame> : content }
-        </div>
+        {options.responsive && parentWidth && activeScreenSize &&
+          <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
+        }
+        {(!options.responsive || parentWidth) &&
+          <div style={{...styles.content, ...exampleStyles}}>
+            {frame || activeScreenSize
+              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
+                  {content}
+                </Frame>
+              : content
+            }
+          </div>
+        }
         {source}
       </div>
     );
@@ -130,6 +191,7 @@ class Html extends React.Component {
 Html.propTypes = {
   children: PropTypes.string.isRequired,
   catalog: catalogShape.isRequired,
+  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   runScript: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
@@ -137,6 +199,5 @@ Html.propTypes = {
   noSource: PropTypes.bool,
   frame: PropTypes.bool
 };
-
 
 export default Specimen(undefined, undefined, {withChildren: true})(Radium(Html));
