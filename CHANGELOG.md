@@ -1,5 +1,9 @@
 # Change Log
 
+## [Unreleased]
+
+- Upgrade dependencies ([#267](https://github.com/interactivethings/catalog/pull/267))
+
 ## 2.5.3
 
 - Fix regression in 2.5.0 where the configuration would blow up if the `path` property was missing on page groups. ([#266](https://github.com/interactivethings/catalog/pull/266))
