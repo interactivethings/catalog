@@ -4,6 +4,10 @@ export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
 export {configureJSXRoutes as configureJSXRoutes} from './configureRoutes';
 
+// Page content loaders
+import * as Content from './content';
+export {Content};
+
 // Components
 export {default as Catalog} from './components/Catalog';
 export {default as Card} from './components/Card/Card';
