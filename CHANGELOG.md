@@ -6,6 +6,7 @@
 - Enable imports in all Specimens ([#154](https://github.com/interactivethings/catalog/pull/154))
 - Fix weird scale behaviour of the thumbnail in download specimen [#260](https://github.com/interactivethings/catalog/issues/260)
 - Create a new stacking context for the whole <Page> component [#223](https://github.com/interactivethings/catalog/issues/223)
+- Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
 
 ## 2.5.3
 
