@@ -1,5 +1,9 @@
-
+#!/usr/bin/env node
 process.env.NODE_ENV = 'development';
+
+const program = require('commander');
+program
+  .parse(process.argv);
 
 // Load environment constiables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment constiables
