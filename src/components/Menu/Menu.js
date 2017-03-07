@@ -16,7 +16,7 @@ export function style(theme) {
     h1: {
       boxSizing: 'border-box',
       margin: 0,
-      padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
+      padding: `${getFontSize(theme, 3)} ${getFontSize(theme, 5)}`,
       height: theme.pageHeadingHeight,
       display: 'flex',
       justifyContent: 'flex-end',
@@ -55,7 +55,7 @@ export function style(theme) {
     listNested: {
       borderTop: 'none',
       borderBottom: 'none',
-      padding: '0 0 15px 40px'
+      padding: `0 0 ${getFontSize(theme, 0)} ${getFontSize(theme, 5)}`
     },
     info: {
       ...text(theme, -1),

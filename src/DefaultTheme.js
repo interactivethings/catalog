@@ -39,12 +39,6 @@ export const DefaultTheme = {
   fontHeading: "'Roboto', sans-serif",
   fontMono: "'Source Code Pro', monospace",
 
-  sizeS:   8,
-  sizeM:   15,
-  sizeL:   21,
-  sizeXl:  28,
-  sizeXxl: 38,
-
   // Base font size in pixels.
   baseFontSize: 16,
 

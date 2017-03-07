@@ -21,18 +21,18 @@ function getStyles(theme) {
       }
     },
     leftNavLink: {
-      padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL}px`,
+      padding: `${getFontSize(theme, 3)} 0 ${getFontSize(theme, 3)} ${getFontSize(theme, 1)}`,
       textAlign: 'left',
       '@media (min-width: 1000px)': {
-        padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL * 2}px`
+        padding: `${getFontSize(theme, 3)} 0 ${getFontSize(theme, 3)} ${getFontSize(theme, 5)}`
       }
     },
     rightNavLink: {
-      padding: `${theme.sizeXl}px ${theme.sizeL}px ${theme.sizeXl}px 0`,
+      padding: `${getFontSize(theme, 3)} ${getFontSize(theme, 1)} ${getFontSize(theme, 3)} 0`,
       textAlign: 'right',
       borderLeft: `1px solid ${theme.background}`,
       '@media (min-width: 1000px)': {
-        padding: `${theme.sizeXl}px ${theme.sizeL * 2}px ${theme.sizeXl}px 0`
+        padding: `${getFontSize(theme, 3)} ${getFontSize(theme, 5)} ${getFontSize(theme, 3)} 0`
       }
     },
     link: {
