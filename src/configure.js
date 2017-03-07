@@ -1,6 +1,7 @@
 import warning from './utils/warning';
 import {parsePath, addLeadingSlash} from './utils/path';
-import {DefaultTheme, DefaultResponsiveSizes} from './DefaultTheme';
+import DefaultTheme from './DefaultTheme';
+import DefaultResponsiveSizes from './DefaultResponsiveSizes';
 import specimens from './specimens';
 import requireModuleDefault from './utils/requireModuleDefault';
 import NotFound from './components/Page/NotFound';
