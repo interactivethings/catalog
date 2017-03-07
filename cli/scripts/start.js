@@ -21,12 +21,10 @@ let isInteractive = process.stdout.isTTY;
 // FIXME proper detection
 const isCreateReactApp = false;
 
-console.log('hey');
-
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 4000;
 
-function runDevServer(compiler, host, port, protocol) {
+function runDevServer(compiler, config, host, port, protocol) {
   const devServer = new WebpackDevServer(compiler, {
     // Enable gzip compression of generated files.
     compress: true,
@@ -112,10 +110,13 @@ function runDevServer(compiler, host, port, protocol) {
 function run(port) {
   const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
   const host = process.env.HOST || 'localhost';
-  const compiler = webpack(getConfig());
-  runDevServer(compiler, host, port, protocol);
+  const config = getConfig();
+  const compiler = webpack(config);
+  runDevServer(compiler, config, host, port, protocol);
 }
 
 detect(DEFAULT_PORT).then(port => {
   run(port);
+}).catch(err => {
+  console.error('Something went wrong', err);
 });

@@ -36,7 +36,7 @@ module.exports = {
     // We ship a few polyfills by default:
     // require.resolve('./polyfills'),
     // Finally, this is your app's code:
-    paths.appIndexJs
+    paths.ownIndexJs
     // We include the app code last so that if there is a runtime error during
     // initialization, it doesn't blow up the WebpackDevServer client, and
     // changing JS code would still trigger a refresh.
@@ -190,7 +190,7 @@ module.exports = {
     // See https://github.com/facebookincubator/create-react-app/issues/186
     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
     new FriendlyErrorsWebpackPlugin(),
-    new webpack.NormalModuleReplacementPlugin(/^APPCONFIG$/, paths.appConfig)
+    new webpack.NormalModuleReplacementPlugin(/^\.\/catalog\.config\.js$/, paths.appConfig)
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
