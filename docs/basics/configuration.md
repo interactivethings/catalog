@@ -51,8 +51,7 @@ Catalog pages need at least three properties:
 
 - `path : String`: The path where the page is accessible
 - `title : String`: The title of the page (also shows up in the navigation)
-- `content : CatalogPageContent`: The content of the page. Catalog supports
-  multiple ways how to load the content. See below for examples.
+- `content : Function`: Function which returns the content of the page.
 
 Catalog also supports `src` and `component` as a different way to specify
 the page content. These properties are deprecated and support will be removed
@@ -73,24 +72,12 @@ lang: js
     {
       path: '/',
       title: 'Introduction',
-      content: Catalog.Content.fetchMarkdown('intro.md')
+      content: () => Catalog.fetchMarkdown('intro.md')
     },
     // Other pages …
   ]
 }
 ```
-
-##### CatalogPageContent
-
-The page content can be loaded in three different ways:
-
- - `Catalog.Content.fetchMarkdown(url: String)`. Loads the content from a Markdown file. This
-   file is fetched asynchronously when the user opens the page.
- - `Catalog.Content.reactComponent(type: ReactType)`: Instantiates a new React Element with
-   the given type. No props or children are passed to the component.
- - `Catalog.Content.reactElement(el: ReactElement)`: Uses the given React Element. You are free
-   to use any element. For visual consistency it is encouraged to use `Page` as the root. The `Page`
-   component injects the correct style (margins, paddings, typefaces for headings and paragraphs etc).
 
 ### Page Groups
 

@@ -5,17 +5,17 @@ import warning from './utils/warning';
 import requireModuleDefault from './utils/requireModuleDefault';
 import CatalogContext from './components/CatalogContext';
 import PageContent from './components/Page/PageContent';
-import {fetchMarkdown, reactComponent} from './content';
+import fetchMarkdown from './fetchMarkdown';
 
 const pageComponent = (page) => {
   if (page.content) {
-    return (props) => <PageContent {...props} contentPromiseFn={page.content} />;
+    return (props) => <PageContent {...props} contentPromiseFn={() => Promise.resolve(page.content())} />;
   }
   if (page.src) {
-    return (props) => <PageContent {...props} contentPromiseFn={fetchMarkdown(page.src)} />;
+    return (props) => <PageContent {...props} contentPromiseFn={() => fetchMarkdown(page.src)} />;
   }
   if (page.component) {
-    return (props) => <PageContent {...props} contentPromiseFn={reactComponent(requireModuleDefault(page.component))} />;
+    return (props) => <PageContent {...props} contentPromiseFn={() => Promise.resolve(requireModuleDefault(page.component))} />;
   }
 
   return () => (
