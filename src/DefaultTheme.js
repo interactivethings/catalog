@@ -45,17 +45,6 @@ export const DefaultTheme = {
   sizeXl:  28,
   sizeXxl: 38,
 
-
-  // The vertical grid unit. Margin, padding, and line-height are set to multiples
-  // of this value. This is the value that determines the baseline for our vertical
-  // rhythm. The default value of 6px allows more fine tuned designs that still
-  // obey vertical rhythm.
-  baseVerticalUnit: 4,
-
-  // The value that multiplies the baseVerticalUnit to get the baseLineHeight.
-  // This gives type an ideal lineHeight.
-  baseLineMulti: 10,
-
   // Base font size in pixels.
   baseFontSize: 16,
 

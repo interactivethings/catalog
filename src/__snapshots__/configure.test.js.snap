@@ -93,8 +93,6 @@ Object {
   "theme": Object {
     "background": "#F9F9F9",
     "baseFontSize": 16,
-    "baseLineMulti": 10,
-    "baseVerticalUnit": 4,
     "bgDark": "#333333",
     "bgLight": "#F2F2F2",
     "brandColor": "#003B5C",
@@ -275,8 +273,6 @@ Object {
   "theme": Object {
     "background": "#F9F9F9",
     "baseFontSize": 16,
-    "baseLineMulti": 10,
-    "baseVerticalUnit": 4,
     "bgDark": "#333333",
     "bgLight": "#F2F2F2",
     "brandColor": "#003B5C",
