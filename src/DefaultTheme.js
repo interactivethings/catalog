@@ -39,13 +39,6 @@ export const DefaultTheme = {
   fontHeading: "'Roboto', sans-serif",
   fontMono: "'Source Code Pro', monospace",
 
-  fontXs:  12,
-  fontS:   14,
-  fontM:   16,
-  fontL:   21,
-  fontXl:  28,
-  fontXxl: 38,
-
   sizeS:   8,
   sizeM:   15,
   sizeL:   21,

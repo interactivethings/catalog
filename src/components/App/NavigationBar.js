@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import Radium from 'radium';
+import {getFontSize} from '../../styles/typography';
 import {pageShape} from '../../CatalogPropTypes';
 import Link from '../Link/Link';
 
@@ -68,12 +69,12 @@ function getStyles(theme) {
       }
     },
     linkSuperTitle: {
-      fontSize: theme.fontM,
+      fontSize: getFontSize(theme, 0),
       margin: 0,
       fontWeight: 400
     },
     linkTitle: {
-      fontSize: theme.fontL,
+      fontSize: getFontSize(theme, 1),
       margin: 0,
       fontWeight: 400
     }
