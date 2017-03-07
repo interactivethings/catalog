@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- "6"
+cache: yarn
+
+# We don't have a 'test' script in package.json. We use make instead.
+script:
+- make test
+
+# A working Git+SSH setup is required by the deploy task. Configure Git and SSH
+# so that it can push to the GitHub repository.
+before_deploy:
+- git config user.name "Travis CI"
+- git config user.email "travis-ci@interactivethings.com"
+- eval `ssh-agent -s`
+- openssl aes-256-cbc -K ${…} -iv ${…} -in deploy-key.enc -d | ssh-add -
+
+deploy:
+  provider: script
+  script: make deploy
+  on:
+    tags: true
