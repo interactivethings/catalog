@@ -7,3 +7,5 @@ node_modules
 /babel*.js
 /*.log
 /lib
+/deploy-key.pub
+/deploy-key
