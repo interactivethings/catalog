@@ -282,6 +282,25 @@ Path to a logo image file which will be placed in the top-left corner.
 
 ### `theme`
 
-```hint|neutral
-TK: Theming
+Object which describes which colors, fonts and font sizes to use.
+
+```code
+…
+title: 'Catalog',
+theme: {
+  <theme configuration here…>
+}
+…
 ```
+
+#### `fontFamily` / `fontHeading` / `fontMono`
+
+The name (including any fallback fonts) of the font for copy text, headings and pre/code blocks.
+
+#### `baseFontSize` / `msRatio`
+
+The font size is derived from these two values. Default is 16px / 1.2. See [modularscale](http://www.modularscale.com/?16&px&1.2&web&text).
+
+#### Colors
+
+The [src/DefaultTheme.js](https://github.com/interactivethings/catalog/blob/master/src/DefaultTheme.js) file contains all colors which you can set.
