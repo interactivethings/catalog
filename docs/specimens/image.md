@@ -9,7 +9,7 @@
 - `light: boolean` a light checkered background (default)
 - `dark: boolean` a dark checkered background
 - `plain: boolean` a transparent background without any padding.
-- `doNotScale: boolean` Show image in original size instead of scaling down to 100%.
+- `scale: boolean` Scale the image down if it's wider than the container. Defaults to true.
 - `span: number[1–6]` width of the specimen
 
 ```hint|directive
@@ -185,22 +185,22 @@ description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYg
 ````
 
 
-#### Do Not Scale
+#### Scale option
 
-When you set `doNotScale` then the image will be shown in original size. If it overflows
+When you set `scale` to false then the image will be shown in original size. If it overflows
 horizontally, then a scrollbar will show up. Use this option if the original size of the
 image needs to be preserved (eg. because it contains measurements).
 
 ```image
 plain: true
-doNotScale: true
+scale: false
 src: "docs/assets/image_bw.jpg"
 ```
 
 ````
 ```image
 plain: true
-doNotScale: true
+scale: false
 src: "docs/assets/image_bw.jpg"
 ```
 ````

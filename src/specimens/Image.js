@@ -9,6 +9,7 @@ import {text, heading} from '../styles/typography';
 class Image extends React.Component {
   render() {
     const {catalog: {theme}, src, title, overlay, description, ...options} = this.props;
+    const {scale = true} = options;
 
     const styles = {
       container: {
@@ -24,7 +25,7 @@ class Image extends React.Component {
       },
       image: {
         display: 'block',
-        ...(options.doNotScale ? {} : {maxWidth: '100%'})
+        ...(scale ? {maxWidth: '100%'} : {})
       },
       overlay: {
         boxSizing: 'border-box',
