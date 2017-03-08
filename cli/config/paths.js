@@ -64,23 +64,25 @@ function resolveOwn(relativePath) {
   return path.resolve(__dirname, '..', relativePath);
 }
 
-module.exports = {
-  appBuild: resolveApp('catalog'),
-  appPublic: resolveApp('public'),
-  appIndexJs: resolveApp('src/catalog.js'),
-  appRoot: resolveApp('.'),
-  ownIndexJs: resolveOwn('catalog-entry.js'),
-  appHtml: resolveApp('public/index.html'),
-  ownHtml: resolveOwn('template/index.html'),
-  appConfig: resolveApp('catalog.config.js'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  babelrc: resolveApp('.babelrc'),
-  testsSetup: resolveApp('src/setupTests.js'),
-  appNodeModules: resolveApp('node_modules'),
-  ownNodeModules: resolveApp('node_modules'),
-  nodePaths: nodePaths,
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json'))
+module.exports = function(entry) {
+  return {
+    appBuild: resolveApp('catalog'),
+    appPublic: resolveApp('public'),
+    appIndexJs: resolveApp(entry),
+    appRoot: resolveApp('.'),
+    ownIndexJs: resolveOwn('catalog-entry.js'),
+    appHtml: resolveApp('public/index.html'),
+    ownHtml: resolveOwn('template/index.html'),
+    appConfig: resolveApp('catalog.config.js'),
+    appPackageJson: resolveApp('package.json'),
+    appSrc: resolveApp('src'),
+    yarnLockFile: resolveApp('yarn.lock'),
+    babelrc: resolveApp('.babelrc'),
+    testsSetup: resolveApp('src/setupTests.js'),
+    appNodeModules: resolveApp('node_modules'),
+    ownNodeModules: resolveApp('node_modules'),
+    nodePaths: nodePaths,
+    publicUrl: getPublicUrl(resolveApp('package.json')),
+    servedPath: getServedPath(resolveApp('package.json'))
+  };
 };

@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 process.env.NODE_ENV = 'development';
 
-const program = require('commander');
-program
-  .parse(process.argv);
-
 // Load environment constiables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment constiables
 // that have already been set.
 // https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
 
+const program = require('commander');
+const sander = require('sander');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
@@ -19,7 +17,23 @@ const detect = require('detect-port');
 const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
 const getConfig = require('../config/getConfig');
-const paths = require('../config/paths');
+const getPaths = require('../config/paths');
+
+program
+  .arguments('[entry-file]')
+  .description('Start Catalog with an (optional) entry file')
+  .action(entry => {
+    const paths = getPaths(entry);
+    sander.exists(paths.appRoot, entry).then(entryExists => {
+      if (!entryExists) {
+        console.error(chalk.red(`The specified entry file '${entry}' doesn't exist!`));
+        process.exit(1);
+      }
+    });
+  });
+
+program
+  .parse(process.argv);
 
 let isInteractive = process.stdout.isTTY;
 // FIXME proper detection
@@ -119,8 +133,8 @@ function run(port) {
   runDevServer(compiler, config, host, port, protocol);
 }
 
-detect(DEFAULT_PORT).then(port => {
-  run(port);
-}).catch(err => {
-  console.error('Something went wrong', err);
-});
+// detect(DEFAULT_PORT).then(port => {
+//   run(port);
+// }).catch(err => {
+//   console.error('Something went wrong', err);
+// });
