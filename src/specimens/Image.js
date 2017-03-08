@@ -19,11 +19,12 @@ class Image extends React.Component {
         boxSizing: 'border-box',
         padding: '20px',
         background: `url(${theme.checkerboardPatternLight})`,
-        color: theme.textColor
+        color: theme.textColor,
+        overflowX: 'auto'
       },
       image: {
         display: 'block',
-        maxWidth: '100%'
+        ...(options.doNotScale ? {} : {maxWidth: '100%'})
       },
       overlay: {
         boxSizing: 'border-box',
@@ -116,7 +117,8 @@ Image.propTypes = {
   description: PropTypes.string,
   plain: PropTypes.bool,
   light: PropTypes.bool,
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
+  doNotScale: PropTypes.bool
 };
 
 export default Specimen()(Radium(Image));
