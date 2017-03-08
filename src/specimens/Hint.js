@@ -10,33 +10,33 @@ function getStyle(theme) {
     container: {
       flexBasis: '100%'
     },
-    hint: {
+    hint: { // Contrast: AAA / AA
       ...text(theme),
       background: '#fff6dd',
       border: '1px solid #ffefaa',
       borderRadius: '2px',
-      color: '#ffb400',
+      color: '#966900',
       padding: '20px'
     },
-    neutral: {
+    neutral: { // Contrast: AAA / AA
       background: '#f9f9f9',
       color: '#666666',
       border: '1px solid #eee'
     },
-    important: {
+    important: { // Contrast: AAA / AAA
       background: '#ffffff',
       color: '#333333',
       border: '1px solid #eee'
     },
-    warning: {
+    warning: { // Contrast: AAA / AA
       background: '#fff5f5',
       border: '1px solid #ffdddd',
-      color: '#ee4040'
+      color: '#ce3737'
     },
-    directive: {
+    directive: { // Contrast: AAA / AA
       background: '#eafaea',
       border: '1px solid #bbebc8',
-      color: '#2fbf62'
+      color: '#1d7d3f'
     }
   };
 }
