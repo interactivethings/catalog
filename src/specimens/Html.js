@@ -99,7 +99,7 @@ class Html extends React.Component {
 
   componentDidMount() {
     const {runScript} = this.props;
-    runScript && Array.from(this.refs.specimen.querySelectorAll('script')).forEach(runscript);
+    runScript && Array.from(this.specimen.querySelectorAll('script')).forEach(runscript);
 
     if (this.state.activeScreenSize) {
       window.addEventListener('resize', this.updateParentWidth);
@@ -122,7 +122,7 @@ class Html extends React.Component {
   }
 
   updateParentWidth() {
-    const nextParentWidth = this.refs.specimen.getBoundingClientRect().width - 30;
+    const nextParentWidth = this.specimen.getBoundingClientRect().width - 30;
     if (nextParentWidth !== this.state.parentWidth) {
       this.setState({parentWidth: nextParentWidth});
     }
@@ -167,19 +167,21 @@ class Html extends React.Component {
     }
 
     return (
-      <div ref='specimen' style={styles.container} className='cg-Specimen-Html'>
+      <div style={styles.container} className='cg-Specimen-Html' ref={el => {this.specimen = el;}}>
         {toggle}
-        {activeScreenSize &&
+        {options.responsive && parentWidth && activeScreenSize &&
           <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
-        <div style={{...styles.content, ...exampleStyles}}>
-          {frame || activeScreenSize
-            ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
-                {content}
-              </Frame>
-            : content
-          }
-        </div>
+        {(!options.responsive || parentWidth) &&
+          <div style={{...styles.content, ...exampleStyles}}>
+            {frame || activeScreenSize
+              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
+                  {content}
+                </Frame>
+              : content
+            }
+          </div>
+        }
         {source}
       </div>
     );

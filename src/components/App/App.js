@@ -12,7 +12,7 @@ const getDocumentTitle = ({title, page}) => title === page.superTitle ?
 
 class App extends React.Component {
   render() {
-    const {catalog, history} = this.context;
+    const {catalog} = this.context;
     return (
       <StyleRoot>
         <DocumentTitle
@@ -20,7 +20,7 @@ class App extends React.Component {
         />
         <AppLayout
           {...catalog}
-          sideNav={<Menu {...catalog} history={history} />}
+          sideNav={<Menu {...catalog} />}
         >
           {
            Children.only(this.props.children)
@@ -32,9 +32,7 @@ class App extends React.Component {
 }
 
 App.contextTypes = {
-  catalog: catalogShape.isRequired,
-  history: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  catalog: catalogShape.isRequired
 };
 
 App.propTypes = {

@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
 import Page from './Page';
 import runscript from '../../utils/runscript';
@@ -9,7 +9,7 @@ const renderStyles = (styles) => {
 
 const renderContent = (content) => React.isValidElement(content) && content.type === Page ? content : <Page>{content}</Page>;
 
-class PageRenderer extends Component {
+class PageRenderer extends PureComponent {
   constructor() {
     super();
     this.jump = this.jump.bind(this);
