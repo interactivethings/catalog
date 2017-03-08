@@ -135,7 +135,6 @@ Object {
     "sidebarColorText": "#003B5C",
     "sidebarColorTextActive": "#FF5555",
     "textColor": "#333333",
-    "textMedium": "#003B5C",
   },
   "title": "Catalog",
 }
@@ -310,7 +309,6 @@ Object {
     "sidebarColorText": "#003B5C",
     "sidebarColorTextActive": "#FF5555",
     "textColor": "#333333",
-    "textMedium": "#003B5C",
   },
   "title": "Catalog",
 }
