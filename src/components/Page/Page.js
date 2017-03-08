@@ -61,7 +61,7 @@ class Page extends Component {
           },
 
           // Blockquote styles
-          ...blockquote(theme),
+          ...blockquote(),
           ...headingBlock(theme, 'blockquote > h1', 4),
           ...headingBlock(theme, 'blockquote > h2', 3),
           ...headingBlock(theme, 'blockquote > h3', 2),

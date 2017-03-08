@@ -129,11 +129,11 @@ export function orderedList(theme, selector = 'ol', level = 0, depth = 0) {
   };
 }
 
-export const blockquote = (theme) => {
+export const blockquote = () => {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '48px 0 32px 0',
+      margin: '48px 0 32px 0'
     },
     'blockquote > :first-child': {
       marginTop: 0
