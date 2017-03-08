@@ -27,18 +27,18 @@ function getStyles(theme) {
       }
     },
     leftNavLink: {
-      padding: `${verticalPadding} 0 ${verticalPadding} ${horizontalPadding}`,
+      padding: `${verticalPadding}px 0 ${verticalPadding}px ${horizontalPadding}px`,
       textAlign: 'left',
       '@media (min-width: 1000px)': {
-        padding: `${verticalPadding} 0 ${verticalPadding} ${horizontalPadding * 2}`
+        padding: `${verticalPadding}px 0 ${verticalPadding}px ${horizontalPadding * 2}px`
       }
     },
     rightNavLink: {
-      padding: `${verticalPadding} ${horizontalPadding} ${verticalPadding} 0`,
+      padding: `${verticalPadding}px ${horizontalPadding}px ${verticalPadding}px 0`,
       textAlign: 'right',
       borderLeft: `1px solid ${theme.background}`,
       '@media (min-width: 1000px)': {
-        padding: `${verticalPadding} ${horizontalPadding * 2} ${verticalPadding} 0`
+        padding: `${verticalPadding}px ${horizontalPadding * 2}px ${verticalPadding}px 0`
       }
     },
     link: {
