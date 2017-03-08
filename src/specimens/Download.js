@@ -36,6 +36,7 @@ function getStyle(theme) {
       width: 80,
       height: 80,
       display: 'none',
+      flexShrink: 0,
       '@media (min-width: 630px)': {
         display: 'block'
       }
@@ -62,7 +63,6 @@ function getStyle(theme) {
       fontSize: theme.fontS,
       color: '#999',
       margin: 0
-
     }
   };
 }
