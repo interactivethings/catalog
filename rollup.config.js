@@ -21,7 +21,7 @@ let plugins = [
       // relative to the current directory, or the name
       // of a module in node_modules
       'radium': [ 'Style', 'StyleRoot' ],
-      'react': [ 'Component', 'PropTypes', 'Children', 'createElement' ],
+      'react': [ 'PureComponent', 'Component', 'PropTypes', 'Children', 'createElement' ],
       'react-dom': [ 'unstable_renderSubtreeIntoContainer', 'unmountComponentAtNode' ],
       'js-yaml': [ 'safeLoad', 'CORE_SCHEMA', 'Type', 'Schema' ]
     }
