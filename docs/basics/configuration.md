@@ -304,3 +304,40 @@ The font size is derived from these two values. Default is 16px / 1.2. See [modu
 #### Colors
 
 The [src/DefaultTheme.js](https://github.com/interactivethings/catalog/blob/master/src/DefaultTheme.js) file contains all colors which you can set.
+
+##### `background`, `textColor`, `codeColor`, `linkColor`
+
+The primary foreground and background colors.
+
+##### `lightColor`
+
+NavigationBar background color, but also sometimes used as a foreground
+or border color.
+
+##### `pageHeading{Background,TextColor,Height}`
+
+Used in PageHeader. `pageHeadingHeight` is not a color but the height of the
+whole PageHeader component.
+
+##### `brandColor`
+
+NavigationBar (links), ResponsiveTabs (tab text), Download specimen (title text).
+Typography: headings.
+
+##### `sidebarColor{,Active,Text,TextActive,Line,Heading}`
+
+Used in the sidebar.
+
+##### `bg{Light,Dark}`, `checkerboardPattern{Light,Dark}`
+
+Background colors and patterns for html, react, and image specimens.
+
+##### `codeStyles`
+
+Map from [PrismJS](http://prismjs.com/) token type to style object. Example:
+
+```code
+codeStyles: {
+  tag: {color: '#FF5555', fontWeight: 'bold'}
+}
+```
