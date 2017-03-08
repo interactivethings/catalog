@@ -4,6 +4,12 @@ import {getFontSize} from '../../styles/typography';
 import {pageShape} from '../../CatalogPropTypes';
 import Link from '../Link/Link';
 
+
+// The vertical and horizontal padding inside the left/right nav
+// link element.
+const verticalPadding = 28;
+const horizontalPadding = 21;
+
 function getStyles(theme) {
   return {
     navbar: {
@@ -21,18 +27,18 @@ function getStyles(theme) {
       }
     },
     leftNavLink: {
-      padding: `${getFontSize(theme, 3)} 0 ${getFontSize(theme, 3)} ${getFontSize(theme, 1)}`,
+      padding: `${verticalPadding} 0 ${verticalPadding} ${horizontalPadding}`,
       textAlign: 'left',
       '@media (min-width: 1000px)': {
-        padding: `${getFontSize(theme, 3)} 0 ${getFontSize(theme, 3)} ${getFontSize(theme, 5)}`
+        padding: `${verticalPadding} 0 ${verticalPadding} ${horizontalPadding * 2}`
       }
     },
     rightNavLink: {
-      padding: `${getFontSize(theme, 3)} ${getFontSize(theme, 1)} ${getFontSize(theme, 3)} 0`,
+      padding: `${verticalPadding} ${horizontalPadding} ${verticalPadding} 0`,
       textAlign: 'right',
       borderLeft: `1px solid ${theme.background}`,
       '@media (min-width: 1000px)': {
-        padding: `${getFontSize(theme, 3)} ${getFontSize(theme, 5)} ${getFontSize(theme, 3)} 0`
+        padding: `${verticalPadding} ${horizontalPadding * 2} ${verticalPadding} 0`
       }
     },
     link: {

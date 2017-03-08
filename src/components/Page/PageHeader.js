@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Radium from 'radium';
-import {heading, getFontSize} from '../../styles/typography';
+import {heading} from '../../styles/typography';
 
 class PageHeader extends Component {
   render() {
@@ -15,10 +15,10 @@ class PageHeader extends Component {
       },
       innerHeader: {
         position: 'absolute',
-        bottom: getFontSize(theme, 3),
-        left: getFontSize(theme, 3),
+        bottom: 21,
+        left: 21,
         '@media (min-width: 1000px)': {
-          left: getFontSize(theme, 5)
+          left: 42
         }
       },
       superTitle: {
