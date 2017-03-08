@@ -7,6 +7,8 @@
 - Fix weird scale behaviour of the thumbnail in download specimen [#260](https://github.com/interactivethings/catalog/issues/260)
 - Create a new stacking context for the whole <Page> component [#223](https://github.com/interactivethings/catalog/issues/223)
 - Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
+- Bugfixes:
+  - When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
 
 ## 2.5.3
 
