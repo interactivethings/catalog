@@ -6,6 +6,8 @@ import Link from '../Link/Link';
 import ListItem from './ListItem';
 
 export function style(theme) {
+  const logoBottomMargin = getFontSize(theme, 5);
+
   return {
     bar: {
       background: theme.sidebarColor,
@@ -16,7 +18,7 @@ export function style(theme) {
     h1: {
       boxSizing: 'border-box',
       margin: 0,
-      padding: `${theme.sizeL}px ${theme.sizeXxl}px`,
+      padding: '21px 38px',
       height: theme.pageHeadingHeight,
       display: 'flex',
       justifyContent: 'flex-end',
@@ -26,12 +28,12 @@ export function style(theme) {
       ...heading(theme, 1),
       color: theme.sidebarColorHeading,
       fontWeight: 700,
-      marginBottom: getFontSize(theme, 5),
+      marginBottom: logoBottomMargin,
       marginTop: 0
     },
     logo: {
       width: '100%',
-      marginBottom: getFontSize(theme, 5),
+      marginBottom: logoBottomMargin,
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: '0 100%',

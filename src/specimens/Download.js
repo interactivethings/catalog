@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import {catalogShape} from '../CatalogPropTypes';
+import {getFontSize} from '../styles/typography';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 
@@ -55,12 +56,12 @@ function getStyle(theme) {
     },
     title: {
       color: theme.brandColor,
-      fontSize: theme.fontS,
+      fontSize: getFontSize(theme, -1),
       fontWeight: 700,
       margin: 0
     },
     subtitle: {
-      fontSize: theme.fontS,
+      fontSize: getFontSize(theme, -1),
       color: '#999',
       margin: 0
     }

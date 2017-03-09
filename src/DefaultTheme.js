@@ -1,26 +1,40 @@
 /* eslint-disable key-spacing */
 
-export const DefaultTheme = {
+export default {
   // Colors
   background: '#F9F9F9',
+  textColor: '#333333',
+  codeColor: '#00263E',
+  linkColor: '#FF5555',
+
+  // NavigationBar background color, but also sometimes used as a foreground
+  // or border color.
+  lightColor: '#D6D6D6',
+
+  // Used in PageHeader
   pageHeadingBackground: '#003B5C',
   pageHeadingTextColor: '#fff',
+
+  // Used in Menu and PageHeader to make sure the top parts have
+  // the same height.
   pageHeadingHeight: 200,
+
+  // NavigationBar (links), ResponsiveTabs (tab text), Download specimen (title text).
+  // Typography: headings.
   brandColor: '#003B5C',
+
   sidebarColor: '#FFFFFF',
   sidebarColorActive: '#D1312E',
   sidebarColorText: '#003B5C',
   sidebarColorTextActive: '#FF5555',
   sidebarColorLine: '#EBEBEB',
   sidebarColorHeading: '#003B5C',
-  textColor: '#333333',
-  codeColor: '#00263E',
-  linkColor: '#FF5555',
-  textMedium: '#003B5C',
+
+  // Used in the html, react, and image specimens.
   bgLight: '#F2F2F2',
   bgDark: '#333333',
-  lightColor: '#D6D6D6',
 
+  // Keys appear to be PrismJS token types.
   codeStyles: {
     tag: {color: '#FF5555'},
     punctuation: {color: '#535353'},
@@ -39,40 +53,9 @@ export const DefaultTheme = {
   fontHeading: "'Roboto', sans-serif",
   fontMono: "'Source Code Pro', monospace",
 
-  fontXs:  12,
-  fontS:   14,
-  fontM:   16,
-  fontL:   21,
-  fontXl:  28,
-  fontXxl: 38,
-
-  sizeS:   8,
-  sizeM:   15,
-  sizeL:   21,
-  sizeXl:  28,
-  sizeXxl: 38,
-
-
-  // The vertical grid unit. Margin, padding, and line-height are set to multiples
-  // of this value. This is the value that determines the baseline for our vertical
-  // rhythm. The default value of 6px allows more fine tuned designs that still
-  // obey vertical rhythm.
-  baseVerticalUnit: 4,
-
-  // The value that multiplies the baseVerticalUnit to get the baseLineHeight.
-  // This gives type an ideal lineHeight.
-  baseLineMulti: 10,
-
   // Base font size in pixels.
   baseFontSize: 16,
 
   // Modular scale ratio that is used to figure out all the different font sizes
   msRatio: 1.2
 };
-
-export const DefaultResponsiveSizes = [
-  {name: 'small', width: 360, height: 640},
-  {name: 'medium', width: 1024, height: 768},
-  {name: 'large', width: 1440, height: 900},
-  {name: 'xlarge', width: 1920, height: 1080}
-];
