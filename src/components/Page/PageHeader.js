@@ -15,10 +15,10 @@ class PageHeader extends Component {
       },
       innerHeader: {
         position: 'absolute',
-        bottom: theme.sizeL,
-        left: theme.sizeL,
+        bottom: 21,
+        left: 21,
         '@media (min-width: 1000px)': {
-          left: theme.sizeL * 2
+          left: 42
         }
       },
       superTitle: {

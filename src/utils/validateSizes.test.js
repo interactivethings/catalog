@@ -1,5 +1,5 @@
 import validateSizes from './validateSizes';
-import {DefaultResponsiveSizes} from './../DefaultTheme';
+import DefaultResponsiveSizes from './../DefaultResponsiveSizes';
 
 test('Value is string that is not contained in the list', () => {
   expect(validateSizes( 'Palm Pre', DefaultResponsiveSizes )).toBeFalsy();

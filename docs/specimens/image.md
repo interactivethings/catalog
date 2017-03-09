@@ -2,13 +2,14 @@
 
 ### Props
 
-- `src: string` image to display (gets scaled if it extends the container) 
+- `src: string` image to display (gets scaled if it extends the container)
 - `overlay: string` image for mouseover, useful to describe proportions
-- `title: string` the title 
+- `title: string` the title
 - `description: string` Markdown-formatted text description
 - `light: boolean` a light checkered background (default)
 - `dark: boolean` a dark checkered background
 - `plain: boolean` a transparent background without any padding.
+- `scale: boolean` Scale the image down if it's wider than the container. Defaults to true.
 - `span: number[1–6]` width of the specimen
 
 ```hint|directive
@@ -175,13 +176,32 @@ src: "docs/assets/image_bw.jpg"
 description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
 ```
 
-
-
 ````code
 ```image
 plain: true
 src: "docs/assets/image_bw.jpg"
 description: "_Example image by [unsplash](https://unsplash.com/photos/-YMhg0KYgVc)._"
+```
+````
+
+
+#### Scale option
+
+When you set `scale` to false then the image will be shown in original size. If it overflows
+horizontally, then a scrollbar will show up. Use this option if the original size of the
+image needs to be preserved (eg. because it contains measurements).
+
+```image
+plain: true
+scale: false
+src: "docs/assets/image_bw.jpg"
+```
+
+````
+```image
+plain: true
+scale: false
+src: "docs/assets/image_bw.jpg"
 ```
 ````
 
