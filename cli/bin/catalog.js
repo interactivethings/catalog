@@ -1,10 +1,19 @@
 #!/usr/bin/env node
-const program = require('commander');
+// @flow
+import 'babel-polyfill';
+import args from 'args';
 
-program
-  .version(require('../../package.json').version)
-  .command('init', 'Add Catalog to your project')
-  .command('start [entry]', 'Starts the Catalog server')
+args
+  .command('start', 'Starts the Catalog server')
   .command('build', 'Builds a Catalog static site');
 
-program.parse(process.argv);
+args.parse(process.argv);
+
+if (!args.sub.length) {
+  // no commands
+  args.showHelp();
+}
+
+// console.log(flags, args.sub);
+
+// args.showHelp();

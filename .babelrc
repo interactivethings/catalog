@@ -24,6 +24,9 @@
     "rollup": {
       "presets": [["es2015", {"loose": true, "modules": false}], "react", "stage-2"],
       "plugins": ["external-helpers"]
+    },
+    "node": {
+      "presets": [["env", {"targets": {"node": 4}, "useBuiltIns": true, "debug": true}], "react"]
     }
   }
 }

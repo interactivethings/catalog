@@ -29,7 +29,10 @@ server: node_modules babel.min.js
 	@NODE_ENV=hot $$(yarn bin)/nodemon -q -w webpack.config.js -w bin --exec bin/server
 
 watch-lib: node_modules
-	$$(yarn bin)/babel src --watch --ignore __tests__ --out-dir lib
+	BABEL_ENV=node $$(yarn bin)/babel src --watch --ignore __tests__ --out-dir lib
+
+watch-cli: node_modules
+	BABEL_ENV=node $$(yarn bin)/babel cli --watch --ignore __tests__ --out-dir dist/cli --copy-files
 
 test: lint
 	@$$(yarn bin)/jest
