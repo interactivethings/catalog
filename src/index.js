@@ -3,6 +3,7 @@ export {default as render} from './render';
 export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
 export {configureJSXRoutes as configureJSXRoutes} from './configureRoutes';
+export {default as fetchMarkdown} from './fetchMarkdown';
 
 // Components
 export {default as Catalog} from './components/Catalog';

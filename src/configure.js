@@ -12,11 +12,12 @@ const hasTitle = has('title');
 const hasSrc = has('src');
 const hasPages = has('pages');
 const hasComponent = has('component');
+const hasContent = has('content');
 
 const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
-    .filter((page) => page.src || page.component)
+    .filter((page) => page.src || page.component || page.content)
     .map((page, index) => ({...page, ...(page.hideFromMenu ? undefined : {index})}));
 };
 
@@ -54,9 +55,14 @@ export default (config) => {
       page
     );
 
+    const isDirectory = !hasSrc(page) && !hasComponent(page) && hasPages(page) && !hasContent(page);
+    const isSrc = hasSrc(page) && !hasComponent(page) && !hasPages(page) && !hasContent(page);
+    const isComponent = !hasSrc(page) && hasComponent(page) && !hasPages(page) && !hasContent(page);
+    const isContent = !hasSrc(page) && !hasComponent(page) && !hasPages(page) && hasContent(page);
+
     warning(
-      (hasSrc(page) && !hasComponent(page) && !hasPages(page)) || (!hasSrc(page) && hasComponent(page) && !hasPages(page)) || (!hasSrc(page) && !hasComponent(page) && hasPages(page)),
-      'The page configuration should (only) have one of these properties: `src`, `component` or `pages`.',
+      (isDirectory || isSrc || isComponent || isContent),
+      'The page configuration should (only) have one of these properties: `src`, `component`, `pages` or `content`.',
       page
     );
 
