@@ -23,9 +23,9 @@
     "catalog.min.js"
   ],
   "bin": {
-    "catalog": "dist/cli/bin/catalog.js",
-    "catalog-start": "dist/cli/bin/catalog-start.js",
-    "catalog-build": "dist/cli/bin/catalog-build.js"
+    "catalog": "cli/lib/bin/catalog.js",
+    "catalog-start": "cli/lib/bin/catalog-start.js",
+    "catalog-build": "cli/lib/bin/catalog-build.js"
   },
   "scripts": {
     "start": "cli/bin/catalog.js start"

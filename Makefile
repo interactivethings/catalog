@@ -32,7 +32,7 @@ watch-lib: node_modules
 	BABEL_ENV=node $$(yarn bin)/babel src --watch --ignore __tests__ --out-dir lib
 
 watch-cli: node_modules
-	BABEL_ENV=node $$(yarn bin)/babel cli --watch --ignore __tests__ --out-dir dist/cli --copy-files
+	BABEL_ENV=node $$(yarn bin)/babel cli/src --watch --ignore __tests__ --out-dir cli/lib
 
 test: lint
 	@$$(yarn bin)/jest

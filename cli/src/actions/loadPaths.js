@@ -9,7 +9,7 @@ export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string
   catalogIndexJs: resolveAppPath(catalogSrcDir, 'index.js'),
   catalogIndexHtml: resolveAppPath(catalogSrcDir, 'index.html'),
 
-  catalogSrcTemplateDir: resolveOwnPath('..', '..', 'cli-template'),
+  catalogSrcTemplateDir: resolveOwnPath('..', 'setup-template'),
 
   appPublic: resolveAppPath('public'),
   appRoot: resolveAppPath('.'),
