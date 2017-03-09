@@ -1,3 +1,5 @@
+import 'raf/polyfill';
+
 import React, {PureComponent, PropTypes} from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
 import Page from './Page';
@@ -13,6 +15,7 @@ class PageRenderer extends PureComponent {
   constructor() {
     super();
     this.jump = this.jump.bind(this);
+    this.jumpTimeout = null;
   }
 
   componentDidMount() {
@@ -25,17 +28,42 @@ class PageRenderer extends PureComponent {
     this.jump();
   }
 
+  componentWillUnmount() {
+    if (this.jumpTimeout !== null) {
+      cancelAnimationFrame(this.jumpTimeout);
+      this.jumpTimeout = null;
+    }
+  }
+
   jump() {
     const {location: {query: {a}, hash}} = this.props;
-    const selector = hash || `#${a}`;
-    clearTimeout(this.jumpTimeout);
+
+    // Hash is always defined, but may be an empty string. But the query param
+    // is indeed optional and may be undefined. We do not want to be jumping
+    // to the '#undefined' selector.
+
+    if (hash !== '') {
+      this.jumpToSelector(hash);
+    } else if (a !== undefined && a !== '') {
+      this.jumpToSelector(`#${a}`);
+    }
+  }
+
+  jumpToSelector(selector) {
+    if (this.jumpTimeout !== null) {
+      cancelAnimationFrame(this.jumpTimeout);
+      this.jumpTimeout = null;
+    }
 
     // Don't freak out when hash is not a valid selector (e.g. #/foo)
     try {
       const el = document.querySelector(selector);
       if (el) {
         // Defer scrolling by one tick (when the page has completely rendered)
-        this.jumpTimeout = setTimeout(() => el.scrollIntoView(), 0);
+        this.jumpTimeout = requestAnimationFrame(() => {
+          this.jumpTimeout = null;
+          el.scrollIntoView();
+        });
       }
     } catch (e) {
       // eslint-disable-line no-empty

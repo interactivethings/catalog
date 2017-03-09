@@ -1,7 +1,14 @@
 import React, {PropTypes} from 'react';
 import Radium from 'radium';
+import {getFontSize} from '../../styles/typography';
 import {pageShape} from '../../CatalogPropTypes';
 import Link from '../Link/Link';
+
+
+// The vertical and horizontal padding inside the left/right nav
+// link element.
+const verticalPadding = 28;
+const horizontalPadding = 21;
 
 function getStyles(theme) {
   return {
@@ -20,18 +27,18 @@ function getStyles(theme) {
       }
     },
     leftNavLink: {
-      padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL}px`,
+      padding: `${verticalPadding}px 0 ${verticalPadding}px ${horizontalPadding}px`,
       textAlign: 'left',
       '@media (min-width: 1000px)': {
-        padding: `${theme.sizeXl}px 0 ${theme.sizeXl}px ${theme.sizeL * 2}px`
+        padding: `${verticalPadding}px 0 ${verticalPadding}px ${horizontalPadding * 2}px`
       }
     },
     rightNavLink: {
-      padding: `${theme.sizeXl}px ${theme.sizeL}px ${theme.sizeXl}px 0`,
+      padding: `${verticalPadding}px ${horizontalPadding}px ${verticalPadding}px 0`,
       textAlign: 'right',
       borderLeft: `1px solid ${theme.background}`,
       '@media (min-width: 1000px)': {
-        padding: `${theme.sizeXl}px ${theme.sizeL * 2}px ${theme.sizeXl}px 0`
+        padding: `${verticalPadding}px ${horizontalPadding * 2}px ${verticalPadding}px 0`
       }
     },
     link: {
@@ -68,12 +75,12 @@ function getStyles(theme) {
       }
     },
     linkSuperTitle: {
-      fontSize: theme.fontM,
+      fontSize: getFontSize(theme, 0),
       margin: 0,
       fontWeight: 400
     },
     linkTitle: {
-      fontSize: theme.fontL,
+      fontSize: getFontSize(theme, 1),
       margin: 0,
       fontWeight: 400
     }
