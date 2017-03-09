@@ -26,7 +26,8 @@
       "plugins": ["external-helpers"]
     },
     "node": {
-      "presets": [["env", {"targets": {"node": 4}, "useBuiltIns": true, "debug": true}], "react"]
+      "presets": [["env", {"targets": {"node": 4}, "useBuiltIns": true, "debug": true}], "flow"],
+      "plugins": ["transform-object-rest-spread"]
     }
   }
 }

@@ -1,9 +1,12 @@
+// @flow
 
 // Framework types Catalog supports
-export const UNKNOWN = 'UNKNOWN';
-export const CREATE_REACT_APP = 'CREATE_REACT_APP';
-export const NEXT = 'NEXT';
+type UNKNOWN = 'UNKNOWN';
+type CREATE_REACT_APP = 'CREATE_REACT_APP';
+type NEXT = 'NEXT';
 
-export default async () => {
+type Framework = UNKNOWN | CREATE_REACT_APP | NEXT;
 
+export default async (paths: Object): Promise<Framework> => {
+  return Promise.resolve('UNKNOWN');
 };

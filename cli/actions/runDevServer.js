@@ -1,18 +1,19 @@
 // @flow
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const historyApiFallback = require('connect-history-api-fallback');
-const clearConsole = require('react-dev-utils/clearConsole');
-const openBrowser = require('react-dev-utils/openBrowser');
+import chalk from 'chalk';
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import historyApiFallback from 'connect-history-api-fallback';
+import clearConsole from 'react-dev-utils/clearConsole';
+import openBrowser from 'react-dev-utils/openBrowser';
 
 
-export default (config: Object, host: string, port: number, protocol: string): void => {
+export default (config: Object, host: string, port: number, protocol: string, paths: Object, framework: string): void => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
     clientLogLevel: 'none',
     // FIXME: for next.js use app root
-    contentBase: isCreateReactApp ? paths.appPublic : paths.appRoot,
+    contentBase: framework === 'CREATE_REACT_APP' ? paths.appPublic : paths.appRoot,
     hot: true,
     publicPath: config.output.publicPath,
     quiet: true,

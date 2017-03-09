@@ -12,7 +12,8 @@ require('dotenv').config({silent: true});
 import args from 'args';
 import detect from 'detect-port';
 
-import loadConfig from '../actions/loadConfig';
+import loadWebpackConfig from '../actions/loadWebpackConfig';
+import detectFramework from '../actions/detectFramework';
 import loadPaths from '../actions/loadPaths';
 
 import setupCatalog from '../actions/setupCatalog';
@@ -29,13 +30,14 @@ args
 const cliOptions = args.parse(process.argv, {value: '[catalog source]'});
 
 const run = async (catalogSrcDir: void | string, options: {port: number}) => {
-  const paths = loadPaths(catalogSrcDir, undefined, options);
-  const config = loadConfig();
+  const paths = await loadPaths(catalogSrcDir, undefined, options);
+  const framework = await detectFramework(paths);
+  const webpackConfig = await loadWebpackConfig({paths, dev: true, framework});
 
   await setupCatalog(paths);
 
   detect(options.port).then(port => {
-    runDevServer(config, HOST, port, PROTOCOL);
+    runDevServer(webpackConfig, HOST, port, PROTOCOL, paths, framework);
   }).catch(err => {
     console.error(err);
   });
