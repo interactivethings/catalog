@@ -78,7 +78,12 @@ const pageComponent = (page) => {
           });
         }
 
-        // 6. Other (number, boolean, object, array, regexp, …)
+        // 6. Default export from a module
+        if (typeof x.default !== 'undefined') {
+          return coerce(x.default);
+        }
+
+        // 7. Other (number, boolean, object, array, regexp, …)
         return Promise.resolve(gaveUpPage());
       };
 
