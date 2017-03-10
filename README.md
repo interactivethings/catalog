@@ -1,6 +1,6 @@
 ![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
 
-[![Build Status](https://travis-ci.org/interactivethings/catalog.svg?branch=master)](https://travis-ci.org/interactivethings/catalog)
+[![Travis](https://img.shields.io/travis/interactivethings/catalog.svg)]() [![Downloads](https://img.shields.io/npm/dm/catalog.svg)]() [![Version](https://img.shields.io/npm/v/catalog.svg)]() [![License](https://img.shields.io/npm/l/catalog.svg)]()
 
 # Catalog
 
