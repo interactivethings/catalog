@@ -51,7 +51,8 @@ Catalog pages need at least three properties:
 
 - `path : String`: The path where the page is accessible
 - `title : String`: The title of the page (also shows up in the navigation)
-- `content : Function`: Function which returns the content of the page.
+- `content : Mixed`: The content of the page. Catalog supports multiple ways to define
+   what should be shown. See explanation below.
 
 Catalog also supports `src` and `component` as a different way to specify
 the page content. These properties are deprecated and support will be removed
@@ -72,12 +73,58 @@ lang: js
     {
       path: '/',
       title: 'Introduction',
-      content: () => Catalog.fetchMarkdown('intro.md')
+      content: require('intro.md')
     },
     // Other pages …
   ]
 }
 ```
+
+##### Content
+
+You can define the content using one of the following ways:
+
+###### I. Component
+
+Can even be imported from another module. You can use `require()` or the `import` syntax
+if you have the corresponding webpack loader configured.
+
+```code
+lang: js
+---
+import Image from './components/Image/Image.js'
+
+{
+  title: 'Hint',
+  content: require('./components/Hint/Hint.js')
+},
+{
+  title: 'Image',
+  content: Image
+}
+```
+
+###### II. Function which returns a promise
+
+This can be used to enable [code-splitting](https://webpack.github.io/docs/code-splitting.html). If you use Webpack, then use `require.ensure()` or the `import` function.
+
+```code
+lang: js
+---
+{
+  title: 'Hint',
+  content: () => import('./components/Hint/Hint.js')`
+},
+{
+  title: 'Image',
+  content: () => new Promise((resolve) => {
+    require.ensure([], () => {
+      resolve(require('./components/Image/Image.js'))
+    })
+  })
+}
+```
+
 
 ### Page Groups
 
@@ -99,7 +146,7 @@ Page groups can only contain pages but not other page groups.
     {
       path: '/',
       title: 'Introduction',
-      src: 'intro.md'
+      content: require('intro.md')
     },
     {
       title: 'Basics',
@@ -107,7 +154,7 @@ Page groups can only contain pages but not other page groups.
         {
           path: '/get-started',
           title: 'Get Started',
-          src: 'get-started.md'
+          content: require('get-started.md')
         },
         // Other subpages of 'Basics'
       ]
@@ -265,7 +312,9 @@ To test or document responsive behavior of [React](/specimens/react#responsive-d
 Let's assume you want to work with a smart watch, a tablet and Desktop, the Catalog configuration could look like this:
 
 ```code
-...
+lang: js
+---
+…
 title: 'Catalog',
 responsiveSizes: [
   {name: 'watch', width: 272, height: 340}
@@ -273,8 +322,7 @@ responsiveSizes: [
   {name: 'desktop', width: 1920, height: 1080},
 ],
 pages : [
-...
-
+…
 ```
 
 
@@ -289,6 +337,8 @@ Path to a logo image file which will be placed in the top-left corner.
 Object which describes which colors, fonts and font sizes to use.
 
 ```code
+lang: js
+---
 …
 title: 'Catalog',
 theme: {
@@ -341,6 +391,8 @@ Background colors and patterns for html, react, and image specimens.
 Map from [PrismJS](http://prismjs.com/) token type to style object. Example:
 
 ```code
+lang: js
+---
 codeStyles: {
   tag: {color: '#FF5555', fontWeight: 'bold'}
 }
