@@ -9,6 +9,7 @@
 - Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
 - New option on the image specimen: `scale`. See [#76](https://github.com/interactivethings/catalog/issues/76)
 - Replace page `src` and `component` with a single field: `content` [#269](https://github.com/interactivethings/catalog/pull/269)
+- Provide a function (`Catalog.markdownPage`) which converts a template literal into a Page component [#277](https://github.com/interactivethings/catalog/pull/277)
 - Bugfixes:
   - When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
 
