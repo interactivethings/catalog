@@ -1,6 +1,6 @@
 ![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
 
-[ ![Codeship Status for interactivethings/catalog](https://codeship.com/projects/b9c8e9b0-ed46-0133-8707-0260d23e53ee/status?branch=master)](https://codeship.com/projects/148435)
+[![Build Status](https://travis-ci.org/interactivethings/catalog.svg?branch=master)](https://travis-ci.org/interactivethings/catalog)
 
 # Catalog
 
