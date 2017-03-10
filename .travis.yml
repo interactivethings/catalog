@@ -17,7 +17,7 @@ before_deploy:
   -in deploy-key.enc -d | ssh-add -
 deploy:
   provider: script
-  script: make deploy
+  script: make publish
   on:
     tags: true
 env:
