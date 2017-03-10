@@ -4,6 +4,7 @@ export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
 export {configureJSXRoutes as configureJSXRoutes} from './configureRoutes';
 export {default as fetchMarkdown} from './fetchMarkdown';
+export {default as markdownPage} from './markdownPage';
 
 // Components
 export {default as Catalog} from './components/Catalog';

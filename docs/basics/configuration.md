@@ -145,6 +145,20 @@ lang: js
 }
 ```
 
+##### `markdownPage`
+
+To make it easier to write the bulk of the documentation with Markdown but intersperse with your own React components, you can use the `Catalog.markdownPage` function.
+
+```code
+lang: js
+---
+export default Catalog.markdownPage`
+# This is a heading
+
+${<MyComponent />}
+`
+```
+
 ## Routes
 
 ### `useBrowserHistory`
