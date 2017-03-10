@@ -14,7 +14,7 @@ before_deploy:
 - git config user.email "travis-ci@interactivethings.com"
 - eval `ssh-agent -s`
 - openssl aes-256-cbc -K $encrypted_67b727d8d9f9_key -iv $encrypted_67b727d8d9f9_iv
-  -in deploy-key.enc -out deploy-key -d | ssh-add -
+  -in deploy-key.enc -d | ssh-add -
 deploy:
   provider: script
   script: make deploy
