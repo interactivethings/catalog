@@ -4,34 +4,18 @@ import configure from './configure';
 import warning from './utils/warning';
 import requireModuleDefault from './utils/requireModuleDefault';
 import CatalogContext from './components/CatalogContext';
-import PageContent from './components/Page/PageContent';
-import fetchMarkdown from './fetchMarkdown';
+import PageContentLoader from './components/Page/PageContentLoader';
 
-const pageComponent = (page) => {
-  if (page.content) {
-    return (props) => <PageContent {...props} contentPromiseFn={() => Promise.resolve(page.content())} />;
-  }
-  if (page.src) {
-    return (props) => <PageContent {...props} contentPromiseFn={() => fetchMarkdown(page.src)} />;
-  }
-  if (page.component) {
-    return (props) => <PageContent {...props} contentPromiseFn={() => Promise.resolve(requireModuleDefault(page.component))} />;
-  }
-
-  return () => (
-    <div>
-      pageComponent: Wrong page configuration: neither content, src, nor component was specified.
-    </div>
-  );
+const routeHandler = (Component) => (props) => {
+  return <Component {...props} />;
 };
 
-const pageToRoute = (page) => ({
-  component: pageComponent(page),
-  path: page.path
+const pageToRoute = ({path, component}) => ({
+  component: routeHandler(component ? requireModuleDefault(component) : PageContentLoader),
+  path
 });
 
-const pageToJSXRoute = (page) =>
-  <Route key={page.path} path={page.path} component={pageComponent(page)} />; // eslint-disable-line react/prop-types
+const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : PageContentLoader} />; // eslint-disable-line react/prop-types
 
 const autoConfigure = (config) => {
   warning(
