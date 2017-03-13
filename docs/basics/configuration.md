@@ -51,11 +51,7 @@ Catalog pages need at least three properties:
 
 - `path : String`: The path where the page is accessible
 - `title : String`: The title of the page (also shows up in the navigation)
-- `content : Function`: Function which returns the content of the page.
-
-Catalog also supports `src` and `component` as a different way to specify
-the page content. These properties are deprecated and support will be removed
-soon.
+- `src : String`: The path of the source Markdown document
 
 ```hint|directive
 You should at least have a page with path `'/'` (which is the first page shown)
@@ -72,7 +68,7 @@ lang: js
     {
       path: '/',
       title: 'Introduction',
-      content: () => Catalog.fetchMarkdown('intro.md')
+      src: 'intro.md'
     },
     // Other pages …
   ]
