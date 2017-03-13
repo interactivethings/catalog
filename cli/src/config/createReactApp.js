@@ -28,7 +28,8 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         /\.(js|jsx)$/,
         /\.css$/,
         /\.json$/,
-        /\.svg$/
+        /\.svg$/,
+        /\.md$/
       ],
       loader: 'url-loader',
       options: {

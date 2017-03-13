@@ -1,4 +1,5 @@
 // @flow
+import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
@@ -55,7 +56,7 @@ export default async ({paths, framework, dev}: LoadWebpackOptions): WebpackConfi
       ]
     },
     module: {
-      rules: frameworkConfig.moduleRules
+      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [path.resolve(__dirname, '../../../lib/loader'), 'raw-loader']}]
     },
     plugins: (
       dev
