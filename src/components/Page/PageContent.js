@@ -24,6 +24,7 @@ class PageContent extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.contentPromiseFn !== this.props.contentPromiseFn) {
+      this.setState({content: null});
       this.fetchContent(nextProps.contentPromiseFn);
     }
   }
