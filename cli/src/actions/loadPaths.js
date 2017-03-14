@@ -20,6 +20,6 @@ export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string
   yarnLockFile: resolveAppPath('yarn.lock'),
   babelrc: resolveAppPath('.babelrc'),
   appNodeModules: resolveAppPath('node_modules'),
-  ownNodeModules: resolveAppPath('node_modules'),
+  ownNodeModules: resolveOwnPath('..', '..', 'node_modules'),
   nodePaths: nodePaths
 });
