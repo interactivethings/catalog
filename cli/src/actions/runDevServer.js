@@ -1,13 +1,9 @@
 // @flow
-import chalk from 'chalk';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import historyApiFallback from 'connect-history-api-fallback';
-import clearConsole from 'react-dev-utils/clearConsole';
-import openBrowser from 'react-dev-utils/openBrowser';
 
-
-export default (config: Object, host: string, port: number, protocol: string, paths: Object, framework: string): void => {
+export default async (config: Object, host: string, port: number, protocol: string, paths: Object, framework: string): Promise<string> => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
@@ -46,17 +42,13 @@ export default (config: Object, host: string, port: number, protocol: string, pa
   devServer.use(devServer.middleware);
 
   // Launch WebpackDevServer.
-  devServer.listen(port, (err) => {
-    if (err) {
-      return console.log(err);
-    }
-
-    clearConsole();
-
-    console.log(chalk.cyan('Starting the development server...'));
-    console.log();
-
-    openBrowser(protocol + '://' + host + ':' + port + '/');
-    return void 0;
+  return new Promise((resolve, reject) => {
+    devServer.listen(port, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(protocol + '://' + host + ':' + port + '/');
+      }
+    });
   });
 };

@@ -9,19 +9,40 @@ import {exists} from 'sander';
 
 import createReactAppConfig from '../config/createReactApp';
 import nextConfig from '../config/next';
+import {link} from '../utils/format';
 
 type LoadWebpackOptions = {
-  paths: Object;
-  framework: string;
-  dev: boolean
+  paths: Object,
+  framework: string,
+  dev: boolean,
+  url?: string,
 };
 type WebpackConfig = {};
 
-export default async ({paths, framework, dev}: LoadWebpackOptions): WebpackConfig => {
+export default async ({paths, framework, dev, url}: LoadWebpackOptions): WebpackConfig => {
   const useBabelrc = await exists(paths.babelrc);
   const frameworkConfig = framework === 'NEXT'
     ? nextConfig(paths, useBabelrc, dev)
     : createReactAppConfig(paths, useBabelrc, dev);
+
+  const devPlugins = dev
+   ? [
+     new webpack.HotModuleReplacementPlugin(),
+     // Watcher doesn't work well if you mistype casing in a path so we use
+     // a plugin that prints an error when you attempt to do this.
+     // See https://github.com/facebookincubator/create-react-app/issues/240
+     // new CaseSensitivePathsPlugin(),
+     // If you require a missing module and then `npm install` it, you still have
+     // to restart the development server for Webpack to discover it. This plugin
+     // makes the discovery automatic so you don't have to restart.
+     // See https://github.com/facebookincubator/create-react-app/issues/186
+     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+     new FriendlyErrorsWebpackPlugin({
+       compilationSuccessInfo: {
+         messages: url ? [`Catalog is running at ${link(url)}`] : []
+       }
+     })
+   ] : [];
 
   return {
     devtool: dev ? 'cheap-module-source-map' : 'source-map',
@@ -41,7 +62,7 @@ export default async ({paths, framework, dev}: LoadWebpackOptions): WebpackConfi
       publicPath: '/'
     },
     resolve: {
-      modules: ['node_modules'].concat(paths.nodePaths),
+      modules: [paths.appSrc, 'node_modules'].concat(paths.nodePaths),
       extensions: ['.js', '.json', '.jsx'],
       alias: {
       // Support React Native Web
@@ -107,32 +128,16 @@ export default async ({paths, framework, dev}: LoadWebpackOptions): WebpackConfi
     // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
       new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production')}),
     // This is necessary to emit hot updates (currently CSS only):
-      new webpack.HotModuleReplacementPlugin(),
-    // Watcher doesn't work well if you mistype casing in a path so we use
-    // a plugin that prints an error when you attempt to do this.
-    // See https://github.com/facebookincubator/create-react-app/issues/240
-    // new CaseSensitivePathsPlugin(),
-    // If you require a missing module and then `npm install` it, you still have
-    // to restart the development server for Webpack to discover it. This plugin
-    // makes the discovery automatic so you don't have to restart.
-    // See https://github.com/facebookincubator/create-react-app/issues/186
-      new WatchMissingNodeModulesPlugin(paths.appNodeModules),
-      new FriendlyErrorsWebpackPlugin(),
 
-
+      ...devPlugins,
       // Add framework-specific plugins
       ...frameworkConfig.plugins
     ]),
-  // Some libraries import Node modules but don't use them in the browser.
-  // Tell Webpack to provide empty mocks for them so importing them works.
     node: {
       fs: 'empty',
       net: 'empty',
       tls: 'empty'
     },
-  // Turn off performance hints during development because we don't do any
-  // splitting or minification in interest of speed. These warnings become
-  // cumbersome.
     performance: {
       hints: false
     }

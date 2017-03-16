@@ -11,6 +11,10 @@ require('dotenv').config({silent: true});
 
 import args from 'args';
 import detect from 'detect-port';
+import clearConsole from 'react-dev-utils/clearConsole';
+import openBrowser from 'react-dev-utils/openBrowser';
+
+import {infoMessage, errorMessage} from '../utils/format';
 
 import loadWebpackConfig from '../actions/loadWebpackConfig';
 import detectFramework from '../actions/detectFramework';
@@ -30,17 +34,26 @@ args
 const cliOptions = args.parse(process.argv, {value: '[catalog source]'});
 
 const run = async (catalogSrcDir: void | string, options: {port: number}) => {
+  clearConsole();
+
+  console.log(infoMessage('Starting Catalog …'));
+
   const paths = await loadPaths(catalogSrcDir, undefined, options);
   const framework = await detectFramework(paths);
-  const webpackConfig = await loadWebpackConfig({paths, dev: true, framework});
+  const port = await detect(options.port);
+
+  const url = PROTOCOL + '://' + HOST + ':' + port + '/';
+
+  const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url});
 
   await setupCatalog(paths);
+  await runDevServer(webpackConfig, HOST, port, PROTOCOL, paths, framework);
 
-  detect(options.port).then(port => {
-    runDevServer(webpackConfig, HOST, port, PROTOCOL, paths, framework);
-  }).catch(err => {
-    console.error(err);
-  });
+  openBrowser(url);
 };
 
-run(args.sub[0], cliOptions);
+run(args.sub[0], cliOptions)
+.catch(err => {
+  console.error(errorMessage('Could not start Catalog\n\n' + err.stack + '\n'));
+  process.exit(1);
+});

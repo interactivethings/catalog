@@ -1,7 +1,7 @@
 // @flow
 import {resolveAppPath, resolveOwnPath, nodePaths} from '../utils/paths';
 
-export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string = 'catalog-build', options: Object) => ({
+export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string = 'catalog/build') => ({
 
   unresolvedCatalogSrcDir: catalogSrcDir,
   catalogSrcDir: resolveAppPath(catalogSrcDir),
@@ -14,7 +14,6 @@ export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string
   appPublic: resolveAppPath('public'),
   appRoot: resolveAppPath('.'),
 
-  // TODO: Clean up
   appPackageJson: resolveAppPath('package.json'),
   appSrc: resolveAppPath('src'),
   yarnLockFile: resolveAppPath('yarn.lock'),
