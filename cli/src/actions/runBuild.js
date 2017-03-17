@@ -1,10 +1,11 @@
 // @flow
 import webpack from 'webpack';
+import {errorMessage} from '../utils/format';
 import {rimraf} from 'sander';
 
 // Print out errors
 function printErrors(summary, errors) {
-  console.log(chalk.red(summary));
+  console.log(errorMessage(summary));
   console.log();
   errors.forEach(err => {
     console.log(err.message || err);

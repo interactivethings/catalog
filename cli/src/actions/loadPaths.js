@@ -4,6 +4,7 @@ import {resolveAppPath, resolveOwnPath, nodePaths} from '../utils/paths';
 export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string = 'catalog/build') => ({
 
   unresolvedCatalogSrcDir: catalogSrcDir,
+  unresolvedCatalogBuildDir: catalogBuildDir,
   catalogSrcDir: resolveAppPath(catalogSrcDir),
   catalogBuildDir: resolveAppPath(catalogBuildDir),
   catalogIndexJs: resolveAppPath(catalogSrcDir, 'index.js'),

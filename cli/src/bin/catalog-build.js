@@ -12,7 +12,7 @@ require('dotenv').config({silent: true});
 import args from 'args';
 import clearConsole from 'react-dev-utils/clearConsole';
 
-import {infoMessage, errorMessage} from '../utils/format';
+import {infoMessage, errorMessage, successMessage} from '../utils/format';
 
 import loadWebpackConfig from '../actions/loadWebpackConfig';
 import detectFramework from '../actions/detectFramework';
@@ -24,7 +24,7 @@ import runBuild from '../actions/runBuild';
 
 const cliOptions = args.parse(process.argv, {value: '[catalog build directory]'});
 
-const run = async (catalogBuildDir: void | string, options: {port: number}) => {
+const run = async (catalogBuildDir: void | string) => {
   clearConsole();
 
   const paths = await loadPaths(undefined, catalogBuildDir);
@@ -33,8 +33,9 @@ const run = async (catalogBuildDir: void | string, options: {port: number}) => {
 
   await setupCatalog(paths);
 
-  console.log(infoMessage('Building Catalog into ' + paths.catalogBuildDir));
+  console.log(infoMessage('Building Catalog. This may take a while …'));
   await runBuild(webpackConfig, paths);
+  console.log(successMessage('Built Catalog into ' + paths.unresolvedCatalogBuildDir));
 };
 
 run(args.sub[0], cliOptions)
