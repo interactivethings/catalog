@@ -31,7 +31,7 @@ const HOST: string = process.env.HOST || 'localhost';
 args
   .option('port', 'Port on which the Catalog server runs', 4000, port => parseInt(port, 10));
 
-const cliOptions = args.parse(process.argv, {value: '[catalog source]'});
+const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
 const run = async (catalogSrcDir: void | string, options: {port: number}) => {
   clearConsole();

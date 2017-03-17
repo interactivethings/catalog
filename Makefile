@@ -25,8 +25,8 @@ all: server
 
 ### DEVELOPMENT
 
-server: node_modules babel.min.js
-	@NODE_ENV=hot $$(yarn bin)/nodemon -q -w webpack.config.js -w bin --exec bin/server
+server: node_modules
+	yarn start
 
 watch-lib: node_modules
 	BABEL_ENV=development $$(yarn bin)/babel src --watch --ignore __tests__ --out-dir lib

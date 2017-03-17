@@ -28,7 +28,8 @@
     "catalog-build": "cli/lib/bin/catalog-build.js"
   },
   "scripts": {
-    "start": "cli/bin/catalog.js start"
+    "start": "cli/lib/bin/catalog-start.js docs",
+    "catalog-build": "cli/lib/bin/catalog-build.js docs -o site"
   },
   "dependencies": {
     "args": "^2.3.0",
