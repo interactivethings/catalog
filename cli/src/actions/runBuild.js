@@ -15,7 +15,7 @@ function printErrors(summary, errors) {
 
 export default async (config: Object, paths: Object) => {
   const compiler = webpack(config);
-  await rimraf(paths.catalogBuildDir);
+  await rimraf(paths.catalogBuildDir, '*');
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
@@ -24,17 +24,19 @@ export default async (config: Object, paths: Object) => {
         process.exit(1);
       }
 
-      if (stats.compilation.errors.length) {
-        printErrors('Failed to compile.', stats.compilation.errors);
+      const info = stats.toJson();
+
+      if (stats.hasErrors()) {
+        printErrors('Failed to compile.', info.errors);
         process.exit(1);
       }
 
-      if (process.env.CI && stats.compilation.warnings.length) {
-        printErrors('Failed to compile. When process.env.CI = true, warnings are treated as failures. Most CI servers set this automatically.', stats.compilation.warnings);
+      if (process.env.CI && stats.hasWarnings()) {
+        printErrors('Failed to compile. When process.env.CI = true, warnings are treated as failures. Most CI servers set this automatically.', info.warnings);
         process.exit(1);
       }
 
-      resolve(true);
+      resolve(info);
     });
   });
 };
