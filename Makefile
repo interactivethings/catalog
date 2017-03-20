@@ -45,10 +45,14 @@ lint:
 
 ### BUILDS
 
-build: node_modules clean test lib $(UMD_BUILD_FILES) babel.min.js
+build: node_modules clean test lib cli/lib $(UMD_BUILD_FILES) babel.min.js
 
-lib:
-	@$$(yarn bin)/babel src --ignore __tests__ --out-dir $@
+lib: src
+	@$$(yarn bin)/babel $< --ignore __tests__ --out-dir $@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
+cli/lib: cli/src
+	@BABEL_ENV=node $$(yarn bin)/babel $< --ignore __tests__ --out-dir $@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 catalog.js:
