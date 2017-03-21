@@ -25,15 +25,14 @@ import runDevServer from '../actions/runDevServer';
 
 // Parse env
 
-const PROTOCOL: string = process.env.HTTPS === 'true' ? 'https' : 'http';
-const HOST: string = process.env.HOST || 'localhost';
-
 args
-  .option('port', 'Port on which the Catalog server runs', 4000, port => parseInt(port, 10));
+  .option('port', 'Port on which the Catalog server runs', 4000, port => parseInt(port, 10))
+  .option('https', 'Use https', false)
+  .option('host', 'Host', 'localhost');
 
 const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
-const run = async (catalogSrcDir: void | string, options: {port: number}) => {
+const run = async (catalogSrcDir: void | string, options: {port: number, https: boolean, host: string}) => {
   clearConsole();
 
   console.log(infoMessage('Starting Catalog …'));
@@ -41,12 +40,12 @@ const run = async (catalogSrcDir: void | string, options: {port: number}) => {
   const paths = await loadPaths(catalogSrcDir, undefined, framework);
   const port = await detect(options.port);
 
-  const url = PROTOCOL + '://' + HOST + ':' + port + '/';
+  const url = (options.https ? 'https' : 'http') + '://' + options.host + ':' + port + '/';
 
   const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url, publicPath: '/'});
 
   await setupCatalog(paths);
-  await runDevServer(webpackConfig, HOST, port, PROTOCOL, paths, framework);
+  await runDevServer(webpackConfig, options.host, port, options.https, paths, framework);
 
   openBrowser(url);
 };

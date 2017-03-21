@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-export default async (config: Object, host: string, port: number, protocol: string, paths: Object, framework: string): Promise<string> => {
+export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string): Promise<string> => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
@@ -16,11 +16,11 @@ export default async (config: Object, host: string, port: number, protocol: stri
     watchOptions: {
       ignored: /node_modules/
     },
-    https: protocol === 'https',
-    host: host,
     historyApiFallback: {
       disableDotRule: true
-    }
+    },
+    https,
+    host
   });
 
   // Launch WebpackDevServer.
@@ -29,7 +29,7 @@ export default async (config: Object, host: string, port: number, protocol: stri
       if (err) {
         reject(err);
       } else {
-        resolve(protocol + '://' + host + ':' + port + '/');
+        resolve((https ? 'https' : 'http') + '://' + host + ':' + port + '/');
       }
     });
   });
