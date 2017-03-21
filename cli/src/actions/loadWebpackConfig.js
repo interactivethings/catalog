@@ -52,7 +52,11 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
       dev
       ? [require.resolve('react-dev-utils/webpackHotDevClient')]
       : []
-      ).concat(paths.catalogIndexJs),
+      ).concat(
+        'babel-polyfill',
+        'isomorphic-fetch',
+        paths.catalogIndexJs
+      ),
     output: {
       path: paths.catalogBuildDir,
       pathinfo: dev ? true : false,
