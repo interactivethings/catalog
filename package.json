@@ -19,6 +19,7 @@
   "files": [
     "lib",
     "docs",
+    "cli/lib",
     "catalog.js",
     "catalog.min.js"
   ],
