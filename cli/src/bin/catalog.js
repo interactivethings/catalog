@@ -13,7 +13,3 @@ if (!args.sub.length) {
   // no commands
   args.showHelp();
 }
-
-// console.log(flags, args.sub);
-
-// args.showHelp();
