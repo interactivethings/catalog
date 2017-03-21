@@ -3,12 +3,6 @@
 import 'babel-polyfill';
 process.env.NODE_ENV = 'development';
 
-// Load environment constiables from .env file. Suppress warnings using silent
-// if this file is missing. dotenv will never modify any environment constiables
-// that have already been set.
-// https://github.com/motdotla/dotenv
-require('dotenv').config({silent: true});
-
 import args from 'args';
 import detect from 'detect-port';
 import clearConsole from 'react-dev-utils/clearConsole';
