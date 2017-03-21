@@ -4,7 +4,6 @@ import 'babel-polyfill';
 process.env.NODE_ENV = 'production';
 
 import args from 'args';
-import clearConsole from 'react-dev-utils/clearConsole';
 
 import {infoMessage, errorMessage, successMessage} from '../utils/format';
 
@@ -22,8 +21,6 @@ args
 const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
 const run = async (catalogSrcDir: void | string, {out, publicPath}: {out: string, publicPath: string}) => {
-  clearConsole();
-
   const framework = await detectFramework();
   const paths = await loadPaths(catalogSrcDir, out, framework);
 
