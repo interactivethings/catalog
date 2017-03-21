@@ -6,20 +6,12 @@ UMD_BUILD_FILES = \
 	catalog.js \
 	catalog.min.js
 
-DOC_FILES = $(shell find docs -type f \( ! -iname ".*" \))
-
-SITE_DIR = site
-SITE_FILES = index.html catalog.js catalog.min.js babel.min.js $(DOC_FILES)
-SITE_VERSION_FILES = $(addprefix $(SITE_DIR)/$(CURRENT_VERSION)/, $(SITE_FILES))
-SITE_LATEST_FILES = $(addprefix $(SITE_DIR)/, $(SITE_FILES))
-SITE_NEXT_FILES = $(addprefix $(SITE_DIR)/next/, $(SITE_FILES))
-
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib gh-pages clean-site site site-next version publish clean clobber lint test watch-test
+.PHONY: server build watch-lib version publish clean clobber lint test watch-test
 
 all: server
 
@@ -71,47 +63,9 @@ babel.min.js: node_modules/babel-standalone/babel.min.js
 version:
 	@bin/version
 
-publish: .npmrc
+publish:
 	@bin/publish
 	@rm -f $<
-
-gh-pages:
-	@$$(yarn bin)/gh-pages -d $(SITE_DIR) --add --message '[skip ci] Update docs' --repo 'git@github.com:interactivethings/catalog.git'
-	@rm -rf $(SITE_DIR)
-
-clean-site:
-	@rm -rf $(SITE_DIR)
-
-site: clean-site $(SITE_VERSION_FILES) $(SITE_LATEST_FILES)
-
-site-next: clean-site $(SITE_VERSION_FILES) $(SITE_NEXT_FILES)
-
-.npmrc: .npmrc-template
-	@cp $< $@
-
-$(SITE_DIR)/$(CURRENT_VERSION)/index.html: index.html
-	@mkdir -p $(dir $@)
-	@sed -e 's#catalog.js#catalog.min.js#g' $< > $@
-
-$(SITE_DIR)/$(CURRENT_VERSION)/%: %
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
-# Replace the string %VERSION% in supported files with the current version,
-# otherwise just copy the file to the destination
-	$(if $(or \
-			$(findstring .md,   $(suffix $<)), \
-			$(findstring .txt,  $(suffix $<)), \
-		), \
-		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
-		@cp $< $@)
-
-$(SITE_DIR)/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
-
-$(SITE_DIR)/next/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
 
 ### OTHER
 
