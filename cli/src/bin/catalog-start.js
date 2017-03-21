@@ -43,7 +43,7 @@ const run = async (catalogSrcDir: void | string, options: {port: number}) => {
 
   const url = PROTOCOL + '://' + HOST + ':' + port + '/';
 
-  const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url});
+  const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url, publicPath: '/'});
 
   await setupCatalog(paths);
   await runDevServer(webpackConfig, HOST, port, PROTOCOL, paths, framework);

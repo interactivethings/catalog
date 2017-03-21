@@ -15,11 +15,12 @@ type LoadWebpackOptions = {
   paths: Object,
   framework: string,
   dev: boolean,
+  publicPath: string,
   url?: string,
 };
 type WebpackConfig = {};
 
-export default async ({paths, framework, dev, url}: LoadWebpackOptions): WebpackConfig => {
+export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptions): WebpackConfig => {
   const useBabelrc = await exists(paths.babelrc);
   const frameworkConfig = framework === 'NEXT'
     ? nextConfig(paths, useBabelrc, dev)
@@ -58,8 +59,7 @@ export default async ({paths, framework, dev, url}: LoadWebpackOptions): Webpack
       filename: dev ? 'static/catalog-bundle.js' : 'static/catalog-bundle.[chunkhash:8].js',
       chunkFilename: dev ? 'static/[name].chunk.js' : 'static/[name].[chunkhash:8].chunk.js',
       // This is the URL that app is served from. We use "/" in development.
-      // FIXME: use proper path in production that depends on server directory.
-      publicPath: '/'
+      publicPath
     },
     resolve: {
       modules: [paths.appSrc, 'node_modules'].concat(paths.nodePaths),
@@ -126,7 +126,11 @@ export default async ({paths, framework, dev, url}: LoadWebpackOptions): Webpack
       }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
-      new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production')}),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
+        // Strip trailing slash from PUBLIC_URL (like Create React App does)
+        'process.env.PUBLIC_URL': JSON.stringify(publicPath.replace(/\/$/, ''))
+      }),
     // This is necessary to emit hot updates (currently CSS only):
 
       ...devPlugins,

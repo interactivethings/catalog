@@ -22,17 +22,18 @@ import setupCatalog from '../actions/setupCatalog';
 import runBuild from '../actions/runBuild';
 
 args
-  .option(['o', 'out'], 'Directory to build into', 'catalog/build');
+  .option(['o', 'out'], 'Directory to build into', 'catalog/build')
+  .option('public-path', 'The path/URL where production assets get loaded from', '/');
 
 const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
-const run = async (catalogSrcDir: void | string, {out}: {out: string}) => {
+const run = async (catalogSrcDir: void | string, {out, publicPath}: {out: string, publicPath: string}) => {
   clearConsole();
 
   const framework = await detectFramework();
   const paths = await loadPaths(catalogSrcDir, out, framework);
 
-  const webpackConfig = await loadWebpackConfig({paths, dev: false, framework});
+  const webpackConfig = await loadWebpackConfig({paths, dev: false, framework, publicPath});
 
   await setupCatalog(paths);
 
