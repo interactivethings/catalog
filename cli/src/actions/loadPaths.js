@@ -1,7 +1,7 @@
 // @flow
 import {resolveAppPath, resolveOwnPath, nodePaths} from '../utils/paths';
 
-export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string = 'catalog/build') => ({
+export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string = 'catalog/build', framework: string) => ({
 
   unresolvedCatalogSrcDir: catalogSrcDir,
   unresolvedCatalogBuildDir: catalogBuildDir,
@@ -12,8 +12,9 @@ export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string
 
   catalogSrcTemplateDir: resolveOwnPath('..', 'setup-template'),
 
-  appPublic: resolveAppPath('public'),
   appRoot: resolveAppPath('.'),
+  staticSrcDir: framework === 'NEXT' ? resolveAppPath('static') : resolveAppPath('public'),
+  staticBuildDir: framework === 'NEXT' ? resolveAppPath(catalogBuildDir, 'static') : resolveAppPath(catalogBuildDir),
 
   appPackageJson: resolveAppPath('package.json'),
   appSrc: resolveAppPath('src'),

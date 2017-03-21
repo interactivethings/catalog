@@ -1,7 +1,7 @@
 // @flow
 import webpack from 'webpack';
 import {errorMessage} from '../utils/format';
-import {rimraf} from 'sander';
+import {rimraf, copydir} from 'sander';
 
 // Print out errors
 function printErrors(summary, errors) {
@@ -16,6 +16,8 @@ function printErrors(summary, errors) {
 export default async (config: Object, paths: Object) => {
   const compiler = webpack(config);
   await rimraf(paths.catalogBuildDir, '*');
+
+  await copydir(paths.staticSrcDir).to(paths.staticBuildDir);
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {

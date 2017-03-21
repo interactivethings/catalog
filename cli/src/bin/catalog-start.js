@@ -37,9 +37,8 @@ const run = async (catalogSrcDir: void | string, options: {port: number}) => {
   clearConsole();
 
   console.log(infoMessage('Starting Catalog …'));
-
-  const paths = await loadPaths(catalogSrcDir, undefined, options);
-  const framework = await detectFramework(paths);
+  const framework = await detectFramework();
+  const paths = await loadPaths(catalogSrcDir, undefined, framework);
   const port = await detect(options.port);
 
   const url = PROTOCOL + '://' + HOST + ':' + port + '/';

@@ -22,15 +22,16 @@ import setupCatalog from '../actions/setupCatalog';
 import runBuild from '../actions/runBuild';
 
 args
-  .option(['o', 'out'], 'Directory to build', 'catalog/build');
+  .option(['o', 'out'], 'Directory to build into', 'catalog/build');
 
 const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
 const run = async (catalogSrcDir: void | string, {out}: {out: string}) => {
   clearConsole();
 
-  const paths = await loadPaths(catalogSrcDir, out);
-  const framework = await detectFramework(paths);
+  const framework = await detectFramework();
+  const paths = await loadPaths(catalogSrcDir, out, framework);
+
   const webpackConfig = await loadWebpackConfig({paths, dev: false, framework});
 
   await setupCatalog(paths);
