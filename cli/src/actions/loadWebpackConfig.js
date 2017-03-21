@@ -48,19 +48,21 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
   return {
     devtool: dev ? 'cheap-module-source-map' : 'source-map',
     bail: dev ? false : true,
-    entry: (
-      dev
-      ? [require.resolve('react-dev-utils/webpackHotDevClient')]
-      : []
-      ).concat(
-        'babel-polyfill',
-        'isomorphic-fetch',
-        paths.catalogIndexJs
-      ),
+    entry: {
+      catalog: (
+          dev
+          ? [require.resolve('react-dev-utils/webpackHotDevClient')]
+          : []
+        ).concat(
+          'babel-polyfill',
+          'isomorphic-fetch',
+          paths.catalogIndexJs
+        )
+    },
     output: {
       path: paths.catalogBuildDir,
       pathinfo: dev ? true : false,
-      filename: dev ? 'static/catalog-bundle.js' : 'static/catalog-bundle.[chunkhash:8].js',
+      filename: dev ? 'static/[name].js' : 'static/[name].[chunkhash:8].js',
       chunkFilename: dev ? 'static/[name].chunk.js' : 'static/[name].[chunkhash:8].chunk.js',
       // This is the URL that app is served from. We use "/" in development.
       publicPath
@@ -134,6 +136,10 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
         'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
         // Strip trailing slash from PUBLIC_URL (like Create React App does)
         'process.env.PUBLIC_URL': JSON.stringify(publicPath.replace(/\/$/, ''))
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'babel',
+        minChunks: (module) => /babel-standalone/.test(module.resource)
       }),
     // This is necessary to emit hot updates (currently CSS only):
 
