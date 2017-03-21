@@ -20,6 +20,7 @@
     "lib",
     "docs",
     "cli/lib",
+    "cli/setup-template",
     "catalog.js",
     "catalog.min.js"
   ],
