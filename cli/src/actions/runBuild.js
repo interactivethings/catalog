@@ -19,7 +19,8 @@ export default async (config: Object, paths: Object) => {
 
   await copydir(paths.staticSrcDir).to(paths.staticBuildDir);
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
+    // We don't reject the promise but exit the process immediately
     compiler.run((err, stats) => {
       if (err) {
         printErrors('Failed to compile.', [err]);
