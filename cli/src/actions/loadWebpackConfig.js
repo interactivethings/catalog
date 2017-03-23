@@ -68,12 +68,14 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
       publicPath
     },
     resolve: {
-      modules: [paths.appSrc, 'node_modules'].concat(paths.nodePaths),
+      modules: [paths.appSrc, 'node_modules', paths.appNodeModules].concat(paths.nodePaths),
       extensions: ['.js', '.json', '.jsx'],
       alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web'
+        'react-native': 'react-native-web',
+        'babel-standalone': 'babel-standalone/babel.min.js',
+        'js-yaml': 'js-yaml/dist/js-yaml.min.js'
       }
     },
     resolveLoader: {
@@ -83,7 +85,8 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
       ]
     },
     module: {
-      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [path.resolve(__dirname, '../../../lib/loader'), 'raw-loader']}]
+      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [path.resolve(__dirname, '../../../lib/loader'), 'raw-loader']}],
+      noParse: /\.min\.js/
     },
     plugins: (
       dev
@@ -138,8 +141,8 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
         'process.env.PUBLIC_URL': JSON.stringify(publicPath.replace(/\/$/, ''))
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        name: 'babel',
-        minChunks: (module) => /babel-standalone/.test(module.resource)
+        name: 'vendor',
+        minChunks: (module) => /babel-standalone|js-yaml/.test(module.resource)
       }),
     // This is necessary to emit hot updates (currently CSS only):
 
