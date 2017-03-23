@@ -16,5 +16,5 @@ Cool, eh?`}
 </Hint>
 }
 `;
-  expect(page).toMatchSnapshot();
+  expect(page()).toMatchSnapshot();
 });

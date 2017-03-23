@@ -20,17 +20,28 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
   moduleRules: [
       // Disable require.ensure as it's not a standard language feature.
       {parser: {requireEnsure: false}},
-      // "url" loader embeds assets smaller than specified size as data URLs to avoid requests.
-      // Otherwise, it acts like the "file" loader.
     {
       exclude: [
         /\.html$/,
         /\.(js|jsx)$/,
         /\.css$/,
         /\.json$/,
-        /\.svg$/,
+        /\.bmp$/,
+        /\.gif$/,
+        /\.jpe?g$/,
+        /\.png$/,
         /\.md$/
       ],
+      loader: 'file-loader',
+      options: {
+        name: 'static/media/[name].[hash:8].[ext]'
+      }
+    },
+      // "url" loader works like "file" loader except that it embeds assets
+      // smaller than specified limit in bytes as data URLs to avoid requests.
+      // A missing `test` is equivalent to a match.
+    {
+      test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
       loader: 'url-loader',
       options: {
         limit: 10000,
@@ -44,7 +55,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
       loader: 'babel-loader',
       options: {
         babelrc: useBabelrc,
-        presets: ['babel-preset-react-app', require.resolve('../../../lib/babel')],
+        presets: [require.resolve('babel-preset-react-app'), require.resolve('../../../lib/babel')],
         // TODO check if this is an issue when this plugin is already included
         plugins: [require.resolve('babel-plugin-syntax-dynamic-import')],
         cacheDirectory: true
@@ -117,17 +128,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         ...extractTextPluginOptions
       })
     }
-    ),
-      // "file" loader for svg
-    {
-      test: /\.svg$/,
-      loader: 'file-loader',
-      options: {
-        name: 'static/media/[name].[hash:8].[ext]'
-      }
-    }
-      // ** STOP ** Are you adding a new loader?
-      // Remember to add the new extension(s) to the "url" loader exclusion list.
+    )
   ],
   plugins: dev
     ? []

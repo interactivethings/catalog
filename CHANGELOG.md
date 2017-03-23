@@ -8,7 +8,7 @@
 - Create a new stacking context for the whole <Page> component [#223](https://github.com/interactivethings/catalog/issues/223)
 - Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
 - New option on the image specimen: `scale`. See [#76](https://github.com/interactivethings/catalog/issues/76)
-- Provide a function (`Catalog.markdownPage`) which converts a template literal into a Page component [#277](https://github.com/interactivethings/catalog/pull/277)
+- Provide a function (`Catalog.markdown`) which converts a template literal into a Page component [#277](https://github.com/interactivethings/catalog/pull/277), [#281](https://github.com/interactivethings/catalog/pull/281)
 - Bugfixes:
   - When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
 
