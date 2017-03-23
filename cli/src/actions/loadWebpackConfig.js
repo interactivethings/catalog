@@ -104,7 +104,10 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
             comments: false,
             screw_ie8: true
           },
-          sourceMap: true
+          sourceMap: true,
+          // Don't minify the vendor chunk, since it only contains minified modules anyway.
+          // Adds 13K to the bundle (because of webpack stuff) but speeds up the build 3x!
+          exclude: /vendor/
         }),
         new ManifestPlugin({
           fileName: 'asset-manifest.json'
