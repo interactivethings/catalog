@@ -24,12 +24,24 @@ export default function({types: t}) {
             path.node.closingElement.start
           );
 
-          attributes.push(
-            t.jSXAttribute(
-              t.jSXIdentifier('sourceText'),
-              t.jSXExpressionContainer(
-                t.stringLiteral(stripIndent(sourceText).trim())
-              )
+          path.replaceWith(
+            t.jSXElement(
+              t.jSXOpeningElement(
+                path.node.openingElement.name,
+                [
+                  ...path.node.openingElement.attributes,
+                  t.jSXAttribute(
+                    t.jSXIdentifier('sourceText'),
+                    t.jSXExpressionContainer(
+                      t.stringLiteral(stripIndent(sourceText).trim())
+                    )
+                  )
+                ],
+                false
+              ),
+              path.node.closingElement,
+              path.node.children,
+              false
             )
           );
         }
