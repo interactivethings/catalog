@@ -44,7 +44,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
       loader: 'babel-loader',
       options: {
         babelrc: useBabelrc,
-        presets: ['babel-preset-react-app'],
+        presets: [require.resolve('babel-preset-react-app')],
         // TODO check if this is an issue when this plugin is already included
         plugins: [require.resolve('babel-plugin-syntax-dynamic-import')],
         cacheDirectory: true
