@@ -26,7 +26,7 @@ import Page from './components/Page/Page';
 // > ${<MyComponent isCustomComponent={'AWESOME'} />}
 // > `;
 
-const markdownPage = (strings, ...values) =>
+const markdownPage = (strings, ...values) => () =>
   createElement(Page, {},
     ...values.reduce((a, v, i) => a.concat([v, strings[i + 1]]), [strings[0]]));
 

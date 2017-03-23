@@ -42,6 +42,72 @@ ReactDOM.render(
 );
 ```
 
+## Write Documentation with React Components
+
+Instead of using Markdown files, you can use Catalog's `Page` and all specimen components directly to create your own page components. This enables you for example to
+
+- generate documentation programmatically,
+- mix specimens with other components,
+- or share state across specimens.
+
+```hint|directive
+As with the webpack loader transformed Markdown files, use `component` instead of `src` in the page configuration.
+```
+
+```code|lang-jsx
+import React from 'react';
+import {Page, ReactSpecimen, ColorPaletteSpecimen} from 'catalog';
+import Button from 'components/Button/Button';
+
+export default () => (
+  <Page>
+    <h2>My Buttons</h2>
+
+    <p>Are so nice</p>
+
+    <ul>
+      <li>Yes</li>
+      <li>or no?</li>
+    </ul>
+
+    <ReactSpecimen span={3}>
+      {'<Button primary>Foo</Button>'}
+    </ReactSpecimen>
+
+    <ColorPaletteSpecimen span={3} colors={generateColorPalette()} />
+  </Page>
+);
+```
+
+To make it easier to write the bulk of the documentation with Markdown but intersperse with your own React components, you can use the `markdown` [tagged template literal](http://exploringjs.com/es6/ch_template-literals.html).
+
+```code
+lang: js
+---
+import React from 'react';
+import {markdown, ReactSpecimen, ColorPaletteSpecimen} from 'catalog';
+import Button from 'components/Button/Button';
+
+export default markdown`
+## My Buttons
+
+Are so nice
+
+- Yes
+- or no?
+
+${
+  <ReactSpecimen span={3}>
+    {'<Button primary>Foo</Button>'}
+  </ReactSpecimen>
+}
+
+${
+  <ColorPaletteSpecimen span={3} colors={generateColorPalette()} />
+}
+`
+```
+
 ## Hot Reloadable Markdown Files
 
 Catalog provides a [webpack](http://webpack.github.io/) loader which allows you to import hot-reloadable Markdown files.
@@ -88,7 +154,7 @@ To save you from prepending `catalog/lib/loader!raw!` to each import, you can al
 
 ## Advanced Integration
 
-> If you need more control over the integration into your application, Catalog is flexible enough to supports some advanced use cases.
+> If you need more control over the integration into your application, Catalog is flexible enough to supports advanced use cases.
 
 ### React Router Routes
 
@@ -122,41 +188,4 @@ ReactDOM.render(
 );
 ```
 
-### Write Documentation with React Components
 
-Instead of using Markdown files, you can use Catalog's `Page` and all specimen components directly to create your own page components. This enables you for example to
-
-- generate documentation programmatically,
-- mix specimens with other components,
-- or share state across specimens.
-
-```hint|directive
-As with the webpack loader transformed Markdown files, use `component` instead of `src` in the page configuration.
-```
-
-```code|lang-jsx
-import React from 'react';
-import {Page, ReactSpecimen, ColorPaletteSpecimen} from 'catalog';
-import Button from 'components/Button/Button';
-
-export default () => (
-  <Page>
-    <h2>My Buttons</h2>
-
-    <p>Are so nice</p>
-
-    <ul>
-      <li>Yes</li>
-      <li>or no?</li>
-    </ul>
-
-    <hr />
-
-    <ReactSpecimen span={3}>
-      {'<Button primary>Foo</Button>'}
-    </ReactSpecimen>
-
-    <ColorPaletteSpecimen span={3} colors={generateColorPalette()}>
-  </Page>
-);
-```
