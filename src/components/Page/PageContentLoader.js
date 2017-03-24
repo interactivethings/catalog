@@ -18,7 +18,6 @@ class PageContentLoader extends Component {
 
   componentWillReceiveProps(_, nextContext) {
     if (nextContext.catalog.page.src !== this.context.catalog.page.src) {
-      this.setState({content: null});
       this.fetchPageData(nextContext.catalog.page.src);
     }
   }

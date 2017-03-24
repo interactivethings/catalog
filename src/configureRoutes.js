@@ -6,12 +6,8 @@ import requireModuleDefault from './utils/requireModuleDefault';
 import CatalogContext from './components/CatalogContext';
 import PageContentLoader from './components/Page/PageContentLoader';
 
-const routeHandler = (Component) => (props) => {
-  return <Component {...props} />;
-};
-
 const pageToRoute = ({path, component}) => ({
-  component: routeHandler(component ? requireModuleDefault(component) : PageContentLoader),
+  component: component ? requireModuleDefault(component) : PageContentLoader,
   path
 });
 
