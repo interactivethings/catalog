@@ -63,9 +63,12 @@ babel.min.js: node_modules/babel-standalone/babel.min.js
 version:
 	@bin/version
 
-publish:
+publish: .npmrc
 	@bin/publish
 	@rm -f $<
+
+.npmrc: .npmrc-template
+	@cp $< $@
 
 ### OTHER
 

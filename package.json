@@ -22,7 +22,9 @@
     "cli/lib",
     "cli/setup-template",
     "catalog.js",
-    "catalog.min.js"
+    "catalog.min.js",
+    "babel.js",
+    "loader.js"
   ],
   "bin": {
     "catalog": "cli/lib/bin/catalog.js",
