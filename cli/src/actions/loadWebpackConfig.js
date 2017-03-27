@@ -54,8 +54,7 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
           ? [require.resolve('react-dev-utils/webpackHotDevClient')]
           : []
         ).concat(
-          require.resolve('babel-polyfill'),
-          require.resolve('isomorphic-fetch'),
+          require.resolve('../config/polyfills'),
           paths.catalogIndexJs
         )
     },
