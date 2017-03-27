@@ -146,6 +146,10 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
         name: 'vendor',
         minChunks: (module) => /babel-standalone|js-yaml/.test(module.resource)
       }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest',
+        minChunks: Infinity
+      }),
     // This is necessary to emit hot updates (currently CSS only):
 
       ...devPlugins,
