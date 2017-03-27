@@ -4,11 +4,13 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
+import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import {exists} from 'sander';
 
 import createReactAppConfig from '../config/createReactApp';
 import nextConfig from '../config/next';
+import getClientEnvironment from '../config/env';
 import {link} from '../utils/format';
 
 type LoadWebpackOptions = {
@@ -25,6 +27,8 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
   const frameworkConfig = framework === 'NEXT'
     ? nextConfig(paths, useBabelrc, dev)
     : createReactAppConfig(paths, useBabelrc, dev);
+
+  const env = getClientEnvironment(publicPath.replace(/\/$/, ''));
 
   const devPlugins = dev
    ? [
@@ -113,12 +117,7 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
         })
       ]
     ).concat([
-    // Makes some environment variables available in index.html.
-    // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-    // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    // In development, this will be an empty string.
-    // new InterpolateHtmlPlugin(env.raw),
-    // Generates an `index.html` file with the <script> injected.
+      new InterpolateHtmlPlugin(env.raw),
       new HtmlWebpackPlugin({
         inject: true,
         template: paths.catalogIndexHtml,
@@ -135,13 +134,7 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
           minifyURLs: true
         }
       }),
-    // Makes some environment variables available to the JS code, for example:
-    // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
-        // Strip trailing slash from PUBLIC_URL (like Create React App does)
-        'process.env.PUBLIC_URL': JSON.stringify(publicPath.replace(/\/$/, ''))
-      }),
+      new webpack.DefinePlugin(env.stringified),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: (module) => /babel-standalone|js-yaml/.test(module.resource)
