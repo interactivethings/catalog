@@ -10,3 +10,4 @@ node_modules
 /deploy-key.pub
 /deploy-key
 /cli/lib
+/dist

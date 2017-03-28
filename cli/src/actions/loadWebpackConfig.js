@@ -88,7 +88,7 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
       ]
     },
     module: {
-      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [path.resolve(__dirname, '../../../lib/loader'), 'raw-loader']}],
+      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [require.resolve('../../../loader'), require.resolve('raw-loader')]}],
       noParse: /\.min\.js/
     },
     plugins: (
