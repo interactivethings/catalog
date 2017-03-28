@@ -1,6 +1,6 @@
 {
   "name": "catalog",
-  "version": "3.0.0-beta.9",
+  "version": "3.0.0-beta.10",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
@@ -26,8 +26,7 @@
     "catalog-start": "dist/cli/bin/catalog-start.js",
     "catalog-build": "dist/cli/bin/catalog-build.js"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "args": "^2.3.0",
     "autoprefixer": "^6.7.6",
