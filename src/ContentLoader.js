@@ -4,6 +4,26 @@ import Loader from './components/Page/Loader';
 import PageRenderer from './components/Page/PageRenderer';
 import Page from './components/Page/Page';
 
+const fetchText = (url) =>
+  fetch(url, {credentials: 'same-origin'})
+  .then(res => {
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error(`fetchText: Unexpected status code: ${res.status}`);
+    }
+    return res.text();
+  });
+
+// The contents of the page when loading the page fails. 'msg' is the error
+// string or message with additional details.
+const errorMarkdown = (msg) => `
+\`\`\`hint|warning
+## Failed to load the page
+
+${msg}
+\`\`\`
+`;
+
+
 class ContentLoader extends Component {
   constructor() {
     super();
@@ -24,12 +44,12 @@ class ContentLoader extends Component {
     const {urlOrComponentPromise} = this.props;
 
     const contentPromise = typeof urlOrComponentPromise === 'string'
-      ? fetch(urlOrComponentPromise, {credentials: 'same-origin'}).then(res => res.text()).then(text => <Page>{text}</Page>)
+      ? fetchText(urlOrComponentPromise).then(text => <Page>{text}</Page>)
       : urlOrComponentPromise().then(c => createElement(c));
 
-    contentPromise
-      .then((content) => { this.setState({content}); })
-      .catch((content) => { this.setState({content}); });
+    contentPromise.then(
+      (content) => { this.setState({content}); },
+      (err) => { this.setState({content: <Page>{errorMarkdown('' + err)}</Page>}); });
   }
 
   render() {
