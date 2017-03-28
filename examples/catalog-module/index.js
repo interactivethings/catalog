@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Catalog} from '../../src/index';
+import {Catalog, ContentLoader} from '../../src/index';
 
 ReactDOM.render(
   <Catalog
@@ -11,7 +11,7 @@ ReactDOM.render(
         path: '/',
         title: 'Foo',
         imports: {Foo: require('./components/Foo/Foo')},
-        component: require('./components/Foo/Foo.docs.md')
+        component: ContentLoader('./components/Foo/Foo.docs.md')
       }
     ]}
   />,
