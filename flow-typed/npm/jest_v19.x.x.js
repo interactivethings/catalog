@@ -1,5 +1,5 @@
-// flow-typed signature: adc2f239806ddd8eb09272d1b4e23cb9
-// flow-typed version: 7dc2a8971e/jest_v19.x.x/flow_>=v0.33.x
+// flow-typed signature: b3ed97c44539e6cdbaf9032b315a2b31
+// flow-typed version: ea7ac31527/jest_v19.x.x/flow_>=v0.33.x
 
 type JestMockFn = {
   (...args: Array<any>): any,
@@ -247,6 +247,11 @@ type JestObjectType = {
    * An un-hoisted version of enableAutomock
    */
   autoMockOn(): JestObjectType,
+  /**
+   * Clears the mock.calls and mock.instances properties of all mocks.
+   * Equivalent to calling .mockClear() on every mocked function.
+   */
+  clearAllMocks(): JestObjectType,
   /**
    * Resets the state of all mocks. Equivalent to calling .mockReset() on every
    * mocked function.
