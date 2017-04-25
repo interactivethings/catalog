@@ -29,7 +29,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "args": "2.4",
+    "args": "^2.6.1",
     "autoprefixer": "^6.7.6",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
