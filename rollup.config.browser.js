@@ -20,7 +20,8 @@ let plugins = [
       'radium': [ 'Style', 'StyleRoot' ],
       'react': [ 'PureComponent', 'Component', 'PropTypes', 'Children', 'createElement' ],
       'react-dom': [ 'unstable_renderSubtreeIntoContainer', 'unmountComponentAtNode' ],
-      'js-yaml': [ 'safeLoad', 'CORE_SCHEMA', 'Type', 'Schema' ]
+      'js-yaml': [ 'safeLoad', 'CORE_SCHEMA', 'Type', 'Schema' ],
+      'prop-types': [ 'bool', 'array', 'func', 'object', 'arrayOf', 'oneOfType', 'element', 'shape', 'string' ]
     }
   }),
   babel({
