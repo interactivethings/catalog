@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {catalogShape} from '../CatalogPropTypes';
+import PropTypes from 'prop-types';
 import {Style} from 'radium';
 import renderMarkdown from '../utils/renderMarkdown';
 import Specimen from '../components/Specimen/Specimen';

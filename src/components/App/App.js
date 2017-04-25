@@ -1,4 +1,5 @@
-import React, {PropTypes, Children} from 'react';
+import React, { Children } from 'react';
+import PropTypes from 'prop-types';
 import {StyleRoot} from 'radium';
 import DocumentTitle from 'react-document-title';
 import {catalogShape} from '../../CatalogPropTypes';

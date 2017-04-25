@@ -1,9 +1,10 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {pagesShape} from '../../CatalogPropTypes';
 
 import Link from '../Link/Link';
 import ListItem, {style as listItemStyle} from './ListItem';
 import {style as menuStyle} from './Menu';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 
 const NestedList = ({theme, pages, title}, {router}) => {

@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import 'raf/polyfill';
 
-import React, {PureComponent, PropTypes} from 'react';
+import React, { PureComponent } from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
 import Page from './Page';
 import runscript from '../../utils/runscript';
