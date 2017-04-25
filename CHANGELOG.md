@@ -29,6 +29,7 @@ _none_
 - Create a new stacking context for the whole <Page> component [#223](https://github.com/interactivethings/catalog/issues/223)
 - Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
 - When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
+- Ensure React 15.5 compatibility ([#288](https://github.com/interactivethings/catalog/pull/288))
 
 ## 2.5.3
 
