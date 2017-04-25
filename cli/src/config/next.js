@@ -8,7 +8,8 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
     // Process JS with Babel.
     {
       test: /\.(js|jsx)$/,
-      include: [paths.appSrc, paths.catalogSrcDir],
+      include: paths.appRoot,
+      exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
         babelrc: useBabelrc,
