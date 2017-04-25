@@ -1,4 +1,3 @@
-const path = require('path');
 const loaderUtils = require('loader-utils');
 
 module.exports = function loader() {};
