@@ -11,6 +11,9 @@ export {default as Card} from './components/Card/Card';
 export {default as Page} from './components/Page/Page';
 export {default as Span} from './components/Specimen/Span';
 
+// Export for use in loader
+export {default as PageRenderer} from './components/Page/PageRenderer';
+
 // Higher-order component for creating specimens
 export {default as Specimen} from './components/Specimen/Specimen';
 export {default as mapSpecimenOption} from './utils/mapSpecimenOption';

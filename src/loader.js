@@ -9,7 +9,7 @@ module.exports.pitch = function pitch(remainingRequest) {
   const output = `
     var React = require('react');
     var createReactClass = require('create-react-class');
-    var PageRenderer = require(${JSON.stringify(path.resolve(__dirname, 'components/Page/PageRenderer'))});
+    var PageRenderer = require('catalog').PageRenderer;
     if (PageRenderer.__esModule) {
       PageRenderer = PageRenderer.default;
     }
