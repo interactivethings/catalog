@@ -73,10 +73,10 @@ dist/catalog.min.js: src/index-standalone.js
 ### RELEASING
 
 version:
-	@bin/version
+	@scripts/version
 
 publish: .npmrc
-	@bin/publish
+	@scripts/publish
 	@rm -f $<
 
 .npmrc: .npmrc-template
