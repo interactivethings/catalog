@@ -2,15 +2,33 @@
 
 ## [Unreleased]
 
-- Upgrade dependencies ([#267](https://github.com/interactivethings/catalog/pull/267))
+### Added
+
+🚀 Catalog now comes with its own command line tool (see [#283](https://github.com/interactivethings/catalog/pull/283))!
+
+This means getting started with Catalog is now as simple as typing `catalog start`.
+
+- Catalog will work _alongside_ existing apps and detect [Create React App](https://github.com/facebookincubator/create-react-app) and [next.js](https://github.com/zeit/next.js) automatically
+- Catalog will help you getting started by creating the necessary files when you run `catalog start` for the first time
+- No configuration needed!
+- Create an optimized build with `catalog build`
+
+Other things:
+- Provide a function (`Catalog.markdown`) which converts a template literal into a Page component [#277](https://github.com/interactivethings/catalog/pull/277), [#281](https://github.com/interactivethings/catalog/pull/281)
+- New option on the image specimen: `scale`. See [#76](https://github.com/interactivethings/catalog/issues/76)
+- Add a Babel plugin which preserves original source text of ReactSpecimen children [#285](https://github.com/interactivethings/catalog/pull/285)
 - Enable imports in all Specimens ([#154](https://github.com/interactivethings/catalog/pull/154))
+
+### Breaking Changes
+
+_none_
+
+### Fixes
+
 - Fix weird scale behaviour of the thumbnail in download specimen [#260](https://github.com/interactivethings/catalog/issues/260)
 - Create a new stacking context for the whole <Page> component [#223](https://github.com/interactivethings/catalog/issues/223)
 - Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
-- New option on the image specimen: `scale`. See [#76](https://github.com/interactivethings/catalog/issues/76)
-- Provide a function (`Catalog.markdown`) which converts a template literal into a Page component [#277](https://github.com/interactivethings/catalog/pull/277), [#281](https://github.com/interactivethings/catalog/pull/281)
-- Bugfixes:
-  - When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
+- When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
 
 ## 2.5.3
 

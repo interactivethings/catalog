@@ -2,34 +2,32 @@ SHELL := /bin/bash
 
 CURRENT_VERSION = $(shell node -p 'require("./package.json").version')
 
-UMD_BUILD_FILES = \
-	catalog.js \
-	catalog.min.js
-
-DOC_FILES = $(shell find docs -type f \( ! -iname ".*" \))
-
-SITE_DIR = site
-SITE_FILES = index.html catalog.js catalog.min.js babel.min.js $(DOC_FILES)
-SITE_VERSION_FILES = $(addprefix $(SITE_DIR)/$(CURRENT_VERSION)/, $(SITE_FILES))
-SITE_LATEST_FILES = $(addprefix $(SITE_DIR)/, $(SITE_FILES))
-SITE_NEXT_FILES = $(addprefix $(SITE_DIR)/next/, $(SITE_FILES))
+DIST_TARGETS = \
+	dist/lib \
+	dist/cli \
+	dist/setup-template \
+	dist/catalog.cjs.js \
+	dist/catalog.es.js \
+	dist/catalog.dev.js \
+	dist/catalog.min.js
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: server build watch-lib gh-pages clean-site site site-next version publish clean clobber lint test watch-test
+.PHONY: build watch-lib version publish clean clobber lint test watch-test
 
-all: server
+all:
+	@echo -e "Please choose a task to run"
 
 ### DEVELOPMENT
 
-server: node_modules babel.min.js
-	@NODE_ENV=hot $$(yarn bin)/nodemon -q -w webpack.config.js -w bin --exec bin/server
-
 watch-lib: node_modules
-	$$(yarn bin)/babel src --watch --ignore __tests__ --out-dir lib
+	BABEL_ENV=lib $$(yarn bin)/babel src --watch --ignore test.js --out-dir dist/lib
+
+watch-cli: node_modules
+	BABEL_ENV=lib $$(yarn bin)/babel cli/src --watch --ignore test.js --out-dir dist/cli
 
 test: lint
 	@$$(yarn bin)/jest
@@ -42,24 +40,37 @@ lint:
 
 ### BUILDS
 
-build: node_modules clean test lib $(UMD_BUILD_FILES) babel.min.js
+build: node_modules clean test $(DIST_TARGETS)
 
-lib:
-	@$$(yarn bin)/babel src --ignore __tests__ --out-dir $@
+dist/lib: src
+	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-dir $@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
-catalog.js:
-	@NODE_ENV=development BABEL_ENV=rollup $$(yarn bin)/rollup src/index-standalone --config=rollup.config.js --output=$@
+dist/catalog.cjs.js: src/index.js
+	@BABEL_ENV=rollup-lib $$(yarn bin)/rollup $< --config=rollup.config.lib.js --format=cjs --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
-catalog.min.js:
-	@NODE_ENV=production BABEL_ENV=rollup $$(yarn bin)/rollup src/index-standalone --config=rollup.config.js --output=$@
+dist/catalog.es.js: src/index.js
+	@BABEL_ENV=rollup-lib $$(yarn bin)/rollup $< --config=rollup.config.lib.js --format=es --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
-babel.min.js: node_modules/babel-standalone/babel.min.js
-	@cp $< $@
+dist/setup-template: cli/setup-template
+	cp -R $< $@
 
-### DOCUMENTATION AND DEPLOYMENT
+dist/cli: cli/src
+	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-dir $@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
+dist/catalog.dev.js: src/index-standalone.js
+	@NODE_ENV=development BABEL_ENV=rollup-browser $$(yarn bin)/rollup $< --config=rollup.config.browser.js --output=$@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
+dist/catalog.min.js: src/index-standalone.js
+	@NODE_ENV=production BABEL_ENV=rollup-browser $$(yarn bin)/rollup $< --config=rollup.config.browser.js --output=$@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
+
+### RELEASING
 
 version:
 	@bin/version
@@ -68,48 +79,13 @@ publish: .npmrc
 	@bin/publish
 	@rm -f $<
 
-gh-pages:
-	@$$(yarn bin)/gh-pages -d $(SITE_DIR) --add --message '[skip ci] Update docs' --repo 'git@github.com:interactivethings/catalog.git'
-	@rm -rf $(SITE_DIR)
-
-clean-site:
-	@rm -rf $(SITE_DIR)
-
-site: clean-site $(SITE_VERSION_FILES) $(SITE_LATEST_FILES)
-
-site-next: clean-site $(SITE_VERSION_FILES) $(SITE_NEXT_FILES)
-
 .npmrc: .npmrc-template
 	@cp $< $@
-
-$(SITE_DIR)/$(CURRENT_VERSION)/index.html: index.html
-	@mkdir -p $(dir $@)
-	@sed -e 's#catalog.js#catalog.min.js#g' $< > $@
-
-$(SITE_DIR)/$(CURRENT_VERSION)/%: %
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
-# Replace the string %VERSION% in supported files with the current version,
-# otherwise just copy the file to the destination
-	$(if $(or \
-			$(findstring .md,   $(suffix $<)), \
-			$(findstring .txt,  $(suffix $<)), \
-		), \
-		@sed -e 's:%VERSION%:$(CURRENT_VERSION):g' $< > $@, \
-		@cp $< $@)
-
-$(SITE_DIR)/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
-
-$(SITE_DIR)/next/%: $(SITE_DIR)/$(CURRENT_VERSION)/%
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
 
 ### OTHER
 
 clean:
-	@rm -rf -- lib $(UMD_BUILD_FILES)
+	@rm -rf -- dist
 
 clobber: clean
 	@rm -rf node_modules
