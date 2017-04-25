@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string): Promise<string> => {
+export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string, proxy: void | string): Promise<string> => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
@@ -17,10 +17,14 @@ export default async (config: Object, host: string, port: number, https: boolean
       ignored: /node_modules/
     },
     historyApiFallback: {
-      disableDotRule: true
+      disableDotRule: true,
+      htmlAcceptHeaders: proxy ? ['text/html'] : ['text/html', '*/*']
     },
     https,
-    host
+    host,
+    ...(proxy ? {proxy: {
+      '**': proxy
+    }} : {})
   });
 
   // Launch WebpackDevServer.

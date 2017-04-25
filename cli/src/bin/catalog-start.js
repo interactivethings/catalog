@@ -22,11 +22,13 @@ import runDevServer from '../actions/runDevServer';
 args
   .option('port', 'Port on which the Catalog server runs', 4000, port => parseInt(port, 10))
   .option('https', 'Use https', false)
-  .option('host', 'Host', 'localhost');
+  .option('host', 'Host', 'localhost')
+  .option('proxy', 'Proxy');
 
 const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
 const run = async (catalogSrcDir: void | string, options: {port: number, https: boolean, host: string}) => {
+const run = async (catalogSrcDir: void | string, options: {port: number, https: boolean, host: string, proxy: void | string}) => {
   clearConsole();
 
   console.log(infoMessage('Starting Catalog …'));
@@ -39,7 +41,7 @@ const run = async (catalogSrcDir: void | string, options: {port: number, https: 
   const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url, publicPath: '/'});
 
   await setupCatalog(paths);
-  await runDevServer(webpackConfig, options.host, port, options.https, paths, framework);
+  await runDevServer(webpackConfig, options.host, port, options.https, paths, framework, options.proxy);
 
   openBrowser(url);
 };
