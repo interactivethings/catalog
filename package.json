@@ -12,7 +12,8 @@
   ],
   "homepage": "https://interactivethings.github.io/catalog/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
-  "main": "dist/catalog.lib.js",
+  "main": "dist/catalog.cjs.js",
+  "module": "dist/catalog.es.js",
   "engines": {
     "npm": ">=2.14.12"
   },

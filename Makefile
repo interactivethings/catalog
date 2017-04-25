@@ -6,7 +6,8 @@ DIST_TARGETS = \
 	dist/lib \
 	dist/cli \
 	dist/setup-template \
-	dist/catalog.lib.js \
+	dist/catalog.cjs.js \
+	dist/catalog.es.js \
 	dist/catalog.dev.js \
 	dist/catalog.min.js
 
@@ -45,8 +46,12 @@ dist/lib: src
 	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-dir $@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
-dist/catalog.lib.js: src/index.js
-	@BABEL_ENV=rollup-lib $$(yarn bin)/rollup $< --config=rollup.config.lib.js --output=$@
+dist/catalog.cjs.js: src/index.js
+	@BABEL_ENV=rollup-lib $$(yarn bin)/rollup $< --config=rollup.config.lib.js --format=cjs --output=$@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
+dist/catalog.es.js: src/index.js
+	@BABEL_ENV=rollup-lib $$(yarn bin)/rollup $< --config=rollup.config.lib.js --format=es --output=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 dist/setup-template: cli/setup-template
