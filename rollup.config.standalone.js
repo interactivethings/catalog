@@ -3,7 +3,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import replace from 'rollup-plugin-replace';
-let version = require('./package.json').version;
+const pkg = require('./package.json');
 
 let plugins = [
   nodeResolve({
@@ -37,6 +37,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default {
+  entry: 'src/index-standalone.js',
   format: 'umd',
   moduleName: 'Catalog',
   plugins: plugins,
@@ -46,5 +47,5 @@ export default {
   external: [
     'babel-standalone'
   ],
-  banner: '/*! Catalog ' + version + ' http://interactivethings.github.io/catalog/ */'
+  banner: `/*! Catalog v${pkg.version} ${pkg.homepage} */`
 };

@@ -1,19 +1,23 @@
 import babel from 'rollup-plugin-babel';
-let version = require('./package.json').version;
+const pkg = require('./package.json');
 
-let plugins = [
-  babel({
-    exclude: 'node_modules/**'
-  })
+const externals = [
+  ...Object.keys(pkg.dependencies),
+  ...Object.keys(pkg.peerDependencies)
 ];
 
 export default {
-  format: 'cjs',
+  entry: 'src/index.js',
   moduleName: 'Catalog',
-  plugins: plugins,
-  onwarn: (warning) => {
-    if (warning.code === 'UNRESOLVED_IMPORT') { return; }
-    console.warn(warning.message);
-  },
-  banner: '/*! Catalog ' + version + ' http://interactivethings.github.io/catalog/ */'
+  plugins: [
+    babel({
+      exclude: 'node_modules/**'
+    })
+  ],
+  banner: `/*! Catalog v${pkg.version} ${pkg.homepage} */`,
+  external: id => externals.some(d => id.startsWith(d)),
+  targets: [
+    {dest: pkg.main, format: 'cjs'},
+    {dest: pkg.module, format: 'es'}
+  ]
 };

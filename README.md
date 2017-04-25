@@ -4,73 +4,90 @@
 
 # Catalog
 
-Catalog lets you create beautiful living style guides with Markdown.
+Catalog lets you create beautiful living and fully interactive style guides using Markdown and React components.
 
-The [standalone version](https://interactivethings.github.io/catalog/#/get-started) is completely dependency free, making it trivial to integrate Catalog into your application.
-
-Catalog can also be [directly integrated into a React app](https://interactivethings.github.io/catalog/#/react-integration) to develop and document components.
-
-[Read Catalog's documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) to find out more.
+Please read the [Catalog documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) for detailed installation and usage instructions.
 
 ## Installation
 
-#### Standalone Builds
-
-- Production: https://interactivethings.github.io/catalog/catalog.min.js
-- Development (with helpful warnings): https://interactivethings.github.io/catalog/catalog.js
-
-#### Prerelease Builds
-
-- Production: https://interactivethings.github.io/catalog/next/catalog.min.js
-- Development: https://interactivethings.github.io/catalog/next/catalog.js
-
-#### npm
+### yarn
 
 ```
-npm install catalog --save
+yarn add catalog react react-dom
 ```
 
-`react` and `react-dom` are peerDependencies, so you need to install them separately.
+### npm
+
+```
+npm install catalog react react-dom --save
+```
+
 
 ## Development
 
-```
-make
-```
+> Please make sure that you have Node >= 6 and [yarn](https://yarnpkg.com/) installed.
 
-installs npm dependencies and starts the development server.
+### Build process
 
-```
-make watch-lib
+Start the build process in watch mode:
+
 ``` 
+make
+````
 
-builds the files from `src/` into `lib/` continuously. Useful with `npm link` when you want to test integration with another app.
+### Linking
 
-```
-make build
-```
-
-builds `catalog.js`, `catalog.min.js`, and `lib/`
+When developing Catalog you want to link it locally:
 
 ```
-make test
+yarn link
 ```
 
-runs tests
+You can then link to this version in your project (or one of the examples):
 
-## Releasing
+```
+yarn link catalog
+```
+
+### Tests
+
+To run [Jest](https://facebook.github.io/jest/) tests in watch mode:
+
+```
+make test-watch
+```
+
+## Creating a Release
+
+Bump Catalog's version:
 
 ```
 make version
 ```
 
-prompts for a new version number.
+Then push including tags:
+
+```
+git push && git push --tags
+```
+
+The CI server will automatically run tests, build and publish the new version to npm
+
+## CI commands
+
+> These usually run automatically on the CI server
+
+### Create a build
+
+```
+make build
+```
+
+### Publish to npm
 
 ```
 make publish
 ```
-
-publishes to npm and gh-pages if an unpublished version number is detected. Usually will run automatically via CI.
 
 ## Credits
 
