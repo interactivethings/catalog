@@ -5,11 +5,11 @@
       "plugins": ["transform-object-rest-spread"]
     },
     "lib": {
-      "presets": [["env"], "react"],
+      "presets": [["env", {"targets": {"node": 6}}], "react"],
       "plugins": ["transform-object-rest-spread"]
     },
     "rollup-lib": {
-      "presets": [["env", {"loose": true, "modules": false}], "react"],
+      "presets": [["env", {"loose": true, "modules": false, "targets": {"node": 6, "browsers": ["last 2 versions", "ie 11"]}}], "react"],
       "plugins": ["external-helpers", "transform-object-rest-spread"]
     },
     "rollup-browser": {
