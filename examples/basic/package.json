@@ -1,0 +1,16 @@
+{
+  "name": "catalog-example-basic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "catalog": "^3.0.0-beta",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "scripts": {
+    "start": "catalog start",
+    "build": "catalog build"
+  },
+  "devDependencies": {}
+}

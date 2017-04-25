@@ -11,3 +11,4 @@ node_modules
 /deploy-key
 /cli/lib
 /dist
+/examples/**/build
