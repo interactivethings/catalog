@@ -9,10 +9,7 @@ let plugins = [
   nodeResolve({
     jsnext: true,
     main: true,
-    browser: true,
-    skip: [
-      'babel-standalone'
-    ]
+    browser: true
   }),
   commonjs({
     include: 'node_modules/**',
