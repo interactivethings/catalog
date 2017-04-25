@@ -1,9 +1,12 @@
-import {render} from 'catalog';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Catalog} from 'catalog';
 
-render(
-  {
-    title: 'Catalog',
-    pages: [{path: '/', title: 'Welcome', component: require('./WELCOME.md')}]
-  },
+const pages = [
+  {path: '/', title: 'Welcome', component: require('./WELCOME.md')}
+];
+
+ReactDOM.render(
+  <Catalog title='Catalog' pages={pages} />,
   document.getElementById('catalog')
 );
