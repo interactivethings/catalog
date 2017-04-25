@@ -4,9 +4,11 @@ CURRENT_VERSION = $(shell node -p 'require("./package.json").version')
 
 DIST_TARGETS = \
 	dist/cli \
+	dist/loader.js \
+	dist/babel \
 	dist/setup-template \
-	dist/catalog-standalone.dev.js \
-	dist/catalog-standalone.min.js
+	rollup-lib \
+	rollup-standalone \
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
@@ -21,7 +23,9 @@ all: build-watch
 
 build-watch: node_modules dist/setup-template
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
-	@BABEL_ENV=lib $$(yarn bin)/babel cli/src --watch --ignore test.js --out-dir dist/cli & \
+	@BABEL_ENV=lib $$(yarn bin)/babel src/loader.js --watch --ignore test.js --out-file dist/loader.js & \
+	BABEL_ENV=lib $$(yarn bin)/babel src/babel --watch --ignore test.js --out-dir dist/babel & \
+	BABEL_ENV=lib $$(yarn bin)/babel cli/src --watch --ignore test.js --out-dir dist/cli & \
 	BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.lib.js --watch
 
 test: lint
@@ -35,18 +39,28 @@ lint:
 
 ### BUILDS
 
-build: node_modules clean rollup-lib rollup-standalone dist/cli dist/setup-template
+build: node_modules clean $(DIST_TARGETS)
 
 rollup-lib:
 	@BABEL_ENV=rollup $$(yarn bin)/rollup $< --config=rollup.config.lib.js
-	@echo -e "$(CLI_SUCCESS) Built modules$(CLI_RESET)"
+	@echo -e "$(CLI_SUCCESS) Built rollup modules$(CLI_RESET)"
 
 rollup-standalone: dist/catalog-standalone.dev.js dist/catalog-standalone.min.js
 
+dist/loader.js: src/loader.js
+	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-file $@
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
+dist/babel: src/babel
+	@BABEL_ENV=lib $$(yarn bin)/babel src/babel --ignore test.js --out-dir dist/babel
+	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
+
 dist/setup-template: cli/setup-template
-	cp -R $< $@
+	@mkdir -p $(dir $@)
+	@cp -R $< $@
 
 dist/cli: cli/src
+	@mkdir -p $(dir $@)
 	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-dir $@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
