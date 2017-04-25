@@ -8,11 +8,12 @@ module.exports.pitch = function pitch(remainingRequest) {
 
   const output = `
     var React = require('react');
+    var createReactClass = require('create-react-class');
     var PageRenderer = require(${JSON.stringify(path.resolve(__dirname, 'components/Page/PageRenderer'))});
     if (PageRenderer.__esModule) {
       PageRenderer = PageRenderer.default;
     }
-    module.exports = React.createClass({
+    module.exports = createReactClass({
       displayName: 'WrappedPageRenderer',
       getInitialState: function() {
         return {content: require(${resource})};

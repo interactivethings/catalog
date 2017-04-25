@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
+import PropTypes from 'prop-types';
 import Radium, {Style} from 'radium';
 import {headingBlock, textBlock, blockquote, unorderedList, orderedList} from '../../styles/typography';
 import renderMarkdown from '../../utils/renderMarkdown';
