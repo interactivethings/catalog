@@ -5,7 +5,7 @@ Original https://github.com/ryanseddon/react-frame-component/
 
 */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer, unmountComponentAtNode} from 'react-dom'; // eslint-disable-line camelcase
 import PropTypes from 'prop-types';
 import raf from 'raf';
