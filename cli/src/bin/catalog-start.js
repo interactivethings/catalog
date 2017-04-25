@@ -5,10 +5,11 @@ process.env.NODE_ENV = 'development';
 
 import args from 'args';
 import detect from 'detect-port';
+import {exists} from 'sander';
 import clearConsole from 'react-dev-utils/clearConsole';
 import openBrowser from 'react-dev-utils/openBrowser';
 
-import {infoMessage, errorMessage} from '../utils/format';
+import {infoMessage, infoMessageDimmed, errorMessage} from '../utils/format';
 
 import loadWebpackConfig from '../actions/loadWebpackConfig';
 import detectFramework from '../actions/detectFramework';
@@ -16,6 +17,8 @@ import loadPaths from '../actions/loadPaths';
 
 import setupCatalog from '../actions/setupCatalog';
 import runDevServer from '../actions/runDevServer';
+
+import type {Framework} from '../actions/detectFramework';
 
 // Parse env
 
@@ -27,13 +30,30 @@ args
 
 const cliOptions = args.parse(process.argv, {value: '[source directory]'});
 
-const run = async (catalogSrcDir: void | string, options: {port: number, https: boolean, host: string}) => {
+const getFrameworkName = (framework: Framework): string => {
+  switch (framework) {
+  case 'CREATE_REACT_APP':
+    return 'Create React App';
+  case 'NEXT':
+    return 'next.js';
+  case 'UNKNOWN':
+  default:
+    return '';
+  }
+};
+
 const run = async (catalogSrcDir: void | string, options: {port: number, https: boolean, host: string, proxy: void | string}) => {
   clearConsole();
 
   console.log(infoMessage('Starting Catalog …'));
   const framework = await detectFramework();
+  if (framework !== 'UNKNOWN') {
+    console.log(infoMessageDimmed('Detected ' + getFrameworkName(framework)));
+  }
   const paths = await loadPaths(catalogSrcDir, undefined, framework);
+  if (await exists(paths.babelrc)) {
+    console.log(infoMessageDimmed('Using custom .babelrc'));
+  }
   const port = await detect(options.port);
 
   const url = (options.https ? 'https' : 'http') + '://' + options.host + ':' + port + '/';

@@ -7,7 +7,7 @@ type UNKNOWN = 'UNKNOWN';
 type CREATE_REACT_APP = 'CREATE_REACT_APP';
 type NEXT = 'NEXT';
 
-type Framework = UNKNOWN | CREATE_REACT_APP | NEXT;
+export type Framework = UNKNOWN | CREATE_REACT_APP | NEXT;
 
 export default async (): Promise<Framework> => {
   const appPackagePath = resolveAppPath('package.json');
