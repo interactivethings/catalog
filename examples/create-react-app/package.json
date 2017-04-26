@@ -8,7 +8,7 @@
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "react-scripts": "canary"
+    "react-scripts": "^0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",

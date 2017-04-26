@@ -5,7 +5,6 @@ Create React App.
 Try adding some new pages to `catalog/index.js`.
 
 > *TK: Add link to docs*
-> *FIXME: Only works with 0.10.0-alpha but not lower*
 
 ## Commands
 
