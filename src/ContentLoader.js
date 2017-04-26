@@ -1,14 +1,24 @@
-import React, {Component, PropTypes, createElement} from 'react';
+import React, {Component, createElement} from 'react';
+import PropTypes from 'prop-types';
 
 import Loader from './components/Page/Loader';
 import PageRenderer from './components/Page/PageRenderer';
 import Page from './components/Page/Page';
 
-const fetchText = (url) =>
-  fetch(url, {credentials: 'same-origin'})
+const fetchMarkdown = (url) =>
+  fetch(url, {
+    credentials: 'same-origin',
+    headers: {
+      'Accept': 'text/markdown, text/x-markdown, text/plain'
+    }
+  })
   .then(res => {
     if (res.status < 200 || res.status >= 300) {
-      throw new Error(`fetchText: Unexpected status code: ${res.status}`);
+      throw new Error(`Failed to load content from
+      
+\`${url}\`.
+      
+Reason: ${res.status} ${res.statusText}`);
     }
     return res.text();
   });
@@ -17,8 +27,6 @@ const fetchText = (url) =>
 // string or message with additional details.
 const errorMarkdown = (msg) => `
 \`\`\`hint|warning
-## Failed to load the page
-
 ${msg}
 \`\`\`
 `;
@@ -44,12 +52,12 @@ class ContentLoader extends Component {
     const {urlOrComponentPromise} = this.props;
 
     const contentPromise = typeof urlOrComponentPromise === 'string'
-      ? fetchText(urlOrComponentPromise).then(text => <Page>{text}</Page>)
+      ? fetchMarkdown(urlOrComponentPromise).then(text => <Page>{text}</Page>)
       : urlOrComponentPromise().then(c => createElement(c));
 
     contentPromise.then(
       (content) => { this.setState({content}); },
-      (err) => { this.setState({content: <Page>{errorMarkdown('' + err)}</Page>}); });
+      (err) => { this.setState({content: <Page>{errorMarkdown(err.message)}</Page>}); });
   }
 
   render() {
