@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 // Higher-order Specimen which provides theme
 
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
 import Span from './Span';
 import parseSpecimenOptions from '../../utils/parseSpecimenOptions';
