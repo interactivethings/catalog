@@ -56,14 +56,16 @@ class ContentLoader extends PureComponent {
   }
 
   render() {
+    const {location} = this.props;
     const Content = this.state.content || Loader;
-    return Content.__catalog_loader__ === true ? <Content location={this.props.location} /> : <PageRenderer location={this.props.location} content={Content} />;
+    return Content.__catalog_loader__ === true ? <Content location={location} /> : <PageRenderer location={location} content={Content} />;
   }
 }
 
 ContentLoader.propTypes = {
-  urlOrComponentPromise: PropTypes.any.isRequired
+  urlOrComponentPromise: PropTypes.any.isRequired,
+  location: PropTypes.object.isRequired
 };
 
-export default (urlOrComponentPromise) => (props) =>
-  <ContentLoader {...props} urlOrComponentPromise={urlOrComponentPromise} />;
+export default (urlOrComponentPromise) => ({location}) =>
+  <ContentLoader location={location} urlOrComponentPromise={urlOrComponentPromise} />;
