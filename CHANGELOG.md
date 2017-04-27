@@ -1,27 +1,84 @@
 # Change Log
 
-## [Unreleased]
+## v3.0.0 [Unreleased]
 
 ### Added
 
-🚀 Catalog now comes with its own command line tool (see [#283](https://github.com/interactivethings/catalog/pull/283))!
+#### CLI
 
-This means getting started with Catalog is now as simple as typing `catalog start`.
+🚀 Catalog now comes with its own command line tool ([#283](https://github.com/interactivethings/catalog/pull/283))!
+
+This means getting started with Catalog is now as easy as typing `catalog start`.
 
 - Catalog will work _alongside_ existing apps and detect [Create React App](https://github.com/facebookincubator/create-react-app) and [next.js](https://github.com/zeit/next.js) automatically
 - Catalog will help you getting started by creating the necessary files when you run `catalog start` for the first time
 - No configuration needed!
 - Create an optimized build with `catalog build`
 
-Other things:
-- Provide a function (`Catalog.markdown`) which converts a template literal into a Page component [#277](https://github.com/interactivethings/catalog/pull/277), [#281](https://github.com/interactivethings/catalog/pull/281)
-- New option on the image specimen: `scale`. See [#76](https://github.com/interactivethings/catalog/issues/76)
-- Add a Babel plugin which preserves original source text of ReactSpecimen children [#285](https://github.com/interactivethings/catalog/pull/285)
-- Enable imports in all Specimens ([#154](https://github.com/interactivethings/catalog/pull/154))
+#### Mix Markdown and React code
+
+You can now write Catalog pages using the `markdown` tagged template literal ([#277](https://github.com/interactivethings/catalog/pull/277), [#281](https://github.com/interactivethings/catalog/pull/281)). This makes it more convenient to keep written parts of the documentation in Markdown while being able to use real code for specimens and components. Using real code means that you can leverage all your tooling (eslint, flow types) and editor capabilities. For example:
+
+```jsx
+import React from 'react';
+import { markdown, ReactSpecimen } from 'catalog';
+import MyComponent from './MyComponent';
+
+export default markdown`
+# My Component
+
+Can do cool things:
+
+- this
+- and that
+
+${<ReactSpecimen>
+  <MyComponent foo="bar" />
+</ReactSpecimen>}
+
+Etc.
+`
+```
+
+#### Dynamic Imports For Pages (a.k.a Code Splitting)
+
+To create a smaller initial bundle for Catalog, you can now split page content into separate bundles with the new `ContentLoader`. This leverages webpack 2's code-splitting powers. When you use the `catalog` command line tool, this will work out of the box without any configuration. ✌️
+
+```jsx
+import { ContentLoader } from 'catalog';
+
+const config = {
+  // ...
+  pages: [
+    {
+      path: '/nice-page',
+      title: 'A Nice Page',
+      content: ContentLoader(() => import('./NicePage'))
+    },
+    {
+      path: '/markdown-page',
+      title: 'Markdown Page',
+      content: ContentLoader(() => import('./MarkdownPage.md'))
+    }
+  ]
+}
+```
+
+Also note that page configuration now comes with a new `content` property. It actually just is an alias for the `component` property but with a bit less jargon.
+
+#### Other improvements
+
+- New option on the image specimen: `scale`(see [#76](https://github.com/interactivethings/catalog/issues/76))
+- Add a Babel plugin which preserves original source text of ReactSpecimen children ([#285](https://github.com/interactivethings/catalog/pull/285))
+- Enable imports in all Specimen YAML options ([#154](https://github.com/interactivethings/catalog/pull/154))
 
 ### Breaking Changes
 
-_none_
+We tried hard not to break any functionality of Catalog itself, so you should be able to use v3 as a drop-in replacement for v3. But we changed a few things around how we publish Catalog.
+
+- Docs won't be hosted on GitHub pages anymore but on their dedicated website
+- The standalone version of Catalog will also not be hosted anymore, we recommend to use [unpkg](https://unpkg.com/) for that (or better: the npm version)
+- We don't publish the `lib/` directory anymore. Import the Catalog webpack loader from `catalog/loader`
 
 ### Fixes
 
