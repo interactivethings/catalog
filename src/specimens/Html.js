@@ -23,8 +23,7 @@ function getStyle(theme) {
       position: 'relative',
       flexBasis: '100%',
       width: '100%',
-      marginTop: '40px',
-      fontFamily: theme.fontFamily
+      marginTop: '40px'
     },
     toggle: {
       border: PADDING + 'px solid transparent',

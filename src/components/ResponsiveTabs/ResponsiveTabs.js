@@ -21,6 +21,7 @@ function getStyle(theme) {
       display: 'flex',
       flexBasis: '100%',
       flexDirection: 'row',
+      fontFamily: theme.fontFamily,
       padding: '10px',
       transition: '.2s background-color, .4s color'
     },
