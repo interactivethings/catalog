@@ -54,9 +54,9 @@ class Hint extends React.Component {
     const mergedStyle = {...styles.hint, ...warningStyle, ...directiveStyle, ...neutralStyle, ...importantStyle};
 
     const markdownRenderer = {
-      heading: function(text, level, raw) {
+      heading(textParts, level, raw) {
         const slug = this.slugger.slug(raw);
-        return React.createElement('h' + level, {key: slug, id: slug, style: {...heading(theme, Math.max(0, 3 - level)), color: mergedStyle.color}}, text);
+        return React.createElement('h' + level, {key: slug, id: slug, style: {...heading(theme, Math.max(0, 3 - level)), color: mergedStyle.color}}, textParts);
       }
     };
 
