@@ -1,4 +1,5 @@
-import marked from './react-markdown';
+import marked from './marked-react';
+import ReactRenderer from './ReactRenderer';
 
 let MARKDOWN_CONFIG = {
   gfm: true,
@@ -13,7 +14,7 @@ export default ({text, renderer}) => {
     text,
     {
       ...MARKDOWN_CONFIG,
-      renderer: Object.assign(new marked.Renderer(), renderer)
+      renderer: Object.assign(new ReactRenderer(), renderer)
     }
   );
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import {text} from '../styles/typography';
-import renderMarkdown from '../utils/renderMarkdown';
+import renderMarkdown from '../markdown/renderMarkdown';
 
 function getStyle(theme) {
   return {

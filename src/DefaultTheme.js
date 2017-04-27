@@ -51,7 +51,7 @@ export default {
   // Fonts
   fontFamily: "'Roboto', sans-serif",
   fontHeading: "'Roboto', sans-serif",
-  fontMono: "'Source Code Pro', monospace",
+  fontMono: "'Roboto Mono', monospace",
 
   // Base font size in pixels.
   baseFontSize: 16,

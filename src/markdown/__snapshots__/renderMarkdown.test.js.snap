@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders some Markdown 1`] = `
+Array [
+  <Heading
+    level={1}
+    slug="hello"
+    text={
+        Array [
+            "Hello",
+          ]
+    }
+/>,
+  <p>
+    World
+</p>,
+  <ul>
+    <li>
+        One
+        <ul>
+            <li>
+                Two
+            </li>
+        </ul>
+    </li>
+    <li>
+        Three
+        
+    </li>
+</ul>,
+  <p>
+    A 
+    <Link
+        title={null}
+        to="http://www.interactivethings.com/"
+    >
+        link
+    </Link>
+     and some 
+    <strong>
+        bold
+    </strong>
+     and 
+    <em>
+        italic
+    </em>
+     text.
+</p>,
+  <blockquote>
+    <p>
+        Block quotes rock
+    </p>
+</blockquote>,
+]
+`;
+
+exports[`Renders some Markdown with custom renderers 1`] = `
+Array [
+  <Heading
+    level={1}
+    slug="hello"
+    text={
+        Array [
+            "Hello",
+          ]
+    }
+/>,
+  "HELLO PARAGRAPH",
+  <ul>
+    HELLO LIST ITEM
+    HELLO LIST ITEM
+</ul>,
+  "HELLO PARAGRAPH",
+  <blockquote>
+    HELLO PARAGRAPH
+</blockquote>,
+]
+`;

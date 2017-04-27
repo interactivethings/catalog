@@ -16,14 +16,13 @@ const SIZE = 20;
 function getStyle(theme) {
   return {
     container: {
+      background: '#fff',
       border: '1px solid #eee',
       borderRadius: '2px',
       boxSizing: 'border-box',
       position: 'relative',
       flexBasis: '100%',
-      width: '100%',
-      marginTop: '40px',
-      fontFamily: theme.fontFamily
+      width: '100%'
     },
     toggle: {
       border: PADDING + 'px solid transparent',

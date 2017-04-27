@@ -40,6 +40,7 @@ const inlineElements = (theme, selector = '') => {
       borderRadius: 1,
       display: 'inline-block',
       fontFamily: theme.fontMono,
+      fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
       lineHeight: 1,
       padding: '0.12em 0.2em',
       textIndent: 0
@@ -128,13 +129,11 @@ export function orderedList(theme, selector = 'ol', level = 0, depth = 0) {
   };
 }
 
-export const blockquote = (theme) => {
+export const blockquote = () => {
   return {
     blockquote: {
       quotes: 'none',
-      margin: '48px 0 32px -20px',
-      padding: '0 0 0 20px',
-      borderLeft: `1px solid ${theme.lightColor}`
+      margin: '48px 0 32px 0'
     },
     'blockquote > :first-child': {
       marginTop: 0

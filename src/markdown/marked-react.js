@@ -1,111 +1,23 @@
 import marked from 'marked';
-import React from 'react';
-import Slugger from 'github-slugger';
-import Link from '../components/Link/Link';
-import HeadingLink from '../components/Link/HeadingLink';
 
 /* eslint-disable */
-
-function extend(o1, o2) {
-  Object.keys(o2).forEach(function(key) {
-    o1[key] = o2[key];
-  });
-}
-
-var itemsRenderedCount = 0;
-
-function ReactRenderer() {
-  this.slugger = new Slugger();
-}
-
-extend(ReactRenderer.prototype, {
-  code: function(code, lang, escaped) {
-    var className = this.props && this.props.langPrefix;
-    return React.DOM.pre( {key: itemsRenderedCount++}, React.DOM.code( {className: className}, code));
-  },
-  blockquote: function(quote) {
-    return React.DOM.blockquote( {key: itemsRenderedCount++}, quote);
-  },
-  heading: function(text, level, raw) {
-    const slug = this.slugger.slug(raw);
-    return React.createElement('h' + level, {key: itemsRenderedCount++, id: slug}, text, ' ', <HeadingLink slug={slug} />);
-  },
-  hr: function() {
-    return React.DOM.hr( {key: itemsRenderedCount++} );
-  },
-  br: function() {
-    return React.DOM.br( {key: itemsRenderedCount++} );
-  },
-  list: function(body, ordered) {
-    if (ordered) {
-      return React.DOM.ol( {key: itemsRenderedCount++}, body);
-    }
-    return React.DOM.ul( {key: itemsRenderedCount++}, body);
-  },
-  listitem: function(text) {
-    return React.DOM.li( {key: itemsRenderedCount++}, text);
-  },
-  paragraph: function(text) {
-    return React.DOM.p( {key: itemsRenderedCount++}, text);
-  },
-  table: function(header, body) {
-    return (
-      React.DOM.table( {key: itemsRenderedCount++},
-        React.DOM.thead(null, header),
-        React.DOM.tbody(null, body)
-      )
-    );
-  },
-  tablerow: function(content) {
-    return React.DOM.tr( {key: itemsRenderedCount++}, content);
-  },
-  tablecell: function (content) {
-    return React.DOM.td( {key:itemsRenderedCount++}, content);
-  },
-  strong: function (content) {
-    return React.DOM.strong( {key:itemsRenderedCount++}, content);
-  },
-  em: function(content) {
-    return React.DOM.em( {key: itemsRenderedCount++}, content);
-  },
-  codespan: function(content) {
-    return React.DOM.code( {key: itemsRenderedCount++}, content);
-  },
-  del: function(content) {
-    return React.DOM.del( {key: itemsRenderedCount++}, content);
-  },
-  link: function(href, title, text) {
-    return <Link to={href} title={title} key={itemsRenderedCount++}>{text}</Link>;
-  },
-  image: function(href, title, text) {
-    function done(e) { e.preventDefault(); console.log(itemsRenderedCount); return false; }
-    if (!href) {
-      return React.DOM.img( {src: href, title: title, alt: text, key: itemsRenderedCount++, onDrop: done} );
-    }
-    return React.DOM.img( {src: href, title: title, alt: text, key: itemsRenderedCount++} );
-  },
-  html: function(html) {
-    return React.DOM.div( {dangerouslySetInnerHTML: {__html: html.join('')}, key: itemsRenderedCount++} );
-  }
-});
 
 function ReactParser(options) {
   this.tokens = [];
   this.token = null;
   this.options = options || {};
-  this.options.renderer = this.options.renderer || new ReactRenderer();
   this.renderer = this.options.renderer;
   this.renderer.options = this.options;
 }
 
 ReactParser.parse = function(src, options) {
-  var parser = new ReactParser(options);
+  let parser = new ReactParser(options);
   return parser.parse(src);
 };
 
-extend(ReactParser.prototype, {
-  parse: function(src) {
-    var out = [],
+Object.assign(ReactParser.prototype, {
+  parse(src) {
+    let out = [],
       i = 0,
       next;
     this.inline = new ReactInlineLexer(src.links, this.options, this.renderer);
@@ -117,20 +29,20 @@ extend(ReactParser.prototype, {
 
     return out;// React.DOM.div(null, out);
   },
-  next: function() {
+  next() {
     return this.token = this.tokens.pop();
   },
-  peek: function() {
+  peek() {
     return this.tokens[this.tokens.length - 1] || 0;
   },
-  parseText: function() {
-    var body = this.token.text;
+  parseText() {
+    let body = this.token.text;
     while (this.peek().type === 'text') {
       body += '\n' + this.next().text;
     }
     return this.inline.output(body);
   },
-  tok: function() {
+  tok() {
     switch (this.token.type) {
     case 'space': {
       return '';
@@ -190,8 +102,8 @@ extend(ReactParser.prototype, {
       return this.renderer.blockquote(body);
     }
     case 'list_start': {
-      var body = []
-          , ordered = this.token.ordered;
+      var body = [],
+        ordered = this.token.ordered;
 
       while (this.next().type !== 'list_end') {
         body.push(this.tok());
@@ -220,7 +132,7 @@ extend(ReactParser.prototype, {
       return this.renderer.listitem(body);
     }
     case 'html': {
-      var html = !this.token.pre && !this.options.pedantic
+      let html = !this.token.pre && !this.options.pedantic
           ? this.inline.output(this.token.text)
           : this.token.text;
       return this.renderer.html(html);
@@ -240,7 +152,7 @@ var ReactInlineLexer = marked.InlineLexer.prototype.constructor;
 ReactInlineLexer.prototype = Object.create(marked.InlineLexer.prototype);
 
 ReactInlineLexer.prototype.output = function(src) {
-  var out = [],
+  let out = [],
     link, text, href, cap;
 
   while (src) {
@@ -374,12 +286,8 @@ function escape(html, encode) {
   return html;
 }
 
-
-var Marked = function(src, opt, callback) {
+const Marked = function(src, opt, callback) {
   return ReactParser.parse(marked.lexer(src), opt);
 };
-
-
-Marked.Renderer = ReactRenderer;
 
 export default Marked;

@@ -2,75 +2,95 @@ import React from 'react';
 import {catalogShape} from '../CatalogPropTypes';
 import PropTypes from 'prop-types';
 import {Style} from 'radium';
-import renderMarkdown from '../utils/renderMarkdown';
+import renderMarkdown from '../markdown/renderMarkdown';
 import Specimen from '../components/Specimen/Specimen';
-import {text} from '../styles/typography';
+import {text, heading} from '../styles/typography';
 
 function getStyle(theme) {
   return {
     container: {
       flexBasis: '100%'
     },
-    hint: {
+    hint: { // Contrast: AAA / AA
       ...text(theme),
       background: '#fff6dd',
       border: '1px solid #ffefaa',
       borderRadius: '2px',
-      color: '#ffb400',
+      color: '#966900',
       padding: '20px'
     },
-    neutral: {
+    neutral: { // Contrast: AAA / AA
       background: '#f9f9f9',
       color: '#666666',
       border: '1px solid #eee'
     },
-    warning: {
+    important: { // Contrast: AAA / AAA
+      background: '#ffffff',
+      color: '#333333',
+      border: '1px solid #eee'
+    },
+    warning: { // Contrast: AAA / AA
       background: '#fff5f5',
       border: '1px solid #ffdddd',
-      color: '#ee4040'
+      color: '#ce3737'
     },
-    directive: {
+    directive: { // Contrast: AAA / AA
       background: '#eafaea',
       border: '1px solid #bbebc8',
-      color: '#2fbf62'
+      color: '#1d7d3f'
     }
   };
 }
 
 class Hint extends React.Component {
   render() {
-    const {catalog: {theme}, children, warning, neutral, directive} = this.props;
+    const {catalog: {theme}, children, warning, neutral, important, directive} = this.props;
     const styles = getStyle(theme);
 
     const warningStyle = warning ? styles.warning : null;
     const directiveStyle = directive ? styles.directive : null;
     const neutralStyle = neutral ? styles.neutral : null;
+    const importantStyle = important ? styles.important : null;
+    const mergedStyle = {...styles.hint, ...warningStyle, ...directiveStyle, ...neutralStyle, ...importantStyle};
+
+    const markdownRenderer = {
+      heading(textParts, level, raw) {
+        const slug = this.slugger.slug(raw);
+        return React.createElement('h' + level, {key: slug, id: slug, style: {...heading(theme, Math.max(0, 3 - level)), color: mergedStyle.color}}, textParts);
+      }
+    };
 
     return (
       <div style={styles.container}>
-        <section style={{...styles.hint, ...warningStyle, ...directiveStyle, ...neutralStyle}} className='cg-Hint'>
+        <section style={mergedStyle} className='cg-Hint'>
           <Style
             scopeSelector='.cg-Hint'
             rules={{
               code: {
-                display: 'inline',
-                borderRadius: '2px',
+                display: 'inline-block',
+                border: '1px solid rgba(0,0,0,.035)',
+                borderRadius: 1,
                 background: 'rgba(0,0,0,.03)',
                 fontFamily: theme.fontMono,
-                padding: '4px 5px',
-                whiteSpace: 'pre-wrap'
+                fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
+                lineHeight: 1,
+                padding: '0.12em 0.2em',
+                textIndent: 0
               },
               ':first-child': {
                 marginTop: 0
               },
               ':last-child': {
                 marginBottom: 0
+              },
+              a: {
+                color: mergedStyle.color
               }
             }}/>
             <div>
               {
                 typeof children === 'string'
-                ? renderMarkdown({text: children})
+                ? renderMarkdown({text: children, renderer: markdownRenderer})
                 : children
               }
             </div>
@@ -85,6 +105,7 @@ Hint.propTypes = {
   catalog: catalogShape.isRequired,
   warning: PropTypes.bool,
   neutral: PropTypes.bool,
+  important: PropTypes.bool,
   directive: PropTypes.bool
 };
 
