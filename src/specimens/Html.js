@@ -22,8 +22,7 @@ function getStyle(theme) {
       boxSizing: 'border-box',
       position: 'relative',
       flexBasis: '100%',
-      width: '100%',
-      marginTop: '40px'
+      width: '100%'
     },
     toggle: {
       border: PADDING + 'px solid transparent',
