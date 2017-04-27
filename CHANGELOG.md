@@ -71,6 +71,7 @@ Also note that page configuration now comes with a new `content` property. It ac
 - New option on the image specimen: `scale`(see [#76](https://github.com/interactivethings/catalog/issues/76))
 - Add a Babel plugin which preserves original source text of ReactSpecimen children ([#285](https://github.com/interactivethings/catalog/pull/285))
 - Enable imports in all Specimen YAML options ([#154](https://github.com/interactivethings/catalog/pull/154))
+- Various visual style fixes and improvements ([#234](https://github.com/interactivethings/catalog/pull/234))
 
 ### Breaking Changes
 
