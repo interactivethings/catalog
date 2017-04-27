@@ -1,5 +1,6 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
 import {catalogShape} from '../../CatalogPropTypes';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Frame from '../../components/Frame/Frame';
 import Specimen from '../../components/Specimen/Specimen';
@@ -104,7 +105,7 @@ class ReactSpecimen extends Component {
   }
 
   render() {
-    const {catalog: {page: {imports}, theme, responsiveSizes}, children, noSource, frame, ...options} = this.props;
+    const {catalog: {page: {imports}, theme, responsiveSizes}, children, noSource, frame, sourceText, ...options} = this.props;
     const {activeScreenSize, parentWidth} = this.state;
     const styles = getStyle(theme);
     const validSizes = validateSizes(options.responsive, responsiveSizes);
@@ -136,7 +137,7 @@ class ReactSpecimen extends Component {
       code = children;
     } else {
       element = children;
-      code = reactElementToString(children);
+      code = sourceText || reactElementToString(children);
     }
 
     if (options.responsive && !validSizes) {
@@ -174,7 +175,8 @@ ReactSpecimen.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
   frame: PropTypes.bool,
-  state: PropTypes.object
+  state: PropTypes.object,
+  sourceText: PropTypes.string
 };
 
 export default Specimen(undefined, undefined, {withChildren: true})(Radium(ReactSpecimen));

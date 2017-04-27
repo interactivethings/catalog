@@ -4,8 +4,11 @@
 node_modules
 /site
 /catalog*.js
-/babel*.js
+/babel.min.js
 /*.log
 /lib
 /deploy-key.pub
 /deploy-key
+/cli/lib
+/dist
+/examples/**/build

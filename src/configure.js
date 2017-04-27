@@ -13,11 +13,15 @@ const hasSrc = has('src');
 const hasPages = has('pages');
 const hasComponent = has('component');
 const hasContent = has('content');
+const hasEither = (...matchers) => (o) => {
+  const matchCount = matchers.reduce((count, match) => count + (match(o) ? 1 : 0), 0);
+  return matchCount === 1;
+};
 
 const flattenPageTree = (pageTree) => {
   return pageTree
     .reduce((pages, page) => pages.concat(page.pages ? [page, ...page.pages] : [page]), [])
-    .filter((page) => page.src || page.component || page.content)
+    .filter((page) => page.src || page.component)
     .map((page, index) => ({...page, ...(page.hideFromMenu ? undefined : {index})}));
 };
 
@@ -55,14 +59,15 @@ export default (config) => {
       page
     );
 
-    const isDirectory = !hasSrc(page) && !hasComponent(page) && hasPages(page) && !hasContent(page);
-    const isSrc = hasSrc(page) && !hasComponent(page) && !hasPages(page) && !hasContent(page);
-    const isComponent = !hasSrc(page) && hasComponent(page) && !hasPages(page) && !hasContent(page);
-    const isContent = !hasSrc(page) && !hasComponent(page) && !hasPages(page) && hasContent(page);
+    warning(
+      !hasContent(page) || typeof requireModuleDefault(page.content) === 'function',
+      'The page configuration property `content` must be a React component.',
+      page
+    );
 
     warning(
-      (isDirectory || isSrc || isComponent || isContent),
-      'The page configuration should (only) have one of these properties: `src`, `component`, `pages` or `content`.',
+      hasEither(hasSrc, hasComponent, hasPages, hasContent)(page),
+      'The page configuration should (only) have one of these properties: `src`, `component`, `content` or `pages`.',
       page
     );
 
@@ -72,6 +77,8 @@ export default (config) => {
       {
         ...page,
         id: ++pageId,
+        // Alias page.content to page.component
+        ...(page.content ? {component: page.content, content: undefined} : undefined),
         // Currently, catalog can't be nested inside other page routes, it messes up <Link> matching. Use `basePath`
         path: page.pages ? null : parsePath(page.path || page.name, {basePath}).pathname,
         pages: page.pages ? page.pages.reduce(pageReducer, []).map((p) => ({...p, superTitle: page.title})) : null,

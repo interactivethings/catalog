@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {pagesShape} from '../../CatalogPropTypes';
 import {heading, text, getFontSize} from '../../styles/typography';
 import Link from '../Link/Link';

@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import {Router, applyRouterMiddleware, browserHistory, hashHistory} from 'react-router';
 import {useScroll} from 'react-router-scroll';
 import seqKey from '../utils/seqKey';

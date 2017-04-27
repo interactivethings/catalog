@@ -4,34 +4,14 @@ import configure from './configure';
 import warning from './utils/warning';
 import requireModuleDefault from './utils/requireModuleDefault';
 import CatalogContext from './components/CatalogContext';
-import PageContent from './components/Page/PageContent';
-import fetchMarkdown from './fetchMarkdown';
+import ContentLoader from './ContentLoader';
 
-const pageComponent = (page) => {
-  if (page.content) {
-    return (props) => <PageContent {...props} contentPromiseFn={() => Promise.resolve(page.content())} />;
-  }
-  if (page.src) {
-    return (props) => <PageContent {...props} contentPromiseFn={() => fetchMarkdown(page.src)} />;
-  }
-  if (page.component) {
-    return (props) => <PageContent {...props} contentPromiseFn={() => Promise.resolve(requireModuleDefault(page.component))} />;
-  }
-
-  return () => (
-    <div>
-      pageComponent: Wrong page configuration: neither content, src, nor component was specified.
-    </div>
-  );
-};
-
-const pageToRoute = (page) => ({
-  component: pageComponent(page),
-  path: page.path
+const pageToRoute = ({path, component, src}) => ({
+  component: component ? requireModuleDefault(component) : ContentLoader(src),
+  path
 });
 
-const pageToJSXRoute = (page) =>
-  <Route key={page.path} path={page.path} component={pageComponent(page)} />; // eslint-disable-line react/prop-types
+const pageToJSXRoute = ({path, component, src}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : ContentLoader(src)} />; // eslint-disable-line react/prop-types
 
 const autoConfigure = (config) => {
   warning(

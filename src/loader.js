@@ -1,4 +1,3 @@
-const path = require('path');
 const loaderUtils = require('loader-utils');
 
 module.exports = function loader() {};
@@ -8,11 +7,12 @@ module.exports.pitch = function pitch(remainingRequest) {
 
   const output = `
     var React = require('react');
-    var PageRenderer = require(${JSON.stringify(path.resolve(__dirname, 'components/Page/PageRenderer'))});
+    var createReactClass = require('create-react-class');
+    var PageRenderer = require('catalog').PageRenderer;
     if (PageRenderer.__esModule) {
       PageRenderer = PageRenderer.default;
     }
-    module.exports = React.createClass({
+    var WrappedPageRenderer = createReactClass({
       displayName: 'WrappedPageRenderer',
       getInitialState: function() {
         return {content: require(${resource})};
@@ -31,6 +31,8 @@ module.exports.pitch = function pitch(remainingRequest) {
         return React.createElement(PageRenderer, Object.assign({}, this.props, {content: this.state.content}));
       }
     });
+    WrappedPageRenderer.__catalog_loader__ = true;
+    module.exports = WrappedPageRenderer;
   `;
 
   return output;

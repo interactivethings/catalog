@@ -1,0 +1,17 @@
+{
+  "name": "catalog-example-next",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "catalog": "^3.0.0-beta",
+    "next": "^2.2.0"
+  },
+  "scripts": {
+    "dev": "next",
+    "start": "next start",
+    "build": "next build",
+    "catalog-start": "catalog start",
+    "catalog-build": "catalog build"
+  }
+}

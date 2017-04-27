@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {catalogShape} from '../CatalogPropTypes';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Frame from '../components/Frame/Frame';
 import Hint from '../specimens/Hint';
@@ -20,6 +21,7 @@ function getStyle(theme) {
       boxSizing: 'border-box',
       position: 'relative',
       flexBasis: '100%',
+      width: '100%',
       marginTop: '40px',
       fontFamily: theme.fontFamily
     },
