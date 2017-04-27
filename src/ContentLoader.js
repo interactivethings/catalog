@@ -67,5 +67,5 @@ ContentLoader.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-export default (urlOrComponentPromise) => ({location}) =>
+export default (urlOrComponentPromise) => ({location}) => // eslint-disable-line react/prop-types
   <ContentLoader location={location} urlOrComponentPromise={urlOrComponentPromise} />;
