@@ -3,7 +3,7 @@ import {catalogShape} from '../../CatalogPropTypes';
 import PropTypes from 'prop-types';
 import Radium, {Style} from 'radium';
 import {headingBlock, textBlock, blockquote, unorderedList, orderedList} from '../../styles/typography';
-import renderMarkdown from '../../utils/renderMarkdown';
+import renderMarkdown from '../../markdown/renderMarkdown';
 import seqKey from '../../utils/seqKey';
 import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 
