@@ -1,4 +1,6 @@
-import R from 'ramda';
+import isEmpty from 'ramda/src/isEmpty';
+import is from 'ramda/src/is';
+
 //
 // Sequentially runs scripts as they are added
 //
@@ -55,10 +57,10 @@ let execInline = (src) => {
 };
 
 export default (srcOrEl) => {
-  if (R.is(String, srcOrEl) && !R.isEmpty(srcOrEl.trim())) {
+  if (is(String, srcOrEl) && !isEmpty(srcOrEl.trim())) {
     enqueue(execRemote(srcOrEl));
   }
-  if (srcOrEl.textContent && !R.isEmpty(srcOrEl.textContent.trim())) {
+  if (srcOrEl.textContent && !isEmpty(srcOrEl.textContent.trim())) {
     return enqueue(execInline(srcOrEl.textContent));
   }
   return void 0;

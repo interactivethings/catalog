@@ -1,9 +1,14 @@
-import R from 'ramda';
+import filter from 'ramda/src/filter';
+import compose from 'ramda/src/compose';
+import split from 'ramda/src/split';
+import complement from 'ramda/src/complement';
+import isEmpty from 'ramda/src/isEmpty';
+import mergeAll from 'ramda/src/mergeAll';
 import mapSpecimenOption from './mapSpecimenOption';
 
-const removeEmpty = R.filter(R.complement(R.isEmpty));
-const splitType = R.compose(removeEmpty, R.split('|'));
-const splitOptions = R.compose(removeEmpty, R.split(','));
+const removeEmpty = filter(complement(isEmpty));
+const splitType = compose(removeEmpty, split('|'));
+const splitOptions = compose(removeEmpty, split(','));
 
 const camelize = (str) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
 
@@ -25,7 +30,7 @@ const optionToKeyValue = (mapOptionsToProps) => (option) => {
 
 const parseSpecimenOptions = (mapOptionsToProps = nothing) => (options = '') => {
   const [, restOptions = ''] = splitType(options);
-  return R.mergeAll(splitOptions(restOptions).map(optionToKeyValue(mapOptionsToProps)));
+  return mergeAll(splitOptions(restOptions).map(optionToKeyValue(mapOptionsToProps)));
 };
 
 export default parseSpecimenOptions;
