@@ -36,6 +36,35 @@ test('Configuration with nested pages', () => {
   })).toMatchSnapshot();
 });
 
+test('Configuration with component', () => {
+  expect(configure({
+    title: 'Catalog',
+    pages: [
+      {
+        path: '/',
+        title: 'Overview',
+        component: () => null
+      }
+    ]
+  })).toMatchSnapshot();
+});
+
+test('`content` is aliased to `component`', () => {
+  const Content = () => null;
+  const config = configure({
+    title: 'Catalog',
+    pages: [
+      {
+        path: '/',
+        title: 'Overview',
+        content: Content
+      }
+    ]
+  });
+
+  expect(config.pages[0].component).toBe(Content);
+});
+
 test('Imports are merged on pages', () => {
   const config = configure({
     title: 'Catalog',

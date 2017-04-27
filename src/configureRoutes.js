@@ -4,14 +4,14 @@ import configure from './configure';
 import warning from './utils/warning';
 import requireModuleDefault from './utils/requireModuleDefault';
 import CatalogContext from './components/CatalogContext';
-import PageContentLoader from './components/Page/PageContentLoader';
+import ContentLoader from './ContentLoader';
 
-const pageToRoute = ({path, component}) => ({
-  component: component ? requireModuleDefault(component) : PageContentLoader,
+const pageToRoute = ({path, component, src}) => ({
+  component: component ? requireModuleDefault(component) : ContentLoader(src),
   path
 });
 
-const pageToJSXRoute = ({path, component}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : PageContentLoader} />; // eslint-disable-line react/prop-types
+const pageToJSXRoute = ({path, component, src}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : ContentLoader(src)} />; // eslint-disable-line react/prop-types
 
 const autoConfigure = (config) => {
   warning(
