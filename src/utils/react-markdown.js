@@ -2,7 +2,7 @@ import marked from 'marked';
 import React from 'react';
 import Slugger from 'github-slugger';
 import Link from '../components/Link/Link';
-import HeadingLink from '../components/Link/HeadingLink';
+import Heading from '../components/Content/Heading';
 
 /* eslint-disable */
 
@@ -28,7 +28,7 @@ extend(ReactRenderer.prototype, {
   },
   heading: function(text, level, raw) {
     const slug = this.slugger.slug(raw);
-    return React.createElement('h' + level, {key: itemsRenderedCount++, id: slug}, text, ' ', <HeadingLink slug={slug} />);
+    return <Heading text={text} level={level} slug={slug} />;
   },
   hr: function() {
     return React.DOM.hr( {key: itemsRenderedCount++} );
