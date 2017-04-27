@@ -10,7 +10,7 @@ const renderStyles = (styles) => {
   return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
 };
 
-const renderContent = (content) => React.isValidElement(content) && content.type === Page ? content : <Page>{content}</Page>;
+const renderContent = (Content) => typeof Content === 'string' ? <Page>{Content}</Page> : <Content />;
 
 class PageRenderer extends PureComponent {
   constructor() {
@@ -84,10 +84,7 @@ class PageRenderer extends PureComponent {
 }
 
 PageRenderer.propTypes = {
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]).isRequired,
+  content: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   location: PropTypes.object.isRequired
 };
 

@@ -1,9 +1,10 @@
-import React, {Component, createElement} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from './components/Page/Loader';
 import PageRenderer from './components/Page/PageRenderer';
 import Page from './components/Page/Page';
+import requireModuleDefault from './utils/requireModuleDefault';
 
 const fetchMarkdown = (url) =>
   fetch(url, {
@@ -32,37 +33,31 @@ ${msg}
 `;
 
 
-class ContentLoader extends Component {
+class ContentLoader extends PureComponent {
   constructor() {
     super();
     this.state = {content: null};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchPageContent();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.urlOrComponentPromise !== this.props.urlOrComponentPromise) {
-      this.fetchPageContent();
-    }
   }
 
   fetchPageContent() {
     const {urlOrComponentPromise} = this.props;
 
     const contentPromise = typeof urlOrComponentPromise === 'string'
-      ? fetchMarkdown(urlOrComponentPromise).then(text => <Page>{text}</Page>)
-      : urlOrComponentPromise().then(c => createElement(c));
+      ? fetchMarkdown(urlOrComponentPromise).then(text => () => <Page>{text}</Page>)
+      : urlOrComponentPromise().then(requireModuleDefault);
 
     contentPromise.then(
       (content) => { this.setState({content}); },
-      (err) => { this.setState({content: <Page>{errorMarkdown(err.message)}</Page>}); });
+      (err) => { this.setState({content: errorMarkdown(err.message)}); });
   }
 
   render() {
-    const content = this.state.content || <Loader />;
-    return <PageRenderer {...this.props} content={content} />;
+    const Content = this.state.content || Loader;
+    return Content.__catalog_loader__ === true ? <Content location={this.props.location} /> : <PageRenderer location={this.props.location} content={Content} />;
   }
 }
 
