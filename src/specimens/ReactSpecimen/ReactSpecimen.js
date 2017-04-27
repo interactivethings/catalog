@@ -14,6 +14,7 @@ import validateSizes from '../../utils/validateSizes';
 function getStyle(theme) {
   return {
     container: {
+      background: '#fff',
       border: '1px solid #eee',
       boxSizing: 'border-box',
       fontFamily: theme.fontFamily,

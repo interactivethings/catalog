@@ -16,6 +16,7 @@ const SIZE = 20;
 function getStyle(theme) {
   return {
     container: {
+      background: '#fff',
       border: '1px solid #eee',
       borderRadius: '2px',
       boxSizing: 'border-box',
