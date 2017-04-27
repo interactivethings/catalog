@@ -2,7 +2,7 @@
 
 ## v3.0.0 [Unreleased]
 
-### Added
+### New
 
 #### CLI
 
@@ -74,7 +74,7 @@ Also note that page configuration now comes with a new `content` property. It ac
 
 ### Breaking Changes
 
-We tried hard not to break any functionality of Catalog itself, so you should be able to use v3 as a drop-in replacement for v3. But we changed a few things around how we publish Catalog.
+We tried hard not to break any functionality of Catalog itself, so you should be able to use v3 as a drop-in replacement for v2. But we changed a few things around how we publish Catalog.
 
 - Docs won't be hosted on GitHub pages anymore but on their dedicated website
 - The standalone version of Catalog will also not be hosted anymore, we recommend to use [unpkg](https://unpkg.com/) for that (or better: the npm version)
