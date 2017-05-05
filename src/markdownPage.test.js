@@ -18,3 +18,16 @@ Cool, eh?`}
 `;
   expect(page()).toMatchSnapshot();
 });
+
+test('Catalog markdown page template literal with arbitrary values', () => {
+  const page = markdownPage`
+# This is a title
+
+A paragraph ${123}
+
+~~~
+${[{a: 'some'}, {a: 'data'}]}
+~~~
+`;
+  expect(page()).toMatchSnapshot();
+});
