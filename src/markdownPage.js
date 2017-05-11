@@ -1,4 +1,4 @@
-import {createElement} from 'react';
+import {createElement, isValidElement} from 'react';
 import Page from './components/Page/Page';
 
 // This function simply intersperses the values between the strings, and
@@ -10,24 +10,41 @@ import Page from './components/Page/Page';
 // a similar abstract form). We can't convert the markdown text into React
 // elements because that requires the Catalog context.
 //
-// Values SHOULD only be React Elements. The primary use case is to allow
+// Values SHOULD be React Elements, strings, numbers, or anything
+// stringifiable. The primary use case is to allow
 // developers to easily instantiate React components in plain JavaScript,
 // so that type checkers (flow, typescript) can verify that the correct
 // props are pased to the component.
 //
-// > import {HintSpecimen, markdownPage} from 'catalog';
-// > export const catalogPage = markdownPage`
+// > import {HintSpecimen, markdown} from 'catalog';
+// > export const catalogPage = markdown`
 // > # This is a page
 // >
-// > With a paragraph.
+// > With a paragraph. And a number ${123}
 // >
 // > ${<HintSpecimen>And a hint</HintSpecimen>}
 // >
 // > ${<MyComponent isCustomComponent={'AWESOME'} />}
 // > `;
 
+const replaceLast = (f, arr) => arr.slice(0, -1).concat(f(arr[arr.length - 1]));
+
 const markdownPage = (strings, ...values) => () =>
   createElement(Page, {},
-    ...values.reduce((a, v, i) => a.concat([v, strings[i + 1]]), [strings[0]]));
+    ...values.reduce((a, v, i) => {
+      // If it's a valid React element, just concat to the end of the array
+      if (isValidElement(v)) {
+        return a.concat(v, strings[i + 1]);
+      }
+
+      // String-concat v to last and next string part
+      if (typeof v === 'string' || typeof v === 'number') {
+        return replaceLast(last => last + v + strings[i + 1], a);
+      }
+
+      // Finally, try to stringify v
+      return replaceLast(last => last + JSON.stringify(v) + strings[i + 1], a);
+    }, [strings[0]]
+    ));
 
 export default markdownPage;

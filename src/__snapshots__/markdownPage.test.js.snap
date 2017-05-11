@@ -17,3 +17,17 @@ exports[`Catalog markdown page template literal 1`] = `
   
 </Page>
 `;
+
+exports[`Catalog markdown page template literal with arbitrary values 1`] = `
+<Page>
+  
+  # This is a title
+  
+  A paragraph 123
+  
+  ~~~
+  [{"a":"some"},{"a":"data"}]
+  ~~~
+  
+</Page>
+`;
