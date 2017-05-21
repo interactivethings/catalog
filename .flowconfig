@@ -1,6 +1,5 @@
 [ignore]
-.*/node_modules/fbjs/.*
-.*/node_modules/radium/.*
+.*/node_modules/.*
 
 [include]
 cli
