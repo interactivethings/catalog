@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "catalog": "^3.0.0-beta",
+    "catalog": "^3.0.0-rc.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^1.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
