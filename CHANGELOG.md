@@ -88,6 +88,7 @@ We tried hard not to break any functionality of Catalog itself, so you should be
 - Don't re-render page when menu is toggled [#271](https://github.com/interactivethings/catalog/issues/271)
 - When clicking a title anchor, page scrolls to top instead of to the anchor [#275](https://github.com/interactivethings/catalog/issues/275)
 - Ensure React 15.5 compatibility ([#288](https://github.com/interactivethings/catalog/pull/288))
+- Ensure react-scripts@1 compatibility ([#291](https://github.com/interactivethings/catalog/pull/291))
 
 ## 2.5.3
 
