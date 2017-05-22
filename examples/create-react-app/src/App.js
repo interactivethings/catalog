@@ -22,8 +22,7 @@ export default App;
 
 // Export catalog documentation as a dynamic module, so that catalog is not loaded in production
 
-export const catalogAppPage = () => import('catalog')
-.then(({markdown, ReactSpecimen}) => markdown`
+export const catalogPage = ({markdown, ReactSpecimen}) => markdown`
 The \`App\` component displays a rotating logo.
 
 ${
@@ -31,4 +30,4 @@ ${
     <App />
   </ReactSpecimen>
 }
-`);
+`;
