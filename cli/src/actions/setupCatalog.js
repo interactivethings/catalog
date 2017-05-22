@@ -1,7 +1,7 @@
 // @flow
 
 import {exists, copydir} from 'sander';
-import prompt from 'react-dev-utils/prompt';
+import {prompt} from 'react-dev-utils/inquirer';
 import {successMessage, errorMessage, infoMessage, warningMessage, question} from '../utils/format';
 
 // $FlowIgnore
@@ -18,14 +18,19 @@ export default async (paths: Object) => {
     let shouldCopyTemplateDir = false;
 
     if (isInteractive) {
-      shouldCopyTemplateDir = await prompt(
-        warningMessage(`
-The '${paths.unresolvedCatalogSrcDir}' directory doesn't exist. You probably haven't set up Catalog for this app.
+      const response: {shouldCopyTemplateDir: boolean} = await prompt([
+        {
+        type: 'confirm',
+        name: 'shouldCopyTemplateDir',
+        message:  warningMessage(`The '${paths.unresolvedCatalogSrcDir}' directory doesn't exist. You probably haven't set up Catalog for this app.
     
 `) +
         question(`Should Catalog create '${paths.unresolvedCatalogSrcDir}' for you?`),
-        true
-      );
+        default: true
+      }
+      ]);
+
+      shouldCopyTemplateDir = response.shouldCopyTemplateDir;
     }
 
     if (shouldCopyTemplateDir) {

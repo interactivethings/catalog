@@ -1,6 +1,7 @@
 // @flow
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import errorOverlayMiddleware from 'react-error-overlay/middleware';
 
 export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string, proxy: void | string): Promise<string> => {
   const compiler = webpack(config);
@@ -24,7 +25,12 @@ export default async (config: Object, host: string, port: number, https: boolean
     host,
     ...(proxy ? {proxy: {
       '**': proxy
-    }} : {})
+    }} : {}),
+    overlay: false,
+    setup(app) {
+      // This lets us open files from the runtime error overlay.
+      app.use(errorOverlayMiddleware());
+    }
   });
 
   // Launch WebpackDevServer.
