@@ -55,7 +55,11 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
     entry: {
       catalog: (
           dev
-          ? [require.resolve('react-dev-utils/webpackHotDevClient')]
+          ? [
+            require.resolve('react-dev-utils/webpackHotDevClient'),
+            // Errors should be considered fatal in development
+            require.resolve('react-error-overlay')
+          ]
           : []
         ).concat(
           require.resolve('../config/polyfills'),
