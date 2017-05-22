@@ -943,6 +943,13 @@ babel-runtime@^6.18.0, babel-runtime@^6.22.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
+babel-runtime@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
+
 babel-standalone@^6.24.2:
   version "6.24.2"
   resolved "https://registry.yarnpkg.com/babel-standalone/-/babel-standalone-6.24.2.tgz#4936dc9dffde97e184e477b9e52c3d4e7403ac51"
