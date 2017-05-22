@@ -81,7 +81,7 @@
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
     "babel-plugin-external-helpers": "^6.8.0",
-    "babel-preset-env": "^1.5.0",
+    "babel-preset-env": "^1.5.1",
     "eslint": "^3.19.0",
     "eslint-config-interactivethings": "^3.0.0",
     "eslint-plugin-react": "^5.1.1",
