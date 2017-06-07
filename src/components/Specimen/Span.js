@@ -38,7 +38,7 @@ Span.propTypes = {
   style: PropTypes.object
 };
 
-Span.defaulProps = {
+Span.defaultProps = {
   span: 6
 };
 
