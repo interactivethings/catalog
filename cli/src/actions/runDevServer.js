@@ -12,6 +12,7 @@ export default async (config: Object, host: string, port: number, https: boolean
     hot: true,
     publicPath: config.output.publicPath,
     quiet: true,
+    disableHostCheck: true,
     // Reportedly, this avoids CPU overload on some systems.
     // https://github.com/facebookincubator/create-react-app/issues/293
     watchOptions: {

@@ -53,7 +53,7 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
     devtool: dev ? 'cheap-module-source-map' : 'source-map',
     bail: dev ? false : true,
     entry: {
-      catalog: (
+      catalog: [require.resolve('../config/polyfills')].concat(
           dev
           ? [
             require.resolve('react-dev-utils/webpackHotDevClient'),
@@ -62,7 +62,6 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
           ]
           : []
         ).concat(
-          require.resolve('../config/polyfills'),
           paths.catalogIndexJs
         )
     },
