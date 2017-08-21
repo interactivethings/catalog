@@ -7,8 +7,7 @@ const externals = [
 ];
 
 export default {
-  entry: 'src/index.js',
-  moduleName: 'Catalog',
+  input: 'src/index.js',
   plugins: [
     babel({
       exclude: 'node_modules/**'
@@ -16,8 +15,8 @@ export default {
   ],
   banner: `/*! Catalog v${pkg.version} ${pkg.homepage} */`,
   external: id => externals.some(d => id.startsWith(d)),
-  targets: [
-    {dest: pkg.main, format: 'cjs'},
-    {dest: pkg.module, format: 'es'}
+  output: [
+    {file: pkg.main, format: 'cjs', name: 'Catalog'},
+    {file: pkg.module, format: 'es'}
   ]
 };

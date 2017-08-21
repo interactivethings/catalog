@@ -37,9 +37,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default {
-  entry: 'src/index-standalone.js',
-  format: 'umd',
-  moduleName: 'Catalog',
+  input: 'src/index-standalone.js',
   plugins: plugins,
   globals: {
     'babel-standalone': 'Babel'

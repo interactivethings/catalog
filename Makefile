@@ -65,11 +65,11 @@ dist/cli: cli/src
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 dist/catalog-standalone.dev.js:
-	@NODE_ENV=development BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.standalone.js --output=$@
+	@NODE_ENV=development BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.standalone.js --output.name=Catalog --output.format=umd --output.file=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 dist/catalog-standalone.min.js:
-	@NODE_ENV=production BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.standalone.js --output=$@
+	@NODE_ENV=production BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.standalone.js --output.name=Catalog --output.format=umd --output.file=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 
