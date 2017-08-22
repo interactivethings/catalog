@@ -1,5 +1,5 @@
 const removeMultiSlashes = (path) => path.replace(/\/+/g, '/');
-const stripTrailingSlashes = (path) => path.replace(/\/+$/, '');
+export const stripTrailingSlashes = (path) => path.replace(/\/+$/, '');
 export const addLeadingSlash = (path) => path.charAt(0) === '/' ? path : '/' + path;
 const stripBasePath = (path, basePath) => basePath !== '/' && path.indexOf(basePath) === 0 ? path.substr(basePath.length) : path;
 const absoluteUrlRe = /^[a-z][a-z0-9+.-]*:/;
