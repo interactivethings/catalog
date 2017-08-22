@@ -10,7 +10,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
       test: /\.(js|jsx)$/,
       include: paths.appRoot,
       exclude: /node_modules/,
-      loader: 'babel-loader',
+      loader: require.resolve('babel-loader'),
       options: {
         babelrc: useBabelrc,
         presets: useBabelrc ? [] : [require.resolve('next/babel'), require.resolve('../../../babel')],

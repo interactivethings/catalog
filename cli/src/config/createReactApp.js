@@ -27,7 +27,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         // A missing `test` is equivalent to a match.
         {
           test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-          loader: 'url-loader',
+          loader: require.resolve('url-loader'),
           options: {
             limit: 10000,
             name: 'static/media/[name].[hash:8].[ext]'
@@ -37,7 +37,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         {
           test: /\.(js|jsx)$/,
           include: [paths.appSrc, paths.catalogSrcDir],
-          loader: 'babel-loader',
+          loader: require.resolve('babel-loader'),
           options: {
             babelrc: useBabelrc,
             presets: useBabelrc ? [] : [require.resolve('babel-preset-react-app'), require.resolve('../../../babel')],
@@ -56,13 +56,13 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
           ? {
             test: /\.css$/,
             use: [
-              'style-loader', {
-                loader: 'css-loader',
+              require.resolve('style-loader'), {
+                loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1
                 }
               }, {
-                loader: 'postcss-loader',
+                loader: require.resolve('postcss-loader'),
                 options: {
                   ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
                   plugins: () => {
@@ -84,15 +84,15 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         : {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: require.resolve('style-loader'),
             use: [
               {
-                loader: 'css-loader',
+                loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1
                 }
               }, {
-                loader: 'postcss-loader',
+                loader: require.resolve('postcss-loader'),
                 options: {
                   ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
                   plugins: () => {
@@ -123,7 +123,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         /\.json$/,
         /\.md$/
       ],
-      loader: 'file-loader',
+      loader: require.resolve('file-loader'),
       options: {
         name: 'static/media/[name].[hash:8].[ext]'
       }
