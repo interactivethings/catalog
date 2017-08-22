@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import Radium, {Style} from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import renderMarkdown from '../markdown/renderMarkdown';
+import * as srcset from 'srcset';
+import {parsePath} from '../utils/path';
 
 import {text, heading} from '../styles/typography';
 
 class Image extends React.Component {
   render() {
-    const {catalog: {theme}, src, title, overlay, description, ...options} = this.props;
+    const {catalog, src, title, overlay, description, ...options} = this.props;
+    const {theme} = catalog;
     const {scale = true} = options;
 
     const styles = {
@@ -81,8 +84,11 @@ class Image extends React.Component {
     };
 
     // Deconstruct srcset strings
-    const fallbackSrc = src.split(' ')[0];
-    const fallbackOverlay = overlay ? overlay.split(' ')[0] : undefined;
+    const imageSrcset = srcset.parse(src).map(img => ({...img, url: parsePath(img.url, catalog).pathname}));
+    const overlaySrcset = overlay ? srcset.parse(overlay).map(img => ({...img, url: parsePath(img.url, catalog).pathname})) : [];
+
+    const fallbackSrc = imageSrcset[0].url;
+    const fallbackOverlay = overlay ? overlaySrcset[0].url : undefined;
 
     return (
       <div style={styles.container}>
@@ -97,9 +103,9 @@ class Image extends React.Component {
                 marginBottom: 0
               }
             }}/>
-          <img style={styles.image} srcSet={src} src={fallbackSrc}/>
+          <img style={styles.image} srcSet={srcset.stringify(imageSrcset)} src={fallbackSrc}/>
           {overlay && <div style={{...styles.overlay, ...(options.plain && !options.light && !options.dark ? {padding: 0} : null)}}>
-            <img style={styles.image} srcSet={overlay} src={fallbackOverlay} />
+            <img style={styles.image} srcSet={srcset.stringify(overlaySrcset)} src={fallbackOverlay} />
           </div>}
         </div>
         {(title || description) && <div style={styles.meta}>
@@ -120,7 +126,7 @@ Image.propTypes = {
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
-  doNotScale: PropTypes.bool
+  scale: PropTypes.bool
 };
 
 export default Specimen()(Radium(Image));

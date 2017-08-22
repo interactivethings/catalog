@@ -35,6 +35,10 @@ test('Parse external path', () => {
   expect(parsePath('bar', mockCatalogConfig)).toEqual({pathname: '/bar', hash: ''});
 });
 
+test('Do not parse URL', () => {
+  expect(parsePath('https://example.com/foo.png', mockCatalogConfig)).toEqual({pathname: 'https://example.com/foo.png', hash: ''});
+});
+
 const mockCatalogConfigWithHashHistory = {
   basePath: '',
   useBrowserHistory: false,
@@ -64,6 +68,10 @@ test('Hash history: Parse external path', () => {
   expect(parsePath('/assets/foo.png', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/assets/foo.png', query: {}});
   expect(parsePath('foo.html', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/foo.html', query: {}});
   expect(parsePath('bar', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/bar', query: {}});
+});
+
+test('Hash history: Do not parse URL', () => {
+  expect(parsePath('https://example.com/foo.png', mockCatalogConfigWithHashHistory)).toEqual({pathname: 'https://example.com/foo.png', query: {}});
 });
 
 // Internal paths
@@ -136,11 +144,16 @@ test('Leave index path alone with basePath set', () => {
   expect(parsePath('/lalala', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala', hash: ''});
 });
 
-test('External path with basePath set', () => {
+test('Parse external path with basePath set', () => {
   expect(parsePath('/assets/foo.png', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/assets/foo.png', hash: ''});
   expect(parsePath('foo.html', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/foo.html', hash: ''});
   expect(parsePath('bar', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/bar', hash: ''});
 });
+
+test('Do not parse URL with basePath set', () => {
+  expect(parsePath('https://example.com/foo.png', mockCatalogConfigWithBasePath)).toEqual({pathname: 'https://example.com/foo.png', hash: ''});
+});
+
 
 // Internal paths
 
