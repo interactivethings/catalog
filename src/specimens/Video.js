@@ -3,13 +3,14 @@ import {catalogShape} from '../CatalogPropTypes';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import {parsePath} from '../utils/path';
 
 import {heading} from '../styles/typography';
 
 class Video extends React.Component {
   render() {
-    const {src, title, muted, loop, autoplay, catalog: {theme}} = this.props;
-
+    const {src, title, muted, loop, autoplay, catalog, catalog: {theme}} = this.props;
+    const parsedSrc = parsePath(src, catalog).pathname;
     let styles = {
       section: {
         display: 'flex',
@@ -31,14 +32,14 @@ class Video extends React.Component {
     return (
       <section style={styles.section}>
         <video
-          src={src}
+          src={parsedSrc}
           autoPlay={autoplay}
           loop={loop}
           muted={muted}
           controls
           style={{width: '100%', height: '100%'}}
         >
-          Open <a href={src} target='_blank'>video</a> in a new Tab
+          Open <a href={parsedSrc} target='_blank'>video</a> in a new Tab
         </video>
         {title && <div style={styles.title}>{title}</div>}
       </section>

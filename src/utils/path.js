@@ -31,7 +31,6 @@ export const parsePath = (path, options) => {
     : {pathname, query: anchor ? {a: anchor} : {}};
 };
 
-export const isInternalPath = (path, options) => {
-  const {pathname} = parsePath(path, options);
-  return options.pagePaths.has(pathname);
+export const isInternalPath = (parsedPath, options) => {
+  return options.pagePaths.has(parsedPath.pathname);
 };

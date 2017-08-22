@@ -8,9 +8,10 @@ import {parsePath, isInternalPath} from '../../utils/path';
 const RadiumRouterLink = Radium(RouterLink);
 
 const Link = ({to, ...rest}, {catalog}) => {
-  return isInternalPath(to, catalog)
-    ? <RadiumRouterLink to={parsePath(to, catalog)} {...rest} />
-    : <a href={to} {...rest} />;
+  const parsedTo = parsePath(to, catalog);
+  return isInternalPath(parsedTo, catalog)
+    ? <RadiumRouterLink to={parsedTo} {...rest} />
+    : <a href={parsedTo.pathname} {...rest} />;
 };
 
 Link.propTypes = {

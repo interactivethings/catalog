@@ -17,6 +17,10 @@ test('Parse path with trailing slash', () => {
   expect(parsePath('/foo/bar/', mockCatalogConfig)).toEqual({pathname: '/foo/bar', hash: ''});
 });
 
+test('Parse path with no leading slash', () => {
+  expect(parsePath('foo/bar', mockCatalogConfig)).toEqual({pathname: '/foo/bar', hash: ''});
+});
+
 test('Parse path with hash', () => {
   expect(parsePath('/foo/bar#baz', mockCatalogConfig)).toEqual({pathname: '/foo/bar', hash: '#baz'});
 });
@@ -77,31 +81,27 @@ test('Hash history: Do not parse URL', () => {
 // Internal paths
 
 test('Internal path', () => {
-  expect(isInternalPath('/foo/bar', mockCatalogConfig)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar', mockCatalogConfig), mockCatalogConfig)).toBe(true);
 });
 
 test('Internal path with trailing slash', () => {
-  expect(isInternalPath('/foo/bar/', mockCatalogConfig)).toBe(true);
-});
-
-test('Parse path with no leading slash', () => {
-  expect(parsePath('foo/bar', mockCatalogConfig)).toEqual({pathname: '/foo/bar', hash: ''});
+  expect(isInternalPath(parsePath('/foo/bar/', mockCatalogConfig), mockCatalogConfig)).toBe(true);
 });
 
 test('Internal path with hash', () => {
-  expect(isInternalPath('/foo/bar#baz', mockCatalogConfig)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar#baz', mockCatalogConfig), mockCatalogConfig)).toBe(true);
 });
 
 test('Internal path with trailing slash and hash', () => {
-  expect(isInternalPath('/foo/bar/#baz', mockCatalogConfig)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar/#baz', mockCatalogConfig), mockCatalogConfig)).toBe(true);
 });
 
 test('Internal path with only hash', () => {
-  expect(isInternalPath('#baz', mockCatalogConfig)).toBe(true);
+  expect(isInternalPath(parsePath('#baz', mockCatalogConfig), mockCatalogConfig)).toBe(true);
 });
 
 test('External path', () => {
-  expect(isInternalPath('/whoa', mockCatalogConfig)).toBe(false);
+  expect(isInternalPath(parsePath('/whoa', mockCatalogConfig), mockCatalogConfig)).toBe(false);
 });
 
 
@@ -158,29 +158,29 @@ test('Do not parse URL with basePath set', () => {
 // Internal paths
 
 test('Internal path basePath set', () => {
-  expect(isInternalPath('/foo/bar', mockCatalogConfigWithBasePath)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
 });
 
 test('Internal path with basePath set and trailing slash', () => {
-  expect(isInternalPath('/foo/bar/', mockCatalogConfigWithBasePath)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar/', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
 });
 
 test('Internal path with basePath set and hash', () => {
-  expect(isInternalPath('/foo/bar#baz', mockCatalogConfigWithBasePath)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar#baz', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
 });
 
 test('Internal path with basePath set and trailing slash and hash', () => {
-  expect(isInternalPath('/foo/bar/#baz', mockCatalogConfigWithBasePath)).toBe(true);
+  expect(isInternalPath(parsePath('/foo/bar/#baz', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
 });
 
 test('Internal path with basePath set and only hash', () => {
-  expect(isInternalPath('#baz', mockCatalogConfigWithBasePath)).toBe(true);
+  expect(isInternalPath(parsePath('#baz', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
 });
 
 test('External path with basePath set', () => {
-  expect(isInternalPath('/whoa', mockCatalogConfigWithBasePath)).toBe(false);
+  expect(isInternalPath(parsePath('/whoa', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(false);
 });
 
 test('Internal path basePath set and basePath', () => {
-  expect(isInternalPath('/lalala/foo/bar', mockCatalogConfigWithBasePath)).toBe(true);
+  expect(isInternalPath(parsePath('/lalala/foo/bar', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
 });
