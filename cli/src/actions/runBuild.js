@@ -1,7 +1,7 @@
 // @flow
 import webpack from 'webpack';
 import {errorMessage} from '../utils/format';
-import {rimraf, copydir} from 'sander';
+import {rimraf, copydir, exists} from 'sander';
 
 // Print out errors
 function printErrors(summary, errors) {
@@ -17,7 +17,10 @@ export default async (config: Object, paths: Object) => {
   const compiler = webpack(config);
   await rimraf(paths.catalogBuildDir, '*');
 
-  await copydir(paths.staticSrcDir).to(paths.staticBuildDir);
+  const staticDirExists = await exists(paths.staticSrcDir);
+  if (staticDirExists) {
+    await copydir(paths.staticSrcDir).to(paths.staticBuildDir);
+  }
 
   return new Promise((resolve) => {
     // We don't reject the promise but exit the process immediately
