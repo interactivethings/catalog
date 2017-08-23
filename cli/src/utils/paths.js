@@ -14,3 +14,13 @@ export const nodePaths: Array<string> = (process.env.NODE_PATH || '')
   .filter(Boolean)
   .filter(folder => !isAbsolute(folder))
   .map(path => resolveAppPath(path));
+
+export const ensureSlash = (path: string, needsSlash: boolean) => {
+  const hasSlash = path.endsWith('/');
+  if (hasSlash && !needsSlash) {
+    return path.substr(0, path.length - 1);
+  } else if (!hasSlash && needsSlash) {
+    return `${path}/`;
+  }
+  return path;
+};
