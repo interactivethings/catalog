@@ -1,5 +1,6 @@
+import {parse as urlParse} from 'url';
 import warning from './utils/warning';
-import {parsePath, addLeadingSlash} from './utils/path';
+import {parsePath, addLeadingSlash, stripTrailingSlashes} from './utils/path';
 import DefaultTheme from './DefaultTheme';
 import DefaultResponsiveSizes from './DefaultResponsiveSizes';
 import specimens from './specimens';
@@ -25,9 +26,11 @@ const flattenPageTree = (pageTree) => {
     .map((page, index) => ({...page, ...(page.hideFromMenu ? undefined : {index})}));
 };
 
+const getDefaultBasePath = () => typeof process !== 'undefined' && process.env.PUBLIC_URL ? urlParse(process.env.PUBLIC_URL).pathname : '/';
+
 export default (config) => {
   let pageId = 0;
-  const basePath = addLeadingSlash(config.basePath || '/');
+  const basePath = addLeadingSlash(stripTrailingSlashes(config.basePath || getDefaultBasePath()));
 
   const pageReducer = (pages, page) => {
     const configStyles = config.styles || [];

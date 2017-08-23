@@ -3,12 +3,14 @@ import {catalogShape} from '../CatalogPropTypes';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
+import {parsePath} from '../utils/path';
 
 import {heading} from '../styles/typography';
 
 class Audio extends React.Component {
   render() {
-    const {src, title, loop, autoplay, catalog: {theme}} = this.props;
+    const {src, title, loop, autoplay, catalog, catalog: {theme}} = this.props;
+    const parsedSrc = parsePath(src, catalog).pathname;
 
     const styles = {
       section: {
@@ -28,12 +30,12 @@ class Audio extends React.Component {
 
     const audioTitle = title !== undefined ?
       title :
-      src.split('/').slice(-1)[0];
+      parsedSrc.split('/').slice(-1)[0];
 
     return (
         <div style={styles.container}>
           <div style={styles.title}>{audioTitle}</div>
-          <audio style={{width: '100%'}} src={src} autoPlay={autoplay} loop={loop} controls />
+          <audio style={{width: '100%'}} src={parsedSrc} autoPlay={autoplay} loop={loop} controls />
         </div>
     );
   }

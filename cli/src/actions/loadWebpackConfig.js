@@ -1,5 +1,4 @@
 // @flow
-import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
@@ -17,18 +16,17 @@ type LoadWebpackOptions = {
   paths: Object,
   framework: string,
   dev: boolean,
-  publicPath: string,
   url?: string,
 };
 type WebpackConfig = {};
 
-export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptions): WebpackConfig => {
+export default async ({paths, framework, dev, url}: LoadWebpackOptions): WebpackConfig => {
   const useBabelrc = await exists(paths.babelrc);
   const frameworkConfig = framework === 'NEXT'
     ? nextConfig(paths, useBabelrc, dev)
     : createReactAppConfig(paths, useBabelrc, dev);
 
-  const env = getClientEnvironment(publicPath.replace(/\/$/, ''));
+  const env = getClientEnvironment(paths.publicUrl.replace(/\/$/, ''));
 
   const devPlugins = dev
    ? [
@@ -71,7 +69,7 @@ export default async ({paths, framework, dev, url, publicPath}: LoadWebpackOptio
       filename: dev ? 'static/[name].js' : 'static/[name].[chunkhash:8].js',
       chunkFilename: dev ? 'static/[name].chunk.js' : 'static/[name].[chunkhash:8].chunk.js',
       // This is the URL that app is served from. We use "/" in development.
-      publicPath
+      publicPath: paths.publicUrl
     },
     resolve: {
       modules: [paths.appSrc, 'node_modules', paths.appNodeModules].concat(paths.nodePaths),
