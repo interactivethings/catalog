@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-import 'isomorphic-fetch';
+import 'unfetch/polyfill';
 
 // Configuration
 export {default as render} from './render';
