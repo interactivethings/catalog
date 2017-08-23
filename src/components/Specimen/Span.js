@@ -1,10 +1,9 @@
-// @flow
-import React, {type Children} from 'react';
+import * as React from 'react';
 import Radium from 'radium';
 
 type SpanT = {
   span: 1 | 2 | 3 | 4 | 5 | 6,
-  children: Children
+  children: React.Node
 };
 
 const Span = ({span = 6, children}: SpanT) => {

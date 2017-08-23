@@ -91,7 +91,7 @@
     "eslint": "^3.19.0",
     "eslint-config-interactivethings": "^3.0.0",
     "eslint-plugin-react": "^5.1.1",
-    "flow-bin": "^0.46.0",
+    "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

@@ -1,12 +1,12 @@
-// flow-typed signature: 7b4e29a4fd2be533e1822c1b0aade79b
-// flow-typed version: 549b484575/chalk_v1.x.x/flow_>=v0.21.x
+// flow-typed signature: b1a2d646047879188d7e44cb218212b5
+// flow-typed version: b43dff3e0e/chalk_v1.x.x/flow_>=v0.19.x
 
 type $npm$chalk$StyleElement = {
   open: string;
   close: string;
 };
 
-type $npm$chalk$Chain = $npm$chalk$Style & (...text: string[]) => string;
+type $npm$chalk$Chain = $npm$chalk$Style & (...text: any[]) => string;
 
 type $npm$chalk$Style = {
   // General
