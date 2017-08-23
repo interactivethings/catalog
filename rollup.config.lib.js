@@ -3,7 +3,8 @@ const pkg = require('./package.json');
 
 const externals = [
   ...Object.keys(pkg.dependencies),
-  ...Object.keys(pkg.peerDependencies)
+  ...Object.keys(pkg.peerDependencies),
+  'url'
 ];
 
 export default {

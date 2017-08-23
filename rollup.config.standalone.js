@@ -21,7 +21,9 @@ let plugins = [
       'react': [ 'PureComponent', 'Component', 'PropTypes', 'Children', 'createElement', 'isValidElement' ],
       'react-dom': [ 'unstable_renderSubtreeIntoContainer', 'unmountComponentAtNode' ],
       'js-yaml': [ 'safeLoad', 'CORE_SCHEMA', 'Type', 'Schema' ],
-      'prop-types': [ 'bool', 'array', 'func', 'object', 'arrayOf', 'oneOfType', 'element', 'shape', 'string' ]
+      'prop-types': [ 'bool', 'array', 'func', 'object', 'arrayOf', 'oneOfType', 'element', 'shape', 'string' ],
+      'srcset': [ 'parse', 'stringify' ],
+      'url': [ 'parse' ]
     }
   }),
   babel({
