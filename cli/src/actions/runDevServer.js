@@ -8,7 +8,7 @@ export default async (config: Object, host: string, port: number, https: boolean
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
     clientLogLevel: 'none',
-    contentBase: framework === 'NEXT' ? paths.appRoot : paths.staticSrcDir,
+    contentBase: [paths.catalogStaticSrcDir, framework === 'NEXT' ? paths.appRoot : paths.appStaticSrcDir],
     hot: true,
     publicPath: config.output.publicPath,
     quiet: true,

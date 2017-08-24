@@ -42,7 +42,7 @@ const getFrameworkName = (framework: Framework): string => {
   }
 };
 
-const run = async (catalogSrcDir: void | string, options: {port: number, https: boolean, host: string, proxy: void | string}) => {
+const run = async (catalogSrcDir: string = 'catalog', options: {port: number, https: boolean, host: string, proxy: void | string}) => {
   clearConsole();
 
   console.log(infoMessage('Starting Catalog …'));
@@ -50,7 +50,7 @@ const run = async (catalogSrcDir: void | string, options: {port: number, https: 
   if (framework !== 'UNKNOWN') {
     console.log(infoMessageDimmed('Detected ' + getFrameworkName(framework)));
   }
-  const paths = await loadPaths(catalogSrcDir, undefined, framework, '/');
+  const paths = await loadPaths(catalogSrcDir, '', framework, '/');
   if (await exists(paths.babelrc)) {
     console.log(infoMessageDimmed('Using custom .babelrc'));
   }

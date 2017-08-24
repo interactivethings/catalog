@@ -1,7 +1,7 @@
 // @flow
 import {resolveAppPath, resolveOwnPath, nodePaths, ensureSlash} from '../utils/paths';
 
-export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string = 'catalog/build', framework: string, publicUrl: string) => ({
+export default async (catalogSrcDir: string, catalogBuildDir: string, framework: string, publicUrl: string) => ({
 
   unresolvedCatalogSrcDir: catalogSrcDir,
   unresolvedCatalogBuildDir: catalogBuildDir,
@@ -9,12 +9,14 @@ export default async (catalogSrcDir: string = 'catalog', catalogBuildDir: string
   catalogBuildDir: resolveAppPath(catalogBuildDir),
   catalogIndexJs: resolveAppPath(catalogSrcDir, 'index.js'),
   catalogIndexHtml: resolveAppPath(catalogSrcDir, 'index.html'),
+  catalogStaticSrcDir: resolveAppPath(catalogSrcDir, 'static'),
+  catalogStaticBuildDir: resolveAppPath(catalogBuildDir),
 
   catalogSrcTemplateDir: resolveOwnPath('..', 'setup-template'),
 
   appRoot: resolveAppPath('.'),
-  staticSrcDir: framework === 'NEXT' ? resolveAppPath('static') : resolveAppPath('public'),
-  staticBuildDir: framework === 'NEXT' ? resolveAppPath(catalogBuildDir, 'static') : resolveAppPath(catalogBuildDir),
+  appStaticSrcDir: framework === 'NEXT' ? resolveAppPath('static') : resolveAppPath('public'),
+  appStaticBuildDir: framework === 'NEXT' ? resolveAppPath(catalogBuildDir, 'static') : resolveAppPath(catalogBuildDir),
 
   appPackageJson: resolveAppPath('package.json'),
   appSrc: resolveAppPath('src'),

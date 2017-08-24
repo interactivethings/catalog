@@ -17,9 +17,14 @@ export default async (config: Object, paths: Object) => {
   const compiler = webpack(config);
   await rimraf(paths.catalogBuildDir, '*');
 
-  const staticDirExists = await exists(paths.staticSrcDir);
-  if (staticDirExists) {
-    await copydir(paths.staticSrcDir).to(paths.staticBuildDir);
+  // Copy app static assets to the correct location
+  if (await exists(paths.appStaticSrcDir)) {
+    await copydir(paths.appStaticSrcDir).to(paths.appStaticBuildDir);
+  }
+
+  // Copy Catalog's static files
+  if (await exists(paths.catalogStaticSrcDir)) {
+    await copydir(paths.catalogStaticSrcDir).to(paths.catalogStaticBuildDir);
   }
 
   return new Promise((resolve) => {
