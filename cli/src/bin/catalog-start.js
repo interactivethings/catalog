@@ -9,7 +9,7 @@ import {exists} from 'sander';
 import clearConsole from 'react-dev-utils/clearConsole';
 import openBrowser from 'react-dev-utils/openBrowser';
 
-import {infoMessage, infoMessageDimmed, errorMessage} from '../utils/format';
+import {infoMessageDimmed, errorMessage} from '../utils/format';
 
 import loadWebpackConfig from '../actions/loadWebpackConfig';
 import detectFramework from '../actions/detectFramework';
@@ -43,9 +43,6 @@ const getFrameworkName = (framework: Framework): string => {
 };
 
 const run = async (catalogSrcDir: string = 'catalog', options: {port: number, https: boolean, host: string, proxy: void | string}) => {
-  clearConsole();
-
-  console.log(infoMessage('Starting Catalog …'));
   const framework = await detectFramework();
   if (framework !== 'UNKNOWN') {
     console.log(infoMessageDimmed('Detected ' + getFrameworkName(framework)));
@@ -61,6 +58,13 @@ const run = async (catalogSrcDir: string = 'catalog', options: {port: number, ht
   const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url});
 
   await setupCatalog(paths);
+
+  clearConsole();
+
+  console.log(`
+  Starting Catalog …
+`);
+
   await runDevServer(webpackConfig, options.host, port, options.https, paths, framework, options.proxy);
 
   openBrowser(url);
