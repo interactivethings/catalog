@@ -3,14 +3,14 @@ import {catalogShape} from '../CatalogPropTypes';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import {parsePath} from '../utils/path';
+import {getPublicPath} from '../utils/path';
 
 import {heading} from '../styles/typography';
 
 class Audio extends React.Component {
   render() {
     const {src, title, loop, autoplay, catalog, catalog: {theme}} = this.props;
-    const parsedSrc = parsePath(src, catalog).pathname;
+    const parsedSrc = getPublicPath(src, catalog);
 
     const styles = {
       section: {

@@ -100,3 +100,45 @@ test('basePath support', () => {
   // Fallback page
   expect(config.pages[1].path).toBe('/catalog/*');
 });
+
+test('publicUrl support with hash history', () => {
+  const config = configure({
+    title: 'Catalog',
+    publicUrl: 'https://foo.bar/baz/',
+    pages: [
+      {
+        path: '/',
+        title: 'Overview',
+        src: 'overview.md'
+      }
+    ]
+  });
+
+  expect(config.basePath).toBe('/');
+  expect(config.publicUrl).toBe('https://foo.bar/baz'); // no trailing slash
+  expect(config.pages[0].path).toBe('/'); // It's hash history!
+  // Fallback page
+  expect(config.pages[1].path).toBe('/*');
+});
+
+test('publicUrl support with browser history', () => {
+  const config = configure({
+    title: 'Catalog',
+    useBrowserHistory: true,
+    publicUrl: 'https://foo.bar/baz/',
+    pages: [
+      {
+        path: '/',
+        title: 'Overview',
+        src: 'overview.md'
+      }
+    ]
+  });
+
+  expect(config.basePath).toBe('/baz');
+  expect(config.publicUrl).toBe('https://foo.bar/baz'); // no trailing slash
+  expect(config.pages[0].path).toBe('/baz');
+  // Fallback page
+  expect(config.pages[1].path).toBe('/baz/*');
+});
+

@@ -53,6 +53,7 @@ Object {
       "title": "Page Not Found",
     },
   ],
+  "publicUrl": "",
   "responsiveSizes": Array [
     Object {
       "height": 640,
@@ -193,6 +194,7 @@ Object {
       "title": "Page Not Found",
     },
   ],
+  "publicUrl": "",
   "responsiveSizes": Array [
     Object {
       "height": 640,
@@ -367,6 +369,7 @@ Object {
       "title": "Page Not Found",
     },
   ],
+  "publicUrl": "",
   "responsiveSizes": Array [
     Object {
       "height": 640,

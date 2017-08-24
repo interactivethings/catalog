@@ -4,7 +4,7 @@ import {getFontSize} from '../styles/typography';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
-import {parsePath} from '../utils/path';
+import {getPublicPath} from '../utils/path';
 
 const DownloadIcon = Radium(({style, fill}) => (
   <svg style={style} viewBox='0 0 120 120'>
@@ -82,7 +82,7 @@ class DownloadSpecimen extends React.Component {
 
     return (
       <div style={styles.container} >
-        <a style={styles.a} href={parsePath(url, catalog).pathname} download={filename} >
+        <a style={styles.a} href={getPublicPath(url, catalog)} download={filename} >
           {image}
           <div style={styles.titleblock}>
             <h2 style={{...styles.title, ...textColor}}>{title}</h2>

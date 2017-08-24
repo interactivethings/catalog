@@ -5,7 +5,7 @@ import Radium, {Style} from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import renderMarkdown from '../markdown/renderMarkdown';
 import * as srcset from 'srcset';
-import {parsePath} from '../utils/path';
+import {getPublicPath} from '../utils/path';
 
 import {text, heading} from '../styles/typography';
 
@@ -84,8 +84,8 @@ class Image extends React.Component {
     };
 
     // Deconstruct srcset strings
-    const imageSrcset = srcset.parse(src).map(img => ({...img, url: parsePath(img.url, catalog).pathname}));
-    const overlaySrcset = overlay ? srcset.parse(overlay).map(img => ({...img, url: parsePath(img.url, catalog).pathname})) : [];
+    const imageSrcset = srcset.parse(src).map(img => ({...img, url: getPublicPath(img.url, catalog)}));
+    const overlaySrcset = overlay ? srcset.parse(overlay).map(img => ({...img, url: getPublicPath(img.url, catalog)})) : [];
 
     const fallbackSrc = imageSrcset[0].url;
     const fallbackOverlay = overlay ? overlaySrcset[0].url : undefined;

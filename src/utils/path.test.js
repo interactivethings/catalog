@@ -1,7 +1,8 @@
-import {parsePath, isInternalPath} from './path';
+import {parsePath, getPublicPath, isInternalPath} from './path';
 
 const mockCatalogConfig = {
   basePath: '/',
+  publicUrl: '',
   useBrowserHistory: true,
   pagePaths: new Set(['/', '/foo/bar']),
   page: {
@@ -33,18 +34,13 @@ test('Leave index path alone', () => {
   expect(parsePath('/', mockCatalogConfig)).toEqual({pathname: '/', hash: ''});
 });
 
-test('Parse external path', () => {
-  expect(parsePath('/assets/foo.png', mockCatalogConfig)).toEqual({pathname: '/assets/foo.png', hash: ''});
-  expect(parsePath('foo.html', mockCatalogConfig)).toEqual({pathname: '/foo.html', hash: ''});
-  expect(parsePath('bar', mockCatalogConfig)).toEqual({pathname: '/bar', hash: ''});
-});
-
 test('Do not parse URL', () => {
   expect(parsePath('https://example.com/foo.png', mockCatalogConfig)).toEqual({pathname: 'https://example.com/foo.png', hash: ''});
 });
 
 const mockCatalogConfigWithHashHistory = {
-  basePath: '',
+  basePath: '/',
+  publicUrl: '',
   useBrowserHistory: false,
   pagePaths: new Set(['/', '/foo/bar']),
   page: {
@@ -66,12 +62,6 @@ test('Hash history: Parse path with hash', () => {
 
 test('Hash history: Parse path with only hash (pathname is current page)', () => {
   expect(parsePath('#baz', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/foo/bar', query: {a: 'baz'}});
-});
-
-test('Hash history: Parse external path', () => {
-  expect(parsePath('/assets/foo.png', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/assets/foo.png', query: {}});
-  expect(parsePath('foo.html', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/foo.html', query: {}});
-  expect(parsePath('bar', mockCatalogConfigWithHashHistory)).toEqual({pathname: '/bar', query: {}});
 });
 
 test('Hash history: Do not parse URL', () => {
@@ -109,6 +99,7 @@ test('External path', () => {
 
 const mockCatalogConfigWithBasePath = {
   basePath: '/lalala',
+  publicUrl: 'https://foo.bar/lalala',
   useBrowserHistory: true,
   pagePaths: new Set(['/lalala', '/lalala/foo/bar']),
   page: {
@@ -144,16 +135,9 @@ test('Leave index path alone with basePath set', () => {
   expect(parsePath('/lalala', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala', hash: ''});
 });
 
-test('Parse external path with basePath set', () => {
-  expect(parsePath('/assets/foo.png', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/assets/foo.png', hash: ''});
-  expect(parsePath('foo.html', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/foo.html', hash: ''});
-  expect(parsePath('bar', mockCatalogConfigWithBasePath)).toEqual({pathname: '/lalala/bar', hash: ''});
-});
-
 test('Do not parse URL with basePath set', () => {
   expect(parsePath('https://example.com/foo.png', mockCatalogConfigWithBasePath)).toEqual({pathname: 'https://example.com/foo.png', hash: ''});
 });
-
 
 // Internal paths
 
@@ -183,4 +167,26 @@ test('External path with basePath set', () => {
 
 test('Internal path basePath set and basePath', () => {
   expect(isInternalPath(parsePath('/lalala/foo/bar', mockCatalogConfigWithBasePath), mockCatalogConfigWithBasePath)).toBe(true);
+});
+
+
+test('Parse external path', () => {
+  expect(getPublicPath('/assets/foo.png', mockCatalogConfig)).toEqual('/assets/foo.png');
+  expect(getPublicPath('foo.html', mockCatalogConfig)).toEqual('/foo.html');
+  expect(getPublicPath('bar', mockCatalogConfig)).toEqual('/bar');
+  expect(getPublicPath('http://foobar.com/', mockCatalogConfig)).toEqual('http://foobar.com/');
+});
+
+test('Parse external path with publicUrl set', () => {
+  expect(getPublicPath('/assets/foo.png', mockCatalogConfigWithBasePath)).toEqual('https://foo.bar/lalala/assets/foo.png');
+  expect(getPublicPath('foo.html', mockCatalogConfigWithBasePath)).toEqual('https://foo.bar/lalala/foo.html');
+  expect(getPublicPath('bar', mockCatalogConfigWithBasePath)).toEqual('https://foo.bar/lalala/bar');
+  expect(getPublicPath('http://foobar.com/', mockCatalogConfigWithBasePath)).toEqual('http://foobar.com/');  
+});
+
+test('Hash history: Parse external path', () => {
+  expect(getPublicPath('/assets/foo.png', mockCatalogConfigWithHashHistory)).toEqual('/assets/foo.png');
+  expect(getPublicPath('foo.html', mockCatalogConfigWithHashHistory)).toEqual('/foo.html');
+  expect(getPublicPath('bar', mockCatalogConfigWithHashHistory)).toEqual('/bar');
+  expect(getPublicPath('http://foobar.com/', mockCatalogConfigWithHashHistory)).toEqual('http://foobar.com/');  
 });

@@ -31,6 +31,12 @@ export const parsePath = (path, options) => {
     : {pathname, query: anchor ? {a: anchor} : {}};
 };
 
+export const getPublicPath = (path, options) => {
+  return absoluteUrlRe.test(path)
+    ? path
+    : options.publicUrl + addLeadingSlash(stripBasePath(path, options.basePath));
+};
+
 export const isInternalPath = (parsedPath, options) => {
   return options.pagePaths.has(parsedPath.pathname);
 };

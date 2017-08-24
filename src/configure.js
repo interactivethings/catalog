@@ -26,11 +26,14 @@ const flattenPageTree = (pageTree) => {
     .map((page, index) => ({...page, ...(page.hideFromMenu ? undefined : {index})}));
 };
 
-const getDefaultBasePath = () => typeof process !== 'undefined' && process.env.PUBLIC_URL ? urlParse(process.env.PUBLIC_URL).pathname : '/';
+const getPublicUrl = () => typeof process !== 'undefined' && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : '/';
 
 export default (config) => {
   let pageId = 0;
-  const basePath = addLeadingSlash(stripTrailingSlashes(config.basePath || getDefaultBasePath()));
+  const publicUrl = stripTrailingSlashes(config.publicUrl || getPublicUrl());
+  const basePath = config.useBrowserHistory
+    ? addLeadingSlash(stripTrailingSlashes(config.basePath || urlParse(publicUrl).pathname || ''))
+    : addLeadingSlash(stripTrailingSlashes(config.basePath || ''));
 
   const pageReducer = (pages, page) => {
     const configStyles = config.styles || [];
@@ -114,6 +117,7 @@ export default (config) => {
     responsiveSizes: config.responsiveSizes || DefaultResponsiveSizes,
     specimens: {...specimens, ...config.specimens},
     basePath,
+    publicUrl,
     pages,
     pageTree
   };
