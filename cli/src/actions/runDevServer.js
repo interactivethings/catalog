@@ -1,7 +1,7 @@
 // @flow
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import errorOverlayMiddleware from 'react-error-overlay/middleware';
+import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 
 export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string, proxy: void | string): Promise<string> => {
   const compiler = webpack(config);
@@ -9,6 +9,8 @@ export default async (config: Object, host: string, port: number, https: boolean
     compress: true,
     clientLogLevel: 'none',
     contentBase: [paths.catalogStaticSrcDir, framework === 'NEXT' ? paths.appRoot : paths.appStaticSrcDir],
+    // By default files from `contentBase` will not trigger a page reload.
+    watchContentBase: true,
     hot: true,
     publicPath: config.output.publicPath,
     quiet: true,
