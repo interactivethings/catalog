@@ -181,12 +181,12 @@ test('Parse external path with publicUrl set', () => {
   expect(getPublicPath('/assets/foo.png', mockCatalogConfigWithBasePath)).toEqual('https://foo.bar/lalala/assets/foo.png');
   expect(getPublicPath('foo.html', mockCatalogConfigWithBasePath)).toEqual('https://foo.bar/lalala/foo.html');
   expect(getPublicPath('bar', mockCatalogConfigWithBasePath)).toEqual('https://foo.bar/lalala/bar');
-  expect(getPublicPath('http://foobar.com/', mockCatalogConfigWithBasePath)).toEqual('http://foobar.com/');  
+  expect(getPublicPath('http://foobar.com/', mockCatalogConfigWithBasePath)).toEqual('http://foobar.com/');
 });
 
 test('Hash history: Parse external path', () => {
   expect(getPublicPath('/assets/foo.png', mockCatalogConfigWithHashHistory)).toEqual('/assets/foo.png');
   expect(getPublicPath('foo.html', mockCatalogConfigWithHashHistory)).toEqual('/foo.html');
   expect(getPublicPath('bar', mockCatalogConfigWithHashHistory)).toEqual('/bar');
-  expect(getPublicPath('http://foobar.com/', mockCatalogConfigWithHashHistory)).toEqual('http://foobar.com/');  
+  expect(getPublicPath('http://foobar.com/', mockCatalogConfigWithHashHistory)).toEqual('http://foobar.com/');
 });
