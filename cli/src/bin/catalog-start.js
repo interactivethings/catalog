@@ -44,13 +44,9 @@ const getFrameworkName = (framework: Framework): string => {
 
 const run = async (catalogSrcDir: string = 'catalog', options: {port: number, https: boolean, host: string, proxy: void | string}) => {
   const framework = await detectFramework();
-  if (framework !== 'UNKNOWN') {
-    console.log(infoMessageDimmed('Detected ' + getFrameworkName(framework)));
-  }
+
   const paths = await loadPaths(catalogSrcDir, '', framework, '/');
-  if (await exists(paths.babelrc)) {
-    console.log(infoMessageDimmed('Using custom .babelrc'));
-  }
+
   const port = await detect(options.port);
 
   const url = (options.https ? 'https' : 'http') + '://' + options.host + ':' + port + '/';
@@ -64,6 +60,12 @@ const run = async (catalogSrcDir: string = 'catalog', options: {port: number, ht
   console.log(`
   Starting Catalog …
 `);
+  if (framework !== 'UNKNOWN') {
+    console.log(infoMessageDimmed('  Detected ' + getFrameworkName(framework)));
+  }
+  if (await exists(paths.babelrc)) {
+    console.log(infoMessageDimmed('  Using custom .babelrc'));
+  }
 
   await runDevServer(webpackConfig, options.host, port, options.https, paths, framework, options.proxy);
 
