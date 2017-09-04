@@ -18,12 +18,17 @@ export default async (): Promise<Framework> => {
   }
 
   const appPackage = require(appPackagePath);
-
-  if (appPackage.devDependencies && appPackage.devDependencies.hasOwnProperty('react-scripts')) {
+  if (
+    (appPackage.dependencies && appPackage.dependencies.hasOwnProperty('react-scripts')) ||
+    (appPackage.devDependencies && appPackage.devDependencies.hasOwnProperty('react-scripts'))
+  ) {
     return 'CREATE_REACT_APP';
   }
 
-  if (appPackage.dependencies && appPackage.dependencies.hasOwnProperty('next')) {
+  if (
+    (appPackage.dependencies && appPackage.dependencies.hasOwnProperty('next')) ||
+    (appPackage.devDependencies && appPackage.devDependencies.hasOwnProperty('next'))
+  ) {
     return 'NEXT';
   }
 
