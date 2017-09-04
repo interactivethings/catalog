@@ -14,10 +14,6 @@ then
   exit 0
 fi
 
-make test
-
-make build
-
 if [[ "$version" == *"-"* ]]
 then
   tag="next"
