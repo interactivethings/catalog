@@ -45,7 +45,9 @@ rollup-lib:
 	@BABEL_ENV=rollup $$(yarn bin)/rollup $< --config=rollup.config.lib.js
 	@echo -e "$(CLI_SUCCESS) Built rollup modules$(CLI_RESET)"
 
-rollup-standalone: dist/catalog-standalone.dev.js dist/catalog-standalone.min.js
+rollup-standalone:
+	@BABEL_ENV=rollup $$(yarn bin)/rollup $< --config=rollup.config.standalone.js
+	@echo -e "$(CLI_SUCCESS) Built rollup standalone$(CLI_RESET)"
 
 dist/loader.js: src/loader.js
 	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-file $@
@@ -62,14 +64,6 @@ dist/setup-template: cli/setup-template
 dist/cli: cli/src
 	@mkdir -p $(dir $@)
 	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-dir $@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
-
-dist/catalog-standalone.dev.js:
-	@NODE_ENV=development BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.standalone.js --output.name=Catalog --output.format=umd --output.file=$@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
-
-dist/catalog-standalone.min.js:
-	@NODE_ENV=production BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.standalone.js --output.name=Catalog --output.format=umd --output.file=$@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 

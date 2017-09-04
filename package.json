@@ -10,10 +10,11 @@
     "react",
     "markdown"
   ],
-  "homepage": "https://interactivethings.github.io/catalog/",
+  "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
   "main": "dist/catalog.cjs.js",
   "module": "dist/catalog.es.js",
+  "unpkg": "dist/catalog-standalone.min.js",
   "engines": {
     "npm": ">=2.14.12"
   },

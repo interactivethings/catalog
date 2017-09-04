@@ -3,7 +3,6 @@ import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import replace from 'rollup-plugin-replace';
-const pkg = require('./package.json');
 
 let plugins = [
   nodeResolve({
@@ -27,24 +26,49 @@ let plugins = [
   }),
   babel({
     exclude: 'node_modules/**'
-  }),
-  replace({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
 ];
 
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(uglify());
-}
-
-export default {
-  input: 'src/index-standalone.js',
-  plugins: plugins,
-  globals: {
-    'babel-standalone': 'Babel'
+export default [
+  {
+    input: 'src/index-standalone.js',
+    globals: {
+      'babel-standalone': 'Babel'
+    },
+    external: [
+      'babel-standalone'
+    ],
+    plugins: [
+      ...plugins,
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('development')
+      })
+    ],
+    output: {
+      file: 'dist/catalog-standalone.development.js',
+      format: 'umd',
+      name: 'Catalog'
+    }
   },
-  external: [
-    'babel-standalone'
-  ],
-  banner: `/*! Catalog v${pkg.version} ${pkg.homepage} */`
-};
+  {
+    input: 'src/index-standalone.js',
+    globals: {
+      'babel-standalone': 'Babel'
+    },
+    external: [
+      'babel-standalone'
+    ],
+    plugins: [
+      ...plugins,
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      uglify()
+    ],
+    output: {
+      file: 'dist/catalog-standalone.min.js',
+      format: 'umd',
+      name: 'Catalog'
+    }
+  }
+];
