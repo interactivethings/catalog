@@ -42,10 +42,10 @@ Etc.
 
 #### Dynamic Imports For Pages (a.k.a Code Splitting)
 
-To create a smaller initial bundle for Catalog, you can now split page content into separate bundles with the new `ContentLoader`. This leverages webpack 2's code-splitting powers. When you use the `catalog` command line tool, this will work out of the box without any configuration. ✌️
+To create a smaller initial bundle for Catalog, you can now split page content into separate bundles with the new `pageLoader`. This leverages webpack 2's code-splitting powers. When you use the `catalog` command line tool, this will work out of the box without any configuration. ✌️
 
 ```jsx
-import { ContentLoader } from 'catalog';
+import { pageLoader } from 'catalog';
 
 const config = {
   // ...
@@ -53,12 +53,12 @@ const config = {
     {
       path: '/nice-page',
       title: 'A Nice Page',
-      content: ContentLoader(() => import('./NicePage'))
+      content: pageLoader(() => import('./NicePage'))
     },
     {
       path: '/markdown-page',
       title: 'Markdown Page',
-      content: ContentLoader(() => import('./MarkdownPage.md'))
+      content: pageLoader(() => import('./MarkdownPage.md'))
     }
   ]
 }

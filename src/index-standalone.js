@@ -7,7 +7,7 @@ export {default as configure} from './configure';
 export {default as configureRoutes} from './configureRoutes';
 export {configureJSXRoutes as configureJSXRoutes} from './configureRoutes';
 export {default as markdown} from './markdownPage';
-export {default as ContentLoader} from './ContentLoader';
+export {default as pageLoader} from './pageLoader';
 export {default as DefaultTheme} from './DefaultTheme';
 export {default as DefaultResponsiveSizes} from './DefaultResponsiveSizes';
 

@@ -33,7 +33,7 @@ ${msg}
 `;
 
 
-class ContentLoader extends PureComponent {
+class PageLoader extends PureComponent {
   constructor() {
     super();
     this.state = {content: null};
@@ -62,10 +62,10 @@ class ContentLoader extends PureComponent {
   }
 }
 
-ContentLoader.propTypes = {
+PageLoader.propTypes = {
   urlOrComponentPromise: PropTypes.any.isRequired,
   location: PropTypes.object.isRequired
 };
 
 export default (urlOrComponentPromise) => ({location}) => // eslint-disable-line react/prop-types
-  <ContentLoader location={location} urlOrComponentPromise={urlOrComponentPromise} />;
+  <PageLoader location={location} urlOrComponentPromise={urlOrComponentPromise} />;
