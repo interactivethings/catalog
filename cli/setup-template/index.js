@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Catalog, ContentLoader } from "catalog";
+import { Catalog, pageLoader } from "catalog";
 
 const pages = [
   {
     path: "/",
     title: "Welcome",
-    content: ContentLoader(() => import("./WELCOME.md"))
+    content: pageLoader(() => import("./WELCOME.md"))
   }
 ];
 
