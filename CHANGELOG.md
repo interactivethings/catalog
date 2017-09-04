@@ -24,7 +24,7 @@ import React from 'react';
 import { markdown, ReactSpecimen } from 'catalog';
 import MyComponent from './MyComponent';
 
-export default markdown`
+export default () => markdown`
 # My Component
 
 Can do cool things:

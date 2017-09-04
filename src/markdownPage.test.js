@@ -16,7 +16,7 @@ Cool, eh?`}
 </Hint>
 }
 `;
-  expect(page()).toMatchSnapshot();
+  expect(page).toMatchSnapshot();
 });
 
 test('Catalog markdown page template literal with arbitrary values', () => {
@@ -29,5 +29,5 @@ A paragraph ${123}
 ${[{a: 'some'}, {a: 'data'}]}
 ~~~
 `;
-  expect(page()).toMatchSnapshot();
+  expect(page).toMatchSnapshot();
 });

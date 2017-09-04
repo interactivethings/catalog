@@ -29,7 +29,7 @@ import Page from './components/Page/Page';
 
 const replaceLast = (f, arr) => arr.slice(0, -1).concat(f(arr[arr.length - 1]));
 
-const markdownPage = (strings, ...values) => () =>
+const markdownPage = (strings, ...values) =>
   createElement(Page, {},
     ...values.reduce((a, v, i) => {
       // If it's a valid React element, just concat to the end of the array
