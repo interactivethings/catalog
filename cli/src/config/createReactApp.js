@@ -113,20 +113,20 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
             ...extractTextPluginOptions
           })
         }
-      )
+      ),
+        {
+          exclude: [
+            /\.js$/,
+            /\.html$/,
+            /\.json$/,
+            /\.md$/
+          ],
+          loader: require.resolve('file-loader'),
+          options: {
+            name: 'static/media/[name].[hash:8].[ext]'
+          }
+        }
       ]
-    },
-    {
-      exclude: [
-        /\.js$/,
-        /\.html$/,
-        /\.json$/,
-        /\.md$/
-      ],
-      loader: require.resolve('file-loader'),
-      options: {
-        name: 'static/media/[name].[hash:8].[ext]'
-      }
     }
   ],
   plugins: dev
