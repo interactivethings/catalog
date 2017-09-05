@@ -18,8 +18,6 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 
 export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
   moduleRules: [
-    // Disable require.ensure as it's not a standard language feature.
-    {parser: {requireEnsure: false}},
     {
       oneOf: [
         // "url" loader works like "file" loader except that it embeds assets
@@ -41,8 +39,6 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
           options: {
             babelrc: useBabelrc,
             presets: useBabelrc ? [] : [require.resolve('babel-preset-react-app'), require.resolve('../../../babel')],
-            // TODO check if this is an issue when this plugin is already included
-            plugins: useBabelrc ? [] : [require.resolve('babel-plugin-syntax-dynamic-import')],
             cacheDirectory: true
           }
         },
