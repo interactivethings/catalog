@@ -88,6 +88,7 @@
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
     "babel-plugin-external-helpers": "^6.8.0",
+    "babel-plugin-react-require": "^3.0.0",
     "babel-preset-env": "^1.6.0",
     "eslint": "^3.19.0",
     "eslint-config-interactivethings": "^3.0.0",
@@ -102,7 +103,8 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "rollup-watch": "^4.3.1"
+    "rollup-watch": "^4.3.1",
+    "styled-jsx": "^1.0.10"
   },
   "repository": {
     "type": "git",

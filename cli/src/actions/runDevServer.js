@@ -1,6 +1,7 @@
 // @flow
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import express from 'express';
 import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 
 export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string, proxy: void | string): Promise<string> => {
@@ -8,7 +9,7 @@ export default async (config: Object, host: string, port: number, https: boolean
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
     clientLogLevel: 'none',
-    contentBase: [paths.catalogStaticSrcDir, framework === 'NEXT' ? paths.appRoot : paths.appStaticSrcDir],
+    contentBase: [paths.catalogStaticSrcDir, paths.appStaticSrcDir],
     // By default files from `contentBase` will not trigger a page reload.
     watchContentBase: true,
     hot: true,
@@ -31,6 +32,10 @@ export default async (config: Object, host: string, port: number, https: boolean
     }} : {}),
     overlay: false,
     setup(app) {
+      // Next.js serves static files from /static – which can't be configured with `contentBase` directly
+      if (framework === 'NEXT') {
+        app.use('/static', express.static(paths.appStaticSrcDir));
+      }
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
     }

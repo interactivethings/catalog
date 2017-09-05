@@ -35,7 +35,7 @@ const getFrameworkName = (framework: Framework): string => {
   case 'CREATE_REACT_APP':
     return 'Create React App';
   case 'NEXT':
-    return 'next.js';
+    return 'next.js (support is experimental)';
   case 'UNKNOWN':
   default:
     return '';
