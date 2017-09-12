@@ -39,10 +39,10 @@ export default [
       'babel-standalone'
     ],
     plugins: [
-      ...plugins,
       replace({
         'process.env.NODE_ENV': JSON.stringify('development')
-      })
+      }),
+      ...plugins
     ],
     output: {
       file: 'dist/catalog-standalone.development.js',
@@ -59,10 +59,10 @@ export default [
       'babel-standalone'
     ],
     plugins: [
-      ...plugins,
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
+      ...plugins,
       uglify()
     ],
     output: {
