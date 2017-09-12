@@ -87,8 +87,7 @@ export default async ({paths, framework, dev, url}: LoadWebpackOptions): Webpack
       ]
     },
     module: {
-      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [require.resolve('../../../loader'), require.resolve('raw-loader')]}],
-      noParse: /\.min\.js/
+      rules: [...frameworkConfig.moduleRules, {test: /\.md$/, loaders: [require.resolve('../../../loader'), require.resolve('raw-loader')]}]
     },
     plugins: (
       dev
@@ -96,15 +95,18 @@ export default async ({paths, framework, dev, url}: LoadWebpackOptions): Webpack
       : [
         new webpack.optimize.UglifyJsPlugin({
           compress: {
-            screw_ie8: true, // React doesn't support IE8
-            warnings: false
-          },
-          mangle: {
-            screw_ie8: true
+            warnings: false,
+            // Disabled because of an issue with Uglify breaking seemingly valid code:
+            // https://github.com/facebookincubator/create-react-app/issues/2376
+            // Pending further investigation:
+            // https://github.com/mishoo/UglifyJS2/issues/2011
+            comparisons: false
           },
           output: {
             comments: false,
-            screw_ie8: true
+            // Turned on because emoji and regex is not minified properly using default
+            // https://github.com/facebookincubator/create-react-app/issues/2488
+            ascii_only: true
           },
           sourceMap: true,
           // Don't minify the vendor chunk, since it only contains minified modules anyway.
