@@ -97,7 +97,7 @@
     "jest": "^20.0.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "rollup": "^0.48",
+    "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.0",
     "rollup-plugin-node-resolve": "^3.0.0",
