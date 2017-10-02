@@ -94,7 +94,7 @@ class Menu extends React.Component {
           </ul>
         </div>
         <div style={currentStyle.info}>
-          Powered by <a style={currentStyle.link} href='http://interactivethings.github.io/catalog' target='_blank'>Catalog</a>
+          Powered by <a style={currentStyle.link} href='https://www.catalog.style/' target='_blank'>Catalog</a>
         </div>
       </div>
     );

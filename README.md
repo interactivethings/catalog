@@ -1,12 +1,12 @@
 ![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
 
-[![Travis](https://img.shields.io/travis/interactivethings/catalog.svg)]() [![Downloads](https://img.shields.io/npm/dm/catalog.svg)]() [![Version](https://img.shields.io/npm/v/catalog.svg)]() [![License](https://img.shields.io/npm/l/catalog.svg)]()
+[![Travis](https://img.shields.io/travis/interactivethings/catalog.svg)](https://travis-ci.org/interactivethings/catalog/) [![Downloads](https://img.shields.io/npm/dm/catalog.svg)](https://www.npmjs.com/package/catalog) [![Version](https://img.shields.io/npm/v/catalog.svg)](https://www.npmjs.com/package/catalog) [![License](https://img.shields.io/npm/l/catalog.svg)]()
 
 # Catalog
 
 Catalog lets you create beautiful living and fully interactive style guides using Markdown and React components.
 
-Please read the [Catalog documentation](https://interactivethings.github.io/catalog/) (built with Catalog!) for detailed installation and usage instructions.
+Please read the [Catalog documentation](https://docs.catalog.style/) (built with Catalog!) for detailed installation and usage instructions.
 
 ## Installation
 
