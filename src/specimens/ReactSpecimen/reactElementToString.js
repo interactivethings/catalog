@@ -55,6 +55,7 @@ const reactElementToString = (el, indent = '') => {
   const propKeys = Object.keys(props)
     .sort()
     .filter((k) => k !== 'children')
+    .filter((k) => props[k] !== undefined)
     .filter((k) => defaultProps ? props[k] !== defaultProps[k] : true);
 
   const propString = propKeys.map((k) => formatProp(k, props[k])).join(`\n${indent}  `);
