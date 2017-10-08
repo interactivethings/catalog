@@ -6,12 +6,12 @@ process.env.NODE_ENV = 'development';
 import args from 'args';
 import detect from 'detect-port';
 import {exists} from 'sander';
-import clearConsole from 'react-dev-utils/clearConsole';
 import openBrowser from 'react-dev-utils/openBrowser';
 
 import {infoMessageDimmed, errorMessage} from '../utils/format';
 
 import loadWebpackConfig from '../actions/loadWebpackConfig';
+import loadConfigFile from '../actions/loadConfigFile';
 import detectFramework from '../actions/detectFramework';
 import loadPaths from '../actions/loadPaths';
 
@@ -45,21 +45,32 @@ const getFrameworkName = (framework: Framework): string => {
 const run = async (catalogSrcDir: string = 'catalog', options: {port: number, https: boolean, host: string, proxy: void | string}) => {
   const framework = await detectFramework();
 
+  const configFile = await loadConfigFile();
+
   const paths = await loadPaths(catalogSrcDir, '', framework, '/');
 
   const port = await detect(options.port);
 
   const url = (options.https ? 'https' : 'http') + '://' + options.host + ':' + port + '/';
 
-  const webpackConfig = await loadWebpackConfig({paths, dev: true, framework, url});
+  const webpackOptions = {paths, dev: true, framework, url};
+
+  let webpackConfig = await loadWebpackConfig(webpackOptions);
+
+  if (configFile) {
+    if (typeof configFile.webpack === 'function') {
+      webpackConfig = configFile.webpack(webpackConfig, webpackOptions);
+    }
+  }
 
   await setupCatalog(paths);
-
-  clearConsole();
 
   console.log(`
   Starting Catalog …
 `);
+  if (configFile) {
+    console.log(infoMessageDimmed('  Using configuration file catalog.config.js'));
+  }
   if (framework !== 'UNKNOWN') {
     console.log(infoMessageDimmed('  Detected ' + getFrameworkName(framework)));
   }
