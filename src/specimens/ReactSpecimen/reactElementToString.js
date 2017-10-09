@@ -47,17 +47,26 @@ const reactElementToString = (el, indent = '') => {
     if (typeof v === 'string') {
       return `${k}='${v}'`;
     }
-    return React.isValidElement(v)
-      ? `${k}={${reactElementToString(v)}}`
-      : `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
+    if (React.isValidElement(v)) {
+      return `${k}={${reactElementToString(v)}}`;
+    }
+    return `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
   };
 
   const propKeys = Object.keys(props)
     .sort()
     .filter((k) => k !== 'children')
+    .filter((k) => props[k] !== undefined)
     .filter((k) => defaultProps ? props[k] !== defaultProps[k] : true);
 
-  const propString = propKeys.map((k) => formatProp(k, props[k])).join(`\n${indent}  `);
+  let propString = '';
+  try {
+    propString = propKeys.map((k) => formatProp(k, props[k])).join(`\n${indent}  `);
+  } catch (e) {
+    return `Couldn't stringify React Element. Try setting \`sourceText\` explicitly or use \`noSource\`.
+
+${e}`;
+  }
 
   const whitespaceBeforeProps = propKeys.length > 1 // eslint-disable-line no-nested-ternary
     ? `\n${indent}  `

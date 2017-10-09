@@ -137,7 +137,9 @@ class ReactSpecimen extends Component {
       code = children;
     } else {
       element = children;
-      code = sourceText || reactElementToString(children);
+      if (!noSource) {
+        code = sourceText || reactElementToString(children);
+      }
     }
 
     if (options.responsive && !validSizes) {
