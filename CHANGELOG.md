@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.1.1
+
+### Fixes
+
+- Fixes webpack-dev-server error by updating its version dependency
+
 ## v3.1.0
 
 ### New
