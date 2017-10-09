@@ -1,5 +1,15 @@
 # Change Log
 
+## v3.1.0
+
+### New
+
+- Added support for CLI config file ([#312](https://github.com/interactivethings/catalog/pull/312))
+
+### Fixes
+
+- React element stringification fixes ([#306](https://github.com/interactivethings/catalog/pull/306))
+
 ## v3.0.0
 
 ### New
