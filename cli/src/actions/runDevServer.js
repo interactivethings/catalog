@@ -31,7 +31,7 @@ export default async (config: Object, host: string, port: number, https: boolean
       '**': proxy
     }} : {}),
     overlay: false,
-    setup(app) {
+    before(app) {
       // Next.js serves static files from /static – which can't be configured with `contentBase` directly
       if (framework === 'NEXT') {
         app.use('/static', express.static(paths.appStaticSrcDir));

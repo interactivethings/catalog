@@ -9,6 +9,7 @@ import chalk from 'chalk';
 import {infoMessage, errorMessage, successMessage, warningMessage} from '../utils/format';
 
 import loadWebpackConfig from '../actions/loadWebpackConfig';
+import loadConfigFile from '../actions/loadConfigFile';
 import detectFramework from '../actions/detectFramework';
 import loadPaths from '../actions/loadPaths';
 
@@ -25,6 +26,8 @@ const cliOptions = args.parse(process.argv, {value: '<catalog directory>'});
 const run = async (catalogSrcDir: string = 'catalog', {out, publicPath, publicUrl}: {out: string, publicPath: ?string, publicUrl: string}) => {
   const framework = await detectFramework();
 
+  const configFile = await loadConfigFile();
+
   let webpackPublicPath = publicUrl;
   if (publicPath) {
     console.warn(warningMessage('The --public-path option has been deprecated. Use --public-url'));
@@ -33,7 +36,15 @@ const run = async (catalogSrcDir: string = 'catalog', {out, publicPath, publicUr
 
   const paths = await loadPaths(catalogSrcDir, out.replace('<catalog directory>', catalogSrcDir), framework, webpackPublicPath);
 
-  const webpackConfig = await loadWebpackConfig({paths, dev: false, framework});
+  const webpackOptions = {paths, dev: false, framework};
+
+  let webpackConfig = await loadWebpackConfig(webpackOptions);
+
+  if (configFile) {
+    if (typeof configFile.webpack === 'function') {
+      webpackConfig = configFile.webpack(webpackConfig, webpackOptions);
+    }
+  }
 
   await setupCatalog(paths);
 
