@@ -10,7 +10,8 @@ export function style(theme) {
   const pseudo = {
     color: theme.sidebarColorTextActive,
     textDecoration: 'none',
-    background: 'rgba(255,255,255,0.1)'
+    background: 'rgba(255,255,255,0.1)',
+    outline: 'none'
   };
   return {
     link: {
@@ -23,7 +24,8 @@ export function style(theme) {
       padding: '16px 40px',
       textDecoration: 'none',
       ':hover': pseudo,
-      ':active': pseudo
+      ':active': pseudo,
+      ':focus': pseudo
     },
     activeLink: {
       color: theme.sidebarColorTextActive
