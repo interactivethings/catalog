@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.1.2
+
+### Fixes
+
+- Fixes botched React default require in bundled module
+
 ## v3.1.1
 
 ### Fixes
