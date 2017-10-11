@@ -1,3 +1,9 @@
+```hint|warning
+You're viewing the documentation for Catalog version 2.
+
+For the current documentation head over to https://docs.catalog.style
+```
+
 > Catalog lets you create beautiful living style guides with Markdown. The standalone version is completely dependency free, making it trivial to integrate into any application.
 
 That last bit is where Catalog really shines. There are many great tools out there to build living style guides, but most of them depend on a build step, which is in turn dependent on a specific technology. We like to use the right tool for the job: in some cases that might be React, Rails, Node.js, PHP or just plain HTML. Catalog works effortlessly with all of these technologies.
