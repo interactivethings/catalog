@@ -74,7 +74,7 @@ class FrameComponent extends Component {
 
       // Clone styles from parent document head into the iframe, so components which use webpack's style-loader get rendered correctly.
       // This doesn't clone any Catalog styles because they are either inline styles or part of the body.
-      const pageStyles = Array.from(document.querySelectorAll('head > style'));
+      const pageStyles = Array.from(document.querySelectorAll('head > style, head > link[rel="stylesheet"]'));
       pageStyles.forEach((s) => {
         doc.head.appendChild(s.cloneNode(true));
       });
