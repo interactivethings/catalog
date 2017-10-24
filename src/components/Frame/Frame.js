@@ -23,7 +23,7 @@ export default class Frame extends Component {
   }
 
   render() {
-    const {children, width, parentWidth} = this.props;
+    const {children, width, parentWidth, scrolling} = this.props;
     const {catalog: {page: {styles}}} = this.context;
     const height = this.state.height || this.props.height;
     const autoHeight = !this.props.height;
@@ -43,9 +43,9 @@ export default class Frame extends Component {
             style={frameStyle}
             frameBorder='0'
             allowTransparency='true'
-            scrolling='no'
+            scrolling={scrolling}
             head={[
-              <style key='stylereset'>{'html,body{margin:0;padding:0}'}</style>,
+              <style key='stylereset'>{'html,body{margin:0;padding:0;}'}</style>,
               ...renderStyles(styles)
             ]}
             onRender={autoHeight ? (content) => {
@@ -67,7 +67,8 @@ Frame.propTypes = {
   children: PropTypes.element,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   parentWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  scrolling: PropTypes.oneOf(['yes', 'no', 'auto'])
 };
 
 Frame.contextTypes = {

@@ -159,7 +159,7 @@ class ReactSpecimen extends Component {
         {(!options.responsive || parentWidth) &&
           <div style={{...styles.content, ...exampleStyles}}>
             {frame || activeScreenSize
-              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height}>
+              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height} scrolling={frame ? 'no' : undefined}>
                   {element}
                 </Frame>
               : element }
