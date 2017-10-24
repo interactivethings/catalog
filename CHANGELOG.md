@@ -1,10 +1,12 @@
 # Change Log
 
-## [Unreleased]
+## v3.1.3
 
 ### Fixes
 
 - Clone stylesheet references from parent page into iframes ([#319](https://github.com/interactivethings/catalog/pull/319))
+- Fix for potentially undefined ref when resizing the React or HTML Specimen ([fc12f24](https://github.com/interactivethings/catalog/commit/fc12f242c76ddbc273aadbe2a7ed44b7033c5bd1))
+- Enable iframe scrolling in responsive mode ([#321](https://github.com/interactivethings/catalog/pull/321))
 
 ## v3.1.2
 
