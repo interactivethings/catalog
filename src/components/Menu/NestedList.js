@@ -28,7 +28,7 @@ const NestedList = ({theme, pages, title}, {router}) => {
       </Link>
       { !collapsed &&
         <ul style={{...currentStyle.list, ...currentStyle.listNested, padding: 0}}>
-          { pages.map(page => <ListItem key={page.id} page={page} nested theme={theme} />) }
+          { pages.filter((page) => !page.hideFromMenu).map(page => <ListItem key={page.id} page={page} nested theme={theme} />) }
         </ul>
       }
     </div>
