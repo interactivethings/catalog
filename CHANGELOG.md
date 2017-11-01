@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.1.4
+
+### Fixes
+
+- Clone stylesheet references from parent page into iframes ([#326](https://github.com/interactivethings/catalog/pull/326))
+
 ## v3.1.3
 
 ### Fixes
