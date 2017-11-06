@@ -13,7 +13,7 @@ class Image extends React.Component {
   render() {
     const {catalog, src, title, overlay, description, ...options} = this.props;
     const {theme} = catalog;
-    const {scale = true} = options;
+    const {scale = true, imageContainerStyle = {}} = options;
 
     const styles = {
       container: {
@@ -25,7 +25,8 @@ class Image extends React.Component {
         padding: '20px',
         background: `url(${theme.checkerboardPatternLight})`,
         color: theme.textColor,
-        overflowX: 'auto'
+        overflowX: 'auto',
+        ...imageContainerStyle
       },
       image: {
         display: 'block',
@@ -126,7 +127,8 @@ Image.propTypes = {
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
-  scale: PropTypes.bool
+  scale: PropTypes.bool,
+  imageContainerStyle: PropTypes.object
 };
 
 export default Specimen()(Radium(Image));
