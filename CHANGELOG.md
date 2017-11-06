@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.1.5
+
+### Fixes
+
+- Improve React Specimen code transform ([#329](https://github.com/interactivethings/catalog/pull/329))
+
 ## v3.1.4
 
 ### Fixes
