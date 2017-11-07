@@ -108,7 +108,7 @@ class ReactSpecimen extends Component {
   }
 
   render() {
-    const {catalog: {page: {imports}, theme, responsiveSizes}, children, noSource, frame, sourceText, ...options} = this.props;
+    const {catalog: {page: {imports, path}, theme, responsiveSizes}, children, noSource, frame, sourceText, ...options} = this.props;
     const {activeScreenSize, parentWidth} = this.state;
     const styles = getStyle(theme);
     const validSizes = validateSizes(options.responsive, responsiveSizes);
@@ -159,9 +159,7 @@ class ReactSpecimen extends Component {
         {(!options.responsive || parentWidth) &&
           <div style={{...styles.content, ...exampleStyles}}>
             {frame || activeScreenSize
-              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height} scrolling={frame ? 'no' : undefined}>
-                  {element}
-                </Frame>
+              ? <iframe src={`${path}?isolate=${this.props.id}`} />
               : element }
           </div>
         }

@@ -10,7 +10,7 @@ import MarkdownSpecimen from '../Specimen/MarkdownSpecimen';
 class Page extends Component {
   render() {
     const {children} = this.props;
-    const {catalog: {theme, getSpecimen}} = this.context;
+    const {catalog: {theme, getSpecimen, isolate}} = this.context;
 
     const pageStyle = {
       boxSizing: 'border-box',
@@ -28,6 +28,25 @@ class Page extends Component {
     };
 
     const getSpecimenKey = seqKey('Specimen');
+
+
+    if (isolate !== undefined) {
+      const transformedChildren = React.Children.map(children, (child) => {
+        const md =  typeof child === 'string' ?
+          renderMarkdown({
+            text: child,
+            renderer: {
+              code: (body, options) => {
+                return <MarkdownSpecimen key={getSpecimenKey()} body={body} options={options || ''} getSpecimen={getSpecimen} />;
+              }
+            }
+          }) : child;
+        return md;
+      });
+      console.log(transformedChildren);
+      const specimenContent = transformedChildren.find(c => c.props && c.props.id === isolate).props.children
+      return specimenContent;
+    }
 
     return (
       <div className='cg-Page' style={pageStyle}>

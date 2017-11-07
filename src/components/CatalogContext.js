@@ -9,6 +9,7 @@ class CatalogContext extends Component {
   getChildContext() {
     const {title, theme, responsiveSizes, logoSrc, pages, pageTree, specimens, basePath, publicUrl, useBrowserHistory} = this.props.configuration;
     const {router} = this.context;
+    const isolate = router.getCurrentLocation().query.isolate;
     return {
       catalog: {
         page: pages.find((p) => router.isActive(p.path) || fallbackPathRe.test(p.path)),
@@ -22,7 +23,8 @@ class CatalogContext extends Component {
         basePath,
         publicUrl,
         logoSrc,
-        useBrowserHistory
+        useBrowserHistory,
+        isolate
       }
     };
   }

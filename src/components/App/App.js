@@ -14,6 +14,9 @@ const getDocumentTitle = ({title, page}) => title === page.superTitle ?
 class App extends React.Component {
   render() {
     const {catalog} = this.context;
+    if (catalog.isolate !== undefined) {
+      return Children.only(this.props.children);
+    }
     return (
       <StyleRoot>
         <DocumentTitle
