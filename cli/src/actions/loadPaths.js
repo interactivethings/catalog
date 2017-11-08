@@ -22,6 +22,7 @@ export default async (catalogSrcDir: string, catalogBuildDir: string, framework:
   appSrc: resolveAppPath('src'),
   yarnLockFile: resolveAppPath('yarn.lock'),
   babelrc: resolveAppPath('.babelrc'),
+  postCSSConfig: resolveAppPath('.postcssrc') || resolveAppPath('postcss.config.js') || resolveAppPath('.postcssrc.js'),
   appNodeModules: resolveAppPath('node_modules'),
   ownNodeModules: resolveOwnPath('..', '..', 'node_modules'),
   nodePaths: nodePaths,

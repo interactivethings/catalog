@@ -60,7 +60,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
                 }
               }, {
                 loader: require.resolve('postcss-loader'),
-                options: {
+                options: paths.postCSSConfig ? {} : {
                   ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
                   plugins: () => {
                     return [
@@ -90,7 +90,7 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
                 }
               }, {
                 loader: require.resolve('postcss-loader'),
-                options: {
+                options: paths.postCSSConfig ? {} : {
                   ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
                   plugins: () => {
                     return [
