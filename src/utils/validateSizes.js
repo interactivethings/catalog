@@ -10,9 +10,9 @@ const validateSizes = (input, catalogSizes) => {
     const foundInList = catalogSizes.find(val => input === val.name);
     return foundInList ? [].concat(foundInList) : false;
   } else if (isArray && input.length === input.filter((item=> typeof item === 'string')).length) {
-    const filtered = catalogSizes.filter( val => {
-      return input.find( d=> d === val.name);
-    });
+    const filtered = input.map(name => (
+      catalogSizes.find(size => size.name === name)
+    )).filter(Boolean);
     return filtered.length === input.length ? filtered : false;
   }
   return false;
