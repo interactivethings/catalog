@@ -20,7 +20,7 @@ test('Value is Array, allow re-ordering defined sizes', () => {
     {name: 'xlarge', width: 1920, height: 1080}
   ];
   const values = ['xlarge', 'small'];
-  expect(validateSizes( values, DefaultResponsiveSizes )).toEqual([
+  expect(validateSizes( values, sizes )).toEqual([
     sizes[1],
     sizes[0]
   ]);
