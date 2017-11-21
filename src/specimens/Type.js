@@ -143,8 +143,8 @@ Type.propTypes = {
   weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   tracking: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.string,
-  headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array])),
-  paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array])),
+  headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape])),
+  paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape])),
   catalog: catalogShape.isRequired
 };
 
