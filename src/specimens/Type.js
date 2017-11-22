@@ -98,8 +98,8 @@ class Type extends React.Component {
 
     const paragraphs = options.paragraphs
       ? options.paragraphs.map( (paragraph, i) => {
-        const paragraphValue = (paragraph !== null && typeof heading === 'object') ? paragraph.value : paragraph;
-        const paragraphLabel = (paragraph !== null && typeof heading === 'object') ? paragraph.label : 'Paragraph';
+        const paragraphValue = (paragraph !== null && typeof paragraph === 'object') ? paragraph.value : paragraph;
+        const paragraphLabel = (paragraph !== null && typeof paragraph === 'object') ? paragraph.label : 'Paragraph';
 
         const values = paragraphValue.split('/').map((item) => {
           return /[a-z]/i.test(item) ? `${item}` : `${item}px`;
