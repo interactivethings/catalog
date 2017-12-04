@@ -24,7 +24,7 @@ function getStyles(theme) {
       width: '50%',
       transition: '.2s opacity',
       ':hover': {
-        opacity: .9
+        opacity: 0.9
       }
     },
     leftNavLink: {
