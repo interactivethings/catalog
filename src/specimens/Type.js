@@ -84,11 +84,13 @@ class Type extends React.Component {
 
     const headings = options.headings
       ? options.headings.map( (heading, i) => {
-        const isPixel = typeof heading === 'number' ? 'px' : '';
+        const headingValue = (heading !== null && typeof heading === 'object') ? heading.value : heading;
+        const headingLabel = (heading !== null && typeof heading === 'object') ? heading.label : 'h' + (i + 1);
+        const isPixel = typeof headingValue === 'number' ? 'px' : '';
         return (
           <div key={i}>
-            <div style={{...styles.title, ...fontColor}}>h{i + 1} ({heading + isPixel})</div>
-            <div style={{...styles.heading, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${heading + isPixel} ${fontFamily}`}}>{headlineText}</div>
+            <div style={{...styles.title, ...fontColor}}>{headingLabel} ({headingValue + isPixel})</div>
+            <div style={{...styles.heading, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${headingValue + isPixel} ${fontFamily}`}}>{headlineText}</div>
           </div>
         );
       })
@@ -96,13 +98,16 @@ class Type extends React.Component {
 
     const paragraphs = options.paragraphs
       ? options.paragraphs.map( (paragraph, i) => {
-        const values = paragraph.split('/').map((item) => {
+        const paragraphValue = (paragraph !== null && typeof paragraph === 'object') ? paragraph.value : paragraph;
+        const paragraphLabel = (paragraph !== null && typeof paragraph === 'object') ? paragraph.label : 'Paragraph';
+
+        const values = paragraphValue.split('/').map((item) => {
           return /[a-z]/i.test(item) ? `${item}` : `${item}px`;
         }).join('/');
         return (
           <div key={i}>
             <div style={{...styles.title, ...fontColor}}>
-              Paragraph ({values})
+              {paragraphLabel} ({values})
             </div>
             <div style={{...styles.paragraph, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${values} ${fontFamily}`}}>
               {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
@@ -138,8 +143,8 @@ Type.propTypes = {
   weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   tracking: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.string,
-  headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({label: PropTypes.string, value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])})])),
+  paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({label: PropTypes.string, value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])})])),
   catalog: catalogShape.isRequired
 };
 
