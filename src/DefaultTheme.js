@@ -19,7 +19,11 @@ export default {
   // the same height.
   pageHeadingHeight: 200,
 
-  // NavigationBar (links), ResponsiveTabs (tab text), Download specimen (title text).
+  // Used for navigation bar
+  navBarBackground: '#F2F2F2',
+  navBarTextColor: '#003B5C',
+
+  // Used in ResponsiveTabs (tab text), Download specimen (title text).
   // Typography: headings.
   brandColor: '#003B5C',
 

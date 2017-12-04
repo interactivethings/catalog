@@ -20,7 +20,7 @@ body {
 
 const MenuIcon = (props) => (
   <svg {...props} width='27px' height='20px' viewBox='0 0 27 20'>
-    <g fill='#FFFFFF'>
+    <g fill='currentColor'>
       <rect x='0' y='16' width='26' height='4' />
       <rect x='0' y='8' width='26' height='4' />
       <rect x='0' y='0' width='26' height='4' />
@@ -30,7 +30,7 @@ const MenuIcon = (props) => (
 
 const getStyles = (theme, sidebarVisible) => ({
   container: {
-    background: theme.background,
+    color: theme.pageHeadingTextColor,
     margin: 0,
     padding: 0,
     width: '100%',
@@ -85,6 +85,7 @@ const getStyles = (theme, sidebarVisible) => ({
     }
   },
   content: {
+    background: theme.background,
     boxSizing: 'border-box',
     display: 'flex',
     minHeight: '100vh',

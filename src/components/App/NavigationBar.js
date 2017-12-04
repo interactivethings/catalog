@@ -15,16 +15,16 @@ function getStyles(theme) {
   return {
     navbar: {
       width: '100%',
-      backgroundColor: theme.bgLight
+      backgroundColor: theme.navBarBackground
     },
     navlink: {
       boxSizing: 'border-box',
       display: 'inline-block',
       verticalAlign: 'top',
       width: '50%',
-      transition: '.2s background',
+      transition: '.2s opacity',
       ':hover': {
-        background: theme.lightColor
+        opacity: .9
       }
     },
     leftNavLink: {
@@ -43,7 +43,7 @@ function getStyles(theme) {
       }
     },
     link: {
-      color: theme.brandColor,
+      color: theme.navBarTextColor,
       display: 'block',
       fontFamily: theme.fontFamily,
       textDecoration: 'none'
@@ -66,7 +66,7 @@ function getStyles(theme) {
     },
     linkIconPath: {
       stroke: 'none',
-      fill: theme.brandColor
+      fill: theme.navBarTextColor
     },
     linklabels: {
       display: 'block',
