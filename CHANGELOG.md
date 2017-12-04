@@ -1,5 +1,13 @@
 # Change Log
 
+## v3.2.0
+
+### New
+
+- Make Type specimen accept arrays for values to customize labels ([#332](https://github.com/interactivethings/catalog/pull/332))
+- Allow theming header and navigation bar ([#341](https://github.com/interactivethings/catalog/pull/341))
+- Allow to re-order responsive sizes ([#333](https://github.com/interactivethings/catalog/pull/333))
+
 ## v3.1.5
 
 ### Fixes
