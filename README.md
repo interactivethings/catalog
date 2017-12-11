@@ -83,7 +83,7 @@ The CI server will automatically run tests, build and publish the new version to
 make build
 ```
 
-### Publish to npm
+### Publish to npm and generate GitHub release notes
 
 ```
 make publish

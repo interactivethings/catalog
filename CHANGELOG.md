@@ -1,5 +1,7 @@
 # Change Log
 
+For newer release notes please check Catalog's [GitHub Releases](https://github.com/interactivethings/catalog/releases)
+
 ## v3.2.0
 
 ### New

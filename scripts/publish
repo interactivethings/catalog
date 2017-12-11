@@ -25,12 +25,14 @@ npm publish --tag $tag
 
 echo -e "$CLI_SUCCESS Published version \"$version\" with tag \"$tag\" to npm$CLI_RESET"
 
-# if [[ "$tag" == "next" ]]
-# then
-#   make site-next
-# else
-#   make site
-# fi
+git push && git push --tags
+
+if [[ "$tag" == "next" ]]
+then
+  yarn release --pre
+else
+  yarn release
+fi
 
 # make gh-pages
 
