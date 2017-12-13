@@ -212,9 +212,9 @@ args@3.0.7:
     pkginfo "0.4.1"
     string-similarity "1.2.0"
 
-args@^3.0.4:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/args/-/args-3.0.5.tgz#ef845d54d5a8fa93c88665aba5411979fe33c3ae"
+args@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/args/-/args-3.0.8.tgz#2f425ab639c69d74ff728f3d7c6e93b97b91af7c"
   dependencies:
     camelcase "4.1.0"
     chalk "2.1.0"
