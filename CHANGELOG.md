@@ -302,14 +302,14 @@ The standalone version still works the same way (with some small changes to the 
 
 ### Removed Specimens
 
-- HTML Project (no replacment yet)
+- HTML Project (no replacement yet)
 - UISpec (replaced by Image, Video, Audio)
 - Icon (replaced by Image)
 
 
 ## 1.1.11 - 2015-03-23
 
-- Added initial draft of UISpec speciment
+- Added initial draft of UISpec specimen
 
 ## 1.1.3 - 1.1.9 - 2014-11-27
 
