@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Specimen from '../components/Specimen/Specimen';
 import {text} from '../styles/typography';
-import renderMarkdown from '../markdown/renderMarkdown';
 
 function getStyle(theme) {
   return {
@@ -40,11 +39,11 @@ function getStyle(theme) {
       backgroundColor: theme.lightColor,
       width: '100%'
     }
-  }
+  };
 }
 
 const _SpacingItem = ({name, value, color, styles}) => {
-  if(color) {
+  if (color) {
     styles.spacingItem.backgroundColor = color;
   }
 
@@ -66,7 +65,8 @@ const _SpacingItem = ({name, value, color, styles}) => {
 _SpacingItem.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  color: PropTypes.string
+  color: PropTypes.string,
+  styles: PropTypes.object.isRequired
 };
 
 const SpacingItem = Radium(_SpacingItem);
