@@ -3,6 +3,7 @@ import Audio from './specimens/Audio';
 import Code from './specimens/Code';
 import Color from './specimens/Color';
 import ColorPalette from './specimens/ColorPalette';
+import Spacing from './specimens/Spacing';
 import Html from './specimens/Html';
 import Hint from './specimens/Hint';
 import Image from './specimens/Image';
@@ -18,6 +19,7 @@ export default {
   code: Code,
   color: Color,
   'color-palette': ColorPalette,
+  spacing: Spacing,
   html: Html,
   hint: Hint,
   image: Image,
