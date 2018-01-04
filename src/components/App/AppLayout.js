@@ -30,7 +30,7 @@ const MenuIcon = (props) => (
 
 const getStyles = (theme, sidebarVisible) => ({
   container: {
-    color: theme.pageHeadingTextColor,
+    color: theme.textColor,
     margin: 0,
     padding: 0,
     width: '100%',
