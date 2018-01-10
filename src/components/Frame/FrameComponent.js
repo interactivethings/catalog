@@ -53,6 +53,10 @@ class FrameComponent extends Component {
   }
 
   renderFrameContents() {
+    if (!this.iframe) {
+      return
+    }
+
     const doc = this.iframe.contentDocument;
 
     if (doc && doc.readyState === 'complete') {
