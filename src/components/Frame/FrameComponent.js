@@ -54,7 +54,7 @@ class FrameComponent extends Component {
 
   renderFrameContents() {
     if (!this.iframe) {
-      return
+      return;
     }
 
     const doc = this.iframe.contentDocument;
