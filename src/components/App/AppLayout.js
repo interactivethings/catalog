@@ -30,7 +30,6 @@ const MenuIcon = (props) => (
 
 const getStyles = (theme, sidebarVisible) => ({
   container: {
-    color: theme.pageHeadingTextColor,
     margin: 0,
     padding: 0,
     width: '100%',
@@ -45,6 +44,7 @@ const getStyles = (theme, sidebarVisible) => ({
     }
   },
   menuIcon: {
+    color: theme.pageHeadingTextColor,
     cursor: 'pointer',
     height: 30,
     left: 20,
