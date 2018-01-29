@@ -27,7 +27,7 @@ const inlineElements = (theme, selector = '') => {
     [`${selector} b, strong`]: {
       fontWeight: 700
     },
-    [`${selector} a`]: {
+    [`${selector} a, a:visited`]: {
       color: theme.linkColor,
       textDecoration: 'none'
     },
