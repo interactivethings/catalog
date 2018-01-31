@@ -72,7 +72,7 @@ dist/cli: cli/src
 version:
 	@scripts/version
 
-publish: .npmrc
+publish:
 	@scripts/publish
 	@rm -f $<
 
