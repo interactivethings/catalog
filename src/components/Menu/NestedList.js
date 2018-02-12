@@ -24,7 +24,7 @@ const NestedList = ({theme, pages, title}, {router}) => {
         to={pages[0].path}
         style={{...currentStyle.link, ...(collapsed ? {} : currentStyle.activeLink)}}
         activeStyle={{...currentStyle.link, ...currentStyle.activeLink}} >
-        { title }
+        { title } <span style={{...currentStyle.badge}}> {pages.length} </span>
       </Link>
       { !collapsed &&
         <ul style={{...currentStyle.list, ...currentStyle.listNested, padding: 0}}>
