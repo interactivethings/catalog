@@ -1,4 +1,4 @@
-import { safeLoad, CORE_SCHEMA, Type, Schema } from 'js-yaml';
+import {safeLoad, CORE_SCHEMA, Type, Schema} from 'js-yaml';
 
 const defaultMapBodyToProps = (parsedBody, rawBody) => parsedBody || rawBody;
 
