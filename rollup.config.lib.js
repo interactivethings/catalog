@@ -1,6 +1,8 @@
 import babel from 'rollup-plugin-babel';
 const pkg = require('./package.json');
 
+const banner = `/*! Catalog v${pkg.version} ${pkg.homepage} */`;
+
 const externals = [
   ...Object.keys(pkg.dependencies),
   ...Object.keys(pkg.peerDependencies),
@@ -14,10 +16,9 @@ export default {
       exclude: 'node_modules/**'
     })
   ],
-  banner: `/*! Catalog v${pkg.version} ${pkg.homepage} */`,
   external: id => externals.some(d => id.startsWith(d)),
   output: [
-    {file: pkg.main, format: 'cjs', name: 'Catalog'},
-    {file: pkg.module, format: 'es'}
+    {file: pkg.main, format: 'cjs', name: 'Catalog', banner},
+    {file: pkg.module, format: 'es', banner}
   ]
 };

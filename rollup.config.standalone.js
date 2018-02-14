@@ -32,9 +32,6 @@ let plugins = [
 export default [
   {
     input: 'src/index-standalone.js',
-    globals: {
-      'babel-standalone': 'Babel'
-    },
     external: [
       'babel-standalone'
     ],
@@ -45,6 +42,9 @@ export default [
       ...plugins
     ],
     output: {
+      globals: {
+        'babel-standalone': 'Babel'
+      },
       file: 'dist/catalog-standalone.development.js',
       format: 'umd',
       name: 'Catalog'
@@ -52,9 +52,6 @@ export default [
   },
   {
     input: 'src/index-standalone.js',
-    globals: {
-      'babel-standalone': 'Babel'
-    },
     external: [
       'babel-standalone'
     ],
@@ -66,6 +63,9 @@ export default [
       uglify()
     ],
     output: {
+      globals: {
+        'babel-standalone': 'Babel'
+      },
       file: 'dist/catalog-standalone.min.js',
       format: 'umd',
       name: 'Catalog'
