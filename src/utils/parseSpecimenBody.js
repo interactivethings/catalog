@@ -2,8 +2,8 @@ import {safeLoad, CORE_SCHEMA, Type, Schema} from 'js-yaml';
 
 const defaultMapBodyToProps = (parsedBody, rawBody) => parsedBody || rawBody;
 
-const INITIAL_SEPARATOR = / *--- *\n/;
-const SEPARATOR = /\n *--- *\n/;
+const INITIAL_SEPARATOR = /[ \t]*---[ \t]*\n/;
+const SEPARATOR = /\n[ \t]*---[ \t]*\n/;
 const splitText = (text) => {
   let matched = text.match(INITIAL_SEPARATOR);
   if (matched && matched.index === 0) {
