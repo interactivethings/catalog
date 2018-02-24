@@ -40,10 +40,10 @@ export default class Frame extends Component {
           overflow: 'hidden'
         }}>
           <FrameComponent
-            style={frameStyle}
-            frameBorder='0'
-            allowTransparency='true'
-            scrolling={scrolling}
+            style={{
+              ...frameStyle,
+              overflow: scrolling ? 'auto' : 'hidden'
+            }}
             head={[
               <style key='stylereset'>{'html,body{margin:0;padding:0;}'}</style>,
               ...renderStyles(styles)
