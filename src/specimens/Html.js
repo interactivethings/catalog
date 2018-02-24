@@ -22,7 +22,9 @@ function getStyle(theme) {
       boxSizing: 'border-box',
       position: 'relative',
       flexBasis: '100%',
-      width: '100%'
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column'
     },
     toggle: {
       border: PADDING + 'px solid transparent',
@@ -56,7 +58,8 @@ function getStyle(theme) {
       display: 'block',
       padding: 20,
       position: 'relative',
-      width: '100%'
+      width: '100%',
+      height: '100%'
     },
     light: {
       background: `url(${theme.checkerboardPatternLight})`
@@ -90,7 +93,7 @@ class Html extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewSource: false,
+      viewSource: !!props.showSource,
       parentWidth: 0,
       activeScreenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
     };
@@ -160,7 +163,7 @@ class Html extends React.Component {
       : null;
 
     const toggle = !options.noSource
-      ? <div style={styles.toggle} onClick={this.toggleSource.bind(this)}>&lt;&gt;</div>
+      ? <div style={styles.toggle} onClick={() => this.toggleSource()}>&lt;&gt;</div>
       : null;
 
     // eslint-disable-next-line
@@ -201,6 +204,7 @@ Html.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
   noSource: PropTypes.bool,
+  showSource: PropTypes.bool,
   frame: PropTypes.bool
 };
 

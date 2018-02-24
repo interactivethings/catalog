@@ -10,7 +10,8 @@ function getStyle(theme) {
       borderBottom: `1px solid #eee`,
       display: 'flex',
       overflowX: 'auto',
-      width: '100%'
+      width: '100%',
+      flexShrink: 0
     },
     tab: {
       alignItems: 'center',

@@ -11,15 +11,45 @@ import reactElementToString from './reactElementToString';
 import transformJSX from '../../utils/transformJSX';
 import validateSizes from '../../utils/validateSizes';
 
+const PADDING = 3;
+const SIZE = 20;
+
 function getStyle(theme) {
   return {
     container: {
       background: '#fff',
       border: '1px solid #eee',
       boxSizing: 'border-box',
-      margin: '0 0 20px 0',
       position: 'relative',
-      width: '100%'
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    toggle: {
+      border: PADDING + 'px solid transparent',
+      color: theme.lightColor,
+      cursor: 'pointer',
+      display: 'inline-block',
+      fontFamily: theme.fontMono,
+      fontSize: '16px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      height: SIZE + 'px',
+      lineHeight: SIZE + 'px',
+      padding: PADDING + 'px',
+      position: 'absolute',
+      right: -PADDING + 'px',
+      top: -(SIZE + 2 * PADDING) + 'px',
+      userSelect: 'none',
+      ':hover': {
+        color: theme.textColor
+      }
+    },
+    source: {
+      borderTop: '1px solid #eee',
+      boxSizing: 'border-box',
+      width: '100%',
+      height: 'auto'
     },
     content: {
       background: `url(${theme.checkerboardPatternLight})`,
@@ -29,7 +59,8 @@ function getStyle(theme) {
       display: 'block',
       padding: 20,
       position: 'relative',
-      width: '100%'
+      width: '100%',
+      height: '100%'
     },
     light: {
       background: `url(${theme.checkerboardPatternLight})`
@@ -63,6 +94,7 @@ class ReactSpecimen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      viewSource: !!props.showSource,
       elementState: props.state,
       parentWidth: null,
       activeScreenSize: validateSizes(props.responsive, props.catalog.responsiveSizes)[0] || null
@@ -107,9 +139,13 @@ class ReactSpecimen extends Component {
     this.setState({activeScreenSize: activeScreenSize});
   }
 
+  toggleSource() {
+    this.setState(({viewSource}) => ({viewSource: !viewSource}));
+  }
+
   render() {
-    const {catalog: {page: {imports}, theme, responsiveSizes}, children, noSource, frame, sourceText, ...options} = this.props;
-    const {activeScreenSize, parentWidth} = this.state;
+    const {catalog: {page: {imports}, theme, responsiveSizes}, children, frame, sourceText, ...options} = this.props;
+    const {activeScreenSize, parentWidth, viewSource} = this.state;
     const styles = getStyle(theme);
     const validSizes = validateSizes(options.responsive, responsiveSizes);
 
@@ -140,7 +176,7 @@ class ReactSpecimen extends Component {
       code = children;
     } else {
       element = children;
-      if (!noSource) {
+      if (!options.noSource) {
         code = sourceText || reactElementToString(children);
       }
     }
@@ -151,8 +187,17 @@ class ReactSpecimen extends Component {
 
     if (error) return error;
 
+    const source = viewSource
+      ? <div style={styles.source} ><HighlightedCode language='jsx' code={code} theme={theme} /></div>
+      : null;
+
+    const toggle = !options.noSource
+      ? <div style={styles.toggle} onClick={() => this.toggleSource()}>&lt;&gt;</div>
+      : null;
+
     return (
       <section style={styles.container} ref={el => {this.specimen = el;}}>
+        {toggle}
         {options.responsive && parentWidth && activeScreenSize &&
           <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
@@ -165,7 +210,7 @@ class ReactSpecimen extends Component {
               : element }
           </div>
         }
-        {!noSource && <HighlightedCode language='jsx' code={code} theme={theme} />}
+        {source}
       </section>
     );
   }
@@ -176,6 +221,7 @@ ReactSpecimen.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   noSource: PropTypes.bool,
+  showSource: PropTypes.bool,
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
