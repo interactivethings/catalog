@@ -33,6 +33,14 @@ export function style(theme) {
       borderBottom: 'none',
       padding: '0 24px 16px 60px'
     },
+    badge: {
+      background: theme.sidebarColorLine,
+      border: `1px solid ${theme.sidebarColorLine}`,
+      borderRadius: '30%',
+      marginLeft: 2,
+      paddingLeft: 4,
+      paddingRight: 4
+    },
     nestedChildren: {
       borderTop: 'none',
       borderBottom: 'none',
