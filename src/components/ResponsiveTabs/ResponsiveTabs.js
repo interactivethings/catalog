@@ -6,7 +6,6 @@ function getStyle(theme) {
   return {
     tabContainer: {
       background: 'white',
-      borderBottom: `1px solid #eee`,
       display: 'flex',
       overflowX: 'auto',
       width: '100%',

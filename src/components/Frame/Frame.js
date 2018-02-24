@@ -23,7 +23,7 @@ export default class Frame extends Component {
   }
 
   render() {
-    const {children, width, parentWidth, scrolling} = this.props;
+    const {children, width, parentWidth, scrolling, background} = this.props;
     const {catalog: {page: {styles}}} = this.context;
     const height = this.state.height || this.props.height;
     const autoHeight = !this.props.height;
@@ -42,6 +42,7 @@ export default class Frame extends Component {
           <FrameComponent
             style={{
               ...frameStyle,
+              background: background,
               overflow: scrolling ? 'auto' : 'hidden'
             }}
             head={[
@@ -68,7 +69,8 @@ Frame.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   parentWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  scrolling: PropTypes.oneOf(['yes', 'no', 'auto'])
+  scrolling: PropTypes.bool,
+  background: PropTypes.string
 };
 
 Frame.contextTypes = {
