@@ -32,6 +32,10 @@ test('body with props and children and whitespaced separator', () => {
   expect(parseSpecimenBody()('foo: bar\nbaz: 12.3\n  ---\nfoo')).toEqual({foo: 'bar', baz: 12.3, children: 'foo'});
 });
 
+test('body with props and children and whitespaced separator using tabs', () => {
+  expect(parseSpecimenBody()('foo: bar\nbaz: 12.3\n\t\t---\nfoo')).toEqual({foo: 'bar', baz: 12.3, children: 'foo'});
+});
+
 test('body with props and empty children', () => {
   expect(parseSpecimenBody()('foo: bar\nbaz: 12.3\n---\n')).toEqual({foo: 'bar', baz: 12.3, children: ''});
 });
