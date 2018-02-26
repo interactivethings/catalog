@@ -5,9 +5,7 @@ import Preview from './Preview';
 function getStyle(theme) {
   return {
     tabContainer: {
-      alignItems: 'center',
       background: 'white',
-      borderBottom: `1px solid #eee`,
       display: 'flex',
       overflowX: 'auto',
       width: '100%',

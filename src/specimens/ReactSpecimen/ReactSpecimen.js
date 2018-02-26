@@ -81,7 +81,6 @@ function getStyle(theme) {
       padding: '20px'
     },
     responsive: {
-      background: `url(${theme.checkerboardPatternLight})`,
       boxSizing: 'border-box',
       overflow: 'hidden',
       padding: '15px',
@@ -158,6 +157,8 @@ class ReactSpecimen extends Component {
       ...(options.responsive ? styles.responsive : null)
     };
 
+    const frameBackground = options.responsive ? exampleStyles.background || styles.content.background : undefined;
+
     const jsx = typeof children === 'string';
     let element = null;
     let error = null;
@@ -202,12 +203,14 @@ class ReactSpecimen extends Component {
           <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
         {(!options.responsive || parentWidth) &&
-          <div style={{...styles.content, ...exampleStyles}}>
+          <div style={{...styles.content, ...exampleStyles, background: 'white'}}>
             {frame || activeScreenSize
-              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height} scrolling={frame ? 'no' : undefined}>
+              ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height} scrolling={frame ? false : true}
+              background={frameBackground}>
                   {element}
                 </Frame>
-              : element }
+              : element
+            }
           </div>
         }
         {source}
