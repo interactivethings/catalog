@@ -2,15 +2,16 @@ import {safeLoad, CORE_SCHEMA, Type, Schema} from 'js-yaml';
 
 const defaultMapBodyToProps = (parsedBody, rawBody) => parsedBody || rawBody;
 
-const INITIAL_SEPARATOR = '---\n';
-const SEPARATOR = '\n---\n';
+const INITIAL_SEPARATOR = /[ \t]*---[ \t]*\n/;
+const SEPARATOR = /\n[ \t]*---[ \t]*\n/;
 const splitText = (text) => {
-  if (text.indexOf(INITIAL_SEPARATOR) === 0) {
-    return [void 0, text.slice(4)];
+  let matched = text.match(INITIAL_SEPARATOR);
+  if (matched && matched.index === 0) {
+    return [void 0, text.slice(matched[0].length)];
   }
-  const i = text.indexOf(SEPARATOR);
-  return i > -1 ?
-    [text.slice(0, i), text.slice(i + 5)] :
+  matched = text.match(SEPARATOR);
+  return matched && matched.index > -1 ?
+    [text.slice(0, matched.index), text.slice(matched.index + matched[0].length)] :
     [void 0, text];
 };
 
