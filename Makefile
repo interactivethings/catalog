@@ -15,7 +15,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: build build-watch rollup-lib rollup-standalone version publish clean clobber lint test test-watch
+.PHONY: build build-watch rollup-lib rollup-standalone version publish clean clobber lint test test-watch docs build-docs
 
 all: build-watch
 
@@ -28,6 +28,7 @@ build-watch: node_modules dist/setup-template
 	BABEL_ENV=lib $$(yarn bin)/babel cli/src --watch --ignore test.js --out-dir dist/cli & \
 	BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.lib.js --watch
 
+
 test: lint
 	@$$(yarn bin)/jest
 
@@ -36,6 +37,15 @@ test-watch:
 
 lint:
 	@$$(yarn bin)/eslint src
+
+### DOCS
+
+docs:
+	@rm -f node_modules/catalog && ln -s ../ node_modules/catalog && ./dist/cli/bin/catalog-start.js --no-babelrc docs
+
+build-docs:
+	@rm -f node_modules/catalog && ln -s ../ node_modules/catalog && ./dist/cli/bin/catalog-build.js --no-babelrc docs
+
 
 ### BUILDS
 
