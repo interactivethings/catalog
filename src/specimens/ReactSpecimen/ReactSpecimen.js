@@ -158,6 +158,7 @@ class ReactSpecimen extends Component {
     };
 
     const frameBackground = options.responsive ? exampleStyles.background || styles.content.background : undefined;
+    const exampleBackground = options.responsive ? 'white' : exampleStyles.background || styles.content.background;
 
     const jsx = typeof children === 'string';
     let element = null;
@@ -203,7 +204,7 @@ class ReactSpecimen extends Component {
           <ResponsiveTabs theme={theme} sizes={validSizes} action={this.setSize} activeSize={activeScreenSize} parentWidth={parentWidth}/>
         }
         {(!options.responsive || parentWidth) &&
-          <div style={{...styles.content, ...exampleStyles, background: 'white'}}>
+          <div style={{...styles.content, ...exampleStyles, background: exampleBackground}}>
             {frame || activeScreenSize
               ? <Frame width={activeScreenSize && activeScreenSize.width} parentWidth={parentWidth ? parentWidth : '100%'} height={activeScreenSize && activeScreenSize.height} scrolling={frame ? false : true}
               background={frameBackground}>
