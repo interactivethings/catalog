@@ -26,9 +26,12 @@ args
   .option('port', 'Port on which the Catalog server runs', 4000, port => parseInt(port, 10))
   .option('https', 'Use https', false)
   .option('host', 'Host', 'localhost')
-  .option('proxy', 'Proxy');
+  .option('proxy', 'Proxy')
+  .option('babelrc', 'Use local .babelrc file (defaults to true)');
 
-const cliOptions = args.parse(process.argv, {value: '[source directory]'});
+const cliOptions = args.parse(process.argv, {value: '[source directory]', mri: {
+  boolean: ['babelrc']
+}});
 
 const getFrameworkName = (framework: Framework): string => {
   switch (framework) {
@@ -42,7 +45,7 @@ const getFrameworkName = (framework: Framework): string => {
   }
 };
 
-const run = async (catalogSrcDir: string = 'catalog', options: {port: number, https: boolean, host: string, proxy: void | string}) => {
+const run = async (catalogSrcDir: string = 'catalog', options: {port: number, https: boolean, host: string, proxy: void | string, babelrc: void | boolean}) => {
   const framework = await detectFramework();
 
   const configFile = await loadConfigFile();
@@ -53,7 +56,13 @@ const run = async (catalogSrcDir: string = 'catalog', options: {port: number, ht
 
   const url = (options.https ? 'https' : 'http') + '://' + options.host + ':' + port + '/';
 
-  const webpackOptions = {paths, dev: true, framework, url};
+  const babelrcExists: boolean = await exists(paths.babelrc);
+
+  const useBabelrc = options.babelrc !== undefined ? options.babelrc :
+    configFile && configFile.useBabelrc !== undefined ? configFile.useBabelrc :
+    babelrcExists;
+
+  const webpackOptions = {paths, dev: true, framework, url, useBabelrc};
 
   let webpackConfig = await loadWebpackConfig(webpackOptions);
 
@@ -74,7 +83,7 @@ const run = async (catalogSrcDir: string = 'catalog', options: {port: number, ht
   if (framework !== 'UNKNOWN') {
     console.log(infoMessageDimmed('  Detected ' + getFrameworkName(framework)));
   }
-  if (await exists(paths.babelrc)) {
+  if (useBabelrc) {
     console.log(infoMessageDimmed('  Using custom .babelrc'));
   }
 
