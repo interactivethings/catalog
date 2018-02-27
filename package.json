@@ -95,7 +95,6 @@
     "eslint-plugin-react": "^5.1.1",
     "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
-    "next": "^4.2.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "release": "^3.0.2",
@@ -105,8 +104,7 @@
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^3.0.0",
-    "rollup-watch": "^4.3.1",
-    "styled-jsx": "^1.0.10"
+    "rollup-watch": "^4.3.1"
   },
   "repository": {
     "type": "git",
