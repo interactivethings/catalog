@@ -3,7 +3,8 @@ import {resolveAppPath} from '../utils/paths';
 import {exists} from 'sander';
 
 type ConfigFile = {
-  webpack?: Function
+  webpack?: Function,
+  useBabelrc?: boolean
 } | null;
 
 export default async (): Promise<ConfigFile> => {

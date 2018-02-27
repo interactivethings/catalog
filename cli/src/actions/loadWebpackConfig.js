@@ -16,12 +16,12 @@ type LoadWebpackOptions = {
   paths: Object,
   framework: string,
   dev: boolean,
-  url?: string,
+  useBabelrc: boolean,
+  url?: string
 };
 type WebpackConfig = {};
 
-export default async ({paths, framework, dev, url}: LoadWebpackOptions): WebpackConfig => {
-  const useBabelrc = await exists(paths.babelrc);
+export default async ({paths, framework, dev, url, useBabelrc}: LoadWebpackOptions): WebpackConfig => {
   const frameworkConfig = framework === 'NEXT'
     ? nextConfig(paths, useBabelrc, dev)
     : createReactAppConfig(paths, useBabelrc, dev);
