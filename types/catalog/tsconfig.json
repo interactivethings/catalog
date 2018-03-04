@@ -6,7 +6,9 @@
     "moduleResolution": "node",
     "jsx": "react",
     "lib": ["es6", "dom"],
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "../",
+    "typeRoots": ["../"]
   },
   "include": [
     "./*.ts",

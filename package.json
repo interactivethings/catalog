@@ -24,7 +24,7 @@
     "loader.js",
     "types"
   ],
-  "types": "types",
+  "types": "types/catalog",
   "bin": {
     "catalog": "dist/cli/bin/catalog.js",
     "catalog-start": "dist/cli/bin/catalog-start.js",

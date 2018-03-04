@@ -39,7 +39,7 @@ lint:
 	@$$(yarn bin)/eslint src
 
 dtslint:
-	@$$(yarn bin)/tsc --noEmit -p types
+	@$$(yarn bin)/tsc --noEmit -p types/catalog
 
 ### DOCS
 
