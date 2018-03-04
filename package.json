@@ -21,8 +21,10 @@
   "files": [
     "dist",
     "babel.js",
-    "loader.js"
+    "loader.js",
+    "types"
   ],
+  "types": "types",
   "bin": {
     "catalog": "dist/cli/bin/catalog.js",
     "catalog-start": "dist/cli/bin/catalog-start.js",
@@ -84,6 +86,8 @@
     "react-dom": "^15.3.2 || ^16.0.0"
   },
   "devDependencies": {
+    "@types/react": "^16.0.40",
+    "@types/react-dom": "^16.0.4",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
@@ -104,7 +108,8 @@
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^3.0.0",
-    "rollup-watch": "^4.3.1"
+    "rollup-watch": "^4.3.1",
+    "typescript": "^2.7.2"
   },
   "repository": {
     "type": "git",
