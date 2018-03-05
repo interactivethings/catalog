@@ -10,6 +10,10 @@ export type ConfigPageOrGroup = ConfigPage | ConfigPageGroup;
 export interface ConfigPage {
   path: string;
   title: string;
+  hideFromMenu?: boolean;
+  imports?: {[key: string]: any};
+  styles?: string[];
+  scripts?: string[];
   content?: () => React.ReactElement<Page>;
 }
 
@@ -31,16 +35,53 @@ export interface Config {
   useBrowserHistory?: boolean;
   basePath?: string;
   responsiveSizes?: ConfigResponsiveSize[];
-  theme?: any;
+  theme?: Partial<Theme>;
   logoSrc?: string;
+  imports?: {[key: string]: any};
+  styles?: string[];
+  scripts?: string[];
 }
+
+export interface Theme {
+  background: string;
+  textColor: string;
+  codeColor: string;
+  linkColor: string;
+  lightColor: string;
+  pageHeadingBackground: string;
+  pageHeadingTextColor: string;
+  pageHeadingHeight: number;
+  navBarBackground: string;
+  navBarTextColor: string;
+  brandColor: string;
+  sidebarColor: string;
+  sidebarColorActive: string;
+  sidebarColorText: string;
+  sidebarColorTextActive: string;
+  sidebarColorLine: string;
+  sidebarColorHeading: string;
+  bgLight: string;
+  bgDark: string;
+  codeStyles: {[key: string]: {[key: string]: string}};
+  checkerboardPatternLight: string;
+  checkerboardPatternDark: string;
+  fontFamily: string;
+  fontHeading: string;
+  fontMono: string;
+  baseFontSize: number;
+  msRatio: number;
+}
+
+export const DefaultTheme: Theme;
+export const DefaultResponsiveSizes: ConfigResponsiveSize[];
+
 
 // Functions
 
 export function render(config: Config, element: HTMLElement): void;
-export function configure(config: any): any;
-export function configureRoutes(config: any): any;
-export function configureJSXRoutes(config: any): any;
+export function configure(config: Config): any;
+export function configureRoutes(config: Config): any;
+export function configureJSXRoutes(config: Config): any;
 
 export function pageLoader(f: string | (() => Promise<{default: () => React.ReactElement<Page>}>)): () => React.ReactElement<Page>;
 
@@ -58,7 +99,13 @@ export interface SpecimenProps {
   rawOptions?: string
 }
 
-export class AudioSpecimen extends React.Component<SpecimenProps> {}
+export interface AudioSpecimenProps {
+  src: string;
+  title?: string;
+  loop?: boolean;
+  autoplay?: boolean;
+}
+export class AudioSpecimen extends React.Component<SpecimenProps & AudioSpecimenProps> {}
 
 export interface CodeSpecimenProps {
   rawBody: string;
@@ -80,9 +127,25 @@ export interface ColorPaletteSpecimenProps {
 }
 export class ColorPaletteSpecimen extends React.Component<SpecimenProps & ColorPaletteSpecimenProps> {}
 
-export class HtmlSpecimen extends React.Component<SpecimenProps> {}
-export class HintSpecimen extends React.Component<SpecimenProps> {}
-export class ImageSpecimen extends React.Component<SpecimenProps> {}
+export interface HintSpecimenProps {
+  warning?: boolean;
+  neutral?: boolean;
+  important?: boolean;
+  directive?: boolean;
+}
+export class HintSpecimen extends React.Component<SpecimenProps & HintSpecimenProps> {}
+
+export interface ImageSpecimenProps {
+  src: string;
+  title?: string;
+  overlay?: string;
+  description?: string;
+  plain?: boolean;
+  light?: boolean;
+  dark?: boolean;
+  scale?: boolean;
+}
+export class ImageSpecimen extends React.Component<SpecimenProps & ImageSpecimenProps> {}
 
 export interface TypeSpecimenProps {
   color?: string;
@@ -92,10 +155,31 @@ export interface TypeSpecimenProps {
   weight: string;
 }
 export class TypeSpecimen extends React.Component<SpecimenProps & TypeSpecimenProps> {}
-export class DownloadSpecimen extends React.Component<SpecimenProps> {}
+
+export interface DownloadSpecimenProps {
+  url: string;
+  title?: string;
+  subtitle?: string;
+  filename?: string;
+}
+export class DownloadSpecimen extends React.Component<SpecimenProps & DownloadSpecimenProps> {}
+
+export interface HtmlSpecimenProps {
+  children: string;
+  noSource?: boolean;
+  showSource?: boolean;
+  plain?: boolean;
+  light?: boolean;
+  dark?: boolean;
+  frame?: boolean;
+  responsive?: boolean | string | string[];
+}
+export class HtmlSpecimen extends React.Component<SpecimenProps & HtmlSpecimenProps> {}
 
 export interface ReactSpecimenProps {
+  children: JSX.Element | string;
   noSource?: boolean;
+  showSource?: boolean;
   plain?: boolean;
   light?: boolean;
   dark?: boolean;
@@ -106,4 +190,11 @@ export interface ReactSpecimenProps {
 }
 export class ReactSpecimen extends React.Component<SpecimenProps & ReactSpecimenProps> {}
 
-export class VideoSpecimen extends React.Component<SpecimenProps> {}
+export interface VideoSpecimenProps {
+  src: string;
+  title?: string;
+  muted?: boolean;
+  loop?: boolean;
+  autoplay?: boolean;
+}
+export class VideoSpecimen extends React.Component<SpecimenProps & VideoSpecimenProps> {}

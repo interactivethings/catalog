@@ -6,7 +6,8 @@ import {
   ReactSpecimen,
   Config,
   Page,
-  pageLoader
+  pageLoader,
+  HtmlSpecimen
 } from "catalog";
 
 const MyPage = () => markdown`
@@ -19,6 +20,12 @@ ${(
   </ReactSpecimen>
 )}
 
+${(
+  <HtmlSpecimen light>
+    {'hello'}
+  </HtmlSpecimen>
+)}
+
 `;
 
 ReactDOM.render(<Catalog title="Hello" pages={[]} />, document.body);
@@ -26,10 +33,14 @@ ReactDOM.render(<Catalog title="Hello" pages={[]} />, document.body);
 
 const config: Config = {
   title: "Test",
+  theme: {
+    background: 'white'
+  },
   pages: [
     {
       path: "/",
       title: "Introduction",
+      styles: ['foo.css'],
       content: () => <Page>hello</Page>,
     },
     {
