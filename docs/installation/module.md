@@ -31,4 +31,4 @@ ReactDOM.render(
 );
 ```
 
-See the [React API](/api/react) guide for more details.
+See the [React API](/guides/react) guide for more details.
