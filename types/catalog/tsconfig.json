@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+    "noEmit": true,
+    "baseUrl": "../",
+    "typeRoots": ["../"]
+  },
+  "include": [
+    "./*.ts",
+    "./*.tsx"
+  ]
+}
