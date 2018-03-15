@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Catalog} from 'catalog';
+import {Catalog, ContentLoader, markdown, ReactSpecimen} from 'catalog';
 
 const pages = [
-  {path: '/', title: 'Welcome', component: require('./WELCOME.md')}
+  {path: '/', title: 'Welcome', content: ContentLoader(() => import('./WELCOME.md'))},
+  {path: '/app', title: 'App', content: ContentLoader(() => import('../src/App').then(({catalogPage}) => catalogPage({markdown, ReactSpecimen})))},
 ];
 
 ReactDOM.render(
