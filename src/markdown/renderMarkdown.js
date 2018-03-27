@@ -1,5 +1,5 @@
-import marked from './marked-react';
-import ReactRenderer from './ReactRenderer';
+import marked from "./marked-react";
+import ReactRenderer from "./ReactRenderer";
 
 let MARKDOWN_CONFIG = {
   gfm: true,
@@ -9,12 +9,9 @@ let MARKDOWN_CONFIG = {
   smartypants: true
 };
 
-export default ({text, renderer}) => {
-  return marked(
-    text,
-    {
-      ...MARKDOWN_CONFIG,
-      renderer: Object.assign(new ReactRenderer(), renderer)
-    }
-  );
+export default ({ text, renderer }) => {
+  return marked(text, {
+    ...MARKDOWN_CONFIG,
+    renderer: Object.assign(new ReactRenderer(), renderer)
+  });
 };

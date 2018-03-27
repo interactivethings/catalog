@@ -1,5 +1,3 @@
 module.exports = {
-  plugins: [
-    require.resolve('./reactspecimen-source')
-  ]
+  plugins: [require.resolve("./reactspecimen-source")]
 };

@@ -1,23 +1,36 @@
-import PropTypes from 'prop-types';
-import React, {Component, Children} from 'react';
-import App from './App/App';
-import {catalogShape} from '../CatalogPropTypes';
+import PropTypes from "prop-types";
+import React, { Component, Children } from "react";
+import App from "./App/App";
+import { catalogShape } from "../CatalogPropTypes";
 
 const fallbackPathRe = /\*$/;
 
 class CatalogContext extends Component {
   getChildContext() {
-    const {title, theme, responsiveSizes, logoSrc, pages, pageTree, specimens, basePath, publicUrl, useBrowserHistory} = this.props.configuration;
-    const {router} = this.context;
+    const {
+      title,
+      theme,
+      responsiveSizes,
+      logoSrc,
+      pages,
+      pageTree,
+      specimens,
+      basePath,
+      publicUrl,
+      useBrowserHistory
+    } = this.props.configuration;
+    const { router } = this.context;
     return {
       catalog: {
-        page: pages.find((p) => router.isActive(p.path) || fallbackPathRe.test(p.path)),
-        getSpecimen: (specimen) => specimens[specimen],
+        page: pages.find(
+          p => router.isActive(p.path) || fallbackPathRe.test(p.path)
+        ),
+        getSpecimen: specimen => specimens[specimen],
         theme,
         responsiveSizes,
         title,
-        pages: pages.filter((p) => !p.hideFromMenu),
-        pagePaths: new Set(pages.map((p) => p.path)), // Used for internal link lookup
+        pages: pages.filter(p => !p.hideFromMenu),
+        pagePaths: new Set(pages.map(p => p.path)), // Used for internal link lookup
         pageTree,
         basePath,
         publicUrl,
@@ -28,7 +41,7 @@ class CatalogContext extends Component {
   }
 
   render() {
-    const {children} = this.props;
+    const { children } = this.props;
     return Children.only(children);
   }
 }
@@ -48,7 +61,7 @@ CatalogContext.childContextTypes = {
 };
 
 export default function createCatalogContext(config) {
-  const ConfiguredCatalogContext = ({children}) => (
+  const ConfiguredCatalogContext = ({ children }) => (
     <CatalogContext configuration={config}>
       <App>{children}</App>
     </CatalogContext>

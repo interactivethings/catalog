@@ -5,12 +5,15 @@ Original https://github.com/ryanseddon/react-frame-component/
 
 */
 
-import React, {Component} from 'react';
-import {unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer, unmountComponentAtNode} from 'react-dom'; // eslint-disable-line camelcase
-import PropTypes from 'prop-types';
-import raf from 'raf';
+import React, { Component } from "react";
+import {
+  unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer,
+  unmountComponentAtNode
+} from "react-dom"; // eslint-disable-line camelcase
+import PropTypes from "prop-types";
+import raf from "raf";
 
-const hasConsole = typeof window !== 'undefined' && window.console;
+const hasConsole = typeof window !== "undefined" && window.console;
 const noop = () => {};
 let swallowInvalidHeadWarning = noop;
 let resetWarnings = noop;
@@ -21,7 +24,8 @@ if (hasConsole) {
   // works. We swallow React's validateDOMNesting warning if that is the
   // message to avoid confusion
   swallowInvalidHeadWarning = () => {
-    console.error = (msg) => { // eslint-disable-line no-console
+    // eslint-disable-next-line no-console
+    console.error = msg => {
       if (/<head>/.test(msg)) return;
       originalError.call(console, msg);
     };
@@ -59,7 +63,7 @@ class FrameComponent extends Component {
 
     const doc = this.iframe.contentDocument;
 
-    if (doc && doc.readyState === 'complete') {
+    if (doc && doc.readyState === "complete") {
       const contents = (
         <div>
           {this.props.head}
@@ -69,17 +73,19 @@ class FrameComponent extends Component {
 
       // React warns when you render directly into the body since browser
       // extensions also inject into the body and can mess up React.
-      doc.body.innerHTML = '<div></div>';
-      doc.head.innerHTML = '';
+      doc.body.innerHTML = "<div></div>";
+      doc.head.innerHTML = "";
 
-      const base = doc.createElement('base');
-      base.setAttribute('href', window.location.href);
+      const base = doc.createElement("base");
+      base.setAttribute("href", window.location.href);
       doc.head.appendChild(base);
 
       // Clone styles from parent document head into the iframe, so components which use webpack's style-loader get rendered correctly.
       // This doesn't clone any Catalog styles because they are either inline styles or part of the body.
-      const pageStyles = Array.from(document.querySelectorAll('head > style, head > link[rel="stylesheet"]'));
-      pageStyles.forEach((s) => {
+      const pageStyles = Array.from(
+        document.querySelectorAll('head > style, head > link[rel="stylesheet"]')
+      );
+      pageStyles.forEach(s => {
         doc.head.appendChild(s.cloneNode(true));
       });
 
@@ -98,11 +104,14 @@ class FrameComponent extends Component {
   }
 
   render() {
-    const {style} = this.props;
+    const { style } = this.props;
     return (
       <iframe
-        ref={(el) => { this.iframe = el; }}
-        style={style} />
+        ref={el => {
+          this.iframe = el;
+        }}
+        style={style}
+      />
     );
   }
 }

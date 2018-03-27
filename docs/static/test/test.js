@@ -4,11 +4,12 @@
 
 if (!window.cgToggleBaselineGrid) {
   window.cgToggleBaselineGrid = function(evt) {
-    if (evt.keyCode === 71) { // "g" key to toggle grid
-      document.body.classList.toggle('va-debug');
+    if (evt.keyCode === 71) {
+      // "g" key to toggle grid
+      document.body.classList.toggle("va-debug");
     }
-  }
+  };
 }
 
-document.body.removeEventListener('keydown', window.cgToggleBaselineGrid);
-document.body.addEventListener('keydown', window.cgToggleBaselineGrid);
+document.body.removeEventListener("keydown", window.cgToggleBaselineGrid);
+document.body.addEventListener("keydown", window.cgToggleBaselineGrid);

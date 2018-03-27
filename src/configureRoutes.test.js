@@ -1,50 +1,52 @@
-import configure from './configure';
-import configureRoutes from './configureRoutes';
+import configure from "./configure";
+import configureRoutes from "./configureRoutes";
 
-test('Pre-Configuration', () => {
-  const routes = configureRoutes(configure({
-    title: 'Catalog',
-    pages: [
-      {
-        path: '/',
-        title: 'Overview',
-        pages: [
-          {
-            path: 'foo',
-            title: 'Foo',
-            src: 'foo.md'
-          },
-          {
-            path: 'bar',
-            title: 'Bar',
-            src: 'bar.md'
-          }
-        ]
-      }
-    ]
-  }));
+test("Pre-Configuration", () => {
+  const routes = configureRoutes(
+    configure({
+      title: "Catalog",
+      pages: [
+        {
+          path: "/",
+          title: "Overview",
+          pages: [
+            {
+              path: "foo",
+              title: "Foo",
+              src: "foo.md"
+            },
+            {
+              path: "bar",
+              title: "Bar",
+              src: "bar.md"
+            }
+          ]
+        }
+      ]
+    })
+  );
 
   expect(routes.childRoutes.length).toBe(3);
-  expect(routes.childRoutes[0].path).toBe('/foo');
+  expect(routes.childRoutes[0].path).toBe("/foo");
 });
 
-test('Auto-Configuration', () => {
+test("Auto-Configuration", () => {
   const routes = configureRoutes({
-    title: 'Catalog',
+    title: "Catalog",
     pages: [
       {
-        path: '/',
-        title: 'Overview',
+        path: "/",
+        title: "Overview",
         pages: [
           {
-            path: 'foo',
-            title: 'Foo',
-            src: 'foo.md'
+            path: "foo",
+            title: "Foo",
+            src: "foo.md"
           },
           {
-            path: 'bar',
-            title: 'Bar',
-            src: 'bar.md'
+            path: "bar",
+            title: "Bar",
+            src: "bar.md"
           }
         ]
       }
@@ -52,5 +54,5 @@ test('Auto-Configuration', () => {
   });
 
   expect(routes.childRoutes.length).toBe(3);
-  expect(routes.childRoutes[0].path).toBe('/foo');
+  expect(routes.childRoutes[0].path).toBe("/foo");
 });

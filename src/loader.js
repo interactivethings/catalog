@@ -1,4 +1,4 @@
-const loaderUtils = require('loader-utils');
+const loaderUtils = require("loader-utils");
 
 module.exports = function loader() {};
 module.exports.pitch = function pitch(remainingRequest) {

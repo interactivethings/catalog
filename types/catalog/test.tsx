@@ -20,28 +20,23 @@ ${(
   </ReactSpecimen>
 )}
 
-${(
-  <HtmlSpecimen light>
-    {'hello'}
-  </HtmlSpecimen>
-)}
+${<HtmlSpecimen light>{"hello"}</HtmlSpecimen>}
 
 `;
 
 ReactDOM.render(<Catalog title="Hello" pages={[]} />, document.body);
 
-
 const config: Config = {
   title: "Test",
   theme: {
-    background: 'white'
+    background: "white"
   },
   pages: [
     {
       path: "/",
       title: "Introduction",
-      styles: ['foo.css'],
-      content: () => <Page>hello</Page>,
+      styles: ["foo.css"],
+      content: () => <Page>hello</Page>
     },
     {
       path: "/foo",
@@ -51,7 +46,7 @@ const config: Config = {
     {
       path: "/bar",
       title: "Bar",
-      content: pageLoader('./bar.md')
+      content: pageLoader("./bar.md")
     },
     {
       title: "Materials",
@@ -59,7 +54,7 @@ const config: Config = {
         {
           path: "/materials/typeface",
           title: "Typeface",
-          content: pageLoader(() => import('./test-page'))
+          content: pageLoader(() => import("./test-page"))
         }
       ]
     }

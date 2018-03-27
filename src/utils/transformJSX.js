@@ -1,11 +1,11 @@
-import React from 'react';
-import {transform} from 'babel-standalone';
-import requireModuleDefault from './requireModuleDefault';
+import React from "react";
+import { transform } from "babel-standalone";
+import requireModuleDefault from "./requireModuleDefault";
 
-const presets = ['es2015-loose', 'react', 'stage-2'];
+const presets = ["es2015-loose", "react", "stage-2"];
 
 // Babel plugin to return last top-level expression statement
-const returnLastExpressionPlugin = ({types: t}) => ({
+const returnLastExpressionPlugin = ({ types: t }) => ({
   visitor: {
     // We only care about top-level expressions
     Program(path) {
@@ -20,28 +20,29 @@ const returnLastExpressionPlugin = ({types: t}) => ({
 
       if (lastExpr) {
         // ... and turn it into a return statement
-        lastExpr.replaceWith(
-          t.returnStatement(
-            lastExpr.node.expression
-          )
-        );
+        lastExpr.replaceWith(t.returnStatement(lastExpr.node.expression));
       }
     }
   }
 });
 
 let cached = {};
-const cachedTransform = (jsx) => {
+const cachedTransform = jsx => {
   if (cached[jsx]) {
     return cached[jsx];
   }
-  const transformed = transform(jsx, {compact: true, presets, plugins: [returnLastExpressionPlugin]}).code;
+  const transformed = transform(jsx, {
+    compact: true,
+    presets,
+    plugins: [returnLastExpressionPlugin]
+  }).code;
   cached[jsx] = transformed;
   return transformed;
 };
 
 const missingTransformError = {
-  error: 'Please include [babel-standalone](https://github.com/babel/babel-standalone) before Catalog.'
+  error:
+    "Please include [babel-standalone](https://github.com/babel/babel-standalone) before Catalog."
 };
 
 export default (jsx, imports) => {
@@ -53,12 +54,16 @@ export default (jsx, imports) => {
   }
 
   try {
-    const importKeys = Object.keys(imports).filter((k) => imports[k]);
-    const importModules = importKeys.map((k) => requireModuleDefault(imports[k]));
+    const importKeys = Object.keys(imports).filter(k => imports[k]);
+    const importModules = importKeys.map(k => requireModuleDefault(imports[k]));
     const code = cachedTransform(jsx);
-    const element = (new Function('React', ...importKeys, code))(React, ...importModules); // eslint-disable-line no-new-func
-    return {code, element};
+    // eslint-disable-next-line no-new-func
+    const element = new Function("React", ...importKeys, code)(
+      React,
+      ...importModules
+    );
+    return { code, element };
   } catch (error) {
-    return {error};
+    return { error };
   }
 };

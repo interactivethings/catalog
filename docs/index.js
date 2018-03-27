@@ -33,19 +33,17 @@ const pages = [
         path: "installation/create-catalog",
         title: "Create Catalog",
         content: markdownLoader("installation/create-catalog")
-
       },
       {
         path: "installation/module",
         title: "As Module",
         content: markdownLoader("installation/module")
-
       },
       {
         path: "installation/standalone",
         title: "Standalone",
         content: markdownLoader("installation/standalone")
-      },
+      }
     ]
   },
   {
@@ -75,7 +73,7 @@ const pages = [
         path: "configuration/other",
         title: "Other",
         content: markdownLoader("configuration/other")
-      },
+      }
     ]
   },
   {
@@ -167,13 +165,12 @@ const pages = [
         path: "guides/webpack-babel",
         title: "Custom Build Setup",
         content: markdownLoader("guides/webpack-babel")
-      },
+      }
       // {
       //   path: "guides/frameworks",
       //   title: "Framework Integration",
       //   content: markdownLoader("guides/frameworks")
       // },
-
     ]
   },
   {
@@ -197,9 +194,11 @@ ReactDOM.render(
     title="Catalog"
     useBrowserHistory
     logoSrc={logo}
-    theme={{
-      // Uses default theme
-    }}
+    theme={
+      {
+        // Uses default theme
+      }
+    }
     pages={pages}
   />,
   document.getElementById("catalog")

@@ -1,27 +1,35 @@
-import React from 'react';
-import {catalogShape} from '../CatalogPropTypes';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
-import Specimen from '../components/Specimen/Specimen';
-import {getPublicPath} from '../utils/path';
+import React from "react";
+import { catalogShape } from "../CatalogPropTypes";
+import PropTypes from "prop-types";
+import Radium from "radium";
+import Specimen from "../components/Specimen/Specimen";
+import { getPublicPath } from "../utils/path";
 
-import {heading} from '../styles/typography';
+import { heading } from "../styles/typography";
 
 class Video extends React.Component {
   render() {
-    const {src, title, muted, loop, autoplay, catalog, catalog: {theme}} = this.props;
+    const {
+      src,
+      title,
+      muted,
+      loop,
+      autoplay,
+      catalog,
+      catalog: { theme }
+    } = this.props;
     const parsedSrc = getPublicPath(src, catalog);
     let styles = {
       section: {
-        display: 'flex',
-        flexFlow: 'row wrap',
-        width: '100%'
+        display: "flex",
+        flexFlow: "row wrap",
+        width: "100%"
       },
       container: {
-        boxSizing: 'border-box',
-        margin: '0 10px 10px 0',
+        boxSizing: "border-box",
+        margin: "0 10px 10px 0",
         padding: 0,
-        position: 'relative'
+        position: "relative"
       },
       title: {
         ...heading(theme, 1),
@@ -37,9 +45,13 @@ class Video extends React.Component {
           loop={loop}
           muted={muted}
           controls
-          style={{width: '100%', height: '100%'}}
+          style={{ width: "100%", height: "100%" }}
         >
-          Open <a href={parsedSrc} target='_blank'>video</a> in a new Tab
+          Open{" "}
+          <a href={parsedSrc} target="_blank">
+            video
+          </a>{" "}
+          in a new Tab
         </video>
         {title && <div style={styles.title}>{title}</div>}
       </section>

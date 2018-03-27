@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {pagesShape} from '../../CatalogPropTypes';
-import {heading, text, getFontSize} from '../../styles/typography';
-import Link from '../Link/Link';
+import PropTypes from "prop-types";
+import React from "react";
+import { pagesShape } from "../../CatalogPropTypes";
+import { heading, text, getFontSize } from "../../styles/typography";
+import Link from "../Link/Link";
 
-import ListItem from './ListItem';
+import ListItem from "./ListItem";
 
 export function style(theme) {
   const logoBottomMargin = getFontSize(theme, 5);
@@ -12,18 +12,18 @@ export function style(theme) {
   return {
     bar: {
       background: theme.sidebarColor,
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column'
+      height: "100vh",
+      display: "flex",
+      flexDirection: "column"
     },
     h1: {
-      boxSizing: 'border-box',
+      boxSizing: "border-box",
       margin: 0,
-      padding: '21px 38px',
+      padding: "21px 38px",
       height: theme.pageHeadingHeight,
-      display: 'flex',
-      justifyContent: 'flex-end',
-      flexDirection: 'column'
+      display: "flex",
+      justifyContent: "flex-end",
+      flexDirection: "column"
     },
     title: {
       ...heading(theme, 1),
@@ -33,32 +33,32 @@ export function style(theme) {
       marginTop: 0
     },
     logo: {
-      width: '100%',
+      width: "100%",
       marginBottom: logoBottomMargin,
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: '0 100%',
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "0 100%",
       flexGrow: 1
     },
     // Make it accessible to screen readers, hide visually, see http://webaim.org/techniques/css/invisiblecontent/#absolutepositioning
     logoTitle: {
-      position: 'absolute',
-      left: '-10000px',
-      top: 'auto',
-      width: '1px',
-      height: '1px',
-      overflow: 'hidden'
+      position: "absolute",
+      left: "-10000px",
+      top: "auto",
+      width: "1px",
+      height: "1px",
+      overflow: "hidden"
     },
     list: {
       borderBottom: `1px solid ${theme.sidebarColorLine}`,
-      listStyle: 'none',
+      listStyle: "none",
       margin: 0,
       padding: 0
     },
     listNested: {
-      borderTop: 'none',
-      borderBottom: 'none',
-      padding: '0 0 15px 40px'
+      borderTop: "none",
+      borderBottom: "none",
+      padding: "0 0 15px 40px"
     },
     info: {
       ...text(theme, -1),
@@ -73,28 +73,48 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const {theme, pageTree, logoSrc, title, basePath} = this.props;
+    const { theme, pageTree, logoSrc, title, basePath } = this.props;
 
     const currentStyle = style(theme);
 
-    const titleString = title ? title : '';
+    const titleString = title ? title : "";
 
     return (
-      <div style={currentStyle.bar} >
-        <div style={{flexGrow: 1}}>
-          <Link to={basePath} style={{textDecoration: 'none'}}>
+      <div style={currentStyle.bar}>
+        <div style={{ flexGrow: 1 }}>
+          <Link to={basePath} style={{ textDecoration: "none" }}>
             <h1 style={currentStyle.h1}>
-              {logoSrc
-                ? <div style={{...currentStyle.logo, backgroundImage: `url("${logoSrc}")`}}><span style={currentStyle.logoTitle}>{titleString}</span></div>
-                : <div style={currentStyle.title}>{titleString}</div> }
+              {logoSrc ? (
+                <div
+                  style={{
+                    ...currentStyle.logo,
+                    backgroundImage: `url("${logoSrc}")`
+                  }}
+                >
+                  <span style={currentStyle.logoTitle}>{titleString}</span>
+                </div>
+              ) : (
+                <div style={currentStyle.title}>{titleString}</div>
+              )}
             </h1>
           </Link>
           <ul style={currentStyle.list}>
-            { pageTree.filter((page) => !page.hideFromMenu).map((page) => <ListItem key={page.id} page={page} theme={theme} />) }
+            {pageTree
+              .filter(page => !page.hideFromMenu)
+              .map(page => (
+                <ListItem key={page.id} page={page} theme={theme} />
+              ))}
           </ul>
         </div>
         <div style={currentStyle.info}>
-          Powered by <a style={currentStyle.link} href='https://www.catalog.style/' target='_blank'>Catalog</a>
+          Powered by{" "}
+          <a
+            style={currentStyle.link}
+            href="https://www.catalog.style/"
+            target="_blank"
+          >
+            Catalog
+          </a>
         </div>
       </div>
     );

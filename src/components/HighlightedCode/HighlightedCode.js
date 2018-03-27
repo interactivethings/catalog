@@ -1,26 +1,26 @@
-import PropTypes from 'prop-types';
-import React, {Component} from 'react';
-import Prism from 'prismjs';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-markdown';
-import {text} from '../../styles/typography';
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import Prism from "prismjs";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-markdown";
+import { text } from "../../styles/typography";
 
-const getStyle = (theme) => {
+const getStyle = theme => {
   return {
     pre: {
       ...text(theme, -0.5),
-      background: '#fff',
-      border: 'none',
-      boxSizing: 'border-box',
+      background: "#fff",
+      border: "none",
+      boxSizing: "border-box",
       color: theme.codeColor,
-      display: 'block',
-      height: 'auto',
+      display: "block",
+      height: "auto",
       margin: 0,
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
+      overflow: "auto",
+      WebkitOverflowScrolling: "touch",
       padding: 20,
-      whiteSpace: 'pre',
-      width: '100%'
+      whiteSpace: "pre",
+      width: "100%"
     },
     code: {
       fontFamily: theme.fontMono,
@@ -29,32 +29,43 @@ const getStyle = (theme) => {
   };
 };
 
-const isToken = (t) => t instanceof Prism.Token;
+const isToken = t => t instanceof Prism.Token;
 
 const renderPrismTokens = (tokens, styles) => {
   return tokens.map((t, i) => {
     if (isToken(t)) {
-      return <span key={`${t.type}-${i}`} style={styles[t.type]}>{Array.isArray(t.content) ? renderPrismTokens(t.content, styles) : t.content}</span>;
+      return (
+        <span key={`${t.type}-${i}`} style={styles[t.type]}>
+          {Array.isArray(t.content)
+            ? renderPrismTokens(t.content, styles)
+            : t.content}
+        </span>
+      );
     }
 
-    if (typeof t === 'string') {
+    if (typeof t === "string") {
       return t;
     }
 
-    throw Error('wat');
+    throw Error("wat");
   });
 };
 
 export default class HighlightedCode extends Component {
   render() {
-    const {language, theme, code} = this.props;
+    const { language, theme, code } = this.props;
     const styles = getStyle(theme);
     const lang = Prism.languages.hasOwnProperty(language) ? language : null;
 
     return (
       <pre style={styles.pre}>
         <code style={styles.code}>
-          {lang ? renderPrismTokens(Prism.tokenize(code, Prism.languages[lang], lang), theme.codeStyles) : code}
+          {lang
+            ? renderPrismTokens(
+                Prism.tokenize(code, Prism.languages[lang], lang),
+                theme.codeStyles
+              )
+            : code}
         </code>
       </pre>
     );
@@ -66,4 +77,3 @@ HighlightedCode.propTypes = {
   theme: PropTypes.object.isRequired,
   code: PropTypes.string.isRequired
 };
-

@@ -1,5 +1,5 @@
-import {createElement, isValidElement} from 'react';
-import Page from './components/Page/Page';
+import { createElement, isValidElement } from "react";
+import Page from "./components/Page/Page";
 
 // This function simply intersperses the values between the strings, and
 // passes the result as children to the Page component. No further
@@ -30,21 +30,29 @@ import Page from './components/Page/Page';
 const replaceLast = (f, arr) => arr.slice(0, -1).concat(f(arr[arr.length - 1]));
 
 const markdownPage = (strings, ...values) =>
-  createElement(Page, {},
-    ...values.reduce((a, v, i) => {
-      // If it's a valid React element, just concat to the end of the array
-      if (isValidElement(v)) {
-        return a.concat(v, strings[i + 1]);
-      }
+  createElement(
+    Page,
+    {},
+    ...values.reduce(
+      (a, v, i) => {
+        // If it's a valid React element, just concat to the end of the array
+        if (isValidElement(v)) {
+          return a.concat(v, strings[i + 1]);
+        }
 
-      // String-concat v to last and next string part
-      if (typeof v === 'string' || typeof v === 'number') {
-        return replaceLast(last => last + v + strings[i + 1], a);
-      }
+        // String-concat v to last and next string part
+        if (typeof v === "string" || typeof v === "number") {
+          return replaceLast(last => last + v + strings[i + 1], a);
+        }
 
-      // Finally, try to stringify v
-      return replaceLast(last => last + JSON.stringify(v) + strings[i + 1], a);
-    }, [strings[0]]
-    ));
+        // Finally, try to stringify v
+        return replaceLast(
+          last => last + JSON.stringify(v) + strings[i + 1],
+          a
+        );
+      },
+      [strings[0]]
+    )
+  );
 
 export default markdownPage;

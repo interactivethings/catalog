@@ -1,14 +1,22 @@
 // @flow
-import webpack from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
-import express from 'express';
-import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
+import webpack from "webpack";
+import WebpackDevServer from "webpack-dev-server";
+import express from "express";
+import errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
 
-export default async (config: Object, host: string, port: number, https: boolean, paths: Object, framework: string, proxy: void | string): Promise<string> => {
+export default async (
+  config: Object,
+  host: string,
+  port: number,
+  https: boolean,
+  paths: Object,
+  framework: string,
+  proxy: void | string
+): Promise<string> => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
-    clientLogLevel: 'none',
+    clientLogLevel: "none",
     contentBase: [paths.catalogStaticSrcDir, paths.appStaticSrcDir],
     // By default files from `contentBase` will not trigger a page reload.
     watchContentBase: true,
@@ -23,18 +31,22 @@ export default async (config: Object, host: string, port: number, https: boolean
     },
     historyApiFallback: {
       disableDotRule: true,
-      htmlAcceptHeaders: proxy ? ['text/html'] : ['text/html', '*/*']
+      htmlAcceptHeaders: proxy ? ["text/html"] : ["text/html", "*/*"]
     },
     https,
     host,
-    ...(proxy ? {proxy: {
-      '**': proxy
-    }} : {}),
+    ...(proxy
+      ? {
+          proxy: {
+            "**": proxy
+          }
+        }
+      : {}),
     overlay: false,
     before(app) {
       // Next.js serves static files from /static – which can't be configured with `contentBase` directly
-      if (framework === 'NEXT') {
-        app.use('/static', express.static(paths.appStaticSrcDir));
+      if (framework === "NEXT") {
+        app.use("/static", express.static(paths.appStaticSrcDir));
       }
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
@@ -43,11 +55,11 @@ export default async (config: Object, host: string, port: number, https: boolean
 
   // Launch WebpackDevServer.
   return new Promise((resolve, reject) => {
-    devServer.listen(port, (err) => {
+    devServer.listen(port, err => {
       if (err) {
         reject(err);
       } else {
-        resolve((https ? 'https' : 'http') + '://' + host + ':' + port + '/');
+        resolve((https ? "https" : "http") + "://" + host + ":" + port + "/");
       }
     });
   });
