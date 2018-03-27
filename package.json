@@ -98,6 +98,7 @@
     "babel-preset-env": "^1.6.0",
     "eslint": "^3.19.0",
     "eslint-config-interactivethings": "^3.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^5.1.1",
     "flow-bin": "^0.66.0",
     "husky": "^0.14.3",

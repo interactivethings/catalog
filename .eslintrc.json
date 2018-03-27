@@ -1,5 +1,5 @@
 {
-  "extends": "interactivethings",
+  "extends": ["interactivethings", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "globals": {
     "expect": true,
