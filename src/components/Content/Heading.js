@@ -1,48 +1,38 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import HeadingLink from "../Link/HeadingLink";
 import { catalogShape } from "../../CatalogPropTypes";
-import { headingBlock } from "../../styles/typography";
+import { heading } from "../../styles/typography";
 import { css } from "../../emotion";
 
-class HeadingWithLink extends Component {
-  constructor() {
-    super();
-    this.state = { hovered: false };
-    this.hover = () => this.setState({ hovered: true });
-    this.unHover = () => this.setState({ hovered: false });
-  }
+const HeadingWithLink = ({ level, text, slug, catalog: { theme } }) => {
+  const tag = "h" + level;
 
-  render() {
-    const { level, text, slug, catalog: { theme } } = this.props;
-    const tag = "h" + level;
-    const link = this.state.hovered ? <HeadingLink slug={slug} /> : null;
+  const linkStyle = css({ display: "none" });
 
-    console.log(headingBlock(theme, "", 5 - level));
-    const linkCls = css`
-      display: none;
-    `;
-    const className = css({
-      ...headingBlock(theme, "xyz", 5 - level).xyz,
-      "h1 + &": {
-        margin: "0 0 0 0"
+  const headingStyle = css(
+    {
+      ...heading(theme, 5 - level),
+      flexBasis: "100%",
+      margin: `48px 0 0 0`,
+      "blockquote + &, h1 + &, h2 + &, h3 + &, h4 + &, h5 + &, h6 + &": {
+        margin: `16px 0 0 0`
       },
-      [`&:hover .${linkCls}`]: {
-        display: "inline"
-      }
-    });
+      [`&:hover .${linkStyle}`]: { display: "inline" }
+    },
+    { label: tag }
+  );
 
-    return React.createElement(
-      tag,
-      { id: slug, className },
-      text,
-      " ",
-      <span className={linkCls}>
-        <HeadingLink slug={slug} />
-      </span>
-    );
-  }
-}
+  return React.createElement(
+    tag,
+    { id: slug, className: headingStyle },
+    text,
+    " ",
+    <span className={linkStyle}>
+      <HeadingLink slug={slug} />
+    </span>
+  );
+};
 
 const PlainHeading = ({ level, text }) => {
   const tag = "h" + level;

@@ -8,7 +8,9 @@ const styled = (tag, styles) => {
       ...props,
       className: cx(
         props.className,
-        css(typeof styles === "function" ? styles(props, catalog) : styles)
+        css(typeof styles === "function" ? styles(props, catalog) : styles, {
+          label: tag
+        })
       )
     });
 

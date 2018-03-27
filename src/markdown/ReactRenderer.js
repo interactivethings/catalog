@@ -1,20 +1,19 @@
 import React from "react";
 import Slugger from "github-slugger";
-import Link from "../components/Link/Link";
 import Heading from "../components/Content/Heading";
 import {
   Paragraph,
   UnorderedList,
   OrderedList,
   ListItem,
-  Code,
   BlockQuote,
   Hr,
   Em,
   Strong,
   CodeSpan,
   Del,
-  Image
+  Image,
+  Link
 } from "../components/Content/Markdown";
 
 export default class ReactRenderer {
@@ -98,9 +97,10 @@ export default class ReactRenderer {
   html(html) {
     return (
       <div
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: html.join("") }}
         key={this.getKey()}
       />
-    ); // eslint-disable-line react/no-danger
+    );
   }
 }

@@ -1,5 +1,9 @@
+import React from "react";
 import styled from "../../styled";
 import { text, getFontSize } from "../../styles/typography";
+import { catalogShape } from "../../CatalogPropTypes";
+import BaseLink from "../Link/Link";
+import { css } from "../../emotion";
 
 const baseListStyle = {
   width: "100%",
@@ -8,7 +12,7 @@ const baseListStyle = {
 };
 
 export const Paragraph = styled("p", (props, { theme }) => ({
-  ...text(theme, 0),
+  ...text(theme),
   flexBasis: "100%",
   margin: `16px 0 0 0`
 }));
@@ -27,15 +31,13 @@ export const OrderedList = styled("ol", (props, { theme }) => ({
   marginBottom: 0
 }));
 export const ListItem = styled("li", (props, { theme }) => text(theme));
-export const Code = styled("code", (props, { theme }) => text(theme));
 export const BlockQuote = styled("blockquote", (props, { theme }) => ({
   fontSize: getFontSize(theme, 1),
   quotes: "none",
   margin: "48px 0 32px 0",
-  "::before": { content: "none" },
-  "::after": { content: "none" },
-  ":first-child": { marginTop: 0 },
-  ":last-child": { marginBottom: 0 },
+  "&::before, &::after": { content: "none" },
+  "& > :first-child": { marginTop: 0 },
+  "& > :last-child": { marginBottom: 0 },
   "+ blockquote": { marginBottom: 0 }
 }));
 export const Hr = styled("hr", {
@@ -63,3 +65,18 @@ export const Del = styled("del", (props, { theme }) => text(theme));
 export const Image = styled("img", (props, { theme }) => ({
   maxWidth: "100%"
 }));
+
+export const Link = (props, { catalog: { theme } }) => (
+  <BaseLink
+    className={css({
+      color: theme.linkColor,
+      textDecoration: "none",
+      ":hover": { textDecoration: "underline" }
+    })}
+    {...props}
+  />
+);
+
+Link.contextTypes = {
+  catalog: catalogShape
+};
