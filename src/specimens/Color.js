@@ -19,7 +19,7 @@ class Color extends React.Component {
 
     return (
       <div style={{ width: "100%" }}>
-        <div style={{ height: 120, background: value }} />
+        <div style={{ height: 120, background: value }} data-sketch-color={value} />
         <div style={styles.text}>
           {name} <div style={{ fontFamily: theme.fontMono }}>{value}</div>
         </div>
