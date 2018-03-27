@@ -11,13 +11,14 @@ const pageToRoute = ({ path, component, src }) => ({
   path
 });
 
+// eslint-disable-next-line react/prop-types
 const pageToJSXRoute = ({ path, component, src }) => (
   <Route
     key={path}
     path={path}
     component={component ? requireModuleDefault(component) : pageLoader(src)}
   />
-); // eslint-disable-line react/prop-types
+);
 
 const autoConfigure = config => {
   warning(

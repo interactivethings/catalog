@@ -24,8 +24,8 @@ if (hasConsole) {
   // works. We swallow React's validateDOMNesting warning if that is the
   // message to avoid confusion
   swallowInvalidHeadWarning = () => {
+    // eslint-disable-next-line no-console
     console.error = msg => {
-      // eslint-disable-line no-console
       if (/<head>/.test(msg)) return;
       originalError.call(console, msg);
     };

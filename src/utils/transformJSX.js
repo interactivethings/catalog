@@ -57,10 +57,11 @@ export default (jsx, imports) => {
     const importKeys = Object.keys(imports).filter(k => imports[k]);
     const importModules = importKeys.map(k => requireModuleDefault(imports[k]));
     const code = cachedTransform(jsx);
+    // eslint-disable-next-line no-new-func
     const element = new Function("React", ...importKeys, code)(
       React,
       ...importModules
-    ); // eslint-disable-line no-new-func
+    );
     return { code, element };
   } catch (error) {
     return { error };

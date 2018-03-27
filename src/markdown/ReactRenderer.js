@@ -80,9 +80,10 @@ export default class ReactRenderer {
   html(html) {
     return (
       <div
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: html.join("") }}
         key={this.getKey()}
       />
-    ); // eslint-disable-line react/no-danger
+    );
   }
 }
