@@ -73,7 +73,6 @@
     "postcss-loader": "^2.0.6",
     "prismjs": "^1.3.0",
     "prop-types": "^15.6.0",
-    "radium": "^0.19.4",
     "raf": "^3.3.2",
     "ramda": "^0.24.1",
     "raw-loader": "^0.5.1",
