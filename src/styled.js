@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { css, cx } from "./emotion";
 
 const styled = (tag, styles) => {
-  const Styled = (props, { catalog }) =>
+  const Styled = ({ className, ...props }, { catalog }) =>
     React.createElement(tag, {
       ...props,
       className: cx(
-        props.className,
         css(typeof styles === "function" ? styles(props, catalog) : styles, {
           label: tag
-        })
+        }),
+        className
       )
     });
 

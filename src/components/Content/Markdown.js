@@ -30,7 +30,11 @@ export const OrderedList = styled("ol", (props, { theme }) => ({
   marginTop: "16px",
   marginBottom: 0
 }));
-export const ListItem = styled("li", (props, { theme }) => text(theme));
+export const ListItem = styled("li", (props, { theme }) => ({
+  ...text(theme),
+  "& > :first-child": { marginTop: 0 },
+  "& > :last-child": { marginBottom: 0 }
+}));
 export const BlockQuote = styled("blockquote", (props, { theme }) => ({
   fontSize: getFontSize(theme, 1),
   quotes: "none",
@@ -46,10 +50,10 @@ export const Hr = styled("hr", {
   margin: 0,
   height: 0
 });
-export const Em = styled("em", (props, { theme }) => ({ fontStyle: "italic" }));
-export const Strong = styled("strong", (props, { theme }) => ({
+export const Em = styled("em", { fontStyle: "italic" });
+export const Strong = styled("strong", {
   fontWeight: 700
-}));
+});
 export const CodeSpan = styled("code", (props, { theme }) => ({
   background: theme.bgLight,
   border: `1px solid #eee`,
@@ -62,9 +66,9 @@ export const CodeSpan = styled("code", (props, { theme }) => ({
   textIndent: 0
 }));
 export const Del = styled("del", (props, { theme }) => text(theme));
-export const Image = styled("img", (props, { theme }) => ({
+export const Image = styled("img", {
   maxWidth: "100%"
-}));
+});
 
 export const Link = (props, { catalog: { theme } }) => (
   <BaseLink

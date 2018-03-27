@@ -24,7 +24,8 @@ export function style(theme) {
       height: theme.pageHeadingHeight,
       display: "flex",
       justifyContent: "flex-end",
-      flexDirection: "column"
+      flexDirection: "column",
+      fontSize: "1em"
     },
     title: {
       ...heading(theme, 1),

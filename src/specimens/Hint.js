@@ -1,6 +1,6 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
-import { css } from "../emotion";
+import { css, cx } from "../emotion";
 import PropTypes from "prop-types";
 import renderMarkdown from "../markdown/renderMarkdown";
 import Specimen from "../components/Specimen/Specimen";
@@ -37,7 +37,11 @@ function getStyle(theme) {
         marginBottom: 0
       },
       "& a": {
-        color: "currentColor"
+        color: "currentColor",
+        textDecoration: "underline"
+      },
+      "& p, & ul, & ol, & li, & blockquote": {
+        color: `currentColor`
       }
     },
     neutral: {
@@ -79,17 +83,12 @@ class Hint extends React.Component {
     } = this.props;
     const styles = getStyle(theme);
 
-    const warningStyle = warning ? styles.warning : null;
-    const directiveStyle = directive ? styles.directive : null;
-    const neutralStyle = neutral ? styles.neutral : null;
-    const importantStyle = important ? styles.important : null;
-    const mergedStyle = {
-      ...styles.hint,
-      ...warningStyle,
-      ...directiveStyle,
-      ...neutralStyle,
-      ...importantStyle
-    };
+    const hintStyle = cx(css(styles.hint), {
+      [css(styles.warning)]: warning,
+      [css(styles.directive)]: directive,
+      [css(styles.neutral)]: neutral,
+      [css(styles.important)]: important
+    });
 
     const markdownRenderer = {
       heading(textParts, level, raw) {
@@ -99,10 +98,10 @@ class Hint extends React.Component {
           {
             key: slug,
             id: slug,
-            style: {
+            className: css({
               ...heading(theme, Math.max(0, 3 - level)),
-              color: mergedStyle.color
-            }
+              color: "currentColor"
+            })
           },
           textParts
         );
@@ -111,9 +110,12 @@ class Hint extends React.Component {
 
     return (
       <div className={css(styles.container)}>
-        <section className={css(mergedStyle)}>
+        <section className={hintStyle}>
           {typeof children === "string"
-            ? renderMarkdown({ text: children, renderer: markdownRenderer })
+            ? renderMarkdown({
+                text: children,
+                renderer: markdownRenderer
+              })
             : children}
         </section>
       </div>
