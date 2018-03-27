@@ -16,6 +16,17 @@ export function style(theme) {
       display: "flex",
       flexDirection: "column"
     },
+    search: {
+      ...text(theme),
+      border: "none",
+      width: "100%",
+      padding: "16px 16px 16px 40px",
+      borderTop: `1px solid ${theme.sidebarColorLine}`,
+      outline: "none",
+      ":focus": {
+        outline: "none"
+      }
+    },
     h1: {
       boxSizing: "border-box",
       margin: 0,
@@ -72,38 +83,76 @@ export function style(theme) {
 }
 
 class Menu extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      filterString: "",
+      filteredPages: []
+    };
+  }
+
+  setFilterString(e) {
+    const filterString = e.target.value;
+    this.props.runSearch(filterString).then(matches => {
+      this.setState({
+        filteredPages: matches
+      });
+    });
+    this.setState({
+      filterString: filterString
+    });
+  }
+
+  resetFilterString() {
+    this.setState({
+      filterString: ""
+    });
+  }
+
   render() {
     const { theme, pageTree, logoSrc, title, basePath } = this.props;
+    const { filterString, filteredPages } = this.state;
 
     const currentStyle = style(theme);
 
     const titleString = title ? title : "";
 
+    const logo = logoSrc ? (
+      <div
+        style={{ ...currentStyle.logo, backgroundImage: `url("${logoSrc}")` }}
+      >
+        <span style={currentStyle.logoTitle}>{titleString}</span>
+      </div>
+    ) : (
+      <div style={currentStyle.title}>{titleString}</div>
+    );
+
+    const pages = filterString
+      ? filteredPages.map(page => (
+          <ListItem key={page.id} page={page} theme={theme} />
+        ))
+      : pageTree
+          .filter(page => !page.hideFromMenu)
+          .map(page => <ListItem key={page.id} page={page} theme={theme} />);
+
     return (
       <div style={currentStyle.bar}>
         <div style={{ flexGrow: 1 }}>
           <Link to={basePath} style={{ textDecoration: "none" }}>
-            <h1 style={currentStyle.h1}>
-              {logoSrc ? (
-                <div
-                  style={{
-                    ...currentStyle.logo,
-                    backgroundImage: `url("${logoSrc}")`
-                  }}
-                >
-                  <span style={currentStyle.logoTitle}>{titleString}</span>
-                </div>
-              ) : (
-                <div style={currentStyle.title}>{titleString}</div>
-              )}
-            </h1>
+            <h1 style={currentStyle.h1}>{logo}</h1>
           </Link>
-          <ul style={currentStyle.list}>
-            {pageTree
-              .filter(page => !page.hideFromMenu)
-              .map(page => (
-                <ListItem key={page.id} page={page} theme={theme} />
-              ))}
+          <input
+            style={currentStyle.search}
+            placeholder="Filter pages"
+            type="search"
+            value={filterString}
+            onChange={e => this.setFilterString(e)}
+          />
+          <ul
+            style={currentStyle.list}
+            onClick={() => this.resetFilterString()}
+          >
+            {pages}
           </ul>
         </div>
         <div style={currentStyle.info}>
@@ -123,6 +172,7 @@ class Menu extends React.Component {
 
 Menu.propTypes = {
   pageTree: pagesShape.isRequired,
+  runSearch: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   basePath: PropTypes.string,

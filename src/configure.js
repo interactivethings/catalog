@@ -6,6 +6,7 @@ import DefaultResponsiveSizes from "./DefaultResponsiveSizes";
 import specimens from "./specimens";
 import requireModuleDefault from "./utils/requireModuleDefault";
 import NotFound from "./components/Page/NotFound";
+import Fuse from "fuse.js";
 
 const has = key => o => o.hasOwnProperty(key);
 const hasName = has("name");
@@ -34,6 +35,16 @@ const flattenPageTree = pageTree => {
       ...page,
       ...(page.hideFromMenu ? undefined : { index })
     }));
+};
+
+const fuseOptions = {
+  shouldSort: false,
+  threshold: 0.3,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 32,
+  minMatchCharLength: 1,
+  keys: ["title", "keywords", "superTitle"]
 };
 
 const getPublicUrl = () =>
@@ -137,6 +148,18 @@ export default config => {
     });
   const pages = flattenPageTree(pageTree);
 
+  // (filterString: string) => Promise<Array<Page>>
+  const runSearch = filterString => {
+    return new Promise(resolve => {
+      const index = new Fuse(
+        pages.filter(page => !page.hideFromMenu),
+        fuseOptions
+      );
+      const matches = index.search(filterString);
+      resolve(matches);
+    });
+  };
+
   return {
     ...config,
     // Used to check in configureRoutes() if input is already configured
@@ -147,6 +170,7 @@ export default config => {
     basePath,
     publicUrl,
     pages,
-    pageTree
+    pageTree,
+    runSearch
   };
 };

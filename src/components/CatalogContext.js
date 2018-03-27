@@ -17,7 +17,8 @@ class CatalogContext extends Component {
       specimens,
       basePath,
       publicUrl,
-      useBrowserHistory
+      useBrowserHistory,
+      runSearch
     } = this.props.configuration;
     const { router } = this.context;
     return {
@@ -35,7 +36,8 @@ class CatalogContext extends Component {
         basePath,
         publicUrl,
         logoSrc,
-        useBrowserHistory
+        useBrowserHistory,
+        runSearch
       }
     };
   }

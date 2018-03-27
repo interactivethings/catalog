@@ -10,7 +10,8 @@ export const pageShape = PropTypes.shape({
   styles: PropTypes.array.isRequired,
   scripts: PropTypes.array.isRequired,
   imports: PropTypes.object.isRequired,
-  hideFromMenu: PropTypes.boolean
+  hideFromMenu: PropTypes.boolean,
+  keywords: PropTypes.arrayOf(PropTypes.string)
 });
 
 export const pagesShape = PropTypes.arrayOf(pageShape);
