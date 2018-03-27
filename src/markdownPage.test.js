@@ -1,32 +1,32 @@
-import React from 'react';
-import markdownPage from './markdownPage';
-import Hint from './specimens/Hint';
+import React from "react";
+import markdownPage from "./markdownPage";
+import Hint from "./specimens/Hint";
 
-test('Catalog markdown page template literal', () => {
+test("Catalog markdown page template literal", () => {
   const page = markdownPage`
 # This is a title
 
 A paragraph
 
-${
-<Hint>
-{`# THIS IS A HINT
+${(
+    <Hint>
+      {`# THIS IS A HINT
 
 Cool, eh?`}
-</Hint>
-}
+    </Hint>
+  )}
 `;
   expect(page).toMatchSnapshot();
 });
 
-test('Catalog markdown page template literal with arbitrary values', () => {
+test("Catalog markdown page template literal with arbitrary values", () => {
   const page = markdownPage`
 # This is a title
 
 A paragraph ${123}
 
 ~~~
-${[{a: 'some'}, {a: 'data'}]}
+${[{ a: "some" }, { a: "data" }]}
 ~~~
 `;
   expect(page).toMatchSnapshot();

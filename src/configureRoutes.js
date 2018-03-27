@@ -1,28 +1,34 @@
-import React from 'react';
-import {Route} from 'react-router';
-import configure from './configure';
-import warning from './utils/warning';
-import requireModuleDefault from './utils/requireModuleDefault';
-import CatalogContext from './components/CatalogContext';
-import pageLoader from './pageLoader';
+import React from "react";
+import { Route } from "react-router";
+import configure from "./configure";
+import warning from "./utils/warning";
+import requireModuleDefault from "./utils/requireModuleDefault";
+import CatalogContext from "./components/CatalogContext";
+import pageLoader from "./pageLoader";
 
-const pageToRoute = ({path, component, src}) => ({
+const pageToRoute = ({ path, component, src }) => ({
   component: component ? requireModuleDefault(component) : pageLoader(src),
   path
 });
 
-const pageToJSXRoute = ({path, component, src}) => <Route key={path} path={path} component={component ? requireModuleDefault(component) : pageLoader(src)} />; // eslint-disable-line react/prop-types
+const pageToJSXRoute = ({ path, component, src }) => (
+  <Route
+    key={path}
+    path={path}
+    component={component ? requireModuleDefault(component) : pageLoader(src)}
+  />
+); // eslint-disable-line react/prop-types
 
-const autoConfigure = (config) => {
+const autoConfigure = config => {
   warning(
     !config.__catalogConfig,
-    'The `configure` function is deprecated; use `configureRoutes` or `configureJSXRoutes` directly.'
+    "The `configure` function is deprecated; use `configureRoutes` or `configureJSXRoutes` directly."
   );
 
   return config.__catalogConfig ? config : configure(config);
 };
 
-export default (config) => {
+export default config => {
   const finalConfig = autoConfigure(config);
   return {
     component: CatalogContext(finalConfig),
@@ -30,7 +36,7 @@ export default (config) => {
   };
 };
 
-export const configureJSXRoutes = (config) => {
+export const configureJSXRoutes = config => {
   const finalConfig = autoConfigure(config);
   return (
     <Route component={CatalogContext(finalConfig)}>

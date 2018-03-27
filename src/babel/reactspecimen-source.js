@@ -1,10 +1,10 @@
-import stripIndent from 'strip-indent';
+import stripIndent from "strip-indent";
 
-export default function({types: t}) {
+export default function({ types: t }) {
   return {
     visitor: {
       JSXElement(path, state) {
-        if (path.node.openingElement.name.name === 'ReactSpecimen') {
+        if (path.node.openingElement.name.name === "ReactSpecimen") {
           if (path.node.openingElement.selfClosing) {
             return;
           }
@@ -13,7 +13,7 @@ export default function({types: t}) {
 
           for (let i = 0; i < attributes.length; i++) {
             const name = attributes[i].name;
-            if (name && name.name === 'sourceText') {
+            if (name && name.name === "sourceText") {
               // The sourceText attibute already exists
               return;
             }
@@ -31,7 +31,7 @@ export default function({types: t}) {
                 [
                   ...path.node.openingElement.attributes,
                   t.jSXAttribute(
-                    t.jSXIdentifier('sourceText'),
+                    t.jSXIdentifier("sourceText"),
                     t.jSXExpressionContainer(
                       t.stringLiteral(stripIndent(sourceText).trim())
                     )

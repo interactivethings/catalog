@@ -1,24 +1,24 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
-import {heading} from '../../styles/typography';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Radium from "radium";
+import { heading } from "../../styles/typography";
 
 class PageHeader extends Component {
   render() {
-    const {theme, title, superTitle} = this.props;
+    const { theme, title, superTitle } = this.props;
 
     const styles = {
       outerHeader: {
-        boxSizing: 'border-box',
-        position: 'relative',
+        boxSizing: "border-box",
+        position: "relative",
         height: theme.pageHeadingHeight,
         background: theme.pageHeadingBackground
       },
       innerHeader: {
-        position: 'absolute',
+        position: "absolute",
         bottom: 21,
         left: 21,
-        '@media (min-width: 1000px)': {
+        "@media (min-width: 1000px)": {
           left: 42
         }
       },

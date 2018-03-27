@@ -1,19 +1,18 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
-import Loader from './components/Page/Loader';
-import PageRenderer from './components/Page/PageRenderer';
-import Page from './components/Page/Page';
-import requireModuleDefault from './utils/requireModuleDefault';
+import Loader from "./components/Page/Loader";
+import PageRenderer from "./components/Page/PageRenderer";
+import Page from "./components/Page/Page";
+import requireModuleDefault from "./utils/requireModuleDefault";
 
-const fetchMarkdown = (url) =>
+const fetchMarkdown = url =>
   fetch(url, {
-    credentials: 'same-origin',
+    credentials: "same-origin",
     headers: {
-      'Accept': 'text/markdown, text/x-markdown, text/plain'
+      Accept: "text/markdown, text/x-markdown, text/plain"
     }
-  })
-  .then(res => {
+  }).then(res => {
     if (res.status < 200 || res.status >= 300) {
       throw new Error(`Failed to load content from
       
@@ -26,17 +25,16 @@ Reason: ${res.status} ${res.statusText}`);
 
 // The contents of the page when loading the page fails. 'msg' is the error
 // string or message with additional details.
-const errorMarkdown = (msg) => `
+const errorMarkdown = msg => `
 \`\`\`hint|warning
 ${msg}
 \`\`\`
 `;
 
-
 class PageLoader extends PureComponent {
   constructor() {
     super();
-    this.state = {content: null};
+    this.state = { content: null };
   }
 
   componentDidMount() {
@@ -44,21 +42,33 @@ class PageLoader extends PureComponent {
   }
 
   fetchPageContent() {
-    const {urlOrComponentPromise} = this.props;
+    const { urlOrComponentPromise } = this.props;
 
-    const contentPromise = typeof urlOrComponentPromise === 'string'
-      ? fetchMarkdown(urlOrComponentPromise).then(text => () => <Page>{text}</Page>)
-      : urlOrComponentPromise().then(requireModuleDefault);
+    const contentPromise =
+      typeof urlOrComponentPromise === "string"
+        ? fetchMarkdown(urlOrComponentPromise).then(text => () => (
+            <Page>{text}</Page>
+          ))
+        : urlOrComponentPromise().then(requireModuleDefault);
 
     contentPromise.then(
-      (content) => { this.setState({content}); },
-      (err) => { this.setState({content: errorMarkdown(err.message)}); });
+      content => {
+        this.setState({ content });
+      },
+      err => {
+        this.setState({ content: errorMarkdown(err.message) });
+      }
+    );
   }
 
   render() {
-    const {location} = this.props;
+    const { location } = this.props;
     const Content = this.state.content || Loader;
-    return Content.__catalog_loader__ === true ? <Content location={location} /> : <PageRenderer location={location} content={Content} />;
+    return Content.__catalog_loader__ === true ? (
+      <Content location={location} />
+    ) : (
+      <PageRenderer location={location} content={Content} />
+    );
   }
 }
 
@@ -67,5 +77,11 @@ PageLoader.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-export default (urlOrComponentPromise) => ({location}) => // eslint-disable-line react/prop-types
-  <PageLoader location={location} urlOrComponentPromise={urlOrComponentPromise} />;
+export default urlOrComponentPromise => (
+  { location } // eslint-disable-line react/prop-types
+) => (
+  <PageLoader
+    location={location}
+    urlOrComponentPromise={urlOrComponentPromise}
+  />
+);

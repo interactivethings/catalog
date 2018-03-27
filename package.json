@@ -33,7 +33,8 @@
   "scripts": {
     "preversion": "make test",
     "prepublishOnly": "make test && make build",
-    "precommit": "precise-commits"
+    "precommit": "precise-commits",
+    "prettier-all": "prettier --write \"**/*.{js,ts,tsx}\""
   },
   "dependencies": {
     "args": "^3.0.8",

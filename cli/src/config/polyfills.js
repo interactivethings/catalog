@@ -1,2 +1,2 @@
-import 'babel-polyfill';
-import 'unfetch/polyfill';
+import "babel-polyfill";
+import "unfetch/polyfill";
