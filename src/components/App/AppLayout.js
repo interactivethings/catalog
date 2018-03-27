@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css, injectGlobal } from "../../emotion";
 import { pageShape, pagesShape } from "../../CatalogPropTypes";
 import NavigationBar from "./NavigationBar";
 import PageHeader from "../Page/PageHeader";
@@ -8,14 +8,14 @@ import PageHeader from "../Page/PageHeader";
 const SIDEBAR_WIDTH = 251;
 const SIDEBAR_ANIMATION_DURATION = 0.25;
 
-const globalStyle = `
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
+injectGlobal`
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic);
+  @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
 
-body {
-  margin: 0;
-  padding: 0;
-}
+  body {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const MenuIcon = props => (
@@ -35,13 +35,9 @@ const getStyles = (theme, sidebarVisible) => ({
     width: "100%",
     height: "100%",
     position: "relative",
-    // Prevent flash of un-media-queried content by Radium
-    display: "none",
-    "@media (min-width: 0px)": {
-      // Use display: flex, so flexbox children aren't affected by IE's min-height bug
-      // See https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
-      display: "flex"
-    }
+    // Use display: flex, so flexbox children aren't affected by IE's min-height bug
+    // See https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
+    display: "flex"
   },
   menuIcon: {
     color: theme.pageHeadingTextColor,
@@ -125,15 +121,14 @@ class AppLayout extends React.Component {
     const previousPage = pages[page.index - 1];
 
     return (
-      <div style={styles.container}>
-        <style>{globalStyle}</style>
-        <div style={styles.content}>
+      <div className={css(styles.container)}>
+        <div className={css(styles.content)}>
           <PageHeader
             theme={theme}
             title={page.title}
             superTitle={page.superTitle}
           />
-          <div style={{ flexGrow: 1 }}>{this.props.children}</div>
+          <div className={css({ flexGrow: 1 })}>{this.props.children}</div>
           {!page.hideFromMenu && (
             <NavigationBar
               theme={theme}
@@ -143,16 +138,16 @@ class AppLayout extends React.Component {
           )}
         </div>
         <MenuIcon
-          style={styles.menuIcon}
+          className={css(styles.menuIcon)}
           onClick={this.toggleSidebar}
           onTouchEnd={this.toggleSidebar}
         />
         <div
-          style={styles.navBackground}
+          className={css(styles.navBackground)}
           onClick={this.toggleSidebar}
           onTouchEnd={this.toggleSidebar}
         />
-        <div style={styles.sideNav}>{sideNav}</div>
+        <div className={css(styles.sideNav)}>{sideNav}</div>
       </div>
     );
   }
@@ -166,4 +161,4 @@ AppLayout.propTypes = {
   pages: pagesShape.isRequired
 };
 
-export default Radium(AppLayout);
+export default AppLayout;

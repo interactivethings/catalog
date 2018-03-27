@@ -5,7 +5,7 @@ import Link from "../Link/Link";
 import ListItem, { style as listItemStyle } from "./ListItem";
 import { style as menuStyle } from "./Menu";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../../emotion";
 
 const NestedList = ({ theme, pages, title }, { router }) => {
   const collapsed = !pages
@@ -21,21 +21,21 @@ const NestedList = ({ theme, pages, title }, { router }) => {
     <div>
       <Link
         to={pages[0].path}
-        style={{
+        className={css({
           ...currentStyle.link,
           ...(collapsed ? {} : currentStyle.activeLink)
-        }}
+        })}
         activeStyle={{ ...currentStyle.link, ...currentStyle.activeLink }}
       >
         {title}
       </Link>
       {!collapsed && (
         <ul
-          style={{
+          className={css({
             ...currentStyle.list,
             ...currentStyle.listNested,
             padding: 0
-          }}
+          })}
         >
           {pages
             .filter(page => !page.hideFromMenu)
@@ -58,4 +58,4 @@ NestedList.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-export default Radium(NestedList);
+export default NestedList;

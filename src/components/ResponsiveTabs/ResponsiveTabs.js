@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Preview from "./Preview";
+import { css } from "../../emotion";
 
 function getStyle(theme) {
   return {
@@ -48,20 +49,20 @@ function getStyle(theme) {
 const ResponsiveTabs = ({ sizes, action, activeSize, theme, parentWidth }) => {
   const styles = getStyle(theme);
   return (
-    <div style={styles.tabContainer}>
+    <div className={css(styles.tabContainer)}>
       {sizes.map((val, i) => {
         const isTabActive = activeSize.name === val.name;
         const activeStyles = isTabActive && styles.tabActive;
         return (
           <div
             key={i}
-            style={{ ...styles.tab, ...activeStyles }}
+            className={css({ ...styles.tab, ...activeStyles })}
             onClick={() => action(val)}
           >
             <Preview proportion={val.width / val.height} />
-            <div style={styles.description}>
+            <div className={css(styles.description)}>
               {val.name}
-              <div style={styles.tabDimension}>
+              <div className={css(styles.tabDimension)}>
                 {val.width}×{val.height}
                 &thinsp;
                 {parentWidth <= val.width && "(scaled)"}

@@ -1,16 +1,18 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import { hcl } from "d3-color";
 
 const _ColorPaletteItem = ({ name, value, styles, width }) => {
   const contrastingValue = hcl(value).l < 55 ? "#fff" : "#000";
   return (
-    <div style={{ width, ...styles.paletteItem, backgroundColor: value }}>
-      <div style={{ ...styles.textPalette, color: contrastingValue }}>
-        {name} <div style={styles.mono}>{value}</div>
+    <div
+      className={css({ width, ...styles.paletteItem, backgroundColor: value })}
+    >
+      <div className={css({ ...styles.textPalette, color: contrastingValue })}>
+        {name} <div className={css(styles.mono)}>{value}</div>
       </div>
     </div>
   );
@@ -23,7 +25,7 @@ _ColorPaletteItem.propTypes = {
   width: PropTypes.string
 };
 
-const ColorPaletteItem = Radium(_ColorPaletteItem);
+const ColorPaletteItem = _ColorPaletteItem;
 
 class ColorPalette extends React.Component {
   render() {
@@ -77,7 +79,7 @@ class ColorPalette extends React.Component {
       <ColorPaletteItem key={i} {...color} styles={styles} width={width} />
     ));
 
-    return <section style={styles.container}>{paletteItems}</section>;
+    return <section className={css(styles.container)}>{paletteItems}</section>;
   }
 }
 
@@ -96,4 +98,4 @@ ColorPalette.defaultProps = {
   horizontal: false
 };
 
-export default Specimen()(Radium(ColorPalette));
+export default Specimen()(ColorPalette);

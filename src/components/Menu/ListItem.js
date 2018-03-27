@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { css } from "../../emotion";
 import { pageShape } from "../../CatalogPropTypes";
 
 import Link from "../Link/Link";
@@ -63,7 +64,7 @@ class ListItem extends React.Component {
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
           <Link
-            style={defaultStyle}
+            className={css(defaultStyle)}
             activeStyle={currentStyle.activeLink}
             to={path}
             onlyActiveOnIndex={path === "/"}

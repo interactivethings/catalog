@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import { getPublicPath } from "../utils/path";
 
@@ -39,10 +39,10 @@ class Audio extends React.Component {
       title !== undefined ? title : parsedSrc.split("/").slice(-1)[0];
 
     return (
-      <div style={styles.container}>
-        <div style={styles.title}>{audioTitle}</div>
+      <div className={css(styles.container)}>
+        <div className={css(styles.title)}>{audioTitle}</div>
         <audio
-          style={{ width: "100%" }}
+          className={css({ width: "100%" })}
           src={parsedSrc}
           autoPlay={autoplay}
           loop={loop}
@@ -66,4 +66,4 @@ Audio.defaultProps = {
   autoplay: false
 };
 
-export default Specimen()(Radium(Audio));
+export default Specimen()(Audio);

@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 
 class Color extends React.Component {
@@ -18,10 +18,11 @@ class Color extends React.Component {
     };
 
     return (
-      <div style={{ width: "100%" }}>
-        <div style={{ height: 120, background: value }} />
-        <div style={styles.text}>
-          {name} <div style={{ fontFamily: theme.fontMono }}>{value}</div>
+      <div className={css({ width: "100%" })}>
+        <div className={css({ height: 120, background: value })} />
+        <div className={css(styles.text)}>
+          {name}{" "}
+          <div className={css({ fontFamily: theme.fontMono })}>{value}</div>
         </div>
       </div>
     );
@@ -34,4 +35,4 @@ Color.propTypes = {
   name: PropTypes.string
 };
 
-export default Specimen()(Radium(Color));
+export default Specimen()(Color);

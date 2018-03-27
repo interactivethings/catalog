@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import { text } from "../styles/typography";
 import renderMarkdown from "../markdown/renderMarkdown";
@@ -45,15 +45,15 @@ const Cell = ({ value, style, heading }) => {
   if (typeof value === "string") {
     content = renderMarkdown({ text: value.toString() });
   } else if (value === void 0) {
-    content = <p style={{ opacity: 0.2 }}>—</p>;
+    content = <p className={css({ opacity: 0.2 })}>—</p>;
   } else {
     content = <p>{value}</p>;
   }
 
   return heading ? (
-    <th style={style}>{content}</th>
+    <th className={css(style)}>{content}</th>
   ) : (
-    <td style={style}>{content}</td>
+    <td className={css(style)}>{content}</td>
   );
 };
 
@@ -77,28 +77,28 @@ class Table extends React.Component {
           .reduce((index, row) => index.concat(Object.keys(row)), [])
           .filter((value, i, self) => self.indexOf(value) === i);
     return (
-      <section style={container}>
-        <table style={table}>
-          <thead style={head}>
+      <section className={css(container)}>
+        <table className={css(table)}>
+          <thead className={css(head)}>
             <tr>
               {tableKeys.map((key, k) => (
                 <Cell
                   heading
                   value={key}
                   key={k}
-                  style={cellStyle(tableKeys.length, k)}
+                  className={css(cellStyle(tableKeys.length, k))}
                 />
               ))}
             </tr>
           </thead>
           <tbody>
             {rows.map((row, i) => (
-              <tr style={tableRow} key={i}>
+              <tr className={css(tableRow)} key={i}>
                 {tableKeys.map((key, k) => (
                   <Cell
                     value={row[key]}
                     key={k}
-                    style={cellStyle(tableKeys.length, k)}
+                    className={css(cellStyle(tableKeys.length, k))}
                   />
                 ))}
               </tr>
@@ -117,6 +117,4 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {};
-export default Specimen(undefined, undefined, { withChildren: false })(
-  Radium(Table)
-);
+export default Specimen(undefined, undefined, { withChildren: false })(Table);

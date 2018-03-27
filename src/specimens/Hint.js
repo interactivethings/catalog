@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
+import { css } from "../emotion";
 import PropTypes from "prop-types";
-import { Style } from "radium";
 import renderMarkdown from "../markdown/renderMarkdown";
 import Specimen from "../components/Specimen/Specimen";
 import { text, heading } from "../styles/typography";
@@ -18,7 +18,27 @@ function getStyle(theme) {
       border: "1px solid #ffefaa",
       borderRadius: "2px",
       color: "#966900",
-      padding: "20px"
+      padding: "20px",
+      "& code": {
+        display: "inline-block",
+        border: "1px solid rgba(0,0,0,.035)",
+        borderRadius: 1,
+        background: "rgba(0,0,0,.03)",
+        fontFamily: theme.fontMono,
+        fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
+        lineHeight: 1,
+        padding: "0.12em 0.2em",
+        textIndent: 0
+      },
+      "& :first-child": {
+        marginTop: 0
+      },
+      "& :last-child": {
+        marginBottom: 0
+      },
+      "& a": {
+        color: "currentColor"
+      }
     },
     neutral: {
       // Contrast: AAA / AA
@@ -90,38 +110,11 @@ class Hint extends React.Component {
     };
 
     return (
-      <div style={styles.container}>
-        <section style={mergedStyle} className="cg-Hint">
-          <Style
-            scopeSelector=".cg-Hint"
-            rules={{
-              code: {
-                display: "inline-block",
-                border: "1px solid rgba(0,0,0,.035)",
-                borderRadius: 1,
-                background: "rgba(0,0,0,.03)",
-                fontFamily: theme.fontMono,
-                fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
-                lineHeight: 1,
-                padding: "0.12em 0.2em",
-                textIndent: 0
-              },
-              ":first-child": {
-                marginTop: 0
-              },
-              ":last-child": {
-                marginBottom: 0
-              },
-              a: {
-                color: mergedStyle.color
-              }
-            }}
-          />
-          <div>
-            {typeof children === "string"
-              ? renderMarkdown({ text: children, renderer: markdownRenderer })
-              : children}
-          </div>
+      <div className={css(styles.container)}>
+        <section className={css(mergedStyle)}>
+          {typeof children === "string"
+            ? renderMarkdown({ text: children, renderer: markdownRenderer })
+            : children}
         </section>
       </div>
     );

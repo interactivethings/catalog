@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-markdown";
+import { css } from "../../emotion";
 import { text } from "../../styles/typography";
 
 const getStyle = theme => {
@@ -35,7 +36,7 @@ const renderPrismTokens = (tokens, styles) => {
   return tokens.map((t, i) => {
     if (isToken(t)) {
       return (
-        <span key={`${t.type}-${i}`} style={styles[t.type]}>
+        <span key={`${t.type}-${i}`} className={css(styles[t.type])}>
           {Array.isArray(t.content)
             ? renderPrismTokens(t.content, styles)
             : t.content}
@@ -58,8 +59,8 @@ export default class HighlightedCode extends Component {
     const lang = Prism.languages.hasOwnProperty(language) ? language : null;
 
     return (
-      <pre style={styles.pre}>
-        <code style={styles.code}>
+      <pre className={css(styles.pre)}>
+        <code className={css(styles.code)}>
           {lang
             ? renderPrismTokens(
                 Prism.tokenize(code, Prism.languages[lang], lang),

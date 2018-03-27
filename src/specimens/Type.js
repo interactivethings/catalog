@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { css } from "../emotion";
 import { catalogShape } from "../CatalogPropTypes";
 import Specimen from "../components/Specimen/Specimen";
 
@@ -84,23 +85,29 @@ class Type extends React.Component {
       : null;
 
     const description = (
-      <ul style={{ ...styles.title, ...styles.list, ...fontColor }}>
+      <ul className={css({ ...styles.title, ...styles.list, ...fontColor })}>
         {options.color ? (
-          <li style={styles.list}>color: {options.color + ";"}</li>
+          <li className={css(styles.list)}>color: {options.color + ";"}</li>
         ) : null}
         {options.background ? (
-          <li style={styles.list}>
+          <li className={css(styles.list)}>
             background-color: {options.background + ";"}
           </li>
         ) : null}
         {fontWeight !== "normal" ? (
-          <li style={styles.list}>font-weight: {options.weight + ";"}</li>
+          <li className={css(styles.list)}>
+            font-weight: {options.weight + ";"}
+          </li>
         ) : null}
         {isItalic !== "normal" ? (
-          <li style={styles.list}>font-style: {options.style + ";"}</li>
+          <li className={css(styles.list)}>
+            font-style: {options.style + ";"}
+          </li>
         ) : null}
         {letterSpacing ? (
-          <li style={styles.list}>letter-spacing: {options.tracking + ";"}</li>
+          <li className={css(styles.list)}>
+            letter-spacing: {options.tracking + ";"}
+          </li>
         ) : null}
       </ul>
     );
@@ -118,16 +125,16 @@ class Type extends React.Component {
           const isPixel = typeof headingValue === "number" ? "px" : "";
           return (
             <div key={i}>
-              <div style={{ ...styles.title, ...fontColor }}>
+              <div className={css({ ...styles.title, ...fontColor })}>
                 {headingLabel} ({headingValue + isPixel})
               </div>
               <div
-                style={{
+                className={css({
                   ...styles.heading,
                   ...letterSpacing,
                   font: `${isItalic} normal ${fontWeight} ${headingValue +
                     isPixel} ${fontFamily}`
-                }}
+                })}
               >
                 {headlineText}
               </div>
@@ -155,15 +162,15 @@ class Type extends React.Component {
             .join("/");
           return (
             <div key={i}>
-              <div style={{ ...styles.title, ...fontColor }}>
+              <div className={css({ ...styles.title, ...fontColor })}>
                 {paragraphLabel} ({values})
               </div>
               <div
-                style={{
+                className={css({
                   ...styles.paragraph,
                   ...letterSpacing,
                   font: `${isItalic} normal ${fontWeight} ${values} ${fontFamily}`
-                }}
+                })}
               >
                 {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
               </div>
@@ -173,16 +180,16 @@ class Type extends React.Component {
       : null;
 
     return (
-      <section style={styles.container}>
+      <section className={css(styles.container)}>
         <div
-          style={{
+          className={css({
             ...styles.wrapper,
             ...kerning,
             ...smoothing,
             ...fontColor,
             ...backgroundColor,
             ...backgroundImage
-          }}
+          })}
         >
           {headings}
           {headings && paragraphs ? <br /> : null}

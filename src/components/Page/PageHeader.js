@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../../emotion";
 import { heading } from "../../styles/typography";
 
 class PageHeader extends Component {
@@ -36,10 +36,10 @@ class PageHeader extends Component {
     };
 
     return (
-      <div style={styles.outerHeader}>
-        <div style={styles.innerHeader}>
-          <h2 style={styles.superTitle}>{superTitle}</h2>
-          <h1 style={styles.title}>{title}</h1>
+      <div className={css(styles.outerHeader)}>
+        <div className={css(styles.innerHeader)}>
+          <h2 className={css(styles.superTitle)}>{superTitle}</h2>
+          <h1 className={css(styles.title)}>{title}</h1>
         </div>
       </div>
     );
@@ -52,4 +52,4 @@ PageHeader.propTypes = {
   superTitle: PropTypes.string.isRequired
 };
 
-export default Radium(PageHeader);
+export default PageHeader;
