@@ -8,7 +8,7 @@ import { hcl } from "d3-color";
 const _ColorPaletteItem = ({ name, value, styles, width }) => {
   const contrastingValue = hcl(value).l < 55 ? "#fff" : "#000";
   return (
-    <div style={{ width, ...styles.paletteItem, backgroundColor: value }}>
+    <div style={{ width, ...styles.paletteItem, backgroundColor: value }} data-sketch-color={value}>
       <div style={{ ...styles.textPalette, color: contrastingValue }}>
         {name} <div style={styles.mono}>{value}</div>
       </div>
