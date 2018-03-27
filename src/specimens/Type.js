@@ -164,6 +164,7 @@ class Type extends React.Component {
                   ...letterSpacing,
                   font: `${isItalic} normal ${fontWeight} ${values} ${fontFamily}`
                 }}
+                data-sketch-text={paragraphLabel}
               >
                 {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
               </div>
