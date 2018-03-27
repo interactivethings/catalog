@@ -1,7 +1,7 @@
-import React from 'react';
-import Slugger from 'github-slugger';
-import Link from '../components/Link/Link';
-import Heading from '../components/Content/Heading';
+import React from "react";
+import Slugger from "github-slugger";
+import Link from "../components/Link/Link";
+import Heading from "../components/Content/Heading";
 
 export default class ReactRenderer {
   constructor() {
@@ -12,7 +12,11 @@ export default class ReactRenderer {
     return this.itemsRenderedCount++;
   }
   code(code, lang /* , escaped*/) {
-    return <pre key={this.getKey()}><code className={lang}>{code}</code></pre>;
+    return (
+      <pre key={this.getKey()}>
+        <code className={lang}>{code}</code>
+      </pre>
+    );
   }
   blockquote(quote) {
     return <blockquote key={this.getKey()}>{quote}</blockquote>;
@@ -29,9 +33,7 @@ export default class ReactRenderer {
   }
   list(body, ordered) {
     const key = this.getKey();
-    return ordered
-      ? <ol key={key}>{body}</ol>
-      : <ul key={key}>{body}</ul>;
+    return ordered ? <ol key={key}>{body}</ol> : <ul key={key}>{body}</ul>;
   }
   listitem(text) {
     return <li key={this.getKey()}>{text}</li>;
@@ -66,12 +68,22 @@ export default class ReactRenderer {
     return <del key={this.getKey()}>{content}</del>;
   }
   link(href, title, text) {
-    return <Link to={href} title={title} key={this.getKey()}>{text}</Link>;
+    return (
+      <Link to={href} title={title} key={this.getKey()}>
+        {text}
+      </Link>
+    );
   }
   image(href, title, alt) {
     return <img src={href} title={title} alt={alt} key={this.getKey()} />;
   }
   html(html) {
-    return <div dangerouslySetInnerHTML={{__html: html.join('')}} key={this.getKey()} />; // eslint-disable-line react/no-danger
+    return (
+      <div
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: html.join("") }}
+        key={this.getKey()}
+      />
+    );
   }
 }

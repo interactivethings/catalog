@@ -1,5 +1,57 @@
 # Change Log
 
+For newer release notes please check Catalog's [GitHub Releases](https://github.com/interactivethings/catalog/releases)
+
+## v3.2.0
+
+### New
+
+- Make Type specimen accept arrays for values to customize labels ([#332](https://github.com/interactivethings/catalog/pull/332))
+- Allow theming header and navigation bar ([#341](https://github.com/interactivethings/catalog/pull/341))
+- Allow to re-order responsive sizes ([#333](https://github.com/interactivethings/catalog/pull/333))
+
+## v3.1.5
+
+### Fixes
+
+- Improve React Specimen code transform ([#329](https://github.com/interactivethings/catalog/pull/329))
+
+## v3.1.4
+
+### Fixes
+
+- Clone stylesheet references from parent page into iframes ([#326](https://github.com/interactivethings/catalog/pull/326))
+
+## v3.1.3
+
+### Fixes
+
+- Clone stylesheet references from parent page into iframes ([#319](https://github.com/interactivethings/catalog/pull/319))
+- Fix for potentially undefined ref when resizing the React or HTML Specimen ([fc12f24](https://github.com/interactivethings/catalog/commit/fc12f242c76ddbc273aadbe2a7ed44b7033c5bd1))
+- Enable iframe scrolling in responsive mode ([#321](https://github.com/interactivethings/catalog/pull/321))
+
+## v3.1.2
+
+### Fixes
+
+- Fixes botched React default require in bundled module
+
+## v3.1.1
+
+### Fixes
+
+- Fixes webpack-dev-server error by updating its version dependency
+
+## v3.1.0
+
+### New
+
+- Added support for CLI config file ([#312](https://github.com/interactivethings/catalog/pull/312))
+
+### Fixes
+
+- React element stringification fixes ([#306](https://github.com/interactivethings/catalog/pull/306))
+
 ## v3.0.0
 
 ### New
@@ -250,14 +302,14 @@ The standalone version still works the same way (with some small changes to the 
 
 ### Removed Specimens
 
-- HTML Project (no replacment yet)
+- HTML Project (no replacement yet)
 - UISpec (replaced by Image, Video, Audio)
 - Icon (replaced by Image)
 
 
 ## 1.1.11 - 2015-03-23
 
-- Added initial draft of UISpec speciment
+- Added initial draft of UISpec specimen
 
 ## 1.1.3 - 1.1.9 - 2014-11-27
 

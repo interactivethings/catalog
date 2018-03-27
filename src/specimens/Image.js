@@ -1,45 +1,53 @@
-import React from 'react';
-import {catalogShape} from '../CatalogPropTypes';
-import PropTypes from 'prop-types';
-import Radium, {Style} from 'radium';
-import Specimen from '../components/Specimen/Specimen';
-import renderMarkdown from '../markdown/renderMarkdown';
-import * as srcset from 'srcset';
-import {getPublicPath} from '../utils/path';
+import React from "react";
+import { catalogShape } from "../CatalogPropTypes";
+import PropTypes from "prop-types";
+import Radium, { Style } from "radium";
+import Specimen from "../components/Specimen/Specimen";
+import renderMarkdown from "../markdown/renderMarkdown";
+import * as srcset from "srcset";
+import { getPublicPath } from "../utils/path";
 
-import {text, heading} from '../styles/typography';
+import { text, heading } from "../styles/typography";
 
 class Image extends React.Component {
   render() {
-    const {catalog, src, title, overlay, description, ...options} = this.props;
-    const {theme} = catalog;
-    const {scale = true} = options;
+    const {
+      catalog,
+      src,
+      title,
+      overlay,
+      description,
+      ...options
+    } = this.props;
+    const { theme } = catalog;
+    const { scale = true, imageContainerStyle = {} } = options;
 
     const styles = {
       container: {
-        position: 'relative',
-        width: '100%'
+        position: "relative",
+        width: "100%"
       },
       imageContainer: {
-        boxSizing: 'border-box',
-        padding: '20px',
+        boxSizing: "border-box",
+        padding: "20px",
         background: `url(${theme.checkerboardPatternLight})`,
         color: theme.textColor,
-        overflowX: 'auto'
+        overflowX: "auto",
+        ...imageContainerStyle
       },
       image: {
-        display: 'block',
-        ...(scale ? {maxWidth: '100%'} : {})
+        display: "block",
+        ...(scale ? { maxWidth: "100%" } : {})
       },
       overlay: {
-        boxSizing: 'border-box',
+        boxSizing: "border-box",
         opacity: 0,
-        width: '100%',
-        position: 'absolute',
+        width: "100%",
+        position: "absolute",
         padding: 20,
         top: 0,
         left: 0,
-        ':hover': {
+        ":hover": {
           opacity: 1
         }
       },
@@ -62,16 +70,16 @@ class Image extends React.Component {
         background: `url(${theme.checkerboardPatternDark})`
       },
       plain: {
-        background: 'transparent',
+        background: "transparent",
         padding: 0
       },
       plain_light: {
         background: theme.bgLight,
-        padding: '20px'
+        padding: "20px"
       },
       plain_dark: {
         background: theme.bgDark,
-        padding: '20px'
+        padding: "20px"
       }
     };
 
@@ -84,34 +92,67 @@ class Image extends React.Component {
     };
 
     // Deconstruct srcset strings
-    const imageSrcset = srcset.parse(src).map(img => ({...img, url: getPublicPath(img.url, catalog)}));
-    const overlaySrcset = overlay ? srcset.parse(overlay).map(img => ({...img, url: getPublicPath(img.url, catalog)})) : [];
+    const imageSrcset = srcset
+      .parse(src)
+      .map(img => ({ ...img, url: getPublicPath(img.url, catalog) }));
+    const overlaySrcset = overlay
+      ? srcset
+          .parse(overlay)
+          .map(img => ({ ...img, url: getPublicPath(img.url, catalog) }))
+      : [];
 
     const fallbackSrc = imageSrcset[0].url;
     const fallbackOverlay = overlay ? overlaySrcset[0].url : undefined;
 
     return (
       <div style={styles.container}>
-        <div style={{...styles.imageContainer, ...backgroundStyle}}>
+        <div style={{ ...styles.imageContainer, ...backgroundStyle }}>
           <Style
-            scopeSelector='.cg-ImageSpecimenDescription >'
+            scopeSelector=".cg-ImageSpecimenDescription >"
             rules={{
-              ':first-child': {
+              ":first-child": {
                 marginTop: 0
               },
-              ':last-child': {
+              ":last-child": {
                 marginBottom: 0
               }
-            }}/>
-          <img style={styles.image} srcSet={srcset.stringify(imageSrcset)} src={fallbackSrc}/>
-          {overlay && <div style={{...styles.overlay, ...(options.plain && !options.light && !options.dark ? {padding: 0} : null)}}>
-            <img style={styles.image} srcSet={srcset.stringify(overlaySrcset)} src={fallbackOverlay} />
-          </div>}
+            }}
+          />
+          <img
+            style={styles.image}
+            srcSet={srcset.stringify(imageSrcset)}
+            src={fallbackSrc}
+          />
+          {overlay && (
+            <div
+              style={{
+                ...styles.overlay,
+                ...(options.plain && !options.light && !options.dark
+                  ? { padding: 0 }
+                  : null)
+              }}
+            >
+              <img
+                style={styles.image}
+                srcSet={srcset.stringify(overlaySrcset)}
+                src={fallbackOverlay}
+              />
+            </div>
+          )}
         </div>
-        {(title || description) && <div style={styles.meta}>
-          {title && <div style={styles.title}>{title}</div>}
-          {description && <div className='cg-ImageSpecimenDescription' style={styles.description}>{renderMarkdown({text: description})}</div>}
-        </div>}
+        {(title || description) && (
+          <div style={styles.meta}>
+            {title && <div style={styles.title}>{title}</div>}
+            {description && (
+              <div
+                className="cg-ImageSpecimenDescription"
+                style={styles.description}
+              >
+                {renderMarkdown({ text: description })}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     );
   }
@@ -126,7 +167,8 @@ Image.propTypes = {
   plain: PropTypes.bool,
   light: PropTypes.bool,
   dark: PropTypes.bool,
-  scale: PropTypes.bool
+  scale: PropTypes.bool,
+  imageContainerStyle: PropTypes.object
 };
 
 export default Specimen()(Radium(Image));

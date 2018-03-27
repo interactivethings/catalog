@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Returns any expression 1`] = `"'use strict';var h=React.createElement;return h('div',{},'hey');"`;
+
+exports[`Returns the last expression 1`] = `"'use strict';React.createElement('div',{},'hey');return React.createElement('div',{},'ho');"`;
+
+exports[`Transforms a component 1`] = `"\\"use strict\\";return React.createElement(Foo,{bar:true},\\"baz\\");"`;
+
+exports[`Transforms a component which is defined inline 1`] = `"\\"use strict\\";var Foo=function Foo(){return null;};return React.createElement(Foo,{bar:true},\\"baz\\");"`;
+
+exports[`Transforms a nested element 1`] = `"\\"use strict\\";return React.createElement(\\"div\\",null,React.createElement(\\"p\\",null,\\"foo\\"));"`;
+
+exports[`Transforms a simple element 1`] = `"\\"use strict\\";return React.createElement(\\"div\\",null,\\"foo\\");"`;
+
+exports[`Transforms an array of elements 1`] = `"\\"use strict\\";return[React.createElement(\\"div\\",{key:1},\\"hey\\"),React.createElement(\\"div\\",{key:2},\\"ho\\")];"`;

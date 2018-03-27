@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /*
 
@@ -20,20 +20,20 @@ Needs work:
 
 */
 
-const reactElementToString = (el, indent = '') => {
+const reactElementToString = (el, indent = "") => {
   if (el === void 0) {
-    return '';
+    return "";
   }
 
-  if (typeof el === 'string') {
+  if (typeof el === "string") {
     return `${indent}${el}`;
   }
 
-  const {props, type} = el;
-  let displayName = '';
+  const { props, type } = el;
+  let displayName = "";
   let defaultProps = null;
 
-  if (typeof type === 'string') {
+  if (typeof type === "string") {
     displayName = type;
   } else {
     displayName = type.displayName || type.name;
@@ -44,33 +44,45 @@ const reactElementToString = (el, indent = '') => {
     if (v === true) {
       return k;
     }
-    if (typeof v === 'string') {
+    if (typeof v === "string") {
       return `${k}='${v}'`;
     }
-    return React.isValidElement(v)
-      ? `${k}={${reactElementToString(v)}}`
-      : `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
+    if (React.isValidElement(v)) {
+      return `${k}={${reactElementToString(v)}}`;
+    }
+    return `${k}={${JSON.stringify(v) || v.name || typeof v}}`;
   };
 
   const propKeys = Object.keys(props)
     .sort()
-    .filter((k) => k !== 'children')
-    .filter((k) => defaultProps ? props[k] !== defaultProps[k] : true);
+    .filter(k => k !== "children")
+    .filter(k => props[k] !== undefined)
+    .filter(k => (defaultProps ? props[k] !== defaultProps[k] : true));
 
-  const propString = propKeys.map((k) => formatProp(k, props[k])).join(`\n${indent}  `);
+  let propString = "";
+  try {
+    propString = propKeys
+      .map(k => formatProp(k, props[k]))
+      .join(`\n${indent}  `);
+  } catch (e) {
+    return `Couldn't stringify React Element. Try setting \`sourceText\` explicitly or use \`noSource\`.
 
-  const whitespaceBeforeProps = propKeys.length > 1 // eslint-disable-line no-nested-ternary
-    ? `\n${indent}  `
-    : propKeys.length === 1
-      ? ' '
-      : '';
-  const whitespaceAfterProps = propKeys.length > 1 ? `\n${indent}` : '';
+${e}`;
+  }
 
-  return props.children ?
-`${indent}<${displayName}${whitespaceBeforeProps}${propString}${whitespaceAfterProps}>
-${React.Children.map(props.children, (c) => reactElementToString(c, `${indent}  `)).join('\n')}
-${indent}</${displayName}>` :
-`${indent}<${displayName}${whitespaceBeforeProps}${propString}${whitespaceAfterProps} />`;
+  const whitespaceBeforeProps =
+    propKeys.length > 1 // eslint-disable-line no-nested-ternary
+      ? `\n${indent}  `
+      : propKeys.length === 1 ? " " : "";
+  const whitespaceAfterProps = propKeys.length > 1 ? `\n${indent}` : "";
+
+  return props.children
+    ? `${indent}<${displayName}${whitespaceBeforeProps}${propString}${whitespaceAfterProps}>
+${React.Children.map(props.children, c =>
+        reactElementToString(c, `${indent}  `)
+      ).join("\n")}
+${indent}</${displayName}>`
+    : `${indent}<${displayName}${whitespaceBeforeProps}${propString}${whitespaceAfterProps} />`;
 };
 
 export default reactElementToString;

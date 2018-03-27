@@ -1,8 +1,8 @@
 // @flow
-import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from "autoprefixer";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
 
-const cssFilename = 'static/[name].[contenthash:8].css';
+const cssFilename = "static/[name].[contenthash:8].css";
 
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
@@ -11,10 +11,9 @@ const cssFilename = 'static/[name].[contenthash:8].css';
 // FIXME: detect this
 const shouldUseRelativeAssetPaths = false;
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  // Making sure that the publicPath goes back to to build folder.
-  ? {publicPath: Array(cssFilename.split('/').length).join('../')}
+  ? // Making sure that the publicPath goes back to to build folder.
+    { publicPath: Array(cssFilename.split("/").length).join("../") }
   : {};
-
 
 export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
   moduleRules: [
@@ -25,20 +24,26 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         // A missing `test` is equivalent to a match.
         {
           test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-          loader: require.resolve('url-loader'),
+          loader: require.resolve("url-loader"),
           options: {
             limit: 10000,
-            name: 'static/media/[name].[hash:8].[ext]'
+            name: "static/media/[name].[hash:8].[ext]"
           }
         },
         // Process JS with Babel.
         {
           test: /\.(js|jsx)$/,
-          include: [paths.appSrc, paths.catalogSrcDir],
-          loader: require.resolve('babel-loader'),
+          include: [paths.appRoot, paths.catalogSrcDir],
+          exclude: /node_modules/,
+          loader: require.resolve("babel-loader"),
           options: {
             babelrc: useBabelrc,
-            presets: useBabelrc ? [] : [require.resolve('babel-preset-react-app'), require.resolve('../../../babel')],
+            presets: useBabelrc
+              ? []
+              : [
+                  require.resolve("babel-preset-react-app"),
+                  require.resolve("../../../babel")
+                ],
             cacheDirectory: true
           }
         },
@@ -47,79 +52,75 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
         // "style" loader turns CSS into JS modules that inject <style> tags.
         // In production, we use a plugin to extract that CSS to a file, but
         // in development "style" loader enables hot editing of CSS.
-        (
         dev
           ? {
-            test: /\.css$/,
-            use: [
-              require.resolve('style-loader'), {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 1
-                }
-              }, {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-                  plugins: () => {
-                    return [
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9' // React doesn't support IE8 anyway
-                        ]
-                      })
-                    ];
+              test: /\.css$/,
+              use: [
+                require.resolve("style-loader"),
+                {
+                  loader: require.resolve("css-loader"),
+                  options: {
+                    importLoaders: 1
+                  }
+                },
+                {
+                  loader: require.resolve("postcss-loader"),
+                  options: {
+                    ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
+                    plugins: () => {
+                      return [
+                        autoprefixer({
+                          browsers: [
+                            ">1%",
+                            "last 4 versions",
+                            "Firefox ESR",
+                            "not ie < 9" // React doesn't support IE8 anyway
+                          ]
+                        })
+                      ];
+                    }
                   }
                 }
-              }
-            ]
-          }
-        : {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: require.resolve('style-loader'),
-            use: [
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  importLoaders: 1
-                }
-              }, {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-                  plugins: () => {
-                    return [
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9' // React doesn't support IE8 anyway
-                        ]
-                      })
-                    ];
+              ]
+            }
+          : {
+              test: /\.css$/,
+              loader: ExtractTextPlugin.extract({
+                fallback: require.resolve("style-loader"),
+                use: [
+                  {
+                    loader: require.resolve("css-loader"),
+                    options: {
+                      importLoaders: 1
+                    }
+                  },
+                  {
+                    loader: require.resolve("postcss-loader"),
+                    options: {
+                      ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
+                      plugins: () => {
+                        return [
+                          autoprefixer({
+                            browsers: [
+                              ">1%",
+                              "last 4 versions",
+                              "Firefox ESR",
+                              "not ie < 9" // React doesn't support IE8 anyway
+                            ]
+                          })
+                        ];
+                      }
+                    }
                   }
-                }
-              }
-            ],
-            ...extractTextPluginOptions
-          })
-        }
-      ),
+                ],
+                ...extractTextPluginOptions
+              })
+            },
         {
-          exclude: [
-            /\.js$/,
-            /\.html$/,
-            /\.json$/,
-            /\.md$/
-          ],
-          loader: require.resolve('file-loader'),
+          exclude: [/\.js$/, /\.html$/, /\.json$/, /\.md$/],
+          loader: require.resolve("file-loader"),
           options: {
-            name: 'static/media/[name].[hash:8].[ext]'
+            name: "static/media/[name].[hash:8].[ext]"
           }
         }
       ]
@@ -128,8 +129,8 @@ export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
   plugins: dev
     ? []
     : [
-      new ExtractTextPlugin({
-        filename: cssFilename
-      })
-    ]
+        new ExtractTextPlugin({
+          filename: cssFilename
+        })
+      ]
 });

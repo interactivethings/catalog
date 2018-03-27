@@ -33,7 +33,17 @@ Start the build process in watch mode:
 
 ``` 
 make
-````
+```
+
+### Docs
+
+To edit Catalog documentation, run:
+
+``` 
+make docs
+```
+
+> Note: this uses the local Catalog build from `dist/`. Run `make` before/alongside `make docs`.
 
 ### Linking
 
@@ -83,7 +93,13 @@ The CI server will automatically run tests, build and publish the new version to
 make build
 ```
 
-### Publish to npm
+### Create a documentation build
+
+```
+make build-docs
+```
+
+### Publish to npm and generate GitHub release notes
 
 ```
 make publish

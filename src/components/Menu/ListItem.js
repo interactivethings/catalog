@@ -1,77 +1,78 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {pageShape} from '../../CatalogPropTypes';
+import PropTypes from "prop-types";
+import React from "react";
+import { pageShape } from "../../CatalogPropTypes";
 
-import Link from '../Link/Link';
-import NestedList from './NestedList';
-import {text} from '../../styles/typography';
+import Link from "../Link/Link";
+import NestedList from "./NestedList";
+import { text } from "../../styles/typography";
 
 export function style(theme) {
   const pseudo = {
     color: theme.sidebarColorTextActive,
-    textDecoration: 'none',
-    background: 'rgba(255,255,255,0.1)',
-    outline: 'none'
+    textDecoration: "none",
+    background: "rgba(255,255,255,0.1)",
+    outline: "none"
   };
   return {
     link: {
       ...text(theme),
       borderTop: `1px solid ${theme.sidebarColorLine}`,
       color: theme.sidebarColorText,
-      cursor: 'pointer',
-      display: 'block',
+      cursor: "pointer",
+      display: "block",
       margin: 0,
-      padding: '16px 40px',
-      textDecoration: 'none',
-      ':hover': pseudo,
-      ':active': pseudo,
-      ':focus': pseudo
+      padding: "16px 40px",
+      textDecoration: "none",
+      ":hover": pseudo,
+      ":active": pseudo,
+      ":focus": pseudo
     },
     activeLink: {
       color: theme.sidebarColorTextActive
     },
     nestedLink: {
-      borderTop: 'none',
-      borderBottom: 'none',
-      padding: '0 24px 16px 60px'
+      borderTop: "none",
+      borderBottom: "none",
+      padding: "0 24px 16px 60px"
     },
     nestedChildren: {
-      borderTop: 'none',
-      borderBottom: 'none',
+      borderTop: "none",
+      borderBottom: "none",
       color: theme.sidebarColorText,
-      cursor: 'pointer',
-      display: 'block',
+      cursor: "pointer",
+      display: "block",
       margin: 0,
-      padding: '15px 40px',
-      textDecoration: 'none'
+      padding: "15px 40px",
+      textDecoration: "none"
     }
   };
 }
 
 class ListItem extends React.Component {
   render() {
-    const {page, theme, nested} = this.props;
-    const {path, pages, title, menuTitle} = page;
+    const { page, theme, nested } = this.props;
+    const { path, pages, title, menuTitle } = page;
 
     const currentStyle = style(theme);
 
     const defaultStyle = nested
-      ? {...currentStyle.link, ...currentStyle.nestedLink}
-      : {...currentStyle.link};
+      ? { ...currentStyle.link, ...currentStyle.nestedLink }
+      : { ...currentStyle.link };
 
     return (
       <li>
-      { pages ?
-        <NestedList {...this.props} {...page} pages={pages} /> :
-        <Link
-          style={defaultStyle}
-          activeStyle={currentStyle.activeLink}
-          to={path}
-          onlyActiveOnIndex={path === '/'}
-        >
-          { menuTitle || title }
-        </Link>
-      }
+        {pages ? (
+          <NestedList {...this.props} {...page} pages={pages} />
+        ) : (
+          <Link
+            style={defaultStyle}
+            activeStyle={currentStyle.activeLink}
+            to={path}
+            onlyActiveOnIndex={path === "/"}
+          >
+            {menuTitle || title}
+          </Link>
+        )}
       </li>
     );
   }

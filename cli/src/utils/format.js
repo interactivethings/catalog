@@ -1,6 +1,6 @@
 // @flow
 
-import chalk from 'chalk';
+import chalk from "chalk";
 
 export const infoMessage = (str: string) => str;
 export const infoMessageDimmed = (str: string) => chalk.dim(str);

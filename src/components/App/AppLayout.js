@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
-import {pageShape, pagesShape} from '../../CatalogPropTypes';
-import NavigationBar from './NavigationBar';
-import PageHeader from '../Page/PageHeader';
+import React from "react";
+import PropTypes from "prop-types";
+import Radium from "radium";
+import { pageShape, pagesShape } from "../../CatalogPropTypes";
+import NavigationBar from "./NavigationBar";
+import PageHeader from "../Page/PageHeader";
 
 const SIDEBAR_WIDTH = 251;
 const SIDEBAR_ANIMATION_DURATION = 0.25;
@@ -18,81 +18,82 @@ body {
 }
 `;
 
-const MenuIcon = (props) => (
-  <svg {...props} width='27px' height='20px' viewBox='0 0 27 20'>
-    <g fill='#FFFFFF'>
-      <rect x='0' y='16' width='26' height='4' />
-      <rect x='0' y='8' width='26' height='4' />
-      <rect x='0' y='0' width='26' height='4' />
+const MenuIcon = props => (
+  <svg {...props} width="27px" height="20px" viewBox="0 0 27 20">
+    <g fill="currentColor">
+      <rect x="0" y="16" width="26" height="4" />
+      <rect x="0" y="8" width="26" height="4" />
+      <rect x="0" y="0" width="26" height="4" />
     </g>
   </svg>
 );
 
 const getStyles = (theme, sidebarVisible) => ({
   container: {
-    background: theme.background,
     margin: 0,
     padding: 0,
-    width: '100%',
-    height: '100%',
-    position: 'relative',
+    width: "100%",
+    height: "100%",
+    position: "relative",
     // Prevent flash of un-media-queried content by Radium
-    display: 'none',
-    '@media (min-width: 0px)': {
+    display: "none",
+    "@media (min-width: 0px)": {
       // Use display: flex, so flexbox children aren't affected by IE's min-height bug
       // See https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
-      display: 'flex'
+      display: "flex"
     }
   },
   menuIcon: {
-    cursor: 'pointer',
+    color: theme.pageHeadingTextColor,
+    cursor: "pointer",
     height: 30,
     left: 20,
-    position: 'absolute',
+    position: "absolute",
     top: 20,
     width: 30
   },
   sideNav: {
     background: theme.sidebarColor,
-    color: '#fff',
-    overflowY: 'auto',
-    position: 'fixed',
-    height: '100vh',
+    color: "#fff",
+    overflowY: "auto",
+    position: "fixed",
+    height: "100vh",
     width: SIDEBAR_WIDTH - 1,
     top: 0,
     left: 0,
     borderRight: `1px solid ${theme.sidebarColorLine}`,
     transform: `translateX(${sidebarVisible ? 0 : -SIDEBAR_WIDTH}px)`,
     transition: `transform ${SIDEBAR_ANIMATION_DURATION}s ease-in-out`,
-    WebkitOverflowScrolling: 'touch',
-    '@media (min-width: 1000px)': {
+    WebkitOverflowScrolling: "touch",
+    "@media (min-width: 1000px)": {
       transform: `translateX(0px)`,
-      transition: 'none'
+      transition: "none"
     }
   },
   navBackground: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
     opacity: sidebarVisible ? 1 : 0,
-    visibility: sidebarVisible ? 'visible' : 'hidden',
+    visibility: sidebarVisible ? "visible" : "hidden",
     transition: `opacity ${SIDEBAR_ANIMATION_DURATION}s, visibility ${SIDEBAR_ANIMATION_DURATION}s`,
-    '@media (min-width: 1000px)': {
-      display: 'none'
+    "@media (min-width: 1000px)": {
+      display: "none"
     }
   },
   content: {
-    boxSizing: 'border-box',
-    display: 'flex',
-    minHeight: '100vh',
-    width: '100%',
-    flexDirection: 'column',
-    position: 'relative',
+    background: theme.background,
+    boxSizing: "border-box",
+    display: "flex",
+    minHeight: "100vh",
+    width: "100%",
+    flexDirection: "column",
+    position: "relative",
     zIndex: 0, // To create a new stacking context, see #223.
-    '@media (min-width: 1000px)': {
+    "@media (min-width: 1000px)": {
       paddingLeft: SIDEBAR_WIDTH
     }
   }
@@ -115,8 +116,8 @@ class AppLayout extends React.Component {
   }
 
   render() {
-    const {sideNav, theme, pages, page} = this.props;
-    const {sidebarVisible} = this.state;
+    const { sideNav, theme, pages, page } = this.props;
+    const { sidebarVisible } = this.state;
 
     const styles = getStyles(theme, sidebarVisible);
 
@@ -127,17 +128,31 @@ class AppLayout extends React.Component {
       <div style={styles.container}>
         <style>{globalStyle}</style>
         <div style={styles.content}>
-          <PageHeader theme={theme} title={page.title} superTitle={page.superTitle} />
-          <div style={{flexGrow: 1}}>
-            { this.props.children }
-          </div>
-          {!page.hideFromMenu && <NavigationBar theme={theme} nextPage={nextPage} previousPage={previousPage} />}
+          <PageHeader
+            theme={theme}
+            title={page.title}
+            superTitle={page.superTitle}
+          />
+          <div style={{ flexGrow: 1 }}>{this.props.children}</div>
+          {!page.hideFromMenu && (
+            <NavigationBar
+              theme={theme}
+              nextPage={nextPage}
+              previousPage={previousPage}
+            />
+          )}
         </div>
-        <MenuIcon style={styles.menuIcon} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
-        <div style={styles.navBackground} onClick={this.toggleSidebar} onTouchEnd={this.toggleSidebar} />
-        <div style={styles.sideNav}>
-          { sideNav }
-        </div>
+        <MenuIcon
+          style={styles.menuIcon}
+          onClick={this.toggleSidebar}
+          onTouchEnd={this.toggleSidebar}
+        />
+        <div
+          style={styles.navBackground}
+          onClick={this.toggleSidebar}
+          onTouchEnd={this.toggleSidebar}
+        />
+        <div style={styles.sideNav}>{sideNav}</div>
       </div>
     );
   }
