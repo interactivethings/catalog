@@ -11,9 +11,7 @@ export function style(theme) {
 
   return {
     bar: {
-      background: theme.sidebarColor,
-      height: "100vh",
-      display: "flex",
+      background: theme.sidebarColor,height: "100vh",display: "flex",
       flexDirection: "column"
     },
     h1: {
