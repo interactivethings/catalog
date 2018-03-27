@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { css, cx } from "./emotion";
 
 const styled = (tag, styles) => {
+  // eslint-disable-next-line react/prop-types
   const Styled = ({ className, ...props }, { catalog }) =>
     React.createElement(tag, {
       ...props,
