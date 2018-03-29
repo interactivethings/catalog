@@ -21,73 +21,66 @@ function getStyle(theme) {
       borderBottom: `none`
     },
     tableRow: {
-      borderBottom: `1px solid ${theme.sidebarColorLine}`
+      borderBottom: `1px solid ${theme.lightColor}`
     },
     head: {
       fontWeigth: "bold",
       borderBottom: `2px solid ${theme.lightColor}`
     },
     cell: {
-      padding: "0 1em 0 0",
+      ...text(theme),
+      padding: "16px 16px  16px 0 ",
       textAlign: "left",
-      verticalAlign: "top"
-    },
-    cellLast: {
-      padding: "0px",
-      textAlign: "left",
-      verticalAlign: "top"
+      verticalAlign: "top",
+      ":last-child": { padding: "16px 0" },
+      "& > :first-child": { marginTop: 0 },
+      "& > :last-child": { marginBottom: 0 }
     }
   };
 }
 
-const Cell = ({ value, style, heading }) => {
+const Cell = ({ value, style }) => {
   let content;
-  if (typeof value === "string") {
+  if (typeof value === "string" || typeof value === "number") {
     content = renderMarkdown({ text: value.toString() });
   } else if (value === void 0) {
-    content = <p className={css({ opacity: 0.2 })}>—</p>;
+    content = <span className={css({ opacity: 0.2 })}>—</span>;
   } else {
-    content = <p>{value}</p>;
+    content = value;
   }
 
-  return heading ? (
-    <th className={css(style)}>{content}</th>
-  ) : (
-    <td className={css(style)}>{content}</td>
-  );
+  return <td className={css(style)}>{content}</td>;
 };
 
 Cell.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  style: PropTypes.object.isRequired,
-  heading: PropTypes.bool
+  style: PropTypes.object.isRequired
 };
+
+const HeadingCell = ({ value, style }) => (
+  <th className={css({ ...style, fontWeight: "bold" })}>{value}</th>
+);
+
+HeadingCell.propTypes = Cell.propTypes;
 
 class Table extends React.Component {
   render() {
     const { columns, rows, catalog: { theme } } = this.props;
-    const { cell, cellLast, container, table, head, tableRow } = getStyle(
-      theme
-    );
-    const cellStyle = (totalCells, cellIndex) =>
-      cellIndex === totalCells - 1 ? cellLast : cell;
+    const { cell, container, table, head, tableRow } = getStyle(theme);
+
     const tableKeys = columns
       ? columns
       : rows
           .reduce((index, row) => index.concat(Object.keys(row)), [])
           .filter((value, i, self) => self.indexOf(value) === i);
+
     return (
       <section className={css(container)}>
         <table className={css(table)}>
           <thead className={css(head)}>
             <tr>
               {tableKeys.map((key, k) => (
-                <Cell
-                  heading
-                  value={key}
-                  key={k}
-                  className={css(cellStyle(tableKeys.length, k))}
-                />
+                <HeadingCell value={key} key={k} style={cell} />
               ))}
             </tr>
           </thead>
@@ -95,11 +88,7 @@ class Table extends React.Component {
             {rows.map((row, i) => (
               <tr className={css(tableRow)} key={i}>
                 {tableKeys.map((key, k) => (
-                  <Cell
-                    value={row[key]}
-                    key={k}
-                    className={css(cellStyle(tableKeys.length, k))}
-                  />
+                  <Cell value={row[key]} key={k} style={cell} />
                 ))}
               </tr>
             ))}
