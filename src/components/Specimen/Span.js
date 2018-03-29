@@ -1,13 +1,14 @@
 import React from "react";
-import { css } from "../../emotion";
+import { cx } from "../../emotion";
 
 type SpanT = {
   span: 1 | 2 | 3 | 4 | 5 | 6,
-  children: React.Node
+  children: React.Node,
+  style: {}
 };
 
-const Span = ({ span = 6, children }: SpanT) => {
-  const style = {
+const Span = ({ span = 6, style = {}, children }: SpanT) => {
+  const defaultStyle = {
     boxSizing: "border-box",
     display: "flex",
     flexBasis: "100%",
@@ -24,7 +25,7 @@ const Span = ({ span = 6, children }: SpanT) => {
       margin: "24px 10px 0 0"
     }
   };
-  return <div className={css(style)}>{children}</div>;
+  return <div className={cx([defaultStyle, style])}>{children}</div>;
 };
 
 export default Span;

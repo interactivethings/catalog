@@ -28,7 +28,7 @@ export default function Specimen(
       const span = props.span || bodyProps.span || optionProps.span;
 
       return (
-        <Span span={span}>
+        <Span span={span} style={options.style}>
           <WrappedSpecimen
             {...optionProps}
             {...bodyProps}
