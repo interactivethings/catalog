@@ -1,30 +1,39 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import {
-  Router,
-  applyRouterMiddleware,
-  browserHistory,
-  hashHistory
-} from "react-router";
-import { useScroll } from "react-router-scroll";
-import seqKey from "../utils/seqKey";
+import { BrowserRouter, HashRouter, withRouter } from "react-router-dom";
 
 import configureRoutes from "../configureRoutes";
 
-export default class Catalog extends Component {
-  constructor() {
-    super();
-    this.getKey = seqKey("CatalogRouter");
+class _ScrollToTop extends Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
   }
+
+  render() {
+    return this.props.children;
+  }
+}
+
+_ScrollToTop.propTypes = {
+  location: PropTypes.object.isRequired,
+  children: PropTypes.element
+};
+
+const ScrollToTop = withRouter(_ScrollToTop);
+
+// eslint-disable-next-line react/no-multi-comp
+export default class Catalog extends Component {
   render() {
     const configuration = this.props;
+
+    const Router = configuration.useBrowserHistory ? BrowserRouter : HashRouter;
+    const routes = configureRoutes(configuration);
     return (
-      <Router
-        key={this.getKey()}
-        history={configuration.useBrowserHistory ? browserHistory : hashHistory}
-        routes={configureRoutes(configuration)}
-        render={applyRouterMiddleware(useScroll())}
-      />
+      <Router>
+        <ScrollToTop>{routes}</ScrollToTop>
+      </Router>
     );
   }
 }

@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 import React, { Component, Children } from "react";
+import { withRouter, matchPath } from "react-router-dom";
 import App from "./App/App";
 import { catalogShape } from "../CatalogPropTypes";
-
-const fallbackPathRe = /\*$/;
 
 class CatalogContext extends Component {
   getChildContext() {
@@ -19,11 +18,13 @@ class CatalogContext extends Component {
       publicUrl,
       useBrowserHistory
     } = this.props.configuration;
-    const { router } = this.context;
+    const { location } = this.props;
     return {
       catalog: {
         page: pages.find(
-          p => router.isActive(p.path) || fallbackPathRe.test(p.path)
+          p =>
+            matchPath(location.pathname, { path: p.path, exact: true }) ||
+            p.path === undefined
         ),
         getSpecimen: specimen => specimens[specimen],
         theme,
@@ -48,23 +49,22 @@ class CatalogContext extends Component {
 
 CatalogContext.propTypes = {
   configuration: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired
-};
-
-CatalogContext.contextTypes = {
+  children: PropTypes.element.isRequired,
   // From react-router
-  router: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired
 };
 
 CatalogContext.childContextTypes = {
   catalog: catalogShape.isRequired
 };
 
+const CatalogContextWithRouter = withRouter(CatalogContext);
+
 export default function createCatalogContext(config) {
   const ConfiguredCatalogContext = ({ children }) => (
-    <CatalogContext configuration={config}>
+    <CatalogContextWithRouter configuration={config}>
       <App>{children}</App>
-    </CatalogContext>
+    </CatalogContextWithRouter>
   );
 
   ConfiguredCatalogContext.propTypes = {

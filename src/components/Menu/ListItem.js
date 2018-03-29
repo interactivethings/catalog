@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { css, cx } from "../../emotion";
-import { pageShape, pagesShape } from "../../CatalogPropTypes";
+import { pageShape, pagesShape, catalogShape } from "../../CatalogPropTypes";
 
 import Link from "../Link/Link";
 import { text } from "../../styles/typography";
@@ -47,9 +47,9 @@ const style = theme => {
   };
 };
 
-const NestedList = ({ theme, pages, title }, { router }) => {
+const NestedList = ({ theme, pages, title }, { catalog }) => {
   const collapsed = !pages
-    .map(d => d.path && router.isActive(d.path))
+    .map(d => d.path && catalog.page.path === d.path)
     .filter(Boolean).length;
 
   const currentStyle = style(theme);
@@ -64,7 +64,7 @@ const NestedList = ({ theme, pages, title }, { router }) => {
 
   return (
     <div>
-      <Link to={pages[0].path} className={linkStyle}>
+      <Link nav to={pages[0].path} className={linkStyle}>
         {title}
       </Link>
       <ul className={listStyle}>
@@ -85,7 +85,7 @@ NestedList.propTypes = {
 };
 
 NestedList.contextTypes = {
-  router: PropTypes.object.isRequired
+  catalog: catalogShape.isRequired
 };
 
 class ListItem extends React.Component {
@@ -105,10 +105,10 @@ class ListItem extends React.Component {
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
           <Link
+            nav
             className={linkStyle}
             activeStyle={currentStyle.activeLink}
             to={path}
-            onlyActiveOnIndex={path === "/"}
           >
             {menuTitle || title}
           </Link>

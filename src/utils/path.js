@@ -28,10 +28,8 @@ export const parsePath = (path, options) => {
 
     // join basePath
     pathname = addLeadingSlash(
-      stripTrailingSlashes(
-        removeMultiSlashes(
-          options.basePath + "/" + stripBasePath(pathname, options.basePath)
-        )
+      removeMultiSlashes(
+        options.basePath + "/" + stripBasePath(pathname, options.basePath)
       )
     );
   }

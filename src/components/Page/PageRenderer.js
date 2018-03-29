@@ -40,7 +40,8 @@ class PageRenderer extends PureComponent {
   }
 
   jump() {
-    const { location: { query: { a }, hash } } = this.props;
+    const { location: { query, hash } } = this.props;
+    const a = query ? query.a : undefined;
 
     // Hash is always defined, but may be an empty string. But the query param
     // is indeed optional and may be undefined. We do not want to be jumping

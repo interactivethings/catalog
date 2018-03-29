@@ -125,7 +125,7 @@ export default config => {
     .reduce(pageReducer, [])
     .map(p => ({ ...p, superTitle: config.title }))
     .concat({
-      path: parsePath("/*", { basePath }).pathname,
+      path: undefined,
       id: ++pageId,
       component: NotFound,
       title: "Page Not Found",

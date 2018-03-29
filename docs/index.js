@@ -9,13 +9,13 @@ import logo from "./catalog_logo.svg";
 // page views.
 //
 // Note that 'location.pathname' includes the PUBLIC_URL prefix!
-import { browserHistory } from "react-router";
-browserHistory.listen(location => {
-  if (typeof _paq !== "undefined") {
-    _paq.push(["setCustomUrl", location.pathname]);
-    _paq.push(["trackPageView"]);
-  }
-});
+// import { browserHistory } from "history";
+// browserHistory.listen(location => {
+//   if (typeof _paq !== "undefined") {
+//     _paq.push(["setCustomUrl", location.pathname]);
+//     _paq.push(["trackPageView"]);
+//   }
+// });
 
 // Create a convenient loader for markdown files
 const markdownLoader = page => pageLoader(() => import(`./${page}.md`));
