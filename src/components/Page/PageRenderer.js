@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import decode from "querystring/decode";
 import "raf/polyfill";
 
 import React, { PureComponent } from "react";
@@ -40,8 +41,8 @@ class PageRenderer extends PureComponent {
   }
 
   jump() {
-    const { location: { query, hash } } = this.props;
-    const a = query ? query.a : undefined;
+    const { location: { search, hash } } = this.props;
+    const a = search ? decode(search.replace(/^\?/, "")).a : undefined;
 
     // Hash is always defined, but may be an empty string. But the query param
     // is indeed optional and may be undefined. We do not want to be jumping

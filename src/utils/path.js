@@ -36,7 +36,10 @@ export const parsePath = (path, options) => {
 
   return options.useBrowserHistory
     ? { pathname, hash: hash === "#" ? "" : hash }
-    : { pathname, query: anchor ? { a: anchor } : {} };
+    : {
+        pathname,
+        search: anchor ? `a=${encodeURIComponent(anchor)}` : undefined
+      };
 };
 
 export const getPublicPath = (path, options) => {
