@@ -14,6 +14,7 @@ Array [
   <Styled.p>
     World
 </Styled.p>,
+  "",
   <Styled.ul>
     <Styled.li>
         One
@@ -46,6 +47,7 @@ Array [
     </Styled.em>
      text.
 </Styled.p>,
+  "",
   <Styled.blockquote>
     <Styled.p>
         Block quotes rock
@@ -66,11 +68,13 @@ Array [
     }
 />,
   "HELLO PARAGRAPH",
+  "",
   <Styled.ul>
     HELLO LIST ITEM
     HELLO LIST ITEM
 </Styled.ul>,
   "HELLO PARAGRAPH",
+  "",
   <Styled.blockquote>
     HELLO PARAGRAPH
 </Styled.blockquote>,

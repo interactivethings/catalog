@@ -11,6 +11,7 @@ import Type from "./specimens/Type";
 import Download from "./specimens/Download";
 import Video from "./specimens/Video";
 import ReactSpecimen from "./specimens/ReactSpecimen/ReactSpecimen";
+import ReactPropTypes from "./specimens/ReactPropTypes";
 
 export default {
   "raw-code": RawCode,
@@ -25,5 +26,6 @@ export default {
   type: Type,
   download: Download,
   video: Video,
-  react: ReactSpecimen
+  react: ReactSpecimen,
+  "react-proptypes": ReactPropTypes
 };
