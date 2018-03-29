@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { css } from "../../emotion";
-import { pageShape } from "../../CatalogPropTypes";
+import { css, cx } from "../../emotion";
+import { pageShape, pagesShape } from "../../CatalogPropTypes";
 
 import Link from "../Link/Link";
-import NestedList from "./NestedList";
 import { text } from "../../styles/typography";
 
-export function style(theme) {
+const style = theme => {
   const pseudo = {
     color: theme.sidebarColorTextActive,
     textDecoration: "none",
@@ -34,18 +33,60 @@ export function style(theme) {
       borderBottom: "none",
       padding: "0 24px 16px 60px"
     },
-    nestedChildren: {
+    nestedList: {
       borderTop: "none",
       borderBottom: "none",
-      color: theme.sidebarColorText,
-      cursor: "pointer",
       display: "block",
+      listStyle: "none",
       margin: 0,
-      padding: "15px 40px",
-      textDecoration: "none"
+      padding: 0
+    },
+    nestedListHidden: {
+      display: "none"
     }
   };
-}
+};
+
+const NestedList = ({ theme, pages, title }, { router }) => {
+  const collapsed = !pages
+    .map(d => d.path && router.isActive(d.path))
+    .filter(Boolean).length;
+
+  const currentStyle = style(theme);
+
+  const linkStyle = cx(css(currentStyle.link), {
+    [css(currentStyle.activeLink)]: !collapsed
+  });
+
+  const listStyle = cx(css(currentStyle.nestedList), {
+    [css(currentStyle.nestedListHidden)]: collapsed
+  });
+
+  return (
+    <div>
+      <Link to={pages[0].path} className={linkStyle}>
+        {title}
+      </Link>
+      <ul className={listStyle}>
+        {pages
+          .filter(page => !page.hideFromMenu)
+          .map(page => (
+            <ListItem key={page.id} page={page} nested theme={theme} />
+          ))}
+      </ul>
+    </div>
+  );
+};
+
+NestedList.propTypes = {
+  pages: pagesShape.isRequired,
+  title: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired
+};
+
+NestedList.contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
 class ListItem extends React.Component {
   render() {
@@ -54,9 +95,9 @@ class ListItem extends React.Component {
 
     const currentStyle = style(theme);
 
-    const defaultStyle = nested
-      ? { ...currentStyle.link, ...currentStyle.nestedLink }
-      : { ...currentStyle.link };
+    const linkStyle = cx(css(currentStyle.link), {
+      [css(currentStyle.nestedLink)]: nested
+    });
 
     return (
       <li>
@@ -64,7 +105,7 @@ class ListItem extends React.Component {
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
           <Link
-            className={css(defaultStyle)}
+            className={linkStyle}
             activeStyle={currentStyle.activeLink}
             to={path}
             onlyActiveOnIndex={path === "/"}
