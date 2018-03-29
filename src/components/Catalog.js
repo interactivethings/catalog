@@ -15,21 +15,12 @@ export default class Catalog extends Component {
   constructor() {
     super();
     this.getKey = seqKey("CatalogRouter");
-    this.state = {
-      routerKey: this.getKey()
-    };
-  }
-  componentWillReceiveProps() {
-    this.setState({
-      routerKey: this.getKey()
-    });
   }
   render() {
     const configuration = this.props;
-    const { routerKey } = this.state;
     return (
       <Router
-        key={routerKey}
+        key={this.getKey()}
         history={configuration.useBrowserHistory ? browserHistory : hashHistory}
         routes={configureRoutes(configuration)}
         render={applyRouterMiddleware(useScroll())}

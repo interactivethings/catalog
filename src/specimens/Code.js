@@ -33,16 +33,11 @@ function getStyle(theme) {
 }
 
 class Code extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      viewSource: true
+      viewSource: props.collapsed ? false : true
     };
-  }
-  componentWillMount() {
-    if (this.props.collapsed) {
-      this.setState({ viewSource: false });
-    }
   }
 
   render() {
