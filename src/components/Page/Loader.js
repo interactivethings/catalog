@@ -1,9 +1,9 @@
 import React from "react";
-import Radium from "radium";
+import { css, keyframes } from "../../emotion";
 
 const SHOW_AFTER_MS = 500;
 
-const loaderKeyframes = Radium.keyframes(
+const loaderKeyframes = keyframes(
   {
     "0%": { transform: "rotate(0deg)" },
     "50%": { transform: "rotate(180deg)" },
@@ -52,8 +52,8 @@ class Loader extends React.Component {
   render() {
     const loader = this.state.visible ? styles.spinner : styles.hidden;
 
-    return <div style={loader} className="cg-Page-Loader" />;
+    return <div className={css(loader)} />;
   }
 }
 
-export default Radium(Loader);
+export default Loader;

@@ -6,6 +6,7 @@ Original https://github.com/ryanseddon/react-frame-component/
 */
 
 import React, { Component } from "react";
+import { css } from "../../emotion";
 import {
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer,
   unmountComponentAtNode
@@ -110,7 +111,7 @@ class FrameComponent extends Component {
         ref={el => {
           this.iframe = el;
         }}
-        style={style}
+        className={css(style)}
       />
     );
   }

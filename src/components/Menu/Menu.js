@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { css } from "../../emotion";
 import { pagesShape } from "../../CatalogPropTypes";
 import { heading, text, getFontSize } from "../../styles/typography";
 import Link from "../Link/Link";
@@ -23,7 +24,8 @@ export function style(theme) {
       height: theme.pageHeadingHeight,
       display: "flex",
       justifyContent: "flex-end",
-      flexDirection: "column"
+      flexDirection: "column",
+      fontSize: "1em"
     },
     title: {
       ...heading(theme, 1),
@@ -80,25 +82,27 @@ class Menu extends React.Component {
     const titleString = title ? title : "";
 
     return (
-      <div style={currentStyle.bar}>
-        <div style={{ flexGrow: 1 }}>
-          <Link to={basePath} style={{ textDecoration: "none" }}>
-            <h1 style={currentStyle.h1}>
+      <div className={css(currentStyle.bar)}>
+        <div className={css({ flexGrow: 1 })}>
+          <Link to={basePath} className={css({ textDecoration: "none" })}>
+            <h1 className={css(currentStyle.h1)}>
               {logoSrc ? (
                 <div
-                  style={{
+                  className={css({
                     ...currentStyle.logo,
                     backgroundImage: `url("${logoSrc}")`
-                  }}
+                  })}
                 >
-                  <span style={currentStyle.logoTitle}>{titleString}</span>
+                  <span className={css(currentStyle.logoTitle)}>
+                    {titleString}
+                  </span>
                 </div>
               ) : (
-                <div style={currentStyle.title}>{titleString}</div>
+                <div className={css(currentStyle.title)}>{titleString}</div>
               )}
             </h1>
           </Link>
-          <ul style={currentStyle.list}>
+          <ul className={css(currentStyle.list)}>
             {pageTree
               .filter(page => !page.hideFromMenu)
               .map(page => (
@@ -106,10 +110,10 @@ class Menu extends React.Component {
               ))}
           </ul>
         </div>
-        <div style={currentStyle.info}>
+        <div className={css(currentStyle.info)}>
           Powered by{" "}
           <a
-            style={currentStyle.link}
+            className={css(currentStyle.link)}
             href="https://www.catalog.style/"
             target="_blank"
           >

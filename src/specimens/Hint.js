@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
+import { css, cx } from "../emotion";
 import PropTypes from "prop-types";
-import { Style } from "radium";
 import renderMarkdown from "../markdown/renderMarkdown";
 import Specimen from "../components/Specimen/Specimen";
 import { text, heading } from "../styles/typography";
@@ -18,7 +18,31 @@ function getStyle(theme) {
       border: "1px solid #ffefaa",
       borderRadius: "2px",
       color: "#966900",
-      padding: "20px"
+      padding: "20px",
+      "& code": {
+        display: "inline-block",
+        border: "1px solid rgba(0,0,0,.035)",
+        borderRadius: 1,
+        background: "rgba(0,0,0,.03)",
+        fontFamily: theme.fontMono,
+        fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
+        lineHeight: 1,
+        padding: "0.12em 0.2em",
+        textIndent: 0
+      },
+      "& :first-child": {
+        marginTop: 0
+      },
+      "& :last-child": {
+        marginBottom: 0
+      },
+      "& a": {
+        color: "currentColor",
+        textDecoration: "underline"
+      },
+      "& p, & ul, & ol, & li, & blockquote": {
+        color: `currentColor`
+      }
     },
     neutral: {
       // Contrast: AAA / AA
@@ -59,17 +83,12 @@ class Hint extends React.Component {
     } = this.props;
     const styles = getStyle(theme);
 
-    const warningStyle = warning ? styles.warning : null;
-    const directiveStyle = directive ? styles.directive : null;
-    const neutralStyle = neutral ? styles.neutral : null;
-    const importantStyle = important ? styles.important : null;
-    const mergedStyle = {
-      ...styles.hint,
-      ...warningStyle,
-      ...directiveStyle,
-      ...neutralStyle,
-      ...importantStyle
-    };
+    const hintStyle = cx(css(styles.hint), {
+      [css(styles.warning)]: warning,
+      [css(styles.directive)]: directive,
+      [css(styles.neutral)]: neutral,
+      [css(styles.important)]: important
+    });
 
     const markdownRenderer = {
       heading(textParts, level, raw) {
@@ -79,10 +98,10 @@ class Hint extends React.Component {
           {
             key: slug,
             id: slug,
-            style: {
+            className: css({
               ...heading(theme, Math.max(0, 3 - level)),
-              color: mergedStyle.color
-            }
+              color: "currentColor"
+            })
           },
           textParts
         );
@@ -90,38 +109,14 @@ class Hint extends React.Component {
     };
 
     return (
-      <div style={styles.container}>
-        <section style={mergedStyle} className="cg-Hint">
-          <Style
-            scopeSelector=".cg-Hint"
-            rules={{
-              code: {
-                display: "inline-block",
-                border: "1px solid rgba(0,0,0,.035)",
-                borderRadius: 1,
-                background: "rgba(0,0,0,.03)",
-                fontFamily: theme.fontMono,
-                fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
-                lineHeight: 1,
-                padding: "0.12em 0.2em",
-                textIndent: 0
-              },
-              ":first-child": {
-                marginTop: 0
-              },
-              ":last-child": {
-                marginBottom: 0
-              },
-              a: {
-                color: mergedStyle.color
-              }
-            }}
-          />
-          <div>
-            {typeof children === "string"
-              ? renderMarkdown({ text: children, renderer: markdownRenderer })
-              : children}
-          </div>
+      <div className={css(styles.container)}>
+        <section className={hintStyle}>
+          {typeof children === "string"
+            ? renderMarkdown({
+                text: children,
+                renderer: markdownRenderer
+              })
+            : children}
         </section>
       </div>
     );

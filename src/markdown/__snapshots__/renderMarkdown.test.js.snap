@@ -11,46 +11,46 @@ Array [
           ]
     }
 />,
-  <p>
+  <Styled.p>
     World
-</p>,
-  <ul>
-    <li>
+</Styled.p>,
+  <Styled.ul>
+    <Styled.li>
         One
-        <ul>
-            <li>
+        <Styled.ul>
+            <Styled.li>
                 Two
-            </li>
-        </ul>
-    </li>
-    <li>
+            </Styled.li>
+        </Styled.ul>
+    </Styled.li>
+    <Styled.li>
         Three
         
-    </li>
-</ul>,
-  <p>
+    </Styled.li>
+</Styled.ul>,
+  <Styled.p>
     A 
-    <Link
+    <Unknown
         title={null}
         to="http://www.interactivethings.com/"
     >
         link
-    </Link>
+    </Unknown>
      and some 
-    <strong>
+    <Styled.strong>
         bold
-    </strong>
+    </Styled.strong>
      and 
-    <em>
+    <Styled.em>
         italic
-    </em>
+    </Styled.em>
      text.
-</p>,
-  <blockquote>
-    <p>
+</Styled.p>,
+  <Styled.blockquote>
+    <Styled.p>
         Block quotes rock
-    </p>
-</blockquote>,
+    </Styled.p>
+</Styled.blockquote>,
 ]
 `;
 
@@ -66,13 +66,13 @@ Array [
     }
 />,
   "HELLO PARAGRAPH",
-  <ul>
+  <Styled.ul>
     HELLO LIST ITEM
     HELLO LIST ITEM
-</ul>,
+</Styled.ul>,
   "HELLO PARAGRAPH",
-  <blockquote>
+  <Styled.blockquote>
     HELLO PARAGRAPH
-</blockquote>,
+</Styled.blockquote>,
 ]
 `;

@@ -1,6 +1,5 @@
 import React, { Children } from "react";
 import PropTypes from "prop-types";
-import { StyleRoot } from "radium";
 import DocumentTitle from "react-document-title";
 import { catalogShape } from "../../CatalogPropTypes";
 
@@ -16,12 +15,10 @@ class App extends React.Component {
   render() {
     const { catalog } = this.context;
     return (
-      <StyleRoot>
+      <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
         <DocumentTitle title={getDocumentTitle(catalog)} />
-        <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
-          {Children.only(this.props.children)}
-        </AppLayout>
-      </StyleRoot>
+        {Children.only(this.props.children)}
+      </AppLayout>
     );
   }
 }

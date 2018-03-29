@@ -2,7 +2,7 @@ import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import { text } from "../styles/typography";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import mapSpecimenOption from "../utils/mapSpecimenOption";
 import HighlightedCode from "../components/HighlightedCode/HighlightedCode";
@@ -59,7 +59,7 @@ class Code extends React.Component {
 
     const toggle = collapsed ? (
       <div
-        style={styles.toggle}
+        className={css(styles.toggle)}
         onClick={() => this.setState({ viewSource: !viewSource })}
       >
         {viewSource ? "close" : "show example code"}
@@ -75,7 +75,7 @@ class Code extends React.Component {
     ) : null;
 
     return (
-      <section style={styles.container}>
+      <section className={css(styles.container)}>
         {toggle}
         {content}
       </section>
@@ -98,4 +98,4 @@ const mapBodyToProps = (parsed, rawBody) => ({ ...parsed, rawBody });
 
 export default Specimen(mapBodyToProps, mapOptionsToProps, {
   withChildren: true
-})(Radium(Code));
+})(Code);

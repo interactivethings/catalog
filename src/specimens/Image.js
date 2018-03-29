@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium, { Style } from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import renderMarkdown from "../markdown/renderMarkdown";
 import * as srcset from "srcset";
@@ -61,7 +61,13 @@ class Image extends React.Component {
         margin: `0 0 8px 0`
       },
       description: {
-        ...text(theme, -1)
+        ...text(theme, -1),
+        ":first-child": {
+          marginTop: 0
+        },
+        ":last-child": {
+          marginBottom: 0
+        }
       },
       light: {
         background: `url(${theme.checkerboardPatternLight})`
@@ -105,35 +111,24 @@ class Image extends React.Component {
     const fallbackOverlay = overlay ? overlaySrcset[0].url : undefined;
 
     return (
-      <div style={styles.container}>
-        <div style={{ ...styles.imageContainer, ...backgroundStyle }}>
-          <Style
-            scopeSelector=".cg-ImageSpecimenDescription >"
-            rules={{
-              ":first-child": {
-                marginTop: 0
-              },
-              ":last-child": {
-                marginBottom: 0
-              }
-            }}
-          />
+      <div className={css(styles.container)}>
+        <div className={css({ ...styles.imageContainer, ...backgroundStyle })}>
           <img
-            style={styles.image}
+            className={css(styles.image)}
             srcSet={srcset.stringify(imageSrcset)}
             src={fallbackSrc}
           />
           {overlay && (
             <div
-              style={{
+              className={css({
                 ...styles.overlay,
                 ...(options.plain && !options.light && !options.dark
                   ? { padding: 0 }
                   : null)
-              }}
+              })}
             >
               <img
-                style={styles.image}
+                className={css(styles.image)}
                 srcSet={srcset.stringify(overlaySrcset)}
                 src={fallbackOverlay}
               />
@@ -141,13 +136,10 @@ class Image extends React.Component {
           )}
         </div>
         {(title || description) && (
-          <div style={styles.meta}>
-            {title && <div style={styles.title}>{title}</div>}
+          <div className={css(styles.meta)}>
+            {title && <div className={css(styles.title)}>{title}</div>}
             {description && (
-              <div
-                className="cg-ImageSpecimenDescription"
-                style={styles.description}
-              >
+              <div className={css(styles.description)}>
                 {renderMarkdown({ text: description })}
               </div>
             )}
@@ -171,4 +163,4 @@ Image.propTypes = {
   imageContainerStyle: PropTypes.object
 };
 
-export default Specimen()(Radium(Image));
+export default Specimen()(Image);

@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from "radium";
+import { css } from "../../emotion";
 
 type SpanT = {
   span: 1 | 2 | 3 | 4 | 5 | 6,
@@ -24,7 +24,7 @@ const Span = ({ span = 6, children }: SpanT) => {
       margin: "24px 10px 0 0"
     }
   };
-  return <div style={style}>{children}</div>;
+  return <div className={css(style)}>{children}</div>;
 };
 
-export default Radium(Span);
+export default Span;

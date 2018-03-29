@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Frame from "../components/Frame/Frame";
 import Hint from "../specimens/Hint";
 import Specimen from "../components/Specimen/Specimen";
@@ -177,13 +177,13 @@ class Html extends React.Component {
       : exampleStyles.background || styles.content.background;
 
     const source = viewSource ? (
-      <div style={styles.source}>
+      <div className={css(styles.source)}>
         <HighlightedCode language="markup" code={children} theme={theme} />
       </div>
     ) : null;
 
     const toggle = !options.noSource ? (
-      <div style={styles.toggle} onClick={() => this.toggleSource()}>
+      <div className={css(styles.toggle)} onClick={() => this.toggleSource()}>
         &lt;&gt;
       </div>
     ) : null;
@@ -201,8 +201,7 @@ class Html extends React.Component {
 
     return (
       <div
-        style={styles.container}
-        className="cg-Specimen-Html"
+        className={css(styles.container)}
         ref={el => {
           this.specimen = el;
         }}
@@ -221,11 +220,11 @@ class Html extends React.Component {
           )}
         {(!options.responsive || parentWidth) && (
           <div
-            style={{
+            className={css({
               ...styles.content,
               ...exampleStyles,
               background: exampleBackground
-            }}
+            })}
           >
             {frame || activeScreenSize ? (
               <Frame
@@ -265,6 +264,4 @@ Html.propTypes = {
   frame: PropTypes.bool
 };
 
-export default Specimen(undefined, undefined, { withChildren: true })(
-  Radium(Html)
-);
+export default Specimen(undefined, undefined, { withChildren: true })(Html);

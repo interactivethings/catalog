@@ -1,7 +1,7 @@
 import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
-import Radium from "radium";
+import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import { getPublicPath } from "../utils/path";
 
@@ -38,14 +38,14 @@ class Video extends React.Component {
     };
 
     return (
-      <section style={styles.section}>
+      <section className={css(styles.section)}>
         <video
           src={parsedSrc}
           autoPlay={autoplay}
           loop={loop}
           muted={muted}
           controls
-          style={{ width: "100%", height: "100%" }}
+          className={css({ width: "100%", height: "100%" })}
         >
           Open{" "}
           <a href={parsedSrc} target="_blank">
@@ -53,7 +53,7 @@ class Video extends React.Component {
           </a>{" "}
           in a new Tab
         </video>
-        {title && <div style={styles.title}>{title}</div>}
+        {title && <div className={css(styles.title)}>{title}</div>}
       </section>
     );
   }
@@ -68,4 +68,4 @@ Video.propTypes = {
   autoplay: PropTypes.bool
 };
 
-export default Specimen()(Radium(Video));
+export default Specimen()(Video);

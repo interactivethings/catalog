@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { catalogShape } from "../../CatalogPropTypes";
 import FrameComponent from "./FrameComponent";
+import { css } from "../../emotion";
 
 const frameStyle = {
   width: "100%",
@@ -33,7 +34,13 @@ export default class Frame extends Component {
     const scaledHeight = autoHeight ? height : height * scale;
 
     return (
-      <div style={{ lineHeight: 0, width: parentWidth, height: scaledHeight }}>
+      <div
+        className={css({
+          lineHeight: 0,
+          width: parentWidth,
+          height: scaledHeight
+        })}
+      >
         <div
           style={{
             width: width,

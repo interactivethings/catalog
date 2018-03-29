@@ -1,7 +1,20 @@
 import React from "react";
 import Slugger from "github-slugger";
-import Link from "../components/Link/Link";
 import Heading from "../components/Content/Heading";
+import {
+  Paragraph,
+  UnorderedList,
+  OrderedList,
+  ListItem,
+  BlockQuote,
+  Hr,
+  Em,
+  Strong,
+  CodeSpan,
+  Del,
+  Image,
+  Link
+} from "../components/Content/Markdown";
 
 export default class ReactRenderer {
   constructor() {
@@ -19,27 +32,31 @@ export default class ReactRenderer {
     );
   }
   blockquote(quote) {
-    return <blockquote key={this.getKey()}>{quote}</blockquote>;
+    return <BlockQuote key={this.getKey()}>{quote}</BlockQuote>;
   }
   heading(text, level, raw) {
     const slug = this.slugger.slug(raw);
     return <Heading text={text} level={level} slug={slug} />;
   }
   hr() {
-    return <hr key={this.getKey()} />;
+    return <Hr key={this.getKey()} />;
   }
   br() {
     return <br key={this.getKey()} />;
   }
   list(body, ordered) {
     const key = this.getKey();
-    return ordered ? <ol key={key}>{body}</ol> : <ul key={key}>{body}</ul>;
+    return ordered ? (
+      <OrderedList key={key}>{body}</OrderedList>
+    ) : (
+      <UnorderedList key={key}>{body}</UnorderedList>
+    );
   }
   listitem(text) {
-    return <li key={this.getKey()}>{text}</li>;
+    return <ListItem key={this.getKey()}>{text}</ListItem>;
   }
   paragraph(text) {
-    return <p key={this.getKey()}>{text}</p>;
+    return <Paragraph key={this.getKey()}>{text}</Paragraph>;
   }
   table(header, body) {
     return (
@@ -56,16 +73,16 @@ export default class ReactRenderer {
     return <td key={this.getKey()}>{content}</td>;
   }
   strong(content) {
-    return <strong key={this.getKey()}>{content}</strong>;
+    return <Strong key={this.getKey()}>{content}</Strong>;
   }
   em(content) {
-    return <em key={this.getKey()}>{content}</em>;
+    return <Em key={this.getKey()}>{content}</Em>;
   }
   codespan(content) {
-    return <code key={this.getKey()}>{content}</code>;
+    return <CodeSpan key={this.getKey()}>{content}</CodeSpan>;
   }
   del(content) {
-    return <del key={this.getKey()}>{content}</del>;
+    return <Del key={this.getKey()}>{content}</Del>;
   }
   link(href, title, text) {
     return (
@@ -75,7 +92,7 @@ export default class ReactRenderer {
     );
   }
   image(href, title, alt) {
-    return <img src={href} title={title} alt={alt} key={this.getKey()} />;
+    return <Image src={href} title={title} alt={alt} key={this.getKey()} />;
   }
   html(html) {
     return (
