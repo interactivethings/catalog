@@ -35,4 +35,5 @@ export { default as DownloadSpecimen } from "./specimens/Download";
 export {
   default as ReactSpecimen
 } from "./specimens/ReactSpecimen/ReactSpecimen";
+export { default as ReactPropTypesSpecimen } from "./specimens/ReactPropTypes";
 export { default as VideoSpecimen } from "./specimens/Video";
