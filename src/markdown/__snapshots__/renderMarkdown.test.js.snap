@@ -6,51 +6,53 @@ Array [
     level={1}
     slug="hello"
     text={
-        Array [
-            "Hello",
-          ]
+      Array [
+        "Hello",
+      ]
     }
-/>,
+  />,
   <Styled.p>
     World
-</Styled.p>,
+  </Styled.p>,
+  "",
   <Styled.ul>
     <Styled.li>
-        One
-        <Styled.ul>
-            <Styled.li>
-                Two
-            </Styled.li>
-        </Styled.ul>
+      One
+      <Styled.ul>
+        <Styled.li>
+          Two
+        </Styled.li>
+      </Styled.ul>
     </Styled.li>
     <Styled.li>
-        Three
-        
+      Three
+      
     </Styled.li>
-</Styled.ul>,
+  </Styled.ul>,
   <Styled.p>
     A 
     <Unknown
-        title={null}
-        to="http://www.interactivethings.com/"
+      title={null}
+      to="http://www.interactivethings.com/"
     >
-        link
+      link
     </Unknown>
      and some 
     <Styled.strong>
-        bold
+      bold
     </Styled.strong>
      and 
     <Styled.em>
-        italic
+      italic
     </Styled.em>
      text.
-</Styled.p>,
+  </Styled.p>,
+  "",
   <Styled.blockquote>
     <Styled.p>
-        Block quotes rock
+      Block quotes rock
     </Styled.p>
-</Styled.blockquote>,
+  </Styled.blockquote>,
 ]
 `;
 
@@ -60,19 +62,21 @@ Array [
     level={1}
     slug="hello"
     text={
-        Array [
-            "Hello",
-          ]
+      Array [
+        "Hello",
+      ]
     }
-/>,
+  />,
   "HELLO PARAGRAPH",
+  "",
   <Styled.ul>
     HELLO LIST ITEM
     HELLO LIST ITEM
-</Styled.ul>,
+  </Styled.ul>,
   "HELLO PARAGRAPH",
+  "",
   <Styled.blockquote>
     HELLO PARAGRAPH
-</Styled.blockquote>,
+  </Styled.blockquote>,
 ]
 `;
