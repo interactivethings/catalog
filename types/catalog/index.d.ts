@@ -165,7 +165,7 @@ export class ImageSpecimen extends React.Component<
 
 export interface TableSpecimenProps {
   columns?: string[];
-  rows: { [key: string]: string | number }[];
+  rows: { [key: string]: React.ReactNode }[];
 }
 export class TableSpecimen extends React.Component<
   SpecimenProps & TableSpecimenProps

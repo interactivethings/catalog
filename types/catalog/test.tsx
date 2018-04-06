@@ -33,7 +33,7 @@ ${(
 ${(
   <TableSpecimen
     span={3}
-    rows={[{ foo: 1, bar: "bar" }]}
+    rows={[{ foo: 1, bar: "bar", blah: <p>foo</p> }]}
     columns={["bar", "foo"]}
   />
 )}
