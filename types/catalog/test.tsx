@@ -7,7 +7,10 @@ import {
   Config,
   Page,
   pageLoader,
-  HtmlSpecimen
+  HtmlSpecimen,
+  TableSpecimen,
+  ColorSpecimen,
+  ColorPaletteSpecimen
 } from "catalog";
 
 const MyPage = () => markdown`
@@ -19,6 +22,36 @@ ${(
     <div>Hello</div>
   </ReactSpecimen>
 )}
+
+${(
+  <ReactSpecimen span={2} dark sourceText="foo">
+    <div>Hello</div>
+    <div>World</div>
+  </ReactSpecimen>
+)}
+
+${(
+  <TableSpecimen
+    span={3}
+    rows={[{ foo: 1, bar: "bar" }]}
+    columns={["bar", "foo"]}
+  />
+)}
+
+${<ColorSpecimen name="red" value="#660000" />}
+
+${<ColorSpecimen value="#660000" />}
+
+${(
+  <ColorPaletteSpecimen
+    colors={[
+      { name: "red", value: "#660000" },
+      { name: 100, value: "#ff0000" }
+    ]}
+  />
+)}
+
+${<ColorPaletteSpecimen colors={[{ value: "#660000" }]} />}
 
 ${<HtmlSpecimen light>{"hello"}</HtmlSpecimen>}
 

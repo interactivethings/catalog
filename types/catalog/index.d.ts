@@ -125,14 +125,14 @@ export class CodeSpecimen extends React.Component<
 
 export interface ColorSpecimenProps {
   value: string;
-  name: string;
+  name?: string | number;
 }
 export class ColorSpecimen extends React.Component<
   SpecimenProps & ColorSpecimenProps
 > {}
 
 export interface ColorPaletteSpecimenProps {
-  colors: Array<{ name?: string; value: string }>;
+  colors: ColorSpecimenProps[];
   horizontal?: boolean;
 }
 export class ColorPaletteSpecimen extends React.Component<
@@ -161,6 +161,14 @@ export interface ImageSpecimenProps {
 }
 export class ImageSpecimen extends React.Component<
   SpecimenProps & ImageSpecimenProps
+> {}
+
+export interface TableSpecimenProps {
+  columns?: string[];
+  rows: { [key: string]: string | number }[];
+}
+export class TableSpecimen extends React.Component<
+  SpecimenProps & TableSpecimenProps
 > {}
 
 export interface TypeSpecimenProps {
@@ -199,7 +207,7 @@ export class HtmlSpecimen extends React.Component<
 > {}
 
 export interface ReactSpecimenProps {
-  children: JSX.Element | string;
+  children: React.ReactNode | string;
   noSource?: boolean;
   showSource?: boolean;
   plain?: boolean;
