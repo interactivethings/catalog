@@ -18,7 +18,7 @@ export default {
   ],
   external: id => externals.some(d => id.startsWith(d)),
   output: [
-    { file: pkg.main, format: "cjs", name: "Catalog", banner },
-    { file: pkg.module, format: "es", banner }
+    { file: pkg.main, format: "cjs", name: "Catalog", banner, sourcemap: true },
+    { file: pkg.module, format: "es", banner, sourcemap: true }
   ]
 };
