@@ -18,7 +18,6 @@ responsiveSizes: [
 ],
 pages: [
 ...
-
 ```
 
 ## Routing
@@ -27,7 +26,16 @@ pages: [
 
 `boolean`
 
-To maximize compatibility, Catalog uses hash-based routing (e.g. `my-styleguide.com/#/about`) by default. If your web server is [configured properly](http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/), it can also use HTML5 pushstate-based routing, so you get "real" URLs (e.g. `my-styleguide.com/about`). Set `useBrowserHistory` to `true` to enable this.
+To maximize compatibility, Catalog uses hash-based routing (e.g. `my-styleguide.com/#/about`) by default. It can also use HTML5 pushstate-based routing, so you get "real" URLs (e.g. `my-styleguide.com/about`). Set `useBrowserHistory` to `true` to enable this.
+
+```hint
+GitHub Pages doesn't support this style of routing without [hacks](https://github.com/rafrex/spa-github-pages). Instead, you can use:
+
+- [Netlify](https://www.netlify.com/)
+- [Surge](http://surge.sh/)
+- [now](https://zeit.co/docs/examples/create-react-app)
+- [Any nginx or Apache server that you can configure](http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/)
+```
 
 ### `basePath`
 
@@ -35,7 +43,7 @@ To maximize compatibility, Catalog uses hash-based routing (e.g. `my-styleguide.
 
 If you want Catalog to run under a certain base path, e.g. `my-styleguide.com/catalog/about`, set the `basePath` configuration option. The base path will be prefixed to all page paths.
 
-This only works best together with `useBrowserHistory`.
+This works best together with `useBrowserHistory`.
 
 #### Route Settings Example
 
