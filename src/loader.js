@@ -12,17 +12,21 @@ module.exports.pitch = function pitch(remainingRequest) {
     if (PageRenderer.__esModule) {
       PageRenderer = PageRenderer.default;
     }
+    var resource = require(${resource});
+    if (resource.__esModule) {
+      resource = resource.default;
+    }
     var WrappedPageRenderer = createReactClass({
       displayName: 'WrappedPageRenderer',
       getInitialState: function() {
-        return {content: require(${resource})};
+        return {content: resource};
       },
       componentWillMount: function() {
         var component = this;
         if (module.hot) {
           module.hot.accept(${resource}, function() {
             component.setState({
-              content: require(${resource})
+              content: resource
             })
           })
         }
