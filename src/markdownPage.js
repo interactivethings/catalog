@@ -35,8 +35,8 @@ const markdownPage = (strings, ...values) =>
     {},
     ...values.reduce(
       (a, v, i) => {
-        // If it's a valid React element, just concat to the end of the array
-        if (isValidElement(v)) {
+        // If it's a valid React element or array, just concat to the end of the array
+        if (isValidElement(v) || Array.isArray(v)) {
           return a.concat(v, strings[i + 1]);
         }
 
