@@ -27,7 +27,10 @@ import Page from "./components/Page/Page";
 // > ${<MyComponent isCustomComponent={'AWESOME'} />}
 // > `;
 
-const replaceLast = (f, arr) => arr.slice(0, -1).concat(f(arr[arr.length - 1]));
+const replaceLast = (f, arr) => {
+  arr[arr.length - 1] = f(arr[arr.length - 1]);
+  return arr;
+};
 
 const markdownPage = (strings, ...values) =>
   createElement(
