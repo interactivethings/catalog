@@ -1,14 +1,13 @@
-import isEmpty from 'ramda/src/isEmpty';
-import is from 'ramda/src/is';
+import isEmpty from "ramda/src/isEmpty";
+import is from "ramda/src/is";
 
 //
 // Sequentially runs scripts as they are added
 //
 
-
 let current = null;
 let queue = [];
-let dequeue = (handler) => {
+let dequeue = handler => {
   current = handler();
   current.then(() => {
     current = null;
@@ -17,38 +16,39 @@ let dequeue = (handler) => {
     }
     return void 0;
   });
-  return current.catch( () => {
-    throw new Error('Error loading script');
+  return current.catch(() => {
+    throw new Error("Error loading script");
   });
 };
-let enqueue = (handler) => {
+let enqueue = handler => {
   if (current !== null) {
     return queue.push(handler);
   }
   return dequeue(handler);
 };
-let execScript = (decorate) => {
-  let script = document.createElement('script');
-  script.setAttribute('type', 'text/javascript');
+let execScript = decorate => {
+  let script = document.createElement("script");
+  script.setAttribute("type", "text/javascript");
   decorate(script);
-  let head = document.getElementsByTagName('head')[0] || document.documentElement;
+  let head =
+    document.getElementsByTagName("head")[0] || document.documentElement;
   return head.appendChild(script);
 };
-let execRemote = (src) => {
+let execRemote = src => {
   return () => {
-    return new Promise( (resolve, reject) => {
-      return execScript( (script) => {
-        script.addEventListener('load', resolve, false);
-        script.addEventListener('error', reject, false);
-        return script.setAttribute('src', src);
+    return new Promise((resolve, reject) => {
+      return execScript(script => {
+        script.addEventListener("load", resolve, false);
+        script.addEventListener("error", reject, false);
+        return script.setAttribute("src", src);
       });
     });
   };
 };
-let execInline = (src) => {
+let execInline = src => {
   return () => {
-    return new Promise( (resolve) => {
-      return execScript( (script) => {
+    return new Promise(resolve => {
+      return execScript(script => {
         script.appendChild(document.createTextNode(src));
         return resolve();
       });
@@ -56,7 +56,7 @@ let execInline = (src) => {
   };
 };
 
-export default (srcOrEl) => {
+export default srcOrEl => {
   if (is(String, srcOrEl) && !isEmpty(srcOrEl.trim())) {
     enqueue(execRemote(srcOrEl));
   }
@@ -65,4 +65,3 @@ export default (srcOrEl) => {
   }
   return void 0;
 };
-

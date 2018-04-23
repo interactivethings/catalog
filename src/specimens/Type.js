@@ -1,43 +1,44 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {catalogShape} from '../CatalogPropTypes';
-import Specimen from '../components/Specimen/Specimen';
+import PropTypes from "prop-types";
+import React from "react";
+import { css } from "../emotion";
+import { catalogShape } from "../CatalogPropTypes";
+import Specimen from "../components/Specimen/Specimen";
 
 function getStyle(theme) {
   return {
     container: {
-      background: '#fff',
-      width: '100%',
-      textRendering: 'initial',
-      WebkitFontSmoothing: 'initial',
-      MozOsxFontSmoothing: 'initial',
-      display: 'flex'
+      background: "#fff",
+      width: "100%",
+      textRendering: "initial",
+      WebkitFontSmoothing: "initial",
+      MozOsxFontSmoothing: "initial",
+      display: "flex"
     },
     wrapper: {
       padding: `10px 20px`,
-      boxSizing: 'border-box',
-      width: '100%'
+      boxSizing: "border-box",
+      width: "100%"
     },
     title: {
       fontFamily: theme.fontMono,
       opacity: 0.4,
-      margin: '10px 0'
+      margin: "10px 0"
     },
     heading: {
-      maxWidth: '100%',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden'
+      maxWidth: "100%",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      overflow: "hidden"
     },
     kerning: {
-      textRendering: 'optimizeLegibility'
+      textRendering: "optimizeLegibility"
     },
     smoothing: {
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale'
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale"
     },
     list: {
-      listStyleType: 'none',
+      listStyleType: "none",
       paddingLeft: 0,
       marginLeft: 0
     }
@@ -49,7 +50,7 @@ const kafka = `One morning, when Gregor Samsa woke from troubled dreams, he foun
 
 class Type extends React.Component {
   render() {
-    const {catalog: {theme}, ...options} = this.props;
+    const { catalog: { theme }, ...options } = this.props;
     const styles = getStyle(theme);
 
     // check if a shorter paragraph should is demanded
@@ -61,71 +62,141 @@ class Type extends React.Component {
     // check if the modifier demands font smoothing
     const smoothing = options.smoothen ? styles.smoothing : null;
     // Use single word or sentence for headlines
-    const headlineText = options.single ? 'Hamburgefonstiv' : 'The quick brown fox jumps over the lazy dog';
+    const headlineText = options.single
+      ? "Hamburgefonstiv"
+      : "The quick brown fox jumps over the lazy dog";
 
-
-    const fontColor = options.color ? {color: options.color} : null;
-    const isItalic = options.style ? options.style : 'normal';
-    const fontFamily = options.font ? options.font : 'inherit';
-    const backgroundColor = options.background ? {backgroundColor: options.background} : null;
-    const fontWeight = options.weight ? options.weight : 'normal';
-    const letterSpacing = options.tracking ? {letterSpacing: options.tracking} : null;
-    const backgroundImage = options.image ? {backgroundImage: `url(${options.image})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'} : null;
+    const fontColor = options.color ? { color: options.color } : null;
+    const isItalic = options.style ? options.style : "normal";
+    const fontFamily = options.font ? options.font : "inherit";
+    const backgroundColor = options.background
+      ? { backgroundColor: options.background }
+      : null;
+    const fontWeight = options.weight ? options.weight : "normal";
+    const letterSpacing = options.tracking
+      ? { letterSpacing: options.tracking }
+      : null;
+    const backgroundImage = options.image
+      ? {
+          backgroundImage: `url(${options.image})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat"
+        }
+      : null;
 
     const description = (
-      <ul style={{...styles.title, ...styles.list, ...fontColor}}>
-        {options.color ? <li style={styles.list}>color: {options.color + ';'}</li> : null}
-        {options.background ? <li style={styles.list}>background-color: {options.background + ';'}</li> : null}
-        {fontWeight !== 'normal' ? <li style={styles.list}>font-weight: {options.weight + ';'}</li> : null}
-        {isItalic !== 'normal' ? <li style={styles.list}>font-style: {options.style + ';'}</li> : null}
-        {letterSpacing ? <li style={styles.list}>letter-spacing: {options.tracking + ';'}</li> : null}
+      <ul className={css({ ...styles.title, ...styles.list, ...fontColor })}>
+        {options.color ? (
+          <li className={css(styles.list)}>color: {options.color + ";"}</li>
+        ) : null}
+        {options.background ? (
+          <li className={css(styles.list)}>
+            background-color: {options.background + ";"}
+          </li>
+        ) : null}
+        {fontWeight !== "normal" ? (
+          <li className={css(styles.list)}>
+            font-weight: {options.weight + ";"}
+          </li>
+        ) : null}
+        {isItalic !== "normal" ? (
+          <li className={css(styles.list)}>
+            font-style: {options.style + ";"}
+          </li>
+        ) : null}
+        {letterSpacing ? (
+          <li className={css(styles.list)}>
+            letter-spacing: {options.tracking + ";"}
+          </li>
+        ) : null}
       </ul>
-      );
+    );
 
     const headings = options.headings
-      ? options.headings.map( (heading, i) => {
-        const headingValue = (heading !== null && typeof heading === 'object') ? heading.value : heading;
-        const headingLabel = (heading !== null && typeof heading === 'object') ? heading.label : 'h' + (i + 1);
-        const isPixel = typeof headingValue === 'number' ? 'px' : '';
-        return (
-          <div key={i}>
-            <div style={{...styles.title, ...fontColor}}>{headingLabel} ({headingValue + isPixel})</div>
-            <div style={{...styles.heading, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${headingValue + isPixel} ${fontFamily}`}}>{headlineText}</div>
-          </div>
-        );
-      })
+      ? options.headings.map((heading, i) => {
+          const headingValue =
+            heading !== null && typeof heading === "object"
+              ? heading.value
+              : heading;
+          const headingLabel =
+            heading !== null && typeof heading === "object"
+              ? heading.label
+              : "h" + (i + 1);
+          const isPixel = typeof headingValue === "number" ? "px" : "";
+          return (
+            <div key={i}>
+              <div className={css({ ...styles.title, ...fontColor })}>
+                {headingLabel} ({headingValue + isPixel})
+              </div>
+              <div
+                className={css({
+                  ...styles.heading,
+                  ...letterSpacing,
+                  font: `${isItalic} normal ${fontWeight} ${headingValue +
+                    isPixel} ${fontFamily}`
+                })}
+              >
+                {headlineText}
+              </div>
+            </div>
+          );
+        })
       : null;
 
     const paragraphs = options.paragraphs
-      ? options.paragraphs.map( (paragraph, i) => {
-        const paragraphValue = (paragraph !== null && typeof paragraph === 'object') ? paragraph.value : paragraph;
-        const paragraphLabel = (paragraph !== null && typeof paragraph === 'object') ? paragraph.label : 'Paragraph';
+      ? options.paragraphs.map((paragraph, i) => {
+          const paragraphValue =
+            paragraph !== null && typeof paragraph === "object"
+              ? paragraph.value
+              : paragraph;
+          const paragraphLabel =
+            paragraph !== null && typeof paragraph === "object"
+              ? paragraph.label
+              : "Paragraph";
 
-        const values = paragraphValue.split('/').map((item) => {
-          return /[a-z]/i.test(item) ? `${item}` : `${item}px`;
-        }).join('/');
-        return (
-          <div key={i}>
-            <div style={{...styles.title, ...fontColor}}>
-              {paragraphLabel} ({values})
+          const values = paragraphValue
+            .split("/")
+            .map(item => {
+              return /[a-z]/i.test(item) ? `${item}` : `${item}px`;
+            })
+            .join("/");
+          return (
+            <div key={i}>
+              <div className={css({ ...styles.title, ...fontColor })}>
+                {paragraphLabel} ({values})
+              </div>
+              <div
+                className={css({
+                  ...styles.paragraph,
+                  ...letterSpacing,
+                  font: `${isItalic} normal ${fontWeight} ${values} ${fontFamily}`
+                })}
+              >
+                {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
+              </div>
             </div>
-            <div style={{...styles.paragraph, ...letterSpacing, font: `${isItalic} normal ${fontWeight} ${values} ${fontFamily}`}}>
-              {truncate ? `${dummyText.substring(0, 200)}…` : dummyText}
-            </div>
-          </div>
-        );
-      })
+          );
+        })
       : null;
 
     return (
-        <section style={styles.container}>
-          <div style={{...styles.wrapper, ...kerning, ...smoothing, ...fontColor, ...backgroundColor, ...backgroundImage}}>
-            {headings}
-            {headings && paragraphs ? <br/> : null}
-            {paragraphs}
-            {description}
-          </div>
-        </section>
+      <section className={css(styles.container)}>
+        <div
+          className={css({
+            ...styles.wrapper,
+            ...kerning,
+            ...smoothing,
+            ...fontColor,
+            ...backgroundColor,
+            ...backgroundImage
+          })}
+        >
+          {headings}
+          {headings && paragraphs ? <br /> : null}
+          {paragraphs}
+          {description}
+        </div>
+      </section>
     );
   }
 }
@@ -143,8 +214,26 @@ Type.propTypes = {
   weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   tracking: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   image: PropTypes.string,
-  headings: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({label: PropTypes.string, value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])})])),
-  paragraphs: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({label: PropTypes.string, value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])})])),
+  headings: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      })
+    ])
+  ),
+  paragraphs: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      })
+    ])
+  ),
   catalog: catalogShape.isRequired
 };
 

@@ -1,40 +1,59 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import HeadingLink from '../Link/HeadingLink';
+import React from "react";
+import PropTypes from "prop-types";
+import HeadingLink from "../Link/HeadingLink";
+import { catalogShape } from "../../CatalogPropTypes";
+import { heading } from "../../styles/typography";
+import { css } from "../../emotion";
 
+const HeadingWithLink = ({ level, text, slug, catalog: { theme } }) => {
+  const tag = "h" + level;
 
-class HeadingWithLink extends Component {
-  constructor() {
-    super();
-    this.state = {hovered: false};
-    this.hover = () => this.setState({hovered: true});
-    this.unHover = () => this.setState({hovered: false});
-  }
+  const linkStyle = css({ display: "none" });
 
-  render() {
-    const {level, text, slug} = this.props;
-    const tag = 'h' + level;
-    const link = this.state.hovered ? <HeadingLink slug={slug} /> : null;
+  const headingStyle = css(
+    {
+      ...heading(theme, 5 - level),
+      flexBasis: "100%",
+      margin: `48px 0 0 0`,
+      "blockquote + &, h1 + &, h2 + &, h3 + &, h4 + &, h5 + &, h6 + &": {
+        margin: `16px 0 0 0`
+      },
+      [`&:hover .${linkStyle}`]: { display: "inline" }
+    },
+    { label: tag }
+  );
 
-    return React.createElement(tag, {id: slug, onMouseEnter: this.hover, onMouseLeave: this.unHover}, text, ' ', link);
-  }
+  return React.createElement(
+    tag,
+    { id: slug, className: headingStyle },
+    text,
+    " ",
+    <span className={linkStyle}>
+      <HeadingLink slug={slug} />
+    </span>
+  );
+};
 
-}
-
-const PlainHeading = ({level, text}) => {
-  const tag = 'h' + level;
+const PlainHeading = ({ level, text }) => {
+  const tag = "h" + level;
   return React.createElement(tag, null, text);
 };
 
-const Heading = ({level, text, slug}) => slug
-  ? <HeadingWithLink level={level} text={text} slug={slug} />
-  : <PlainHeading level={level} text={text} />;
-
+const Heading = ({ level, text, slug }, { catalog }) =>
+  slug ? (
+    <HeadingWithLink level={level} text={text} slug={slug} catalog={catalog} />
+  ) : (
+    <PlainHeading level={level} text={text} catalog={catalog} />
+  );
 
 Heading.propTypes = HeadingWithLink.propTypes = PlainHeading.propTypes = {
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
   text: PropTypes.array.isRequired,
   slug: PropTypes.string
+};
+
+Heading.contextTypes = {
+  catalog: catalogShape.isRequired
 };
 
 export default Heading;

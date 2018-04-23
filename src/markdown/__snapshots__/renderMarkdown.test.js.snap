@@ -6,51 +6,53 @@ Array [
     level={1}
     slug="hello"
     text={
-        Array [
-            "Hello",
-          ]
+      Array [
+        "Hello",
+      ]
     }
-/>,
-  <p>
+  />,
+  <Styled.p>
     World
-</p>,
-  <ul>
-    <li>
-        One
-        <ul>
-            <li>
-                Two
-            </li>
-        </ul>
-    </li>
-    <li>
-        Three
-        
-    </li>
-</ul>,
-  <p>
+  </Styled.p>,
+  "",
+  <Styled.ul>
+    <Styled.li>
+      One
+      <Styled.ul>
+        <Styled.li>
+          Two
+        </Styled.li>
+      </Styled.ul>
+    </Styled.li>
+    <Styled.li>
+      Three
+      
+    </Styled.li>
+  </Styled.ul>,
+  <Styled.p>
     A 
-    <Link
-        title={null}
-        to="http://www.interactivethings.com/"
+    <Unknown
+      title={null}
+      to="http://www.interactivethings.com/"
     >
-        link
-    </Link>
+      link
+    </Unknown>
      and some 
-    <strong>
-        bold
-    </strong>
+    <Styled.strong>
+      bold
+    </Styled.strong>
      and 
-    <em>
-        italic
-    </em>
+    <Styled.em>
+      italic
+    </Styled.em>
      text.
-</p>,
-  <blockquote>
-    <p>
-        Block quotes rock
-    </p>
-</blockquote>,
+  </Styled.p>,
+  "",
+  <Styled.blockquote>
+    <Styled.p>
+      Block quotes rock
+    </Styled.p>
+  </Styled.blockquote>,
 ]
 `;
 
@@ -60,19 +62,21 @@ Array [
     level={1}
     slug="hello"
     text={
-        Array [
-            "Hello",
-          ]
+      Array [
+        "Hello",
+      ]
     }
-/>,
+  />,
   "HELLO PARAGRAPH",
-  <ul>
+  "",
+  <Styled.ul>
     HELLO LIST ITEM
     HELLO LIST ITEM
-</ul>,
+  </Styled.ul>,
   "HELLO PARAGRAPH",
-  <blockquote>
+  "",
+  <Styled.blockquote>
     HELLO PARAGRAPH
-</blockquote>,
+  </Styled.blockquote>,
 ]
 `;

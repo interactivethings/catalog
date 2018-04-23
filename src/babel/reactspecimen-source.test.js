@@ -1,5 +1,5 @@
-import {transform} from 'babel-core';
-import plugin from './reactspecimen-source';
+import { transform } from "babel-core";
+import plugin from "./reactspecimen-source";
 
 const input = `<ReactSpecimen>
   <div>
@@ -13,8 +13,8 @@ const output = `<ReactSpecimen sourceText={"<div>\\n  foo\\n</div>"}>
   </div>
 </ReactSpecimen>;`;
 
-test('Adds sourceText prop', () => {
+test("Adds sourceText prop", () => {
   expect(
-    transform(input, {plugins: ['babel-plugin-syntax-jsx', plugin]}).code
+    transform(input, { plugins: ["babel-plugin-syntax-jsx", plugin] }).code
   ).toBe(output);
 });

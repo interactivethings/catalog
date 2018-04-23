@@ -12,3 +12,4 @@ node_modules
 /cli/lib
 /dist
 /examples/**/build
+/docs/build

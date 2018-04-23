@@ -1,25 +1,25 @@
-import 'babel-polyfill';
-import 'unfetch/polyfill';
+import "babel-polyfill";
+import "unfetch/polyfill";
 
 // Configuration
-export {default as render} from './render';
-export {default as configure} from './configure';
-export {default as configureRoutes} from './configureRoutes';
-export {configureJSXRoutes as configureJSXRoutes} from './configureRoutes';
-export {default as markdown} from './markdownPage';
-export {default as pageLoader} from './pageLoader';
-export {default as DefaultTheme} from './DefaultTheme';
-export {default as DefaultResponsiveSizes} from './DefaultResponsiveSizes';
+export { default as render } from "./render";
+export { default as configure } from "./configure";
+export { default as configureRoutes } from "./configureRoutes";
+export { configureJSXRoutes } from "./configureRoutes";
+export { default as markdown } from "./markdownPage";
+export { default as pageLoader } from "./pageLoader";
+export { default as DefaultTheme } from "./DefaultTheme";
+export { default as DefaultResponsiveSizes } from "./DefaultResponsiveSizes";
 
 // Components
-export {default as Catalog} from './components/Catalog';
-export {default as Card} from './components/Card/Card';
-export {default as Page} from './components/Page/Page';
-export {default as Span} from './components/Specimen/Span';
+export { default as Catalog } from "./components/Catalog";
+export { default as Card } from "./components/Card/Card";
+export { default as Page } from "./components/Page/Page";
+export { default as Span } from "./components/Specimen/Span";
 
 // Higher-order component for creating specimens
-export {default as Specimen} from './components/Specimen/Specimen';
-export {default as mapSpecimenOption} from './utils/mapSpecimenOption';
+export { default as Specimen } from "./components/Specimen/Specimen";
+export { default as mapSpecimenOption } from "./utils/mapSpecimenOption";
 
 // Specimens
 export {default as AudioSpecimen} from './specimens/Audio';
@@ -37,6 +37,5 @@ export {default as ReactSpecimen} from './specimens/ReactSpecimen/ReactSpecimen'
 export {default as VideoSpecimen} from './specimens/Video';
 
 // Shared dependencies for custom specimens
-export {default as React} from 'react';
-export {default as Radium} from 'radium';
-export {default as R} from 'ramda';
+export { default as React } from "react";
+export { default as R } from "ramda";

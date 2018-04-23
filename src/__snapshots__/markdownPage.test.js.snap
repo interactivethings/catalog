@@ -3,31 +3,31 @@
 exports[`Catalog markdown page template literal 1`] = `
 <Page>
   
-  # This is a title
-  
-  A paragraph
-  
-  
+# This is a title
+
+A paragraph
+
+
   <SpecimenContainer>
     # THIS IS A HINT
-    
-    Cool, eh?
+
+Cool, eh?
   </SpecimenContainer>
   
-  
+
 </Page>
 `;
 
 exports[`Catalog markdown page template literal with arbitrary values 1`] = `
 <Page>
   
-  # This is a title
-  
-  A paragraph 123
-  
-  ~~~
-  [{"a":"some"},{"a":"data"}]
-  ~~~
-  
+# This is a title
+
+A paragraph 123
+
+~~~
+[{"a":"some"},{"a":"data"}]
+~~~
+
 </Page>
 `;

@@ -1,16 +1,19 @@
-import PropTypes from 'prop-types';
-import 'raf/polyfill';
+import PropTypes from "prop-types";
+import "raf/polyfill";
 
-import React, {PureComponent} from 'react';
-import {catalogShape} from '../../CatalogPropTypes';
-import Page from './Page';
-import runscript from '../../utils/runscript';
+import React, { PureComponent } from "react";
+import { catalogShape } from "../../CatalogPropTypes";
+import Page from "./Page";
+import runscript from "../../utils/runscript";
 
-const renderStyles = (styles) => {
-  return styles.map((src, i) => <link key={i} href={src} rel='stylesheet' type='text/css' />);
+const renderStyles = styles => {
+  return styles.map((src, i) => (
+    <link key={i} href={src} rel="stylesheet" type="text/css" />
+  ));
 };
 
-const renderContent = (Content) => typeof Content === 'string' ? <Page>{Content}</Page> : <Content />;
+const renderContent = Content =>
+  typeof Content === "string" ? <Page>{Content}</Page> : <Content />;
 
 class PageRenderer extends PureComponent {
   constructor() {
@@ -37,15 +40,15 @@ class PageRenderer extends PureComponent {
   }
 
   jump() {
-    const {location: {query: {a}, hash}} = this.props;
+    const { location: { query: { a }, hash } } = this.props;
 
     // Hash is always defined, but may be an empty string. But the query param
     // is indeed optional and may be undefined. We do not want to be jumping
     // to the '#undefined' selector.
 
-    if (hash !== '') {
+    if (hash !== "") {
       this.jumpToSelector(hash);
-    } else if (a !== undefined && a !== '') {
+    } else if (a !== undefined && a !== "") {
       this.jumpToSelector(`#${a}`);
     }
   }
@@ -72,8 +75,8 @@ class PageRenderer extends PureComponent {
   }
 
   render() {
-    const {content} = this.props;
-    const {catalog: {page: {styles}}} = this.context;
+    const { content } = this.props;
+    const { catalog: { page: { styles } } } = this.context;
     return (
       <div>
         {renderStyles(styles)}

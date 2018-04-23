@@ -1,22 +1,31 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import Link from './Link';
-import {catalogShape} from '../../CatalogPropTypes';
+import PropTypes from "prop-types";
+import React from "react";
+import Link from "./Link";
+import { catalogShape } from "../../CatalogPropTypes";
+import { css } from "../../emotion";
 
-const style = (theme) => ({
+const style = theme => ({
   headingLink: {
     color: theme.lightColor,
-    fill: theme.lightColor,
-    ':hover': {
-      color: theme.linkColor,
-      fill: theme.linkColor,
-      textDecoration: 'none'
+    textDecoration: "none",
+    ":hover": {
+      color: theme.linkColor
     }
   }
 });
 
-const HeadingLink = ({slug, ...rest}, {catalog}) => {
-  return <Link className='HeadingLink' title={'Link to this section'} to={`#${slug}`} aria-hidden style={style(catalog.theme).headingLink} {...rest}>#</Link>;
+const HeadingLink = ({ slug, ...rest }, { catalog }) => {
+  return (
+    <Link
+      className={"HeadingLink " + css(style(catalog.theme).headingLink)}
+      title={"Link to this section"}
+      to={`#${slug}`}
+      aria-hidden
+      {...rest}
+    >
+      #
+    </Link>
+  );
 };
 
 HeadingLink.propTypes = {

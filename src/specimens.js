@@ -14,7 +14,7 @@ import Video from './specimens/Video';
 import ReactSpecimen from './specimens/ReactSpecimen/ReactSpecimen';
 
 export default {
-  'raw-code': RawCode,
+  "raw-code": RawCode,
   audio: Audio,
   code: Code,
   color: Color,

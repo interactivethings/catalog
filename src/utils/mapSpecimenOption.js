@@ -1,4 +1,4 @@
-const mapSpecimenOption = (test, map) => (option) => {
+const mapSpecimenOption = (test, map) => option => {
   const match = test.exec(option);
   if (match) {
     const [, value] = match;
