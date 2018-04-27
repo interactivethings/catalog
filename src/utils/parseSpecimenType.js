@@ -1,8 +1,4 @@
-import compose from "ramda/src/compose";
-import toLower from "ramda/src/toLower";
-import head from "ramda/src/head";
-import split from "ramda/src/split";
-import or from "ramda/src/or";
+import { compose, toLower, head, split, or } from "ramda";
 
 const getType = compose(toLower, head, split("|"));
 

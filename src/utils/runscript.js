@@ -1,5 +1,4 @@
-import isEmpty from "ramda/src/isEmpty";
-import is from "ramda/src/is";
+import { isEmpty, is } from "ramda";
 
 //
 // Sequentially runs scripts as they are added
