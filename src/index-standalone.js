@@ -39,4 +39,5 @@ export { default as VideoSpecimen } from "./specimens/Video";
 
 // Shared dependencies for custom specimens
 export { default as React } from "react";
-export { default as R } from "ramda";
+import * as R from "ramda";
+export { R };

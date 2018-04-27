@@ -1,9 +1,4 @@
-import filter from "ramda/src/filter";
-import compose from "ramda/src/compose";
-import split from "ramda/src/split";
-import complement from "ramda/src/complement";
-import isEmpty from "ramda/src/isEmpty";
-import mergeAll from "ramda/src/mergeAll";
+import { filter, compose, split, complement, isEmpty, mergeAll } from "ramda";
 import mapSpecimenOption from "./mapSpecimenOption";
 
 const removeEmpty = filter(complement(isEmpty));
