@@ -72,6 +72,11 @@ const config: Config = {
       content: () => <Page>hello</Page>
     },
     {
+      path: "/wat",
+      title: "Wat",
+      content: () => <p>I can also be any Element</p>
+    },
+    {
       path: "/foo",
       title: "Foo",
       content: MyPage
@@ -88,6 +93,11 @@ const config: Config = {
           path: "/materials/typeface",
           title: "Typeface",
           content: pageLoader(() => import("./test-page"))
+        },
+        {
+          path: "/materials/typeface2",
+          title: "Typeface2",
+          content: pageLoader(() => import("./test-page-2"))
         }
       ]
     }

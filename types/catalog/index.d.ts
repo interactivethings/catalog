@@ -14,7 +14,7 @@ export interface ConfigPage {
   imports?: { [key: string]: any };
   styles?: string[];
   scripts?: string[];
-  content?: () => React.ReactElement<Page>;
+  content?: React.ComponentType;
 }
 
 export interface ConfigPageGroup {
@@ -83,8 +83,8 @@ export function configureRoutes(config: Config): any;
 export function configureJSXRoutes(config: Config): any;
 
 export function pageLoader(
-  f: string | (() => Promise<{ default: () => React.ReactElement<Page> }>)
-): () => React.ReactElement<Page>;
+  f: string | (() => Promise<{ default: React.ComponentType }>)
+): React.ComponentType;
 
 // Components
 
@@ -93,7 +93,7 @@ export class Page extends React.Component {}
 export function markdown(
   strings: TemplateStringsArray,
   ...interpolations: any[]
-): React.ReactElement<Page>;
+): JSX.Element;
 
 // Specimens
 
