@@ -27,7 +27,10 @@ import Page from "./components/Page/Page";
 // > ${<MyComponent isCustomComponent={'AWESOME'} />}
 // > `;
 
-const replaceLast = (f, arr) => arr.slice(0, -1).concat(f(arr[arr.length - 1]));
+const replaceLast = (f, arr) => {
+  arr[arr.length - 1] = f(arr[arr.length - 1]);
+  return arr;
+};
 
 const markdownPage = (strings, ...values) =>
   createElement(
@@ -35,8 +38,8 @@ const markdownPage = (strings, ...values) =>
     {},
     ...values.reduce(
       (a, v, i) => {
-        // If it's a valid React element, just concat to the end of the array
-        if (isValidElement(v)) {
+        // If it's a valid React element or array, just concat to the end of the array
+        if (isValidElement(v) || Array.isArray(v)) {
           return a.concat(v, strings[i + 1]);
         }
 

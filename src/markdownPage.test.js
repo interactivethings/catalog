@@ -26,7 +26,7 @@ test("Catalog markdown page template literal with arbitrary values", () => {
 A paragraph ${123}
 
 ~~~
-${[{ a: "some" }, { a: "data" }]}
+${["foo", "bar", <div>hello</div>]}
 ~~~
 `;
   expect(page).toMatchSnapshot();
