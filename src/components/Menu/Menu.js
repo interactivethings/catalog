@@ -116,6 +116,7 @@ class Menu extends React.Component {
             className={css(currentStyle.link)}
             href="https://www.catalog.style/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Catalog
           </a>

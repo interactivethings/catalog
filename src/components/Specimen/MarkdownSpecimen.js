@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Hint from "../../specimens/Hint";
 import parseSpecimenType from "../../utils/parseSpecimenType";
 
+// eslint-disable-next-line react/display-name
 const getUnknownSpecimen = specimenType => () => (
   <Hint warning>{`Unknown Specimen: **${specimenType}**`}</Hint>
 );
