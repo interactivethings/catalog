@@ -12,7 +12,7 @@ You can also mix pages from Markdown and JavaScript files.
 
 ## `Catalog`
 
-The main `Catalog` component accepts all [configuration options](/api/configuration) as props. Use it directly with `ReactDOM.render()`.
+The main `Catalog` component accepts all [configuration options](/configuration) as props. Use it directly with `ReactDOM.render()`.
 
 ```code|lang-jsx
 import React from 'react';
