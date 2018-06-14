@@ -42,10 +42,9 @@ export const parsePath = (path, options) => {
 };
 
 export const getPublicPath = (path, options) => {
-  return absoluteUrlRe.test(path)
-    ? path
-    : options.publicUrl +
-        addLeadingSlash(stripBasePath(path, options.basePath));
+  return path.indexOf("/") === 0
+    ? options.publicUrl + stripBasePath(path, options.basePath)
+    : path;
 };
 
 export const isInternalPath = (parsedPath, options) => {

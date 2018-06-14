@@ -39,7 +39,7 @@ const flattenPageTree = pageTree => {
 const getPublicUrl = () =>
   typeof process !== "undefined" && process.env.PUBLIC_URL
     ? process.env.PUBLIC_URL
-    : "/";
+    : "";
 
 export default config => {
   let pageId = 0;
