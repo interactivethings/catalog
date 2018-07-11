@@ -9,9 +9,9 @@ World
   - Two
 - Three
 
-A [link](http://www.interactivethings.com/) and some **bold** and *italic* text.
+A [link](http://www.interactivethings.com/) and some **bold** and *italic* text. Blank links foo@bar.com https://foobar.com
 
-> Block quotes rock
+> Block quotes rock _another em style_
 `;
 
 test("Renders some Markdown", () => {

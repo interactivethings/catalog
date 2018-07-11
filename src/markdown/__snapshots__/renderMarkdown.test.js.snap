@@ -45,12 +45,28 @@ Array [
     <Styled.em>
       italic
     </Styled.em>
-     text.
+     text. Blank links 
+    <Unknown
+      title={null}
+      to="mailto:foo@bar.com"
+    >
+      foo@bar.com
+    </Unknown>
+     
+    <Unknown
+      title={null}
+      to="https://foobar.com"
+    >
+      https://foobar.com
+    </Unknown>
   </Styled.p>,
   "",
   <Styled.blockquote>
     <Styled.p>
-      Block quotes rock
+      Block quotes rock 
+      <Styled.em>
+        another em style
+      </Styled.em>
     </Styled.p>
   </Styled.blockquote>,
 ]
