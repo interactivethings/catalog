@@ -11,6 +11,12 @@ World
 
 A [link](http://www.interactivethings.com/) and some **bold** and *italic* text. Blank links foo@bar.com https://foobar.com
 
+~~~
+a code block
+~~~
+
+Inline \`code\`
+
 > Block quotes rock _another em style_
 `;
 

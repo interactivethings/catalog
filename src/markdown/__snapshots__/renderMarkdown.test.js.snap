@@ -61,6 +61,20 @@ Array [
     </Unknown>
   </Styled.p>,
   "",
+  <pre>
+    <code
+      className={undefined}
+    >
+      a code block
+    </code>
+  </pre>,
+  <Styled.p>
+    Inline 
+    <Styled.code>
+      code
+    </Styled.code>
+  </Styled.p>,
+  "",
   <Styled.blockquote>
     <Styled.p>
       Block quotes rock 
@@ -89,6 +103,15 @@ Array [
     HELLO LIST ITEM
     HELLO LIST ITEM
   </Styled.ul>,
+  "HELLO PARAGRAPH",
+  "",
+  <pre>
+    <code
+      className={undefined}
+    >
+      a code block
+    </code>
+  </pre>,
   "HELLO PARAGRAPH",
   "",
   <Styled.blockquote>
