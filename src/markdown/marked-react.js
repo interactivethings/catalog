@@ -2,20 +2,12 @@ import marked from "marked";
 
 /* eslint-disable */
 
-function ReactParser(options) {
-  this.tokens = [];
-  this.token = null;
-  this.options = options || {};
-  this.renderer = this.options.renderer;
-  this.renderer.options = this.options;
-}
+class ReactParser extends marked.Parser {
+  static parse(src, options) {
+    let parser = new ReactParser(options);
+    return parser.parse(src);
+  }
 
-ReactParser.parse = function(src, options) {
-  let parser = new ReactParser(options);
-  return parser.parse(src);
-};
-
-Object.assign(ReactParser.prototype, marked.Parser.prototype, {
   parse(src) {
     this.inline = new ReactInlineLexer(src.links, this.options);
     // use an InlineLexer with a TextRenderer to extract pure text
@@ -30,8 +22,9 @@ Object.assign(ReactParser.prototype, marked.Parser.prototype, {
       out.push(this.tok());
     }
 
-    return out; // React.DOM.div(null, out);
-  },
+    return out;
+  }
+
   tok() {
     switch (this.token.type) {
       case "space": {
@@ -145,9 +138,7 @@ Object.assign(ReactParser.prototype, marked.Parser.prototype, {
       }
     }
   }
-});
-
-// var ReactInlineLexer = {};
+}
 
 class ReactInlineLexer extends marked.InlineLexer {
   output(src) {
@@ -328,10 +319,6 @@ class ReactInlineLexer extends marked.InlineLexer {
     return out;
   }
 }
-
-// ReactInlineLexer.prototype = Object.create(marked.InlineLexer.prototype);
-
-// ReactInlineLexer.prototype.output = function;
 
 function escape(html, encode) {
   return html;
