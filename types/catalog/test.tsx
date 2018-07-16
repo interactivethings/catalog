@@ -10,7 +10,8 @@ import {
   HtmlSpecimen,
   TableSpecimen,
   ColorSpecimen,
-  ColorPaletteSpecimen
+  ColorPaletteSpecimen,
+  CodeSpecimen
 } from "catalog";
 
 const MyPage = () => markdown`
@@ -54,6 +55,14 @@ ${(
 ${<ColorPaletteSpecimen colors={[{ value: "#660000" }]} />}
 
 ${<HtmlSpecimen light>{"hello"}</HtmlSpecimen>}
+
+${<CodeSpecimen>{"hello"}</CodeSpecimen>}
+
+${(
+  <CodeSpecimen span={3} lang="javascript">
+    {"var x = 3;"}
+  </CodeSpecimen>
+)}
 
 `;
 

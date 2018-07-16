@@ -114,10 +114,9 @@ export class AudioSpecimen extends React.Component<
 > {}
 
 export interface CodeSpecimenProps {
-  rawBody: string;
-  collapsed: boolean;
-  lang: string;
-  raw: boolean;
+  collapsed?: boolean;
+  lang?: string;
+  raw?: boolean;
 }
 export class CodeSpecimen extends React.Component<
   SpecimenProps & CodeSpecimenProps
