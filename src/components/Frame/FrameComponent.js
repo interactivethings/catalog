@@ -18,6 +18,7 @@ const hasConsole = typeof window !== "undefined" && window.console;
 const noop = () => {};
 let swallowInvalidHeadWarning = noop;
 let resetWarnings = noop;
+const DEBOUNCE_WAIT_TIME_MS = 100;
 
 if (hasConsole) {
   const originalError = console.error; // eslint-disable-line no-console
@@ -36,10 +37,31 @@ if (hasConsole) {
   };
 }
 
+const debounce = (fn, time) => {
+  let timeout;
+
+  return function() {
+    const functionCall = () => fn.apply(this, arguments);
+
+    clearTimeout(timeout);
+    timeout = setTimeout(functionCall, time);
+  };
+};
+
 class FrameComponent extends Component {
   constructor() {
     super();
     this.renderFrameContents = this.renderFrameContents.bind(this);
+    this.debouncedRenderFrameContents = debounce(
+      this.renderFrameContents,
+      DEBOUNCE_WAIT_TIME_MS
+    );
+    this.startMutationObserver = this.startMutationObserver.bind(this);
+    this.stopMutationObserver = this.stopMutationObserver.bind(this);
+    this.decorateCssInsertRule = this.decorateCssInsertRule.bind(this);
+    this.restoreOriginalInsertRule = this.restoreOriginalInsertRule.bind(this);
+    this.decorateCssInsertRule();
+    this.startMutationObserver();
   }
 
   componentDidMount() {
@@ -55,6 +77,44 @@ class FrameComponent extends Component {
     if (doc) {
       unmountComponentAtNode(doc.body);
     }
+    this.stopMutationObserver();
+    this.restoreOriginalInsertRule();
+  }
+
+  startMutationObserver() {
+    const target = document.querySelector("head");
+
+    // render iframe content after a styles were added of modified
+    this.observer = new MutationObserver(() =>
+      this.debouncedRenderFrameContents()
+    );
+
+    const config = {
+      childList: true,
+      subtree: true,
+      characterData: true
+    };
+
+    this.observer.observe(target, config);
+  }
+
+  stopMutationObserver() {
+    this.observer.disconnect();
+  }
+
+  decorateCssInsertRule() {
+    // this is a workaround due to the impossibility to detect CSSStyleSheet.insertRule
+    const that = this;
+    that.originalInsertRule = CSSStyleSheet.prototype.insertRule;
+
+    CSSStyleSheet.prototype.insertRule = function(style, index) {
+      that.originalInsertRule.call(this, style, index);
+      that.debouncedRenderFrameContents();
+    };
+  }
+
+  restoreOriginalInsertRule() {
+    CSSStyleSheet.prototype.insertRule = this.originalInsertRule;
   }
 
   renderFrameContents() {
@@ -87,7 +147,18 @@ class FrameComponent extends Component {
         document.querySelectorAll('head > style, head > link[rel="stylesheet"]')
       );
       pageStyles.forEach(s => {
-        doc.head.appendChild(s.cloneNode(true));
+        const clonedNode = s.cloneNode(true);
+
+        // Take styles inserted with insertRule and turn into regular styles inside a style tag
+        // cloneNode does not clone styles inserted with insertRule
+        // This fix allows to render style components inside an iframe in production
+        const insertedStyles = s.sheet.cssRules;
+        const insertedStylesArray = Array.prototype.slice.call(insertedStyles);
+        insertedStylesArray.forEach(
+          cssRule => (clonedNode.textContent += cssRule.cssText)
+        );
+
+        doc.head.appendChild(clonedNode);
       });
 
       swallowInvalidHeadWarning();
