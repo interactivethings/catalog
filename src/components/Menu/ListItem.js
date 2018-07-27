@@ -31,7 +31,7 @@ const style = theme => {
     nestedLink: {
       borderTop: "none",
       borderBottom: "none",
-      padding: "0 24px 16px 60px"
+      padding: "8px 24px 8px 60px"
     },
     nestedList: {
       borderTop: "none",
