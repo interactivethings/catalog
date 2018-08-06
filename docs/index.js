@@ -60,8 +60,8 @@ const pages = [
         content: markdownLoader("configuration/pages")
       },
       {
-        path: "configuration/routing-deployment",
-        title: "Routing & Deployment",
+        path: "configuration/routing",
+        title: "URLs & Routing",
         content: markdownLoader("configuration/routing")
       },
       {
