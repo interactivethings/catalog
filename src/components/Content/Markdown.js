@@ -11,6 +11,8 @@ const baseListStyle = {
   paddingLeft: "2rem"
 };
 
+// Defined with `css`, so it can be used as a selector for nested elements
+// For example: `Paragraph`
 const blockquoteStyle = css({
   quotes: "none",
   margin: "48px 0 32px 0",
