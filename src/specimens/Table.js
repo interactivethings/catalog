@@ -14,7 +14,6 @@ function getStyle(theme) {
       paddingBottom: "10px"
     },
     table: {
-      ...text(theme),
       borderCollapse: "collapse",
       lineHeight: "auto",
       width: "100%",
@@ -65,7 +64,11 @@ HeadingCell.propTypes = Cell.propTypes;
 
 class Table extends React.Component {
   render() {
-    const { columns, rows, catalog: { theme } } = this.props;
+    const {
+      columns,
+      rows,
+      catalog: { theme }
+    } = this.props;
     const { cell, container, table, head, tableRow } = getStyle(theme);
 
     const tableKeys = columns
