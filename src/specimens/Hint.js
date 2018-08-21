@@ -100,7 +100,11 @@ class Hint extends React.Component {
             id: slug,
             className: css({
               ...heading(theme, Math.max(0, 3 - level)),
-              color: "currentColor"
+              color: "currentColor",
+              margin: `48px 0 0 0`,
+              "blockquote + &, h1 + &, h2 + &, h3 + &, h4 + &, h5 + &, h6 + &": {
+                margin: `16px 0 0 0`
+              }
             })
           },
           textParts
