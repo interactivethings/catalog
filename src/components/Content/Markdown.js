@@ -11,39 +11,43 @@ const baseListStyle = {
   paddingLeft: "2rem"
 };
 
-export const Paragraph = styled("p", (props, { theme }) => ({
-  ...text(theme),
-  flexBasis: "100%",
-  margin: `16px 0 0 0`
-}));
-export const UnorderedList = styled("ul", (props, { theme }) => ({
-  ...baseListStyle,
-  ...text(theme),
-  listStyle: "disc",
-  marginTop: "16px",
-  marginBottom: 0
-}));
-export const OrderedList = styled("ol", (props, { theme }) => ({
-  ...baseListStyle,
-  ...text(theme),
-  listStyle: "ordinal",
-  marginTop: "16px",
-  marginBottom: 0
-}));
-export const ListItem = styled("li", (props, { theme }) => ({
-  ...text(theme),
-  "& > :first-child": { marginTop: 0 },
-  "& > :last-child": { marginBottom: 0 }
-}));
-export const BlockQuote = styled("blockquote", (props, { theme }) => ({
-  fontSize: getFontSize(theme, 1),
+const blockquoteStyle = css({
   quotes: "none",
   margin: "48px 0 32px 0",
+  width: "100%",
   "&::before, &::after": { content: "none" },
   "& > :first-child": { marginTop: 0 },
   "& > :last-child": { marginBottom: 0 },
-  "+ blockquote": { marginBottom: 0 }
+  "& + &": { marginTop: 0 }
+});
+
+export const Paragraph = styled("p", (props, { theme }) => ({
+  ...text(theme),
+  flexBasis: "100%",
+  [`.${blockquoteStyle} &`]: { fontSize: getFontSize(theme, 1) },
+  margin: `16px 0 0 0`
 }));
+export const UnorderedList = styled("ul", {
+  ...baseListStyle,
+  listStyle: "disc",
+  marginTop: "16px",
+  marginBottom: 0
+});
+export const OrderedList = styled("ol", {
+  ...baseListStyle,
+  listStyle: "ordinal",
+  marginTop: "16px",
+  marginBottom: 0
+});
+export const ListItem = styled("li", (props, { theme }) => ({
+  ...text(theme),
+  [`.${blockquoteStyle} &`]: { fontSize: getFontSize(theme, 1) },
+  "& > :first-child": { marginTop: 0 },
+  "& > :last-child": { marginBottom: 0 }
+}));
+export const BlockQuote = props => (
+  <blockquote className={blockquoteStyle} {...props} />
+);
 export const Hr = styled("hr", {
   border: "none",
   flexBasis: "100%",
@@ -65,7 +69,9 @@ export const CodeSpan = styled("code", (props, { theme }) => ({
   padding: "0.12em 0.2em",
   textIndent: 0
 }));
-export const Del = styled("del", (props, { theme }) => text(theme));
+export const Del = styled("del", {
+  textDecoration: "line-through"
+});
 export const Image = styled("img", {
   maxWidth: "100%"
 });
