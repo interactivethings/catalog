@@ -33,17 +33,21 @@ export const UnorderedList = styled("ul", {
   ...baseListStyle,
   listStyle: "disc",
   marginTop: "16px",
-  marginBottom: 0
+  marginBottom: 0,
+  "& > li": { listStyle: "disc" }
 });
 export const OrderedList = styled("ol", {
   ...baseListStyle,
   listStyle: "ordinal",
   marginTop: "16px",
-  marginBottom: 0
+  marginBottom: 0,
+  "& > li": { listStyle: "ordinal" }
 });
 export const ListItem = styled("li", (props, { theme }) => ({
   ...text(theme),
   [`.${blockquoteStyle} &`]: { fontSize: getFontSize(theme, 1) },
+  margin: 0,
+  padding: 0,
   "& > :first-child": { marginTop: 0 },
   "& > :last-child": { marginBottom: 0 }
 }));
