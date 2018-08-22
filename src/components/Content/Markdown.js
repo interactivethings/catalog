@@ -48,7 +48,7 @@ export const ListItem = styled("li", (props, { theme }) => ({
   [`.${blockquoteStyle} &`]: { fontSize: getFontSize(theme, 1) },
   margin: 0,
   padding: 0,
-  "& > :first-child": { marginTop: 0 },
+  "& > :first-child, & > ul, & > ol": { marginTop: 0 },
   "& > :last-child": { marginBottom: 0 }
 }));
 export const BlockQuote = props => (
