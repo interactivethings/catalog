@@ -36,9 +36,12 @@ function getStyle(theme) {
       "& :last-child": {
         marginBottom: 0
       },
-      "& a": {
+      "& a, & a:hover, & a:visited": {
         color: "currentColor",
         textDecoration: "underline"
+      },
+      "& a:focus": {
+        color: theme.linkColor
       },
       "& p, & ul, & ol, & li, & blockquote": {
         color: `currentColor`
