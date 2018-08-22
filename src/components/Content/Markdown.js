@@ -82,16 +82,28 @@ export const Image = styled("img", {
   maxWidth: "100%"
 });
 
-export const Link = (props, { catalog: { theme } }) => (
-  <BaseLink
-    className={css({
-      color: theme.linkColor,
-      textDecoration: "none",
-      ":hover": { textDecoration: "underline" }
-    })}
-    {...props}
-  />
-);
+export const Link = (props, { catalog: { theme } }) => {
+  const baseLinkStyle = {
+    color: theme.linkColor,
+    transition: "none",
+    border: "none",
+    background: "none",
+    textDecoration: "none"
+  };
+  return (
+    <BaseLink
+      className={css({
+        ...baseLinkStyle,
+        "&:active, &:visited": baseLinkStyle,
+        "&:hover, &:focus": {
+          ...baseLinkStyle,
+          textDecoration: "underline"
+        }
+      })}
+      {...props}
+    />
+  );
+};
 
 Link.contextTypes = {
   catalog: catalogShape
