@@ -5,7 +5,8 @@ const baseTextStyle = {
   fontWeight: 400,
   textRendering: "optimizeLegibility",
   WebkitFontSmoothing: "antialiased",
-  MozOsxFontSmoothing: "grayscale"
+  MozOsxFontSmoothing: "grayscale",
+  letterSpacing: "normal"
 };
 
 // Helpers
