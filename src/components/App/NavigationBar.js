@@ -15,7 +15,10 @@ function getStyles(theme) {
     color: theme.navBarTextColor,
     display: "block",
     fontFamily: theme.fontFamily,
-    textDecoration: "none"
+    textDecoration: "none",
+    border: "none",
+    background: "none",
+    transition: "none"
   };
   return {
     navbar: {
@@ -43,7 +46,6 @@ function getStyles(theme) {
     rightNavLink: {
       padding: `${verticalPadding}px ${horizontalPadding}px ${verticalPadding}px 0`,
       textAlign: "right",
-      borderLeft: `1px solid ${theme.background}`,
       "@media (min-width: 1000px)": {
         padding: `${verticalPadding}px ${horizontalPadding *
           2}px ${verticalPadding}px 0`

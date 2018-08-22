@@ -34,8 +34,8 @@ function getStyle(theme) {
   return {
     container: {
       width: "100%",
-      boxSizing: "border-box",
-      height: 82,
+      boxSizing: "content-box",
+      height: 80,
       background: "#fff",
       border: "1px solid #eee",
       transition: ".4s background"

@@ -50,6 +50,7 @@ const getStyles = (theme, sidebarVisible) => ({
   },
   sideNav: {
     background: theme.sidebarColor,
+    boxSizing: "content-box",
     color: "#fff",
     overflowY: "auto",
     position: "fixed",
