@@ -28,7 +28,6 @@ export default {
   brandColor: "#003B5C",
 
   sidebarColor: "#FFFFFF",
-  sidebarColorActive: "#D1312E",
   sidebarColorText: "#003B5C",
   sidebarColorTextActive: "#FF5555",
   sidebarColorLine: "#EBEBEB",
