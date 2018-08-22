@@ -2,6 +2,7 @@ import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
 import { css } from "../emotion";
+import { text } from "../styles/typography";
 import Specimen from "../components/Specimen/Specimen";
 import { hcl } from "d3-color";
 
@@ -29,7 +30,11 @@ const ColorPaletteItem = _ColorPaletteItem;
 
 class ColorPalette extends React.Component {
   render() {
-    const { catalog: { theme }, colors, horizontal } = this.props;
+    const {
+      catalog: { theme },
+      colors,
+      horizontal
+    } = this.props;
     const styles = {
       container: {
         width: "100%",
@@ -47,16 +52,8 @@ class ColorPalette extends React.Component {
           float: "none"
         }
       },
-      text: {
-        fontFamily: theme.fontFamily,
-        color: theme.textColor,
-        flex: "0 0 auto",
-        boxSizing: "border-box",
-        padding: "10px 0",
-        flexBasis: "calc(100% - 10px)",
-        background: theme.background
-      },
       textPalette: {
+        ...text(theme),
         fontFamily: theme.fontFamily,
         color: theme.textColor,
         textOverflow: "ellipsis",
