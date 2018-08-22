@@ -6,15 +6,17 @@ import { pageShape, pagesShape } from "../../CatalogPropTypes";
 import Link from "../Link/Link";
 import { text } from "../../styles/typography";
 
+const baseLinkStyle = {
+  background: "none",
+  border: "none",
+  transition: "none"
+};
+
 const style = theme => {
-  const pseudo = {
-    color: theme.sidebarColorTextActive,
-    textDecoration: "none",
-    background: "rgba(255,255,255,0.1)"
-  };
   return {
     link: {
       ...text(theme),
+      ...baseLinkStyle,
       borderTop: `1px solid ${theme.sidebarColorLine}`,
       color: theme.sidebarColorText,
       cursor: "pointer",
@@ -22,16 +24,51 @@ const style = theme => {
       margin: 0,
       padding: "16px 40px",
       textDecoration: "none",
-      ":hover": pseudo,
-      ":active": pseudo
+      "&:hover, &:active, &:focus": {
+        ...baseLinkStyle,
+        borderTop: `1px solid ${theme.sidebarColorLine}`,
+        color: theme.sidebarColorTextActive,
+        textDecoration: "none",
+        background: "rgba(255,255,255,0.1)"
+      }
     },
     activeLink: {
-      color: theme.sidebarColorTextActive
+      color: theme.sidebarColorTextActive,
+      cursor: "auto",
+      padding: "16px 40px 8px 40px",
+      "&:hover, &:active, &:focus": {
+        ...baseLinkStyle,
+        borderTop: `1px solid ${theme.sidebarColorLine}`,
+        color: theme.sidebarColorTextActive,
+        textDecoration: "none",
+        background: "none"
+      }
+    },
+    listItem: {
+      background: "none",
+      margin: 0,
+      padding: 0
     },
     nestedLink: {
       borderTop: "none",
       borderBottom: "none",
-      padding: "0 24px 16px 60px"
+      padding: "8px 24px 8px 60px",
+      "&:hover, &:active, &:focus": {
+        ...baseLinkStyle,
+        color: theme.sidebarColorTextActive,
+        textDecoration: "none",
+        background: "rgba(255,255,255,0.1)"
+      }
+    },
+    nestedActiveLink: {
+      color: theme.sidebarColorTextActive,
+      cursor: "auto",
+      "&:hover, &:active, &:focus": {
+        ...baseLinkStyle,
+        color: theme.sidebarColorTextActive,
+        textDecoration: "none",
+        background: "none"
+      }
     },
     nestedList: {
       borderTop: "none",
@@ -39,7 +76,7 @@ const style = theme => {
       display: "block",
       listStyle: "none",
       margin: 0,
-      padding: 0
+      padding: "0 0 8px 0"
     },
     nestedListHidden: {
       display: "none"
@@ -99,14 +136,19 @@ class ListItem extends React.Component {
       [css(currentStyle.nestedLink)]: nested
     });
 
+    const activeLinkStyle = cx(linkStyle, {
+      [css(currentStyle.activeLink)]: !nested,
+      [css(currentStyle.nestedActiveLink)]: nested
+    });
+
     return (
-      <li>
+      <li className={css(currentStyle.listItem)}>
         {pages ? (
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
           <Link
             className={linkStyle}
-            activeStyle={currentStyle.activeLink}
+            activeClassName={activeLinkStyle}
             to={path}
             onlyActiveOnIndex={path === "/"}
           >
