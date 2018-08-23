@@ -53,7 +53,7 @@ const Cell = ({ value, style }) => {
 };
 
 Cell.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.node,
   style: PropTypes.object.isRequired
 };
 
@@ -65,7 +65,11 @@ HeadingCell.propTypes = Cell.propTypes;
 
 class Table extends React.Component {
   render() {
-    const { columns, rows, catalog: { theme } } = this.props;
+    const {
+      columns,
+      rows,
+      catalog: { theme }
+    } = this.props;
     const { cell, container, table, head, tableRow } = getStyle(theme);
 
     const tableKeys = columns
