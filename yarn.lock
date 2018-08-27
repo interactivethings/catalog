@@ -129,6 +129,10 @@
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.6.1.tgz#b2de5184e49f518b7115a5e6d0e727643ec531cf"
 
+"@emotion/stylis@^0.6.10":
+  version "0.6.12"
+  resolved "https://registry.yarnpkg.com/@emotion/stylis/-/stylis-0.6.12.tgz#3fb58220e0fc9e380bcabbb3edde396ddc1dfe6e"
+
 "@emotion/stylis@^0.6.5":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@emotion/stylis/-/stylis-0.6.5.tgz#3e1bb0e52307d66212bcd307e2cb4d079f2a0b6a"
@@ -2183,14 +2187,15 @@ create-ecdh@^4.0.0:
     bn.js "^4.1.0"
     elliptic "^6.0.0"
 
-create-emotion@^9.1.2:
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/create-emotion/-/create-emotion-9.1.2.tgz#a4227ac0c1bd9f07160f1e87161bffdb1732e148"
+create-emotion@^9.2.6:
+  version "9.2.6"
+  resolved "https://registry.yarnpkg.com/create-emotion/-/create-emotion-9.2.6.tgz#f64cf1c64cf82fe7d22725d1d77498ddd2d39edb"
   dependencies:
     "@emotion/hash" "^0.6.2"
     "@emotion/memoize" "^0.6.1"
-    "@emotion/stylis" "^0.6.5"
+    "@emotion/stylis" "^0.6.10"
     "@emotion/unitless" "^0.6.2"
+    csstype "^2.5.2"
     stylis "^3.5.0"
     stylis-rule-sheet "^0.0.10"
 
@@ -2374,6 +2379,10 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
 csstype@^2.2.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.4.1.tgz#ba35a94259cffc07ed022954737a1da690dcae2c"
+
+csstype@^2.5.2:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.6.tgz#2ae1db2319642d8b80a668d2d025c6196071e788"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
