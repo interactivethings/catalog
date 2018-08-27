@@ -13,20 +13,21 @@ const baseListStyle = {
 
 // Defined with `css`, so it can be used as a selector for nested elements
 // For example: `Paragraph`
-const blockquoteStyle = css({
-  quotes: "none",
-  margin: "48px 0 32px 0",
-  width: "100%",
-  "&::before, &::after": { content: "none" },
-  "& > :first-child": { marginTop: 0 },
-  "& > :last-child": { marginBottom: 0 },
-  "& + &": { marginTop: 0 }
-});
+const blockquoteStyle = () =>
+  css({
+    quotes: "none",
+    margin: "48px 0 32px 0",
+    width: "100%",
+    "&::before, &::after": { content: "none" },
+    "& > :first-child": { marginTop: 0 },
+    "& > :last-child": { marginBottom: 0 },
+    "& + &": { marginTop: 0 }
+  });
 
 export const Paragraph = styled("p", (props, { theme }) => ({
   ...text(theme),
   flexBasis: "100%",
-  [`.${blockquoteStyle} &`]: { fontSize: getFontSize(theme, 1) },
+  [`.${blockquoteStyle()} &`]: { fontSize: getFontSize(theme, 1) },
   margin: `16px 0 0 0`
 }));
 export const UnorderedList = styled("ul", {
@@ -45,14 +46,14 @@ export const OrderedList = styled("ol", {
 });
 export const ListItem = styled("li", (props, { theme }) => ({
   ...text(theme),
-  [`.${blockquoteStyle} &`]: { fontSize: getFontSize(theme, 1) },
+  [`.${blockquoteStyle()} &`]: { fontSize: getFontSize(theme, 1) },
   margin: 0,
   padding: 0,
   "& > :first-child, & > ul, & > ol": { marginTop: 0 },
   "& > :last-child": { marginBottom: 0 }
 }));
 export const BlockQuote = props => (
-  <blockquote className={blockquoteStyle} {...props} />
+  <blockquote className={blockquoteStyle()} {...props} />
 );
 export const Hr = styled("hr", {
   border: "none",
