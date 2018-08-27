@@ -42,6 +42,9 @@ const style = theme => {
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
         background: "none"
+      },
+      "&:last-child": {
+        padding: "16px 40px"
       }
     },
     listItem: {
