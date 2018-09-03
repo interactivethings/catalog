@@ -24,7 +24,7 @@ function getStyle(theme) {
       borderBottom: `1px solid ${theme.lightColor}`
     },
     head: {
-      fontWeigth: "bold",
+      fontWeight: "bold",
       borderBottom: `2px solid ${theme.lightColor}`
     },
     cell: {
