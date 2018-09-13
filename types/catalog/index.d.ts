@@ -83,7 +83,7 @@ export function configureRoutes(config: Config): any;
 export function configureJSXRoutes(config: Config): any;
 
 export function pageLoader(
-  f: string | (() => Promise<{ default: React.ComponentType }>)
+  f: string | (() => Promise<{ default: React.ComponentType }>) | (() => Promise<React.ComponentType>)
 ): React.ComponentType;
 
 // Components
