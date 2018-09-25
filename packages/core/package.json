@@ -1,5 +1,5 @@
 {
-  "name": "catalog",
+  "name": "@catalog/core",
   "version": "3.5.5",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
@@ -25,11 +25,6 @@
     "types"
   ],
   "types": "types/catalog",
-  "bin": {
-    "catalog": "dist/cli/bin/catalog.js",
-    "catalog-start": "dist/cli/bin/catalog-start.js",
-    "catalog-build": "dist/cli/bin/catalog-build.js"
-  },
   "scripts": {
     "preversion": "make test",
     "prepublishOnly": "make test && make build",
