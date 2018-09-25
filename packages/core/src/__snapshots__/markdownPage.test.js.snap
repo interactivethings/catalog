@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Catalog markdown page template literal 1`] = `
+<Page>
+  
+# This is a title
+
+A paragraph
+
+
+  <SpecimenContainer>
+    # THIS IS A HINT
+
+Cool, eh?
+  </SpecimenContainer>
+  
+
+</Page>
+`;
+
+exports[`Catalog markdown page template literal with arbitrary values 1`] = `
+<Page>
+  
+# This is a title
+
+A paragraph 123
+
+~~~
+
+  foo
+  bar
+  <div>
+    hello
+  </div>
+  
+~~~
+
+</Page>
+`;

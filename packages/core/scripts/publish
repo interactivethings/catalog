@@ -1,0 +1,41 @@
+#!/bin/bash
+set -e
+
+CLI_SUCCESS="\033[1;32m✔"
+CLI_ERROR="\033[1;31m✘"
+CLI_QUERY="\033[1;36m→"
+CLI_RESET="\033[0m"
+
+version=$(node -p 'require("./package.json").version')
+
+if [[ $(npm view catalog@$version name) == "catalog" ]]
+then
+  echo -e "$CLI_SUCCESS Version \"$version\" is already published. Aborting.$CLI_RESET"
+  exit 0
+fi
+
+if [[ "$version" == *"-"* ]]
+then
+  tag="next"
+else
+  tag="latest"
+fi
+
+npm publish --tag $tag
+
+echo -e "$CLI_SUCCESS Published version \"$version\" with tag \"$tag\" to npm$CLI_RESET"
+
+git push && git push --tags
+
+if [[ "$tag" == "next" ]]
+then
+  yarn release --pre
+else
+  yarn release
+fi
+
+# make gh-pages
+
+# echo -e "$CLI_SUCCESS Published version \"$version\" to gh-pages$CLI_RESET"
+
+exit 0

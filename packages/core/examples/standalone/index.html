@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Catalog</title>
+</head>
+
+<body>
+  <div id="catalog" />
+
+  <!-- To use the React Specimen you need Babel Standalone -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- For testing purposes: -->
+  <script src="../../dist/catalog-standalone.development.js"></script>
+
+  <!-- Use the development version to get helpful errors in your console -->
+  <!-- <script src="https://unpkg.com/catalog@3/dist/catalog-standalone.development.js"></script> -->
+
+  <!-- Use the minified production version to get optimal performance -->
+  <!-- <script src="https://unpkg.com/catalog@3/dist/catalog-standalone.min.js"></script> -->
+
+  <script>
+    Catalog.render({
+      title: 'My Catalog',
+      pages: [
+        {
+          path: '/',             // The path where the page can be accessed
+          title: 'Introduction', // The page title
+          src: 'intro.md'   // Path to the Markdown document
+        },
+        // Other pages …
+      ]
+    }, document.getElementById('catalog'));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+  "env": {
+    "test": {
+      "presets": [
+        ["env", { "loose": true, "targets": { "node": 6 } }],
+        "react"
+      ],
+      "plugins": [
+        "transform-object-rest-spread",
+        ["emotion", { "autoLabel": true }]
+      ]
+    },
+    "lib": {
+      "presets": [["env", { "targets": { "node": 6 } }], "react"],
+      "plugins": ["transform-object-rest-spread"]
+    },
+    "rollup": {
+      "presets": [
+        [
+          "env",
+          {
+            "loose": true,
+            "modules": false,
+            "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
+          }
+        ],
+        "react"
+      ],
+      "plugins": [
+        "external-helpers",
+        "transform-object-rest-spread",
+        ["emotion", { "autoLabel": true }]
+      ]
+    }
+  }
+}
