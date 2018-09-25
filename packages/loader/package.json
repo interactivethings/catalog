@@ -1,0 +1,29 @@
+{
+  "name": "@catalog/loader",
+  "version": "1.0.0",
+  "description": "Loader for Catalog markdown files",
+  "homepage": "https://www.catalog.style/",
+  "bugs": "https://github.com/interactivethings/catalog/issues",
+  "scripts": {
+    "prepublishOnly": "tsc"
+  },
+  "dependencies": {
+    "loader-utils": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@catalog/core": "^1.0.0",
+    "react": "^16.5.2",
+    "create-react-class": "^15.6.3"
+  },
+  "devDependencies": {
+    "@catalog/core": "^1.0.0",
+    "create-react-class": "^15.6.3",
+    "react": "^16.5.2",
+    "typescript": "^2.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactivethings/catalog.git"
+  },
+  "license": "BSD-3-Clause"
+}
