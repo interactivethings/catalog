@@ -3,10 +3,9 @@ SHELL := /bin/bash
 CURRENT_VERSION = $(shell node -p 'require("./package.json").version')
 
 DIST_TARGETS = \
-	dist/cli \
+	dist \
 	dist/loader.js \
 	dist/babel \
-	dist/setup-template \
 	rollup-lib \
 	rollup-standalone \
 
@@ -25,7 +24,6 @@ build-watch: node_modules dist/setup-template
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
 	@BABEL_ENV=lib $$(yarn bin)/babel src/loader.js --watch --ignore test.js --out-file dist/loader.js & \
 	BABEL_ENV=lib $$(yarn bin)/babel src/babel --watch --ignore test.js --out-dir dist/babel & \
-	BABEL_ENV=lib $$(yarn bin)/babel cli/src --watch --ignore test.js --out-dir dist/cli & \
 	BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.lib.js --watch
 
 
@@ -62,6 +60,9 @@ rollup-standalone:
 	@BABEL_ENV=rollup $$(yarn bin)/rollup $< --config=rollup.config.standalone.js
 	@echo -e "$(CLI_SUCCESS) Built rollup standalone$(CLI_RESET)"
 
+dist:
+	mkdir -p $@
+
 dist/loader.js: src/loader.js
 	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-file $@
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
@@ -69,16 +70,6 @@ dist/loader.js: src/loader.js
 dist/babel: src/babel
 	@BABEL_ENV=lib $$(yarn bin)/babel src/babel --ignore test.js --out-dir dist/babel
 	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
-
-dist/setup-template: cli/setup-template
-	@mkdir -p $(dir $@)
-	@cp -R $< $@
-
-dist/cli: cli/src
-	@mkdir -p $(dir $@)
-	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-dir $@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
-
 
 ### RELEASING
 
