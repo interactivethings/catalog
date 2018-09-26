@@ -20,20 +20,20 @@ all: build-watch
 
 build-watch: node_modules dist/setup-template
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
-	BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.lib.js --watch
+	BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.lib.js --watch
 
 
 test: lint dtslint
-	@$$(yarn bin)/jest
+	@node_modules/.bin/jest
 
 test-watch:
-	@$$(yarn bin)/jest --watch
+	@node_modules/.bin/jest --watch
 
 lint:
-	@$$(yarn bin)/eslint src
+	@node_modules/.bin/eslint src
 
 dtslint:
-	@$$(yarn bin)/tsc --noEmit -p types/catalog
+	@node_modules/.bin/tsc --noEmit -p types/catalog
 
 ### DOCS
 
@@ -66,11 +66,3 @@ clean:
 
 clobber: clean
 	@rm -rf node_modules
-
-#
-# Dependencies
-#
-
-node_modules: package.json yarn.lock
-	@yarn install
-	@/usr/bin/touch $@
