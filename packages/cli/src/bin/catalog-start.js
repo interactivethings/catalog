@@ -47,7 +47,7 @@ const getFrameworkName = (framework: Framework): string => {
   }
 };
 
-const run = async (
+export const run = async (
   catalogSrcDir: string = "catalog",
   options: {
     port: number,
