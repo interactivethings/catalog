@@ -12,7 +12,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: build build-watch rollup-lib rollup-standalone clean clobber lint test test-watch docs build-docs dtslint
+.PHONY: build build-watch rollup-lib rollup-standalone clean clobber lint test test-watch docs build-docs
 
 all: build-watch
 
@@ -23,7 +23,7 @@ build-watch: node_modules dist/setup-template
 	BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.lib.js --watch
 
 
-test: lint dtslint
+test: lint
 	@node_modules/.bin/jest
 
 test-watch:
@@ -31,9 +31,6 @@ test-watch:
 
 lint:
 	@node_modules/.bin/eslint src
-
-dtslint:
-	@node_modules/.bin/tsc --noEmit -p types/catalog
 
 ### DOCS
 

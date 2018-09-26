@@ -1,4 +1,9 @@
 {
   "files": [],
-  "references": [{ "path": "babel" }, { "path": "cli" }, { "path": "loader" }]
+  "references": [
+    { "path": "babel" },
+    { "path": "cli" },
+    { "path": "core/types/catalog" },
+    { "path": "loader" }
+  ]
 }
