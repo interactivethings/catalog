@@ -1,4 +1,3 @@
-// @flow
 import {
   resolveAppPath,
   resolveOwnPath,

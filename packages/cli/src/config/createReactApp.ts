@@ -1,5 +1,4 @@
-// @flow
-import autoprefixer from "autoprefixer";
+import * as autoprefixer from "autoprefixer";
 import * as ExtractTextPlugin from "extract-text-webpack-plugin";
 
 const cssFilename = "static/[name].[contenthash:8].css";
@@ -15,7 +14,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
     { publicPath: Array(cssFilename.split("/").length).join("../") }
   : {};
 
-export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
+export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
   moduleRules: [
     {
       oneOf: [

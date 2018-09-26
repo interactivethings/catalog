@@ -1,4 +1,3 @@
-// @flow
 import { realpathSync } from "fs";
 import { resolve, isAbsolute } from "path";
 

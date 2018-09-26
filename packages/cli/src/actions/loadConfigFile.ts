@@ -1,4 +1,3 @@
-// @flow
 import { resolveAppPath } from "../utils/paths";
 import { exists } from "sander";
 

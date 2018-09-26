@@ -1,6 +1,4 @@
-// @flow
-
-export default (paths: Object, useBabelrc: boolean, dev: boolean) => ({
+export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
   moduleRules: [
     // Process JS with Babel.
     {

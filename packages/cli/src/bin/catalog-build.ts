@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 import "babel-polyfill";
-process.env.NODE_ENV = "development";
+process.env.NODE_ENV = "production";
 
 import * as args from "args";
-import * as detect from "detect-port";
+import chalk from "chalk";
 import { exists } from "sander";
-import openBrowser from "react-dev-utils/openBrowser";
 
-import { infoMessageDimmed, errorMessage } from "../utils/format";
+import {
+  errorMessage,
+  warningMessage,
+  infoMessageDimmed
+} from "../utils/format";
 
 import loadWebpackConfig from "../actions/loadWebpackConfig";
 import loadConfigFile from "../actions/loadConfigFile";
@@ -15,21 +18,20 @@ import detectFramework, { Framework } from "../actions/detectFramework";
 import loadPaths from "../actions/loadPaths";
 
 import setupCatalog from "../actions/setupCatalog";
-import runDevServer from "../actions/runDevServer";
-
-// Parse env
+import runBuild from "../actions/runBuild";
 
 args
-  .option("port", "Port on which the Catalog server runs", 4000, port =>
-    parseInt(port, 10)
+  .option(["o", "out"], "Directory to build into", "<catalog directory>/build")
+  .option(
+    ["u", "public-url"],
+    "The URL where production assets get loaded from",
+    "/"
   )
-  .option("https", "Use https", false)
-  .option("host", "Host", "localhost")
-  .option("proxy", "Proxy")
+  .option("public-path", "[DEPRECATED] Use --public-url")
   .option("babelrc", "Use local .babelrc file (defaults to true)");
 
 const cliOptions = args.parse(process.argv, {
-  value: "[source directory]",
+  value: "<catalog directory>",
   mri: {
     boolean: ["babelrc"]
   }
@@ -47,42 +49,51 @@ const getFrameworkName = (framework: Framework): string => {
   }
 };
 
-export const run = async (
+const run = async (
   catalogSrcDir: string = "catalog",
-  options: {
-    port: number,
-    https: boolean,
-    host: string,
-    proxy: void | string,
-    babelrc: void | boolean
+  {
+    out,
+    publicPath,
+    publicUrl,
+    babelrc
+  }: {
+    out: string;
+    publicPath?: string;
+    publicUrl: string;
+    babelrc: void | boolean;
   }
 ) => {
   const framework = await detectFramework();
 
   const configFile = await loadConfigFile();
 
-  const paths = await loadPaths(catalogSrcDir, "", framework, "/");
+  let webpackPublicPath = publicUrl;
+  if (publicPath) {
+    console.warn(
+      warningMessage(
+        "The --public-path option has been deprecated. Use --public-url"
+      )
+    );
+    webpackPublicPath = publicPath;
+  }
 
-  const port = await detect(options.port);
-
-  const url =
-    (options.https ? "https" : "http") +
-    "://" +
-    options.host +
-    ":" +
-    port +
-    "/";
+  const paths = await loadPaths(
+    catalogSrcDir,
+    out.replace("<catalog directory>", catalogSrcDir),
+    framework,
+    webpackPublicPath
+  );
 
   const babelrcExists: boolean = await exists(paths.babelrc);
 
   const useBabelrc =
-    options.babelrc !== undefined
-      ? options.babelrc
+    babelrc !== undefined
+      ? babelrc
       : configFile && configFile.useBabelrc !== undefined
         ? configFile.useBabelrc
         : babelrcExists;
 
-  const webpackOptions = { paths, dev: true, framework, url, useBabelrc };
+  const webpackOptions = { paths, dev: false, framework, useBabelrc };
 
   let webpackConfig = await loadWebpackConfig(webpackOptions);
 
@@ -94,9 +105,10 @@ export const run = async (
 
   await setupCatalog(paths);
 
-  console.log(`
-  Starting Catalog …
+  console.log(chalk`
+  Building Catalog. This may take a while …
 `);
+
   if (configFile) {
     console.log(
       infoMessageDimmed("  Using configuration file catalog.config.js")
@@ -109,20 +121,16 @@ export const run = async (
     console.log(infoMessageDimmed("  Using custom .babelrc"));
   }
 
-  await runDevServer(
-    webpackConfig,
-    options.host,
-    port,
-    options.https,
-    paths,
-    framework,
-    options.proxy
-  );
-
-  openBrowser(url);
+  await runBuild(webpackConfig, paths);
+  console.log(chalk`  {green Built Catalog into} ${
+    paths.unresolvedCatalogBuildDir
+  }
+`);
 };
 
 run(args.sub[0], cliOptions).catch(err => {
-  console.error(errorMessage("Could not start Catalog\n\n" + err.stack + "\n"));
+  console.error(
+    errorMessage("Failed to compile Catalog\n\n" + err.stack + "\n")
+  );
   process.exit(1);
 });

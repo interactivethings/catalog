@@ -1,4 +1,3 @@
-// @flow
 // Grab NODE_ENV and CATALOG_* environment variables and prepare them to be
 // injected into the application via DefinePlugin in Webpack configuration.
 const CATALOG = /^CATALOG_/i;
@@ -7,7 +6,7 @@ export default function getClientEnvironment(publicUrl: string) {
   const raw = Object.keys(process.env)
     .filter(key => CATALOG.test(key))
     .reduce(
-      (env, key) => {
+      (env: any, key) => {
         env[key] = process.env[key];
         return env;
       },
@@ -24,7 +23,7 @@ export default function getClientEnvironment(publicUrl: string) {
     );
   // Stringify all values so we can feed into Webpack DefinePlugin
   const stringified = {
-    "process.env": Object.keys(raw).reduce((env, key) => {
+    "process.env": Object.keys(raw).reduce((env: any, key) => {
       env[key] = JSON.stringify(raw[key]);
       return env;
     }, {})

@@ -1,9 +1,7 @@
-// @flow
-
 import { exists } from "sander";
 import chalk from "chalk";
 
-export default async (paths: Object) => {
+export default async (paths: any) => {
   const [indexExists, htmlExists, dirExists] = await Promise.all([
     exists(paths.catalogSrcDir, "index.js"),
     exists(paths.catalogSrcDir, "index.html"),

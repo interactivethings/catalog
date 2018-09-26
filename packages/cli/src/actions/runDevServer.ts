@@ -1,15 +1,14 @@
-// @flow
 import * as webpack from "webpack";
 import * as WebpackDevServer from "webpack-dev-server";
 import express from "express";
 import * as errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
 
 export default async (
-  config: Object,
+  config: any,
   host: string,
   port: number,
   https: boolean,
-  paths: Object,
+  paths: any,
   framework: string,
   proxy: void | string
 ): Promise<string> => {
@@ -43,7 +42,7 @@ export default async (
         }
       : {}),
     overlay: false,
-    before(app) {
+    before(app: any) {
       // Next.js serves static files from /static – which can't be configured with `contentBase` directly
       if (framework === "NEXT") {
         app.use("/static", express.static(paths.appStaticSrcDir));
@@ -54,8 +53,8 @@ export default async (
   });
 
   // Launch WebpackDevServer.
-  return new Promise((resolve, reject) => {
-    devServer.listen(port, err => {
+  return new Promise<string>((resolve, reject) => {
+    devServer.listen(port, (err: any) => {
       if (err) {
         reject(err);
       } else {

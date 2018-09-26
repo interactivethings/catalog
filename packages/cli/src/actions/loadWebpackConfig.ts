@@ -1,4 +1,3 @@
-// @flow
 import * as webpack from "webpack";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as ManifestPlugin from "webpack-manifest-plugin";
@@ -13,11 +12,11 @@ import getClientEnvironment from "../config/env";
 import { link } from "../utils/format";
 
 type LoadWebpackOptions = {
-  paths: Object,
-  framework: string,
-  dev: boolean,
-  useBabelrc: boolean,
-  url?: string
+  paths: any;
+  framework: string;
+  dev: boolean;
+  useBabelrc: boolean;
+  url?: string;
 };
 type WebpackConfig = {};
 
@@ -27,7 +26,7 @@ export default async ({
   dev,
   url,
   useBabelrc
-}: LoadWebpackOptions): WebpackConfig => {
+}: LoadWebpackOptions): Promise<WebpackConfig> => {
   const frameworkConfig =
     framework === "NEXT"
       ? nextConfig(paths, useBabelrc, dev)
@@ -153,7 +152,8 @@ export default async ({
       new webpack.DefinePlugin(env.stringified),
       new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
-        minChunks: module => /babel-standalone|js-yaml/.test(module.resource)
+        minChunks: (module: any) =>
+          /babel-standalone|js-yaml/.test(module.resource)
       }),
       new webpack.optimize.CommonsChunkPlugin({
         name: "manifest",

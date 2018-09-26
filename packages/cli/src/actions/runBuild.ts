@@ -1,19 +1,18 @@
-// @flow
 import * as webpack from "webpack";
 import { errorMessage } from "../utils/format";
 import { rimraf, copydir, exists } from "sander";
 
 // Print out errors
-function printErrors(summary, errors) {
+function printErrors(summary: any, errors: any) {
   console.log(errorMessage(summary));
   console.log();
-  errors.forEach(err => {
+  errors.forEach((err: Error) => {
     console.log(err.message || err);
     console.log();
   });
 }
 
-export default async (config: Object, paths: Object) => {
+export default async (config: any, paths: any) => {
   const compiler = webpack(config);
   await rimraf(paths.catalogBuildDir, "*");
 
@@ -29,7 +28,7 @@ export default async (config: Object, paths: Object) => {
 
   return new Promise(resolve => {
     // We don't reject the promise but exit the process immediately
-    compiler.run((err, stats) => {
+    compiler.run((err: any, stats: any) => {
       if (err) {
         printErrors("Failed to compile.", [err]);
         process.exit(1);
