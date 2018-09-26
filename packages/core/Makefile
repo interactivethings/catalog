@@ -4,8 +4,6 @@ CURRENT_VERSION = $(shell node -p 'require("./package.json").version')
 
 DIST_TARGETS = \
 	dist \
-	dist/loader.js \
-	dist/babel \
 	rollup-lib \
 	rollup-standalone \
 
@@ -22,8 +20,6 @@ all: build-watch
 
 build-watch: node_modules dist/setup-template
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
-	@BABEL_ENV=lib $$(yarn bin)/babel src/loader.js --watch --ignore test.js --out-file dist/loader.js & \
-	BABEL_ENV=lib $$(yarn bin)/babel src/babel --watch --ignore test.js --out-dir dist/babel & \
 	BABEL_ENV=rollup $$(yarn bin)/rollup --config=rollup.config.lib.js --watch
 
 
@@ -62,14 +58,6 @@ rollup-standalone:
 
 dist:
 	mkdir -p $@
-
-dist/loader.js: src/loader.js
-	@BABEL_ENV=lib $$(yarn bin)/babel $< --ignore test.js --out-file $@
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
-
-dist/babel: src/babel
-	@BABEL_ENV=lib $$(yarn bin)/babel src/babel --ignore test.js --out-dir dist/babel
-	@echo -e "$(CLI_SUCCESS) Built $@$(CLI_RESET)"
 
 ### RELEASING
 

@@ -68,7 +68,6 @@
     "react-router-scroll": "^0.4.2",
     "sander": "^0.6.0",
     "srcset": "^1.0.0",
-    "strip-indent": "^2.0.0",
     "unfetch": "^3.0.0",
     "url": "^0.11.0"
   },
