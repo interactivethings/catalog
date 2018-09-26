@@ -87,8 +87,7 @@
     "prettier": "^1.12.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "release": "^4.0.0",
-    "typescript": "^2.9.2"
+    "release": "^4.0.0"
   },
   "repository": {
     "type": "git",

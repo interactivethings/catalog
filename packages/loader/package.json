@@ -19,8 +19,7 @@
     "@catalog/core": "^0.0.1",
     "create-react-class": "^15.6.3",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "typescript": "^2.9.2"
+    "react-dom": "^16.5.2"
   },
   "repository": {
     "type": "git",
