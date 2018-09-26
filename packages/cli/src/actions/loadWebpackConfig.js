@@ -97,7 +97,7 @@ export default async ({
         {
           test: /\.md$/,
           loaders: [
-            require.resolve("../../loader"),
+            require.resolve("@catalog/loader"),
             require.resolve("raw-loader")
           ]
         }
