@@ -4,9 +4,6 @@
   "description": "Loader for Catalog markdown files",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
-  "scripts": {
-    "prepublishOnly": "tsc"
-  },
   "dependencies": {
     "loader-utils": "^1.1.0"
   },
