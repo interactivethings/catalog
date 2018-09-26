@@ -1,6 +1,6 @@
 {
   "name": "@catalog/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Commandline tool for Catalog",
   "keywords": [
     "styleguide",
@@ -18,9 +18,9 @@
     "catalog-build": "lib/bin/catalog-build.js"
   },
   "dependencies": {
-    "@catalog/babel": "0.0.1",
-    "@catalog/core": "0.0.1",
-    "@catalog/loader": "0.0.1",
+    "@catalog/babel": "^0.0.2",
+    "@catalog/core": "^0.0.2",
+    "@catalog/loader": "^0.0.2",
     "args": "^3.0.8",
     "autoprefixer": "^7.1.3",
     "babel": "^6.23.0",

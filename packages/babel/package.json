@@ -1,6 +1,6 @@
 {
   "name": "@catalog/babel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Babel preset for Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
