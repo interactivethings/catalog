@@ -1,6 +1,6 @@
 {
   "name": "@catalog/core",
-  "version": "3.5.5",
+  "version": "0.0.1",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
