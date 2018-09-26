@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "depcheck": "^0.6.11",
     "lerna": "^3.4.0",
     "typescript": "^3.0.3"
   }
