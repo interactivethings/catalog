@@ -20,8 +20,6 @@
   },
   "files": [
     "dist",
-    "babel.js",
-    "loader.js",
     "types"
   ],
   "types": "types/catalog",
