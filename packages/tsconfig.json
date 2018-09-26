@@ -1,0 +1,4 @@
+{
+  "files": [],
+  "references": [{ "path": "babel" }, { "path": "cli" }, { "path": "loader" }]
+}

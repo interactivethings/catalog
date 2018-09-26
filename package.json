@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "lerna": "^3.4.0"
+    "lerna": "^3.4.0",
+    "typescript": "^3.0.3"
   }
 }
