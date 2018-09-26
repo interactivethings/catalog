@@ -12,7 +12,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: build build-watch rollup-lib rollup-standalone clean clobber lint test test-watch docs build-docs
+.PHONY: build build-watch rollup-lib rollup-standalone clean clobber test test-watch
 
 all: build-watch
 
@@ -22,24 +22,11 @@ build-watch: node_modules dist/setup-template
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
 	BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.lib.js --watch
 
-
-test: lint
+test:
 	@node_modules/.bin/jest
 
 test-watch:
 	@node_modules/.bin/jest --watch
-
-lint:
-	@node_modules/.bin/eslint src
-
-### DOCS
-
-docs:
-	@rm -f node_modules/catalog && ln -s ../ node_modules/catalog && ./dist/cli/bin/catalog-start.js --no-babelrc docs
-
-build-docs:
-	@rm -f node_modules/catalog && ln -s ../ node_modules/catalog && ./dist/cli/bin/catalog-build.js --no-babelrc docs
-
 
 ### BUILDS
 
