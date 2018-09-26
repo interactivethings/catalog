@@ -46,11 +46,11 @@ build-docs:
 build: node_modules clean $(DIST_TARGETS)
 
 rollup-lib:
-	@BABEL_ENV=rollup $$(yarn bin)/rollup $< --config=rollup.config.lib.js
+	@BABEL_ENV=rollup node_modules/.bin/rollup $< --config=rollup.config.lib.js
 	@echo -e "$(CLI_SUCCESS) Built rollup modules$(CLI_RESET)"
 
 rollup-standalone:
-	@BABEL_ENV=rollup $$(yarn bin)/rollup $< --config=rollup.config.standalone.js
+	@BABEL_ENV=rollup node_modules/.bin/rollup $< --config=rollup.config.standalone.js
 	@echo -e "$(CLI_SUCCESS) Built rollup standalone$(CLI_RESET)"
 
 dist:
