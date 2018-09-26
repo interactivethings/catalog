@@ -12,7 +12,7 @@ CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: build build-watch rollup-lib rollup-standalone version publish clean clobber lint test test-watch docs build-docs dtslint
+.PHONY: build build-watch rollup-lib rollup-standalone clean clobber lint test test-watch docs build-docs dtslint
 
 all: build-watch
 
@@ -58,18 +58,6 @@ rollup-standalone:
 
 dist:
 	mkdir -p $@
-
-### RELEASING
-
-version:
-	@scripts/version
-
-publish:
-	@scripts/publish
-	@rm -f $<
-
-.npmrc: .npmrc-template
-	@cp $< $@
 
 ### OTHER
 
