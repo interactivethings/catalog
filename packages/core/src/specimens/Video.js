@@ -48,7 +48,7 @@ class Video extends React.Component {
           className={css({ width: "100%", height: "100%" })}
         >
           Open{" "}
-          <a href={parsedSrc} target="_blank">
+          <a href={parsedSrc} target="_blank" rel="noopener noreferrer">
             video
           </a>{" "}
           in a new Tab
