@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "catalog": "^3.0.0-beta",
+    "@catalog/cli": "^0.0.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
