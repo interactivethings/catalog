@@ -11,14 +11,15 @@
     "loader-utils": "^1.1.0"
   },
   "peerDependencies": {
-    "@catalog/core": "^1.0.0",
+    "@catalog/core": "^0.0.1",
     "react": "^16.5.2",
     "create-react-class": "^15.6.3"
   },
   "devDependencies": {
-    "@catalog/core": "^1.0.0",
+    "@catalog/core": "^0.0.1",
     "create-react-class": "^15.6.3",
     "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "typescript": "^2.9.2"
   },
   "repository": {
