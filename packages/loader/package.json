@@ -25,5 +25,8 @@
     "type": "git",
     "url": "https://github.com/interactivethings/catalog.git"
   },
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  }
 }
