@@ -1,7 +1,7 @@
 {
   "name": "@catalog/cli",
   "version": "0.0.1",
-  "description": "Create living style guides using Markdown or React",
+  "description": "Commandline tool for Catalog",
   "keywords": [
     "styleguide",
     "style guide",
@@ -16,20 +16,6 @@
     "catalog": "lib/bin/catalog.js",
     "catalog-start": "lib/bin/catalog-start.js",
     "catalog-build": "lib/bin/catalog-build.js"
-  },
-  "scripts": {
-    "preversion": "make test",
-    "prepublishOnly": "tsc",
-    "precommit": "lint-staged",
-    "prettier-all": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "catalog-start": "catalog start",
-    "catalog-build": "catalog build"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "dependencies": {
     "@catalog/babel": "0.0.1",
