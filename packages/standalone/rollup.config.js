@@ -51,7 +51,7 @@ let plugins = [
 export default [
   {
     input: "src/index.js",
-    external: ["babel-standalone"],
+    external: ["@babel/standalone"],
     plugins: [
       replace({
         "process.env.NODE_ENV": JSON.stringify("development")
@@ -60,7 +60,7 @@ export default [
     ],
     output: {
       globals: {
-        "babel-standalone": "Babel"
+        "@babel/standalone": "Babel"
       },
       file: "catalog.js",
       format: "umd",
@@ -69,7 +69,7 @@ export default [
   },
   {
     input: "src/index.js",
-    external: ["babel-standalone"],
+    external: ["@babel/standalone"],
     plugins: [
       replace({
         "process.env.NODE_ENV": JSON.stringify("production")
@@ -79,7 +79,7 @@ export default [
     ],
     output: {
       globals: {
-        "babel-standalone": "Babel"
+        "@babel/standalone": "Babel"
       },
       file: "catalog.min.js",
       format: "umd",
