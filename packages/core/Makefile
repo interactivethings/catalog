@@ -17,7 +17,7 @@ all: build-watch
 
 ### DEVELOPMENT
 
-build-watch: node_modules dist/setup-template
+build-watch: node_modules
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
 	BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.js --watch
 
