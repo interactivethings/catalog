@@ -4,15 +4,14 @@ CURRENT_VERSION = $(shell node -p 'require("./package.json").version')
 
 DIST_TARGETS = \
 	dist \
-	rollup-lib \
-	rollup-standalone \
+	rollup-lib
 
 CLI_SUCCESS = \033[1;32m✔
 CLI_ERROR   = \033[1;31m✘
 CLI_QUERY   = \033[1;36m→
 CLI_RESET   = \033[0m
 
-.PHONY: build build-watch rollup-lib rollup-standalone clean clobber test test-watch
+.PHONY: build build-watch rollup-lib clean clobber test test-watch
 
 all: build-watch
 
@@ -20,7 +19,7 @@ all: build-watch
 
 build-watch: node_modules dist/setup-template
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
-	BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.lib.js --watch
+	BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.js --watch
 
 test:
 	@node_modules/.bin/jest
@@ -33,12 +32,8 @@ test-watch:
 build: node_modules clean $(DIST_TARGETS)
 
 rollup-lib:
-	@BABEL_ENV=rollup node_modules/.bin/rollup $< --config=rollup.config.lib.js
+	@BABEL_ENV=rollup node_modules/.bin/rollup $< --config=rollup.config.js
 	@echo -e "$(CLI_SUCCESS) Built rollup modules$(CLI_RESET)"
-
-rollup-standalone:
-	@BABEL_ENV=rollup node_modules/.bin/rollup $< --config=rollup.config.standalone.js
-	@echo -e "$(CLI_SUCCESS) Built rollup standalone$(CLI_RESET)"
 
 dist:
 	mkdir -p $@
