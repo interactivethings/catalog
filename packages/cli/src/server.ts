@@ -32,10 +32,16 @@ export interface Options {
   babelrc: void | boolean;
 }
 
+export interface Server {
+  port: number;
+  url: string;
+  devServer: any;
+}
+
 export const startServer = async (
   catalogSrcDir: string = "catalog",
   options: Options
-) => {
+): Promise<Server> => {
   const framework = await detectFramework();
 
   const configFile = await loadConfigFile();
@@ -101,4 +107,8 @@ export const startServer = async (
   openBrowser(url);
 
   return { port, url, devServer };
+};
+
+export const stopServer = async (server: Server) => {
+  server.devServer.close();
 };
