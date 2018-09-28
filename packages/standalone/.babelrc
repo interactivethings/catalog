@@ -5,9 +5,8 @@
       {
         "loose": true,
         "modules": false,
-        "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
+        "targets": { "browsers": [">0.25%"] }
       }
-    ],
-    "@babel/preset-react"
+    ]
   ]
 }

@@ -62,7 +62,7 @@ export default [
       globals: {
         "babel-standalone": "Babel"
       },
-      file: "dist/catalog.js",
+      file: "catalog.js",
       format: "umd",
       name: "Catalog"
     }
@@ -81,7 +81,7 @@ export default [
       globals: {
         "babel-standalone": "Babel"
       },
-      file: "dist/catalog.min.js",
+      file: "catalog.min.js",
       format: "umd",
       name: "Catalog"
     }
