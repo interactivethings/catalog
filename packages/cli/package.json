@@ -18,9 +18,9 @@
     "catalog-build": "lib/bin/catalog-build.js"
   },
   "dependencies": {
-    "@catalog/babel": "^0.0.2",
-    "@catalog/core": "^0.0.2",
-    "@catalog/loader": "^0.0.2",
+    "@catalog/babel": "^0.0.3",
+    "@catalog/core": "^0.0.3",
+    "@catalog/loader": "^0.0.3",
     "args": "^3.0.8",
     "autoprefixer": "^7.1.3",
     "babel": "^6.23.0",
