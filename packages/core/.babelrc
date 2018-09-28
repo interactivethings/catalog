@@ -2,33 +2,38 @@
   "env": {
     "test": {
       "presets": [
-        ["env", { "loose": true, "targets": { "node": 6 } }],
-        "react"
+        ["@babel/preset-env", { "loose": true, "targets": { "node": 6 } }],
+        "@babel/preset-react",
+        "@babel/preset-flow"
       ],
       "plugins": [
-        "transform-object-rest-spread",
+        "@babel/plugin-syntax-object-rest-spread",
         ["emotion", { "autoLabel": true }]
       ]
     },
     "lib": {
-      "presets": [["env", { "targets": { "node": 6 } }], "react"],
-      "plugins": ["transform-object-rest-spread"]
+      "presets": [
+        ["@babel/preset-env", { "targets": { "node": 6 } }],
+        "@babel/preset-react",
+        "@babel/preset-flow"
+      ],
+      "plugins": ["@babel/plugin-syntax-object-rest-spread"]
     },
     "rollup": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "loose": true,
             "modules": false,
             "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
           }
         ],
-        "react"
+        "@babel/preset-react",
+        "@babel/preset-flow"
       ],
       "plugins": [
-        "external-helpers",
-        "transform-object-rest-spread",
+        "@babel/plugin-syntax-object-rest-spread",
         ["emotion", { "autoLabel": true }]
       ]
     }

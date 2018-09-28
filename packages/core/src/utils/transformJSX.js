@@ -1,8 +1,8 @@
 import React from "react";
-import { transform } from "babel-standalone";
+import { transform } from "@babel/standalone";
 import requireModuleDefault from "./requireModuleDefault";
 
-const presets = ["es2015-loose", "react", "stage-2"];
+const presets = ["es2015", "react"];
 
 // Babel plugin to return last top-level expression statement
 const returnLastExpressionPlugin = ({ types: t }) => ({

@@ -31,12 +31,12 @@ Array [
   </Styled.ul>,
   <Styled.p>
     A 
-    <Unknown
+    <Link
       title={null}
       to="http://www.interactivethings.com/"
     >
       link
-    </Unknown>
+    </Link>
      and some 
     <Styled.strong>
       bold
@@ -46,25 +46,23 @@ Array [
       italic
     </Styled.em>
      text. Blank links 
-    <Unknown
+    <Link
       title={null}
       to="mailto:foo@bar.com"
     >
       foo@bar.com
-    </Unknown>
+    </Link>
      
-    <Unknown
+    <Link
       title={null}
       to="https://foobar.com"
     >
       https://foobar.com
-    </Unknown>
+    </Link>
   </Styled.p>,
   "",
   <pre>
-    <code
-      className={undefined}
-    >
+    <code>
       a code block
     </code>
   </pre>,
@@ -106,9 +104,7 @@ Array [
   "HELLO PARAGRAPH",
   "",
   <pre>
-    <code
-      className={undefined}
-    >
+    <code>
       a code block
     </code>
   </pre>,
