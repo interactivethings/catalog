@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import "@babel/polyfill";
 import "unfetch/polyfill";
 
 import * as R from "ramda";

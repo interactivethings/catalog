@@ -29,13 +29,8 @@ let plugins = [
         "unstable_renderSubtreeIntoContainer",
         "unmountComponentAtNode"
       ],
-      "node_modules/@catalog/core/node_modules/js-yaml/index.js": [
-        "safeLoad",
-        "CORE_SCHEMA",
-        "Type",
-        "Schema"
-      ],
-      "node_modules/@catalog/core/node_modules/prop-types/index.js": [
+      "js-yaml": ["safeLoad", "CORE_SCHEMA", "Type", "Schema"],
+      "prop-types": [
         "bool",
         "array",
         "func",
