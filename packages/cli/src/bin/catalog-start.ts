@@ -5,7 +5,7 @@ process.env.NODE_ENV = "development";
 import * as args from "args";
 import * as detect from "detect-port";
 import { exists } from "sander";
-import openBrowser from "react-dev-utils/openBrowser";
+import * as openBrowser from "react-dev-utils/openBrowser";
 
 import { infoMessageDimmed, errorMessage } from "../utils/format";
 
@@ -112,7 +112,7 @@ export const run = async (
     console.log(infoMessageDimmed("  Using custom .babelrc"));
   }
 
-  await runDevServer(
+  const { devServer } = await runDevServer(
     webpackConfig,
     options.host,
     port,
@@ -123,6 +123,8 @@ export const run = async (
   );
 
   openBrowser(url);
+
+  return devServer;
 };
 
 run(args.sub[0], cliOptions).catch(err => {
