@@ -1,0 +1,18 @@
+{
+  "env": {
+    "rollup": {
+      "presets": [
+        [
+          "env",
+          {
+            "loose": true,
+            "modules": false,
+            "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
+          }
+        ],
+        "react"
+      ],
+      "plugins": ["external-helpers", "transform-object-rest-spread"]
+    }
+  }
+}
