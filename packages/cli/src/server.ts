@@ -24,15 +24,17 @@ const getFrameworkName = (framework: Framework): string => {
   }
 };
 
+export interface Options {
+  port: number;
+  https: boolean;
+  host: string;
+  proxy: void | string;
+  babelrc: void | boolean;
+}
+
 export const startServer = async (
   catalogSrcDir: string = "catalog",
-  options: {
-    port: number;
-    https: boolean;
-    host: string;
-    proxy: void | string;
-    babelrc: void | boolean;
-  }
+  options: Options
 ) => {
   const framework = await detectFramework();
 
@@ -86,7 +88,7 @@ export const startServer = async (
     console.log(infoMessageDimmed("  Using custom .babelrc"));
   }
 
-  const server = await runDevServer(
+  const devServer = await runDevServer(
     webpackConfig,
     options.host,
     port,
@@ -98,5 +100,5 @@ export const startServer = async (
 
   openBrowser(url);
 
-  return server;
+  return { port, url, devServer };
 };

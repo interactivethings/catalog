@@ -11,7 +11,7 @@ export default async (
   paths: any,
   framework: string,
   proxy: void | string
-): Promise<{ url: string; port: number; devServer: any }> => {
+): Promise<any> => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
     compress: true,
@@ -53,17 +53,13 @@ export default async (
   });
 
   // Launch WebpackDevServer.
-  return new Promise<{ url: string; port: number; devServer: any }>(
-    (resolve, reject) => {
-      devServer.listen(port, host, (err: any) => {
-        if (err) {
-          reject(err);
-        } else {
-          const url =
-            (https ? "https" : "http") + "://" + host + ":" + port + "/";
-          resolve({ devServer, port, url });
-        }
-      });
-    }
-  );
+  return new Promise<any>((resolve, reject) => {
+    devServer.listen(port, host, (err: any) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(devServer);
+      }
+    });
+  });
 };
