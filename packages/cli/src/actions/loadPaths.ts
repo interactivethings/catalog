@@ -36,7 +36,7 @@ export default async (
   babelrc: resolveAppPath(".babelrc"),
   appNodeModules: resolveAppPath("node_modules"),
   ownNodeModules: resolveOwnPath("..", "..", "node_modules"),
-  nodePaths: nodePaths,
+  nodePaths: nodePaths(),
 
   publicUrl: ensureSlash(publicUrl, true)
 });
