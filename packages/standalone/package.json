@@ -10,6 +10,9 @@
   "scripts": {
     "prepublishOnly": "make build"
   },
+  "peerDependencies": {
+    "@babel/standalone": "^7.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
