@@ -32,7 +32,7 @@ test-watch:
 build: node_modules clean $(DIST_TARGETS)
 
 rollup-lib:
-	@BABEL_ENV=rollup node_modules/.bin/rollup $< --config=rollup.config.js
+	@BABEL_ENV=rollup ../../node_modules/.bin/rollup $< --config=rollup.config.js
 	@echo -e "$(CLI_SUCCESS) Built rollup modules$(CLI_RESET)"
 
 dist:

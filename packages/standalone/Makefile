@@ -13,12 +13,12 @@ all: build-watch
 
 build-watch: node_modules
 	@echo -e "$(CLI_SUCCESS) Starting development mode …$(CLI_RESET)"
-	@BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.js --watch
+	@BABEL_ENV=rollup ../../node_modules/.bin/rollup --config=rollup.config.js --watch
 
 ### BUILDS
 
 build: node_modules clean dist
-	@BABEL_ENV=rollup node_modules/.bin/rollup --config=rollup.config.js
+	@BABEL_ENV=rollup ../../node_modules/.bin/rollup --config=rollup.config.js
 	@echo -e "$(CLI_SUCCESS) Done$(CLI_RESET)"
 
 dist:
