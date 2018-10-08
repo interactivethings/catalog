@@ -11,15 +11,7 @@
     "@babel/standalone": "^7.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "@catalog/core": "^0.0.3",
-    "ramda": "^0.25.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "serve": "^10.0.2",
-    "unfetch": "^4.0.1"
+    "@catalog/core": "*"
   },
   "repository": {
     "type": "git",

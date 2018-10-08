@@ -4,6 +4,7 @@
     "@babel/core": "^7.1.2",
     "@babel/plugin-syntax-jsx": "^7.0.0",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
@@ -38,7 +39,8 @@
     "rollup-plugin-replace": "^2.1.0",
     "rollup-plugin-terser": "^3.0.0",
     "srcset": "^1.0.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "unfetch": "^4.0.1"
   },
   "jest": {
     "roots": [
