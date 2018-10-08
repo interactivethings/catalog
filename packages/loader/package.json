@@ -1,6 +1,6 @@
 {
   "name": "@catalog/loader",
-  "version": "0.0.3",
+  "version": "4.0.0",
   "description": "Loader for Catalog markdown files",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
@@ -13,7 +13,7 @@
     "react": "^16.5.2"
   },
   "devDependencies": {
-    "@catalog/core": "^0.0.3",
+    "@catalog/core": "^4.0.0",
     "create-react-class": "^15.6.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
