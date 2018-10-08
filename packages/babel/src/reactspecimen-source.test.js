@@ -9,11 +9,9 @@ const input = `<ReactSpecimen>
 
 const output = `"use strict";
 
-<ReactSpecimen sourceText={"<div>\\n  foo\\n</div>"}>
-  <div>
-    foo
-  </div>
-</ReactSpecimen>;`;
+React.createElement(ReactSpecimen, {
+  sourceText: "<div>\\n  foo\\n</div>"
+}, React.createElement("div", null, "foo"));`;
 
 test("Adds sourceText prop", () => {
   expect(
