@@ -11,6 +11,15 @@ const verticalPadding = 28;
 const horizontalPadding = 21;
 
 function getStyles(theme) {
+  const baseLinkStyle = {
+    color: theme.navBarTextColor,
+    display: "block",
+    fontFamily: theme.fontFamily,
+    textDecoration: "none",
+    border: "none",
+    background: "none",
+    transition: "none"
+  };
   return {
     navbar: {
       width: "100%",
@@ -22,7 +31,7 @@ function getStyles(theme) {
       verticalAlign: "top",
       width: "50%",
       transition: ".2s opacity",
-      ":hover": {
+      "&:hover, &:focus, &:focus-within": {
         opacity: 0.65
       }
     },
@@ -37,17 +46,14 @@ function getStyles(theme) {
     rightNavLink: {
       padding: `${verticalPadding}px ${horizontalPadding}px ${verticalPadding}px 0`,
       textAlign: "right",
-      borderLeft: `1px solid ${theme.background}`,
       "@media (min-width: 1000px)": {
         padding: `${verticalPadding}px ${horizontalPadding *
           2}px ${verticalPadding}px 0`
       }
     },
     link: {
-      color: theme.navBarTextColor,
-      display: "block",
-      fontFamily: theme.fontFamily,
-      textDecoration: "none"
+      ...baseLinkStyle,
+      "&:hover, &:focus, &:active, &:visited": baseLinkStyle
     },
     leftLinkIcon: {
       display: "none",
@@ -132,10 +138,12 @@ class NavigationBar extends React.Component {
             >
               {leftIcon}
               <div className={css(styles.linklabels)}>
-                <h4 className={css(styles.linkSuperTitle)}>
+                <div className={css(styles.linkSuperTitle)}>
                   {previousPage.superTitle}
-                </h4>
-                <h3 className={css(styles.linkTitle)}>{previousPage.title}</h3>
+                </div>
+                <div className={css(styles.linkTitle)}>
+                  {previousPage.title}
+                </div>
               </div>
             </Link>
           )}
@@ -147,10 +155,10 @@ class NavigationBar extends React.Component {
               className={css({ ...styles.link, ...styles.rightNavLink })}
             >
               <div className={css(styles.linklabels)}>
-                <h4 className={css(styles.linkSuperTitle)}>
+                <div className={css(styles.linkSuperTitle)}>
                   {nextPage.superTitle}
-                </h4>
-                <h3 className={css(styles.linkTitle)}>{nextPage.title}</h3>
+                </div>
+                <div className={css(styles.linkTitle)}>{nextPage.title}</div>
               </div>
               {rightIcon}
             </Link>

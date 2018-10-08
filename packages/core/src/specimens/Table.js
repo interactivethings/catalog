@@ -14,7 +14,6 @@ function getStyle(theme) {
       paddingBottom: "10px"
     },
     table: {
-      ...text(theme),
       borderCollapse: "collapse",
       lineHeight: "auto",
       width: "100%",

@@ -5,14 +5,15 @@ const baseTextStyle = {
   fontWeight: 400,
   textRendering: "optimizeLegibility",
   WebkitFontSmoothing: "antialiased",
-  MozOsxFontSmoothing: "grayscale"
+  MozOsxFontSmoothing: "grayscale",
+  letterSpacing: "normal"
 };
 
 // Helpers
 
 // Modular scale font size helper; level can be negative (for smaller font sizes) and positive (for larger font sizes) integers; level 0 === baseFontSize
 export const getFontSize = ({ baseFontSize, msRatio }, level = 0) =>
-  `${baseFontSize / 16 * Math.pow(msRatio, level)}em`;
+  `${baseFontSize / 16 * Math.pow(msRatio, level)}rem`;
 
 // Exports
 

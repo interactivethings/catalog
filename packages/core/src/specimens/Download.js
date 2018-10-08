@@ -21,23 +21,31 @@ const DownloadIcon = (
 );
 
 function getStyle(theme) {
+  const baseLinkStyle = {
+    color: theme.brandColor,
+    transition: "none",
+    border: "none",
+    background: "none",
+    textDecoration: "none",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "row"
+  };
   return {
     container: {
       width: "100%",
+      boxSizing: "content-box",
       height: 80,
       background: "#fff",
       border: "1px solid #eee",
       transition: ".4s background"
     },
     a: {
-      cursor: "pointer",
-      display: "flex",
-      flexDirection: "row",
-      textDecoration: "none",
-      color: theme.brandColor,
-      ":hover": {
+      ...baseLinkStyle,
+      "&:hover, &:focus, &:active": {
+        ...baseLinkStyle,
         color: theme.linkColor,
-        "& h3": {
+        "& div": {
           color: theme.linkColor
         }
       }
@@ -104,8 +112,8 @@ class DownloadSpecimen extends React.Component {
         >
           {image}
           <div className={css(styles.titleblock)}>
-            <h2 className={css(styles.title)}>{title}</h2>
-            <h3 className={css(styles.subtitle)}>{subtitle}</h3>
+            <div className={css(styles.title)}>{title}</div>
+            <div className={css(styles.subtitle)}>{subtitle}</div>
           </div>
         </a>
       </div>

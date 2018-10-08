@@ -2,17 +2,21 @@ import React from "react";
 import { catalogShape } from "../CatalogPropTypes";
 import PropTypes from "prop-types";
 import { css } from "../emotion";
+import { text } from "../styles/typography";
 import Specimen from "../components/Specimen/Specimen";
 
 class Color extends React.Component {
   render() {
-    const { catalog: { theme }, value, name } = this.props;
+    const {
+      catalog: { theme },
+      value,
+      name
+    } = this.props;
     const styles = {
       text: {
-        fontFamily: theme.fontFamily,
-        color: theme.textColor,
+        ...text(theme),
         boxSizing: "border-box",
-        padding: "10px 0",
+        padding: "8px 0",
         background: theme.background
       }
     };
