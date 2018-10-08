@@ -7,6 +7,16 @@ import replace from "rollup-plugin-replace";
 let plugins = [
   nodeResolve({
     jsnext: true,
+
+    /* This should be enabled to allow efficient tree-shaking but it causes
+     * problems because the commonjs namedExports option doesn't work correctly
+     * in the presence of relative paths. If you enable this you'll get this
+     * error:
+     *
+     * > [!] Error: 'default' is not exported by ../core/node_modules/prop-types/index.js
+     */
+    module: false,
+
     main: true,
     browser: true,
     preferBuiltins: false
