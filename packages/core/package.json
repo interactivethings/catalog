@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "@babel/standalone": "^7.1.0",
