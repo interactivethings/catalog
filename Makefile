@@ -5,3 +5,7 @@ test:
 .PHONY: lint
 lint:
 	@./node_modules/.bin/eslint packages '*.js'
+
+.PHONY: build
+build:
+	@./node_modules/.bin/tsc --build packages

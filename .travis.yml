@@ -9,6 +9,9 @@ matrix:
     - name: "Lint"
       node_js: "10"
       script: make lint
+    - name: "Build"
+      node_js: "10"
+      script: make build
 
     - name: "Test on Node.js v8.x"
       node_js: "8"
