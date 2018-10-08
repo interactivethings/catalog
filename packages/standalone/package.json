@@ -7,9 +7,6 @@
   "main": "catalog.js",
   "module": "catalog.js",
   "unpkg": "catalog.min.js",
-  "scripts": {
-    "prepublishOnly": "make build"
-  },
   "peerDependencies": {
     "@babel/standalone": "^7.1.0"
   },

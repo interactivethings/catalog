@@ -22,10 +22,6 @@
     "types"
   ],
   "types": "types/catalog",
-  "scripts": {
-    "preversion": "make test",
-    "prepublishOnly": "make test && make build"
-  },
   "dependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
