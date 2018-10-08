@@ -11,7 +11,7 @@ npm ci
 This will install all dependencies in the individual packages and link packages with each other.
 
 ```
-./node_modules/.bin/lerna bootstraps
+./node_modules/.bin/lerna bootstrap
 ```
 
 ### 3. Start the tests in watch mode
