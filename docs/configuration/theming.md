@@ -1,4 +1,3 @@
-
 ## Theming Catalog
 
 ### `logoSrc`
@@ -56,7 +55,7 @@ Used in the navigation bar.
 ResponsiveTabs (tab text), Download specimen (title text).
 Typography: headings.
 
-##### `sidebarColor{,Active,Text,TextActive,Line,Heading}`
+##### `sidebarColor{,Text,TextActive,Line,Heading}`
 
 Used in the sidebar.
 
@@ -73,4 +72,3 @@ codeStyles: {
   tag: {color: '#FF5555', fontWeight: 'bold'}
 }
 ```
-

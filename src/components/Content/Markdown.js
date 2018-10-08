@@ -11,39 +11,50 @@ const baseListStyle = {
   paddingLeft: "2rem"
 };
 
+// Defined with `css`, so it can be used as a selector for nested elements
+// For example: `Paragraph`
+const blockquoteStyle = () =>
+  css({
+    quotes: "none",
+    margin: "48px 0 32px 0",
+    width: "100%",
+    "&::before, &::after": { content: "none" },
+    "& > :first-child": { marginTop: 0 },
+    "& > :last-child": { marginBottom: 0 },
+    "& + &": { marginTop: 0 }
+  });
+
 export const Paragraph = styled("p", (props, { theme }) => ({
   ...text(theme),
   flexBasis: "100%",
+  [`.${blockquoteStyle()} &`]: { fontSize: getFontSize(theme, 1) },
   margin: `16px 0 0 0`
 }));
-export const UnorderedList = styled("ul", (props, { theme }) => ({
+export const UnorderedList = styled("ul", {
   ...baseListStyle,
-  ...text(theme),
   listStyle: "disc",
   marginTop: "16px",
-  marginBottom: 0
-}));
-export const OrderedList = styled("ol", (props, { theme }) => ({
+  marginBottom: 0,
+  "& > li": { listStyle: "disc" }
+});
+export const OrderedList = styled("ol", {
   ...baseListStyle,
-  ...text(theme),
   listStyle: "ordinal",
   marginTop: "16px",
-  marginBottom: 0
-}));
+  marginBottom: 0,
+  "& > li": { listStyle: "ordinal" }
+});
 export const ListItem = styled("li", (props, { theme }) => ({
   ...text(theme),
-  "& > :first-child": { marginTop: 0 },
+  [`.${blockquoteStyle()} &`]: { fontSize: getFontSize(theme, 1) },
+  margin: 0,
+  padding: 0,
+  "& > :first-child, & > ul, & > ol": { marginTop: 0 },
   "& > :last-child": { marginBottom: 0 }
 }));
-export const BlockQuote = styled("blockquote", (props, { theme }) => ({
-  fontSize: getFontSize(theme, 1),
-  quotes: "none",
-  margin: "48px 0 32px 0",
-  "&::before, &::after": { content: "none" },
-  "& > :first-child": { marginTop: 0 },
-  "& > :last-child": { marginBottom: 0 },
-  "+ blockquote": { marginBottom: 0 }
-}));
+export const BlockQuote = props => (
+  <blockquote className={blockquoteStyle()} {...props} />
+);
 export const Hr = styled("hr", {
   border: "none",
   flexBasis: "100%",
@@ -65,21 +76,35 @@ export const CodeSpan = styled("code", (props, { theme }) => ({
   padding: "0.12em 0.2em",
   textIndent: 0
 }));
-export const Del = styled("del", (props, { theme }) => text(theme));
+export const Del = styled("del", {
+  textDecoration: "line-through"
+});
 export const Image = styled("img", {
   maxWidth: "100%"
 });
 
-export const Link = (props, { catalog: { theme } }) => (
-  <BaseLink
-    className={css({
-      color: theme.linkColor,
-      textDecoration: "none",
-      ":hover": { textDecoration: "underline" }
-    })}
-    {...props}
-  />
-);
+export const Link = (props, { catalog: { theme } }) => {
+  const baseLinkStyle = {
+    color: theme.linkColor,
+    transition: "none",
+    border: "none",
+    background: "none",
+    textDecoration: "none"
+  };
+  return (
+    <BaseLink
+      className={css({
+        ...baseLinkStyle,
+        "&:active, &:visited": baseLinkStyle,
+        "&:hover, &:focus": {
+          ...baseLinkStyle,
+          textDecoration: "underline"
+        }
+      })}
+      {...props}
+    />
+  );
+};
 
 Link.contextTypes = {
   catalog: catalogShape

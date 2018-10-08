@@ -6,13 +6,17 @@ An ordinary paragraph can follow after the lead text. It can repeat things. It c
 
 > Blockquotes can appear multiple times, even though that might not make too much sense … Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `.code` text.
 >
+> ## Heading in a blockquote
+>
 > * Blockquotes
 >   * With lists
+>
+> > Nested blockquote
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `(...args) => {return args;}` text.
+consequat. Inline elements are styled nicely: text [link](http://example.com) text _italic_ text **bold** text `(...args) => {return args;}` text. ~~Strikethrough text~~
 
 Link [to a heading](#jump-to-me)
 
@@ -36,6 +40,14 @@ Plain email foo@bar.com
 # A heading
 
 Some `inline code`, yeah!
+
+## Subheading
+### Subheading
+#### Subheading
+##### Subheading
+###### Subheading
+
+> Foo bar
 
 And a [link](#hints-with-content), and another one: https://catalog.style
 ```
@@ -223,3 +235,7 @@ Similar to button, but looks more important.
 ```
 <a class="important-button" href="#">Important Button</a>
 ```
+
+> a block quote
+
+> another one

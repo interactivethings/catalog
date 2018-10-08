@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Preview from "./Preview";
 import { css } from "../../emotion";
+import { text } from "../../styles/typography";
 
 function getStyle(theme) {
   return {
@@ -13,15 +14,16 @@ function getStyle(theme) {
       flexShrink: 0
     },
     tab: {
+      ...text(theme),
       alignItems: "center",
       background: "#eee",
       boxSizing: "border-box",
       color: "#777",
       cursor: "pointer",
       display: "flex",
+      lineHeight: theme.msRatio,
       flexBasis: "100%",
       flexDirection: "row",
-      fontFamily: theme.fontFamily,
       padding: "10px",
       transition: ".2s background-color, .4s color"
     },
