@@ -1,16 +1,18 @@
 sudo: false
-
 language: node_js
-node_js:
-  - "6"
-  - "8"
-  - "10"
 
 cache:
   - node_modules
 
-script: make $JOB
+matrix:
+  include:
+    - name: "Lint"
+      node_js: "10"
+      script: make lint
 
-env:
-  - JOB=lint
-  - JOB=test
+    - name: "Test on Node.js v8.x"
+      node_js: "8"
+      script: make test
+    - name: "Test on Node.js v10.x"
+      node_js: "10"
+      script: make test
