@@ -1,4 +1,4 @@
-import stripIndent from "strip-indent";
+import * as stripIndent from "strip-indent";
 
 export default function({ types: t }) {
   return {
