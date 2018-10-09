@@ -73,14 +73,14 @@ Array [
     </Styled.code>
   </Styled.p>,
   "",
-  <Unknown>
+  <BlockQuote>
     <Styled.p>
       Block quotes rock 
       <Styled.em>
         another em style
       </Styled.em>
     </Styled.p>
-  </Unknown>,
+  </BlockQuote>,
 ]
 `;
 
@@ -110,8 +110,8 @@ Array [
   </pre>,
   "HELLO PARAGRAPH",
   "",
-  <Unknown>
+  <BlockQuote>
     HELLO PARAGRAPH
-  </Unknown>,
+  </BlockQuote>,
 ]
 `;
