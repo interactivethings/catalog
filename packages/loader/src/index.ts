@@ -1,7 +1,7 @@
-const loaderUtils = require("loader-utils");
+import * as loaderUtils from "loader-utils";
 
 module.exports = function loader() {};
-module.exports.pitch = function pitch(remainingRequest) {
+module.exports.pitch = function pitch(remainingRequest: any) {
   const resource = loaderUtils.stringifyRequest(this, `!!${remainingRequest}`);
   this.cacheable && this.cacheable();
 

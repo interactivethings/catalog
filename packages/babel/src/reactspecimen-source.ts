@@ -1,5 +1,5 @@
 // From package "strip-indent"
-const stripIndent = str => {
+const stripIndent = (str: string): string => {
   const match = str.match(/^[ \t]*(?=\S)/gm);
 
   if (!match) {
@@ -12,10 +12,10 @@ const stripIndent = str => {
   return indent > 0 ? str.replace(re, "") : str;
 };
 
-export default function({ types: t }) {
+export default function({ types: t }: { types: any }) {
   return {
     visitor: {
-      JSXElement(path, state) {
+      JSXElement(path: any, state: any) {
         if (path.node.openingElement.name.name === "ReactSpecimen") {
           if (path.node.openingElement.selfClosing) {
             return;

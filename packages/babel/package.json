@@ -4,6 +4,7 @@
   "description": "Babel preset for Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
+  "main": "lib/index.js",
   "dependencies": {
     "strip-indent": "^2.0.0"
   },
