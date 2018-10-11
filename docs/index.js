@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Catalog, pageLoader } from "catalog";
+import { Catalog, pageLoader } from "@catalog/core";
 import logo from "./catalog_logo.svg";
 
 // We know that Catalog uses react-router, and furthermore that it

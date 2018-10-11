@@ -20,6 +20,14 @@ This will install all dependencies in the individual packages and link packages 
 ./node_modules/.bin/jest --watch
 ```
 
+### 4. Start the docs catalog
+
+This will start up the local catalog that is stored in the `docs/` folder. Use it to test the changes you do to the core package.
+
+```
+make
+```
+
 # Release
 
 Releasing is done manually. We currently publish two kinds of releases: canary (alpha) and latest (stable, production-ready).
