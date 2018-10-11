@@ -33,7 +33,7 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
         {
           test: /\.(js|jsx)$/,
           include: [paths.appRoot, paths.catalogSrcDir],
-          exclude: /node_modules/,
+          exclude: /(lodash|standalone)/,
           loader: require.resolve("babel-loader"),
           options: {
             babelrc: useBabelrc,

@@ -1,0 +1,11 @@
+[build]
+  publish = "docs/build"
+  command = "make docs/build"
+
+[build.environment]
+  NODE_VERSION = "10.11.0"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

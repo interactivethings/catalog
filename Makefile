@@ -19,3 +19,9 @@ lint:
 .PHONY: build
 build:
 	@./node_modules/.bin/tsc --build packages
+
+docs/build:
+	@./node_modules/.bin/lerna bootstrap
+	@./node_modules/.bin/tsc --build packages
+	@(cd packages/core; ../../node_modules/.bin/rollup --config rollup.config.js)
+	@node ./packages/cli/lib/bin/catalog-build.js docs
