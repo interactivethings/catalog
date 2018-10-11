@@ -1,6 +1,6 @@
 import * as webpack from "webpack";
 import * as WebpackDevServer from "webpack-dev-server";
-import express from "express";
+import * as express from "express";
 import * as errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
 
 export default async (
@@ -31,7 +31,7 @@ export default async (
     historyApiFallback: {
       disableDotRule: true,
       htmlAcceptHeaders: proxy ? ["text/html"] : ["text/html", "*/*"]
-    },
+    } as any /* because htmlAcceptHeaders is not documented */,
     https,
     host,
     ...(proxy
