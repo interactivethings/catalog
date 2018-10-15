@@ -25,3 +25,8 @@ docs/build:
 	@./node_modules/.bin/tsc --build packages
 	@(cd packages/core; ../../node_modules/.bin/rollup --config rollup.config.js)
 	@node ./packages/cli/lib/bin/catalog-build.js docs
+
+.PHONY: watch
+watch:
+	@./node_modules/.bin/tsc --build packages --watch &
+	@(cd packages/core; ../../node_modules/.bin/rollup --config rollup.config.js --watch)
