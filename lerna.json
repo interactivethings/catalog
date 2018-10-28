@@ -1,5 +1,10 @@
 {
-  "version": "4.0.0",
-  "packages": ["docs", "packages/*"],
-  "npmClientArgs": ["--no-package-lock"]
+  "version": "0.0.4",
+  "packages": [
+    "docs",
+    "packages/*"
+  ],
+  "npmClientArgs": [
+    "--no-package-lock"
+  ]
 }

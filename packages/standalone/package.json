@@ -1,6 +1,6 @@
 {
   "name": "@catalog/standalone",
-  "version": "4.0.0",
+  "version": "0.0.4",
   "description": "Standalone version of Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
@@ -11,7 +11,7 @@
     "@babel/standalone": "^7.1.0"
   },
   "devDependencies": {
-    "@catalog/core": "^4.0.0"
+    "@catalog/core": "^0.0.4"
   },
   "repository": {
     "type": "git",
