@@ -1,5 +1,5 @@
 {
-  "name": "@catalog/babel",
+  "name": "@catalog/babel-preset",
   "version": "0.0.4",
   "description": "Babel preset for Catalog",
   "homepage": "https://www.catalog.style/",

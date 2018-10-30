@@ -12,7 +12,7 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
           ? []
           : [
               require.resolve("babel-preset-react-app"),
-              require.resolve("@catalog/babel")
+              require.resolve("@catalog/babel-preset")
             ],
         plugins: useBabelrc
           ? []
