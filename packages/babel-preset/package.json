@@ -5,9 +5,7 @@
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
   "main": "lib/index.js",
-  "dependencies": {
-    "strip-indent": "^2.0.0"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/interactivethings/catalog.git"

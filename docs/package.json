@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "catalog-docs",
   "dependencies": {
     "@catalog/core": "^0.0.5"
   },
