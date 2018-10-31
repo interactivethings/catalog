@@ -16,6 +16,7 @@
     "@types/webpack": "^3.8.17",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-emotion": "^9.2.11",
     "depcheck": "^0.6.11",
     "eslint": "^5.8.0",
     "eslint-config-prettier": "^3.1.0",
@@ -34,5 +35,9 @@
     "roots": [
       "<rootDir>/packages/"
     ]
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ]
 }
