@@ -20,7 +20,7 @@
   "dependencies": {
     "@catalog/babel-preset": "^0.0.5",
     "@catalog/core": "^0.0.5",
-    "@catalog/webpack-loader": "^0.0.4",
+    "@catalog/markdown-loader": "^0.0.5",
     "args": "^3.0.8",
     "autoprefixer": "^7.1.3",
     "babel": "^6.23.0",
