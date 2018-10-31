@@ -17,6 +17,10 @@
     "catalog-start": "lib/bin/catalog-start.js",
     "catalog-build": "lib/bin/catalog-build.js"
   },
+  "files": [
+    "lib",
+    "setup-template"
+  ],
   "dependencies": {
     "@catalog/babel-preset": "^0.0.5",
     "@catalog/core": "^0.0.5",

@@ -5,6 +5,9 @@
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "loader-utils": "^1.1.0"
   },

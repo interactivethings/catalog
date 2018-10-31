@@ -7,6 +7,10 @@
   "main": "catalog.js",
   "module": "catalog.js",
   "unpkg": "catalog.min.js",
+  "files": [
+    "catalog.js",
+    "catalog.min.js"
+  ],
   "peerDependencies": {
     "@babel/standalone": "^7.1.0"
   },
