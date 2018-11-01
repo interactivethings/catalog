@@ -1,8 +1,14 @@
 {
   "private": true,
-  "name": "catalog-docs",
+  "name": "@catalog/docs",
+  "version": "0.0.5",
   "dependencies": {
-    "@catalog/core": "^0.0.5"
+    "@babel/standalone": "^7.1.0",
+    "@catalog/core": "^0.0.5",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   },
-  "version": "0.0.5"
+  "scripts": {
+    "watch": "../packages/cli/lib/bin/catalog-start.js ."
+  }
 }
