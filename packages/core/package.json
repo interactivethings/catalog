@@ -1,6 +1,6 @@
 {
   "name": "@catalog/core",
-  "version": "0.0.5",
+  "version": "4.0.0-alpha.0",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
@@ -45,9 +45,9 @@
     "url": "^0.11.0"
   },
   "peerDependencies": {
+    "@babel/standalone": "^7.1.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "@babel/standalone": "^7.1.0"
+    "react-dom": "^16.0.0"
   },
   "repository": {
     "type": "git",
