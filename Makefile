@@ -28,5 +28,5 @@ docs/build:
 
 .PHONY: watch
 watch:
-	@./node_modules/.bin/tsc --build packages --watch &
-	@(cd packages/core; ../../node_modules/.bin/rollup --config rollup.config.js --watch)
+	yarn tsc --build packages --watch &
+	yarn lerna run watch --parallel
