@@ -26,7 +26,13 @@ docs/build:
 	@(cd packages/core; ../../node_modules/.bin/rollup --config rollup.config.js)
 	@node ./packages/cli/lib/bin/catalog-build.js docs
 
-.PHONY: watch
-watch:
+.PHONY: bootstrap watch release-canary
+bootstrap:
+	yarn lerna bootstrap
+
+watch: bootstrap
 	yarn tsc --build packages --watch &
 	yarn lerna run watch --parallel
+
+release-canary: bootstrap
+	yarn lerna publish --canary
