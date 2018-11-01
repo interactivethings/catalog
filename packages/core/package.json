@@ -46,7 +46,8 @@
   },
   "peerDependencies": {
     "react": "^15.3.2 || ^16.0.0",
-    "react-dom": "^15.3.2 || ^16.0.0"
+    "react-dom": "^15.3.2 || ^16.0.0",
+    "@babel/standalone": "^7.1.0"
   },
   "repository": {
     "type": "git",
