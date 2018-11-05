@@ -1,6 +1,6 @@
 {
   "name": "@catalog/markdown-loader",
-  "version": "4.0.0-canary.1",
+  "version": "4.0.0-canary.2",
   "description": "Webpack loader for Catalog markdown files",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
@@ -17,7 +17,7 @@
     "react": "^16.5.2"
   },
   "devDependencies": {
-    "@catalog/core": "^4.0.0-canary.1",
+    "@catalog/core": "^4.0.0-canary.2",
     "create-react-class": "^15.6.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
