@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "catalog",
   "version": "4.0.0-canary.1",
   "main": "lib/index.js",
