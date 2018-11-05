@@ -4,7 +4,7 @@
   "version": "4.0.0-alpha.0",
   "dependencies": {
     "@babel/standalone": "^7.1.0",
-    "@catalog/core": "^4.0.0-alpha.0",
+    "catalog": "^4.0.0-alpha.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Catalog, pageLoader } from "@catalog/core";
+import { Catalog, pageLoader } from "catalog";
 import logo from "./catalog_logo.svg";
 
 // Create a convenient loader for markdown files
