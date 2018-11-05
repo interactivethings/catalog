@@ -30,4 +30,4 @@ version-canary: build
 	yarn lerna version prerelease --preid=canary --force-publish
 
 publish-canary:
-	yarn lerna publish from-git --npm-tag=canary
+	yarn lerna publish from-git --npm-tag=canary --npm-client=npm
