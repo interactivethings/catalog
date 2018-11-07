@@ -11,6 +11,9 @@
     "catalog.js",
     "catalog.min.js"
   ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
   "peerDependencies": {
     "@babel/standalone": "^7.1.0"
   },
