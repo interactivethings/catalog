@@ -27,7 +27,7 @@ watch: bootstrap
 	yarn lerna run watch --parallel
 
 version-canary: build
-	yarn lerna version prerelease --preid=canary --force-publish
+	yarn lerna version prerelease --preid=canary
 
-publish-canary:
-	yarn lerna publish from-git --npm-tag=canary --npm-client=npm
+publish-canary: build
+	yarn lerna publish prerelease --preid=canary --npm-tag=canary --npm-client=npm
