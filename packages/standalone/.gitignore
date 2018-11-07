@@ -1,3 +1,4 @@
 /node_modules
 /catalog.js
+/catalog.development.js
 /catalog.min.js

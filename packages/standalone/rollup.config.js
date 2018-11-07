@@ -5,6 +5,9 @@ import { terser } from "rollup-plugin-terser";
 import replace from "rollup-plugin-replace";
 
 let plugins = [
+  babel({
+    exclude: "../../**/node_modules/**"
+  }),
   nodeResolve({
     jsnext: true,
 
@@ -15,14 +18,14 @@ let plugins = [
      *
      * > [!] Error: 'default' is not exported by ../core/node_modules/prop-types/index.js
      */
-    module: false,
+    module: true,
 
     main: true,
     browser: true,
     preferBuiltins: false
   }),
   commonjs({
-    include: "node_modules/**",
+    include: "../../**/node_modules/**",
     namedExports: {
       // left-hand side can be an absolute path, a path
       // relative to the current directory, or the name
@@ -52,9 +55,6 @@ let plugins = [
         "string"
       ]
     }
-  }),
-  babel({
-    exclude: "node_modules/**"
   })
 ];
 
@@ -72,7 +72,7 @@ export default [
       globals: {
         "@babel/standalone": "Babel"
       },
-      file: "catalog.js",
+      file: "catalog.development.js",
       format: "umd",
       name: "Catalog"
     }

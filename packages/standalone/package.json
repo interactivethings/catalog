@@ -12,13 +12,16 @@
     "catalog.min.js"
   ],
   "scripts": {
+    "watch": "rollup -c rollup.config.js --watch",
     "build": "rollup -c rollup.config.js"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.1.0"
   },
   "devDependencies": {
-    "@catalog/core": "^4.0.0-canary.3"
+    "@babel/polyfill": "^7.0.0",
+    "@catalog/core": "^4.0.0-canary.3",
+    "unfetch": "^4.0.1"
   },
   "repository": {
     "type": "git",

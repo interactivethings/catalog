@@ -13,7 +13,7 @@ export default {
   input: "src/index.js",
   plugins: [
     babel({
-      exclude: "node_modules/**"
+      exclude: "../../**/node_modules/**"
     })
   ],
   external: id => externals.some(d => id.startsWith(d)),
