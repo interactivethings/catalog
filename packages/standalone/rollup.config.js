@@ -6,26 +6,13 @@ import replace from "rollup-plugin-replace";
 
 let plugins = [
   babel({
-    exclude: "../../**/node_modules/**"
+    exclude: /node_modules/
   }),
   nodeResolve({
-    jsnext: true,
-
-    /* This should be enabled to allow efficient tree-shaking but it causes
-     * problems because the commonjs namedExports option doesn't work correctly
-     * in the presence of relative paths. If you enable this you'll get this
-     * error:
-     *
-     * > [!] Error: 'default' is not exported by ../core/node_modules/prop-types/index.js
-     */
-    module: true,
-
-    main: true,
-    browser: true,
     preferBuiltins: false
   }),
   commonjs({
-    include: "../../**/node_modules/**",
+    include: /node_modules/,
     namedExports: {
       // left-hand side can be an absolute path, a path
       // relative to the current directory, or the name

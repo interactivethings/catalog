@@ -19,9 +19,7 @@
     "@babel/standalone": "^7.1.0"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "@catalog/core": "^4.0.0-canary.3",
-    "unfetch": "^4.0.1"
+    "@catalog/core": "^4.0.0-canary.3"
   },
   "repository": {
     "type": "git",

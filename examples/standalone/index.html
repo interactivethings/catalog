@@ -10,16 +10,20 @@
 <body>
   <div id="catalog" />
 
+  <!-- For older browsers like IE 11, include these polyfills -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es5,es6,fetch"></script>
+
   <!-- To use the React Specimen you need Babel Standalone -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <script src="../../packages/standalone/catalog.development.js"></script>
+  <!-- Current build, only used during development -->
+  <script src="/packages/standalone/catalog.development.js"></script>
 
   <!-- Use the development version to get helpful errors in your console -->
-  <!-- <script src="https://unpkg.com/catalog@3/dist/catalog-standalone.development.js"></script> -->
+  <!-- <script src="https://unpkg.com/@catalog/standalone/catalog.development.js"></script> -->
 
   <!-- Use the minified production version to get optimal performance -->
-  <!-- <script src="https://unpkg.com/catalog@3/dist/catalog-standalone.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/@catalog/standalone/catalog.min.js"></script> -->
 
   <script>
     Catalog.render({
