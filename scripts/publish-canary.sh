@@ -5,9 +5,6 @@
 # properly and that we do not need to validate that the output is correct
 set -e
 
-# Echo every command being executed
-set -x
-
 make build
 
 # Get 2FA when not CI
@@ -17,4 +14,4 @@ if [ -z $CI ]; then
   read otp
 fi
 
-NPM_CONFIG_OTP="$otp" make publish-canary
+NPM_CONFIG_OTP="$otp" yarn lerna publish from-git --npm-tag=canary
