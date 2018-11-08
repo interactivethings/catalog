@@ -3,7 +3,8 @@
   command = "make docs/build"
 
 [build.environment]
-  NODE_VERSION = "10.11.0"
+  NODE_VERSION = "10"
+  YARN_VERSION = "0.12.3"
 
 [[redirects]]
   from = "/*"

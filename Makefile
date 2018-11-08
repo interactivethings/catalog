@@ -6,11 +6,10 @@ all: watch
 lint:
 	yarn eslint "packages/**/src/*.js"
 
-docs/build:
-	@./node_modules/.bin/lerna bootstrap
-	@./node_modules/.bin/tsc --build packages
-	@(cd packages/core; ../../node_modules/.bin/rollup --config rollup.config.js)
-	@node ./packages/cli/lib/bin/catalog-build.js docs
+docs/build: bootstrap
+	yarn tsc --build packages && \
+	(cd packages/core; yarn build) && \
+	./packages/cli/lib/bin/catalog-build.js docs
 
 .PHONY: bootstrap test build watch version-canary publish-canary
 bootstrap:
