@@ -4,7 +4,8 @@ all: watch
 
 .PHONY: lint
 lint:
-	@./node_modules/.bin/eslint packages '*.js'
+	yarn eslint "packages/**/src/*.js"
+
 docs/build:
 	@./node_modules/.bin/lerna bootstrap
 	@./node_modules/.bin/tsc --build packages
@@ -30,4 +31,4 @@ version-canary: build
 	yarn lerna version prerelease --preid=canary
 
 publish-canary: build
-	yarn lerna publish prerelease --preid=canary --npm-tag=canary --npm-client=npm
+	yarn lerna publish prerelease --preid=canary --npm-tag=canary

@@ -1,12 +1,12 @@
 {
   "version": "4.0.0-canary.3",
-  "packages": [
-    "docs",
-    "packages/*"
-  ],
+  "packages": ["docs", "packages/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "npmClientArgs": [
-    "--no-package-lock"
-  ]
+  "command": {
+    "publish": {
+      "npmClient": "npm",
+      "registry": "https://registry.npmjs.org/"
+    }
+  }
 }
