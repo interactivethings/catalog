@@ -1,6 +1,6 @@
 {
   "name": "@catalog/standalone",
-  "version": "4.0.0-canary.4",
+  "version": "4.0.0-canary.5",
   "description": "Standalone version of Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
@@ -18,7 +18,7 @@
     "@babel/standalone": "^7.1.0"
   },
   "devDependencies": {
-    "@catalog/core": "^4.0.0-canary.4"
+    "@catalog/core": "^4.0.0-canary.5"
   },
   "repository": {
     "type": "git",
