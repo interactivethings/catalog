@@ -5,6 +5,7 @@
   "useWorkspaces": true,
   "command": {
     "publish": {
+      "ignoreChanges": ["examples/**", "Makefile"],
       "npmClient": "npm",
       "registry": "https://registry.npmjs.org/"
     }
