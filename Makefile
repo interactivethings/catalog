@@ -20,6 +20,7 @@ test: bootstrap
 
 build: test
 	yarn tsc --build packages && \
+	chmod u+x packages/cli/lib/bin/*.js && \
 	(cd packages/core; yarn build) && \
 	(cd packages/standalone; yarn build)
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import "babel-polyfill";
 process.env.NODE_ENV = "development";
 
 import * as args from "args";

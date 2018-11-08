@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import "babel-polyfill";
 process.env.NODE_ENV = "production";
 
 import * as args from "args";
@@ -90,8 +89,8 @@ const run = async (
     babelrc !== undefined
       ? babelrc
       : configFile && configFile.useBabelrc !== undefined
-        ? configFile.useBabelrc
-        : babelrcExists;
+      ? configFile.useBabelrc
+      : babelrcExists;
 
   const webpackOptions = { paths, dev: false, framework, useBabelrc };
 

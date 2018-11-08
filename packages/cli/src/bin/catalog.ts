@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// @flow
-import "babel-polyfill";
 import * as args from "args";
 
 args
