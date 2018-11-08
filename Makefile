@@ -31,4 +31,4 @@ version-canary: test
 	yarn lerna version prerelease --preid=canary
 
 publish-canary: build
-	yarn lerna publish prerelease --preid=canary --npm-tag=canary
+	yarn lerna publish from-git --npm-tag=canary
