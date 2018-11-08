@@ -14,8 +14,9 @@
     "@types/node": "^10.12.1",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
+    "@types/source-map": "^0.5.7",
     "@types/webpack": "^3.8.17",
-    "@types/webpack-dev-server": "^3.1.1",
+    "@types/webpack-dev-server": "^2.9.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -42,5 +43,8 @@
   "workspaces": [
     "packages/*",
     "docs"
-  ]
+  ],
+  "resolutions": {
+    "@types/webpack": "^3.8.17"
+  }
 }
