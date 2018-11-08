@@ -21,7 +21,8 @@ test: bootstrap
 
 build: test
 	yarn tsc --build packages && \
-	yarn lerna run build --parallel
+	(cd packages/core; yarn build) && \
+	(cd packages/standalone; yarn build)
 
 watch: bootstrap
 	yarn tsc --build packages --watch & \
