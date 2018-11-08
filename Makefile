@@ -7,7 +7,7 @@ lint:
 	yarn eslint "packages/**/src/*.js"
 
 docs/build: bootstrap
-	yarn tsc --build packages && \
+	yarn tsc --build packages && chmod u+x packages/cli/lib/bin/*.js && \
 	(cd packages/core; yarn build) && \
 	./packages/cli/lib/bin/catalog-build.js docs
 
@@ -19,8 +19,7 @@ test: bootstrap
 	yarn jest
 
 build: test
-	yarn tsc --build packages && \
-	chmod u+x packages/cli/lib/bin/*.js && \
+	yarn tsc --build packages && chmod u+x packages/cli/lib/bin/*.js && \
 	(cd packages/core; yarn build) && \
 	(cd packages/standalone; yarn build)
 
