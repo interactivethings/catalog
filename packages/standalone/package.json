@@ -4,11 +4,10 @@
   "description": "Standalone version of Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
-  "main": "catalog.js",
-  "module": "catalog.js",
+  "main": "catalog.min.js",
   "unpkg": "catalog.min.js",
   "files": [
-    "catalog.js",
+    "catalog.development.js",
     "catalog.min.js"
   ],
   "scripts": {
