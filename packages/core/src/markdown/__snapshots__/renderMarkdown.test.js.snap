@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders some Markdown 1`] = `
+Array [
+  <Heading
+    level={1}
+    slug="hello"
+    text={
+      Array [
+        "Hello",
+      ]
+    }
+  />,
+  <Styled.p>
+    World
+  </Styled.p>,
+  "",
+  <Styled.ul>
+    <Styled.li>
+      One
+      <Styled.ul>
+        <Styled.li>
+          Two
+        </Styled.li>
+      </Styled.ul>
+    </Styled.li>
+    <Styled.li>
+      Three
+      
+    </Styled.li>
+  </Styled.ul>,
+  <Styled.p>
+    A 
+    <Link
+      title={null}
+      to="http://www.interactivethings.com/"
+    >
+      link
+    </Link>
+     and some 
+    <Styled.strong>
+      bold
+    </Styled.strong>
+     and 
+    <Styled.em>
+      italic
+    </Styled.em>
+     text. Blank links 
+    <Link
+      title={null}
+      to="mailto:foo@bar.com"
+    >
+      foo@bar.com
+    </Link>
+     
+    <Link
+      title={null}
+      to="https://foobar.com"
+    >
+      https://foobar.com
+    </Link>
+  </Styled.p>,
+  "",
+  <pre>
+    <code>
+      a code block
+    </code>
+  </pre>,
+  <Styled.p>
+    Inline 
+    <Styled.code>
+      code
+    </Styled.code>
+  </Styled.p>,
+  "",
+  <BlockQuote>
+    <Styled.p>
+      Block quotes rock 
+      <Styled.em>
+        another em style
+      </Styled.em>
+    </Styled.p>
+  </BlockQuote>,
+]
+`;
+
+exports[`Renders some Markdown with custom renderers 1`] = `
+Array [
+  <Heading
+    level={1}
+    slug="hello"
+    text={
+      Array [
+        "Hello",
+      ]
+    }
+  />,
+  "HELLO PARAGRAPH",
+  "",
+  <Styled.ul>
+    HELLO LIST ITEM
+    HELLO LIST ITEM
+  </Styled.ul>,
+  "HELLO PARAGRAPH",
+  "",
+  <pre>
+    <code>
+      a code block
+    </code>
+  </pre>,
+  "HELLO PARAGRAPH",
+  "",
+  <BlockQuote>
+    HELLO PARAGRAPH
+  </BlockQuote>,
+]
+`;

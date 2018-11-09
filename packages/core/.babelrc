@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "loose": true,
+        "modules": false,
+        "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-object-rest-spread",
+    ["emotion", { "autoLabel": true }]
+  ]
+}

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "catalog": "^3.0.0-beta",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "@catalog/cli": "^0.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   },
   "devDependencies": {
     "react-scripts": "^0.9.5"

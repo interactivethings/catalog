@@ -1,0 +1,19 @@
+{
+  "version": "4.0.0-canary.5",
+  "packages": [
+    "docs",
+    "packages/*"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "examples/**",
+        "Makefile"
+      ],
+      "npmClient": "npm",
+      "registry": "https://registry.npmjs.org/"
+    }
+  }
+}

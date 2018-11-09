@@ -1,0 +1,13 @@
+[build]
+  publish = "docs/build"
+  command = "make docs/build"
+
+[build.environment]
+  NODE_VERSION = "10"
+  YARN_VERSION = "1.12.3"
+  YARN_FLAGS = "--frozen-lockfile"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

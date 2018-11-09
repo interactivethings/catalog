@@ -1,0 +1,31 @@
+{
+  "name": "@catalog/standalone",
+  "version": "4.0.0-canary.5",
+  "description": "Standalone version of Catalog",
+  "homepage": "https://www.catalog.style/",
+  "bugs": "https://github.com/interactivethings/catalog/issues",
+  "main": "catalog.min.js",
+  "unpkg": "catalog.min.js",
+  "files": [
+    "catalog.development.js",
+    "catalog.min.js"
+  ],
+  "scripts": {
+    "watch": "rollup -c rollup.config.js --watch",
+    "build": "rollup -c rollup.config.js"
+  },
+  "peerDependencies": {
+    "@babel/standalone": "^7.1.0"
+  },
+  "devDependencies": {
+    "@catalog/core": "^4.0.0-canary.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactivethings/catalog.git"
+  },
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "composite": true,
+
+    "moduleResolution": "node",
+
+    "strict": true,
+  }
+}

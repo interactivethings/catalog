@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@catalog/docs",
+  "version": "4.0.0-canary.5",
+  "dependencies": {
+    "@babel/standalone": "^7.1.0",
+    "catalog": "^4.0.0-canary.5",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
+  "scripts": {
+    "watch": "../packages/cli/lib/bin/catalog-start.js ."
+  }
+}

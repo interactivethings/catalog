@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "babel-preset" },
+    { "path": "cli" },
+    { "path": "core/types/catalog" },
+    { "path": "catalog" },
+    { "path": "markdown-loader" }
+  ]
+}

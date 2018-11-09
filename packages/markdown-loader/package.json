@@ -1,0 +1,33 @@
+{
+  "name": "@catalog/markdown-loader",
+  "version": "4.0.0-canary.5",
+  "description": "Webpack loader for Catalog markdown files",
+  "homepage": "https://www.catalog.style/",
+  "bugs": "https://github.com/interactivethings/catalog/issues",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "loader-utils": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@catalog/core": "^0.0.1",
+    "create-react-class": "^15.6.3",
+    "react": "^16.5.2"
+  },
+  "devDependencies": {
+    "@catalog/core": "^4.0.0-canary.5",
+    "create-react-class": "^15.6.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactivethings/catalog.git"
+  },
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  }
+}

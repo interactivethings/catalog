@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Catalog } from "catalog";
+import { Catalog } from "@catalog/core";
 
 const pages = [
   { path: "/", title: "Welcome", component: require("./WELCOME.md") }

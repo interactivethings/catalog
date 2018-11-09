@@ -1,0 +1,19 @@
+{
+  "name": "@catalog/babel-preset",
+  "version": "4.0.0-canary.5",
+  "description": "Babel preset for Catalog",
+  "homepage": "https://www.catalog.style/",
+  "bugs": "https://github.com/interactivethings/catalog/issues",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactivethings/catalog.git"
+  },
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  }
+}
