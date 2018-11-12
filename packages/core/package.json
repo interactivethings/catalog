@@ -1,6 +1,6 @@
 {
   "name": "@catalog/core",
-  "version": "4.0.0-canary.5",
+  "version": "4.0.1-canary.0",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
