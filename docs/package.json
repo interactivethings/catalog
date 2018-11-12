@@ -9,6 +9,6 @@
     "react-dom": "^16.6.0"
   },
   "scripts": {
-    "watch": "../packages/cli/lib/bin/catalog-start.js ."
+    "watch": "../packages/cli-next/lib/bin/catalog-start.js ."
   }
 }

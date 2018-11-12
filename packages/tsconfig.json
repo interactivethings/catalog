@@ -3,6 +3,7 @@
   "references": [
     { "path": "babel-preset" },
     { "path": "cli" },
+    { "path": "cli-next" },
     { "path": "core/types/catalog" },
     { "path": "catalog" },
     { "path": "markdown-loader" }

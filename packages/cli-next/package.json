@@ -1,0 +1,53 @@
+{
+  "name": "@catalog/cli-next",
+  "version": "4.0.0-canary.5",
+  "description": "Commandline tool for Catalog",
+  "keywords": [
+    "styleguide",
+    "style guide",
+    "docs",
+    "documentation",
+    "react",
+    "markdown"
+  ],
+  "homepage": "https://www.catalog.style/",
+  "bugs": "https://github.com/interactivethings/catalog/issues",
+  "bin": {
+    "catalog": "lib/bin/catalog.js",
+    "catalog-start": "lib/bin/catalog-start.js",
+    "catalog-build": "lib/bin/catalog-build.js"
+  },
+  "files": [
+    "lib",
+    "setup-template"
+  ],
+  "dependencies": {
+    "@catalog/babel-preset": "^4.0.0-canary.5",
+    "@catalog/core": "^4.0.0-canary.5",
+    "@catalog/markdown-loader": "^4.0.0-canary.5",
+    "args": "^3.0.8",
+    "chalk": "^2.1.0",
+    "create-react-class": "^15.6.0",
+    "detect-port": "^1.2.1",
+    "next": "^7.0.2",
+    "raw-loader": "^0.5.1",
+    "sander": "^0.6.0",
+    "url-loader": "^0.5.9"
+  },
+  "devDependencies": {
+    "@types/next": "^7.0.4",
+    "@types/react": "^16.3.5",
+    "@types/react-dom": "^16.0.4",
+    "babel-plugin-react-require": "^3.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactivethings/catalog.git"
+  },
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  }
+}

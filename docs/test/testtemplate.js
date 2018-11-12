@@ -1,6 +1,5 @@
 import React from "react";
 import { markdown, ReactSpecimen } from "@catalog/core";
-import logo from "../catalog_logo.svg";
 
 export default () => markdown`
 # Yo yo
@@ -8,7 +7,7 @@ export default () => markdown`
 This is a markdown template literal
 
 ~~~image
-src: ${logo}
+src: "/static/catalog_logo.svg"
 title: Neat!
 ~~~
 

@@ -7,7 +7,6 @@
 - [Write content using Markdown](/writing-content)
 - [Document your design system and components with Specimens](/specimens)
 
-
 ### Useful Links
 
 - [Try Catalog in your browser](https://www.catalog.style/try)

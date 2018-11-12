@@ -1,10 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Catalog, pageLoader } from "catalog";
-import logo from "./catalog_logo.svg";
 
 // Create a convenient loader for markdown files
-const markdownLoader = page => pageLoader(() => import(`./${page}.md`));
+const markdownLoader = page => pageLoader(() => import(`../${page}.md`));
 
 const pages = [
   {
@@ -170,22 +168,29 @@ const pages = [
   {
     path: "testtemplate",
     title: "Template Test",
-    content: pageLoader(() => import("./test/testtemplate.js")),
+    content: pageLoader(() => import("../test/testtemplate.js")),
     hideFromMenu: true
   }
 ];
 
-ReactDOM.render(
-  <Catalog
-    title="Catalog"
-    useBrowserHistory
-    logoSrc={logo}
-    theme={
-      {
-        // Uses default theme
-      }
-    }
-    pages={pages}
-  />,
-  document.getElementById("catalog")
-);
+export default class CatalogPage extends React.Component {
+  state = { mounted: false };
+  componentDidMount() {
+    this.setState({ mounted: true });
+  }
+  render() {
+    return this.state.mounted ? (
+      <Catalog
+        title="Catalog"
+        useBrowserHistory
+        logoSrc={"/static/catalog_logo.svg"}
+        theme={
+          {
+            // Uses default theme
+          }
+        }
+        pages={pages}
+      />
+    ) : null;
+  }
+}
