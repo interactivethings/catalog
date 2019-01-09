@@ -15,36 +15,32 @@ const baseLinkStyle = {
 const style = theme => {
   return {
     link: {
-      ...text(theme),
       ...baseLinkStyle,
-      borderTop: `1px solid ${theme.sidebarColorLine}`,
-      color: theme.sidebarColorText,
+      fontFamily: '"Open sans","Helvetica Neue",Helvetica,Arial,sans-serif;',
+      fontSize: "12px",
+      lineHeight: "16px",
+      fontWeight: "700",
+      borderTop: "none",
+      color: theme.textColor,
       cursor: "pointer",
       display: "block",
-      margin: 0,
-      padding: "16px 40px",
+      margin: "20px 16px",
       textDecoration: "none",
       "&:hover, &:active, &:focus": {
         ...baseLinkStyle,
-        borderTop: `1px solid ${theme.sidebarColorLine}`,
-        color: theme.sidebarColorTextActive,
-        textDecoration: "none",
+        borderTop: "none",
+        textDecoration: "underline",
         background: "rgba(255,255,255,0.1)"
       }
     },
     activeLink: {
-      color: theme.sidebarColorTextActive,
-      cursor: "auto",
-      padding: "16px 40px 8px 40px",
+      cursor: "pointer",
+      margin: "32px 16px",
       "&:hover, &:active, &:focus": {
         ...baseLinkStyle,
-        borderTop: `1px solid ${theme.sidebarColorLine}`,
-        color: theme.sidebarColorTextActive,
-        textDecoration: "none",
+        borderTop: "none",
+        textDecoration: "underline",
         background: "none"
-      },
-      "&:last-child": {
-        padding: "16px 40px"
       }
     },
     listItem: {
@@ -55,21 +51,20 @@ const style = theme => {
     nestedLink: {
       borderTop: "none",
       borderBottom: "none",
-      padding: "8px 24px 8px 60px",
+      margin: "0 16px 12px 28px",
+      fontWeight: 400,
       "&:hover, &:active, &:focus": {
         ...baseLinkStyle,
-        color: theme.sidebarColorTextActive,
-        textDecoration: "none",
+        textDecoration: "underline",
         background: "rgba(255,255,255,0.1)"
       }
     },
     nestedActiveLink: {
-      color: theme.sidebarColorTextActive,
-      cursor: "auto",
+      cursor: "pointer",
+      fontWeight: 700,
       "&:hover, &:active, &:focus": {
         ...baseLinkStyle,
-        color: theme.sidebarColorTextActive,
-        textDecoration: "none",
+        textDecoration: "underline",
         background: "none"
       }
     },
@@ -149,15 +144,15 @@ class ListItem extends React.Component {
         {pages ? (
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
-          <Link
-            className={linkStyle}
-            activeClassName={activeLinkStyle}
-            to={path}
-            onlyActiveOnIndex={path === "/"}
-          >
-            {menuTitle || title}
-          </Link>
-        )}
+            <Link
+              className={linkStyle}
+              activeClassName={activeLinkStyle}
+              to={path}
+              onlyActiveOnIndex={path === "/"}
+            >
+              {menuTitle || title}
+            </Link>
+          )}
       </li>
     );
   }

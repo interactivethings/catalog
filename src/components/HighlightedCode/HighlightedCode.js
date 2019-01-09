@@ -10,7 +10,7 @@ const getStyle = theme => {
   return {
     pre: {
       ...text(theme, -0.5),
-      background: "#fff",
+      background: theme.codeStyles.backgroundColor,
       border: "none",
       boxSizing: "border-box",
       color: theme.codeColor,
@@ -35,8 +35,9 @@ const isToken = t => t instanceof Prism.Token;
 const renderPrismTokens = (tokens, styles) => {
   return tokens.map((t, i) => {
     if (isToken(t)) {
+      console.log(t.type);
       return (
-        <span key={`${t.type}-${i}`} className={css(styles[t.type])}>
+        <span key={`${t.type}-${i}`} className={css(styles[t.type])} data-type={`${t.type}`}>
           {Array.isArray(t.content)
             ? renderPrismTokens(t.content, styles)
             : t.content}
@@ -63,9 +64,9 @@ export default class HighlightedCode extends Component {
         <code className={css(styles.code)}>
           {lang
             ? renderPrismTokens(
-                Prism.tokenize(code, Prism.languages[lang], lang),
-                theme.codeStyles
-              )
+              Prism.tokenize(code, Prism.languages[lang], lang),
+              theme.codeStyles
+            )
             : code}
         </code>
       </pre>

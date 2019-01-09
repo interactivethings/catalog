@@ -5,7 +5,7 @@ import { pageShape, pagesShape } from "../../CatalogPropTypes";
 import NavigationBar from "./NavigationBar";
 import PageHeader from "../Page/PageHeader";
 
-const SIDEBAR_WIDTH = 251;
+const SIDEBAR_WIDTH = 221;
 const SIDEBAR_ANIMATION_DURATION = 0.25;
 
 injectGlobal`
@@ -58,28 +58,10 @@ const getStyles = (theme, sidebarVisible) => ({
     width: SIDEBAR_WIDTH - 1,
     top: 0,
     left: 0,
-    borderRight: `1px solid ${theme.sidebarColorLine}`,
-    transform: `translateX(${sidebarVisible ? 0 : -SIDEBAR_WIDTH}px)`,
-    transition: `transform ${SIDEBAR_ANIMATION_DURATION}s ease-in-out`,
-    WebkitOverflowScrolling: "touch",
-    "@media (min-width: 1000px)": {
-      transform: `translateX(0px)`,
-      transition: "none"
-    }
+    borderRight: `1px solid ${theme.sidebarColorLine}`
   },
   navBackground: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "rgba(0, 0, 0, 0.2)",
-    opacity: sidebarVisible ? 1 : 0,
-    visibility: sidebarVisible ? "visible" : "hidden",
-    transition: `opacity ${SIDEBAR_ANIMATION_DURATION}s, visibility ${SIDEBAR_ANIMATION_DURATION}s`,
-    "@media (min-width: 1000px)": {
-      display: "none"
-    }
+    display: "none"
   },
   content: {
     background: theme.background,
@@ -90,26 +72,16 @@ const getStyles = (theme, sidebarVisible) => ({
     flexDirection: "column",
     position: "relative",
     zIndex: 0, // To create a new stacking context, see #223.
-    "@media (min-width: 1000px)": {
-      paddingLeft: SIDEBAR_WIDTH
-    }
+    paddingLeft: SIDEBAR_WIDTH
   }
 });
 
 class AppLayout extends React.Component {
   constructor() {
     super();
-    this.toggleSidebar = this.toggleSidebar.bind(this);
     this.state = {
-      sidebarVisible: false
+      sidebarVisible: true
     };
-  }
-
-  toggleSidebar(e) {
-    e.preventDefault();
-    this.setState({
-      sidebarVisible: !this.state.sidebarVisible
-    });
   }
 
   render() {
@@ -140,13 +112,9 @@ class AppLayout extends React.Component {
         </div>
         <MenuIcon
           className={css(styles.menuIcon)}
-          onClick={this.toggleSidebar}
-          onTouchEnd={this.toggleSidebar}
         />
         <div
           className={css(styles.navBackground)}
-          onClick={this.toggleSidebar}
-          onTouchEnd={this.toggleSidebar}
         />
         <div className={css(styles.sideNav)}>{sideNav}</div>
       </div>
