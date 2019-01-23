@@ -2,20 +2,20 @@
 
 ### Props
 
-- `headings: array` takes an array and generates a list headings
-- `paragraph: array` builds a paragraph and takes [font size, line height]
-- `background: string` defines the background color, takes hex code or color name
-- `image: string` defines the background image
-- `color: string` defines the font color, takes hex code or color name
-- `tracking: integer` defines tracking respectively letter-spacing
-- `style: string` can be italic or oblique, default is "normal" 
-- `weight: integer` defines the font weight
-- `kern: boolean` activates browser kerning and ligature use
-- `smoothing: boolean` applies browser text antialising
-- `kafka: boolean` Mighty morphin' Samsa fill text
-- `single: boolean` Uses a single word for headline
-- `span: number[1–6]` width of the specimen
-
+* `headings: array` takes an array and generates a list headings, either an array of font sizes or array of objects `{ "label": "Headline 1", "value": 49, "text": "Custom Heading Text" }`
+* `paragraph: array` builds a paragraph and takes [font size, line height]
+* `background: string` defines the background color, takes hex code or color name
+* `image: string` defines the background image
+* `color: string` defines the font color, takes hex code or color name
+* `tracking: integer` defines tracking respectively letter-spacing
+* `style: string` can be italic or oblique, default is "normal"
+* `weight: integer` defines the font weight
+* `kern: boolean` activates browser kerning and ligature use
+* `smoothing: boolean` applies browser text antialising
+* `kafka: boolean` Mighty morphin' Samsa fill text
+* `single: boolean` Uses a single word for headline, text key in headings object overrides this
+* `text: string` defines a string of text to use for all headings
+* `span: number[1–6]` width of the specimen
 
 ### Examples
 
@@ -43,7 +43,7 @@ The most obvious use case is to represent the ratio and hierarchy of headings.
 
 #### Paragraph only
 
-Another use case is to document the ratio between the font size and the line height for text bodies. 
+Another use case is to document the ratio between the font size and the line height for text bodies.
 
 ```type
 {
@@ -52,7 +52,6 @@ Another use case is to document the ratio between the font size and the line hei
   "color": "#00263e"
 }
 ```
-
 
 ````code|lang-javascript
 ```type
@@ -63,7 +62,6 @@ Another use case is to document the ratio between the font size and the line hei
 }
 ```
 ````
-
 
 #### Combining different styles
 
@@ -135,16 +133,17 @@ Another use case is to document the ratio between the font size and the line hei
 ```
 ````
 
-#### Customize labels
+#### Customize labels and Text
 
 ```type
-{  
+{
   "span": 3,
   "color": "#00263e",
   "font": "sans-serif",
   "headings": [
     { "label": "Headline 1", "value": 49 },
-	{ "label": "Headline 2", "value": 38 }
+	{ "label": "Headline 2", "value": 38 },
+	{ "label": "Headline 2", "value": 38, "text": "My custom heading text" }
   ],
   "paragraphs": [
   	{ "label": "Body Copy", "value": "15/22.5" }
@@ -159,7 +158,8 @@ Another use case is to document the ratio between the font size and the line hei
   "font": "sans-serif",
   "headings": [
     { "label": "Headline 1", "value": 49 },
-	{ "label": "Headline 2", "value": 38 }
+	{ "label": "Headline 2", "value": 38 },
+	{ "label": "Headline 2", "value": 38, "text": "My custom heading text" }
   ],
   "paragraphs": [
     { "label": "Body Copy", "value": "15/22.5" }
@@ -168,10 +168,29 @@ Another use case is to document the ratio between the font size and the line hei
 ```
 ````
 
+```type
+{
+  "headings": [98,28,21,16,14,12],
+	"text": "My custom heading text",
+  "font": "sans-serif",
+  "color": "#00263e"
+}
+```
+
+````code|lang-javascript
+```type
+{
+  "headings": [98,28,21,16,14,12],
+	"text": "My custom heading text",
+  "font": "sans-serif",
+  "color": "#00263e"
+}
+```
+````
+
 #### Specifying contrasts
 
 with the help of the [hint specimen](/#/hint).
-
 
 ```type|span-4,kern,smoothen
 {
@@ -187,20 +206,17 @@ Does not pass any tests.
 ```
 
 ```type|span-4,kern,smoothen
-
 {
     "headings": [42],
     "background": "#f5f5f5",
     "color": "#888",
     "font": "sans-serif"
 }
-
 ```
 
 ```hint|span-2,directive
 Passes Level **AA** for large text
 ```
-
 
 ```type|span-4,kern,smoothen,shorter
 {
@@ -215,7 +231,6 @@ Passes Level **AA** for large text
 ```hint|span-2,directive
 Passes Level **AAA** even for small text
 ```
-
 
 ````code|lang-javascript,collapsed
 ```type|span-4,kern,smoothen

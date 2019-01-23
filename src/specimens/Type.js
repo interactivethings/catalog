@@ -50,7 +50,10 @@ const kafka = `One morning, when Gregor Samsa woke from troubled dreams, he foun
 
 class Type extends React.Component {
   render() {
-    const { catalog: { theme }, ...options } = this.props;
+    const {
+      catalog: { theme },
+      ...options
+    } = this.props;
     const styles = getStyle(theme);
 
     // check if a shorter paragraph should is demanded
@@ -62,9 +65,11 @@ class Type extends React.Component {
     // check if the modifier demands font smoothing
     const smoothing = options.smoothen ? styles.smoothing : null;
     // Use single word or sentence for headlines
-    const headlineText = options.single
-      ? "Hamburgefonstiv"
-      : "The quick brown fox jumps over the lazy dog";
+    const headlineText = options.text
+      ? options.text
+      : options.single
+        ? "Hamburgefonstiv"
+        : "The quick brown fox jumps over the lazy dog";
 
     const fontColor = options.color ? { color: options.color } : null;
     const isItalic = options.style ? options.style : "normal";
@@ -136,7 +141,7 @@ class Type extends React.Component {
                     isPixel} ${fontFamily}`
                 })}
               >
-                {headlineText}
+                {heading.text ? heading.text : headlineText}
               </div>
             </div>
           );
