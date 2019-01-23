@@ -234,14 +234,12 @@ Passes Level **AAA** even for small text
 
 ````code|lang-javascript,collapsed
 ```type|span-4,kern,smoothen
-[
-    {
-        "headings": [42],
-        "background": "#f5f5f5",
-        "color": "#efefef",
-        "font": "sans-serif"
-    }
-]
+{
+		"headings": [42],
+		"background": "#f5f5f5",
+		"color": "#efefef",
+		"font": "sans-serif"
+}
 ```
 
 ```hint|span-2,warning
@@ -249,14 +247,12 @@ Does not pass any tests.
 ```
 
 ```type|span-4,kern,smoothen
-[
-    {
-        "headings": [42],
-        "background": "#f5f5f5",
-        "color": "#888",
-        "font": "sans-serif"
-    }
-]
+{
+		"headings": [42],
+		"background": "#f5f5f5",
+		"color": "#888",
+		"font": "sans-serif"
+}
 ```
 
 ```hint|span-2,directive
@@ -265,15 +261,13 @@ Passes Level **AA** for large text
 
 
 ```type|span-4,kern,smoothen,shorter
-[
-    {
-        "headings": [42],
-        "paragraphs": ["14/24"],
-        "background": "#f5f5f5",
-        "color": "#333",
-        "font": "sans-serif"
-    }
-]
+{
+		"headings": [42],
+		"paragraphs": ["14/24"],
+		"background": "#f5f5f5",
+		"color": "#333",
+		"font": "sans-serif"
+}
 ```
 
 ```hint|span-2,directive
