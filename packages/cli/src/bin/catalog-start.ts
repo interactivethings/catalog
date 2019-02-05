@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 process.env.NODE_ENV = "development";
 
-import * as args from "args";
+import args from "args";
 import { errorMessage } from "../utils/format";
 import { startServer } from "../server";
 

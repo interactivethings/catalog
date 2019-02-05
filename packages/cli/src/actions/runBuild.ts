@@ -1,4 +1,4 @@
-import * as webpack from "webpack";
+import webpack from "webpack";
 import { errorMessage } from "../utils/format";
 import { rimraf, copydir, exists } from "sander";
 

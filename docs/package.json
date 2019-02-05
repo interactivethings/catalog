@@ -5,10 +5,12 @@
   "dependencies": {
     "@babel/standalone": "^7.1.0",
     "catalog": "^4.0.1-canary.0",
+    "node-sass": "^4.11.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
   "scripts": {
-    "watch": "../packages/cli/lib/bin/catalog-start.js ."
+    "watch": "../packages/cli/lib/bin/catalog-start.js .",
+    "build": "../packages/cli/lib/bin/catalog-build.js ."
   }
 }

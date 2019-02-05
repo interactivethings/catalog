@@ -1,7 +1,7 @@
-import * as webpack from "webpack";
-import * as WebpackDevServer from "webpack-dev-server";
-import * as express from "express";
-import * as errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
+import webpack from "webpack";
+import WebpackDevServer from "webpack-dev-server";
+import express from "express";
+import errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
 
 export default async (
   config: any,
@@ -9,7 +9,6 @@ export default async (
   port: number,
   https: boolean,
   paths: any,
-  framework: string,
   proxy: void | string
 ): Promise<any> => {
   const compiler = webpack(config);
@@ -44,9 +43,9 @@ export default async (
     overlay: false,
     before(app: any) {
       // Next.js serves static files from /static – which can't be configured with `contentBase` directly
-      if (framework === "NEXT") {
-        app.use("/static", express.static(paths.appStaticSrcDir));
-      }
+      // if (framework === "NEXT") {
+      //   app.use("/static", express.static(paths.appStaticSrcDir));
+      // }
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
     }

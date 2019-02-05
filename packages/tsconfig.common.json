@@ -4,6 +4,8 @@
 
     "moduleResolution": "node",
 
-    "strict": true,
+    "esModuleInterop": true,
+
+    "strict": true
   }
 }
