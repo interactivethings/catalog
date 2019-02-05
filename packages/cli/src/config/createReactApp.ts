@@ -1,20 +1,78 @@
 import autoprefixer from "autoprefixer";
-import ExtractTextPlugin from "extract-text-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import getCSSModuleLocalIdent from "react-dev-utils/getCSSModuleLocalIdent";
+
+import { CatalogCLIPaths } from "../actions/loadPaths";
 
 const cssFilename = "static/[name].[contenthash:8].css";
+const shouldUseSourceMap = true;
 
-// ExtractTextPlugin expects the build output to be flat.
-// (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
-// However, our output is structured with css, js and media folders.
-// To have this structure working with relative paths, we have to use custom options.
-// FIXME: detect this
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+
+// FIXME: detect when this should be true
 const shouldUseRelativeAssetPaths = false;
-const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split("/").length).join("../") }
-  : {};
 
-export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
+// common function to get style loaders
+const getStyleLoaders = ({
+  cssOptions,
+  preProcessor,
+  dev
+}: {
+  cssOptions: any;
+  preProcessor?: string;
+  dev: boolean;
+}) => {
+  const loaders = [
+    dev && require.resolve("style-loader"),
+    !dev && {
+      loader: MiniCssExtractPlugin.loader,
+      options: Object.assign(
+        {},
+        shouldUseRelativeAssetPaths ? { publicPath: "../../" } : undefined
+      )
+    },
+    {
+      loader: require.resolve("css-loader"),
+      options: cssOptions
+    },
+    {
+      // Options for PostCSS as we reference these options twice
+      // Adds vendor prefixing based on your specified browser support in
+      // package.json
+      loader: require.resolve("postcss-loader"),
+      options: {
+        // Necessary for external CSS imports to work
+        // https://github.com/facebook/create-react-app/issues/2677
+        ident: "postcss",
+        plugins: () => [
+          require("postcss-flexbugs-fixes"),
+          require("postcss-preset-env")({
+            autoprefixer: {
+              flexbox: "no-2009"
+            },
+            stage: 3
+          })
+        ],
+        sourceMap: !dev && shouldUseSourceMap
+      }
+    }
+  ].filter(Boolean);
+  if (preProcessor) {
+    loaders.push({
+      loader: require.resolve(preProcessor),
+      options: {
+        sourceMap: !dev && shouldUseSourceMap
+      }
+    });
+  }
+  return loaders;
+};
+
+export default (paths: CatalogCLIPaths, useBabelrc: boolean, dev: boolean) => ({
   moduleRules: [
     {
       oneOf: [
@@ -49,72 +107,75 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
         // "postcss" loader applies autoprefixer to our CSS.
         // "css" loader resolves paths in CSS and adds assets as dependencies.
         // "style" loader turns CSS into JS modules that inject <style> tags.
-        // In production, we use a plugin to extract that CSS to a file, but
-        // in development "style" loader enables hot editing of CSS.
-        dev
-          ? {
-              test: /\.css$/,
-              use: [
-                require.resolve("style-loader"),
-                {
-                  loader: require.resolve("css-loader"),
-                  options: {
-                    importLoaders: 1
-                  }
-                },
-                {
-                  loader: require.resolve("postcss-loader"),
-                  options: {
-                    ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
-                    plugins: () => {
-                      return [
-                        autoprefixer({
-                          browsers: [
-                            ">1%",
-                            "last 4 versions",
-                            "Firefox ESR",
-                            "not ie < 9" // React doesn't support IE8 anyway
-                          ]
-                        })
-                      ];
-                    }
-                  }
-                }
-              ]
-            }
-          : {
-              test: /\.css$/,
-              loader: ExtractTextPlugin.extract({
-                fallback: require.resolve("style-loader"),
-                use: [
-                  {
-                    loader: require.resolve("css-loader"),
-                    options: {
-                      importLoaders: 1
-                    }
-                  },
-                  {
-                    loader: require.resolve("postcss-loader"),
-                    options: {
-                      ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
-                      plugins: () => {
-                        return [
-                          autoprefixer({
-                            browsers: [
-                              ">1%",
-                              "last 4 versions",
-                              "Firefox ESR",
-                              "not ie < 9" // React doesn't support IE8 anyway
-                            ]
-                          })
-                        ];
-                      }
-                    }
-                  }
-                ],
-                ...extractTextPluginOptions
-              })
+        // In production, we use MiniCSSExtractPlugin to extract that CSS
+        // to a file, but in development "style" loader enables hot editing
+        // of CSS.
+        // By default we support CSS Modules with the extension .module.css
+        {
+          test: cssRegex,
+          exclude: cssModuleRegex,
+          use: getStyleLoaders({
+            cssOptions: {
+              importLoaders: 1,
+              sourceMap: !dev && shouldUseSourceMap
             },
+            dev
+          }),
+          // Don't consider CSS imports dead code even if the
+          // containing package claims to have no side effects.
+          // Remove this when webpack adds a warning or an error for this.
+          // See https://github.com/webpack/webpack/issues/6571
+          sideEffects: true
+        },
+        // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
+        // using the extension .module.css
+        {
+          test: cssModuleRegex,
+          use: getStyleLoaders({
+            cssOptions: {
+              importLoaders: 1,
+              sourceMap: !dev && shouldUseSourceMap,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent
+            },
+            dev
+          })
+        },
+        // Opt-in support for SASS (using .scss or .sass extensions).
+        // By default we support SASS Modules with the
+        // extensions .module.scss or .module.sass
+        {
+          test: sassRegex,
+          exclude: sassModuleRegex,
+          use: getStyleLoaders({
+            cssOptions: {
+              importLoaders: 2,
+              sourceMap: !dev && shouldUseSourceMap
+            },
+            preProcessor: "sass-loader",
+            dev
+          }),
+          // Don't consider CSS imports dead code even if the
+          // containing package claims to have no side effects.
+          // Remove this when webpack adds a warning or an error for this.
+          // See https://github.com/webpack/webpack/issues/6571
+          sideEffects: true
+        },
+        // Adds support for CSS Modules, but using SASS
+        // using the extension .module.scss or .module.sass
+        {
+          test: sassModuleRegex,
+          use: getStyleLoaders({
+            cssOptions: {
+              importLoaders: 2,
+              sourceMap: !dev && shouldUseSourceMap,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent
+            },
+            preProcessor: "sass-loader",
+            dev
+          })
+        },
         {
           exclude: [/\.mjs$/, /\.js$/, /\.html$/, /\.json$/, /\.md$/],
           loader: require.resolve("file-loader"),
@@ -128,8 +189,11 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
   plugins: dev
     ? []
     : [
-        new ExtractTextPlugin({
-          filename: cssFilename
+        new MiniCssExtractPlugin({
+          // Options similar to the same options in webpackOptions.output
+          // both options are optional
+          filename: "static/css/[name].[contenthash:8].css",
+          chunkFilename: "static/css/[name].[contenthash:8].chunk.css"
         })
       ]
 });

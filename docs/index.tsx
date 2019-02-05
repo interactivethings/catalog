@@ -4,7 +4,8 @@ import { Catalog, pageLoader } from "catalog";
 import logo from "./catalog_logo.svg";
 
 // Create a convenient loader for markdown files
-const markdownLoader = page => pageLoader(() => import(`./${page}.md`));
+const markdownLoader = (page: string) =>
+  pageLoader(() => import(`./${page}.md`));
 
 const pages = [
   {
