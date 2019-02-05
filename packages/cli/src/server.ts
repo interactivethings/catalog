@@ -1,4 +1,3 @@
-import detect from "detect-port";
 import { exists } from "sander";
 import openBrowser from "react-dev-utils/openBrowser";
 import { choosePort } from "react-dev-utils/WebpackDevServerUtils";
@@ -12,8 +11,6 @@ import loadPaths from "./actions/loadPaths";
 
 import setupCatalog from "./actions/setupCatalog";
 import runDevServer from "./actions/runDevServer";
-
-const HOST = process.env.HOST || "0.0.0.0";
 
 const getFrameworkName = (framework: Framework): string => {
   switch (framework) {

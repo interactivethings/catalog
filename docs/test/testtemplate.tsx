@@ -15,6 +15,11 @@ src: ${logo}
 title: Neat!
 ~~~
 
+~~~image
+src: "/assets/image.jpg"
+title: Neat!
+~~~
+
 Super nice stuff here!
 
 Foo bar
