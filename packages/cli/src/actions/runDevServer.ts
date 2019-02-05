@@ -1,7 +1,7 @@
-import * as webpack from "webpack";
-import * as WebpackDevServer from "webpack-dev-server";
-import * as express from "express";
-import * as errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
+import webpack from "webpack";
+import WebpackDevServer from "webpack-dev-server";
+import express from "express";
+import errorOverlayMiddleware from "react-dev-utils/errorOverlayMiddleware";
 
 export default async (
   config: any,

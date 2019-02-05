@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 process.env.NODE_ENV = "production";
 
-import * as args from "args";
+import args from "args";
 import chalk from "chalk";
 import { exists } from "sander";
 

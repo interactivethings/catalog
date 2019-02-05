@@ -1,6 +1,6 @@
-import * as detect from "detect-port";
+import detect from "detect-port";
 import { exists } from "sander";
-import * as openBrowser from "react-dev-utils/openBrowser";
+import openBrowser from "react-dev-utils/openBrowser";
 
 import { infoMessageDimmed } from "./utils/format";
 
@@ -64,8 +64,8 @@ export const startServer = async (
     options.babelrc !== undefined
       ? options.babelrc
       : configFile && configFile.useBabelrc !== undefined
-        ? configFile.useBabelrc
-        : babelrcExists;
+      ? configFile.useBabelrc
+      : babelrcExists;
 
   const webpackOptions = { paths, dev: true, framework, url, useBabelrc };
 

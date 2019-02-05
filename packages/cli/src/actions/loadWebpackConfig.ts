@@ -1,9 +1,9 @@
-import * as webpack from "webpack";
-import * as HtmlWebpackPlugin from "html-webpack-plugin";
-import * as ManifestPlugin from "webpack-manifest-plugin";
-import * as WatchMissingNodeModulesPlugin from "react-dev-utils/WatchMissingNodeModulesPlugin";
-import * as InterpolateHtmlPlugin from "react-dev-utils/InterpolateHtmlPlugin";
-import * as FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
+import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import ManifestPlugin from "webpack-manifest-plugin";
+import WatchMissingNodeModulesPlugin from "react-dev-utils/WatchMissingNodeModulesPlugin";
+import InterpolateHtmlPlugin from "react-dev-utils/InterpolateHtmlPlugin";
+import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import { exists } from "sander";
 
 import createReactAppConfig from "../config/createReactApp";
@@ -55,6 +55,7 @@ export default async ({
     : [];
 
   return {
+    mode: dev ? "development" : "production",
     devtool: dev ? "cheap-module-source-map" : "source-map",
     bail: dev ? false : true,
     entry: {
@@ -78,7 +79,7 @@ export default async ({
       modules: [paths.appSrc, "node_modules", paths.appNodeModules].concat(
         paths.nodePaths
       ),
-      extensions: [".js", ".json", ".jsx"],
+      extensions: [".mjs", ".js", ".ts", ".tsx", ".json", ".jsx"],
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -130,7 +131,7 @@ export default async ({
           })
         ]
     ).concat([
-      new InterpolateHtmlPlugin(env.raw),
+      new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
       new HtmlWebpackPlugin({
         inject: true,
         template: paths.catalogIndexHtml,
@@ -150,15 +151,6 @@ export default async ({
             }
       }),
       new webpack.DefinePlugin(env.stringified),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-        minChunks: (module: any) =>
-          /babel-standalone|js-yaml/.test(module.resource)
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: "manifest",
-        minChunks: Infinity
-      }),
       // This is necessary to emit hot updates (currently CSS only):
 
       ...devPlugins,

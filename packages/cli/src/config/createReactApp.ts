@@ -1,5 +1,5 @@
-import * as autoprefixer from "autoprefixer";
-import * as ExtractTextPlugin from "extract-text-webpack-plugin";
+import autoprefixer from "autoprefixer";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
 
 const cssFilename = "static/[name].[contenthash:8].css";
 
@@ -31,7 +31,7 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
         },
         // Process JS with Babel.
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(mjs|js|jsx)$/,
           include: [paths.appRoot, paths.catalogSrcDir],
           exclude: /(lodash|standalone)/,
           loader: require.resolve("babel-loader"),
@@ -116,7 +116,7 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
               })
             },
         {
-          exclude: [/\.js$/, /\.html$/, /\.json$/, /\.md$/],
+          exclude: [/\.mjs$/, /\.js$/, /\.html$/, /\.json$/, /\.md$/],
           loader: require.resolve("file-loader"),
           options: {
             name: "static/media/[name].[hash:8].[ext]"
