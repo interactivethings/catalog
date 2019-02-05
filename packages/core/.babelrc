@@ -8,8 +8,7 @@
         "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
       }
     ],
-    "@babel/preset-react",
-    "@babel/preset-flow"
+    "@babel/preset-react"
   ],
   "plugins": [
     "@babel/plugin-syntax-object-rest-spread",

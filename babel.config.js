@@ -2,9 +2,8 @@ module.exports = {
   env: {
     test: {
       presets: [
-        ["@babel/preset-env", { loose: true, targets: { node: 6 } }],
-        "@babel/preset-react",
-        "@babel/preset-flow"
+        ["@babel/preset-env", { loose: true, targets: { node: "current" } }],
+        "@babel/preset-react"
       ],
       plugins: [
         "@babel/plugin-syntax-object-rest-spread",
