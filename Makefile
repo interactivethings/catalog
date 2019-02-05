@@ -9,7 +9,7 @@ lint:
 docs/build: bootstrap
 	yarn tsc --build packages && chmod u+x packages/cli/lib/bin/*.js && \
 	(cd packages/core; yarn build) && \
-	(cd packages/docs; yarn build)
+	(cd docs; yarn build)
 
 .PHONY: bootstrap test build watch version-canary publish-canary
 bootstrap:
