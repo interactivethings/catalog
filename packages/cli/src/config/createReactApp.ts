@@ -1,10 +1,8 @@
-import autoprefixer from "autoprefixer";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import getCSSModuleLocalIdent from "react-dev-utils/getCSSModuleLocalIdent";
 
 import { CatalogCLIPaths } from "../actions/loadPaths";
 
-const cssFilename = "static/[name].[contenthash:8].css";
 const shouldUseSourceMap = true;
 
 // style files regexes

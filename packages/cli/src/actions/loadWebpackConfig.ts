@@ -59,7 +59,7 @@ export default async ({
     devtool: dev ? "cheap-module-source-map" : "source-map",
     bail: dev ? false : true,
     entry: {
-      catalog: [require.resolve("../config/polyfills")]
+      catalog: [require.resolve("react-app-polyfill/ie11")]
         .concat(
           dev ? [require.resolve("react-dev-utils/webpackHotDevClient")] : []
         )
