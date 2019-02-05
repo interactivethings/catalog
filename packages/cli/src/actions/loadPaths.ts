@@ -1,3 +1,5 @@
+import { exists } from "sander";
+
 import {
   resolveAppPath,
   resolveOwnPath,
@@ -5,17 +7,40 @@ import {
   ensureSlash
 } from "../utils/paths";
 
+export interface CatalogCLIPaths {
+  unresolvedCatalogSrcDir: string;
+  unresolvedCatalogBuildDir: string;
+  catalogSrcDir: string;
+  catalogBuildDir: string;
+  catalogIndexJs: string;
+  catalogIndexHtml: string;
+  catalogStaticSrcDir: string;
+  catalogStaticBuildDir: string;
+  catalogSrcTemplateDir: string;
+  appRoot: string;
+  appStaticSrcDir: string;
+  appStaticBuildDir: string;
+  appPackageJson: string;
+  appSrc: string;
+  yarnLockFile: string;
+  babelrc: string;
+  appNodeModules: string;
+  ownNodeModules: string;
+  nodePaths: string[];
+  publicUrl: string;
+}
+
 export default async (
   catalogSrcDir: string,
   catalogBuildDir: string,
   framework: string,
   publicUrl: string
-) => ({
+): Promise<CatalogCLIPaths> => ({
   unresolvedCatalogSrcDir: catalogSrcDir,
   unresolvedCatalogBuildDir: catalogBuildDir,
   catalogSrcDir: resolveAppPath(catalogSrcDir),
   catalogBuildDir: resolveAppPath(catalogBuildDir),
-  catalogIndexJs: resolveAppPath(catalogSrcDir, "index.js"),
+  catalogIndexJs: resolveAppPath(catalogSrcDir, "index"),
   catalogIndexHtml: resolveAppPath(catalogSrcDir, "index.html"),
   catalogStaticSrcDir: resolveAppPath(catalogSrcDir, "static"),
   catalogStaticBuildDir: resolveAppPath(catalogBuildDir),

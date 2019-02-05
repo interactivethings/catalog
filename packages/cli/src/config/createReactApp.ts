@@ -31,7 +31,7 @@ export default (paths: any, useBabelrc: boolean, dev: boolean) => ({
         },
         // Process JS with Babel.
         {
-          test: /\.(mjs|js|jsx)$/,
+          test: /\.(mjs|js|jsx|ts|tsx)$/,
           include: [paths.appRoot, paths.catalogSrcDir],
           exclude: /(lodash|standalone)/,
           loader: require.resolve("babel-loader"),

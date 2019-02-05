@@ -170,7 +170,7 @@ const pages = [
   {
     path: "testtemplate",
     title: "Template Test",
-    content: pageLoader(() => import("./test/testtemplate.js")),
+    content: pageLoader(() => import("./test/testtemplate")),
     hideFromMenu: true
   }
 ];
