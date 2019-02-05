@@ -9,7 +9,6 @@ export default async (
   port: number,
   https: boolean,
   paths: any,
-  framework: string,
   proxy: void | string
 ): Promise<any> => {
   const compiler = webpack(config);
@@ -44,9 +43,9 @@ export default async (
     overlay: false,
     before(app: any) {
       // Next.js serves static files from /static – which can't be configured with `contentBase` directly
-      if (framework === "NEXT") {
-        app.use("/static", express.static(paths.appStaticSrcDir));
-      }
+      // if (framework === "NEXT") {
+      //   app.use("/static", express.static(paths.appStaticSrcDir));
+      // }
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
     }

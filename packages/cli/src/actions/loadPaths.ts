@@ -33,7 +33,6 @@ export interface CatalogCLIPaths {
 export default async (
   catalogSrcDir: string,
   catalogBuildDir: string,
-  framework: string,
   publicUrl: string
 ): Promise<CatalogCLIPaths> => ({
   unresolvedCatalogSrcDir: catalogSrcDir,
@@ -48,12 +47,8 @@ export default async (
   catalogSrcTemplateDir: resolveOwnPath("..", "setup-template"),
 
   appRoot: resolveAppPath("."),
-  appStaticSrcDir:
-    framework === "NEXT" ? resolveAppPath("static") : resolveAppPath("public"),
-  appStaticBuildDir:
-    framework === "NEXT"
-      ? resolveAppPath(catalogBuildDir, "static")
-      : resolveAppPath(catalogBuildDir),
+  appStaticSrcDir: resolveAppPath("static"),
+  appStaticBuildDir: resolveAppPath(catalogBuildDir),
 
   appPackageJson: resolveAppPath("package.json"),
   appSrc: resolveAppPath("src"),

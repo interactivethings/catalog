@@ -14,7 +14,6 @@ import { link } from "../utils/format";
 
 type LoadWebpackOptions = {
   paths: any;
-  framework: string;
   dev: boolean;
   useBabelrc: boolean;
   url?: string;
@@ -90,7 +89,6 @@ const getStyleLoaders = ({
 
 export default async ({
   paths,
-  framework,
   dev,
   url,
   useBabelrc
