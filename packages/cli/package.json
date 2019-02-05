@@ -1,6 +1,6 @@
 {
   "name": "@catalog/cli",
-  "version": "4.0.1-canary.0",
+  "version": "4.0.1-canary.1",
   "description": "Commandline tool for Catalog",
   "keywords": [
     "styleguide",
@@ -23,9 +23,9 @@
   ],
   "dependencies": {
     "@babel/core": "^7.2.2",
-    "@catalog/babel-preset": "^4.0.1-canary.0",
-    "@catalog/core": "^4.0.1-canary.0",
-    "@catalog/markdown-loader": "^4.0.1-canary.0",
+    "@catalog/babel-preset": "^4.0.1-canary.1",
+    "@catalog/core": "^4.0.1-canary.1",
+    "@catalog/markdown-loader": "^4.0.1-canary.1",
     "@types/mini-css-extract-plugin": "^0.2.0",
     "@types/node-fetch": "^2.1.4",
     "@types/webpack": "^4.4.24",
