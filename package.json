@@ -28,12 +28,12 @@
     "jest": "^24.0.0",
     "lerna": "^3.4.3",
     "release": "^4.0.2",
-    "rollup": "^0.67.0",
+    "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-replace": "^2.1.0",
-    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-terser": "^4.0.4",
     "typescript": "^3.1.4"
   },
   "jest": {
