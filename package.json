@@ -1,6 +1,6 @@
 {
   "name": "@alchemy-se/catalog",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
@@ -18,7 +18,12 @@
   "engines": {
     "npm": ">=2.14.12"
   },
-  "files": ["dist", "babel.js", "loader.js", "types"],
+  "files": [
+    "dist",
+    "babel.js",
+    "loader.js",
+    "types"
+  ],
   "types": "types/catalog",
   "bin": {
     "catalog": "dist/cli/bin/catalog.js",
@@ -32,7 +37,10 @@
     "prettier-all": "prettier --write \"**/*.{js,ts,tsx}\""
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": ["prettier --write", "git add"]
+    "*.{js,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "args": "^3.0.8",
@@ -121,6 +129,8 @@
   },
   "license": "BSD-3-Clause",
   "jest": {
-    "roots": ["<rootDir>/src"]
+    "roots": [
+      "<rootDir>/src"
+    ]
   }
 }
