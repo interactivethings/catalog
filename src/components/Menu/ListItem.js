@@ -17,8 +17,11 @@ const style = theme => {
     link: {
       ...text(theme),
       ...baseLinkStyle,
-      borderTop: `1px solid ${theme.sidebarColorLine}`,
-      color: theme.sidebarColorText,
+      borderTop: "none",
+      color: "black",
+      fontSize: "16px",
+      fontFamily: "Vattenfall Hall",
+      fontWeight: "500",
       cursor: "pointer",
       display: "block",
       margin: 0,
@@ -26,7 +29,7 @@ const style = theme => {
       textDecoration: "none",
       "&:hover, &:active, &:focus": {
         ...baseLinkStyle,
-        borderTop: `1px solid ${theme.sidebarColorLine}`,
+        borderTop: "none",
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
         background: "rgba(255,255,255,0.1)"
@@ -38,7 +41,7 @@ const style = theme => {
       padding: "16px 40px 8px 40px",
       "&:hover, &:active, &:focus": {
         ...baseLinkStyle,
-        borderTop: `1px solid ${theme.sidebarColorLine}`,
+        borderTop: "none",
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
         background: "none"

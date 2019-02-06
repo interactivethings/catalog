@@ -27,7 +27,9 @@ const pageStyle = {
 class Page extends Component {
   render() {
     const { children } = this.props;
-    const { catalog: { getSpecimen } } = this.context;
+    const {
+      catalog: { getSpecimen }
+    } = this.context;
 
     const getSpecimenKey = seqKey("Specimen");
 

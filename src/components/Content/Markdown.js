@@ -28,7 +28,11 @@ export const Paragraph = styled("p", (props, { theme }) => ({
   ...text(theme),
   flexBasis: "100%",
   [`.${blockquoteStyle()} &`]: { fontSize: getFontSize(theme, 1) },
-  margin: `16px 0 0 0`
+  margin: `40px 20px 40px 90px`,
+  width: "50%",
+  fontFamily: "Vattenfall Hall",
+  fontSize: "16px",
+  lineHeight: "32px"
 }));
 export const UnorderedList = styled("ul", {
   ...baseListStyle,

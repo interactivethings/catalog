@@ -82,11 +82,11 @@ const getStyles = (theme, sidebarVisible) => ({
     }
   },
   content: {
-    background: theme.background,
     boxSizing: "border-box",
     display: "flex",
     minHeight: "100vh",
-    width: "100%",
+    lineHeight: "32px",
+    width: "70%",
     flexDirection: "column",
     position: "relative",
     zIndex: 0, // To create a new stacking context, see #223.
@@ -130,13 +130,6 @@ class AppLayout extends React.Component {
             superTitle={page.superTitle}
           />
           <div className={css({ flexGrow: 1 })}>{this.props.children}</div>
-          {!page.hideFromMenu && (
-            <NavigationBar
-              theme={theme}
-              nextPage={nextPage}
-              previousPage={previousPage}
-            />
-          )}
         </div>
         <MenuIcon
           className={css(styles.menuIcon)}

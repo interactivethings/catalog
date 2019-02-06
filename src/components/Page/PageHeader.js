@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { css } from "../../emotion";
 import { heading } from "../../styles/typography";
+import { reduce } from "rxjs/operators";
 
 class PageHeader extends Component {
   render() {
@@ -17,6 +18,7 @@ class PageHeader extends Component {
       innerHeader: {
         position: "absolute",
         bottom: 21,
+
         left: 21,
         "@media (min-width: 1000px)": {
           left: 42
@@ -24,6 +26,7 @@ class PageHeader extends Component {
       },
       superTitle: {
         ...heading(theme, 1),
+
         color: theme.pageHeadingTextColor,
         opacity: 0.6,
         margin: 0
@@ -31,7 +34,9 @@ class PageHeader extends Component {
       title: {
         ...heading(theme, 4),
         color: theme.pageHeadingTextColor,
-        margin: 0
+        fontFamily: "Vattenfall Hall",
+        fontSize: "56px",
+        fontWeight: "bold"
       }
     };
 
