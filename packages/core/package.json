@@ -21,10 +21,6 @@
     "dist",
     "types"
   ],
-  "scripts": {
-    "watch": "rollup --config rollup.config.js --watch",
-    "build": "rollup --config rollup.config.js"
-  },
   "types": "types/catalog",
   "dependencies": {
     "create-emotion": "^9.2.12",

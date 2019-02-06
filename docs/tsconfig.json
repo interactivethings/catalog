@@ -4,7 +4,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "lib": ["es2018", "dom"]
   },
   "include": ["./**/*"]
 }

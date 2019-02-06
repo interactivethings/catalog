@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import args from "args";
 
 args

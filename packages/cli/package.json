@@ -13,12 +13,12 @@
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
   "bin": {
-    "catalog": "lib/bin/catalog.js",
-    "catalog-start": "lib/bin/catalog-start.js",
-    "catalog-build": "lib/bin/catalog-build.js"
+    "catalog": "dist/bin/catalog.js",
+    "catalog-start": "dist/bin/catalog-start.js",
+    "catalog-build": "dist/bin/catalog-build.js"
   },
   "files": [
-    "lib",
+    "dist",
     "setup-template"
   ],
   "dependencies": {

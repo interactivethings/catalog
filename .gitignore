@@ -3,3 +3,5 @@ node_modules
 /examples/**/build
 /docs/build
 *.log
+.rpt2_cache
+dist

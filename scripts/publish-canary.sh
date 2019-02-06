@@ -5,7 +5,7 @@
 # properly and that we do not need to validate that the output is correct
 set -e
 
-make build
+yarn build
 
 # Get 2FA when not CI
 otp=""
