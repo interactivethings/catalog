@@ -10,15 +10,9 @@ before_install:
 
 matrix:
   include:
-    - name: "Lint"
+    - name: "test"
       node_js: "10"
-      script: make lint
+      script: yarn test
     - name: "Build"
       node_js: "10"
-      script: make build
-    - name: "Test on Node.js v8.x"
-      node_js: "8"
-      script: make test
-    - name: "Test on Node.js v10.x"
-      node_js: "10"
-      script: make test
+      script: yarn build
