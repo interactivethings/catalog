@@ -171,7 +171,7 @@ export default async ({
             {
               test: /\.(mjs|js|jsx|ts|tsx)$/,
               include: [paths.appRoot, paths.catalogSrcDir],
-              exclude: /(lodash|standalone)/,
+              exclude: /node_modules/,
               loader: require.resolve("babel-loader"),
               options: {
                 babelrc: useBabelrc,
