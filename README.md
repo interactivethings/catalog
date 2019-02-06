@@ -1,6 +1,22 @@
-![Catalog Logo](https://interactivethings.github.io/catalog/docs/assets/catalog_logo.svg)
+# This is a fork of Catalog
 
-[![Travis](https://img.shields.io/travis/interactivethings/catalog.svg)](https://travis-ci.org/interactivethings/catalog/) [![Downloads](https://img.shields.io/npm/dm/catalog.svg)](https://www.npmjs.com/package/catalog) [![Version](https://img.shields.io/npm/v/catalog.svg)](https://www.npmjs.com/package/catalog) [![License](https://img.shields.io/npm/l/catalog.svg)]()
+Main repository is available here: https://github.com/interactivethings/catalog
+
+## Installation
+
+```sh
+yarn add @alchemy-se/catalog
+```
+
+## Create a new release and push it to npm
+
+Run these commands to generate a new release and push it to npm
+
+```
+make version
+git push && git push --tags
+make publish
+```
 
 # Catalog
 
