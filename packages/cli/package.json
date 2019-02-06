@@ -13,14 +13,19 @@
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
   "bin": {
-    "catalog": "lib/bin/catalog.js",
-    "catalog-start": "lib/bin/catalog-start.js",
-    "catalog-build": "lib/bin/catalog-build.js"
+    "catalog": "dist/bin/catalog.js",
+    "catalog-start": "dist/bin/catalog-start.js",
+    "catalog-build": "dist/bin/catalog-build.js"
   },
   "files": [
     "lib",
+    "dist",
     "setup-template"
   ],
+  "scripts": {
+    "watch": "rollup --config rollup.config.js --watch",
+    "build": "rollup --config rollup.config.js"
+  },
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@catalog/babel-preset": "^4.0.1-canary.1",

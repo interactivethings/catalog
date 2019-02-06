@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
     "composite": true,
-
     "moduleResolution": "node",
-
     "esModuleInterop": true,
-
-    "strict": true
+    "strict": true,
+    "noEmit": true
   }
 }

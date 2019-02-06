@@ -11,5 +11,9 @@ module.exports = {
         ["emotion", { autoLabel: true }]
       ]
     }
-  }
+  },
+  presets: [
+    "@babel/preset-typescript",
+    ["@babel/preset-env", { loose: true, targets: { node: 10 } }]
+  ]
 };
