@@ -21,10 +21,6 @@
     "dist",
     "setup-template"
   ],
-  "scripts": {
-    "watch": "rollup --config rollup.config.js --watch",
-    "build": "rollup --config rollup.config.js"
-  },
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@catalog/babel-preset": "^4.0.1-canary.1",

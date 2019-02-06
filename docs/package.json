@@ -10,7 +10,7 @@
     "react-dom": "^16.6.0"
   },
   "scripts": {
-    "watch": "../packages/cli/lib/bin/catalog-start.js .",
-    "build": "../packages/cli/lib/bin/catalog-build.js ."
+    "dev": "../packages/cli/dist/bin/catalog-start.js .",
+    "build": "../packages/cli/dist/bin/catalog-build.js ."
   }
 }

@@ -11,7 +11,7 @@ const externals = [
 ];
 
 module.exports = {
-  input: path.resolve(__dirname, "src/index.js"),
+  input: { catalog: path.resolve(__dirname, "src/index.js") },
   plugins: [
     babel({
       exclude: /node_modules/

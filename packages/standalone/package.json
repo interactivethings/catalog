@@ -10,10 +10,6 @@
     "catalog.development.js",
     "catalog.min.js"
   ],
-  "scripts": {
-    "watch": "rollup -c rollup.config.js --watch",
-    "build": "rollup -c rollup.config.js"
-  },
   "peerDependencies": {
     "@babel/standalone": "^7.1.0"
   },

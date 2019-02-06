@@ -4,6 +4,8 @@
 const babel = require("rollup-plugin-babel");
 const resolve = require("rollup-plugin-node-resolve");
 const path = require("path");
+const fs = require("fs");
+
 const pkg = require("./package.json");
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
@@ -29,7 +31,19 @@ module.exports = {
     }),
     babel({
       extensions
-    })
+    }),
+    // Make entries executable
+    {
+      writeBundle(bundle) {
+        for (let d of Object.values(bundle)) {
+          if (d.isEntry) {
+            const filePath = path.resolve(__dirname, "dist/bin", d.fileName);
+            const mode = fs.statSync(filePath).mode;
+            fs.chmodSync(filePath, mode | 0o100); // Same as `chmod u+x`
+          }
+        }
+      }
+    }
   ],
   output: [
     {

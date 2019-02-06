@@ -3,6 +3,7 @@ import commonjs from "rollup-plugin-commonjs";
 import nodeResolve from "rollup-plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import replace from "rollup-plugin-replace";
+import * as path from "path";
 
 let plugins = [
   babel({
@@ -47,7 +48,7 @@ let plugins = [
 
 export default [
   {
-    input: "src/index.js",
+    input: { catalog: path.resolve(__dirname, "src/index.js") },
     external: ["@babel/standalone"],
     plugins: [
       replace({
@@ -56,16 +57,17 @@ export default [
       ...plugins
     ],
     output: {
+      dir: __dirname,
       globals: {
         "@babel/standalone": "Babel"
       },
-      file: "catalog.development.js",
+      entryFileNames: "[name].development.js",
       format: "umd",
       name: "Catalog"
     }
   },
   {
-    input: "src/index.js",
+    input: { catalog: path.resolve(__dirname, "src/index.js") },
     external: ["@babel/standalone"],
     plugins: [
       replace({
@@ -75,10 +77,11 @@ export default [
       terser()
     ],
     output: {
+      dir: __dirname,
       globals: {
         "@babel/standalone": "Babel"
       },
-      file: "catalog.min.js",
+      entryFileNames: "[name].min.js",
       format: "umd",
       name: "Catalog"
     }
