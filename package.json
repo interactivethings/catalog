@@ -1,5 +1,5 @@
 {
-  "name": "catalog",
+  "name": "@alchemy-se/catalog",
   "version": "3.6.0",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
@@ -11,19 +11,14 @@
     "markdown"
   ],
   "homepage": "https://www.catalog.style/",
-  "bugs": "https://github.com/interactivethings/catalog/issues",
+  "bugs": "https://github.com/Alchemy-se/catalog/issues",
   "main": "dist/catalog.cjs.js",
   "module": "dist/catalog.es.js",
   "unpkg": "dist/catalog-standalone.min.js",
   "engines": {
     "npm": ">=2.14.12"
   },
-  "files": [
-    "dist",
-    "babel.js",
-    "loader.js",
-    "types"
-  ],
+  "files": ["dist", "babel.js", "loader.js", "types"],
   "types": "types/catalog",
   "bin": {
     "catalog": "dist/cli/bin/catalog.js",
@@ -37,10 +32,7 @@
     "prettier-all": "prettier --write \"**/*.{js,ts,tsx}\""
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,ts,tsx}": ["prettier --write", "git add"]
   },
   "dependencies": {
     "args": "^3.0.8",
@@ -125,12 +117,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/interactivethings/catalog.git"
+    "url": "https://github.com/Alchemy-se/catalog.git"
   },
   "license": "BSD-3-Clause",
   "jest": {
-    "roots": [
-      "<rootDir>/src"
-    ]
+    "roots": ["<rootDir>/src"]
   }
 }
