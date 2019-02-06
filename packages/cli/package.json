@@ -18,7 +18,6 @@
     "catalog-build": "dist/bin/catalog-build.js"
   },
   "files": [
-    "lib",
     "dist",
     "setup-template"
   ],

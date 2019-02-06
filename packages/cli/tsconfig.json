@@ -6,8 +6,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "lib": ["es2018"],
-    "noEmit": false,
-    "emitDeclarationOnly": true
+    "noEmit": true
   },
   "include": ["src/**/*"]
 }
