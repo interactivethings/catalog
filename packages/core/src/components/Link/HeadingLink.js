@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Link from "./Link";
-import { catalogShape } from "../../CatalogPropTypes";
 import { css } from "../../emotion";
+import { CatalogContext } from "../CatalogContext";
 
 const style = theme => ({
   headingLink: {
@@ -14,26 +14,26 @@ const style = theme => ({
   }
 });
 
-const HeadingLink = ({ slug, ...rest }, { catalog }) => {
+const HeadingLink = ({ slug, ...rest }) => {
   return (
-    <Link
-      className={"HeadingLink " + css(style(catalog.theme).headingLink)}
-      title={"Link to this section"}
-      to={`#${slug}`}
-      aria-hidden
-      {...rest}
-    >
-      #
-    </Link>
+    <CatalogContext.Consumer>
+      {({ catalog }) => (
+        <Link
+          className={"HeadingLink " + css(style(catalog.theme).headingLink)}
+          title={"Link to this section"}
+          to={`#${slug}`}
+          aria-hidden
+          {...rest}
+        >
+          #
+        </Link>
+      )}
+    </CatalogContext.Consumer>
   );
 };
 
 HeadingLink.propTypes = {
   slug: PropTypes.string.isRequired
-};
-
-HeadingLink.contextTypes = {
-  catalog: catalogShape.isRequired
 };
 
 export default HeadingLink;

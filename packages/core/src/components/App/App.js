@@ -1,10 +1,10 @@
 import React, { Children } from "react";
 import PropTypes from "prop-types";
 import DocumentTitle from "react-document-title";
-import { catalogShape } from "../../CatalogPropTypes";
 
 import AppLayout from "./AppLayout";
 import Menu from "../Menu/Menu";
+import { CatalogContext } from "../CatalogContext";
 
 const getDocumentTitle = ({ title, page }) =>
   title === page.superTitle
@@ -13,19 +13,23 @@ const getDocumentTitle = ({ title, page }) =>
 
 class App extends React.Component {
   render() {
-    const { catalog } = this.context;
+    // const { catalog } = this.context;
+
+    // console.log(this.context, catalog);
     return (
-      <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
-        <DocumentTitle title={getDocumentTitle(catalog)} />
-        {Children.only(this.props.children)}
-      </AppLayout>
+      <CatalogContext.Consumer>
+        {({ catalog }) => (
+          <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
+            <DocumentTitle title={getDocumentTitle(catalog)} />
+            {Children.only(this.props.children)}
+          </AppLayout>
+        )}
+      </CatalogContext.Consumer>
     );
   }
 }
 
-App.contextTypes = {
-  catalog: catalogShape.isRequired
-};
+// App.contextType = CatalogContext;
 
 App.propTypes = {
   children: PropTypes.element.isRequired

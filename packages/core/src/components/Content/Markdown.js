@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "../../styled";
 import { text, getFontSize } from "../../styles/typography";
-import { catalogShape } from "../../CatalogPropTypes";
 import BaseLink from "../Link/Link";
 import { css } from "../../emotion";
+import { CatalogContext } from "../CatalogContext";
 
 const baseListStyle = {
   width: "100%",
@@ -83,29 +83,31 @@ export const Image = styled("img", {
   maxWidth: "100%"
 });
 
-export const Link = (props, { catalog: { theme } }) => {
-  const baseLinkStyle = {
-    color: theme.linkColor,
-    transition: "none",
-    border: "none",
-    background: "none",
-    textDecoration: "none"
-  };
+export const Link = props => {
   return (
-    <BaseLink
-      className={css({
-        ...baseLinkStyle,
-        "&:active, &:visited": baseLinkStyle,
-        "&:hover, &:focus": {
-          ...baseLinkStyle,
-          textDecoration: "underline"
-        }
-      })}
-      {...props}
-    />
+    <CatalogContext.Consumer>
+      {({ catalog: { theme } }) => {
+        const baseLinkStyle = {
+          color: theme.linkColor,
+          transition: "none",
+          border: "none",
+          background: "none",
+          textDecoration: "none"
+        };
+        return (
+          <BaseLink
+            className={css({
+              ...baseLinkStyle,
+              "&:active, &:visited": baseLinkStyle,
+              "&:hover, &:focus": {
+                ...baseLinkStyle,
+                textDecoration: "underline"
+              }
+            })}
+            {...props}
+          />
+        );
+      }}
+    </CatalogContext.Consumer>
   );
-};
-
-Link.contextTypes = {
-  catalog: catalogShape
 };

@@ -3,7 +3,7 @@ import { Route } from "react-router";
 import configure from "./configure";
 import warning from "./utils/warning";
 import requireModuleDefault from "./utils/requireModuleDefault";
-import CatalogContext from "./components/CatalogContext";
+import createCatalogContextProvider from "./components/CatalogContextProvider";
 import pageLoader from "./pageLoader";
 
 const pageToRoute = ({ path, component, src }) => ({
@@ -32,7 +32,7 @@ const autoConfigure = config => {
 export default config => {
   const finalConfig = autoConfigure(config);
   return {
-    component: CatalogContext(finalConfig),
+    component: createCatalogContextProvider(finalConfig),
     childRoutes: finalConfig.pages.map(pageToRoute)
   };
 };
@@ -40,7 +40,7 @@ export default config => {
 export const configureJSXRoutes = config => {
   const finalConfig = autoConfigure(config);
   return (
-    <Route component={CatalogContext(finalConfig)}>
+    <Route component={createCatalogContextProvider(finalConfig)}>
       {finalConfig.pages.map(pageToJSXRoute)}
     </Route>
   );

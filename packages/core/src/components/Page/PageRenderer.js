@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import "raf/polyfill";
 
 import React, { PureComponent } from "react";
-import { catalogShape } from "../../CatalogPropTypes";
 import Page from "./Page";
 import runscript from "../../utils/runscript";
+import { CatalogContext } from "../CatalogContext";
 
 const renderStyles = styles => {
   return styles.map((src, i) => (
@@ -40,7 +40,12 @@ class PageRenderer extends PureComponent {
   }
 
   jump() {
-    const { location: { query: { a }, hash } } = this.props;
+    const {
+      location: {
+        query: { a },
+        hash
+      }
+    } = this.props;
 
     // Hash is always defined, but may be an empty string. But the query param
     // is indeed optional and may be undefined. We do not want to be jumping
@@ -76,12 +81,19 @@ class PageRenderer extends PureComponent {
 
   render() {
     const { content } = this.props;
-    const { catalog: { page: { styles } } } = this.context;
     return (
-      <div>
-        {renderStyles(styles)}
-        {renderContent(content)}
-      </div>
+      <CatalogContext.Consumer>
+        {({
+          catalog: {
+            page: { styles }
+          }
+        }) => (
+          <div>
+            {renderStyles(styles)}
+            {renderContent(content)}
+          </div>
+        )}
+      </CatalogContext.Consumer>
     );
   }
 }
@@ -91,8 +103,6 @@ PageRenderer.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-PageRenderer.contextTypes = {
-  catalog: catalogShape.isRequired
-};
+PageRenderer.contextType = CatalogContext;
 
 export default PageRenderer;

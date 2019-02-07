@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { catalogShape } from "../../CatalogPropTypes";
 import PropTypes from "prop-types";
 import renderMarkdown from "../../markdown/renderMarkdown";
 import seqKey from "../../utils/seqKey";
 import MarkdownSpecimen from "../Specimen/MarkdownSpecimen";
 import { css } from "../../emotion";
+import { CatalogContext } from "../CatalogContext";
 
 const pageStyle = {
   boxSizing: "border-box",
@@ -27,48 +27,47 @@ const pageStyle = {
 class Page extends Component {
   render() {
     const { children } = this.props;
-    const { catalog: { getSpecimen } } = this.context;
 
     const getSpecimenKey = seqKey("Specimen");
 
     return (
-      <div
-        className={css({
-          ...pageStyle
-        })}
-      >
-        {React.Children.map(children, child => {
-          const md =
-            typeof child === "string"
-              ? renderMarkdown({
-                  text: child,
-                  renderer: {
-                    code: (body, options) => {
-                      return (
-                        <MarkdownSpecimen
-                          key={getSpecimenKey()}
-                          body={body}
-                          options={options || ""}
-                          getSpecimen={getSpecimen}
-                        />
-                      );
-                    }
-                  }
-                })
-              : child;
-          return md;
-        })}
-      </div>
+      <CatalogContext.Consumer>
+        {({ catalog: { getSpecimen } }) => (
+          <div
+            className={css({
+              ...pageStyle
+            })}
+          >
+            {React.Children.map(children, child => {
+              const md =
+                typeof child === "string"
+                  ? renderMarkdown({
+                      text: child,
+                      renderer: {
+                        code: (body, options) => {
+                          return (
+                            <MarkdownSpecimen
+                              key={getSpecimenKey()}
+                              body={body}
+                              options={options || ""}
+                              getSpecimen={getSpecimen}
+                            />
+                          );
+                        }
+                      }
+                    })
+                  : child;
+              return md;
+            })}
+          </div>
+        )}
+      </CatalogContext.Consumer>
     );
   }
 }
 
 Page.propTypes = {
   children: PropTypes.node
-};
-
-Page.contextTypes = {
-  catalog: catalogShape.isRequired
 };
 
 export default Page;
