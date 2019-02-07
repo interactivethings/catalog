@@ -4,9 +4,9 @@
   "description": "Webpack loader for Catalog markdown files",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
-    "lib"
+    "dist"
   ],
   "dependencies": {
     "loader-utils": "^1.1.0"
