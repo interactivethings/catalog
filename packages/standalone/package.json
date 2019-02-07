@@ -14,9 +14,6 @@
     "watch": "rollup -c rollup.config.js --watch",
     "build": "rollup -c rollup.config.js"
   },
-  "peerDependencies": {
-    "@babel/standalone": "^7.1.0"
-  },
   "devDependencies": {
     "@catalog/core": "^4.0.1-canary.1"
   },
