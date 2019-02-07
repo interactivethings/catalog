@@ -5,3 +5,4 @@ node_modules
 *.log
 .rpt2_cache
 dist
+packages/**/lib
