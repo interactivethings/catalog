@@ -1,8 +1,14 @@
 {
   "name": "catalog",
-  "version": "4.0.1-canary.0",
-  "main": "lib/index.js",
+  "version": "4.0.1-canary.1",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "dependencies": {
-    "@catalog/core": "^4.0.1-canary.0"
-  }
+    "@catalog/core": "^4.0.1-canary.1"
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "types": "index.d.ts"
 }

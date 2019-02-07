@@ -34,10 +34,6 @@ Modifying a webpack configuration is tricky! Only do this if you know what you'r
 
 Catalog's webpack loader allows you to import Markdown files as pages.
 
-Also install webpack's `raw-loader` with `npm install raw-loader --save-dev`
-
-To get the full benefit of Catalog's webpack loader, enable [hot module replacement](https://webpack.js.org/guides/hot-module-replacement/) in your app.
-
 ```code|lang-javascript
 {
   // Other webpack config ...
@@ -45,7 +41,7 @@ To get the full benefit of Catalog's webpack loader, enable [hot module replacem
     rules: [
       {
         test: /\.md$/,
-        use: ['catalog/loader', 'raw-loader']
+        use: ['@catalog/markdown-loader']
       }
     ]
   }
@@ -56,10 +52,10 @@ To get the full benefit of Catalog's webpack loader, enable [hot module replacem
 
 Catalog's Babel preset ensures that JSX source code of [ReactSpecimens](/specimens/react) is preserved.
 
-Add `catalog/babel` to your presets in `.babelrc`
+Add `@catalog/preset-babel` to your presets in `.babelrc`
 
 ```code|lang-javascript
 {
-  "presets": ["catalog/babel"]
+  "presets": ["@catalog/preset-babel"]
 }
 ```

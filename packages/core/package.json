@@ -1,6 +1,6 @@
 {
   "name": "@catalog/core",
-  "version": "4.0.1-canary.0",
+  "version": "4.0.1-canary.1",
   "description": "Create living style guides using Markdown or React",
   "keywords": [
     "styleguide",
@@ -21,10 +21,6 @@
     "dist",
     "types"
   ],
-  "scripts": {
-    "watch": "rollup --config rollup.config.js --watch",
-    "build": "rollup --config rollup.config.js"
-  },
   "types": "types/catalog",
   "dependencies": {
     "create-emotion": "^9.2.12",

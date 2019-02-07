@@ -1,7 +1,6 @@
-#!/usr/bin/env node
 process.env.NODE_ENV = "production";
 
-import * as args from "args";
+import args from "args";
 import chalk from "chalk";
 import { exists } from "sander";
 
@@ -13,7 +12,6 @@ import {
 
 import loadWebpackConfig from "../actions/loadWebpackConfig";
 import loadConfigFile from "../actions/loadConfigFile";
-import detectFramework, { Framework } from "../actions/detectFramework";
 import loadPaths from "../actions/loadPaths";
 
 import setupCatalog from "../actions/setupCatalog";
@@ -36,18 +34,6 @@ const cliOptions = args.parse(process.argv, {
   }
 });
 
-const getFrameworkName = (framework: Framework): string => {
-  switch (framework) {
-    case "CREATE_REACT_APP":
-      return "Create React App";
-    case "NEXT":
-      return "next.js (support is experimental)";
-    case "UNKNOWN":
-    default:
-      return "";
-  }
-};
-
 const run = async (
   catalogSrcDir: string = "catalog",
   {
@@ -62,8 +48,6 @@ const run = async (
     babelrc: void | boolean;
   }
 ) => {
-  const framework = await detectFramework();
-
   const configFile = await loadConfigFile();
 
   let webpackPublicPath = publicUrl;
@@ -79,7 +63,6 @@ const run = async (
   const paths = await loadPaths(
     catalogSrcDir,
     out.replace("<catalog directory>", catalogSrcDir),
-    framework,
     webpackPublicPath
   );
 
@@ -92,7 +75,7 @@ const run = async (
       ? configFile.useBabelrc
       : babelrcExists;
 
-  const webpackOptions = { paths, dev: false, framework, useBabelrc };
+  const webpackOptions = { paths, dev: false, useBabelrc };
 
   let webpackConfig = await loadWebpackConfig(webpackOptions);
 
@@ -113,9 +96,7 @@ const run = async (
       infoMessageDimmed("  Using configuration file catalog.config.js")
     );
   }
-  if (framework !== "UNKNOWN") {
-    console.log(infoMessageDimmed("  Detected " + getFrameworkName(framework)));
-  }
+
   if (useBabelrc) {
     console.log(infoMessageDimmed("  Using custom .babelrc"));
   }

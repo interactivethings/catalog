@@ -1,12 +1,12 @@
 {
   "name": "@catalog/babel-preset",
-  "version": "4.0.1-canary.0",
+  "version": "4.0.1-canary.1",
   "description": "Babel preset for Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",

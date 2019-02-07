@@ -15,6 +15,9 @@ React.createElement(ReactSpecimen, {
 
 test("Adds sourceText prop", () => {
   expect(
-    transform(input, { plugins: ["@babel/plugin-syntax-jsx", plugin] }).code
+    transform(input, {
+      plugins: ["@babel/plugin-syntax-jsx", plugin],
+      filename: "test.js"
+    }).code
   ).toBe(output);
 });

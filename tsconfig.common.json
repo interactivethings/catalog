@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "composite": true,
-
     "moduleResolution": "node",
-
+    "esModuleInterop": true,
     "strict": true,
+    "noEmit": true,
+
+    "target": "es2018",
+    "module": "esnext"
   }
 }

@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-import * as args from "args";
+import args from "args";
 
 args
   .command("start", "Starts the Catalog server")

@@ -8,11 +8,20 @@
         "targets": { "node": 6, "browsers": ["last 2 versions", "ie 11"] }
       }
     ],
-    "@babel/preset-react",
-    "@babel/preset-flow"
+    "@babel/preset-react"
   ],
-  "plugins": [
-    "@babel/plugin-syntax-object-rest-spread",
-    ["emotion", { "autoLabel": true }]
-  ]
+  "plugins": [["emotion", { "autoLabel": true }]],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          { "loose": true, "targets": { "node": "current" } }
+        ],
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+      ],
+      "plugins": [["emotion", { "autoLabel": true }]]
+    }
+  }
 }

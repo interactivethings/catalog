@@ -2,6 +2,8 @@
 
 [![Travis](https://img.shields.io/travis/interactivethings/catalog.svg)](https://travis-ci.org/interactivethings/catalog/) [![Downloads](https://img.shields.io/npm/dm/catalog.svg)](https://www.npmjs.com/package/catalog) [![Version](https://img.shields.io/npm/v/catalog.svg)](https://www.npmjs.com/package/catalog) [![License](https://img.shields.io/npm/l/catalog.svg)]()
 
+> 🚧 This is the currently in-development v4 branch. Stable code is in [master](https://github.com/interactivethings/catalog/tree/master).
+
 # Catalog
 
 Catalog lets you create beautiful living and fully interactive style guides using Markdown and React components.
@@ -22,7 +24,6 @@ yarn add catalog react react-dom
 npm install catalog react react-dom --save
 ```
 
-
 ## Development
 
 > Please make sure that you have Node >= 6 and [yarn](https://yarnpkg.com/) installed.
@@ -31,7 +32,7 @@ npm install catalog react react-dom --save
 
 Start the build process in watch mode:
 
-``` 
+```
 make
 ```
 
@@ -39,7 +40,7 @@ make
 
 To edit Catalog documentation, run:
 
-``` 
+```
 make docs
 ```
 
