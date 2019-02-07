@@ -1,39 +1,16 @@
-import * as loaderUtils from "loader-utils";
-
-module.exports = function loader() {};
-module.exports.pitch = function pitch(remainingRequest: any) {
-  const resource = loaderUtils.stringifyRequest(this, `!!${remainingRequest}`);
-  this.cacheable && this.cacheable();
+export default function(source: string) {
+  const content = JSON.stringify(source);
 
   const output = `
-    var React = require('react');
-    var createReactClass = require('create-react-class');
-    var PageRenderer = require('@catalog/core').PageRenderer;
-    if (PageRenderer.__esModule) {
-      PageRenderer = PageRenderer.default;
+    import React  from 'react';
+    import {PageRenderer} from '@catalog/core';
+    
+    function WrappedPageRenderer(props) {
+      return React.createElement(PageRenderer, Object.assign({}, props, {content:${content}}));
     }
-    var WrappedPageRenderer = createReactClass({
-      displayName: 'WrappedPageRenderer',
-      getInitialState: function() {
-        return {content: require(${resource})};
-      },
-      componentWillMount: function() {
-        var component = this;
-        if (module.hot) {
-          module.hot.accept(${resource}, function() {
-            component.setState({
-              content: require(${resource})
-            })
-          })
-        }
-      },
-      render: function() {
-        return React.createElement(PageRenderer, Object.assign({}, this.props, {content: this.state.content}));
-      }
-    });
     WrappedPageRenderer.__catalog_loader__ = true;
-    module.exports = WrappedPageRenderer;
+    export default WrappedPageRenderer;
   `;
 
   return output;
-};
+}

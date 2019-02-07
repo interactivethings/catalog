@@ -8,20 +8,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "loader-utils": "^1.1.0"
-  },
-  "peerDependencies": {
-    "@catalog/core": "^4.0.1-canary.1",
-    "create-react-class": "^15.6.3",
-    "react": "^16.5.2"
-  },
-  "devDependencies": {
-    "@catalog/core": "^4.0.1-canary.1",
-    "create-react-class": "^15.6.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/interactivethings/catalog.git"

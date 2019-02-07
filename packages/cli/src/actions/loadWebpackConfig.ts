@@ -258,10 +258,7 @@ export default async ({
             },
             {
               test: /\.md$/,
-              loaders: [
-                require.resolve("@catalog/markdown-loader"),
-                require.resolve("raw-loader")
-              ]
+              loaders: [require.resolve("@catalog/markdown-loader")]
             },
             {
               exclude: [/\.mjs$/, /\.js$/, /\.html$/, /\.json$/, /\.md$/],
