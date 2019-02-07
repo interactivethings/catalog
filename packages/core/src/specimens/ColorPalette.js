@@ -71,7 +71,7 @@ class ColorPalette extends React.Component {
       }
     };
 
-    const width = `${horizontal ? 90 / colors.length : 100}%`;
+    const width = `${horizontal ? 100 / colors.length : 100}%`;
     const paletteItems = colors.map((color, i) => (
       <ColorPaletteItem key={i} {...color} styles={styles} width={width} />
     ));
