@@ -6,8 +6,8 @@
     "@babel/standalone": "^7.1.0",
     "catalog": "^4.0.1-canary.1",
     "node-sass": "^4.11.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "scripts": {
     "dev": "../packages/cli/dist/bin/catalog-start.js .",
