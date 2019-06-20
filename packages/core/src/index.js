@@ -1,8 +1,6 @@
 // Configuration
 export { default as render } from "./render";
 export { default as configure } from "./configure";
-export { default as configureRoutes } from "./configureRoutes";
-export { configureJSXRoutes } from "./configureRoutes";
 export { default as markdown } from "./markdownPage";
 export { default as pageLoader } from "./pageLoader";
 export { default as DefaultTheme } from "./DefaultTheme";

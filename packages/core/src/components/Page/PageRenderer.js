@@ -24,12 +24,12 @@ class PageRenderer extends PureComponent {
 
   componentDidMount() {
     this.context.catalog.page.scripts.forEach(runscript);
-    this.jump();
+    // this.jump();
   }
 
   componentDidUpdate() {
     this.context.catalog.page.scripts.forEach(runscript);
-    this.jump();
+    // this.jump();
   }
 
   componentWillUnmount() {

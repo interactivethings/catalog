@@ -5,6 +5,7 @@ import { pageShape, pagesShape } from "../../CatalogPropTypes";
 
 import Link from "../Link/Link";
 import { text } from "../../styles/typography";
+import { RouterContext } from "../Router";
 
 const baseLinkStyle = {
   background: "none",
@@ -87,34 +88,39 @@ const style = theme => {
   };
 };
 
-const NestedList = ({ theme, pages, title }, { router }) => {
-  const collapsed = !pages
-    .map(d => d.path && router.isActive(d.path))
-    .filter(Boolean).length;
-
-  const currentStyle = style(theme);
-
-  const linkStyle = cx(css(currentStyle.link), {
-    [css(currentStyle.activeLink)]: !collapsed
-  });
-
-  const listStyle = cx(css(currentStyle.nestedList), {
-    [css(currentStyle.nestedListHidden)]: collapsed
-  });
-
+const NestedList = ({ theme, pages, title }) => {
   return (
-    <div>
-      <Link to={pages[0].path} className={linkStyle}>
-        {title}
-      </Link>
-      <ul className={listStyle}>
-        {pages
-          .filter(page => !page.hideFromMenu)
-          .map(page => (
-            <ListItem key={page.id} page={page} nested theme={theme} />
-          ))}
-      </ul>
-    </div>
+    <RouterContext.Consumer>
+      {({ location }) => {
+        const collapsed = !pages
+          .map(d => d.path && location.pathname === d.path)
+          .filter(Boolean).length;
+
+        const currentStyle = style(theme);
+
+        const linkStyle = cx(css(currentStyle.link), {
+          [css(currentStyle.activeLink)]: !collapsed
+        });
+
+        const listStyle = cx(css(currentStyle.nestedList), {
+          [css(currentStyle.nestedListHidden)]: collapsed
+        });
+        return (
+          <div>
+            <Link to={pages[0].path} className={linkStyle}>
+              {title}
+            </Link>
+            <ul className={listStyle}>
+              {pages
+                .filter(page => !page.hideFromMenu)
+                .map(page => (
+                  <ListItem key={page.id} page={page} nested theme={theme} />
+                ))}
+            </ul>
+          </div>
+        );
+      }}
+    </RouterContext.Consumer>
   );
 };
 
@@ -122,10 +128,6 @@ NestedList.propTypes = {
   pages: pagesShape.isRequired,
   title: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired
-};
-
-NestedList.contextTypes = {
-  router: PropTypes.object.isRequired
 };
 
 class ListItem extends React.Component {
@@ -150,8 +152,9 @@ class ListItem extends React.Component {
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
           <Link
-            className={linkStyle}
-            activeClassName={activeLinkStyle}
+            getProps={({ isCurrent }) => ({
+              className: isCurrent ? activeLinkStyle : linkStyle
+            })}
             to={path}
             onlyActiveOnIndex={path === "/"}
           >

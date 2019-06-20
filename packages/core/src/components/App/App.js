@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import DocumentTitle from "react-document-title";
 
@@ -21,7 +21,7 @@ class App extends React.Component {
         {({ catalog }) => (
           <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
             <DocumentTitle title={getDocumentTitle(catalog)} />
-            {Children.only(this.props.children)}
+            {this.props.children}
           </AppLayout>
         )}
       </CatalogContext.Consumer>
