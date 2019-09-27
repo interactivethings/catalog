@@ -21,6 +21,12 @@ export { default as PageRenderer } from "./components/Page/PageRenderer";
 export { default as Specimen } from "./components/Specimen/Specimen";
 export { default as mapSpecimenOption } from "./utils/mapSpecimenOption";
 
+// Content blocks
+import Heading from "./components/Content/Heading";
+import * as _Markdown from "./components/Content/Markdown";
+
+export const Markdown = { ..._Markdown, Heading };
+
 // Specimens
 export { default as AudioSpecimen } from "./specimens/Audio";
 export { default as CodeSpecimen } from "./specimens/Code";

@@ -83,7 +83,10 @@ export function configureRoutes(config: Config): any;
 export function configureJSXRoutes(config: Config): any;
 
 export function pageLoader(
-  f: string | (() => Promise<{ default: React.ComponentType }>) | (() => Promise<React.ComponentType>)
+  f:
+    | string
+    | (() => Promise<{ default: React.ComponentType }>)
+    | (() => Promise<React.ComponentType>)
 ): React.ComponentType;
 
 // Components
@@ -231,3 +234,5 @@ export interface VideoSpecimenProps {
 export class VideoSpecimen extends React.Component<
   SpecimenProps & VideoSpecimenProps
 > {}
+
+export const Markdown: { [key: string]: (props: any) => JSX.Element };
