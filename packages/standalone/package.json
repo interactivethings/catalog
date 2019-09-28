@@ -1,6 +1,6 @@
 {
   "name": "@catalog/standalone",
-  "version": "4.0.1-canary.1",
+  "version": "4.0.1-canary.2",
   "description": "Standalone version of Catalog",
   "homepage": "https://www.catalog.style/",
   "bugs": "https://github.com/interactivethings/catalog/issues",
@@ -15,7 +15,7 @@
     "build": "rollup -c rollup.config.js"
   },
   "devDependencies": {
-    "@catalog/core": "^4.0.1-canary.1"
+    "@catalog/core": "^4.0.1-canary.2"
   },
   "repository": {
     "type": "git",
