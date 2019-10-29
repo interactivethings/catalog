@@ -52,10 +52,16 @@ Catalog's webpack loader allows you to import Markdown files as pages.
 
 Catalog's Babel preset ensures that JSX source code of [ReactSpecimens](/specimens/react) is preserved.
 
-Add `@catalog/preset-babel` to your presets in `.babelrc`
+Add `@catalog/babel-preset` to your presets in `.babelrc`
 
 ```code|lang-javascript
 {
-  "presets": ["@catalog/preset-babel"]
+  "presets": ["@catalog/babel-preset"]
 }
+```
+
+Don't forget to install the preset via:
+
+```
+npm i -D @catalog/babel-preset
 ```
