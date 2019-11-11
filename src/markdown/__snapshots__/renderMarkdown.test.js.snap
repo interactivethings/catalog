@@ -63,7 +63,7 @@ Array [
   "",
   <pre>
     <code
-      className={undefined}
+      className=""
     >
       a code block
     </code>
@@ -107,7 +107,7 @@ Array [
   "",
   <pre>
     <code
-      className={undefined}
+      className=""
     >
       a code block
     </code>
