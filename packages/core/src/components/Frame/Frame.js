@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { catalogShape } from "../../CatalogPropTypes";
-import FrameComponent from "./FrameComponent";
+import FrameComponent from "react-frame-component";
 import { css } from "../../emotion";
 
 const frameStyle = {
@@ -33,6 +33,15 @@ export default class Frame extends Component {
     const scale = Math.min(1, parentWidth / width);
     const scaledHeight = autoHeight ? height : height * scale;
 
+    const onRender = autoHeight
+      ? ({ document: { body: { firstChild: content } } }) => {
+          const contentHeight = content.offsetHeight;
+          if (contentHeight !== height) {
+            this.setState({ height: contentHeight });
+          }
+        }
+      : () => null
+
     return (
       <div
         className={css({
@@ -62,16 +71,8 @@ export default class Frame extends Component {
               </style>,
               ...renderStyles(styles)
             ]}
-            onRender={
-              autoHeight
-                ? content => {
-                    const contentHeight = content.offsetHeight;
-                    if (contentHeight !== height) {
-                      this.setState({ height: contentHeight });
-                    }
-                  }
-                : () => null
-            }
+            contentDidMount={onRender}
+            contentDidUpdate={onRender}
           >
             {children}
           </FrameComponent>
