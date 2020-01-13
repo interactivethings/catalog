@@ -66,10 +66,6 @@
     "docs"
   ],
   "resolutions": {
-    "@types/webpack": "^4.4.24",
     "prop-types": "^15.7.2"
-  },
-  "dependencies": {
-    "@types/webpack": "^4.4.24"
   }
 }
