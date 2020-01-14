@@ -66,6 +66,7 @@
     "docs"
   ],
   "resolutions": {
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-is": "^16.12.0"
   }
 }
