@@ -3,8 +3,8 @@
   command = "yarn build"
 
 [build.environment]
-  NODE_VERSION = "10"
-  YARN_VERSION = "1.13.0"
+  NODE_VERSION = "12"
+  YARN_VERSION = "1.12.1"
   YARN_FLAGS = "--frozen-lockfile"
 
 [[redirects]]
