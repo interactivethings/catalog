@@ -42,12 +42,6 @@ export const Router = ({ useBrowserHistory, pages, children }) => {
     hideFromMenu: true,
   };
 
-  console.log(
-    pages.map((p) => p.path),
-    page,
-    location.pathname
-  );
-
   const ctxValue = useMemo(() => {
     return { history, location, page };
   }, [history, location, page]);

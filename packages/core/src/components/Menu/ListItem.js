@@ -152,7 +152,6 @@ class ListItem extends React.Component {
               className: isCurrent ? activeLinkStyle : linkStyle,
             })}
             to={path}
-            onlyActiveOnIndex={path === "/"}
           >
             {menuTitle || title}
           </Link>
