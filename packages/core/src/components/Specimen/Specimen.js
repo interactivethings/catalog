@@ -6,9 +6,9 @@ import Span from "./Span";
 import parseSpecimenOptions from "../../utils/parseSpecimenOptions";
 import {
   parseSpecimenBody,
-  parseSpecimenYamlBody
+  parseSpecimenYamlBody,
 } from "../../utils/parseSpecimenBody";
-import { CatalogContext } from "../CatalogContext";
+import { useCatalog } from "../CatalogContext";
 
 export default function Specimen(
   mapBodyToProps,
@@ -20,34 +20,30 @@ export default function Specimen(
     ? parseSpecimenBody(mapBodyToProps)
     : parseSpecimenYamlBody(mapBodyToProps);
 
-  return WrappedSpecimen => {
-    const SpecimenContainer = props => {
+  return (WrappedSpecimen) => {
+    const SpecimenContainer = (props) => {
+      const { catalog } = useCatalog();
+
+      const { rawOptions, rawBody } = props;
+      const optionProps = parseOptions(rawOptions);
+      const bodyProps = parseBody(rawBody, catalog.page.imports);
+      const span = props.span || bodyProps.span || optionProps.span;
       return (
-        <CatalogContext.Consumer>
-          {({ catalog }) => {
-            const { rawOptions, rawBody } = props;
-            const optionProps = parseOptions(rawOptions);
-            const bodyProps = parseBody(rawBody, catalog.page.imports);
-            const span = props.span || bodyProps.span || optionProps.span;
-            return (
-              <Span span={span}>
-                <WrappedSpecimen
-                  {...optionProps}
-                  {...bodyProps}
-                  {...props}
-                  catalog={catalog}
-                />
-              </Span>
-            );
-          }}
-        </CatalogContext.Consumer>
+        <Span span={span}>
+          <WrappedSpecimen
+            {...optionProps}
+            {...bodyProps}
+            {...props}
+            catalog={catalog}
+          />
+        </Span>
       );
     };
 
     SpecimenContainer.propTypes = {
       span: PropTypes.number,
       rawBody: PropTypes.string,
-      rawOptions: PropTypes.string
+      rawOptions: PropTypes.string,
     };
 
     return SpecimenContainer;

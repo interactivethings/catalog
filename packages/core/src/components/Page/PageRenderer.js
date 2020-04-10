@@ -1,108 +1,125 @@
 import PropTypes from "prop-types";
 import "raf/polyfill";
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, useEffect } from "react";
 import Page from "./Page";
 import runscript from "../../utils/runscript";
-import { CatalogContext } from "../CatalogContext";
+import { useCatalog } from "../CatalogContext";
 
-const renderStyles = styles => {
+const renderStyles = (styles) => {
   return styles.map((src, i) => (
     <link key={i} href={src} rel="stylesheet" type="text/css" />
   ));
 };
 
-const renderContent = Content =>
+const renderContent = (Content) =>
   typeof Content === "string" ? <Page>{Content}</Page> : <Content />;
 
-class PageRenderer extends PureComponent {
-  constructor() {
-    super();
-    this.jump = this.jump.bind(this);
-    this.jumpTimeout = null;
-  }
+const PageRenderer = React.memo(({ content }) => {
+  const {
+    catalog: {
+      page: { scripts, styles },
+    },
+  } = useCatalog();
 
-  componentDidMount() {
-    this.context.catalog.page.scripts.forEach(runscript);
-    // this.jump();
-  }
+  useEffect(() => {
+    scripts.forEach(runscript);
+  }, [scripts]);
 
-  componentDidUpdate() {
-    this.context.catalog.page.scripts.forEach(runscript);
-    // this.jump();
-  }
+  return (
+    <div>
+      {renderStyles(styles)}
+      {renderContent(content)}
+    </div>
+  );
+});
 
-  componentWillUnmount() {
-    if (this.jumpTimeout !== null) {
-      cancelAnimationFrame(this.jumpTimeout);
-      this.jumpTimeout = null;
-    }
-  }
+// class PageRenderer extends PureComponent {
+//   constructor() {
+//     super();
+//     this.jump = this.jump.bind(this);
+//     this.jumpTimeout = null;
+//   }
 
-  jump() {
-    const {
-      location: {
-        query: { a },
-        hash
-      }
-    } = this.props;
+//   componentDidMount() {
+//     this.context.catalog.page.scripts.forEach(runscript);
+//     // this.jump();
+//   }
 
-    // Hash is always defined, but may be an empty string. But the query param
-    // is indeed optional and may be undefined. We do not want to be jumping
-    // to the '#undefined' selector.
+//   componentDidUpdate() {
+//     this.context.catalog.page.scripts.forEach(runscript);
+//     // this.jump();
+//   }
 
-    if (hash !== "") {
-      this.jumpToSelector(hash);
-    } else if (a !== undefined && a !== "") {
-      this.jumpToSelector(`#${a}`);
-    }
-  }
+//   componentWillUnmount() {
+//     if (this.jumpTimeout !== null) {
+//       cancelAnimationFrame(this.jumpTimeout);
+//       this.jumpTimeout = null;
+//     }
+//   }
 
-  jumpToSelector(selector) {
-    if (this.jumpTimeout !== null) {
-      cancelAnimationFrame(this.jumpTimeout);
-      this.jumpTimeout = null;
-    }
+//   jump() {
+//     const {
+//       location: {
+//         query: { a },
+//         hash,
+//       },
+//     } = this.props;
 
-    // Don't freak out when hash is not a valid selector (e.g. #/foo)
-    try {
-      const el = document.querySelector(selector);
-      if (el) {
-        // Defer scrolling by one tick (when the page has completely rendered)
-        this.jumpTimeout = requestAnimationFrame(() => {
-          this.jumpTimeout = null;
-          el.scrollIntoView();
-        });
-      }
-    } catch (e) {
-      // eslint-disable-line no-empty
-    }
-  }
+//     // Hash is always defined, but may be an empty string. But the query param
+//     // is indeed optional and may be undefined. We do not want to be jumping
+//     // to the '#undefined' selector.
 
-  render() {
-    const { content } = this.props;
-    return (
-      <CatalogContext.Consumer>
-        {({
-          catalog: {
-            page: { styles }
-          }
-        }) => (
-          <div>
-            {renderStyles(styles)}
-            {renderContent(content)}
-          </div>
-        )}
-      </CatalogContext.Consumer>
-    );
-  }
-}
+//     if (hash !== "") {
+//       this.jumpToSelector(hash);
+//     } else if (a !== undefined && a !== "") {
+//       this.jumpToSelector(`#${a}`);
+//     }
+//   }
+
+//   jumpToSelector(selector) {
+//     if (this.jumpTimeout !== null) {
+//       cancelAnimationFrame(this.jumpTimeout);
+//       this.jumpTimeout = null;
+//     }
+
+//     // Don't freak out when hash is not a valid selector (e.g. #/foo)
+//     try {
+//       const el = document.querySelector(selector);
+//       if (el) {
+//         // Defer scrolling by one tick (when the page has completely rendered)
+//         this.jumpTimeout = requestAnimationFrame(() => {
+//           this.jumpTimeout = null;
+//           el.scrollIntoView();
+//         });
+//       }
+//     } catch (e) {
+//       // eslint-disable-line no-empty
+//     }
+//   }
+
+//   render() {
+//     const { content } = this.props;
+//     return (
+//       <CatalogContext.Consumer>
+//         {({
+//           catalog: {
+//             page: { styles },
+//           },
+//         }) => (
+//           <div>
+//             {renderStyles(styles)}
+//             {renderContent(content)}
+//           </div>
+//         )}
+//       </CatalogContext.Consumer>
+//     );
+//   }
+// }
 
 PageRenderer.propTypes = {
   content: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
-
-PageRenderer.contextType = CatalogContext;
 
 export default PageRenderer;

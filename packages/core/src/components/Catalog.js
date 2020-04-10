@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Router } from "./Router";
 
 import configure from "../configure";
-import { CatalogContextProvider } from "./CatalogContextProvider";
+import { CatalogContextProvider } from "./CatalogContext";
 import App from "./App/App";
 
 export default class Catalog extends Component {
@@ -23,5 +23,5 @@ export default class Catalog extends Component {
 }
 
 Catalog.propTypes = {
-  useBrowserHistory: PropTypes.bool
+  useBrowserHistory: PropTypes.bool,
 };
