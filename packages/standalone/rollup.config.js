@@ -30,6 +30,7 @@ let plugins = [
         "unstable_renderSubtreeIntoContainer",
         "unmountComponentAtNode"
       ],
+      "react-is": ["isValidElementType"],
       "js-yaml": ["safeLoad", "CORE_SCHEMA", "Type", "Schema"],
       "prop-types": [
         "bool",
@@ -40,7 +41,8 @@ let plugins = [
         "oneOfType",
         "element",
         "shape",
-        "string"
+        "string",
+        "elementType"
       ]
     }
   })

@@ -8,5 +8,6 @@
 
     "target": "es2018",
     "module": "esnext"
-  }
+  },
+  "exclude": ["node_modules"]
 }

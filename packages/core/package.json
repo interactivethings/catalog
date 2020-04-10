@@ -30,7 +30,7 @@
     "js-yaml": "^3.9.1",
     "marked": "^0.4.0",
     "prismjs": "^1.14.0",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.7.2",
     "raf": "^3.3.2",
     "ramda": "^0.25.0",
     "react-document-title": "^2.0.3",

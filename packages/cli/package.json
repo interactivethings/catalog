@@ -51,9 +51,10 @@
     "webpack-manifest-plugin": "^2.0.4"
   },
   "devDependencies": {
+    "@types/html-minifier": "^3.5.3",
     "@types/mini-css-extract-plugin": "^0.2.0",
     "@types/node-fetch": "^2.1.4",
-    "@types/webpack": "^4.4.24",
+    "@types/webpack": "^4.41.2",
     "@types/webpack-dev-server": "^3.1.1"
   },
   "repository": {

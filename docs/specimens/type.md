@@ -15,6 +15,7 @@
 - `kafka: boolean` Mighty morphin' Samsa fill text
 - `single: boolean` Uses a single word for headline
 - `span: number[1–6]` width of the specimen
+- `shorter: boolean` clips overflow paragraph text with ellipsis
 
 
 ### Examples
