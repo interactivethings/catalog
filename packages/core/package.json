@@ -33,7 +33,6 @@
     "prop-types": "^15.7.2",
     "raf": "^3.3.2",
     "ramda": "^0.25.0",
-    "react-document-title": "^2.0.3",
     "srcset": "^2.0.0",
     "url": "^0.11.0"
   },

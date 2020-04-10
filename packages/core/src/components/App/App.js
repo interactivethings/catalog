@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import DocumentTitle from "react-document-title";
 
 import AppLayout from "./AppLayout";
 import Menu from "../Menu/Menu";
@@ -13,10 +12,13 @@ const getDocumentTitle = ({ title, page }) =>
 
 const App = ({ children }) => {
   const { catalog } = useCatalog();
+  const documentTitle = getDocumentTitle(catalog);
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
 
   return (
     <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
-      <DocumentTitle title={getDocumentTitle(catalog)} />
       {children}
     </AppLayout>
   );
