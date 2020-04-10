@@ -5,7 +5,7 @@ import { parsePath, isInternalPath, getPublicPath } from "../../utils/path";
 import { useCatalog } from "../CatalogContext";
 
 const Link = ({ to, ...rest }) => {
-  const { catalog } = useCatalog();
+  const catalog = useCatalog();
   const parsedTo = parsePath(to, catalog);
 
   return isInternalPath(parsedTo, catalog) ? (

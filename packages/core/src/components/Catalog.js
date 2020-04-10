@@ -11,13 +11,11 @@ export default class Catalog extends Component {
     const config = configure(this.props);
     const { pages, useBrowserHistory } = config;
     return (
-      <Router useBrowserHistory={useBrowserHistory} pages={pages}>
-        {({ page }) => (
-          <CatalogContextProvider configuration={config}>
-            <App>{React.createElement(page.component)}</App>
-          </CatalogContextProvider>
-        )}
-      </Router>
+      <CatalogContextProvider configuration={config}>
+        <Router useBrowserHistory={useBrowserHistory} pages={pages}>
+          {({ page }) => <App>{React.createElement(page.component)}</App>}
+        </Router>
+      </CatalogContextProvider>
     );
   }
 }

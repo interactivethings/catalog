@@ -5,7 +5,7 @@ import { useCatalog } from "./components/CatalogContext";
 const styled = (tag, styles) => {
   // eslint-disable-next-line react/prop-types
   const Styled = ({ className, ...props }) => {
-    const { catalog } = useCatalog();
+    const catalog = useCatalog();
     return React.createElement(tag, {
       ...props,
       className: cx(

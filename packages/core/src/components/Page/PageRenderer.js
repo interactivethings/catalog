@@ -5,6 +5,7 @@ import React, { PureComponent, useEffect } from "react";
 import Page from "./Page";
 import runscript from "../../utils/runscript";
 import { useCatalog } from "../CatalogContext";
+import { useRouter } from "../Router";
 
 const renderStyles = (styles) => {
   return styles.map((src, i) => (
@@ -15,12 +16,11 @@ const renderStyles = (styles) => {
 const renderContent = (Content) =>
   typeof Content === "string" ? <Page>{Content}</Page> : <Content />;
 
+// eslint-disable-next-line react/display-name
 const PageRenderer = React.memo(({ content }) => {
   const {
-    catalog: {
-      page: { scripts, styles },
-    },
-  } = useCatalog();
+    page: { scripts, styles },
+  } = useRouter();
 
   useEffect(() => {
     scripts.forEach(runscript);

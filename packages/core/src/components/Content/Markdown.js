@@ -84,9 +84,7 @@ export const Image = styled("img", {
 });
 
 export const Link = (props) => {
-  const {
-    catalog: { theme },
-  } = useCatalog();
+  const { theme } = useCatalog();
 
   const baseLinkStyle = {
     color: theme.linkColor,

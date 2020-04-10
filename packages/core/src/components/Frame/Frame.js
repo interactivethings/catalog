@@ -3,6 +3,7 @@ import React, { Component, useState } from "react";
 import FrameComponent from "./FrameComponent";
 import { css } from "../../emotion";
 import { useCatalog } from "../CatalogContext";
+import { useRouter } from "../Router";
 
 const frameStyle = {
   width: "100%",
@@ -28,10 +29,8 @@ const Frame = ({
   ...props
 }) => {
   const {
-    catalog: {
-      page: { styles },
-    },
-  } = useCatalog();
+    page: { styles },
+  } = useRouter();
   const [measuredHeight, setMeasuredHeight] = useState();
 
   const height = measuredHeight || props.height;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import AppLayout from "./AppLayout";
 import Menu from "../Menu/Menu";
 import { useCatalog } from "../CatalogContext";
+import { useRouter } from "../Router";
 
 const getDocumentTitle = ({ title, page }) =>
   title === page.superTitle
@@ -11,14 +12,15 @@ const getDocumentTitle = ({ title, page }) =>
     : `${title} – ${page.superTitle} – ${page.title}`;
 
 const App = ({ children }) => {
-  const { catalog } = useCatalog();
-  const documentTitle = getDocumentTitle(catalog);
+  const catalog = useCatalog();
+  const { page } = useRouter();
+  const documentTitle = getDocumentTitle({ title: catalog.title, page });
   useEffect(() => {
     document.title = documentTitle;
   }, [documentTitle]);
 
   return (
-    <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
+    <AppLayout {...catalog} page={page} sideNav={<Menu {...catalog} />}>
       {children}
     </AppLayout>
   );

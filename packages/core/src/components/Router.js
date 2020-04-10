@@ -1,109 +1,103 @@
-import React from "react";
+import React, { useMemo, useState, useEffect, useContext } from "react";
 import {
   createHashHistory,
   createBrowserHistory,
   createMemoryHistory,
-  createLocation
+  createLocation,
+  createPath,
 } from "history";
 import NotFound from "./Page/NotFound";
 
-export const RouterContext = React.createContext();
+const RouterContext = React.createContext();
 
-export class Router extends React.Component {
-  constructor(props) {
-    super();
-    this.history =
-      typeof window === "undefined"
-        ? createMemoryHistory()
-        : props.useBrowserHistory
-        ? createBrowserHistory()
-        : createHashHistory();
-    this.state = {
-      location: this.history.location
-    };
-  }
+export const useRouter = () => {
+  return useContext(RouterContext);
+};
 
-  componentDidMount() {
-    this.unlisten = this.history.listen(location => {
-      this.setState({ location: location });
-    });
-  }
+export const Router = ({ useBrowserHistory, pages, children }) => {
+  const isBrowser = typeof window !== "undefined";
 
-  componentWillUnmount() {
-    this.unlisten();
-  }
+  const history = useMemo(() => {
+    if (!isBrowser) {
+      return createMemoryHistory();
+    }
+    return useBrowserHistory ? createBrowserHistory() : createHashHistory();
+  }, [isBrowser, useBrowserHistory]);
 
-  render() {
-    const { pages } = this.props;
-    const page = pages.find(p => p.path === this.state.location.pathname) || {
-      path: "/*",
-      id: pages.length + 1,
-      component: NotFound,
-      title: "Page Not Found",
-      superTitle: "Hello",
-      scripts: [],
-      styles: [],
-      imports: {},
-      hideFromMenu: true
-    };
-    return (
-      <RouterContext.Provider
-        value={{ history: this.history, location: this.state.location }}
-      >
-        {this.props.children({
-          page
-        })}
-      </RouterContext.Provider>
-    );
-  }
-}
+  const [location, setLocation] = useState(history.location);
 
-export class Route extends React.Component {
-  render() {
-    const routeLocation = createLocation(this.props.path);
-    return (
-      <RouterContext.Consumer>
-        {({ location }) => {
-          return routeLocation.pathname === location.pathname ? (
-            <div>
-              {JSON.stringify(location)}
-              {this.props.children}
-            </div>
-          ) : null;
-        }}
-      </RouterContext.Consumer>
-    );
-  }
-}
+  useEffect(() => {
+    return history.listen((location) => setLocation(location));
+  }, [history]);
 
-const shouldNavigate = event =>
-  !event.defaultPrevented &&
-  event.button === 0 &&
+  const page = pages.find((p) => p.path === location.pathname) || {
+    path: "/*",
+    id: pages.length + 1,
+    component: NotFound,
+    title: "Page Not Found",
+    superTitle: "Hello",
+    scripts: [],
+    styles: [],
+    imports: {},
+    hideFromMenu: true,
+  };
+
+  console.log(
+    pages.map((p) => p.path),
+    page,
+    location.pathname
+  );
+
+  const ctxValue = useMemo(() => {
+    return { history, location, page };
+  }, [history, location, page]);
+
+  return (
+    <RouterContext.Provider value={ctxValue}>
+      {children({
+        page,
+      })}
+    </RouterContext.Provider>
+  );
+};
+
+export const Route = ({ path, children }) => {
+  const routeLocation = createLocation(path);
+  const { location } = useRouter();
+
+  return routeLocation.pathname === location.pathname ? (
+    <div>
+      {JSON.stringify(location)}
+      {children}
+    </div>
+  ) : null;
+};
+
+const shouldNavigate = (event, target) =>
+  !event.defaultPrevented && // onClick prevented default
+  event.button === 0 && // Ignore everything but left clicks
+  (!target || target === "_self") && // Let browser handle "target=_blank" etc.
   !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 
-export class Link extends React.Component {
-  render() {
-    const { getProps, href, ...props } = this.props;
-    const linkLocation = createLocation(href);
+export const Link = ({ getProps, href, ...props }) => {
+  const linkLocation = createLocation(href);
+  const { history, location } = useRouter();
 
-    return (
-      <RouterContext.Consumer>
-        {({ history, location }) => {
-          const isCurrent = location.pathname === linkLocation.pathname;
-          const linkProps =
-            typeof getProps === "function" ? getProps({ isCurrent }) : {};
-          return (
-            <a
-              onClick={e => {
-                e.preventDefault();
-                history.push(linkLocation);
-              }}
-              {...props}
-              {...linkProps}
-            />
-          );
-        }}
-      </RouterContext.Consumer>
-    );
-  }
-}
+  const isCurrent = location.pathname === linkLocation.pathname;
+  const linkProps =
+    typeof getProps === "function" ? getProps({ isCurrent }) : {};
+
+  return (
+    <a
+      onClick={(e) => {
+        if (shouldNavigate(e, props.target)) {
+          e.preventDefault();
+          history.push(linkLocation);
+        }
+      }}
+      href={createPath(linkLocation)}
+      {...props}
+      {...linkProps}
+    />
+  );
+};

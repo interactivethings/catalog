@@ -25,9 +25,7 @@ const pageStyle = {
 };
 
 const Page = ({ children }) => {
-  const {
-    catalog: { getSpecimen },
-  } = useCatalog();
+  const { getSpecimen } = useCatalog();
 
   const getSpecimenKey = seqKey("Specimen");
 

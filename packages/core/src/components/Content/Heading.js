@@ -40,7 +40,7 @@ const PlainHeading = ({ level, text }) => {
 };
 
 const Heading = ({ level, text, slug }) => {
-  const { catalog } = useCatalog();
+  const catalog = useCatalog();
   return slug ? (
     <HeadingWithLink level={level} text={text} slug={slug} catalog={catalog} />
   ) : (

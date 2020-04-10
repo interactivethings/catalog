@@ -15,7 +15,7 @@ const style = (theme) => ({
 });
 
 const HeadingLink = ({ slug, ...rest }) => {
-  const { catalog } = useCatalog();
+  const catalog = useCatalog();
   return (
     <Link
       className={"HeadingLink " + css(style(catalog.theme).headingLink)}

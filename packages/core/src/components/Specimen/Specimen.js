@@ -9,6 +9,7 @@ import {
   parseSpecimenYamlBody,
 } from "../../utils/parseSpecimenBody";
 import { useCatalog } from "../CatalogContext";
+import { useRouter } from "../Router";
 
 export default function Specimen(
   mapBodyToProps,
@@ -22,11 +23,12 @@ export default function Specimen(
 
   return (WrappedSpecimen) => {
     const SpecimenContainer = (props) => {
-      const { catalog } = useCatalog();
+      const catalog = useCatalog();
+      const { page } = useRouter();
 
       const { rawOptions, rawBody } = props;
       const optionProps = parseOptions(rawOptions);
-      const bodyProps = parseBody(rawBody, catalog.page.imports);
+      const bodyProps = parseBody(rawBody, page.imports);
       const span = props.span || bodyProps.span || optionProps.span;
       return (
         <Span span={span}>
