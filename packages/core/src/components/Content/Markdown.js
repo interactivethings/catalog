@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "../../styled";
 import { text, getFontSize } from "../../styles/typography";
-import { catalogShape } from "../../CatalogPropTypes";
 import BaseLink from "../Link/Link";
 import { css } from "../../emotion";
+import { useCatalog } from "../CatalogContext";
 
 const baseListStyle = {
   width: "100%",
   marginLeft: 0,
-  paddingLeft: "2rem"
+  paddingLeft: "2rem",
 };
 
 // Defined with `css`, so it can be used as a selector for nested elements
@@ -21,28 +21,28 @@ const blockquoteStyle = () =>
     "&::before, &::after": { content: "none" },
     "& > :first-child": { marginTop: 0 },
     "& > :last-child": { marginBottom: 0 },
-    "& + &": { marginTop: 0 }
+    "& + &": { marginTop: 0 },
   });
 
 export const Paragraph = styled("p", (props, { theme }) => ({
   ...text(theme),
   flexBasis: "100%",
   [`.${blockquoteStyle()} &`]: { fontSize: getFontSize(theme, 1) },
-  margin: `16px 0 0 0`
+  margin: `16px 0 0 0`,
 }));
 export const UnorderedList = styled("ul", {
   ...baseListStyle,
   listStyle: "disc",
   marginTop: "16px",
   marginBottom: 0,
-  "& > li": { listStyle: "disc" }
+  "& > li": { listStyle: "disc" },
 });
 export const OrderedList = styled("ol", {
   ...baseListStyle,
   listStyle: "ordinal",
   marginTop: "16px",
   marginBottom: 0,
-  "& > li": { listStyle: "ordinal" }
+  "& > li": { listStyle: "ordinal" },
 });
 export const ListItem = styled("li", (props, { theme }) => ({
   ...text(theme),
@@ -50,20 +50,20 @@ export const ListItem = styled("li", (props, { theme }) => ({
   margin: 0,
   padding: 0,
   "& > :first-child, & > ul, & > ol": { marginTop: 0 },
-  "& > :last-child": { marginBottom: 0 }
+  "& > :last-child": { marginBottom: 0 },
 }));
-export const BlockQuote = props => (
+export const BlockQuote = (props) => (
   <blockquote className={blockquoteStyle()} {...props} />
 );
 export const Hr = styled("hr", {
   border: "none",
   flexBasis: "100%",
   margin: 0,
-  height: 0
+  height: 0,
 });
 export const Em = styled("em", { fontStyle: "italic" });
 export const Strong = styled("strong", {
-  fontWeight: 700
+  fontWeight: 700,
 });
 export const CodeSpan = styled("code", (props, { theme }) => ({
   background: theme.bgLight,
@@ -74,22 +74,24 @@ export const CodeSpan = styled("code", (props, { theme }) => ({
   fontSize: `${Math.pow(theme.msRatio, -0.5)}em`,
   lineHeight: 1,
   padding: "0.12em 0.2em",
-  textIndent: 0
+  textIndent: 0,
 }));
 export const Del = styled("del", {
-  textDecoration: "line-through"
+  textDecoration: "line-through",
 });
 export const Image = styled("img", {
-  maxWidth: "100%"
+  maxWidth: "100%",
 });
 
-export const Link = (props, { catalog: { theme } }) => {
+export const Link = (props) => {
+  const { theme } = useCatalog();
+
   const baseLinkStyle = {
     color: theme.linkColor,
     transition: "none",
     border: "none",
     background: "none",
-    textDecoration: "none"
+    textDecoration: "none",
   };
   return (
     <BaseLink
@@ -98,14 +100,10 @@ export const Link = (props, { catalog: { theme } }) => {
         "&:active, &:visited": baseLinkStyle,
         "&:hover, &:focus": {
           ...baseLinkStyle,
-          textDecoration: "underline"
-        }
+          textDecoration: "underline",
+        },
       })}
       {...props}
     />
   );
-};
-
-Link.contextTypes = {
-  catalog: catalogShape
 };

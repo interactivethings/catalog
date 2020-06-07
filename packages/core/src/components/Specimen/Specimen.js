@@ -2,13 +2,14 @@ import PropTypes from "prop-types";
 // Higher-order Specimen which provides theme
 
 import React from "react";
-import { catalogShape } from "../../CatalogPropTypes";
 import Span from "./Span";
 import parseSpecimenOptions from "../../utils/parseSpecimenOptions";
 import {
   parseSpecimenBody,
-  parseSpecimenYamlBody
+  parseSpecimenYamlBody,
 } from "../../utils/parseSpecimenBody";
+import { useCatalog } from "../CatalogContext";
+import { useRouter } from "../Router";
 
 export default function Specimen(
   mapBodyToProps,
@@ -20,13 +21,15 @@ export default function Specimen(
     ? parseSpecimenBody(mapBodyToProps)
     : parseSpecimenYamlBody(mapBodyToProps);
 
-  return WrappedSpecimen => {
-    const SpecimenContainer = (props, { catalog }) => {
+  return (WrappedSpecimen) => {
+    const SpecimenContainer = (props) => {
+      const catalog = useCatalog();
+      const { page } = useRouter();
+
       const { rawOptions, rawBody } = props;
       const optionProps = parseOptions(rawOptions);
-      const bodyProps = parseBody(rawBody, catalog.page.imports);
+      const bodyProps = parseBody(rawBody, page.imports);
       const span = props.span || bodyProps.span || optionProps.span;
-
       return (
         <Span span={span}>
           <WrappedSpecimen
@@ -42,11 +45,7 @@ export default function Specimen(
     SpecimenContainer.propTypes = {
       span: PropTypes.number,
       rawBody: PropTypes.string,
-      rawOptions: PropTypes.string
-    };
-
-    SpecimenContainer.contextTypes = {
-      catalog: catalogShape.isRequired
+      rawOptions: PropTypes.string,
     };
 
     return SpecimenContainer;

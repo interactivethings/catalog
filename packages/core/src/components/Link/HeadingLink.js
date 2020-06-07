@@ -1,20 +1,21 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Link from "./Link";
-import { catalogShape } from "../../CatalogPropTypes";
 import { css } from "../../emotion";
+import { useCatalog } from "../CatalogContext";
 
-const style = theme => ({
+const style = (theme) => ({
   headingLink: {
     color: theme.lightColor,
     textDecoration: "none",
     ":hover": {
-      color: theme.linkColor
-    }
-  }
+      color: theme.linkColor,
+    },
+  },
 });
 
-const HeadingLink = ({ slug, ...rest }, { catalog }) => {
+const HeadingLink = ({ slug, ...rest }) => {
+  const catalog = useCatalog();
   return (
     <Link
       className={"HeadingLink " + css(style(catalog.theme).headingLink)}
@@ -29,11 +30,7 @@ const HeadingLink = ({ slug, ...rest }, { catalog }) => {
 };
 
 HeadingLink.propTypes = {
-  slug: PropTypes.string.isRequired
-};
-
-HeadingLink.contextTypes = {
-  catalog: catalogShape.isRequired
+  slug: PropTypes.string.isRequired,
 };
 
 export default HeadingLink;

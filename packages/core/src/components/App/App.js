@@ -1,34 +1,33 @@
-import React, { Children } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import DocumentTitle from "react-document-title";
-import { catalogShape } from "../../CatalogPropTypes";
 
 import AppLayout from "./AppLayout";
 import Menu from "../Menu/Menu";
+import { useCatalog } from "../CatalogContext";
+import { useRouter } from "../Router";
 
 const getDocumentTitle = ({ title, page }) =>
   title === page.superTitle
     ? `${page.superTitle} – ${page.title}`
     : `${title} – ${page.superTitle} – ${page.title}`;
 
-class App extends React.Component {
-  render() {
-    const { catalog } = this.context;
-    return (
-      <AppLayout {...catalog} sideNav={<Menu {...catalog} />}>
-        <DocumentTitle title={getDocumentTitle(catalog)} />
-        {Children.only(this.props.children)}
-      </AppLayout>
-    );
-  }
-}
+const App = ({ children }) => {
+  const catalog = useCatalog();
+  const { page } = useRouter();
+  const documentTitle = getDocumentTitle({ title: catalog.title, page });
+  useEffect(() => {
+    document.title = documentTitle;
+  }, [documentTitle]);
 
-App.contextTypes = {
-  catalog: catalogShape.isRequired
+  return (
+    <AppLayout {...catalog} page={page} sideNav={<Menu {...catalog} />}>
+      {children}
+    </AppLayout>
+  );
 };
 
 App.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 
 export default App;

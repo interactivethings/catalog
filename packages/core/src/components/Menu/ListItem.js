@@ -5,14 +5,15 @@ import { pageShape, pagesShape } from "../../CatalogPropTypes";
 
 import Link from "../Link/Link";
 import { text } from "../../styles/typography";
+import { useRouter } from "../Router";
 
 const baseLinkStyle = {
   background: "none",
   border: "none",
-  transition: "none"
+  transition: "none",
 };
 
-const style = theme => {
+const style = (theme) => {
   return {
     link: {
       ...text(theme),
@@ -29,8 +30,8 @@ const style = theme => {
         borderTop: `1px solid ${theme.sidebarColorLine}`,
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
-        background: "rgba(255,255,255,0.1)"
-      }
+        background: "rgba(255,255,255,0.1)",
+      },
     },
     activeLink: {
       color: theme.sidebarColorTextActive,
@@ -41,16 +42,16 @@ const style = theme => {
         borderTop: `1px solid ${theme.sidebarColorLine}`,
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
-        background: "none"
+        background: "none",
       },
       "&:last-child": {
-        padding: "16px 40px"
-      }
+        padding: "16px 40px",
+      },
     },
     listItem: {
       background: "none",
       margin: 0,
-      padding: 0
+      padding: 0,
     },
     nestedLink: {
       borderTop: "none",
@@ -60,8 +61,8 @@ const style = theme => {
         ...baseLinkStyle,
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
-        background: "rgba(255,255,255,0.1)"
-      }
+        background: "rgba(255,255,255,0.1)",
+      },
     },
     nestedActiveLink: {
       color: theme.sidebarColorTextActive,
@@ -70,8 +71,8 @@ const style = theme => {
         ...baseLinkStyle,
         color: theme.sidebarColorTextActive,
         textDecoration: "none",
-        background: "none"
-      }
+        background: "none",
+      },
     },
     nestedList: {
       borderTop: "none",
@@ -79,29 +80,30 @@ const style = theme => {
       display: "block",
       listStyle: "none",
       margin: 0,
-      padding: "0 0 8px 0"
+      padding: "0 0 8px 0",
     },
     nestedListHidden: {
-      display: "none"
-    }
+      display: "none",
+    },
   };
 };
 
-const NestedList = ({ theme, pages, title }, { router }) => {
+const NestedList = ({ theme, pages, title }) => {
+  const { location } = useRouter();
+
   const collapsed = !pages
-    .map(d => d.path && router.isActive(d.path))
+    .map((d) => d.path && location.pathname === d.path)
     .filter(Boolean).length;
 
   const currentStyle = style(theme);
 
   const linkStyle = cx(css(currentStyle.link), {
-    [css(currentStyle.activeLink)]: !collapsed
+    [css(currentStyle.activeLink)]: !collapsed,
   });
 
   const listStyle = cx(css(currentStyle.nestedList), {
-    [css(currentStyle.nestedListHidden)]: collapsed
+    [css(currentStyle.nestedListHidden)]: collapsed,
   });
-
   return (
     <div>
       <Link to={pages[0].path} className={linkStyle}>
@@ -109,8 +111,8 @@ const NestedList = ({ theme, pages, title }, { router }) => {
       </Link>
       <ul className={listStyle}>
         {pages
-          .filter(page => !page.hideFromMenu)
-          .map(page => (
+          .filter((page) => !page.hideFromMenu)
+          .map((page) => (
             <ListItem key={page.id} page={page} nested theme={theme} />
           ))}
       </ul>
@@ -121,11 +123,7 @@ const NestedList = ({ theme, pages, title }, { router }) => {
 NestedList.propTypes = {
   pages: pagesShape.isRequired,
   title: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
-};
-
-NestedList.contextTypes = {
-  router: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 class ListItem extends React.Component {
@@ -136,12 +134,12 @@ class ListItem extends React.Component {
     const currentStyle = style(theme);
 
     const linkStyle = cx(css(currentStyle.link), {
-      [css(currentStyle.nestedLink)]: nested
+      [css(currentStyle.nestedLink)]: nested,
     });
 
     const activeLinkStyle = cx(linkStyle, {
       [css(currentStyle.activeLink)]: !nested,
-      [css(currentStyle.nestedActiveLink)]: nested
+      [css(currentStyle.nestedActiveLink)]: nested,
     });
 
     return (
@@ -150,10 +148,10 @@ class ListItem extends React.Component {
           <NestedList {...this.props} {...page} pages={pages} />
         ) : (
           <Link
-            className={linkStyle}
-            activeClassName={activeLinkStyle}
+            getProps={({ isCurrent }) => ({
+              className: isCurrent ? activeLinkStyle : linkStyle,
+            })}
             to={path}
-            onlyActiveOnIndex={path === "/"}
           >
             {menuTitle || title}
           </Link>
@@ -166,7 +164,7 @@ class ListItem extends React.Component {
 ListItem.propTypes = {
   page: pageShape.isRequired,
   theme: PropTypes.object.isRequired,
-  nested: PropTypes.bool
+  nested: PropTypes.bool,
 };
 
 export default ListItem;

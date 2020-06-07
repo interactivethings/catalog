@@ -1,13 +1,10 @@
-import PropTypes from "prop-types";
 import React from "react";
 import Page from "./Page";
+import { useRouter } from "../Router";
 
-const NotFound = ({ location }) => (
-  <Page>{`Sorry, no page exists at **${location.pathname}**.`}</Page>
-);
-
-NotFound.propTypes = {
-  location: PropTypes.object.isRequired
+const NotFound = () => {
+  const { location } = useRouter();
+  return <Page>{`Sorry, no page exists at **${location.pathname}**.`}</Page>;
 };
 
 export default NotFound;

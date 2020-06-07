@@ -1,34 +1,25 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import {
-  Router,
-  applyRouterMiddleware,
-  browserHistory,
-  hashHistory
-} from "react-router";
-import { useScroll } from "react-router-scroll";
-import seqKey from "../utils/seqKey";
+import { Router } from "./Router";
 
-import configureRoutes from "../configureRoutes";
+import configure from "../configure";
+import { CatalogContextProvider } from "./CatalogContext";
+import App from "./App/App";
 
 export default class Catalog extends Component {
-  constructor() {
-    super();
-    this.getKey = seqKey("CatalogRouter");
-  }
   render() {
-    const configuration = this.props;
+    const config = configure(this.props);
+    const { pages, useBrowserHistory } = config;
     return (
-      <Router
-        key={this.getKey()}
-        history={configuration.useBrowserHistory ? browserHistory : hashHistory}
-        routes={configureRoutes(configuration)}
-        render={applyRouterMiddleware(useScroll())}
-      />
+      <CatalogContextProvider configuration={config}>
+        <Router useBrowserHistory={useBrowserHistory} pages={pages}>
+          {({ page }) => <App>{React.createElement(page.component)}</App>}
+        </Router>
+      </CatalogContextProvider>
     );
   }
 }
 
 Catalog.propTypes = {
-  useBrowserHistory: PropTypes.bool
+  useBrowserHistory: PropTypes.bool,
 };
