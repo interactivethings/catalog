@@ -74,3 +74,29 @@ python -m SimpleHTTPServer
 ### On Windows
 
 Use [xampp](https://www.apachefriends.org/de/index.html) or something similar.
+
+
+## Building Catalog Standalone
+
+To build a standalone app use the following command in the catalog directory.
+```code
+catalog build
+```
+
+option("babelrc", "Use local .babelrc file (defaults to true)");
+Options available for building
+- -o  
+  Directory to build into  
+  Default `<catalog directory>/build`
+- -u / -public-url  
+  The URL where production assets get loaded from.
+  Default `/`  
+  For relativ paths use `./`
+- babelrc  
+  Use local .babelrc file.
+  Defaults to true.
+
+To use relative paths use the following code to build
+```code
+catalog build -u "./"
+```
