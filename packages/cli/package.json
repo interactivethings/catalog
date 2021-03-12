@@ -40,7 +40,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
     "react-app-polyfill": "^1.0.1",
-    "react-dev-utils": "^9.0.1",
+    "react-dev-utils": "^11.0.4",
     "sander": "^0.6.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
