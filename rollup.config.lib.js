@@ -1,4 +1,5 @@
 import babel from "rollup-plugin-babel";
+import builtins from "rollup-plugin-node-builtins";
 const pkg = require("./package.json");
 
 const banner = `/*! Catalog v${pkg.version} ${pkg.homepage} */`;
@@ -14,7 +15,8 @@ export default {
   plugins: [
     babel({
       exclude: "node_modules/**"
-    })
+    }),
+    builtins()
   ],
   external: id => externals.some(d => id.startsWith(d)),
   output: [
