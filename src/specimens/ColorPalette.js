@@ -6,7 +6,7 @@ import { text } from "../styles/typography";
 import Specimen from "../components/Specimen/Specimen";
 import { hcl } from "d3-color";
 
-const _ColorPaletteItem = ({ name, value, styles, width }) => {
+const _ColorPaletteItem = ({ name, value, altValue, styles, width }) => {
   const contrastingValue = hcl(value).l < 55 ? "#fff" : "#000";
   return (
     <div
@@ -14,6 +14,7 @@ const _ColorPaletteItem = ({ name, value, styles, width }) => {
     >
       <div className={css({ ...styles.textPalette, color: contrastingValue })}>
         {name} <div className={css(styles.mono)}>{value}</div>
+        <div className={css(styles.mono)}>{altValue}</div>
       </div>
     </div>
   );
@@ -22,6 +23,7 @@ const _ColorPaletteItem = ({ name, value, styles, width }) => {
 _ColorPaletteItem.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
+  altValue: PropTypes.string,
   styles: PropTypes.object,
   width: PropTypes.string
 };
@@ -71,7 +73,7 @@ class ColorPalette extends React.Component {
       }
     };
 
-    const width = `${horizontal ? 90 / colors.length : 100}%`;
+    const width = `${horizontal ? 100 / colors.length : 100}%`;
     const paletteItems = colors.map((color, i) => (
       <ColorPaletteItem key={i} {...color} styles={styles} width={width} />
     ));

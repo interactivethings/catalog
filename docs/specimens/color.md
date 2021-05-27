@@ -2,7 +2,7 @@
 
 ### Props
 
-- __`value: string`__ defines the color
+- **`value: string`** defines the color
 - `name: string` defines the color name
 - `span: number[1–6]` width of the specimen
 
@@ -50,6 +50,14 @@ value: "#ff5555"
 ```
 ````
 
+#### Alternative color value
+
+```color
+span: 3
+name: "Bright Red"
+value: "#ff5555"
+altValue: "CMYK 255,255,255,100"
+```
 
 ### Color palette
 

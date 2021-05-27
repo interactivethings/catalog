@@ -10,6 +10,7 @@ class Color extends React.Component {
     const {
       catalog: { theme },
       value,
+      altValue,
       name
     } = this.props;
     const styles = {
@@ -27,6 +28,7 @@ class Color extends React.Component {
         <div className={css(styles.text)}>
           {name}{" "}
           <div className={css({ fontFamily: theme.fontMono })}>{value}</div>
+          <div className={css({ fontFamily: theme.fontMono })}>{altValue}</div>
         </div>
       </div>
     );
@@ -36,6 +38,7 @@ class Color extends React.Component {
 Color.propTypes = {
   catalog: catalogShape.isRequired,
   value: PropTypes.string.isRequired,
+  altValue: PropTypes.string,
   name: PropTypes.string
 };
 

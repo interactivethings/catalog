@@ -2,9 +2,10 @@
 
 ### Props
 
-- __`colors: array`__ colors of the palette
-    - __`value: string`__ defines the color value
-    - `name: string` defines the color name
+- **`colors: array`** colors of the palette
+  - **`value: string`** defines the color value
+  - `name: string` defines the color name
+  - `altValue: string` an alternative color value (e.g. CMYK)
 - `horizontal: boolean` generates a horizontal list
 - `span: number[1–6]` width of the specimen
 
@@ -12,7 +13,7 @@
 
 #### Regular color palette
 
-Color palettes can be used for sets that contain more colors. For example to document gradient steps or  color schemes.
+Color palettes can be used for sets that contain more colors. For example to document gradient steps or color schemes.
 
 ```color-palette
 colors:
@@ -36,7 +37,6 @@ colors:
 
 displaying a diverging color scale
 
-
 ```color-palette|horizontal
 colors:
    - {value: "#543005"}
@@ -67,12 +67,10 @@ colors:
 ```
 ````
 
-
 #### Multiple columns
 
-
 ```color-palette|span-2
-colors:   
+colors:
   - {value: "#ffff00"}
   - {value: "#ffff22"}
   - {value: "#ffff44"}
@@ -82,8 +80,9 @@ colors:
   - {value: "#ffffcc"}
   - {value: "#ffffee"}
 ```
+
 ```color-palette|span-2
-colors:   
+colors:
   - {value: "#ff00ff"}
   - {value: "#ff22ff"}
   - {value: "#ff44ff"}
@@ -93,8 +92,9 @@ colors:
   - {value: "#ffccff"}
   - {value: "#ffeeff"}
 ```
+
 ```color-palette|span-2
-colors:   
+colors:
   - {value: "#00ffff"}
   - {value: "#22ffff"}
   - {value: "#44ffff"}
@@ -140,3 +140,22 @@ colors:
   - {value: "#eeffff"}
 ```
 ````
+
+#### Alternative color values
+
+```color-palette
+colors:
+  - {name: "100", value: "#e3f1fc", altValue: "CMYK 255,255,255,100"}
+  - {name: "200", value: "#c2d8ea", altValue: "CMYK 255,255,255,100"}
+  - {name: "300", value: "#a1c0d8", altValue: "CMYK 255,255,255,100"}
+  - {name: "400", value: "#80a8c6", altValue: "CMYK 255,255,255,100"}
+```
+
+```color-palette
+horizontal: true
+colors:
+  - {name: "100", value: "#e3f1fc", altValue: "CMYK 255,255,255,100"}
+  - {name: "200", value: "#c2d8ea", altValue: "CMYK 255,255,255,100"}
+  - {name: "300", value: "#a1c0d8", altValue: "CMYK 255,255,255,100"}
+  - {name: "400", value: "#80a8c6", altValue: "CMYK 255,255,255,100"}
+```
