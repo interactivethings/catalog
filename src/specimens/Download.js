@@ -6,9 +6,7 @@ import { css } from "../emotion";
 import Specimen from "../components/Specimen/Specimen";
 import { getPublicPath } from "../utils/path";
 
-const DownloadIcon = (
-  { styles, fill } // eslint-disable-line
-) => (
+const DownloadIcon = ({ styles }) => (
   <svg className={css(styles.img)} viewBox="0 0 120 120">
     <g fill="none" fillRule="evenodd">
       <rect width="120" height="120" fill="#EEEEEE" rx="2" />
@@ -19,6 +17,10 @@ const DownloadIcon = (
     </g>
   </svg>
 );
+
+DownloadIcon.propTypes = {
+  styles: PropTypes.object
+};
 
 function getStyle(theme) {
   const baseLinkStyle = {
