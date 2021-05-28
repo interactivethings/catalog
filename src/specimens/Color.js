@@ -18,7 +18,8 @@ class Color extends React.Component {
         ...text(theme),
         boxSizing: "border-box",
         padding: "8px 0",
-        background: theme.background
+        background: theme.background,
+        whiteSpace: 'pre-line',
       }
     };
 
