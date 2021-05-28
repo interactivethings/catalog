@@ -34,6 +34,7 @@ export interface Config {
 
   useBrowserHistory?: boolean;
   basePath?: string;
+  publicUrl?: string;
   responsiveSizes?: ConfigResponsiveSize[];
   theme?: Partial<Theme>;
   logoSrc?: string;
