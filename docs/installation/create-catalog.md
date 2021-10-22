@@ -38,3 +38,7 @@ If you're using [yarn](https://yarnpkg.com/) (>= 0.25) instead of npm, you can a
 yarn create catalog <directory>
 ```
 
+## Restarting Catalog
+
+If you stop Catalog and need to restart it run `npm start catalog-start`
+
