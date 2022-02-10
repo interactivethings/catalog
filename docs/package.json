@@ -5,7 +5,7 @@
   "dependencies": {
     "@babel/standalone": "^7.1.0",
     "catalog": "^4.0.1-canary.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
