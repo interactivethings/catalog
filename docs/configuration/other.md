@@ -12,9 +12,9 @@ Let's assume you want to work with a smart watch, a tablet and Desktop, the Cata
 ...
 title: 'Catalog',
 responsiveSizes: [
-  {name: 'watch', width: 272, height: 340}
+  {name: 'watch', width: 272, height: 340},
   {name: 'tablet', width: 1024, height: 768},
-  {name: 'desktop', width: 1920, height: 1080},
+  {name: 'desktop', width: 1920, height: 1080}
 ],
 pages: [
 ...
