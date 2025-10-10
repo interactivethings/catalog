@@ -2,7 +2,7 @@
   <h3>⚠️ Deprecation Notice ⚠️</h3>
 </div>
 
-This repository has been deprecated and is no longer under active development or maintenance.
+The **Catalog** project has been deprecated and is no longer under active development or maintenance.
 Existing users may continue to use it at their own discretion, but no further updates or support will be provided.
 
 For new work, consider alternatives below (depending on your goals — component “playgrounds”, design-system docs, or UI documentation).
