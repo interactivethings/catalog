@@ -4,15 +4,14 @@
 > Existing users may continue to use it at their own discretion, but no further updates or support will be provided.
 >
 > For new work, consider alternatives below (depending on your goals — component “playgrounds”, design-system docs, or UI documentation).
-
-| Tool                                       | Focus / Strengths                                                                                                       |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| [**Storybook**](https://storybook.js.org/) | The most widely used UI component explorer with a rich ecosystem of addons. Great for React, Vue, and other frameworks. |
-| [**Ladle**](https://ladle.dev/)            | Lightweight, fast alternative to Storybook built on Vite. Minimal configuration, simple setup.                          |
-| [**Docz**](https://github.com/doczjs/docz) | MDX-based documentation for React components. Lets you mix prose and live examples.                                     |
-| [**Pattern Lab**](https://patternlab.io/)  | Strong focus on atomic design and pattern libraries. Works well for design systems and static documentation.            |
-| [**Zeroheight**](https://zeroheight.com/)  | Design-system documentation platform used by designers; integrates tightly with Figma and design tokens.                |
-| [**Supernova**](https://supernova.io/)     | Professional design-system management platform combining docs, tokens, and code.                                        |
+>
+> | Tool                                       | Focus                                                                                                                   |
+> | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+> | [**Storybook**](https://storybook.js.org/) | The most widely used UI component explorer with a rich ecosystem of addons. Great for React, Vue, and other frameworks. |
+> | [**Ladle**](https://ladle.dev/)            | Lightweight, fast alternative to Storybook built on Vite. Minimal configuration, simple setup.                          |
+> | [**Pattern Lab**](https://patternlab.io/)  | Strong focus on atomic design and pattern libraries. Works well for design systems and static documentation.            |
+> | [**Zeroheight**](https://zeroheight.com/)  | Design-system documentation platform used by designers; integrates tightly with Figma and design tokens.                |
+> | [**Supernova**](https://supernova.io/)     | Professional design-system management platform combining docs, tokens, and code.                                        |
 
 ---
 
