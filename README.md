@@ -11,6 +11,8 @@ For new work, consider alternatives below (depending on your goals — component
 - [**Ladle**](https://ladle.dev/) — Lightweight, fast alternative to Storybook built on Vite. Minimal configuration, simple setup.
 - [**Zeroheight**](https://zeroheight.com/) — Design-system documentation platform used by designers; integrates tightly with Figma and design tokens.
 - [**Supernova**](https://supernova.io/) — Professional design-system management platform combining docs, tokens, and code.
+- [**GitBook**](https://www.gitbook.com/) — Hosted documentation platform with excellent UX and collaboration features. Great for design system and product documentation.
+- [**Docusaurus**](https://docusaurus.io/) — Open-source static site generator for documentation, built with React and Markdown. Excellent for technical or design system sites.
 
 ---
 
